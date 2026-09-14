@@ -1,0 +1,19 @@
+sequenceDiagram
+  participant D as Task driver in CPU container
+  participant C as Docker CLI / provider
+  participant E as Dedicated Docker daemon
+  participant S as Per-task sandbox
+  D->>C: start sandbox
+  C->>E: create + start over Unix socket
+  E->>S: launch task container
+  loop agent tools and verification
+    D->>C: exec / files
+    C->>E: exec or archive API
+    E->>S: run command / transfer files
+    S-->>D: exit code + stdout + stderr / files
+  end
+  D->>C: stop sandbox
+  C->>E: DELETE container, force=true
+  E->>S: terminate and remove
+  Note over D,E: Independent janitor also reclaims expired owned containers
+

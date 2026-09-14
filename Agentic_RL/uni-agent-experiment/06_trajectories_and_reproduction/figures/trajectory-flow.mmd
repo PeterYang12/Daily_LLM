@@ -1,0 +1,11 @@
+flowchart TD
+  agent["ReAct / Claude Code / Mini"] --> gateway["Uni-Agent Gateway session"]
+  gateway --> model["Fixed Qwen30B inference"]
+  model --> record["Token IDs + generation masks"]
+  record --> main["Main run: 84 valid token/mask sessions"]
+  record --> lp["Separate runs: logprobs explicitly enabled"]
+  main --> evidence["Saved results and trajectory audits"]
+  lp --> evidence
+  evidence -.-> train["Future work: reward + optimizer + policy sync"]
+  note["No training update was executed"] --- train
+

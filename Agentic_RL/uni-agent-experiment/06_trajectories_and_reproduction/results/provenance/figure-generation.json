@@ -1,0 +1,11 @@
+{
+  "generator": "matplotlib",
+  "version": "3.10.8",
+  "figures": [
+    "agent-results",
+    "agent-cost",
+    "serving-throughput",
+    "replica-scaling"
+  ],
+  "source": "Experiment 2 and 5 saved results; no new model runs"
+}

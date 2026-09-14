@@ -1,0 +1,20 @@
+flowchart LR
+  subgraph local["Local Docker environment"]
+    react["Uni-Agent ReAct loop"]
+    model["AMD GPU: vLLM + Qwen30B"]
+    adapter["e2b_compat provider + E2B SDK"]
+    react -->|"direct model API"| model
+    model -->|"assistant action"| react
+    react -->|"tool call"| adapter
+  end
+  subgraph remote["Remote E2B-compatible service"]
+    control["REST: create / destroy"]
+    envd["Execution RPC + file HTTP"]
+    repo["Sandbox: Python + repository files"]
+    control --> repo
+    envd --> repo
+  end
+  adapter --> control
+  adapter --> envd
+  envd -->|"command output / files"| adapter
+

@@ -1,0 +1,10 @@
+flowchart TD
+  data["Select 30 tasks before agent runs"] --> gate["Baseline fails + official patch passes"]
+  gate --> valid["Freeze 28 qualified tasks"]
+  valid --> run["Three agents: one attempt per task"]
+  run --> patch["Save candidate and initial image tree"]
+  patch --> delta["Extract changes introduced by agent"]
+  delta --> verifier["Apply in a fresh sandbox + run verifier"]
+  verifier --> audit["Audit existing-test modifications"]
+  audit --> results["84 evaluated candidates: 17 / 11 / 12 resolved"]
+

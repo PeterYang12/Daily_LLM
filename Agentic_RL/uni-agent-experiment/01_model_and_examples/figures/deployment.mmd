@@ -1,0 +1,15 @@
+flowchart TB
+  launcher["Host launcher"]
+  cpu["CPU container: ua-lab-cpu<br/>Uni-Agent driver + ReAct loop<br/>Gateway + Docker CLI"]
+  model["GPU model container<br/>vLLM + fixed Qwen30B"]
+  daemon["Dedicated daemon container<br/>ua-lab-sandbox-daemon"]
+  task["Per-task sandbox<br/>Repository + commands<br/>Claude Code or Mini CLI"]
+  verifier["Fresh verifier sandbox<br/>Saved patch + independent tests"]
+  launcher -->|"starts outer containers"| cpu
+  launcher --> model
+  launcher --> daemon
+  cpu -->|"Gateway model requests"| model
+  cpu -->|"Docker CLI + Unix socket"| daemon
+  daemon -->|"create / exec / delete"| task
+  daemon -->|"create / exec / delete"| verifier
+  task -->|"CLI model requests to Gateway"| cpu

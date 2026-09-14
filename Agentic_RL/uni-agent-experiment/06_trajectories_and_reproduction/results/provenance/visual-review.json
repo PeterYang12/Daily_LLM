@@ -1,0 +1,102 @@
+{
+  "pages": [
+    {
+      "source": "01_model_and_examples/API.md",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "source": "01_model_and_examples/ARCHITECTURE.md",
+      "images": 1,
+      "broken_images": []
+    },
+    {
+      "source": "01_model_and_examples/README.md",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "source": "01_model_and_examples/STEPS.md",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "source": "02_swe_bench_comparison/COMMUNITY.md",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "source": "02_swe_bench_comparison/README.md",
+      "images": 2,
+      "broken_images": []
+    },
+    {
+      "source": "02_swe_bench_comparison/RESULTS.md",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "source": "02_swe_bench_comparison/STEPS.md",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "source": "03_docker_sandbox/API.md",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "source": "03_docker_sandbox/README.md",
+      "images": 1,
+      "broken_images": []
+    },
+    {
+      "source": "03_docker_sandbox/STEPS.md",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "source": "04_e2b_sandbox/API.md",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "source": "04_e2b_sandbox/README.md",
+      "images": 1,
+      "broken_images": []
+    },
+    {
+      "source": "04_e2b_sandbox/STEPS.md",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "source": "05_inference_performance/README.md",
+      "images": 2,
+      "broken_images": []
+    },
+    {
+      "source": "05_inference_performance/STEPS.md",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "source": "06_trajectories_and_reproduction/README.md",
+      "images": 1,
+      "broken_images": []
+    },
+    {
+      "source": "06_trajectories_and_reproduction/STEPS.md",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "source": "README.md",
+      "images": 0,
+      "broken_images": []
+    }
+  ],
+  "errors": [],
+  "desktop_width": 1440,
+  "mobile_width": 390
+}

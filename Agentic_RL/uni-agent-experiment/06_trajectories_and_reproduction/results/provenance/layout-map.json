@@ -1,0 +1,1140 @@
+{
+  "artifacts": [
+    {
+      "previous": "assets/figures/agent-cost.svg",
+      "current": "02_swe_bench_comparison/figures/agent-cost.svg",
+      "sha256": "0890cacb91a874e7c7b7dbdb718d363588d065686a662324367d3433757dde20"
+    },
+    {
+      "previous": "assets/figures/agent-results.svg",
+      "current": "02_swe_bench_comparison/figures/agent-results.svg",
+      "sha256": "6d33ea21480a00480f712d4d6c5bdfd45beab4715726ecc54e0a22fc5b8867ef"
+    },
+    {
+      "previous": "assets/figures/replica-scaling.svg",
+      "current": "05_inference_performance/figures/replica-scaling.svg",
+      "sha256": "82d6d765c73f8bdae6695f96faac753bc6cadb3dfb8603f90a15edc0db9fb4de"
+    },
+    {
+      "previous": "assets/figures/serving-throughput.svg",
+      "current": "05_inference_performance/figures/serving-throughput.svg",
+      "sha256": "26459b875402cf91850089997ac7fc979ba9583cb21e7574d11c208c51771af1"
+    },
+    {
+      "previous": "evidence/api-inventory.json",
+      "current": "01_model_and_examples/results/api-inventory.json",
+      "sha256": "ea35259e99ec627c2164f24a02abb424fe2a59c82941ab7b4191ef0f28c5f42e"
+    },
+    {
+      "previous": "evidence/cases/claude/astropy__astropy-13033/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/astropy__astropy-13033/result.json",
+      "sha256": "fd73329e6e5e4b676f0067fb2b6854bd1db8947e5d6791e38c865c02a93105f3"
+    },
+    {
+      "previous": "evidence/cases/claude/astropy__astropy-13977/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/astropy__astropy-13977/result.json",
+      "sha256": "a43569695b40b76c6e51c0de46e34cb072599872c75086e0c2d7b4b5c7c0d948"
+    },
+    {
+      "previous": "evidence/cases/claude/astropy__astropy-14539/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/astropy__astropy-14539/result.json",
+      "sha256": "637cc55b56ea84ac6db977d1a5edf6aae76a4788a153e716b2ca84063b580052"
+    },
+    {
+      "previous": "evidence/cases/claude/django__django-11451/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/django__django-11451/result.json",
+      "sha256": "3f92a065e097aac64e12dd67aea89a85ed242ae3d172335c2cdcb90cb23ba1a7"
+    },
+    {
+      "previous": "evidence/cases/claude/django__django-14122/candidate-delta.patch",
+      "current": "02_swe_bench_comparison/results/cases/claude/django__django-14122/candidate-delta.patch",
+      "sha256": "d965c3c94d38f427bef5a3b1a7163107ca4d2621d2a03bdb6ade99bd78edbf84"
+    },
+    {
+      "previous": "evidence/cases/claude/django__django-14122/candidate-source-only.patch",
+      "current": "02_swe_bench_comparison/results/cases/claude/django__django-14122/candidate-source-only.patch",
+      "sha256": "6b83b6730de278749aaafb8e9ca75a7f6312cc8d97066c32236248b913c1a87a"
+    },
+    {
+      "previous": "evidence/cases/claude/django__django-14122/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/django__django-14122/result.json",
+      "sha256": "14205a887cea8d3c733b9d0102a7d9a0178575ecc3e5ebd70cac20a5645330ec"
+    },
+    {
+      "previous": "evidence/cases/claude/django__django-14373/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/django__django-14373/result.json",
+      "sha256": "587d5334be74e39fd9a8af0d06f0cf902e1b728c3a7bc07884f030bd4f0649c6"
+    },
+    {
+      "previous": "evidence/cases/claude/matplotlib__matplotlib-20488/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/matplotlib__matplotlib-20488/result.json",
+      "sha256": "85612111981a72f05292b950f15cbd58eed082e1e2f8f17f124d3a5b06a1b3b6"
+    },
+    {
+      "previous": "evidence/cases/claude/matplotlib__matplotlib-20859/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/matplotlib__matplotlib-20859/result.json",
+      "sha256": "dd8853b39b881851aed739d24573ce82f40b469d3cc764de495f9facfa89c24a"
+    },
+    {
+      "previous": "evidence/cases/claude/matplotlib__matplotlib-25287/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/matplotlib__matplotlib-25287/result.json",
+      "sha256": "d5cf284bb8839dcd3e7fe345d6539ac498a061900dda274194a9a4c13dd37442"
+    },
+    {
+      "previous": "evidence/cases/claude/mwaskom__seaborn-3069/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/mwaskom__seaborn-3069/result.json",
+      "sha256": "7c93b06b2d6a7c0e71f43c9ae2ffe09e9d362cf88ffb9987338b0fc466f963b7"
+    },
+    {
+      "previous": "evidence/cases/claude/mwaskom__seaborn-3187/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/mwaskom__seaborn-3187/result.json",
+      "sha256": "8a36ee2b782edef588e32effa2027414d523cdc9d1df38c12de13c37a541e22b"
+    },
+    {
+      "previous": "evidence/cases/claude/pallets__flask-5014/candidate-delta.patch",
+      "current": "02_swe_bench_comparison/results/cases/claude/pallets__flask-5014/candidate-delta.patch",
+      "sha256": "8031a298de5c39c2d5da39862c7cc07e27f0af44de9630a13c22a6a86b9cf887"
+    },
+    {
+      "previous": "evidence/cases/claude/pallets__flask-5014/candidate-source-only.patch",
+      "current": "02_swe_bench_comparison/results/cases/claude/pallets__flask-5014/candidate-source-only.patch",
+      "sha256": "c7318aa94c5f38867e8dd556ad8605d5c617617deb5fcd672fa707b5c88b8942"
+    },
+    {
+      "previous": "evidence/cases/claude/pallets__flask-5014/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/pallets__flask-5014/result.json",
+      "sha256": "4159d6f5ae26fa58a049332122bf8bf277415813ee9855ecf1436e245d8a6e8a"
+    },
+    {
+      "previous": "evidence/cases/claude/psf__requests-1921/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/psf__requests-1921/result.json",
+      "sha256": "02b6eed1de74aa0285d0016886fbed2664c655f842bdb1f91c19f2ff5598d3bc"
+    },
+    {
+      "previous": "evidence/cases/claude/psf__requests-5414/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/psf__requests-5414/result.json",
+      "sha256": "741bc4db3211bc2f8b8e7e35c18d74b79c76ea5485c0ff68dca93f376dbc9909"
+    },
+    {
+      "previous": "evidence/cases/claude/pydata__xarray-4075/candidate-delta.patch",
+      "current": "02_swe_bench_comparison/results/cases/claude/pydata__xarray-4075/candidate-delta.patch",
+      "sha256": "9b2cf99b2eb67ed76039928656cdd7b755cbafe4cb17b945595a6785c5af63e0"
+    },
+    {
+      "previous": "evidence/cases/claude/pydata__xarray-4075/candidate-source-only.patch",
+      "current": "02_swe_bench_comparison/results/cases/claude/pydata__xarray-4075/candidate-source-only.patch",
+      "sha256": "a4ec9c8873a01566a3c23f46f6efe4f686c984544d44f2976be181fb73d535c7"
+    },
+    {
+      "previous": "evidence/cases/claude/pydata__xarray-4075/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/pydata__xarray-4075/result.json",
+      "sha256": "415f73acfb2eaa138187a64296f45812743cadbdb436e7a3eb2d3a17d6df02f0"
+    },
+    {
+      "previous": "evidence/cases/claude/pydata__xarray-6938/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/pydata__xarray-6938/result.json",
+      "sha256": "e96a092c3e240679a1b8f87f15d8d501510cf957720ee0dfd527b9ea3722ab6c"
+    },
+    {
+      "previous": "evidence/cases/claude/pylint-dev__pylint-4661/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/pylint-dev__pylint-4661/result.json",
+      "sha256": "e7184d5dce30eae36fb254861ff776ce6fb4985d5520d3ec7138fc828d3062e2"
+    },
+    {
+      "previous": "evidence/cases/claude/pylint-dev__pylint-4970/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/pylint-dev__pylint-4970/result.json",
+      "sha256": "c45c77182c15fff824ecd45a4f69803d1ae1156fdf6416a39472b678920100c0"
+    },
+    {
+      "previous": "evidence/cases/claude/pylint-dev__pylint-7080/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/pylint-dev__pylint-7080/result.json",
+      "sha256": "72e0e1c1411d26af7af31ff62e1d7b1507b0a2795977ad36120fbbb6d682b4e4"
+    },
+    {
+      "previous": "evidence/cases/claude/pytest-dev__pytest-7205/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/pytest-dev__pytest-7205/result.json",
+      "sha256": "cdbf3499288be71892998307bbc28256477703a1dec8c1378bfa11d1e6f56f3f"
+    },
+    {
+      "previous": "evidence/cases/claude/pytest-dev__pytest-7236/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/pytest-dev__pytest-7236/result.json",
+      "sha256": "376d1e7b665cfa8facf18cee182691f721a1f41ac1c7d75a60fd8760b2f63e85"
+    },
+    {
+      "previous": "evidence/cases/claude/pytest-dev__pytest-7521/candidate-delta.patch",
+      "current": "02_swe_bench_comparison/results/cases/claude/pytest-dev__pytest-7521/candidate-delta.patch",
+      "sha256": "9be6cbcbe1d411e9a62c58dc8f2d76ccccbbb5c27102ffe9f6c3b38ae9c75c5b"
+    },
+    {
+      "previous": "evidence/cases/claude/pytest-dev__pytest-7521/candidate-source-only.patch",
+      "current": "02_swe_bench_comparison/results/cases/claude/pytest-dev__pytest-7521/candidate-source-only.patch",
+      "sha256": "e3b12fd0ffb639d72bb094bef41453fe6d08f8d5755a9a70ce260e0e93423c58"
+    },
+    {
+      "previous": "evidence/cases/claude/pytest-dev__pytest-7521/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/pytest-dev__pytest-7521/result.json",
+      "sha256": "2407f31adb7c319ef2319b103cfba34a10f7ef4cbc772ed16cce59766677f037"
+    },
+    {
+      "previous": "evidence/cases/claude/scikit-learn__scikit-learn-11310/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/scikit-learn__scikit-learn-11310/result.json",
+      "sha256": "c442d0d9b83b2c50dae5a754ab4dab940069a9c5402f87b0c920436541c60c41"
+    },
+    {
+      "previous": "evidence/cases/claude/scikit-learn__scikit-learn-25931/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/scikit-learn__scikit-learn-25931/result.json",
+      "sha256": "76ba8d105ff3e2e322155083cde9a8aa720633d380b0dab9d5290a6f81a97858"
+    },
+    {
+      "previous": "evidence/cases/claude/sphinx-doc__sphinx-7748/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/sphinx-doc__sphinx-7748/result.json",
+      "sha256": "caad3c4a653646324aac84581767d66d0f8049ef27d1e9f6c8778770eb189847"
+    },
+    {
+      "previous": "evidence/cases/claude/sphinx-doc__sphinx-9367/candidate-delta.patch",
+      "current": "02_swe_bench_comparison/results/cases/claude/sphinx-doc__sphinx-9367/candidate-delta.patch",
+      "sha256": "3c70c1f3fa8cf27ba25ec82d72bc4e7148fbf417e8982ca2aa289b46326644cb"
+    },
+    {
+      "previous": "evidence/cases/claude/sphinx-doc__sphinx-9367/candidate-source-only.patch",
+      "current": "02_swe_bench_comparison/results/cases/claude/sphinx-doc__sphinx-9367/candidate-source-only.patch",
+      "sha256": "00614914a2c097d6a2cb3be31723a6c22bf396f23a71db6c78890be832b97b63"
+    },
+    {
+      "previous": "evidence/cases/claude/sphinx-doc__sphinx-9367/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/sphinx-doc__sphinx-9367/result.json",
+      "sha256": "bc0347757134b610ff394ce77cb129490563799a2e560038afb8cacbb9953c68"
+    },
+    {
+      "previous": "evidence/cases/claude/sympy__sympy-18211/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/sympy__sympy-18211/result.json",
+      "sha256": "193f3b7c1b518d6d3b34b87c5c0e67b6c0330c44183b61913b009e53a63b6197"
+    },
+    {
+      "previous": "evidence/cases/claude/sympy__sympy-24213/result.json",
+      "current": "02_swe_bench_comparison/results/cases/claude/sympy__sympy-24213/result.json",
+      "sha256": "829075a099591f2343e2cc061f45373eeda81e8deebbd052d0c310ac34593d52"
+    },
+    {
+      "previous": "evidence/cases/mini/astropy__astropy-13033/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/astropy__astropy-13033/result.json",
+      "sha256": "715dff8cd643e2883de3b19547ca6bb0a100b5258cd90b24e057c6181c420a58"
+    },
+    {
+      "previous": "evidence/cases/mini/astropy__astropy-13977/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/astropy__astropy-13977/result.json",
+      "sha256": "2215fdbb79dce85e47ff15c8d3238ad5ae48375ca4f826b5886a0a017db8b7dc"
+    },
+    {
+      "previous": "evidence/cases/mini/astropy__astropy-14539/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/astropy__astropy-14539/result.json",
+      "sha256": "36464a996d9f1dc635340172e8b145c4fb144e8ab556ce6dd4befacdf8623a97"
+    },
+    {
+      "previous": "evidence/cases/mini/django__django-11451/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/django__django-11451/result.json",
+      "sha256": "68a1ea4b61968ecf3f414a2f5e9968f888bd88a95ef29814b506b317c99dfc64"
+    },
+    {
+      "previous": "evidence/cases/mini/django__django-14122/candidate-delta.patch",
+      "current": "02_swe_bench_comparison/results/cases/mini/django__django-14122/candidate-delta.patch",
+      "sha256": "79f9688e0934b22607ff4d5ff13bd063546354141753c369bbd5b4203bf8e7bf"
+    },
+    {
+      "previous": "evidence/cases/mini/django__django-14122/candidate-source-only.patch",
+      "current": "02_swe_bench_comparison/results/cases/mini/django__django-14122/candidate-source-only.patch",
+      "sha256": "79f9688e0934b22607ff4d5ff13bd063546354141753c369bbd5b4203bf8e7bf"
+    },
+    {
+      "previous": "evidence/cases/mini/django__django-14122/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/django__django-14122/result.json",
+      "sha256": "4089823820c13c2473d356b7bf5f4280c39150bff7dfe648e667dffc255d5855"
+    },
+    {
+      "previous": "evidence/cases/mini/django__django-14373/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/django__django-14373/result.json",
+      "sha256": "bad8eeb36c4841cec7f2ebc24135d85d170d98c99745a553ad7ebaeab18e0b33"
+    },
+    {
+      "previous": "evidence/cases/mini/matplotlib__matplotlib-20488/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/matplotlib__matplotlib-20488/result.json",
+      "sha256": "088eb1b495fd69c6242aad1a4b1f813f44d8520d94d10f1c6fcae1e93b64660a"
+    },
+    {
+      "previous": "evidence/cases/mini/matplotlib__matplotlib-20859/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/matplotlib__matplotlib-20859/result.json",
+      "sha256": "e68ff3e2c6cce9fe2f77c66fb570cd12ddf3497943e23df56eb693d0262bfb4d"
+    },
+    {
+      "previous": "evidence/cases/mini/matplotlib__matplotlib-25287/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/matplotlib__matplotlib-25287/result.json",
+      "sha256": "8d9d44abe9591e8def2c7f33d625930596bccd87e075b793672b8cb273350716"
+    },
+    {
+      "previous": "evidence/cases/mini/mwaskom__seaborn-3069/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/mwaskom__seaborn-3069/result.json",
+      "sha256": "4ca69467b0dd3d8b45a17a59738f496931e9f8ef93f05f4f3f22b42439a5eaac"
+    },
+    {
+      "previous": "evidence/cases/mini/mwaskom__seaborn-3187/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/mwaskom__seaborn-3187/result.json",
+      "sha256": "d6de632ea21ddc7573b0f90bce661d79c004c1682370ab976a08af086aa73b93"
+    },
+    {
+      "previous": "evidence/cases/mini/pallets__flask-5014/candidate-delta.patch",
+      "current": "02_swe_bench_comparison/results/cases/mini/pallets__flask-5014/candidate-delta.patch",
+      "sha256": "d217ab41cecc44cefefec09e297cea6333fbb935668ce5fc34ad9ff12ef33124"
+    },
+    {
+      "previous": "evidence/cases/mini/pallets__flask-5014/candidate-source-only.patch",
+      "current": "02_swe_bench_comparison/results/cases/mini/pallets__flask-5014/candidate-source-only.patch",
+      "sha256": "03f770fd2d72cde244f2eaa82a3538cb44258962fdd9ded84d640e95e6e8e0fb"
+    },
+    {
+      "previous": "evidence/cases/mini/pallets__flask-5014/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/pallets__flask-5014/result.json",
+      "sha256": "3de4e73da5466fd428b611577c6dc31236124b9e159145fee916b5d8741e41d2"
+    },
+    {
+      "previous": "evidence/cases/mini/psf__requests-1921/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/psf__requests-1921/result.json",
+      "sha256": "602bc205fae83b38c14641574e27ff22b1bb2b4cdc85531d42dbd9f8d3e71f77"
+    },
+    {
+      "previous": "evidence/cases/mini/psf__requests-5414/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/psf__requests-5414/result.json",
+      "sha256": "ce1facfc6f2c8335c6d85f7de177b330c4ad69a077eaca47fa370db30124b139"
+    },
+    {
+      "previous": "evidence/cases/mini/pydata__xarray-4075/candidate-delta.patch",
+      "current": "02_swe_bench_comparison/results/cases/mini/pydata__xarray-4075/candidate-delta.patch",
+      "sha256": "459ee54b420e0cb3e0ef41ec1110978b45a6495e9f199b907e9895edd8c9277a"
+    },
+    {
+      "previous": "evidence/cases/mini/pydata__xarray-4075/candidate-source-only.patch",
+      "current": "02_swe_bench_comparison/results/cases/mini/pydata__xarray-4075/candidate-source-only.patch",
+      "sha256": "459ee54b420e0cb3e0ef41ec1110978b45a6495e9f199b907e9895edd8c9277a"
+    },
+    {
+      "previous": "evidence/cases/mini/pydata__xarray-4075/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/pydata__xarray-4075/result.json",
+      "sha256": "4c25628188cf80c9d36d761628f3640fc0aab9a71f11aa7b891a79f715f6c27d"
+    },
+    {
+      "previous": "evidence/cases/mini/pydata__xarray-6938/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/pydata__xarray-6938/result.json",
+      "sha256": "629ee0ab263e9a7caada4a6d98e6d5c4935e73d1ab72152c35fe80c1eca30293"
+    },
+    {
+      "previous": "evidence/cases/mini/pylint-dev__pylint-4661/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/pylint-dev__pylint-4661/result.json",
+      "sha256": "8c563e44b59e9310b3e5688c9a92f14d2e3cfa3b2ae95992379d499e206f805b"
+    },
+    {
+      "previous": "evidence/cases/mini/pylint-dev__pylint-4970/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/pylint-dev__pylint-4970/result.json",
+      "sha256": "2903a20d88c321de8cc77b60a765831121128c3c05bbe1cc3e0b6ed8461fb84d"
+    },
+    {
+      "previous": "evidence/cases/mini/pylint-dev__pylint-7080/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/pylint-dev__pylint-7080/result.json",
+      "sha256": "ec8d8870bd2eb70894927704ccf01dc718629c90037a5a6ec2957ea81c939c07"
+    },
+    {
+      "previous": "evidence/cases/mini/pytest-dev__pytest-7205/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/pytest-dev__pytest-7205/result.json",
+      "sha256": "c7c5176799a292cb73c53425bed7c20edd869680a8a3996e07bf7865002be126"
+    },
+    {
+      "previous": "evidence/cases/mini/pytest-dev__pytest-7236/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/pytest-dev__pytest-7236/result.json",
+      "sha256": "97fa15bf6b60be119451be4c6dee2f34fda21350e0c041ed3fe7cae50eed89c8"
+    },
+    {
+      "previous": "evidence/cases/mini/pytest-dev__pytest-7521/candidate-delta.patch",
+      "current": "02_swe_bench_comparison/results/cases/mini/pytest-dev__pytest-7521/candidate-delta.patch",
+      "sha256": "4988a6f6a6974d9ff108101846b0037ab7da103da8e3607b4d4a3a4e5ead335d"
+    },
+    {
+      "previous": "evidence/cases/mini/pytest-dev__pytest-7521/candidate-source-only.patch",
+      "current": "02_swe_bench_comparison/results/cases/mini/pytest-dev__pytest-7521/candidate-source-only.patch",
+      "sha256": "e04c1fd79507d97ebcc782b3e3f76daef37304e9950d5227bbb5b9151928dd55"
+    },
+    {
+      "previous": "evidence/cases/mini/pytest-dev__pytest-7521/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/pytest-dev__pytest-7521/result.json",
+      "sha256": "2aebd2c7c15a708b2a5e9eb361f1042a7aa2e6846800ae0a2a53ce0f7874cda7"
+    },
+    {
+      "previous": "evidence/cases/mini/scikit-learn__scikit-learn-11310/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/scikit-learn__scikit-learn-11310/result.json",
+      "sha256": "23030c1ef092635df18160b94f8feea4f012fcf8aff33fcea374ba76b03ea0bf"
+    },
+    {
+      "previous": "evidence/cases/mini/scikit-learn__scikit-learn-25931/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/scikit-learn__scikit-learn-25931/result.json",
+      "sha256": "8b09cf665b787a62e513e26338dc33aab0d17d75a8d4e98ed02328da66053a42"
+    },
+    {
+      "previous": "evidence/cases/mini/sphinx-doc__sphinx-7748/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/sphinx-doc__sphinx-7748/result.json",
+      "sha256": "741c16e0461b52e559faab8a1d5a1d23b17ef9bdc0468527d5a76e97562af497"
+    },
+    {
+      "previous": "evidence/cases/mini/sphinx-doc__sphinx-9367/candidate-delta.patch",
+      "current": "02_swe_bench_comparison/results/cases/mini/sphinx-doc__sphinx-9367/candidate-delta.patch",
+      "sha256": "9880adac3b8f8f6ba155ec74f306fde0a51ff696fc19cda468046d335082b656"
+    },
+    {
+      "previous": "evidence/cases/mini/sphinx-doc__sphinx-9367/candidate-source-only.patch",
+      "current": "02_swe_bench_comparison/results/cases/mini/sphinx-doc__sphinx-9367/candidate-source-only.patch",
+      "sha256": "211a389d1ae64c077132fba58a1f7e5ce80cbf6105bb1fad4627977af39c52c3"
+    },
+    {
+      "previous": "evidence/cases/mini/sphinx-doc__sphinx-9367/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/sphinx-doc__sphinx-9367/result.json",
+      "sha256": "b6e2ac4236624d48f608d732ecb63a3d368eb79fc21153e1fa992f980b684c96"
+    },
+    {
+      "previous": "evidence/cases/mini/sympy__sympy-18211/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/sympy__sympy-18211/result.json",
+      "sha256": "fb5981a8a7cffc7cb310e3193108c3ec69103fd3df444909bda41fce285f0128"
+    },
+    {
+      "previous": "evidence/cases/mini/sympy__sympy-24213/result.json",
+      "current": "02_swe_bench_comparison/results/cases/mini/sympy__sympy-24213/result.json",
+      "sha256": "5e7ceec020a2ba4f81773bb936f2cd6534a7b5524fc6a4a32fb026b1f89fa090"
+    },
+    {
+      "previous": "evidence/cases/react/astropy__astropy-13033/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/astropy__astropy-13033/result.json",
+      "sha256": "e07153105facc8a4ec6875efab3d77e2cc6eb59a96a4584eac099e1aacc5f219"
+    },
+    {
+      "previous": "evidence/cases/react/astropy__astropy-13977/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/astropy__astropy-13977/result.json",
+      "sha256": "e55d6eb5bc127da24b5d930a91a17bd20cfd3244ce956dc38e5d1013ded31717"
+    },
+    {
+      "previous": "evidence/cases/react/astropy__astropy-14539/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/astropy__astropy-14539/result.json",
+      "sha256": "a4a4160d39d573824d35990bdc5f0911b9bac134a3d8c19d1b7cce9277a8c991"
+    },
+    {
+      "previous": "evidence/cases/react/django__django-11451/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/django__django-11451/result.json",
+      "sha256": "279d2c3a7975c73a4c75c1a8df3747ef896b879dacf1c1a3e0ba88cc478a035f"
+    },
+    {
+      "previous": "evidence/cases/react/django__django-14122/candidate-delta.patch",
+      "current": "02_swe_bench_comparison/results/cases/react/django__django-14122/candidate-delta.patch",
+      "sha256": "1355221f87238b7972a214597f013caea4bcf6928e9da1287c464314f44cc977"
+    },
+    {
+      "previous": "evidence/cases/react/django__django-14122/candidate-source-only.patch",
+      "current": "02_swe_bench_comparison/results/cases/react/django__django-14122/candidate-source-only.patch",
+      "sha256": "ef5a7ad957ad3ec0ad9710719260fafa186ea70428d6e443f4d8d9b115525a15"
+    },
+    {
+      "previous": "evidence/cases/react/django__django-14122/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/django__django-14122/result.json",
+      "sha256": "4f4092f5ef8fa87bb0706183f9c69ea8878f5346c9e36703c373c73de0a9a88b"
+    },
+    {
+      "previous": "evidence/cases/react/django__django-14373/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/django__django-14373/result.json",
+      "sha256": "cdbdb824dbec718cf07cebf0bd92d85076283d58a5715a801ddf8eeb9c978eec"
+    },
+    {
+      "previous": "evidence/cases/react/matplotlib__matplotlib-20488/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/matplotlib__matplotlib-20488/result.json",
+      "sha256": "d542c66b33a40c673ce7ed12b3cdd8a897925f9048c37eb24a74945349bbc608"
+    },
+    {
+      "previous": "evidence/cases/react/matplotlib__matplotlib-20859/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/matplotlib__matplotlib-20859/result.json",
+      "sha256": "ec10551b714b3b7f08e4650ef2c5b1bf1b335011aa602dacb8df2611fadea585"
+    },
+    {
+      "previous": "evidence/cases/react/matplotlib__matplotlib-25287/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/matplotlib__matplotlib-25287/result.json",
+      "sha256": "544755a340dc0eeca6a2578c13eb2bab17126787e136c46dfbffcd4e844e1c9a"
+    },
+    {
+      "previous": "evidence/cases/react/mwaskom__seaborn-3069/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/mwaskom__seaborn-3069/result.json",
+      "sha256": "b23c5613e34bed92a8b89599b91b4255cd9493bf438621a54ade2e82c9ef1bdf"
+    },
+    {
+      "previous": "evidence/cases/react/mwaskom__seaborn-3187/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/mwaskom__seaborn-3187/result.json",
+      "sha256": "e15d3bfbe8513143e088c88a68501be3c26edd4a2d7d6496370638b10f79e3fa"
+    },
+    {
+      "previous": "evidence/cases/react/pallets__flask-5014/candidate-delta.patch",
+      "current": "02_swe_bench_comparison/results/cases/react/pallets__flask-5014/candidate-delta.patch",
+      "sha256": "2a5194d13ba9f64da0eda0e4396655dab36f77a33172c3e631f1abbc8b6433fb"
+    },
+    {
+      "previous": "evidence/cases/react/pallets__flask-5014/candidate-source-only.patch",
+      "current": "02_swe_bench_comparison/results/cases/react/pallets__flask-5014/candidate-source-only.patch",
+      "sha256": "b20865b2005f51b67bd87d58cf307feca7ad58604d951004be21e45490caefd7"
+    },
+    {
+      "previous": "evidence/cases/react/pallets__flask-5014/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/pallets__flask-5014/result.json",
+      "sha256": "bafda3bbfec3e405a90bf266b4d61c03fdbf6af79970d968b8fd48e84b64ce41"
+    },
+    {
+      "previous": "evidence/cases/react/psf__requests-1921/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/psf__requests-1921/result.json",
+      "sha256": "8fb82687cfddd0895f29d4a34425ffd4117cf142bf27503d315dab49d159d1b2"
+    },
+    {
+      "previous": "evidence/cases/react/psf__requests-5414/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/psf__requests-5414/result.json",
+      "sha256": "a8d0aeaf74d07e1d86a366c7c06f5237651312454287f3da324f205643116e6d"
+    },
+    {
+      "previous": "evidence/cases/react/pydata__xarray-4075/candidate-delta.patch",
+      "current": "02_swe_bench_comparison/results/cases/react/pydata__xarray-4075/candidate-delta.patch",
+      "sha256": "72b049c4023a09ea30691cc94f1494a8cf2756535d760605e0c83c5b19cd8c79"
+    },
+    {
+      "previous": "evidence/cases/react/pydata__xarray-4075/candidate-source-only.patch",
+      "current": "02_swe_bench_comparison/results/cases/react/pydata__xarray-4075/candidate-source-only.patch",
+      "sha256": "ed4180d51f57de5086cfb8e9f1ce50c7a401a8861e06dda6b0294f08bda5a028"
+    },
+    {
+      "previous": "evidence/cases/react/pydata__xarray-4075/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/pydata__xarray-4075/result.json",
+      "sha256": "51dc20cf021ba6b68bef232f40140794da3784fd1882b8d6622525e6dc66f5a8"
+    },
+    {
+      "previous": "evidence/cases/react/pydata__xarray-6938/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/pydata__xarray-6938/result.json",
+      "sha256": "e3b437665fe2f37a378f8067ec05df9fbc3f4a1b13158130150ec3253f36c4b0"
+    },
+    {
+      "previous": "evidence/cases/react/pylint-dev__pylint-4661/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/pylint-dev__pylint-4661/result.json",
+      "sha256": "9174b7882fc46d149d621e383048c03807091c8aaa90b5190c9cfd70f0ce3519"
+    },
+    {
+      "previous": "evidence/cases/react/pylint-dev__pylint-4970/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/pylint-dev__pylint-4970/result.json",
+      "sha256": "14929045975033155f46eca97490873ce48456cf0748f7afcf81fb05e0fe6e0a"
+    },
+    {
+      "previous": "evidence/cases/react/pylint-dev__pylint-7080/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/pylint-dev__pylint-7080/result.json",
+      "sha256": "ade690fc3a195119bd1fea52631e69d29320d97a4ba1cc249c112e5a954e65a7"
+    },
+    {
+      "previous": "evidence/cases/react/pytest-dev__pytest-7205/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/pytest-dev__pytest-7205/result.json",
+      "sha256": "49fcf60144bd9b8b59424b7b69d4ac6c5d9748b3265b93da64af8576e3b6c536"
+    },
+    {
+      "previous": "evidence/cases/react/pytest-dev__pytest-7236/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/pytest-dev__pytest-7236/result.json",
+      "sha256": "efd03733cd6012c2bbc62de72f8a7d60e773e6ce0cd97dbcb9915bf797f458a7"
+    },
+    {
+      "previous": "evidence/cases/react/pytest-dev__pytest-7521/candidate-delta.patch",
+      "current": "02_swe_bench_comparison/results/cases/react/pytest-dev__pytest-7521/candidate-delta.patch",
+      "sha256": "07ad23d169de246a868deb0f325e7355ef107aa8689c64327eeb4ed03cd28a52"
+    },
+    {
+      "previous": "evidence/cases/react/pytest-dev__pytest-7521/candidate-source-only.patch",
+      "current": "02_swe_bench_comparison/results/cases/react/pytest-dev__pytest-7521/candidate-source-only.patch",
+      "sha256": "2f528d95a15edc4859f97419b89fd799ec25c24aab36f6c522510f114105f70f"
+    },
+    {
+      "previous": "evidence/cases/react/pytest-dev__pytest-7521/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/pytest-dev__pytest-7521/result.json",
+      "sha256": "1538f46f45e1ef16afd165ade4c132f094ad44c3c01a69b6c41e4e92e6de7720"
+    },
+    {
+      "previous": "evidence/cases/react/scikit-learn__scikit-learn-11310/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/scikit-learn__scikit-learn-11310/result.json",
+      "sha256": "55b54e8b7845a4f06cbdb32a7e9d5f821f28803f7e0d48e978fae2defb5b7591"
+    },
+    {
+      "previous": "evidence/cases/react/scikit-learn__scikit-learn-25931/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/scikit-learn__scikit-learn-25931/result.json",
+      "sha256": "1a4f7fe8c389a5b4997df5f58fd742848bf5f9ee7ba8480a2c5fc4c14c8bb192"
+    },
+    {
+      "previous": "evidence/cases/react/sphinx-doc__sphinx-7748/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/sphinx-doc__sphinx-7748/result.json",
+      "sha256": "4ed4cfe29ed988616cc6cdcee97d7bbfae665065903a38e759c9f05443b55138"
+    },
+    {
+      "previous": "evidence/cases/react/sphinx-doc__sphinx-9367/candidate-delta.patch",
+      "current": "02_swe_bench_comparison/results/cases/react/sphinx-doc__sphinx-9367/candidate-delta.patch",
+      "sha256": "c4bb6675767689e295664358c02744e7f49dd3536df94b7a78de5a4751595676"
+    },
+    {
+      "previous": "evidence/cases/react/sphinx-doc__sphinx-9367/candidate-source-only.patch",
+      "current": "02_swe_bench_comparison/results/cases/react/sphinx-doc__sphinx-9367/candidate-source-only.patch",
+      "sha256": "c4bb6675767689e295664358c02744e7f49dd3536df94b7a78de5a4751595676"
+    },
+    {
+      "previous": "evidence/cases/react/sphinx-doc__sphinx-9367/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/sphinx-doc__sphinx-9367/result.json",
+      "sha256": "fc006d571ca80cc71056388f49c582054117516a8181931e50683d7f1826fcb0"
+    },
+    {
+      "previous": "evidence/cases/react/sympy__sympy-18211/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/sympy__sympy-18211/result.json",
+      "sha256": "4d1f53f9ae597709ba5f87e55581a23afafeee5838c25b6d4ae6c5578faff02d"
+    },
+    {
+      "previous": "evidence/cases/react/sympy__sympy-24213/result.json",
+      "current": "02_swe_bench_comparison/results/cases/react/sympy__sympy-24213/result.json",
+      "sha256": "5e59f19088cc7a4dbabd2e0fa7b9e0478e9f4701075a8905ce0e587e370b7fe3"
+    },
+    {
+      "previous": "evidence/documentation-toolchain.json",
+      "current": "06_trajectories_and_reproduction/results/provenance/documentation-toolchain.json",
+      "sha256": "850267e634a8383a7c1f15539399a6daf859e863c2e01b336d7b05322786036d"
+    },
+    {
+      "previous": "evidence/performance/serving-aiter-benchmark/raw.json",
+      "current": "05_inference_performance/results/aiter/raw.json",
+      "sha256": "b65370d3b452d20a87f8476343f16f4353a2a0d087999c19976d93f055866a18"
+    },
+    {
+      "previous": "evidence/performance/serving-aiter-benchmark/summary.json",
+      "current": "05_inference_performance/results/aiter/summary.json",
+      "sha256": "101596f21fedd162853990ccf61a66d2584b563faa90062ff99701d5fc650e51"
+    },
+    {
+      "previous": "evidence/performance/serving-benchmark/raw.json",
+      "current": "05_inference_performance/results/tp/raw.json",
+      "sha256": "d7254ab4747bf065133f5dc56f2401b28bf9369eddf09f292cc6ad738ec90d96"
+    },
+    {
+      "previous": "evidence/performance/serving-benchmark/summary.json",
+      "current": "05_inference_performance/results/tp/summary.json",
+      "sha256": "81f489cb525187c47121a1ab79a73f830b8afe731aeb79f49fba47fd6015372a"
+    },
+    {
+      "previous": "evidence/performance/serving-replicas-benchmark-v2/raw.json",
+      "current": "05_inference_performance/results/replicas/raw.json",
+      "sha256": "9cb92b41b267e50794a12ef9c7a39eb29e34c3dc8728d00786b4a6ac054c6578"
+    },
+    {
+      "previous": "evidence/performance/serving-replicas-benchmark-v2/summary.json",
+      "current": "05_inference_performance/results/replicas/summary.json",
+      "sha256": "65b3ceb3bf5cf989ce4c37f41ff30ee2821743d3b32dbd6872c7cbaa60395ae8"
+    },
+    {
+      "previous": "evidence/provenance/delivery-checks.json",
+      "current": "06_trajectories_and_reproduction/results/environment/delivery-checks.json",
+      "sha256": "3d300b740041e0e27b6500e49401fecfe21cccfba0d4bd186418b6eb2a8e7b67"
+    },
+    {
+      "previous": "evidence/provenance/gpu-preflight.txt",
+      "current": "01_model_and_examples/results/environment/gpu-preflight.txt",
+      "sha256": "b2fe4626b5e994f769b2c226ffbefab71e8d55665026387bc40e89f4c31ca38c"
+    },
+    {
+      "previous": "evidence/provenance/host-lscpu.txt",
+      "current": "01_model_and_examples/results/environment/host-lscpu.txt",
+      "sha256": "530678fa33991ce27f6fc9f30f23e5b9309ff758cf72f91b7d313462f17b0521"
+    },
+    {
+      "previous": "evidence/provenance/host-uname.txt",
+      "current": "01_model_and_examples/results/environment/host-uname.txt",
+      "sha256": "d3b3962123ced9620996badc24ba71507bfd1bf5c04ad25ed01eb83ec757861c"
+    },
+    {
+      "previous": "evidence/provenance/image-digests.txt",
+      "current": "01_model_and_examples/results/environment/image-digests.txt",
+      "sha256": "932be8fd9d76eb41ea1be75587a3f309c98294dc4682c3449441ef58d569dd5e"
+    },
+    {
+      "previous": "evidence/provenance/logging-fork-after.json",
+      "current": "06_trajectories_and_reproduction/results/environment/logging-fork-after.json",
+      "sha256": "6d2679610c6d7719f154f670311649e353ee8900f71862533fb0da64f1025704"
+    },
+    {
+      "previous": "evidence/provenance/logging-fork-before-v2.json",
+      "current": "06_trajectories_and_reproduction/results/environment/logging-fork-before-v2.json",
+      "sha256": "e11348189148a6cfacaa37279b31ff5027415e3b90c93507882e3fb93cae1990"
+    },
+    {
+      "previous": "evidence/provenance/logging-tests.log.json",
+      "current": "06_trajectories_and_reproduction/results/environment/logging-tests.log.json",
+      "sha256": "6f9285518f50516b0723c55be4deee274779deb4d5998ab8f44344d048f35dfd"
+    },
+    {
+      "previous": "evidence/provenance/model-files.json",
+      "current": "01_model_and_examples/results/environment/model-files.json",
+      "sha256": "273741d0b9b59689942f76e47ea50db2db44d94a519ec36f96eb65246bb3890c"
+    },
+    {
+      "previous": "evidence/provenance/reproduction-cold-check.log.json",
+      "current": "06_trajectories_and_reproduction/results/environment/reproduction-cold-check.log.json",
+      "sha256": "937130bb6a5aa5ef378312687fdfb402c4f24247651b39ebadf5fa7e19171a03"
+    },
+    {
+      "previous": "evidence/provenance/reproduction-cold-patch-check.log.json",
+      "current": "06_trajectories_and_reproduction/results/environment/reproduction-cold-patch-check.log.json",
+      "sha256": "42b940e43af93372bcaf26ba1bc2a96f0bbed61f7ad9c0bd90900173c3d60388"
+    },
+    {
+      "previous": "evidence/provenance/reproduction-kit-verification.json",
+      "current": "06_trajectories_and_reproduction/results/environment/reproduction-kit-verification.json",
+      "sha256": "23d5d7dbdd3b8359f6e4d48ec4eb5228de24493a46d9ee9c4b08c11decae9bf9"
+    },
+    {
+      "previous": "evidence/provenance/runtime.json",
+      "current": "01_model_and_examples/results/environment/runtime.json",
+      "sha256": "cd3a30f3a3438a0b4b71ccdbd92c5b13c2f37f17aa4c8f6882e3d53fdcf53211"
+    },
+    {
+      "previous": "evidence/provenance/sandbox-disk-usage.txt",
+      "current": "01_model_and_examples/results/environment/sandbox-disk-usage.txt",
+      "sha256": "40f6a40a7da22a1f86d2b2376acdf876a7c4791ae1e4e1bfd23798d316440b52"
+    },
+    {
+      "previous": "evidence/sandbox/docker-isolation.json",
+      "current": "03_docker_sandbox/results/docker-isolation.json",
+      "sha256": "7551526233e36548f0bc1087fdd96a0147b834d68189a13bff638b83702b2357"
+    },
+    {
+      "previous": "evidence/sandbox/docker-official-demo.txt",
+      "current": "03_docker_sandbox/results/docker-official-demo.txt",
+      "sha256": "f282576e772992ae2eedd4ed36bb4139c66044202903c20755747091ab44fdc7"
+    },
+    {
+      "previous": "evidence/sandbox/docker/baseline.json",
+      "current": "03_docker_sandbox/results/task/baseline.json",
+      "sha256": "e832d0ca7d41cd6c6d136bb733c07e157aadfbc98e2211ac1bfc672e3319d33d"
+    },
+    {
+      "previous": "evidence/sandbox/docker/environment.txt",
+      "current": "03_docker_sandbox/results/task/environment.txt",
+      "sha256": "dd0d7ddb0cf60b4900bfb5b9f8bdce3967250667542eaa84577c33effe97b83c"
+    },
+    {
+      "previous": "evidence/sandbox/docker/interval_utils.py",
+      "current": "03_docker_sandbox/results/task/interval_utils.py",
+      "sha256": "0f0f0e0e79af2663658f0733458e8e3f39a5d2e74af90c524e3ea6775617f14c"
+    },
+    {
+      "previous": "evidence/sandbox/docker/result.json",
+      "current": "03_docker_sandbox/results/task/result.json",
+      "sha256": "2469a9b2740c1881e184481febcc957b2aa9ac6ec4999cc6129ee6fdae50f630"
+    },
+    {
+      "previous": "evidence/sandbox/docker/verifier.json",
+      "current": "03_docker_sandbox/results/task/verifier.json",
+      "sha256": "fce9022a9cf372c3469058265e445079f092c4169f67ba71a51fac1684521c0a"
+    },
+    {
+      "previous": "evidence/sandbox/e2b-official-demo.txt",
+      "current": "04_e2b_sandbox/results/e2b-official-demo.txt",
+      "sha256": "e4e69cc1620ce0ed86b95af68e8bd7fabb70fbb93ca6712d685285410253de05"
+    },
+    {
+      "previous": "evidence/sandbox/e2b-sdk-smoke.json",
+      "current": "04_e2b_sandbox/results/e2b-sdk-smoke.json",
+      "sha256": "4cb50e4ec777370d00dedcde5430ca92e2454eedfe398a863dc7512c40e2a570"
+    },
+    {
+      "previous": "evidence/sandbox/e2b/baseline.json",
+      "current": "04_e2b_sandbox/results/task/baseline.json",
+      "sha256": "2159df3c49f3a8a7d3d4a838be7fb9cec2034b946aca84b39456955cf822d414"
+    },
+    {
+      "previous": "evidence/sandbox/e2b/environment.txt",
+      "current": "04_e2b_sandbox/results/task/environment.txt",
+      "sha256": "b87142c52515c1455df2d98f6f1867cbabbdf459fd8b65b23d7a932172f79142"
+    },
+    {
+      "previous": "evidence/sandbox/e2b/interval_utils.py",
+      "current": "04_e2b_sandbox/results/task/interval_utils.py",
+      "sha256": "7474f5fe44641756a94568cff1a62d5ea8cfe9f9fa60dad649b427105cae8ccc"
+    },
+    {
+      "previous": "evidence/sandbox/e2b/result.json",
+      "current": "04_e2b_sandbox/results/task/result.json",
+      "sha256": "65e461e4f0fddee141c5e266a7f45205bfefbec9d24086fa4f1586a141bb8ec3"
+    },
+    {
+      "previous": "evidence/sandbox/e2b/verifier.json",
+      "current": "04_e2b_sandbox/results/task/verifier.json",
+      "sha256": "85a3c8089f4ad03c8ded26dbdb39bc0261835376f6e63e9f069daf6164d17727"
+    },
+    {
+      "previous": "evidence/sandbox/janitor-validation.json",
+      "current": "03_docker_sandbox/results/janitor-validation.json",
+      "sha256": "0d25277bef95d5e72ac0690c30fc6ee0d43ca0eebf6ed583de5acab25c8023ff"
+    },
+    {
+      "previous": "evidence/sandbox/service-audit-20260912.json",
+      "current": "03_docker_sandbox/results/service-audit-20260912.json",
+      "sha256": "da7111ebc5cb664d92fa781c477860dd1b534947b94d078ae08c75b030e08901"
+    },
+    {
+      "previous": "evidence/source-manifest.json",
+      "current": "06_trajectories_and_reproduction/results/provenance/original-source-manifest.json",
+      "sha256": "202124556ce3fc5657a55003dc30fa400ec4047e8e4d69d8e344e27b17d903cb"
+    },
+    {
+      "previous": "evidence/summary/aiter-react-swe-smoke.json",
+      "current": "01_model_and_examples/results/aiter-react-swe-smoke.json",
+      "sha256": "dec3d2298c08238313f80995295e6b14283fce199c0ff1c488dd88ec73fd912d"
+    },
+    {
+      "previous": "evidence/summary/community-snapshot-20260912.json",
+      "current": "02_swe_bench_comparison/results/community-snapshot-20260912.json",
+      "sha256": "5a6b6235cf933129693c96a596225cecb40f9c91c0df3225bc42316d01370a71"
+    },
+    {
+      "previous": "evidence/summary/final-summary.json",
+      "current": "02_swe_bench_comparison/results/final-summary.json",
+      "sha256": "05ef8485200a57bf89df22b7a32fdfba59d11feabce73bafa1cd768817e251e7"
+    },
+    {
+      "previous": "evidence/summary/image-preparation.json",
+      "current": "02_swe_bench_comparison/results/image-preparation.json",
+      "sha256": "0e8ea14d16b8539bdd9d20cc8aeb74565daa0e84137c1ff67342105341ac18cf"
+    },
+    {
+      "previous": "evidence/summary/manifest.json",
+      "current": "02_swe_bench_comparison/results/manifest.json",
+      "sha256": "2f913e44fab53a5e427a8201a1d6c2a330f7ebb502df3dcdc8e08d734ba41825"
+    },
+    {
+      "previous": "evidence/summary/model-api-aiter/anthropic.json",
+      "current": "01_model_and_examples/results/model-api-aiter/anthropic.json",
+      "sha256": "c9ca9d9b5feceb0be5f450bea96f90854c30c5750c6c873affd0b93c07c7ce15"
+    },
+    {
+      "previous": "evidence/summary/model-api-aiter/chat.json",
+      "current": "01_model_and_examples/results/model-api-aiter/chat.json",
+      "sha256": "ccaa4ad4177855005617ad8b0bb4fb7fefe0e68a9c02aa06738e304c8bc4bf2f"
+    },
+    {
+      "previous": "evidence/summary/model-api-aiter/token_ids.json",
+      "current": "01_model_and_examples/results/model-api-aiter/token_ids.json",
+      "sha256": "debc8041b4cfe540b298c44e47a446156fb03f0fc825b23f7ff97a4ea4d41404"
+    },
+    {
+      "previous": "evidence/summary/model-api-aiter/tool.json",
+      "current": "01_model_and_examples/results/model-api-aiter/tool.json",
+      "sha256": "5f4f3296343df669de50156c1410116c6d1257cfb79af06b9d693c7e5a009194"
+    },
+    {
+      "previous": "evidence/summary/model-api-eager/anthropic.json",
+      "current": "01_model_and_examples/results/model-api-eager/anthropic.json",
+      "sha256": "2b858b61e2ffa35d14ee280793443e2e33873f2c03311f6aa4f44189e1f216ac"
+    },
+    {
+      "previous": "evidence/summary/model-api-eager/chat.json",
+      "current": "01_model_and_examples/results/model-api-eager/chat.json",
+      "sha256": "28d068d0fdf33e30bfcfd8fed73383272389d43ab5b3da177db6b4ca58906d5a"
+    },
+    {
+      "previous": "evidence/summary/model-api-eager/token_ids.json",
+      "current": "01_model_and_examples/results/model-api-eager/token_ids.json",
+      "sha256": "54b8e9482917c77b8c952f33c4d4d6f9918201f58ef5bf859c07edbb50246c62"
+    },
+    {
+      "previous": "evidence/summary/model-api-eager/tool.json",
+      "current": "01_model_and_examples/results/model-api-eager/tool.json",
+      "sha256": "505fd4f1c98756510a8997df61b9c1ce8d83784150cac9a2bd5647f3694fbbbd"
+    },
+    {
+      "previous": "evidence/summary/official-api-claude.json",
+      "current": "01_model_and_examples/results/official-api-claude.json",
+      "sha256": "06b7584ab9ab5e21a3b6dbeb8e10e65905e286031b38bb9ecf140406bee3962b"
+    },
+    {
+      "previous": "evidence/summary/official-api-react-aiter-fixed.json",
+      "current": "01_model_and_examples/results/official-api-react-aiter-fixed.json",
+      "sha256": "b609e90bc95b802638c9cd9ddb87a63fa4be6f10ffc017887df593572d229b6d"
+    },
+    {
+      "previous": "evidence/summary/official-api-react.json",
+      "current": "01_model_and_examples/results/official-api-react.json",
+      "sha256": "a8a77edbc56070ed032101442d81f3b94afb36b2bf44eb7fb0d49f550cce9d35"
+    },
+    {
+      "previous": "evidence/summary/pilot-baseline-dns.json",
+      "current": "02_swe_bench_comparison/results/pilot-baseline-dns.json",
+      "sha256": "c80152c55c18547f881fbf67d66658420afbd91993106d49b598ebb10547eacb"
+    },
+    {
+      "previous": "evidence/summary/pilot-claude-gateway.json",
+      "current": "02_swe_bench_comparison/results/pilot-claude-gateway.json",
+      "sha256": "9283ed3c907e1e5e11208d0ff916c5aed968be97109d214746d0057dc1f385b5"
+    },
+    {
+      "previous": "evidence/summary/pilot-mini-gateway.json",
+      "current": "02_swe_bench_comparison/results/pilot-mini-gateway.json",
+      "sha256": "ea9a560b12a6c9fb94c2bb31497c4af53a6b22f64bcbfb12e74036b7510eebe2"
+    },
+    {
+      "previous": "evidence/summary/pilot-oracle-dns.json",
+      "current": "02_swe_bench_comparison/results/pilot-oracle-dns.json",
+      "sha256": "18bf3ba93347b11dd9535fc80fe506c1ca88c3efb7e49f9e2fe982898bdfe6cc"
+    },
+    {
+      "previous": "evidence/summary/pilot-react-gateway.json",
+      "current": "02_swe_bench_comparison/results/pilot-react-gateway.json",
+      "sha256": "05d15695ca9d6dd268d21cc962a3b85bc09a8a2fb3bd47bf79d4c94b89cba499"
+    },
+    {
+      "previous": "evidence/summary/thirty-baseline-dns.json",
+      "current": "02_swe_bench_comparison/results/thirty-baseline-dns.json",
+      "sha256": "e599cdf798d5bee64a256234686c326ffa58da80beb5137bb9fa7e5f6f0b34fb"
+    },
+    {
+      "previous": "evidence/summary/thirty-oracle-dns.json",
+      "current": "02_swe_bench_comparison/results/thirty-oracle-dns.json",
+      "sha256": "4ec3da6535d3b38e7101d8ec6ca20be3de5b3a6379946f1b62bd7147ca3cd281"
+    },
+    {
+      "previous": "evidence/summary/trajectory-logprobs-claude.json",
+      "current": "06_trajectories_and_reproduction/results/trajectory-logprobs-claude.json",
+      "sha256": "ea5746cac4ab1b48f5bf5e409a603e5d31e0046c31d6b887ebc50eba58f5262d"
+    },
+    {
+      "previous": "evidence/summary/trajectory-logprobs-mini.json",
+      "current": "06_trajectories_and_reproduction/results/trajectory-logprobs-mini.json",
+      "sha256": "6fb2bbac8dd6ca7c9ac9cbf71a55b657a7cc43ded1ea249583e98475d58bd153"
+    },
+    {
+      "previous": "evidence/summary/trajectory-logprobs-react.json",
+      "current": "06_trajectories_and_reproduction/results/trajectory-logprobs-react.json",
+      "sha256": "8544168a0c732a689968951356255cef19cfd489b10b4d04a252aebc9c500f37"
+    },
+    {
+      "previous": "evidence/summary/validated-manifest.json",
+      "current": "02_swe_bench_comparison/results/validated-manifest.json",
+      "sha256": "5207a23eb3a552de69f62318fd5ff8d485a8e2e8adb5e6e6a1c5bbf48db0353d"
+    },
+    {
+      "previous": "evidence/summary/xarray-oracle-32g.json",
+      "current": "02_swe_bench_comparison/results/xarray-oracle-32g.json",
+      "sha256": "0613fe397e23656bcbbb73f2e5c5f854a82205eadecb03b0e66fcd5a04045cc6"
+    },
+    {
+      "previous": "evidence/trajectories/audit.json",
+      "current": "06_trajectories_and_reproduction/results/trajectories/audit.json",
+      "sha256": "7c611b339e5e21a5b2673999aaa48553a8a4b55ecf9fef6e03249fa0230edaa8"
+    },
+    {
+      "previous": "reproduce/configs/Dockerfile.demo",
+      "current": "03_docker_sandbox/configs/Dockerfile.demo",
+      "sha256": "113c80bb5e555ba0be5534c533c6704c861cc24b8ff885d4d46734a94c00623b"
+    },
+    {
+      "previous": "reproduce/configs/Dockerfile.report",
+      "current": "06_trajectories_and_reproduction/configs/Dockerfile.report",
+      "sha256": "51c5e133e94831fa2a9395ccd5084775ec8d5e25027425113c772944d1add044"
+    },
+    {
+      "previous": "reproduce/configs/cpu-overlay.lock",
+      "current": "01_model_and_examples/configs/cpu-overlay.lock",
+      "sha256": "1a7f3b4e03dad0fe776090453e5e9c595b144c46c78fcfac7cbe99f66dc4f51d"
+    },
+    {
+      "previous": "reproduce/configs/e2b.env.example",
+      "current": "04_e2b_sandbox/configs/e2b.env.example",
+      "sha256": "5003160bebd6c167f2ce8397f934c8b87afa04121bc3ee29107cf535b76bd917"
+    },
+    {
+      "previous": "reproduce/configs/mini.lock",
+      "current": "01_model_and_examples/configs/mini.lock",
+      "sha256": "e69b5cb646f1aef8e084c6783891867dea194eb0e05c92c7886e39a8a0193610"
+    },
+    {
+      "previous": "reproduce/configs/swe-claude-128k.yaml",
+      "current": "02_swe_bench_comparison/configs/swe-claude-128k.yaml",
+      "sha256": "0bc521c471329f4d7e46c158cd37b0e8de1fbc1aede4b45d1d3eca3abff9a662"
+    },
+    {
+      "previous": "reproduce/configs/swe-claude.yaml",
+      "current": "01_model_and_examples/configs/swe-claude.yaml",
+      "sha256": "26243fb7b37c471506159961d97b0526064ffdec64caf888a7004f2edeeca7e2"
+    },
+    {
+      "previous": "reproduce/configs/swe-mini-128k.yaml",
+      "current": "02_swe_bench_comparison/configs/swe-mini-128k.yaml",
+      "sha256": "8063d59acb38bafd6e8e6afb88109a52bb66680180bc34568c8a914de0d448b1"
+    },
+    {
+      "previous": "reproduce/configs/swe-mini.yaml",
+      "current": "01_model_and_examples/configs/swe-mini.yaml",
+      "sha256": "b50de35ec73944d78019bad9efc1a00c665693da3d430b9c5e0cb140e1e40096"
+    },
+    {
+      "previous": "reproduce/configs/swe-react-128k.yaml",
+      "current": "02_swe_bench_comparison/configs/swe-react-128k.yaml",
+      "sha256": "1c2cf2757220cc52a15d72e28dd9407e8ca2d1c1cb517242861f999546e8f911"
+    },
+    {
+      "previous": "reproduce/configs/swe-react.yaml",
+      "current": "01_model_and_examples/configs/swe-react.yaml",
+      "sha256": "1978fad74e3c4d527060ed82d1e65d69208bc99151a7e01d26b8d392ff4562f0"
+    },
+    {
+      "previous": "reproduce/patches/uni-agent-logging-fork.patch",
+      "current": "06_trajectories_and_reproduction/code/patches/uni-agent-logging-fork.patch",
+      "sha256": "05b4a7345c8335ab0cf8014b21e4179aad89a2d4526165e94d5d60da16ab71d4"
+    },
+    {
+      "previous": "reproduce/scripts/audit_trajectories.py",
+      "current": "06_trajectories_and_reproduction/code/audit_trajectories.py",
+      "sha256": "fd338d2fef7638afc53d624c99005281b5c895aeb08c6a7f98053ca6616525e3"
+    },
+    {
+      "previous": "reproduce/scripts/benchmark_aiter.py",
+      "current": "05_inference_performance/code/benchmark_aiter.py",
+      "sha256": "4e79caf92807af81c5358ad11c1ef0828873b63742a89280c5a6407171a8d1f1"
+    },
+    {
+      "previous": "reproduce/scripts/benchmark_replicas_v2.py",
+      "current": "05_inference_performance/code/benchmark_replicas_v2.py",
+      "sha256": "e741dc5e4581ec50cfd7d67ba4fb644a9f96d37cd2eb044fb292839901af3e38"
+    },
+    {
+      "previous": "reproduce/scripts/benchmark_serving.py",
+      "current": "05_inference_performance/code/benchmark_serving.py",
+      "sha256": "b620521ae5c56b9624264443ef368cf1b93580479827de1c76396034ffc06ab3"
+    },
+    {
+      "previous": "reproduce/scripts/bootstrap_locked.sh",
+      "current": "01_model_and_examples/code/bootstrap_locked.sh",
+      "sha256": "ad329c8f0f2f02aa55eced8577fabceefd651311f6880c8a9a9705a4e9471848"
+    },
+    {
+      "previous": "reproduce/scripts/build_mini_runtime.sh",
+      "current": "01_model_and_examples/code/build_mini_runtime.sh",
+      "sha256": "65cf741ea0e453b9275a94e78996a942268fe2482052a036bb8ed44ecf7def87"
+    },
+    {
+      "previous": "reproduce/scripts/build_tmux_runtime.py",
+      "current": "01_model_and_examples/code/build_tmux_runtime.py",
+      "sha256": "ea34be7a732f0ba9b6cf8358be143d34b6cf4233f4ea4ea6d02d1e4822af2cf8"
+    },
+    {
+      "previous": "reproduce/scripts/check_logging_fork.py",
+      "current": "06_trajectories_and_reproduction/code/check_logging_fork.py",
+      "sha256": "915eaebd53fe2dac8acae480c6fe37d91c5fd45783bd03dcad6f21514fcdf5c5"
+    },
+    {
+      "previous": "reproduce/scripts/download_model.py",
+      "current": "01_model_and_examples/code/download_model.py",
+      "sha256": "0ec817cbc2d2be84468022fcee803c5bdf30d062f4b2bbed19f355ca034af94f"
+    },
+    {
+      "previous": "reproduce/scripts/e2b_provider.py",
+      "current": "04_e2b_sandbox/code/e2b_provider.py",
+      "sha256": "66102137dda40dcaf0bf1a4a216c581419861ccaac4b6692bac64b079225ccc2"
+    },
+    {
+      "previous": "reproduce/scripts/e2b_smoke.py",
+      "current": "04_e2b_sandbox/code/e2b_smoke.py",
+      "sha256": "231539c7d0e15cc98329602560157c85df51a451d5be5de18c162a73a02429ae"
+    },
+    {
+      "previous": "reproduce/scripts/executed/lab_runtime.py",
+      "current": "02_swe_bench_comparison/code/executed/lab_runtime.py",
+      "sha256": "b593a088c45727bec8d9e89e984642799e183479146e6c82c21d58a9c9d0e076"
+    },
+    {
+      "previous": "reproduce/scripts/executed/run_swe.py",
+      "current": "02_swe_bench_comparison/code/executed/run_swe.py",
+      "sha256": "28821b03068f6ee658755d007f1add15d862842e81482d7360371a69de3f5bb2"
+    },
+    {
+      "previous": "reproduce/scripts/lab_runtime.py",
+      "current": "02_swe_bench_comparison/code/lab_runtime.py",
+      "sha256": "4fe18f55e9cdfe435a47d7e2953c897bd0030615b1041345f73e99d0ca44e5b9"
+    },
+    {
+      "previous": "reproduce/scripts/labctl.py",
+      "current": "01_model_and_examples/code/labctl.py",
+      "sha256": "4f932f0dab25afba10c6ca1de18e223b74c58f15b66da16b7c040b83714f2a7d"
+    },
+    {
+      "previous": "reproduce/scripts/prepare_data.py",
+      "current": "02_swe_bench_comparison/code/prepare_data.py",
+      "sha256": "3cd4263c32ba61cd0e45a3a145e3f3f835b4629414ef20f1b8b32758c8bba6a7"
+    },
+    {
+      "previous": "reproduce/scripts/prepare_images.py",
+      "current": "02_swe_bench_comparison/code/prepare_images.py",
+      "sha256": "cf97671c8117020ddc53db1895a7e468e2daac50c906a3fe3d482b11d3d69372"
+    },
+    {
+      "previous": "reproduce/scripts/regrade_swe.py",
+      "current": "02_swe_bench_comparison/code/regrade_swe.py",
+      "sha256": "9af0f518e10b218d13a55d28604cb69af384e646bf6f68bca5f2ffccca726f12"
+    },
+    {
+      "previous": "reproduce/scripts/run_e2b_demo.py",
+      "current": "04_e2b_sandbox/code/run_e2b_demo.py",
+      "sha256": "1a4f13cb15639ba24ca7aa1a1efdd8df485664ff0ef9c8e5c0e1851d0dcecb46"
+    },
+    {
+      "previous": "reproduce/scripts/run_sandbox_agent.py",
+      "current": "03_docker_sandbox/code/run_sandbox_agent.py",
+      "sha256": "e193b802f3aa5fc3c2a6b322010c2efca80925572e43441652030246f079869d"
+    },
+    {
+      "previous": "reproduce/scripts/run_swe.py",
+      "current": "02_swe_bench_comparison/code/run_swe.py",
+      "sha256": "8af634b75a83b83c27b0783b46140671f888a14dee75f7d5bd54540b0a39f369"
+    },
+    {
+      "previous": "reproduce/scripts/sandbox_checks.py",
+      "current": "03_docker_sandbox/code/sandbox_checks.py",
+      "sha256": "bd6eb70703cff5745b4c3ebb66a3acb957e0d3f8e8c0c8b815a700e72c74d706"
+    },
+    {
+      "previous": "reproduce/scripts/sandbox_janitor.py",
+      "current": "03_docker_sandbox/code/sandbox_janitor.py",
+      "sha256": "bfb1727ad1cee467f03aafc32decdd9e6e11dd8ec6d2ebcc29ee911392cb5756"
+    },
+    {
+      "previous": "reproduce/scripts/serve_model.sh",
+      "current": "01_model_and_examples/code/serve_model.sh",
+      "sha256": "ba02c14f68df102b63603b20797717645b3285a3ddc17ecf59dc080aa555c261"
+    },
+    {
+      "previous": "reproduce/scripts/serve_model_128k.sh",
+      "current": "01_model_and_examples/code/serve_model_128k.sh",
+      "sha256": "73d8cecadebb633620ddeb02f21961bb0c181f9cea2cc0a6583c8106d781c7c3"
+    },
+    {
+      "previous": "reproduce/scripts/serve_model_aiter.sh",
+      "current": "05_inference_performance/code/serve_model_aiter.sh",
+      "sha256": "6c1c2f7802ae7d91cc58f2015882976cd4326dca8db07cf6d366681d17995653"
+    },
+    {
+      "previous": "reproduce/scripts/serve_model_tp4.sh",
+      "current": "05_inference_performance/code/serve_model_tp4.sh",
+      "sha256": "aca2830e8e794b84834357aa103c6b98ec401251bc938507d484d8da412c5f98"
+    },
+    {
+      "previous": "reproduce/scripts/status.py",
+      "current": "01_model_and_examples/code/status.py",
+      "sha256": "6f5747408108d085076cf01bf3b7e344b7c490f6b1a8dc12f8029c3d34b8918e"
+    },
+    {
+      "previous": "results/per-case-results.csv",
+      "current": "02_swe_bench_comparison/results/per-case-results.csv",
+      "sha256": "16c875e906dfd35e4a19dde9c8acba69ab28056e0665e81ae82a8f630551a3de"
+    }
+  ],
+  "archive": "/home/yuhanya/uni-agent-experiment-backups/20260914T093917Z/original"
+}

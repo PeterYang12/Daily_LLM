@@ -1,0 +1,14 @@
+{
+  "experiments": 6,
+  "markdown_files": 19,
+  "immutable_artifacts_verified": 223,
+  "pinned_source_records_verified": 117,
+  "agent_results": 84,
+  "qualified_tasks": 28,
+  "performance_batches_recomputed": 54,
+  "python_files_parsed": 26,
+  "shell_examples_checked": 16,
+  "english_diagrams": 5,
+  "missing_links": [],
+  "scope": "Offline documentation checks; no model, training, or sandbox execution."
+}

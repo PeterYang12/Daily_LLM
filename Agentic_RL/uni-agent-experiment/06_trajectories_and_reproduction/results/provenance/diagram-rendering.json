@@ -1,0 +1,30 @@
+{
+  "mermaid": "11.12.0",
+  "diagrams": [
+    {
+      "source": "01_model_and_examples/figures/deployment.mmd",
+      "svg": "01_model_and_examples/figures/deployment.svg",
+      "bytes": 22234
+    },
+    {
+      "source": "02_swe_bench_comparison/figures/evaluation-flow.mmd",
+      "svg": "02_swe_bench_comparison/figures/evaluation-flow.svg",
+      "bytes": 21075
+    },
+    {
+      "source": "03_docker_sandbox/figures/docker-lifecycle.mmd",
+      "svg": "03_docker_sandbox/figures/docker-lifecycle.svg",
+      "bytes": 27680
+    },
+    {
+      "source": "04_e2b_sandbox/figures/e2b-flow.mmd",
+      "svg": "04_e2b_sandbox/figures/e2b-flow.svg",
+      "bytes": 20300
+    },
+    {
+      "source": "06_trajectories_and_reproduction/figures/trajectory-flow.mmd",
+      "svg": "06_trajectories_and_reproduction/figures/trajectory-flow.svg",
+      "bytes": 21038
+    }
+  ]
+}
