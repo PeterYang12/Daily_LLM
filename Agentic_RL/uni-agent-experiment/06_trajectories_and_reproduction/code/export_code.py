@@ -18,10 +18,11 @@ def main():
     provenance = ROOT / '06_trajectories_and_reproduction/results/provenance/layout-map.json'
     records = json.loads(provenance.read_text())['artifacts']
     selected = [r for r in records if r['previous'].startswith('reproduce/')]
-    helper = '04_e2b_sandbox/code/run_e2b_e2e.py'
-    selected.append({'current': helper, 'export_path': 'scripts/run_e2b_e2e.py',
-                     'sha256': hashlib.sha256((ROOT / helper).read_bytes()).hexdigest(),
-                     'origin': 'E2B-only replay helper added after the recorded experiments'})
+    for name in ['run_e2b_e2e.py', 'run_uni_agent_e2b.py']:
+        helper = '04_e2b_sandbox/code/' + name
+        selected.append({'current': helper, 'export_path': 'scripts/' + name,
+                         'sha256': hashlib.sha256((ROOT / helper).read_bytes()).hexdigest(),
+                         'origin': 'Manual replay helper added after the recorded experiments'})
     # Validate the entire selection before creating an output directory.
     for record in selected:
         source = ROOT / record['current']

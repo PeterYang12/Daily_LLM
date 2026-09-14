@@ -1,100 +1,131 @@
-# Manual end-to-end replay: E2B
+# Manual Uni-Agent rollout with E2B
 
-This runs **Uni-Agent ReAct + local Qwen30B + a remote E2B sandbox**. The task is the recorded `merge_intervals` repair. Model calls go directly to vLLM; this replay does not use Gateway or train the model.
+This entry runs the complete **single-task rollout** path:
 
-Use the existing complete lab. The new [E2B-only entry](code/run_e2b_e2e.py) reuses the original task, tests, prompt, and ReAct settings. The historical paired Docker/E2B script is preserved separately. The helper has passed offline orchestration checks; these instructions are for your real manual run.
+```text
+uni_agent.framework.task_runner.run_task()
+  -> Task.run() -> Uni-Agent ReAct
+       model calls -> Uni-Agent Gateway -> local vLLM / Qwen30B
+       tool calls  -> E2B provider -> remote sandbox
+  -> independent verifier -> TaskResult reward
+  -> Gateway finalization -> token/mask/logprob trajectories
+```
 
-## 1. Start the coordinator and check dependencies
+The runner, agent, tools, and Gateway are upstream Uni-Agent components. `E2BIntervalTask` and `e2b_compat` are experiment extensions. The driver uses the in-process `_GatewayActor` implementation, not a Ray Gateway pool. It attaches TaskResult scores to exported trajectories. It does not start a trainer, optimizer, or TransferQueue worker.
 
-Run all commands in the same host terminal:
+The previous [direct-model helper](code/run_e2b_e2e.py) already ran a real Uni-Agent agent, but bypassed Task and Gateway. Neither path uses OpenEnv.
+
+## 1. Start the prepared Docker environment and model
+
+Run these in the same host terminal:
 
 ```bash
 cd /home/yuhanya/uni-agent-lab
 python3 scripts/labctl.py up
-
-docker exec ua-lab-cpu /lab/envs/cpu/bin/python -c \
-  "import uni_agent, e2b; print('Uni-Agent and E2B imports OK')"
-```
-
-The E2B settings file already exists at `/home/yuhanya/uni-agent-lab/secrets/e2b.env` (container path `/lab/secrets/e2b.env`). The runner loads it automatically. The configured fields are E2B_API_KEY, E2B_API_URL, and E2B_SANDBOX_URL; do not paste credentials into logs.
-
-## 2. Start the original model service
-
-```bash
 python3 scripts/labctl.py model --which tp1
 curl --fail http://127.0.0.1:18082/v1/models
 ```
 
-This uses GPU 0, fixed Qwen3-Coder-30B-A3B-Instruct, and the 64K eager configuration. Wait until curl succeeds and shows the model before continuing. If it is still loading, inspect startup output and repeat curl:
+Wait for curl to succeed and show Qwen3-Coder-30B-A3B-Instruct before continuing. The tp1 service uses GPU 0 and the 64K eager configuration. Inspect startup with:
 
 ```bash
 docker logs --tail 60 ua-lab-model-tp1
 ```
 
-The CPU container reaches this service at `http://172.30.90.3:8000/v1`.
+The CPU container reaches vLLM at `http://172.30.90.3:8000/v1`. The existing E2B credentials are loaded from `/lab/secrets/e2b.env` automatically.
 
-## 3. Run the complete E2B repair
+## 2. Run the Uni-Agent task
 
 ```bash
-E2B_RUN="e2b-manual-$(date +%Y%m%d-%H%M%S)"
+UA_RUN="uni-agent-e2b-$(date +%Y%m%d-%H%M%S)"
 
 docker exec -it ua-lab-cpu /lab/envs/cpu/bin/python \
-  /lab/scripts/run_e2b_e2e.py \
-  --output "/lab/results/$E2B_RUN" \
+  /lab/scripts/run_uni_agent_e2b.py \
+  --output "/lab/results/$UA_RUN" \
   --template testlab-python-node
 ```
 
-The entry prints five stages:
+The entry prints six stages: create Gateway session; create E2B; run the agent; verify and score; export trajectories; close resources. It prints the agent's model endpoint, containing `/sessions/<id>/v1`. The agent receives this Gateway URL rather than the backend vLLM URL.
 
-1. Create an E2B instance.
-2. Upload the broken function and run the baseline tests; remove verifier and cache before the agent starts.
-3. Run ReAct: inspect code, edit files, execute checks, observe results, and submit.
-4. Restore and execute independent tests.
-5. Destroy the remote instance and save the result.
+The coding task is the same merge_intervals repair from the report. The verifier is removed before the agent starts and restored afterward. ReAct is limited to 30 steps and 600 seconds; the sandbox lifetime request is 900 seconds. Use a new output directory for every attempt.
 
-The recorded task reached 10/10 tests. A new sampled run may differ; use the verifier to determine success. The agent has a 600-second limit, 30-step limit, and a sandbox lifetime request of 900 seconds. Reusing the same result subdirectory is rejected.
-
-## 4. Inspect the result and agent actions
+## 3. Check task success and trajectory validity
 
 ```bash
-cat "results/$E2B_RUN/e2b/result.json"
+cat "results/$UA_RUN/summary.json"
+cat "results/$UA_RUN/trajectory-audit.json"
+```
 
-python3 - "$E2B_RUN" <<'CHECK'
+For a successful real run, expect:
+
+```json
+{
+  "gateway": true,
+  "offline_injected_backend": false,
+  "reward": 1.0,
+  "resolved": true,
+  "trajectory_valid": true,
+  "sandbox_cleanup_completed": true,
+  "gateway_shutdown_completed": true,
+  "success": true
+}
+```
+
+`trajectory_count` must be positive. `finished` reports whether the agent finished normally; it is distinct from verifier success. A sampled run can fail the coding task while still yielding a valid trajectory. `success` also requires successful resource cleanup and no recorded infrastructure error.
+
+Read the independent tests and a compact trajectory summary:
+
+```bash
+python3 - "$UA_RUN" <<'CHECK'
 import json, sys
 from pathlib import Path
-root = Path('results') / sys.argv[1] / 'e2b'
-verification = json.loads((root / 'verifier.json').read_text())
+root = Path('results') / sys.argv[1]
+verification = json.loads((root / 'e2b/verifier.json').read_text())
 print(verification['stdout'])
 print(verification['stderr'])
-print('Verifier exit code:', verification['exit_code'])
-agent = json.loads((root / 'agent-result.json').read_text())
-for i, call in enumerate((call for message in agent['transcript']
-                         for call in message.get('tool_calls', [])), 1):
-    print(i, call['function']['name'])
+for path in (root / 'sessions').glob('*/trajectories.jsonl'):
+    for line in path.read_text().splitlines():
+        record = json.loads(line)
+        t = record['trajectory']
+        print({
+            'session': record['session_id'],
+            'response_tokens': len(t['response_ids']),
+            'mask_length': len(t['response_mask']),
+            'logprob_length': len(t['response_logprobs'] or []),
+            'model_tokens': sum(t['response_mask']),
+            'reward': t['reward_score'],
+            'finished': t['finished'],
+        })
 CHECK
 ```
 
-Expected successful result: `resolved: true`, normally `finished: true`, and `cleanup_completed: true`; verifier output says `Ran 10 tests` and `OK` with exit code 0. Completion and verifier success are separate fields.
+Expect `Ran 10 tests` and `OK` for a correct repair. The three response-array lengths must match; the audit checks mask values and finite logprobs. The score is attached by this demo driver, not by a training update.
 
-| Artifact under results/<run>/e2b/ | Meaning |
+## 4. Inspect the artifacts
+
+| Artifact under results/<run>/ | Meaning |
 |---|---|
-| `result.json` | Overall result, completion, sandbox ID, and cleanup status |
-| `baseline.json` | Before repair: the recorded bug passes 1/10 tests |
-| `verifier.json` | Independent tests after the repair |
-| `interval_utils.py` | Repaired function |
-| `agent-result.json` | Message/tool transcript and agent statistics |
-| `task.log` | Detailed execution log |
-| `sandbox.json` | Created instance ID, saved before agent execution |
+| `summary.json` | Overall rollout, score, trajectory validation, and cleanup |
+| `task-result.json` | Upstream TaskResult returned by the framework runner |
+| `e2b/task-config.json` | Resolved Uni-Agent Task/Agent/Sandbox configuration, including Gateway URL |
+| `e2b/agent-result.json` | Agent messages, tool calls, and observations |
+| `e2b/baseline.json`, `e2b/verifier.json` | Independent tests before and after repair |
+| `e2b/interval_utils.py` | Repaired function |
+| `e2b/sandbox.json` | Created instance ID |
+| `task.log` | Task and agent execution log |
+| `sessions/<id>/trajectories.jsonl` | Token IDs, masks, logprobs, and attached score |
+| `sessions/<id>/debug_snapshot.json` | Gateway messages and chain state |
+| `trajectory-audit.json` | Compact checks for the exported trajectories |
 
-This is a message/tool transcript, not a Gateway token/logprob trajectory. Keep E2B_RUN set to the run name when switching terminals.
+Source: [run_uni_agent_e2b.py](code/run_uni_agent_e2b.py). This entry was added after the original experiments. Offline integration exercised the real Task runner, Task, ReAct, editor/submit tools, and HTTP Gateway with a scripted backend and local test sandbox; it did not claim a new live-model/E2B result.
 
 ## 5. Cleanup
 
-A normal run calls the provider's stop/kill when leaving the sandbox context. If the process was interrupted and cleanup is uncertain, this command kills only the instance saved by this run:
+The driver destroys E2B and closes Gateway on normal completion. If an interrupted run left cleanup uncertain, target only its saved sandbox ID:
 
 ```bash
 docker exec -i -w /lab/scripts \
-  -e E2B_REPLAY_DIR="/lab/results/$E2B_RUN/e2b" \
+  -e E2B_REPLAY_DIR="/lab/results/$UA_RUN/e2b" \
   ua-lab-cpu /lab/envs/cpu/bin/python - <<'CLEANUP'
 import asyncio, json, os
 from pathlib import Path
@@ -107,18 +138,10 @@ print('Deleted now' if deleted else 'Already absent')
 CLEANUP
 ```
 
-When you no longer need the model started in step 2:
+Stop the model started in step 1 when it is no longer needed:
 
 ```bash
 docker stop ua-lab-model-tp1
 ```
 
-## Optional: upstream tool demo
-
-This checks sandbox tools without running the model-driven repair above:
-
-```bash
-docker exec ua-lab-cpu /lab/envs/cpu/bin/python /lab/scripts/run_e2b_demo.py
-```
-
-[Experiment overview](README.md) · [E2B API](API.md) · [Historical paired runner](../03_docker_sandbox/code/run_sandbox_agent.py)
+[Experiment overview](README.md) · [Uni-Agent API](../01_model_and_examples/API.md) · [E2B API](API.md)

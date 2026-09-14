@@ -6,8 +6,8 @@
   "agent_results": 84,
   "qualified_tasks": 28,
   "performance_batches_recomputed": 54,
-  "python_files_parsed": 27,
-  "shell_examples_checked": 22,
+  "python_files_parsed": 28,
+  "shell_examples_checked": 21,
   "english_diagrams": 5,
   "missing_links": [],
   "scope": "Offline documentation checks; no model, training, or sandbox execution."

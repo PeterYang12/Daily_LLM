@@ -20,10 +20,11 @@ Remote SWE-bench, Claude Code, Mini, arbitrary SWE-image template builds, and fu
 
 ## Contents
 
-- [STEPS.md](STEPS.md): complete manual E2B-only replay, result inspection, and cleanup.
+- [STEPS.md](STEPS.md): full single-task Uni-Agent rollout with Task, Gateway, E2B, scoring, and token trajectories.
 - [API.md](API.md): six operations used here.
 - [code/e2b_provider.py](code/e2b_provider.py): adapter; [run_e2b_demo.py](code/run_e2b_demo.py): demo entry.
 - [code/run_e2b_e2e.py](code/run_e2b_e2e.py): new E2B-only replay helper using the recorded task and agent settings.
+- [code/run_uni_agent_e2b.py](code/run_uni_agent_e2b.py): later Task/Gateway replay entry; prepared and checked offline, distinct from the recorded direct-model experiment above.
 - [configs/e2b.env.example](configs/e2b.env.example): variable names only.
 - Evidence: [SDK smoke](results/e2b-sdk-smoke.json), [demo](results/e2b-official-demo.txt), [repair](results/task/result.json), [repaired function](results/task/interval_utils.py), [verifier](results/task/verifier.json).
 
