@@ -20,11 +20,11 @@ Remote SWE-bench, Claude Code, Mini, arbitrary SWE-image template builds, and fu
 
 ## Contents
 
-- [STEPS.md](STEPS.md): setup, official demo, paired repair.
+- [STEPS.md](STEPS.md): complete manual E2B-only replay, result inspection, and cleanup.
 - [API.md](API.md): six operations used here.
 - [code/e2b_provider.py](code/e2b_provider.py): adapter; [run_e2b_demo.py](code/run_e2b_demo.py): demo entry.
+- [code/run_e2b_e2e.py](code/run_e2b_e2e.py): new E2B-only replay helper using the recorded task and agent settings.
 - [configs/e2b.env.example](configs/e2b.env.example): variable names only.
 - Evidence: [SDK smoke](results/e2b-sdk-smoke.json), [demo](results/e2b-official-demo.txt), [repair](results/task/result.json), [repaired function](results/task/interval_utils.py), [verifier](results/task/verifier.json).
 
 [Back to overview](../README.md)
-

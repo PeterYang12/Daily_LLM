@@ -2,6 +2,8 @@
 
 A Docker-based experiment with **Qwen3-Coder-30B-A3B-Instruct** on an **8 × AMD MI350X** machine. We tested agent inference, code repair, sandbox execution, and serving performance using fixed public weights. **No SFT or RL training was performed.**
 
+**For management:** [Uni-Agent introduction](introduction.md) · [One-page PDF](introduction.pdf)
+
 ## Experiments
 
 | # | Experiment | Main result |
@@ -29,4 +31,3 @@ Each experiment keeps its own `README.md` (what and results), `STEPS.md` (how to
 Experiments ran on **2026-09-12**. This English report reorganizes their existing evidence. Full runtime assets remain in `/home/yuhanya/uni-agent-lab`; this repository contains source snapshots and lightweight results, not weights, installed environments, or Docker layers. Replay steps use that lab layout. To collect the distributed snapshots into `scripts/` and `configs/`, use the [code export instructions](06_trajectories_and_reproduction/STEPS.md).
 
 Raw evidence and original experiment code are retained verbatim. [Artifact provenance and checksums](06_trajectories_and_reproduction/results/provenance/source-manifest.json)
-

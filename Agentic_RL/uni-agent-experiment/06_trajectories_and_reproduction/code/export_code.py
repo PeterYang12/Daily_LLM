@@ -18,6 +18,10 @@ def main():
     provenance = ROOT / '06_trajectories_and_reproduction/results/provenance/layout-map.json'
     records = json.loads(provenance.read_text())['artifacts']
     selected = [r for r in records if r['previous'].startswith('reproduce/')]
+    helper = '04_e2b_sandbox/code/run_e2b_e2e.py'
+    selected.append({'current': helper, 'export_path': 'scripts/run_e2b_e2e.py',
+                     'sha256': hashlib.sha256((ROOT / helper).read_bytes()).hexdigest(),
+                     'origin': 'E2B-only replay helper added after the recorded experiments'})
     # Validate the entire selection before creating an output directory.
     for record in selected:
         source = ROOT / record['current']
@@ -25,7 +29,8 @@ def main():
             raise ValueError('Snapshot hash mismatch: ' + record['current'])
     destination.mkdir(parents=True)
     for record in selected:
-        target = destination / record['previous'].removeprefix('reproduce/')
+        relative = record.get('export_path') or record['previous'].removeprefix('reproduce/')
+        target = destination / relative
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(ROOT / record['current'], target)
         assert hashlib.sha256(target.read_bytes()).hexdigest() == record['sha256']

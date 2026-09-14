@@ -21,7 +21,7 @@ def load(path):
 
 
 def main():
-    assert {p.name for p in ROOT.iterdir()} == {'README.md', *EXPERIMENTS}
+    assert {p.name for p in ROOT.iterdir()} == {'README.md', 'introduction.md', 'introduction.pdf', *EXPERIMENTS}
     for experiment in EXPERIMENTS:
         for item in ['README.md', 'STEPS.md', 'code', 'figures', 'results']:
             assert (ROOT / experiment / item).exists(), (experiment, item)
