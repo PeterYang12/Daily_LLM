@@ -1,0 +1,23 @@
+diff --git a/miles/backends/fsdp_utils/sglang_attn_bridge/hf_sglang_triton_patch.py b/miles/backends/fsdp_utils/sglang_attn_bridge/hf_sglang_triton_patch.py
+index eff28dd..08c5300 100644
+--- a/miles/backends/fsdp_utils/sglang_attn_bridge/hf_sglang_triton_patch.py
++++ b/miles/backends/fsdp_utils/sglang_attn_bridge/hf_sglang_triton_patch.py
+@@ -36,7 +36,8 @@ class TritonAttnFunction(torch.autograd.Function):
+         Returns:
+             o: [total, num_heads, D], bf16
+         """
+-        from sglang.srt.layers.attention.triton_ops.extend_attention import extend_attention_fwd_unified
++        # The pinned SGLang Miles branch moved Triton kernels into kernels.ops.
++        from sglang.kernels.ops.attention.extend_attention import extend_attention_fwd_unified
+ 
+         total = B * S
+         device = q.device
+@@ -52,6 +53,8 @@ class TritonAttnFunction(torch.autograd.Function):
+             o,
+             k,
+             v,
++            1.0,  # BF16 keys do not need dequantization scaling.
++            1.0,  # BF16 values do not need dequantization scaling.
+             qo_indptr,
+             kv_indptr,
+             kv_indices,

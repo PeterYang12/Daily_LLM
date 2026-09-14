@@ -1,0 +1,54 @@
+diff --git a/uni_agent/sandbox/docker.py b/uni_agent/sandbox/docker.py
+index d35c007..50a5d00 100644
+--- a/uni_agent/sandbox/docker.py
++++ b/uni_agent/sandbox/docker.py
+@@ -55,11 +55,14 @@ class DockerSandbox(Sandbox):
+     def from_config(cls, config: SandboxConfig) -> DockerSandbox:
+         return cls(image=config.image, **config.sandbox_kwargs)
+ 
+-    async def _run_docker(self, *args: str, timeout: float | None = None) -> ExecResult:
++    async def _run_docker(
++        self, *args: str, timeout: float | None = None, input_data: bytes | None = None
++    ) -> ExecResult:
+         try:
+             proc = await asyncio.create_subprocess_exec(
+                 self.docker_binary,
+                 *args,
++                stdin=asyncio.subprocess.PIPE if input_data is not None else None,
+                 stdout=asyncio.subprocess.PIPE,
+                 stderr=asyncio.subprocess.PIPE,
+             )
+@@ -67,7 +70,7 @@ class DockerSandbox(Sandbox):
+             raise RuntimeError(f"Docker executable {self.docker_binary!r} was not found") from exc
+ 
+         try:
+-            stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=timeout)
++            stdout, stderr = await asyncio.wait_for(proc.communicate(input_data), timeout=timeout)
+         except asyncio.TimeoutError:
+             try:
+                 proc.kill()
+@@ -178,6 +181,24 @@ class DockerSandbox(Sandbox):
+         args.extend(argv)
+         return await self._run_docker(*args, timeout=timeout)
+ 
++    async def write_file(self, path: str, content: bytes | str) -> None:
++        """Write bytes through stdin so file size is independent of argv limits."""
++        data = content.encode("utf-8") if isinstance(content, str) else content
++        result = await self._run_docker(
++            "exec",
++            "-i",
++            self._require_container(),
++            "sh",
++            "-c",
++            'mkdir -p -- "$(dirname -- "$1")" && cat > "$1"',
++            "sh",
++            path,
++            input_data=data,
++        )
++        if result.exit_code != 0:
++            detail = result.stderr.strip() or result.stdout.strip()
++            raise RuntimeError(f"write_file {path!r} failed: {detail}")
++
+     async def upload_file(self, local_file: Path | str, remote_file: str) -> None:
+         container = self._require_container()
+         parent = str(PurePosixPath(remote_file).parent)

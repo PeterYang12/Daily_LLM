@@ -1,0 +1,16 @@
+diff --git a/miles/backends/training_utils/loss_hub/math_utils.py b/miles/backends/training_utils/loss_hub/math_utils.py
+index e3b7591..236f21d 100644
+--- a/miles/backends/training_utils/loss_hub/math_utils.py
++++ b/miles/backends/training_utils/loss_hub/math_utils.py
+@@ -292,7 +292,10 @@ def compute_log_probs(
+         log_probs = torch.log_softmax(full_logits, dim=-1)
+         return log_probs.gather(dim=-1, index=tokens.unsqueeze(-1)).squeeze(-1)
+ 
+-    # TODO: when megatron is not installed, fall back to naive implementation
++    # FSDP has an unsharded vocabulary and does not require Megatron's TP loss.
++    if process_group is None or dist.get_world_size(process_group) == 1:
++        return -F.cross_entropy(logits, tokens, reduction="none").unsqueeze(-1)
++
+     from megatron.core.fusions.fused_cross_entropy import fused_vocab_parallel_cross_entropy
+ 
+     # convert to [seq_len, batch_size, vocab_size] as expected by fused_vocab_parallel_cross_entropy

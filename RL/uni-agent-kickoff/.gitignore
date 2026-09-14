@@ -1,0 +1,20 @@
+# 此目录只收录文档、图表和少量示例，避免误加入包、权重和缓存。
+*.tar
+*.tar.*
+*.tgz
+*.zip
+*.7z
+*.whl
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.bin
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+.env
+.env.*
+!.env.example
