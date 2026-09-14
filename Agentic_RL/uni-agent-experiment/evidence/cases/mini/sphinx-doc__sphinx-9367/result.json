@@ -1,0 +1,53 @@
+{
+  "instance_id": "sphinx-doc__sphinx-9367",
+  "repo": "sphinx-doc/sphinx",
+  "mode": "mini",
+  "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9367",
+  "finished": true,
+  "agent_seconds": 249.85580945014954,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": true,
+  "eval_completed": true,
+  "source_only_resolved": true,
+  "raw_result_path": "/lab/results/main-mini-128k/sphinx-doc__sphinx-9367/result.json",
+  "captured_patch_sha256": "86d085575c77c69371d0afa4d9effa6c819e9172341af9ff1d28046afde98ddb",
+  "image_baseline_patch_bytes": 1457,
+  "image_initial_tree": "487c4c5d2223448fa7f8e3959a6ff6c146caa418",
+  "candidate_delta_bytes": 9804,
+  "test_paths_changed": [
+    "tests/test_pycode_ast.py"
+  ],
+  "existing_tests_modified": [
+    "tests/test_pycode_ast.py"
+  ],
+  "added_test_paths": [],
+  "eval_execution_time": 1.7718648561276495,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 9.488016605377197,
+  "source_artifact": "results/regraded-main-mini/sphinx-doc__sphinx-9367/result.json",
+  "source_sha256": "54c790e57ba62f480750d2b4e8f7d239cd85521678f518fd335cc7f0d5356284",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 1,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_PASS": {
+      "passed": 25,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

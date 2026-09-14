@@ -1,0 +1,52 @@
+{
+  "dataset": "princeton-nlp/SWE-bench_Verified",
+  "revision": "c104f840cc67f8b6eec6f759ebc8b2693d585d4a",
+  "seed": 20260912,
+  "policy": "Sorted repositories; sorted instance IDs then random.Random(seed).shuffle per repository; round-robin pop until 30. Chosen before model outcomes. Balanced coverage, not population-representative.",
+  "pilot_six": [
+    "pallets__flask-5014",
+    "psf__requests-6028",
+    "pytest-dev__pytest-5262",
+    "pytest-dev__pytest-7432",
+    "pytest-dev__pytest-7521",
+    "pytest-dev__pytest-7982"
+  ],
+  "stratified_thirty": [
+    "astropy__astropy-13033",
+    "django__django-14373",
+    "matplotlib__matplotlib-20488",
+    "mwaskom__seaborn-3187",
+    "pallets__flask-5014",
+    "psf__requests-2317",
+    "pydata__xarray-4075",
+    "pylint-dev__pylint-7080",
+    "pytest-dev__pytest-7521",
+    "scikit-learn__scikit-learn-11310",
+    "sphinx-doc__sphinx-9367",
+    "sympy__sympy-24213",
+    "astropy__astropy-14539",
+    "django__django-11451",
+    "matplotlib__matplotlib-20859",
+    "mwaskom__seaborn-3069",
+    "psf__requests-1921",
+    "pydata__xarray-6938",
+    "pylint-dev__pylint-4970",
+    "pytest-dev__pytest-7205",
+    "scikit-learn__scikit-learn-25931",
+    "sphinx-doc__sphinx-7748",
+    "sympy__sympy-18211",
+    "astropy__astropy-13977",
+    "django__django-14122",
+    "matplotlib__matplotlib-25287",
+    "psf__requests-5414",
+    "pydata__xarray-3993",
+    "pylint-dev__pylint-4661",
+    "pytest-dev__pytest-7236"
+  ],
+  "dataset_rows": 500,
+  "files": {
+    "verified-all.parquet": "5aa481e2e50d8cf4fbd128eb11ed0d3f52fb76aeb82a44814d0ef2b2ea9400e0",
+    "pilot-six.parquet": "fc2d06cff9f08a1821a5770af7257ea5836117b029a122d092fae898fac25a7a",
+    "stratified-thirty.parquet": "761cd5299a27b9499e82deccd71aea3174cb37fec1ee99085287cb5d69a1898c"
+  }
+}

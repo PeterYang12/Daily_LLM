@@ -1,0 +1,24 @@
+{
+  "source": "results/trajectory-logprobs-mini/summary.json",
+  "summary": {
+    "mode": "mini",
+    "total": 1,
+    "resolved": 0,
+    "eval_completed": 1,
+    "finished": 0,
+    "errors": 0,
+    "agent_errors": 0,
+    "source_only_resolved": 0,
+    "wall_seconds": 157.9926097393036
+  },
+  "per_case": [
+    {
+      "instance_id": "pallets__flask-5014",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": false,
+      "wall_seconds": 157.99165606498718,
+      "agent_seconds": 151.11041569709778
+    }
+  ]
+}

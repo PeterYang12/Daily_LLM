@@ -1,0 +1,64 @@
+{
+  "source": "results/pilot-claude-gateway/summary.json",
+  "summary": {
+    "mode": "claude",
+    "total": 6,
+    "resolved": 4,
+    "eval_completed": 6,
+    "finished": 6,
+    "errors": 0,
+    "agent_errors": 0,
+    "source_only_resolved": 4,
+    "wall_seconds": 608.7000041007996
+  },
+  "per_case": [
+    {
+      "instance_id": "pallets__flask-5014",
+      "resolved": true,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 120.13506150245667,
+      "agent_seconds": 115.51899218559265
+    },
+    {
+      "instance_id": "psf__requests-6028",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 262.4298532009125,
+      "agent_seconds": 258.8660891056061
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5262",
+      "resolved": true,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 308.00263142585754,
+      "agent_seconds": 290.9578239917755
+    },
+    {
+      "instance_id": "pytest-dev__pytest-7432",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 118.32267117500305,
+      "agent_seconds": 107.21463990211487
+    },
+    {
+      "instance_id": "pytest-dev__pytest-7521",
+      "resolved": true,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 370.2397689819336,
+      "agent_seconds": 353.3832039833069
+    },
+    {
+      "instance_id": "pytest-dev__pytest-7982",
+      "resolved": true,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 112.20774483680725,
+      "agent_seconds": 99.98491096496582
+    }
+  ]
+}

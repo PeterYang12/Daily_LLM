@@ -1,0 +1,33 @@
+{
+  "expired_removed": true,
+  "fresh_preserved": true,
+  "other_owner_preserved": true,
+  "sweep": {
+    "utc": "2026-09-12T17:32:52Z",
+    "owner": "uni-agent-rocm-lab",
+    "delete_enabled": true,
+    "containers": [
+      {
+        "id": "4bf78c92774de37a637224e9bb927f70c8da8e826abbdc65154e8711c36192ae",
+        "names": [
+          "/ua-lease-fresh"
+        ],
+        "age_seconds": 1.790480136871338,
+        "ttl_seconds": 3600,
+        "expired": false,
+        "deleted": false
+      },
+      {
+        "id": "158ce4a33d7c312565ea928ada8eca6208bb72397a34642eb2af0decd7cb9eee",
+        "names": [
+          "/ua-lease-expired"
+        ],
+        "age_seconds": 1.7904846668243408,
+        "ttl_seconds": 1,
+        "expired": true,
+        "deleted": true,
+        "status": 204
+      }
+    ]
+  }
+}

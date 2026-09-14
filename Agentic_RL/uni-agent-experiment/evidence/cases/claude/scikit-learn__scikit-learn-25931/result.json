@@ -1,0 +1,60 @@
+{
+  "instance_id": "scikit-learn__scikit-learn-25931",
+  "repo": "scikit-learn/scikit-learn",
+  "mode": "claude",
+  "image": "swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-25931",
+  "finished": true,
+  "agent_seconds": 140.3959424495697,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": false,
+  "eval_completed": true,
+  "source_only_resolved": false,
+  "raw_result_path": "/lab/results/main-claude-128k/scikit-learn__scikit-learn-25931/result.json",
+  "captured_patch_sha256": "176b7f098fc6ff13b559b0cd85d30fb7c9ba3ffb28ca0ab4dc445729fd103c69",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "9079e26dd32eb18b563b34d6ba35b3acce32f8c0",
+  "candidate_delta_bytes": 2912,
+  "test_paths_changed": [
+    "test_fix.py",
+    "test_issue.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "test_fix.py",
+    "test_issue.py"
+  ],
+  "eval_execution_time": 13.044557942077518,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 31.277032613754272,
+  "source_artifact": "results/regraded-main-claude/scikit-learn__scikit-learn-25931/result.json",
+  "source_sha256": "d2a1e1ecb4c62acc8135bb69950d3bf27250f0e49c12118340b075df7ee975f8",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 1,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_PASS": {
+      "passed": 17,
+      "failed": 4,
+      "failed_tests": [
+        "sklearn/ensemble/tests/test_iforest.py::test_iforest_works[42-0.25]",
+        "sklearn/ensemble/tests/test_iforest.py::test_score_samples",
+        "sklearn/ensemble/tests/test_iforest.py::test_iforest_chunks_works1[42-0.25-3]",
+        "sklearn/ensemble/tests/test_iforest.py::test_iforest_chunks_works2[42-0.25-3]"
+      ]
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

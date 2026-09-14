@@ -1,0 +1,24 @@
+{
+  "source": "results/trajectory-logprobs-claude/summary.json",
+  "summary": {
+    "mode": "claude",
+    "total": 1,
+    "resolved": 1,
+    "eval_completed": 1,
+    "finished": 1,
+    "errors": 0,
+    "agent_errors": 0,
+    "source_only_resolved": 1,
+    "wall_seconds": 107.28586506843567
+  },
+  "per_case": [
+    {
+      "instance_id": "pallets__flask-5014",
+      "resolved": true,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 107.28486013412476,
+      "agent_seconds": 99.98444771766663
+    }
+  ]
+}

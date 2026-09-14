@@ -1,0 +1,53 @@
+{
+  "protocol": "Same pinned BF16 model and AITER/graph TP1 config on GPUs2/3; 2048 input,256 forced output; static round-robin for two replicas; concurrency8/16/32; 3 repeats; prefix cache enabled with unique early salts; GPU1 agent work continues. Not a Uni-Agent AgentAwareRouter benchmark or an 8-replica scale claim.",
+  "results": [
+    {
+      "replicas": 1,
+      "concurrency": 8,
+      "aggregate_output_tok_s": 1193.6025933438796,
+      "mean_ttft_s": 0.13322576480762413,
+      "mean_request_s": 1.673312241192131,
+      "gpu_seconds_per_1000_output_tokens": 0.8378731783977855
+    },
+    {
+      "replicas": 1,
+      "concurrency": 16,
+      "aggregate_output_tok_s": 2033.199221068962,
+      "mean_ttft_s": 0.17662849102634937,
+      "mean_request_s": 1.9423531150096096,
+      "gpu_seconds_per_1000_output_tokens": 0.49183765728836687
+    },
+    {
+      "replicas": 1,
+      "concurrency": 32,
+      "aggregate_output_tok_s": 1948.065067701882,
+      "mean_ttft_s": 1.3209694032848347,
+      "mean_request_s": 3.1727142720628763,
+      "gpu_seconds_per_1000_output_tokens": 0.5219442854619653
+    },
+    {
+      "replicas": 2,
+      "concurrency": 8,
+      "aggregate_output_tok_s": 1279.56268646798,
+      "mean_ttft_s": 0.10532394268860419,
+      "mean_request_s": 1.529494929651264,
+      "gpu_seconds_per_1000_output_tokens": 1.5650932624945806
+    },
+    {
+      "replicas": 2,
+      "concurrency": 16,
+      "aggregate_output_tok_s": 2211.2532878490406,
+      "mean_ttft_s": 0.17247663780775233,
+      "mean_request_s": 1.7447793227329385,
+      "gpu_seconds_per_1000_output_tokens": 0.9049040450008761
+    },
+    {
+      "replicas": 2,
+      "concurrency": 32,
+      "aggregate_output_tok_s": 3512.832889524221,
+      "mean_ttft_s": 0.3243922177546968,
+      "mean_request_s": 2.234457833818548,
+      "gpu_seconds_per_1000_output_tokens": 0.579647030842049
+    }
+  ]
+}

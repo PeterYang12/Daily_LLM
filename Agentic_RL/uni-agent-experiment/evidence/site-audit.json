@@ -1,0 +1,146 @@
+{
+  "pages_checked": 27,
+  "page_errors": [],
+  "navigation_search": {
+    "all": 27,
+    "E2B_filtered": 2,
+    "restored": 27
+  },
+  "pages": [
+    {
+      "page": "site/index.html",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "page": "site/00-executive-summary.html",
+      "images": 1,
+      "broken_images": []
+    },
+    {
+      "page": "site/01-scope-and-terminology.html",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "page": "site/architecture/01-deployment.html",
+      "images": 3,
+      "broken_images": []
+    },
+    {
+      "page": "site/architecture/02-agent-task-flow.html",
+      "images": 1,
+      "broken_images": []
+    },
+    {
+      "page": "site/architecture/03-apis-and-lifecycle.html",
+      "images": 1,
+      "broken_images": []
+    },
+    {
+      "page": "site/experiments/index.html",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "page": "site/experiments/01-model-and-official-examples.html",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "page": "site/experiments/02-data-and-controls.html",
+      "images": 1,
+      "broken_images": []
+    },
+    {
+      "page": "site/experiments/03-swe-agent-comparison.html",
+      "images": 2,
+      "broken_images": []
+    },
+    {
+      "page": "site/experiments/04-docker-sandbox.html",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "page": "site/experiments/05-e2b-sandbox.html",
+      "images": 1,
+      "broken_images": []
+    },
+    {
+      "page": "site/experiments/06-serving-tp-and-aiter.html",
+      "images": 1,
+      "broken_images": []
+    },
+    {
+      "page": "site/experiments/07-replica-scaling.html",
+      "images": 1,
+      "broken_images": []
+    },
+    {
+      "page": "site/experiments/08-trajectories.html",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "page": "site/experiments/09-reproducibility-validation.html",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "page": "site/results/01-case-studies.html",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "page": "site/results/02-conclusions-and-next-steps.html",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "page": "site/results/03-per-case-matrix.html",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "page": "site/reproduce/01-environment-and-versions.html",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "page": "site/reproduce/02-replay-guide.html",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "page": "site/references/01-community-comparison.html",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "page": "site/references/02-evidence-index.html",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "page": "site/references/03-uni-agent-api-reference.html",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "page": "site/references/04-sandbox-and-verdal-api-reference.html",
+      "images": 2,
+      "broken_images": []
+    },
+    {
+      "page": "site/tools/index.html",
+      "images": 0,
+      "broken_images": []
+    },
+    {
+      "page": "site/reproduce/scripts/index.html",
+      "images": 0,
+      "broken_images": []
+    }
+  ]
+}

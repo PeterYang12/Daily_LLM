@@ -1,0 +1,14 @@
+{
+  "provider": "docker",
+  "model": "Qwen3-Coder-30B-A3B-Instruct",
+  "finished": true,
+  "agent_info": {
+    "steps": 8,
+    "num_tool_calls": 8,
+    "timeouts": 0,
+    "errors": 0,
+    "total_tokens": 3641
+  },
+  "resolved": true,
+  "wall_seconds": 48.38030433654785
+}

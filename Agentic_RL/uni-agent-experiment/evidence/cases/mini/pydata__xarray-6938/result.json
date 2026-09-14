@@ -1,0 +1,51 @@
+{
+  "instance_id": "pydata__xarray-6938",
+  "repo": "pydata/xarray",
+  "mode": "mini",
+  "image": "swebench/sweb.eval.x86_64.pydata_1776_xarray-6938",
+  "finished": true,
+  "agent_seconds": 606.1869790554047,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": false,
+  "eval_completed": true,
+  "source_only_resolved": false,
+  "raw_result_path": "/lab/results/main-mini-128k/pydata__xarray-6938/result.json",
+  "captured_patch_sha256": "154a79501d311ea1e6d972d3211531d8007d840fa8f6e4d52986cc4e992e65e2",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "6a72e77715a87478bdc9305714e54fe2bbba06cb",
+  "candidate_delta_bytes": 350163,
+  "test_paths_changed": [],
+  "existing_tests_modified": [],
+  "added_test_paths": [],
+  "eval_execution_time": 12.536501694936305,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 16.562718629837036,
+  "source_artifact": "results/regraded-main-mini/pydata__xarray-6938/result.json",
+  "source_sha256": "0477a1edf1b26385c031e8f6639786dc096bb76744a7f7f8294c22f9b64cf1e4",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 0,
+      "failed": 1,
+      "failed_tests": [
+        "xarray/tests/test_variable.py::TestIndexVariable::test_to_index_variable_copy"
+      ]
+    },
+    "PASS_TO_PASS": {
+      "passed": 430,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

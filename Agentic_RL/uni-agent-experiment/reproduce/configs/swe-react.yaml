@@ -1,0 +1,108 @@
+name: swe_bench
+sandbox:
+  provider: docker
+  sandbox_kwargs:
+    pull_policy: never
+    run_args:
+    - --dns
+    - 10.145.80.1
+    - --cpus
+    - '2'
+    - --memory
+    - 8g
+    - --pids-limit
+    - '512'
+    - --security-opt
+    - no-new-privileges
+    - --mount
+    - type=bind,src=/home/yuhanya/uni-agent-lab/cache/tmux,dst=/opt/ua-tmux,readonly
+    - --mount
+    - type=bind,src=/home/yuhanya/uni-agent-lab/cache/tmux/tmux,dst=/usr/local/bin/tmux,readonly
+    - --label
+    - ua-lab.owner=uni-agent-rocm-lab
+    - --label
+    - ua-lab.ttl-seconds=3600
+agent:
+  name: react
+  max_steps: 60
+  tools:
+  - name: str_replace_editor
+  - name: stateful_shell
+    command_timeout: 120
+    env_vars:
+      PIP_PROGRESS_BAR: 'off'
+      PAGER: cat
+      TQDM_DISABLE: '1'
+      GIT_PAGER: cat
+  - name: submit
+  model:
+    temperature: 0.2
+    top_p: 0.9
+    max_total_tokens: 55000
+    max_tokens_per_turn: 2048
+prompt_template:
+- role: system
+  content: You are a helpful assistant that can interact with a computer to solve
+    tasks.
+- role: user
+  content: "<uploaded_files>\n/testbed\n</uploaded_files>\nI have uploaded a python\
+    \ code repository in the /testbed directory. You can explore and modify files\
+    \ using the available tools. Consider the following issue description:\n\n<issue_description>\n\
+    {problem_statement}\n</issue_description>\n\nCan you help me implement the necessary\
+    \ changes to the repository to fix the <issue_description>?\nI have already taken\
+    \ care of all changes to any of the test files described in the <issue_description>.\
+    \ This means you DON'T have to modify the testing logic or any of the tests in\
+    \ any way!\nAlso the development Python environment is already set up for you\
+    \ (i.e., all dependencies already installed), so you don't need to install other\
+    \ packages.\nYour task is to make the minimal changes to non-test files in the\
+    \ /testbed directory to ensure the <issue_description> is satisfied.\n\nFollow\
+    \ these steps to resolve the issue:\n1. First, explore the codebase to locate\
+    \ and understand the code relevant to the <issue_description>.\n- Use efficient\
+    \ search commands to identify key files and functions.\n- You should err on the\
+    \ side of caution and look at various relevant files and build your understanding\
+    \ of\n    - how the code works\n    - what are the expected behaviors and edge\
+    \ cases\n    - what are the potential root causes for the given issue\n\n2. Assess\
+    \ whether you can reproduce the issue:\n- Create a script at '/testbed/reproduce_issue.py'\
+    \ that demonstrates the error.\n- Execute this script to confirm the error behavior.\n\
+    - You should reproduce the issue before fixing it.\n- Your reproduction script\
+    \ should also assert the expected behavior for the fixed code.\n\n3. Analyze the\
+    \ root cause:\n- Identify the underlying problem based on your code exploration\
+    \ and reproduction results.\n- Critically analyze different potential approaches\
+    \ to fix the issue.\n- You NEED to explicitly reason about multiple approaches\
+    \ to fix the issue. Next, find the most elegant and effective solution among them\
+    \ considering the tradeoffs (correctness, generality, side effects, etc.).\n-\
+    \ You would need to reason about execution paths, edge cases, and other potential\
+    \ issues. You should look at the unit tests to understand the expected behavior\
+    \ of the relevant code.\n\n4. Implement your solution:\n- Make targeted changes\
+    \ to the necessary files following idiomatic code patterns once you determine\
+    \ the root cause.\n- You should be thorough and methodical.\n\n5. Verify your\
+    \ solution:\n- Rerun your reproduction script to confirm the error is fixed.\n\
+    - If verification fails, iterate on your solution until successful. If you identify\
+    \ the reproduction script is buggy, adjust it as needed.\n\n6. Run unit tests:\n\
+    - Find and run the relevant unit tests relevant to the performed fix.\n- You should\
+    \ run the unit tests to ensure your solution is correct and does not cause any\
+    \ regressions.\n- In cases where the unit tests are do not pass, you should consider\
+    \ whether the unit tests does not reflect the *new* expected behavior of the code.\
+    \ If so, you can test it by writing additional edge test cases.\n- Use the existing\
+    \ test runner to run the unit tests you identify as relevant to the changes you\
+    \ made. For example:\n    - `python -m pytest -xvs sympy/physics/units/tests/test_dimensions_transcendental.py`\n\
+    \    - `python -m pytest tests/test_domain_py.py::test_pymethod_options`\n   \
+    \ - `./tests/runtests.py constraints.tests.CheckConstraintTests -v 2`\n- RUN ALL\
+    \ relevant unit tests to ensure your solution is correct and does not cause any\
+    \ regressions.\n- DO NOT MODIFY any of the existing unit tests. You can add new\
+    \ edge test cases in a separate file if needed BUT DO NOT MODIFY THE EXISTING\
+    \ TESTS.\n\n7. Test edge cases:\n- Identify potential edge cases that might challenge\
+    \ your solution.\n- Create additional test cases in a separate file '/testbed/edge_case_tests.py'.\n\
+    - Execute these tests to verify your solution's robustness.\n- You should run\
+    \ multiple rounds of edge cases. When creating edge cases:\n    - Consider complex\
+    \ scenarios beyond the original issue description\n    - Test for regressions\
+    \ to ensure existing functionality remains intact\n    - At each round you should\
+    \ write multiple edge test cases in the same file to be efficient\n\n8. Refine\
+    \ if necessary:\n- If edge case testing reveals issues, refine your solution accordingly.\n\
+    - Ensure your final implementation handles all identified scenarios correctly.\n\
+    - Document any assumptions or limitations of your solution.\n\n9. Submit your\
+    \ solution:\n- Once you have verified your solution, submit your solution using\
+    \ the `submit` tool.\n\nA successful resolution means:\n- The specific error/issue\
+    \ described no longer occurs\n- Your changes maintain compatibility with existing\
+    \ functionality\n- Edge cases are properly handled"
+eval_timeout: 600

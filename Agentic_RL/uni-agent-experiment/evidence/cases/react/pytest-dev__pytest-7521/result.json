@@ -1,0 +1,71 @@
+{
+  "instance_id": "pytest-dev__pytest-7521",
+  "repo": "pytest-dev/pytest",
+  "mode": "react",
+  "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-7521",
+  "finished": false,
+  "agent_seconds": 906.9787628650665,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": true,
+  "eval_completed": true,
+  "source_only_resolved": true,
+  "raw_result_path": "/lab/results/main-react-128k/pytest-dev__pytest-7521/result.json",
+  "captured_patch_sha256": "07ad23d169de246a868deb0f325e7355ef107aa8689c64327eeb4ed03cd28a52",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "626158e22e5ddc14eecf2829659d96bf49263703",
+  "candidate_delta_bytes": 54827,
+  "test_paths_changed": [
+    "direct_write_test.py",
+    "file_descriptor_test.py",
+    "final_test.py",
+    "fix_test.py",
+    "precise_test.py",
+    "real_test.py",
+    "simple_test.py",
+    "test_carriage_return_fix.py",
+    "test_original_issue.py",
+    "test_real_scenario.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "direct_write_test.py",
+    "file_descriptor_test.py",
+    "final_test.py",
+    "fix_test.py",
+    "precise_test.py",
+    "real_test.py",
+    "simple_test.py",
+    "test_carriage_return_fix.py",
+    "test_original_issue.py",
+    "test_real_scenario.py"
+  ],
+  "eval_execution_time": 6.7991786720231175,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 17.046502590179443,
+  "source_artifact": "results/regraded-main-react/pytest-dev__pytest-7521/result.json",
+  "source_sha256": "4dc837163f7941a9489ae202e79a17b3cfa83a12f9436070fc295ea3bcc6f641",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 2,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_PASS": {
+      "passed": 125,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

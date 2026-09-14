@@ -1,0 +1,64 @@
+{
+  "instance_id": "mwaskom__seaborn-3187",
+  "repo": "mwaskom/seaborn",
+  "mode": "react",
+  "image": "swebench/sweb.eval.x86_64.mwaskom_1776_seaborn-3187",
+  "finished": true,
+  "agent_seconds": 774.4034042358398,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": false,
+  "eval_completed": true,
+  "source_only_resolved": false,
+  "raw_result_path": "/lab/results/main-react-128k/mwaskom__seaborn-3187/result.json",
+  "captured_patch_sha256": "c99c9eee8328fa100f23f71aa128601548feda385913ded81b7058dc0a069ad4",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "8b530ce017437324b9e3a39af220965bf0e71558",
+  "candidate_delta_bytes": 31294,
+  "test_paths_changed": [
+    "test_fix.py",
+    "test_legend_fix.py",
+    "test_offset_detection.py",
+    "test_seaborn_fix.py",
+    "test_seaborn_integration.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "test_fix.py",
+    "test_legend_fix.py",
+    "test_offset_detection.py",
+    "test_seaborn_fix.py",
+    "test_seaborn_integration.py"
+  ],
+  "eval_execution_time": 35.650437308009714,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 78.36253309249878,
+  "source_artifact": "results/regraded-main-react/mwaskom__seaborn-3187/result.json",
+  "source_sha256": "f998a36c6765bd5e5966098ec5a43025b030801d2f48cf4962e68c42a0e6e30d",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 0,
+      "failed": 2,
+      "failed_tests": [
+        "tests/_core/test_plot.py::TestLegend::test_legend_has_no_offset",
+        "tests/test_relational.py::TestRelationalPlotter::test_legend_has_no_offset"
+      ]
+    },
+    "PASS_TO_PASS": {
+      "passed": 248,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

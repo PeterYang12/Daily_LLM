@@ -1,0 +1,49 @@
+{
+  "instance_id": "django__django-14373",
+  "repo": "django/django",
+  "mode": "mini",
+  "image": "swebench/sweb.eval.x86_64.django_1776_django-14373",
+  "finished": true,
+  "agent_seconds": 137.42397785186768,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": true,
+  "eval_completed": true,
+  "source_only_resolved": true,
+  "raw_result_path": "/lab/results/main-mini-128k/django__django-14373/result.json",
+  "captured_patch_sha256": "cc52220b46b5202166a21c3ead5b70ea33e0aaac0ea2ac0f3682faed3da75e21",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "b940d09f1b6d4e8070821f475b72488daf48a3f5",
+  "candidate_delta_bytes": 981,
+  "test_paths_changed": [],
+  "existing_tests_modified": [],
+  "added_test_paths": [],
+  "eval_execution_time": 3.448965704999864,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 12.101235628128052,
+  "source_artifact": "results/regraded-main-mini/django__django-14373/result.json",
+  "source_sha256": "1f5633eb00db6e6581778ed3c4afa941bf6d08584bdadc22ba38b2f6316d0da8",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 1,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_PASS": {
+      "passed": 19,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

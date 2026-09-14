@@ -1,0 +1,30 @@
+sequenceDiagram
+    participant J as 评测脚本 / Task
+    participant S as 任务 sandbox
+    participant A as Agent / harness
+    participant G as Uni-Agent Gateway
+    participant M as vLLM / Qwen
+    J->>G: 启动作业HTTP服务，创建本题session
+    J->>S: 通过独立dockerd创建容器、挂载工具
+    alt 选择ReAct
+      J->>A: 在CPU编排容器内执行ReActAgent.run
+    else 选择Claude Code或Mini
+      J->>S: 适配器通过docker exec启动CLI
+      S->>A: CLI主循环在sandbox内开始
+    end
+    loop 直到结束或达到预算
+      A->>G: 上下文、工具描述、采样请求
+      G->>M: token化后调用/v1/completions
+      M-->>G: 生成token：下一步动作或回复
+      G-->>A: 转换为agent需要的协议
+      opt 模型要求执行工具
+        A->>S: 执行shell / 编辑 / 测试
+        S-->>A: 输出与状态，加入下一轮上下文
+      end
+    end
+    A-->>J: AgentResult及结束状态
+    J->>S: 保存候选补丁
+    J->>S: 销毁任务sandbox
+    Note over J,S: 为候选另外创建新的判题sandbox，执行官方测试
+    J->>G: 完成session，写出轨迹
+    Note over J,G: 全部任务结束后关闭Gateway，评测脚本退出

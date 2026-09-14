@@ -1,0 +1,3228 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Uni-Agent API接口总览（固定版本）</title><link rel="stylesheet" href="../style.css"></head><body><header><a href="../index.html"><strong>Uni-Agent × AMD ROCm · 实验记录</strong></a><small>实验 2026-09-12 · 整理 2026-09-14 · 架构、实验结果与可追溯证据</small></header><div class="layout"><nav><input id="nav-search" placeholder="筛选章节"><div id="nav-links"><h3>阅读入口</h3><a class="" href="../index.html">Uni-Agent × AMD ROCm：实验总结与架构说明</a><a class="" href="../00-executive-summary.html">汇报摘要：现有 AMD 机器上完成了什么</a><a class="" href="../01-scope-and-terminology.html">范围与术语：这次到底跑了什么</a><h3>架构与流程</h3><a class="" href="../architecture/01-deployment.html">实际部署：容器、程序和模型分别在哪里</a><a class="" href="../architecture/02-agent-task-flow.html">一道任务的执行流程：谁启动谁，何时调用模型</a><a class="" href="../architecture/03-apis-and-lifecycle.html">API与生命周期：常驻daemon、临时Gateway和任务sandbox</a><h3>实验</h3><a class="" href="../experiments/index.html">实验目录：跑了什么，得到了什么</a><a class="" href="../experiments/01-model-and-official-examples.html">E01：模型服务与官方example</a><a class="" href="../experiments/02-data-and-controls.html">E02：数据选择、环境正负控制与独立判题</a><a class="" href="../experiments/03-swe-agent-comparison.html">E03：三种agent在同一30B模型上的SWE对照</a><a class="" href="../experiments/04-docker-sandbox.html">E04：本地Docker sandbox方案</a><a class="" href="../experiments/05-e2b-sandbox.html">E05：远端E2B兼容sandbox</a><a class="" href="../experiments/06-serving-tp-and-aiter.html">E06：ROCm推理性能——TP1/TP4与AITER配置</a><a class="" href="../experiments/07-replica-scaling.html">E07：一个模型副本与两个模型副本</a><a class="" href="../experiments/08-trajectories.html">E08：Gateway轨迹与后训练准备范围</a><a class="" href="../experiments/09-reproducibility-validation.html">E09：环境、实现与复现交付验收</a><h3>结果与结论</h3><a class="" href="../results/01-case-studies.html">五个真实案例：agent到底做了什么</a><a class="" href="../results/02-conclusions-and-next-steps.html">结论、适用范围与下一步</a><a class="" href="../results/03-per-case-matrix.html">全部28题的正式结果矩阵</a><h3>复现</h3><a class="" href="../reproduce/01-environment-and-versions.html">固定环境、模型、数据与容器布局</a><a class="" href="../reproduce/02-replay-guide.html">复现指南：从现有lab重跑，以及迁移到新环境</a><a class="" href="../reproduce/scripts/index.html">脚本快照的用途</a><h3>参考与证据</h3><a class="" href="01-community-comparison.html">社区方案对比：放在正确的层次上看</a><a class="" href="02-evidence-index.html">证据索引与文件来源</a><a class="active" href="03-uni-agent-api-reference.html">Uni-Agent API接口总览（固定版本）</a><a class="" href="04-sandbox-and-verdal-api-reference.html">Sandbox API总览：Uni-Agent、Docker与verdal/E2B</a><h3>文档工具</h3><a class="" href="../tools/index.html">文档生成与校验工具</a></div></nav><main><div class="scope">范围：固定30B模型的agent推理、sandbox、评测和轨迹验证；没有执行后训练。</div><p class="source"><a href="../../references/03-uni-agent-api-reference.md">查看Markdown源文件</a></p><h1 id="uni-agent-api">Uni-Agent API接口总览（固定版本）</h1>
+<blockquote>
+<p>基于 <code>verl-project/uni-agent@10743439dd0a19da44a94cccad069b135d957bf1</code>，整理日期2026-09-14。<br />
+本文同时覆盖 <strong>Gateway HTTP接口、Python/Ray入口、agent/tool/task扩展接口、训练适配与路由接口</strong>。Sandbox的逐项方法、Docker Engine与verdal/E2B接口放在<a href="04-sandbox-and-verdal-api-reference.html">另一份独立文档</a>。</p>
+</blockquote>
+<p>源码采用实验checkout；其日志模块有已记录的本地fork修复，见<a href="../../reproduce/patches/uni-agent-logging-fork.patch">补丁</a>，不改变本文所列接口签名。机器清单保存实际源文件hash。</p>
+<h2 id="1-api">1. 如何理解“所有API”</h2>
+<p>Uni-Agent主要是Python框架，不是一套把所有操作都暴露为REST的服务。本版本Gateway源码自己注册了<strong>两个业务HTTP路由</strong>；创建session、启动agent、运行任务等主要是Python或Ray方法。</p>
+<p>本文正文列出接入所需的接口、参数、功能与返回值；附录列出该版本<code>uni_agent/</code>下所有<strong>公开名称的声明及其公开方法</strong>，包括扩展/实现层，避免只列本次用过的几个函数。下划线私有辅助函数、继承自Pydantic/Ray/vLLM等依赖的全部方法不冒充Uni-Agent自己的API。<code>_GatewayActor</code>是例外：它是导出<code>GatewayActor</code>的实际实现，本文明确标注。</p>
+<p>状态说明：<strong>本次使用</strong>表示实验调用过这条路径，不代表穷尽了所有入参；<strong>源码接口</strong>表示代码存在但本次没有验证该功能。路由与声明的机器可读清单见<a href="../../evidence/api-inventory.json">api-inventory.json</a>。</p>
+<h2 id="2">2. 接口分层速查</h2>
+<table>
+<thead>
+<tr>
+<th>层次</th>
+<th>典型接口</th>
+<th>调用方式</th>
+<th>本次情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>模型请求入口</td>
+<td>Gateway的chat/completions、messages</td>
+<td>HTTP POST</td>
+<td>三种agent正式评测使用</td>
+</tr>
+<tr>
+<td>Session管理</td>
+<td><code>create_session/finalize_session/abort_session</code></td>
+<td>Python异步方法或Ray actor调用</td>
+<td>直接使用<code>_GatewayActor</code>创建/结束session</td>
+</tr>
+<tr>
+<td>Agent</td>
+<td><code>build_agent</code>、<code>Agent.run</code></td>
+<td>Python</td>
+<td>ReAct、Claude Code、Mini</td>
+</tr>
+<tr>
+<td>Task</td>
+<td><code>get_task</code>、<code>Task.run</code>、配置解析</td>
+<td>Python</td>
+<td>官方单题及自写driver使用相关组件</td>
+</tr>
+<tr>
+<td>Tool</td>
+<td><code>Toolbox.call</code>、模型可见函数schema</td>
+<td>Python + 模型tool call协议</td>
+<td>ReAct与sandbox示例</td>
+</tr>
+<tr>
+<td>Sandbox</td>
+<td><code>start/exec/read_file/stop</code>等</td>
+<td>Python；provider再调用外部服务</td>
+<td>Docker与实验E2B适配器</td>
+</tr>
+<tr>
+<td>训练适配</td>
+<td><code>generate_sequences</code>、RolloutAdapter</td>
+<td>Python/Ray/TransferQueue</td>
+<td>本次未运行训练闭环</td>
+</tr>
+<tr>
+<td>Agent-aware router</td>
+<td><code>KVCAwareBalancer.acquire_server</code>等</td>
+<td>Python/Ray后端接口</td>
+<td>本次双副本实验未使用该router</td>
+</tr>
+<tr>
+<td>日志与观测</td>
+<td><code>sample_logging</code>、metric/trace facade</td>
+<td>Python</td>
+<td>使用任务日志，未单独验收rl-insight部署</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-gateway-http-api">3. Gateway HTTP API：业务路由完整列表</h2>
+<p>设Gateway根地址为<code>http://&lt;gateway-host&gt;:&lt;port&gt;</code>。必须先由Python/Ray创建session，以下HTTP调用才能使用该<code>session_id</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法与路径</th>
+<th>功能</th>
+<th>主要请求字段</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST /sessions/{session_id}/v1/chat/completions</code></td>
+<td>接收OpenAI兼容聊天/工具请求，交给session和模型backend生成</td>
+<td><code>messages</code>、<code>model</code>、<code>tools</code>、<code>tool_choice</code>、<code>stream</code>及允许的采样字段</td>
+<td>Chat Completion JSON或SSE，含assistant文本/tool_calls与usage</td>
+</tr>
+<tr>
+<td><code>POST /sessions/{session_id}/v1/messages</code></td>
+<td>接收Anthropic兼容请求，供Claude Code等使用</td>
+<td><code>messages</code>、<code>system</code>、<code>model</code>、<code>tools</code>、<code>tool_choice</code>、<code>stream</code>、<code>max_tokens</code>、<code>stop_sequences</code>等</td>
+<td>Anthropic风格message JSON或SSE事件</td>
+</tr>
+</tbody>
+</table>
+<p>来源：<a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/gateway.py">gateway.py</a>。</p>
+<h3 id="openai">OpenAI兼容请求的实际范围</h3>
+<ul>
+<li><code>messages</code>必须是非空列表；消息支持role/content、assistant的tool_calls、tool消息的tool_call_id/name等字段。</li>
+<li><code>tools</code>使用OpenAI function schema；配置的tokenizer、chat template和tool parser必须与模型匹配。</li>
+<li><code>tool_choice</code>支持<code>auto</code>和<code>none</code>；<code>none</code>会移除本次注入的tools。指定某个函数、<code>required</code>等选择方式不受支持。</li>
+<li>只支持<code>n=1</code>；任何非<code>null</code>的<code>response_format</code>均被拒绝，不能据此宣称支持JSON schema structured output。</li>
+<li>默认允许客户端覆盖<code>temperature/top_p/top_k/max_tokens/stop</code>。实际可覆盖集合由<code>GatewayActorConfig.allowed_request_sampling_param_keys</code>决定。</li>
+<li>本次正式作业只允许请求覆盖<code>stop</code>，其余采样参数由session固定，以免CLI默认值改变比较条件。</li>
+<li>请求的<code>model</code>主要用于响应标识；实际模型backend由Gateway部署时绑定，不会仅凭该字符串自动加载另一套权重。</li>
+</ul>
+<h3 id="anthropic">Anthropic兼容请求的实际范围</h3>
+<ul>
+<li><code>system</code>可为字符串或文本block列表；messages支持文本、tool_use、tool_result及源码支持的图像形式。</li>
+<li>工具定义采用<code>name/description/input_schema</code>，内部转换为统一工具schema。</li>
+<li><code>tool_choice</code>支持字符串或对象形式的<code>auto/none</code>，不支持强制指定某个工具或<code>any</code>。</li>
+<li><code>stop_sequences</code>在允许覆盖stop时映射为内部<code>stop</code>。</li>
+<li><code>cache_control</code>等缓存提示不会变成训练采样参数；存在的兼容字段不代表后端兑现对应缓存能力。</li>
+<li>多模态还要求processor、模型与backend配套；本次没有做多模态验收。<code>redacted_thinking</code>等不支持的内容会被拒绝。</li>
+</ul>
+<h3 id="_1">返回、流式和错误</h3>
+<p>JSON响应包含相应协议的文本/工具块、停止原因与token usage。<code>stream=true</code>会使用SSE封装；本版本先等待<code>session.run_generation</code>得到完整outcome，再组织SSE输出，<strong>不能把它等同于后端逐token实时透传</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>情况</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正常生成</td>
+<td>返回JSON或SSE</td>
+</tr>
+<tr>
+<td>JSON解析失败、adapter拒绝的参数</td>
+<td>通常HTTP 400及对应协议错误体</td>
+</tr>
+<tr>
+<td>session不存在或已被结束移除</td>
+<td>HTTP 404</td>
+</tr>
+<tr>
+<td>未处理的backend/codec异常</td>
+<td>通常HTTP 500；具体见错误体和任务日志</td>
+</tr>
+</tbody>
+</table>
+<p>本版本路由代码没有实现API-key身份校验。SDK所需的占位key不构成安全认证；若对外提供服务，访问控制需要另外实现。</p>
+<h3 id="http">最小HTTP调用示意</h3>
+<p>以下只展示请求形状，host、port、session必须替换为实际已创建的实例：</p>
+<pre><code class="language-bash">curl -X POST 'http://&lt;gateway-host&gt;:&lt;port&gt;/sessions/&lt;session-id&gt;/v1/chat/completions' \
+  -H 'Content-Type: application/json' \
+  -d '{&quot;model&quot;:&quot;Qwen3-Coder-30B-A3B-Instruct&quot;,&quot;messages&quot;:[{&quot;role&quot;:&quot;user&quot;,&quot;content&quot;:&quot;Reply with OK only.&quot;}],&quot;max_tokens&quot;:64}'
+</code></pre>
+<p>Claude Code的<code>ANTHROPIC_BASE_URL</code>应为<code>http://&lt;gateway-host&gt;:&lt;port&gt;/sessions/&lt;session-id&gt;</code>，由CLI再追加<code>/v1/messages</code>；OpenAI兼容客户端的base_url则以<code>/sessions/&lt;session-id&gt;/v1</code>结尾。</p>
+<h3 id="_2">默认文档路由与不存在的控制路由</h3>
+<p><code>FastAPI()</code>默认还提供<code>GET /openapi.json</code>、<code>/docs</code>、<code>/docs/oauth2-redirect</code>、<code>/redoc</code>。这些是自动文档路由；因业务端点直接读取原始Request，自动schema不一定完整描述请求体。</p>
+<p>本版本没有定义<code>POST /sessions</code>、<code>GET /sessions</code>、<code>POST /agents/run</code>、<code>POST /tasks/run</code>或Gateway自身的<code>/v1/models</code>、<code>/v1/completions</code>接口。不能把下面的Python方法直接拼成HTTP URL。vLLM自己的这些路由属于另一层服务。</p>
+<h2 id="4-gateway-python-ray">4. Gateway Python / Ray管理接口</h2>
+<p><code>uni_agent.gateway.GatewayActor</code>是Ray包装的actor；通过<code>actor.method.remote(...)</code>调用。<code>uni_agent.gateway.gateway._GatewayActor</code>是内部实现类，本次实验直接实例化它以运行独立调试路径。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>主要参数</th>
+<th>功能与返回</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>start()</code></td>
+<td>无</td>
+<td>启动Gateway HTTP服务；之后才可创建session</td>
+</tr>
+<tr>
+<td><code>create_session(session_id, metadata=None, sampling_params=None)</code></td>
+<td>唯一ID、任务metadata、采样参数</td>
+<td>创建session，返回<code>SessionHandle(session_id, base_url)</code>；重复ID报错</td>
+</tr>
+<tr>
+<td><code>get_session_state(session_id)</code></td>
+<td>ID</td>
+<td>返回活动session的状态快照，便于调试</td>
+</tr>
+<tr>
+<td><code>finalize_session(session_id)</code></td>
+<td>ID</td>
+<td>完成并移除session，返回<code>list[Trajectory]</code></td>
+</tr>
+<tr>
+<td><code>abort_session(session_id)</code></td>
+<td>ID</td>
+<td>中止并移除session；不存在时可幂等返回</td>
+</tr>
+<tr>
+<td><code>shutdown()</code></td>
+<td>无</td>
+<td>关闭HTTP服务；调用方仍应妥善完成/中止正在使用的session</td>
+</tr>
+</tbody>
+</table>
+<p><code>GatewayManager(llm_client, *, gateway_count, gateway_actor_config=None)</code>管理一组Ray GatewayActor，依赖已有Ray CPU节点和模型客户端。其API为：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>create_session(session_id, **kwargs)</code></td>
+<td>选择当前活动session最少的actor并登记路由</td>
+</tr>
+<tr>
+<td><code>finalize_session(session_id)</code></td>
+<td>在所属actor完成session、释放计数、返回轨迹</td>
+</tr>
+<tr>
+<td><code>abort_session(session_id)</code></td>
+<td>取消session并释放管理记录</td>
+</tr>
+<tr>
+<td><code>shutdown()</code></td>
+<td>关闭所管理的actor服务并清空管理状态</td>
+</tr>
+</tbody>
+</table>
+<p>本次未使用GatewayManager集群池；使用的是直接创建的单个<code>_GatewayActor</code>。管理方法不是HTTP路由。</p>
+<h3 id="gatewayactorconfig">GatewayActorConfig与数据对象</h3>
+<table>
+<thead>
+<tr>
+<th>配置组</th>
+<th>字段</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>模型处理</td>
+<td><code>tokenizer</code>, <code>processor</code>, <code>hf_model_type</code></td>
+<td>对话编码、模型相关token拼接、多模态处理</td>
+</tr>
+<tr>
+<td>工具解析</td>
+<td><code>tool_parser_name</code>, <code>rollout_backend</code>, <code>enable_tool_parser_cache</code></td>
+<td>解析模型生成的工具调用</td>
+</tr>
+<tr>
+<td>模板/多模态</td>
+<td><code>apply_chat_template_kwargs</code>, <code>mm_processor_kwargs</code>, <code>vision_info_extractor</code>, <code>vision_info_extractor_kwargs</code></td>
+<td>模板与媒体预处理扩展</td>
+</tr>
+<tr>
+<td>请求参数控制</td>
+<td><code>allowed_request_sampling_param_keys</code></td>
+<td>控制客户端能覆盖哪些采样项</td>
+</tr>
+<tr>
+<td>容量</td>
+<td><code>prompt_length</code>, <code>response_length</code></td>
+<td>两者均配置时限制总轨迹容量</td>
+</tr>
+<tr>
+<td>上下文修改</td>
+<td><code>enable_last_assistant_rollback</code></td>
+<td>是否允许回滚并复用最新assistant链</td>
+</tr>
+</tbody>
+</table>
+<p><code>SessionHandle</code>包含<code>session_id/base_url</code>。<code>Trajectory</code>字段包括<code>prompt_ids</code>、<code>response_ids</code>、<code>response_mask</code>、<code>response_logprobs</code>、<code>finished</code>、<code>reward_score</code>、<code>reward_metrics</code>、<code>num_turns</code>、<code>chain_id</code>、<code>routed_experts</code>、<code>multi_modal_data</code>、<code>extra_fields</code>。具体导出器可能只序列化其中一部分。</p>
+<p>要保存logprob，需要在session采样参数中显式启用相应开关；后端返回logprob不代表session一定保存。历史主实验与独立logprob验收的区别见<a href="../experiments/08-trajectories.html">轨迹文档</a>。</p>
+<h3 id="sessioncodec">高级session/codec接口</h3>
+<table>
+<thead>
+<tr>
+<th>接口</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GatewaySession.run_generation(request, backend)</code></td>
+<td>编码上下文、调用backend、更新链与轨迹，返回GenerationOutcome</td>
+</tr>
+<tr>
+<td><code>GatewaySession.finalize()</code> / <code>abort()</code></td>
+<td>完成或取消session</td>
+</tr>
+<tr>
+<td><code>GatewaySession.snapshot_state()</code> / <code>sampling_params</code></td>
+<td>状态快照与采样配置</td>
+</tr>
+<tr>
+<td><code>MessageCodec.build_initial_tokens(...)</code></td>
+<td>初始对话token化</td>
+</tr>
+<tr>
+<td><code>MessageCodec.merge_assistant_tokens(...)</code></td>
+<td>拼接模型输出并维护mask/logprob</td>
+</tr>
+<tr>
+<td><code>MessageCodec.merge_context_tokens(...)</code></td>
+<td>拼接后续工具/上下文token</td>
+</tr>
+<tr>
+<td><code>MessageCodec.decode_response(...)</code></td>
+<td>将模型输出解码成assistant消息与工具调用</td>
+</tr>
+<tr>
+<td><code>MessageCodec.extract_multi_modal_data(...)</code></td>
+<td>提取媒体数据，需相应配置</td>
+</tr>
+<tr>
+<td><code>MessageCodec.canonicalize_message_for_prefix_comparison(...)</code></td>
+<td>规范化消息以进行前缀比较</td>
+</tr>
+</tbody>
+</table>
+<p>这些是框架内部协作/扩展接口，普通harness接入通常只需HTTP端点与session管理。</p>
+<h2 id="5-agent">5. Agent接口</h2>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>输入</th>
+<th>功能 / 返回</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>build_agent(config)</code></td>
+<td>具体<code>AgentConfig</code></td>
+<td>按name懒加载并构造Agent实例</td>
+</tr>
+<tr>
+<td><code>get_agent_cls(name)</code></td>
+<td>注册名</td>
+<td>返回具体Agent类</td>
+</tr>
+<tr>
+<td><code>register_agent(name)</code></td>
+<td>类装饰器</td>
+<td>注册自定义agent；位于<code>agents.registry</code></td>
+</tr>
+<tr>
+<td><code>Agent.from_config(config)</code></td>
+<td>配置</td>
+<td>类级构造入口</td>
+</tr>
+<tr>
+<td><code>await Agent.run(sandbox=..., messages=..., workdir=None)</code></td>
+<td>已启动的sandbox、消息、工作目录</td>
+<td>执行一轮任务，返回<code>AgentResult</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>AgentResult</code>包含<code>output/transcript/info/finished</code>。它不负责最终任务reward；评分属于Task层。<code>finished</code>允许True/False/None。</p>
+<h3 id="agent">已注册的agent</h3>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>实现</th>
+<th>运行方式与主要特有配置</th>
+<th>本次</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>react</code></td>
+<td><code>ReActAgent</code></td>
+<td>Python循环；<code>tools/max_steps/action_timeout/timeout_budget</code></td>
+<td>使用</td>
+</tr>
+<tr>
+<td><code>claude_code</code></td>
+<td><code>ClaudeCodeAgent</code></td>
+<td>运行真实CLI；<code>max_turns/run_timeout/enable_web_tools/enable_subagents/disable_slash_commands/verbose/extra_args/extra_env</code></td>
+<td>使用</td>
+</tr>
+<tr>
+<td><code>mini_swe_agent</code></td>
+<td><code>MiniSweAgentAgent</code></td>
+<td>运行外部Mini；<code>step_limit/run_timeout/conda_env/tool_python/run_agent_script</code></td>
+<td>使用</td>
+</tr>
+<tr>
+<td><code>mem_agent</code></td>
+<td><code>MemAgent</code></td>
+<td>记忆型流程；<code>max_steps/max_memorization_length/max_chunks/max_final_response_length</code></td>
+<td>源码接口，未实测</td>
+</tr>
+</tbody>
+</table>
+<p>共同的<code>AgentConfig</code>字段为<code>name/model</code>。<code>ModelConfig</code>字段为<code>base_url/api_key/model_name/temperature/top_p/top_k/max_total_tokens/max_tokens_per_turn</code>，并有<code>sampling_params()</code>导出已配置采样项。</p>
+<p>该版本ReAct对<code>max_total_tokens</code>的实际更新规则使用最近一次prompt+completion计数，不能仅凭字段说明把它当成累计生成配额。Claude/Mini有自己的循环及停止语义。</p>
+<h2 id="6-task">6. Task与配置接口</h2>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>功能 / 返回</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>get_task(config_or_mapping)</code></td>
+<td>根据name创建Task</td>
+</tr>
+<tr>
+<td><code>get_task_cls(name)</code></td>
+<td>返回注册Task类，位于<code>tasks.registry</code></td>
+</tr>
+<tr>
+<td><code>register_task(name)</code></td>
+<td>注册新任务家族</td>
+</tr>
+<tr>
+<td><code>TaskConfigResolver.from_file(path)</code></td>
+<td>读取YAML任务默认配置</td>
+</tr>
+<tr>
+<td><code>resolver.resolve(sample_config, runtime_model=None)</code></td>
+<td>合并任务默认值、样本设置和运行时模型绑定，返回配置dict</td>
+</tr>
+<tr>
+<td><code>render_prompt_template(metadata, prompt_template)</code></td>
+<td>根据metadata渲染纯文本聊天模板，返回<code>list[dict]</code>消息列表</td>
+</tr>
+<tr>
+<td><code>await Task.run()</code></td>
+<td>执行任务家族的完整逻辑，返回<code>TaskResult</code></td>
+</tr>
+<tr>
+<td><code>Task.build_sandbox()</code> / <code>Task.build_agent()</code></td>
+<td>按配置构建对象；构建sandbox对象不等于已启动</td>
+</tr>
+</tbody>
+</table>
+<p><code>TaskConfig</code>字段：<code>name/sandbox/agent/prompt/prompt_template/metadata</code>。<code>TaskResult</code>字段：<code>reward/accuracy/finished/extra_info</code>；数值结果要求有限。</p>
+<table>
+<thead>
+<tr>
+<th>任务name</th>
+<th>家族与常用附加字段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>swe_bench</code></td>
+<td>SWE-bench；<code>run_oracle_solution/eval_timeout</code></td>
+</tr>
+<tr>
+<td><code>swe_bench_multilingual</code></td>
+<td>多语言SWE；<code>run_oracle_solution/eval_timeout</code></td>
+</tr>
+<tr>
+<td><code>swe_rebench</code></td>
+<td>SWE-reBench；<code>run_oracle_solution/eval_timeout</code></td>
+</tr>
+<tr>
+<td><code>terminal_bench</code></td>
+<td>终端任务；<code>run_oracle_solution</code></td>
+</tr>
+<tr>
+<td><code>hotpotqa</code></td>
+<td>QA任务；<code>ground_truth</code></td>
+</tr>
+<tr>
+<td><code>harbor</code></td>
+<td>Harbor任务；<code>harbor_env/timeout_multiplier/override_cpus/override_memory_mb</code>及Harbor agent设置</td>
+</tr>
+</tbody>
+</table>
+<p>各家族提供预处理与评分函数，完整名称见附录。SWE本次实际使用 <code>compute_reward(metadata, sandbox, eval_timeout=600.0)</code>；它在sandbox运行测试并返回resolved、eval_completed、eval_report等结果dict，不是HTTP评分端点。</p>
+<p>正式28题的外层driver调用Task配置与agent构造，再自行保存候选和独立评分；官方示例则调用Task.run。二者不可混称为同一个完整训练入口。</p>
+<h2 id="7-tool">7. Tool接口及模型可见函数</h2>
+<table>
+<thead>
+<tr>
+<th>Python API</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Toolbox.from_specs(specs, sandbox=...)</code></td>
+<td>按<code>{name,...配置}</code>列表绑定工具</td>
+</tr>
+<tr>
+<td><code>Toolbox.all(sandbox=...)</code></td>
+<td>使用全部已注册工具</td>
+</tr>
+<tr>
+<td><code>names()</code> / <code>schemas()</code></td>
+<td>工具名及提供给模型的function schema</td>
+</tr>
+<tr>
+<td><code>start()</code> / <code>close()</code></td>
+<td>初始化、关闭工具状态</td>
+</tr>
+<tr>
+<td><code>async with toolbox</code> / <code>entered(retry=..., timeout=...)</code></td>
+<td>带清理的工具生命周期</td>
+</tr>
+<tr>
+<td><code>await toolbox.call(name, args=None, *, timeout=None)</code></td>
+<td>解析dict/JSON字符串参数、验证并分发调用，返回ToolResult</td>
+</tr>
+<tr>
+<td><code>Tool.schema()</code> / <code>Tool.config_schema()</code></td>
+<td>模型参数schema / 构造配置schema</td>
+</tr>
+<tr>
+<td><code>await Tool.run(args, timeout=None)</code></td>
+<td>自定义工具实现入口</td>
+</tr>
+<tr>
+<td><code>register_tool(name)</code> / <code>get_tool(name, sandbox, **kwargs)</code></td>
+<td>注册工具类 / 构造绑定sandbox的工具实例，位于<code>tools.base</code></td>
+</tr>
+<tr>
+<td><code>ToolResult.to_observation(max_length=100000)</code></td>
+<td>格式化并按字符长度裁剪观察结果</td>
+</tr>
+</tbody>
+</table>
+<p><code>ToolResult</code>含<code>text/status</code>；<code>ToolStatus</code>为<code>ok/format_error/error/timeout</code>。<code>ToolCallFormatError</code>用于错误调用，<code>ToolError</code>用于可反馈给模型的执行错误。它们不是HTTP状态码。</p>
+<table>
+<thead>
+<tr>
+<th>注册名 / 模型看到的名字</th>
+<th>参数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stateful_shell</code> / <code>shell</code></td>
+<td><code>command</code></td>
+<td>运行持久shell命令，保留cwd/env；构造配置含env_vars、command_timeout、width、height</td>
+</tr>
+<tr>
+<td><code>str_replace_editor</code></td>
+<td><code>command/path</code>及具体编辑参数</td>
+<td>查看、创建、替换、插入、撤销文件编辑</td>
+</tr>
+<tr>
+<td><code>submit</code></td>
+<td>无参数 <code>{}</code></td>
+<td>表示代码任务提交/结束，不自行判题或上传patch</td>
+</tr>
+<tr>
+<td><code>finish</code></td>
+<td><code>answer</code></td>
+<td>表示文本任务完成，返回最终回答</td>
+</tr>
+</tbody>
+</table>
+<p>Editor命令：<code>view</code>可用<code>view_range</code>；<code>create</code>要求<code>file_text</code>；<code>str_replace</code>要求<code>old_str</code>，可传<code>new_str</code>；<code>insert</code>要求<code>insert_line/new_str</code>；<code>undo_edit</code>撤销已记录编辑。路径指sandbox中的绝对路径。</p>
+<p>这些是ReAct工具接口。Claude Code和Mini内部的工具由各自harness实现，不都经过Uni-Agent Toolbox，也不应列成Uni-Agent新HTTP路由。</p>
+<h2 id="8">8. 训练框架适配接口（本次未运行训练）</h2>
+<table>
+<thead>
+<tr>
+<th>接口</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AgentRunner.__call__(session, raw_prompt, sample_index, **kwargs)</code></td>
+<td>单条agent任务的可调用协议，返回TaskResult或None</td>
+</tr>
+<tr>
+<td><code>AgentFramework.from_config(...)</code></td>
+<td>构造训练驱动的框架实现</td>
+</tr>
+<tr>
+<td><code>AgentFramework.generate_sequences(prompts: TensorDict)</code></td>
+<td>运行agent session并将轨迹写入TransferQueue</td>
+</tr>
+<tr>
+<td><code>GatewayAgentFramework.from_config(...)</code> / <code>generate_sequences(...)</code></td>
+<td>Gateway、runner、reward及轨迹后处理的集成实现</td>
+</tr>
+<tr>
+<td><code>build_gateway_manager(*, config, llm_client)</code></td>
+<td>根据训练配置构造Gateway池</td>
+</tr>
+<tr>
+<td><code>build_agent_framework(*, config, gateway_manager, ...)</code></td>
+<td>构造配置指定的框架</td>
+</tr>
+<tr>
+<td><code>AgentFrameworkWorker.generate_sequences(prompts)</code></td>
+<td>worker侧执行入口</td>
+</tr>
+<tr>
+<td><code>AgentFrameworkRolloutAdapter.create(*, config, llm_client, ...)</code></td>
+<td>将框架接到verl rollout系统</td>
+</tr>
+<tr>
+<td><code>generate_sequences(prompts)</code></td>
+<td>提交TQ批次，不等待全部rollout结果</td>
+</tr>
+<tr>
+<td><code>generate_sequences_and_wait(prompts)</code></td>
+<td>阻塞等待版，供独立运行使用</td>
+</tr>
+<tr>
+<td><code>framework.task_runner.run_task(...)</code></td>
+<td>用框架session执行任务，处理配置/网关绑定</td>
+</tr>
+<tr>
+<td><code>score_from_runner_result(...)</code></td>
+<td>从runner结果提取评分信息</td>
+</tr>
+<tr>
+<td><code>compute_multi_modal_inputs(processor, input_ids, multi_modal_data, mm_processor_kwargs=None)</code></td>
+<td>为单条样本计算多模态输入tensor</td>
+</tr>
+<tr>
+<td><code>compute_position_ids(processor, input_ids, attention_mask, multi_modal_inputs)</code></td>
+<td>计算纯文本或多模态位置ID</td>
+</tr>
+</tbody>
+</table>
+<p>这组接口涉及Ray、TensorDict、TransferQueue、verl及可选reward组件，不是HTTP训练API。本次没有调用它们完成loss或optimizer更新。</p>
+<h2 id="9-agent-aware-router">9. Agent-aware router接口</h2>
+<p>主要入口为<code>KVCAwareBalancer(servers, config=None, provider_factory=None)</code>，用于在多个模型服务之间排名和分配请求。本次双副本实验采用静态轮询，没有实际使用本模块。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>acquire_server(request_id, prompt_ids=None)</code></td>
+<td>路由并返回选中的server ID及handle</td>
+</tr>
+<tr>
+<td><code>release_server(server_id, request_id=None)</code></td>
+<td>请求完成后释放负载/粘性状态</td>
+</tr>
+<tr>
+<td><code>get_all_servers()</code> / <code>get_status()</code></td>
+<td>服务列表和调试状态</td>
+</tr>
+<tr>
+<td><code>get_total_inflight()</code></td>
+<td>当前总inflight数量</td>
+</tr>
+<tr>
+<td><code>add_servers(servers)</code> / <code>remove_servers(server_ids)</code></td>
+<td>动态更新服务池</td>
+</tr>
+<tr>
+<td><code>clear_sticky_cache()</code></td>
+<td>清除session粘性绑定</td>
+</tr>
+<tr>
+<td><code>register_call_back(event, fn)</code> / <code>un_register_call_back(event, fn)</code></td>
+<td>注册/移除acquire、release、移除server等回调</td>
+</tr>
+<tr>
+<td><code>require_acquire_fields()</code> / <code>require_release_fields()</code></td>
+<td>声明路由所需的请求字段</td>
+</tr>
+</tbody>
+</table>
+<p><code>KVCAwareConfig.from_config</code>解析策略/collector配置；<code>route(...)</code>进行副本排名。Strategy、Collector、Parser、Transport和Store公开名称见附录，主要供扩展实现使用。</p>
+<p><code>KvEventsHttpServer</code>扩展verl的vLLM服务，增加KV-event端口分配和<code>get_kv_events_endpoints()</code>。它调用vLLM的<code>build_app</code>，HTTP路由由相应vLLM版本和模型能力提供，不应把继承得到的整个vLLM API都算作Uni-Agent自定义API。</p>
+<h2 id="10-cli">10. 日志、观测与CLI</h2>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sample_logging(log_id, log_path=...)</code></td>
+<td>绑定本次执行的日志上下文与文件</td>
+</tr>
+<tr>
+<td><code>sample_logging.from_context(context)</code></td>
+<td>使用已有LogContext</td>
+</tr>
+<tr>
+<td><code>LogContext</code> / <code>get_current_log_context()</code></td>
+<td>跨执行边界传递、读取日志上下文</td>
+</tr>
+<tr>
+<td><code>rl_insight.metric_count/metric_gauge/metric_histogram</code></td>
+<td>可选指标输出</td>
+</tr>
+<tr>
+<td><code>rl_insight.trace_span</code></td>
+<td>可选完成span输出</td>
+</tr>
+<tr>
+<td><code>ENABLE_ENV</code></td>
+<td>rl-insight开关名<code>VERL_RL_INSIGHT_ENABLE</code></td>
+</tr>
+</tbody>
+</table>
+<p>上述观测开关未启用或依赖不可用时可降级，不代表已经部署观测后端。</p>
+<p>官方CLI示例包括<code>examples/inference/parallel_infer_api.py</code>（外部模型API评测）、<code>parallel_infer_verl.py</code>（verl rollout引擎路径）、<code>parallel_run_oracle.py</code>（gold控制）、<code>examples/gateway/debug_launcher.py</code>（独立Gateway调试）以及各task预处理模块。CLI参数属于脚本入口，不是HTTP端点。SDK/backend是否完整可用仍取决于安装依赖。</p>
+<h2 id="11-sandbox">11. Sandbox接口入口</h2>
+<p>Uni-Agent公开的sandbox对象包括<code>SandboxConfig/Sandbox/SandboxBackend/ExecResult/ImageMap/LocalSandbox/build_sandbox</code>，并可通过registry扩展provider。其完整方法、provider差异、Docker REST、verdal/E2B REST与RPC在<a href="04-sandbox-and-verdal-api-reference.html">Sandbox API独立文档</a>中列出。</p>
+<!-- API_INVENTORY_START -->
+
+<h2 id="12">12. 完整公开名称索引（源码附录）</h2>
+<p>静态索引共记录 <strong>238个类/函数声明、320个直接声明的方法（含构造器和选定生命周期方法）</strong>。这些数字包括Sandbox；其详细索引在独立Sandbox文档。属性getter计入声明数，不是额外网络接口。</p>
+<p>正文解释常用接入面；附录保留精确方法签名及源码首段docstring，包含实现层对象。名称公开不等于已承诺稳定SDK。签名中的self/cls不由调用方显式传入；异步方法需await；property按属性读取。</p>
+<h3 id="121-gatewayadaptersession">12.1 Gateway、adapter、session与轨迹</h3>
+<h4 id="uni_agentgatewayadaptersanthropic"><code>uni_agent.gateway.adapters.anthropic</code></h4>
+<p><strong><code>anthropic_error_body</code></strong> — 构造对应协议的错误响应体。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/anthropic.py#L54">源码</a></p>
+<pre><code class="language-python">anthropic_error_body(status_code: int, message: str) -&gt; dict[str, Any]
+</code></pre>
+<p><strong><code>anthropic_build_response</code></strong> — 将生成结果封装成对应协议的JSON响应。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/anthropic.py#L115">源码</a></p>
+<pre><code class="language-python">anthropic_build_response(outcome: GenerationOutcome, *, model: str) -&gt; dict[str, Any]
+</code></pre>
+<p><strong><code>anthropic_stream_response</code></strong> — Synthesize an Anthropic Messages SSE stream from a completed outcome. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/anthropic.py#L128">源码</a></p>
+<pre><code class="language-python">anthropic_stream_response(outcome: GenerationOutcome, *, model: str) -&gt; StreamingResponse
+</code></pre>
+<p><strong><code>anthropic_to_internal</code></strong> — Lower an Anthropic Messages request into the internal request shape. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/anthropic.py#L520">源码</a></p>
+<pre><code class="language-python">anthropic_to_internal(payload: dict, *, base_sampling_params: dict, allowed_sampling_keys: frozenset[str]) -&gt; InternalGenerationRequest
+</code></pre>
+<h4 id="uni_agentgatewayadaptersopenai"><code>uni_agent.gateway.adapters.openai</code></h4>
+<p><strong><code>openai_error_body</code></strong> — 构造对应协议的错误响应体。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/openai.py#L38">源码</a></p>
+<pre><code class="language-python">openai_error_body(status_code: int, message: str) -&gt; dict[str, Any]
+</code></pre>
+<p><strong><code>openai_build_response</code></strong> — 将生成结果封装成对应协议的JSON响应。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/openai.py#L78">源码</a></p>
+<pre><code class="language-python">openai_build_response(outcome: GenerationOutcome, *, model: str) -&gt; dict[str, Any]
+</code></pre>
+<p><strong><code>openai_stream_response</code></strong> — Synthesize an OpenAI chat.completion.chunk SSE stream from a completed outcome. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/openai.py#L99">源码</a></p>
+<pre><code class="language-python">openai_stream_response(outcome: GenerationOutcome, *, model: str) -&gt; StreamingResponse
+</code></pre>
+<p><strong><code>openai_to_internal</code></strong> — Lower an OpenAI chat-completions request into the internal request shape. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/openai.py#L197">源码</a></p>
+<pre><code class="language-python">openai_to_internal(payload: dict, *, base_sampling_params: dict, allowed_sampling_keys: frozenset[str]) -&gt; InternalGenerationRequest
+</code></pre>
+<h4 id="uni_agentgatewayadapterstypes"><code>uni_agent.gateway.adapters.types</code></h4>
+<p><strong><code>MalformedRequestError</code></strong> — Raised when adapter request lowering rejects a client payload. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/types.py#L13">源码</a></p>
+<p>继承：<code>ValueError</code>。</p>
+<p><strong><code>OpenAIChatCompletionFunction</code></strong> — <code>tool_calls[i].function</code> object inside an OpenAI chat message. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/types.py#L19">源码</a></p>
+<p>继承：<code>TypedDict</code>。</p>
+<p>直接声明字段：<code>name</code>、<code>arguments</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>OpenAIChatCompletionToolCall</code></strong> — One entry in an OpenAI assistant message's <code>tool_calls</code> array. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/types.py#L26">源码</a></p>
+<p>继承：<code>TypedDict</code>。</p>
+<p>直接声明字段：<code>id</code>、<code>type</code>、<code>function</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>OpenAIChatMessage</code></strong> — A single OpenAI chat-completion message. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/types.py#L34">源码</a></p>
+<p>继承：<code>TypedDict</code>。</p>
+<p>直接声明字段：<code>role</code>、<code>content</code>、<code>name</code>、<code>tool_calls</code>、<code>tool_call_id</code>、<code>reasoning_content</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>OpenAIChatCompletionTool</code></strong> — One entry in an OpenAI request <code>tools</code> array. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/types.py#L49">源码</a></p>
+<p>继承：<code>TypedDict</code>。</p>
+<p>直接声明字段：<code>type</code>、<code>function</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>OpenAIChatCompletionRequest</code></strong> — Incoming <code>POST /v1/chat/completions</code> request body shape. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/types.py#L56">源码</a></p>
+<p>继承：<code>TypedDict</code>。</p>
+<p>直接声明字段：<code>model</code>、<code>messages</code>、<code>tools</code>、<code>tool_choice</code>、<code>stream</code>、<code>n</code>、<code>response_format</code>、<code>temperature</code>、<code>top_p</code>、<code>top_k</code>、<code>max_tokens</code>、<code>stop</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>OpenAIChatCompletionUsage</code></strong> — Token usage block inside an OpenAI response. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/types.py#L73">源码</a></p>
+<p>继承：<code>TypedDict</code>。</p>
+<p>直接声明字段：<code>prompt_tokens</code>、<code>completion_tokens</code>、<code>total_tokens</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>OpenAIChatCompletionChoice</code></strong> — One entry in an OpenAI response <code>choices</code> array. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/types.py#L81">源码</a></p>
+<p>继承：<code>TypedDict</code>。</p>
+<p>直接声明字段：<code>index</code>、<code>message</code>、<code>finish_reason</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>OpenAIChatCompletionResponse</code></strong> — Outgoing <code>POST /v1/chat/completions</code> response body shape. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/types.py#L93">源码</a></p>
+<p>继承：<code>TypedDict</code>。</p>
+<p>直接声明字段：<code>id</code>、<code>object</code>、<code>created</code>、<code>model</code>、<code>choices</code>、<code>usage</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>AnthropicContentBlock</code></strong> — 实现层的数据/辅助声明；字段、类型与用途结合所属模块查阅。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/types.py#L104">源码</a></p>
+<p>继承：<code>TypedDict</code>。</p>
+<p>直接声明字段：<code>type</code>、<code>text</code>、<code>source</code>、<code>id</code>、<code>name</code>、<code>input</code>、<code>tool_use_id</code>、<code>content</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>AnthropicMessage</code></strong> — 实现层的数据/辅助声明；字段、类型与用途结合所属模块查阅。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/types.py#L115">源码</a></p>
+<p>继承：<code>TypedDict</code>。</p>
+<p>直接声明字段：<code>role</code>、<code>content</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>AnthropicRequest</code></strong> — 实现层的数据/辅助声明；字段、类型与用途结合所属模块查阅。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/adapters/types.py#L120">源码</a></p>
+<p>继承：<code>TypedDict</code>。</p>
+<p>直接声明字段：<code>model</code>、<code>messages</code>、<code>system</code>、<code>tools</code>、<code>tool_choice</code>、<code>stream</code>、<code>max_tokens</code>、<code>stop_sequences</code>、<code>temperature</code>、<code>top_p</code>、<code>top_k</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<h4 id="uni_agentgatewayconfig"><code>uni_agent.gateway.config</code></h4>
+<p><strong><code>GatewayActorConfig</code></strong> — Model and session configuration forwarded into each gateway actor. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/config.py#L16">源码</a></p>
+<p>直接声明字段：<code>tokenizer</code>、<code>processor</code>、<code>tool_parser_name</code>、<code>rollout_backend</code>、<code>enable_tool_parser_cache</code>、<code>hf_model_type</code>、<code>apply_chat_template_kwargs</code>、<code>mm_processor_kwargs</code>、<code>allowed_request_sampling_param_keys</code>、<code>vision_info_extractor</code>、<code>vision_info_extractor_kwargs</code>、<code>prompt_length</code>、<code>response_length</code>、<code>enable_last_assistant_rollback</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<h4 id="uni_agentgatewaygateway"><code>uni_agent.gateway.gateway</code></h4>
+<p><strong><code>_GatewayActor</code></strong> — Ray actor implementation exposed as <code>GatewayActor = ray.remote(...)</code>. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/gateway.py#L54">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, config: GatewayActorConfig, backend)</code></td>
+<td>Create an actor with model codec configuration and backend client.</td>
+</tr>
+<tr>
+<td><code>async start(self) -&gt; None</code></td>
+<td>Start the FastAPI server backing this gateway actor.</td>
+</tr>
+<tr>
+<td><code>async shutdown(self) -&gt; None</code></td>
+<td>Stop the FastAPI server backing this gateway actor.</td>
+</tr>
+<tr>
+<td><code>async create_session(self, session_id: str, metadata: dict[str, Any] \| None=None, sampling_params: dict[str, Any] \| None=None) -&gt; SessionHandle</code></td>
+<td>Create an actor-owned session and return its provider-compatible handle.</td>
+</tr>
+<tr>
+<td><code>async finalize_session(self, session_id: str) -&gt; list[Trajectory]</code></td>
+<td>Finalize a session, remove it from the actor, and return its trajectories.</td>
+</tr>
+<tr>
+<td><code>async abort_session(self, session_id: str) -&gt; None</code></td>
+<td>Abort a session and remove it from the actor if it still exists.</td>
+</tr>
+<tr>
+<td><code>async get_session_state(self, session_id: str) -&gt; dict[str, Any]</code></td>
+<td>Return a snapshot of a live session's state.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentgatewaymanager"><code>uni_agent.gateway.manager</code></h4>
+<p><strong><code>GatewayManager</code></strong> — Owns gateway actors and routes sessions to them. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/manager.py#L18">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, llm_client: LLMServerClient, *, gateway_count: int, gateway_actor_config: GatewayActorConfig \| None=None)</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>async create_session(self, session_id: str, **kwargs)</code></td>
+<td>Create a session on the least-loaded actor, record the route, and return its handle.</td>
+</tr>
+<tr>
+<td><code>async finalize_session(self, session_id: str)</code></td>
+<td>Finalize a session on its owning actor, release the route, and return its trajectories.</td>
+</tr>
+<tr>
+<td><code>async abort_session(self, session_id: str) -&gt; None</code></td>
+<td>Abort a routed session on its owning actor and release the route.</td>
+</tr>
+<tr>
+<td><code>async shutdown(self) -&gt; None</code></td>
+<td>Stop owned gateway actors and clear routing state.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentgatewaysessioncodec"><code>uni_agent.gateway.session.codec</code></h4>
+<p><strong><code>initialize_generation_prompt</code></strong> — Initialize the token suffix inserted by <code>add_generation_prompt=True</code>. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/session/codec.py#L51">源码</a></p>
+<pre><code class="language-python">initialize_generation_prompt(processing_class, **apply_chat_template_kwargs) -&gt; list[int]
+</code></pre>
+<p><strong><code>MessageCodec</code></strong> — Model-scoped request codec used by gateway sessions. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/session/codec.py#L74">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, tokenizer, *, processor=None, vision_info_extractor=None, vision_info_extractor_kwargs: dict[str, Any] \| None=None, tool_parser_name: str \| None=None, rollout_backend: str \| None=None, enable_tool_parser_cache: bool=True, hf_model_type: str \| None=None, apply_chat_template_kwargs: dict[str, Any] \| None=None, mm_processor_kwargs: dict[str, Any] \| None=None)</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>@property mm_processor_kwargs(self) -&gt; dict[str, Any]</code></td>
+<td>Return processor kwargs shared by CT rendering and inference.</td>
+</tr>
+<tr>
+<td><code>@property generation_prompt(self) -&gt; list[int]</code></td>
+<td>Return the configured chat template's generation-prompt token suffix.</td>
+</tr>
+<tr>
+<td><code>@property turn_separator(self) -&gt; list[int]</code></td>
+<td>Return the configured chat template's inter-turn separator tokens.</td>
+</tr>
+<tr>
+<td><code>async extract_multi_modal_data(self, messages: list[dict[str, Any]]) -&gt; tuple[list[Any] \| None, list[Any] \| None]</code></td>
+<td>Extract image and video inputs when a processor-backed request needs them.</td>
+</tr>
+<tr>
+<td><code>build_initial_tokens(self, messages: list[dict[str, Any]], tools: list[dict[str, Any]] \| None=None, image_data: list[Any] \| None=None, video_data: list[Any] \| None=None) -&gt; list[int]</code></td>
+<td>Build the initial runtime token stream.</td>
+</tr>
+<tr>
+<td><code>merge_assistant_tokens(self, runtime_token_ids: list[int], assistant_token_ids: list[int], response_mask: list[int], response_logprobs: list[float] \| None=None, *, assistant_logprobs: list[float] \| None=None) -&gt; tuple[list[int], list[int], list[float] \| None]</code></td>
+<td>Merge model-generated tokens and align response metadata.</td>
+</tr>
+<tr>
+<td><code>merge_context_tokens(self, previous_messages: list[dict[str, Any]], updated_messages: list[dict[str, Any]], runtime_token_ids: list[int], response_mask: list[int], response_logprobs: list[float] \| None=None, *, tools: list[dict[str, Any]] \| None=None, image_data: list[Any] \| None=None, video_data: list[Any] \| None=None) -&gt; tuple[list[int], list[int], list[float] \| None]</code></td>
+<td>Merge appended context and align response metadata.</td>
+</tr>
+<tr>
+<td><code>async decode_response(self, response_ids: list[int], *, tools: list[dict[str, Any]] \| None=None, stop_reason: str \| None=None) -&gt; tuple[dict[str, Any], str]</code></td>
+<td>Decode model output tokens into an assistant message and finish reason.</td>
+</tr>
+<tr>
+<td><code>canonicalize_message_for_prefix_comparison(self, message: dict[str, Any]) -&gt; dict[str, Any]</code></td>
+<td>Canonicalize one message before session prefix comparison.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentgatewaysessionsession"><code>uni_agent.gateway.session.session</code></h4>
+<p><strong><code>SessionPhase</code></strong> — Lifecycle state for a gateway session. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/session/session.py#L22">源码</a></p>
+<p>继承：<code>str</code>、<code>Enum</code>。</p>
+<p><strong><code>TrajectoryBuffer</code></strong> — Mutable token buffer for the active trajectory under construction. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/session/session.py#L37">源码</a></p>
+<p>直接声明字段：<code>prompt_ids</code>、<code>response_ids</code>、<code>response_mask</code>、<code>response_logprobs</code>、<code>routed_experts</code>、<code>generation_versions</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>LastAssistantStart</code></strong> — Stable chain lengths captured immediately before its latest assistant. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/session/session.py#L67">源码</a></p>
+<p>直接声明字段：<code>response_ids_len</code>、<code>message_history_len</code>、<code>image_data_len</code>、<code>video_data_len</code>、<code>tip_hash</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>ChainState</code></strong> — One active linear trajectory chain in a gateway session. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/session/session.py#L78">源码</a></p>
+<p>直接声明字段：<code>chain_id</code>、<code>message_history</code>、<code>message_tip_hash</code>、<code>active_tool_schemas</code>、<code>buffer</code>、<code>image_data</code>、<code>video_data</code>、<code>last_assistant_start</code>、<code>updated_seq</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>MaterializedChain</code></strong> — A closed chain plus the ordering metadata needed at finalize. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/session/session.py#L93">源码</a></p>
+<p>直接声明字段：<code>trajectory</code>、<code>order_seq</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>EncodedData</code></strong> — Session-private data prepared before backend generation. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/session/session.py#L101">源码</a></p>
+<p>直接声明字段：<code>buffer</code>、<code>context_ids</code>、<code>sampling_params</code>、<code>messages</code>、<code>tools</code>、<code>image_data</code>、<code>video_data</code>、<code>mm_processor_kwargs</code>、<code>capacity_exhausted</code>、<code>chain_id</code>、<code>incoming_message_prefix_hashes</code>、<code>last_assistant_start</code>、<code>rollback_applied</code>、<code>rollback_dropped_trainable_tokens</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>GenerationOutcome</code></strong> — Business result returned by <code>GatewaySession.run_generation</code>. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/session/session.py#L150">源码</a></p>
+<p>直接声明字段：<code>assistant_msg</code>、<code>finish_reason</code>、<code>prompt_tokens</code>、<code>completion_tokens</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>GatewaySession</code></strong> — Behavior-bearing state container for one gateway session. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/session/session.py#L170">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, handle: SessionHandle, codec: MessageCodec, *, prompt_length: int \| None=None, response_length: int \| None=None, sampling_params: dict[str, Any] \| None=None, enable_last_assistant_rollback: bool=True, metadata: dict[str, Any] \| None=None)</code></td>
+<td>Create an active session bound to a handle and model codec.</td>
+</tr>
+<tr>
+<td><code>@property sampling_params(self) -&gt; dict[str, Any]</code></td>
+<td>Return a copy of the trusted per-session sampling defaults.</td>
+</tr>
+<tr>
+<td><code>async run_generation(self, request: InternalGenerationRequest, backend) -&gt; GenerationOutcome</code></td>
+<td>Run one provider-normalized generation request and return its business outcome.</td>
+</tr>
+<tr>
+<td><code>async finalize(self) -&gt; list[Trajectory]</code></td>
+<td>Close the session and return its materialized token trajectories.</td>
+</tr>
+<tr>
+<td><code>async abort(self) -&gt; None</code></td>
+<td>Abort the session and prevent further generation.</td>
+</tr>
+<tr>
+<td><code>snapshot_state(self) -&gt; dict[str, Any]</code></td>
+<td>Return a JSON-serializable snapshot for actor state inspection.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentgatewaysessiontypes"><code>uni_agent.gateway.session.types</code></h4>
+<p><strong><code>InternalGenerationRequest</code></strong> — Lowered request consumed by GatewaySession.run_generation. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/session/types.py#L13">源码</a></p>
+<p>继承：<code>TypedDict</code>。</p>
+<p>直接声明字段：<code>messages</code>、<code>tools</code>、<code>sampling_params</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>SessionHandle</code></strong> — Address returned to agent runners for a newly created gateway session. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/session/types.py#L27">源码</a></p>
+<p>直接声明字段：<code>session_id</code>、<code>base_url</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>Trajectory</code></strong> — Token-level training trajectory produced when a gateway session finalizes. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/session/types.py#L41">源码</a></p>
+<p>直接声明字段：<code>prompt_ids</code>、<code>response_ids</code>、<code>response_mask</code>、<code>response_logprobs</code>、<code>finished</code>、<code>reward_score</code>、<code>reward_metrics</code>、<code>num_turns</code>、<code>chain_id</code>、<code>routed_experts</code>、<code>multi_modal_data</code>、<code>extra_fields</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<h4 id="uni_agentgatewayutils"><code>uni_agent.gateway.utils</code></h4>
+<p><strong><code>normalize_tool_arguments</code></strong> — Keep JSON-object arguments as dicts and all other values as strings. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/gateway/utils.py#L9">源码</a></p>
+<pre><code class="language-python">normalize_tool_arguments(arguments: Any) -&gt; dict[str, Any] | str
+</code></pre>
+<h3 id="122-agent">12.2 Agent、模型客户端与注册</h3>
+<h4 id="uni_agentagentsbase"><code>uni_agent.agents.base</code></h4>
+<p><strong><code>ModelConfig</code></strong> — The OpenAI-compatible LLM endpoint the agent's policy talks to, plus sampling knobs. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/base.py#L15">源码</a></p>
+<p>继承：<code>BaseModel</code>。</p>
+<p>直接声明字段：<code>base_url</code>、<code>api_key</code>、<code>model_name</code>、<code>temperature</code>、<code>top_p</code>、<code>top_k</code>、<code>max_total_tokens</code>、<code>max_tokens_per_turn</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sampling_params(self) -&gt; dict[str, float \| int]</code></td>
+<td>Return only sampling knobs explicitly configured by this Agent.</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>AgentConfig</code></strong> — Base config for a registered agent. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/base.py#L62">源码</a></p>
+<p>继承：<code>BaseModel</code>。</p>
+<p>直接声明字段：<code>name</code>、<code>model</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>AgentResult</code></strong> — Artifacts one Agent produced for an episode. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/base.py#L74">源码</a></p>
+<p>直接声明字段：<code>output</code>、<code>transcript</code>、<code>info</code>、<code>finished</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>Agent</code></strong> — A solver bound to an <code>AgentConfig</code>, runnable over a live sandbox. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/base.py#L91">源码</a></p>
+<p>继承：<code>ABC</code>。</p>
+<p>直接声明字段：<code>name</code>、<code>config_model</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, config: AgentConfig \| None=None) -&gt; None</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>@classmethod from_config(cls, config: AgentConfig) -&gt; Agent</code></td>
+<td>Build an instance from its <code>AgentConfig</code> (override to remap fields).</td>
+</tr>
+<tr>
+<td><code>async run(self, *, sandbox: Sandbox, messages: list[dict[str, Any]], workdir: str \| None=None) -&gt; AgentResult</code></td>
+<td>Solve the task described by <code>messages</code> inside the live <code>sandbox</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagentsclaude_codeagent"><code>uni_agent.agents.claude_code.agent</code></h4>
+<p><strong><code>ClaudeCodeConfig</code></strong> — Black-box launch params for Claude Code (policy endpoint lives on <code>AgentConfig.model</code>). <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/claude_code/agent.py#L64">源码</a></p>
+<p>继承：<code>AgentConfig</code>。</p>
+<p>直接声明字段：<code>name</code>、<code>max_turns</code>、<code>enable_web_tools</code>、<code>enable_subagents</code>、<code>disable_slash_commands</code>、<code>verbose</code>、<code>run_timeout</code>、<code>extra_args</code>、<code>extra_env</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>ClaudeCodeAgent</code></strong> — Black-box solver: launch the real Claude Code CLI in the sandbox against <code>config.model</code>. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/claude_code/agent.py#L91">源码</a></p>
+<p>继承：<code>Agent</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>async run(self, *, sandbox: Sandbox, messages: list[dict[str, Any]], workdir: str \| None=None) -&gt; AgentResult</code></td>
+<td>执行该对象的运行逻辑；具体返回类型见签名。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagentsmem_agentagent"><code>uni_agent.agents.mem_agent.agent</code></h4>
+<p><strong><code>ContextTurnOutput</code></strong> — One model turn inside a MemAgent context segment. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/mem_agent/agent.py#L44">源码</a></p>
+<p>继承：<code>BaseModel</code>。</p>
+<p>直接声明字段：<code>step_idx</code>、<code>response</code>、<code>prompt_tokens</code>、<code>completion_tokens</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>ContextStepOutput</code></strong> — One independently materialized MemAgent context segment. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/mem_agent/agent.py#L53">源码</a></p>
+<p>继承：<code>BaseModel</code>。</p>
+<p>直接声明字段：<code>prompt_messages</code>、<code>messages</code>、<code>steps</code>、<code>reward</code>、<code>execution_time</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>set_prompt_messages(self, messages: list[dict[str, Any]]) -&gt; None</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+<tr>
+<td><code>set_messages(self, messages: list[dict[str, Any]]) -&gt; None</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+<tr>
+<td><code>set_execution_time(self, execution_time: float) -&gt; None</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+<tr>
+<td><code>add_step(self, step_output: ContextTurnOutput) -&gt; None</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+<tr>
+<td><code>set_reward(self, reward: float) -&gt; None</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+<tr>
+<td><code>get_reward(self) -&gt; float</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>ContextManagerResult</code></strong> — Aggregate result of a context-managed MemAgent execution. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/mem_agent/agent.py#L81">源码</a></p>
+<p>继承：<code>BaseModel</code>。</p>
+<p>直接声明字段：<code>run_id</code>、<code>execution_time</code>、<code>trajectory</code>、<code>final_state</code>、<code>total_steps</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>set_reward(self, reward: float) -&gt; None</code></td>
+<td>Assign the final task reward to every context segment.</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>MemAgentConfig</code></strong> — Configuration for chunked-context memory updates. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/mem_agent/agent.py#L97">源码</a></p>
+<p>继承：<code>AgentConfig</code>。</p>
+<p>直接声明字段：<code>name</code>、<code>max_steps</code>、<code>max_memorization_length</code>、<code>max_chunks</code>、<code>max_final_response_length</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>MemAgent</code></strong> — Read long input in chunks and carry only a compact memory between contexts. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/mem_agent/agent.py#L108">源码</a></p>
+<p>继承：<code>Agent</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, config: MemAgentConfig \| None=None) -&gt; None</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>async context_session(self) -&gt; AsyncIterator[None]</code></td>
+<td>Initialize and close the model runtime used by MemAgent.</td>
+</tr>
+<tr>
+<td><code>build_agent_result(self) -&gt; AgentResult</code></td>
+<td>Convert the completed MemAgent context session into an Agent result.</td>
+</tr>
+<tr>
+<td><code>async update_context(self, messages: list[dict[str, Any]]) -&gt; None</code></td>
+<td>Finalize the current segment and continue from a newly built context.</td>
+</tr>
+<tr>
+<td><code>async step(self, sampling_params: dict[str, Any] \| None=None) -&gt; ContextTurnOutput</code></td>
+<td>Run one model call in the active context segment.</td>
+</tr>
+<tr>
+<td><code>get_global_step_idx(self) -&gt; int</code></td>
+<td>Return the number of model calls across all context segments.</td>
+</tr>
+<tr>
+<td><code>get_current_step_idx(self) -&gt; int</code></td>
+<td>Return the number of model calls in the current context segment.</td>
+</tr>
+<tr>
+<td><code>get_current_context_step(self) -&gt; ContextStepOutput</code></td>
+<td>Return the segment currently being constructed.</td>
+</tr>
+<tr>
+<td><code>async run(self, *, sandbox: Sandbox, messages: list[dict[str, Any]], workdir: str \| None=None, raw_data: dict[str, Any] \| None=None) -&gt; AgentResult</code></td>
+<td>Run the MemAgent policy using explicit context-management calls.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagentsmini_swe_agentagent"><code>uni_agent.agents.mini_swe_agent.agent</code></h4>
+<p><strong><code>build_agent_command</code></strong> — Build the shell command that runs <code>run_agent.py</code> inside the sandbox. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/mini_swe_agent/agent.py#L32">源码</a></p>
+<pre><code class="language-python">build_agent_command(*, config_b64: str, conda_env: str='testbed', tool_python: str, run_agent_script: str) -&gt; str
+</code></pre>
+<p><strong><code>parse_agent_result</code></strong> — Parse the result JSON from <code>run_agent.py</code>'s stdout. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/mini_swe_agent/agent.py#L63">源码</a></p>
+<pre><code class="language-python">parse_agent_result(stdout: str) -&gt; dict[str, Any]
+</code></pre>
+<p><strong><code>MiniSweAgentConfig</code></strong> — Black-box launch params for mini-swe-agent (endpoint lives on <code>AgentConfig.model</code>). <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/mini_swe_agent/agent.py#L85">源码</a></p>
+<p>继承：<code>AgentConfig</code>。</p>
+<p>直接声明字段：<code>name</code>、<code>step_limit</code>、<code>run_timeout</code>、<code>conda_env</code>、<code>tool_python</code>、<code>run_agent_script</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>MiniSweAgentAgent</code></strong> — Black-box solver: launch mini-swe-agent in the sandbox against <code>config.model</code>. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/mini_swe_agent/agent.py#L105">源码</a></p>
+<p>继承：<code>Agent</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>async run(self, *, sandbox: Sandbox, messages: list[dict[str, Any]], workdir: str \| None=None) -&gt; AgentResult</code></td>
+<td>执行该对象的运行逻辑；具体返回类型见签名。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagentsreactagent"><code>uni_agent.agents.react.agent</code></h4>
+<p><strong><code>ReActConfig</code></strong> — White-box launch params: host-side tools + step / timeout budgets. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/react/agent.py#L26">源码</a></p>
+<p>继承：<code>AgentConfig</code>。</p>
+<p>直接声明字段：<code>name</code>、<code>tools</code>、<code>max_steps</code>、<code>action_timeout</code>、<code>timeout_budget</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>ReActAgent</code></strong> — White-box solver: framework loop + host-side tools over an OpenAI endpoint. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/react/agent.py#L52">源码</a></p>
+<p>继承：<code>Agent</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>async run(self, *, sandbox: Sandbox, messages: list[dict[str, Any]], workdir: str \| None=None) -&gt; AgentResult</code></td>
+<td>执行该对象的运行逻辑；具体返回类型见签名。</td>
+</tr>
+<tr>
+<td><code>async step(self, cfg: ReActConfig, model: OpenAICompatibleChatModel, toolbox: Toolbox, transcript: list[dict[str, Any]], info: dict[str, Any]) -&gt; str</code></td>
+<td>Run one turn: query the policy, record its message, run its tool calls.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagentsreactmodel"><code>uni_agent.agents.react.model</code></h4>
+<p><strong><code>OpenAICompatibleChatModel</code></strong> — One-shot chat client against an OpenAI-compatible server (e.g. vLLM / SGLang). <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/react/model.py#L29">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, base_url: str, *, api_key: str='EMPTY', model_name: str \| None=None, sampling_params: dict[str, Any] \| None=None, tools_schemas: list[dict] \| None=None, timeout: float \| None=None, max_retries: int=2)</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>async aclose(self) -&gt; None</code></td>
+<td>Close the underlying session (idempotent; safe if it was never opened).</td>
+</tr>
+<tr>
+<td><code>async __aenter__(self) -&gt; OpenAICompatibleChatModel</code></td>
+<td>进入异步上下文；生命周期由该类实现。</td>
+</tr>
+<tr>
+<td><code>async __aexit__(self, *exc_info: object) -&gt; None</code></td>
+<td>退出异步上下文并清理。</td>
+</tr>
+<tr>
+<td><code>async query(self, messages: list[dict[str, Any]], *, sampling_params: dict[str, Any] \| None=None) -&gt; tuple[str, list[dict], dict[str, Any]]</code></td>
+<td>Run one chat-completion call.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagentsregistry"><code>uni_agent.agents.registry</code></h4>
+<p><strong><code>register_agent</code></strong> — Class decorator: register an <code>Agent</code> under <code>name</code> (and stamp <code>cls.name</code>). <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/registry.py#L29">源码</a></p>
+<pre><code class="language-python">register_agent(name: str) -&gt; Callable[[type[Agent]], type[Agent]]
+</code></pre>
+<p><strong><code>get_agent_cls</code></strong> — Return a registered agent class by name, importing its module on first use. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/registry.py#L55">源码</a></p>
+<pre><code class="language-python">get_agent_cls(name: str) -&gt; type[Agent]
+</code></pre>
+<p><strong><code>build_agent</code></strong> — Instantiate the agent named by <code>config.name</code> from its config. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agents/registry.py#L65">源码</a></p>
+<pre><code class="language-python">build_agent(config: AgentConfig) -&gt; Agent
+</code></pre>
+<h3 id="123-taskreward">12.3 Task、预处理与reward</h3>
+<h4 id="uni_agenttasksbase"><code>uni_agent.tasks.base</code></h4>
+<p><strong><code>TaskConfig</code></strong> — Base task config: only the fields every task shares (the model lives on <code>agent</code>, not here). <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/base.py#L30">源码</a></p>
+<p>继承：<code>BaseModel</code>。</p>
+<p>直接声明字段：<code>name</code>、<code>sandbox</code>、<code>agent</code>、<code>prompt</code>、<code>prompt_template</code>、<code>metadata</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>TaskResult</code></strong> — Outcome of one task episode. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/base.py#L92">源码</a></p>
+<p>直接声明字段：<code>reward</code>、<code>accuracy</code>、<code>finished</code>、<code>extra_info</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>Task</code></strong> — A task family: turns a <code>TaskConfig</code> into the runnable lower layers. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/base.py#L118">源码</a></p>
+<p>继承：<code>ABC</code>。</p>
+<p>直接声明字段：<code>name</code>、<code>config_model</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, config: TaskConfig) -&gt; None</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>async run(self) -&gt; TaskResult</code></td>
+<td>Run one episode and return its score.</td>
+</tr>
+<tr>
+<td><code>build_sandbox(self) -&gt; Sandbox</code></td>
+<td>Instantiate the execution sandbox from <code>TaskConfig.sandbox</code>.</td>
+</tr>
+<tr>
+<td><code>build_agent(self) -&gt; Agent</code></td>
+<td>Instantiate the solving agent from <code>TaskConfig.agent</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agenttasksconfig"><code>uni_agent.tasks.config</code></h4>
+<p><strong><code>render_prompt_template</code></strong> — Render text-only chat messages from direct Task metadata fields. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/config.py#L29">源码</a></p>
+<pre><code class="language-python">render_prompt_template(metadata: object, prompt_template: object) -&gt; list[dict[str, Any]]
+</code></pre>
+<p><strong><code>TaskConfigResolver</code></strong> — Route and compose Task Config defaults, sample values, and runtime bindings. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/config.py#L103">源码</a></p>
+<p>直接声明字段：<code>defaults_by_name</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@classmethod from_file(cls, path: str) -&gt; TaskConfigResolver</code></td>
+<td>Build a resolver from a YAML mapping or list keyed by Task <code>name</code>.</td>
+</tr>
+<tr>
+<td><code>resolve(self, sample_config: Mapping[str, Any], *, runtime_model: Mapping[str, Any] \| None=None) -&gt; dict[str, Any]</code></td>
+<td>Resolve one sample using Task Config → Sample Config → runtime model.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agenttasksharborpreprocess"><code>uni_agent.tasks.harbor.preprocess</code></h4>
+<p><strong><code>download_dataset</code></strong> — Download and export a Harbor dataset to a persistent local directory. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/harbor/preprocess.py#L15">源码</a></p>
+<pre><code class="language-python">download_dataset(dataset_ref: str, output_dir: Path | str) -&gt; Path
+</code></pre>
+<p><strong><code>build_harbor_dataset</code></strong> — Build a dataset that points to Harbor tasks on the shared local filesystem. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/harbor/preprocess.py#L33">源码</a></p>
+<pre><code class="language-python">build_harbor_dataset(task_root: Path | str, *, dataset_name: str | None=None, max_instances: int | None=None) -&gt; Dataset
+</code></pre>
+<p><strong><code>main</code></strong> — 模块命令行入口。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/harbor/preprocess.py#L85">源码</a></p>
+<pre><code class="language-python">main() -&gt; None
+</code></pre>
+<h4 id="uni_agenttasksharborreward"><code>uni_agent.tasks.harbor.reward</code></h4>
+<p><strong><code>task_result_from_harbor_trial</code></strong> — Translate Harbor's persisted TrialResult into Uni-Agent's result shape. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/harbor/reward.py#L59">源码</a></p>
+<pre><code class="language-python">task_result_from_harbor_trial(payload: dict[str, Any], *, trial_dir: Path, cli_exit_code: int, stdout: str, stderr: str, elapsed: float) -&gt; TaskResult
+</code></pre>
+<h4 id="uni_agenttasksharbortask"><code>uni_agent.tasks.harbor.task</code></h4>
+<p><strong><code>HarborAgentConfig</code></strong> — Harbor agent name and model endpoint. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/harbor/task.py#L46">源码</a></p>
+<p>继承：<code>AgentConfig</code>。</p>
+<p>直接声明字段：<code>name</code>、<code>kwargs</code>、<code>timeout_sec</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>HarborTaskConfig</code></strong> — Configuration for one evaluation-only Harbor CLI trial. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/harbor/task.py#L54">源码</a></p>
+<p>继承：<code>TaskConfig</code>。</p>
+<p>直接声明字段：<code>name</code>、<code>sandbox</code>、<code>harbor_env</code>、<code>agent</code>、<code>timeout_multiplier</code>、<code>override_cpus</code>、<code>override_memory_mb</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>build_harbor_trial_command</code></strong> — Build the argv for one collision-safe Harbor trial. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/harbor/task.py#L99">源码</a></p>
+<pre><code class="language-python">build_harbor_trial_command(config: HarborTaskConfig, *, trial_name: str, trials_dir: Path) -&gt; list[str]
+</code></pre>
+<p><strong><code>build_harbor_process_env</code></strong> — Expose the runtime model endpoint under compatible Harbor aliases. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/harbor/task.py#L142">源码</a></p>
+<pre><code class="language-python">build_harbor_process_env(config: HarborTaskConfig) -&gt; dict[str, str] | None
+</code></pre>
+<p><strong><code>HarborCLIResult</code></strong> — 实现层的数据/辅助声明；字段、类型与用途结合所属模块查阅。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/harbor/task.py#L156">源码</a></p>
+<p>直接声明字段：<code>exit_code</code>、<code>stdout</code>、<code>stderr</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>run_harbor_cli</code></strong> — Run Harbor directly on the host and capture its terminal output. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/harbor/task.py#L162">源码</a></p>
+<pre><code class="language-python">async run_harbor_cli(command: list[str], *, env: dict[str, str] | None=None) -&gt; HarborCLIResult
+</code></pre>
+<p><strong><code>HarborTask</code></strong> — 该任务家族的运行与评测实现。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/harbor/task.py#L185">源码</a></p>
+<p>继承：<code>Task</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>async run(self) -&gt; TaskResult</code></td>
+<td>执行该对象的运行逻辑；具体返回类型见签名。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agenttaskshotpotqapreprocess"><code>uni_agent.tasks.hotpotqa.preprocess</code></h4>
+<p><strong><code>context_to_text</code></strong> — Normalize a HotpotQA context, while retaining document titles. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/hotpotqa/preprocess.py#L21">源码</a></p>
+<pre><code class="language-python">context_to_text(context: Any) -&gt; str
+</code></pre>
+<p><strong><code>split_context_into_token_chunks</code></strong> — Split a context into decoded, token-bounded chunks. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/hotpotqa/preprocess.py#L43">源码</a></p>
+<pre><code class="language-python">split_context_into_token_chunks(context: Any, *, tokenizer: Any, chunk_size: int) -&gt; list[str]
+</code></pre>
+<p><strong><code>process_example</code></strong> — Convert one canonical HotpotQA example to a serialized Task Config. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/hotpotqa/preprocess.py#L55">源码</a></p>
+<pre><code class="language-python">process_example(example: dict[str, Any], *, tokenizer: Any, chunk_size: int) -&gt; dict[str, Any]
+</code></pre>
+<p><strong><code>build_hotpotqa</code></strong> — Load and preprocess one HotpotQA split. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/hotpotqa/preprocess.py#L84">源码</a></p>
+<pre><code class="language-python">build_hotpotqa(*, tokenizer_path: str, split: str, context_chunk_size: int=DEFAULT_CONTEXT_CHUNK_SIZE, max_instances: int | None=None)
+</code></pre>
+<h4 id="uni_agenttaskshotpotqareward"><code>uni_agent.tasks.hotpotqa.reward</code></h4>
+<p><strong><code>compute_score</code></strong> — Score the final boxed answer with the original token-level LCS metric. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/hotpotqa/reward.py#L6">源码</a></p>
+<pre><code class="language-python">compute_score(solution: str, ground_truths: list[str]) -&gt; float
+</code></pre>
+<p><strong><code>remove_boxed</code></strong> — 剥离答案的boxed外层标记。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/hotpotqa/reward.py#L42">源码</a></p>
+<pre><code class="language-python">remove_boxed(value: str) -&gt; str
+</code></pre>
+<p><strong><code>last_boxed_only_string</code></strong> — 提取最后一个boxed答案片段。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/hotpotqa/reward.py#L55">源码</a></p>
+<pre><code class="language-python">last_boxed_only_string(value: str) -&gt; str | None
+</code></pre>
+<h4 id="uni_agenttaskshotpotqatask"><code>uni_agent.tasks.hotpotqa.task</code></h4>
+<p><strong><code>HotpotQATaskConfig</code></strong> — 配置数据模型；字段与继承关系见下方及机器清单。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/hotpotqa/task.py#L14">源码</a></p>
+<p>继承：<code>TaskConfig</code>。</p>
+<p>直接声明字段：<code>name</code>、<code>ground_truth</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>HotpotQATask</code></strong> — Score a HotpotQA answer and broadcast its reward to every context chain. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/hotpotqa/task.py#L23">源码</a></p>
+<p>继承：<code>Task</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>async run(self) -&gt; TaskResult</code></td>
+<td>执行该对象的运行逻辑；具体返回类型见签名。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agenttasksregistry"><code>uni_agent.tasks.registry</code></h4>
+<p><strong><code>register_task</code></strong> — Class decorator: register a <code>Task</code> under <code>name</code> (and stamp <code>cls.name</code>). <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/registry.py#L32">源码</a></p>
+<pre><code class="language-python">register_task(name: str) -&gt; Callable[[type[Task]], type[Task]]
+</code></pre>
+<p><strong><code>get_task_cls</code></strong> — Return a registered task class by name, importing its module on first use. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/registry.py#L45">源码</a></p>
+<pre><code class="language-python">get_task_cls(name: str) -&gt; type[Task]
+</code></pre>
+<p><strong><code>get_task</code></strong> — Build a task from a <code>TaskConfig</code> or a flat config mapping. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/registry.py#L55">源码</a></p>
+<pre><code class="language-python">get_task(config: TaskConfig | Mapping[str, Any]) -&gt; Task
+</code></pre>
+<h4 id="uni_agenttasksswe_benchpreprocess"><code>uni_agent.tasks.swe_bench.preprocess</code></h4>
+<p><strong><code>get_image_name</code></strong> — Canonical open-source image ref (mirrors swebench's <code>instance_image_key</code>). <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/swe_bench/preprocess.py#L20">源码</a></p>
+<pre><code class="language-python">get_image_name(instance_id: str) -&gt; str
+</code></pre>
+<p><strong><code>build_swe_bench_verified</code></strong> — 构建该模块对应的SWE评测数据集。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/swe_bench/preprocess.py#L28">源码</a></p>
+<pre><code class="language-python">build_swe_bench_verified(max_instances: int | None=None)
+</code></pre>
+<h4 id="uni_agenttasksswe_benchreward"><code>uni_agent.tasks.swe_bench.reward</code></h4>
+<p><strong><code>compute_reward</code></strong> — Score one instance; <code>eval_timeout</code> (s) comes from the task config. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/swe_bench/reward.py#L107">源码</a></p>
+<pre><code class="language-python">async compute_reward(metadata, sandbox, eval_timeout: float=600.0) -&gt; dict
+</code></pre>
+<h4 id="uni_agenttasksswe_benchtask"><code>uni_agent.tasks.swe_bench.task</code></h4>
+<p><strong><code>SWEBenchTaskConfig</code></strong> — 配置数据模型；字段与继承关系见下方及机器清单。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/swe_bench/task.py#L16">源码</a></p>
+<p>继承：<code>TaskConfig</code>。</p>
+<p>直接声明字段：<code>name</code>、<code>run_oracle_solution</code>、<code>eval_timeout</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>SWEBenchTask</code></strong> — 该任务家族的运行与评测实现。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/swe_bench/task.py#L29">源码</a></p>
+<p>继承：<code>Task</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>async run(self) -&gt; TaskResult</code></td>
+<td>执行该对象的运行逻辑；具体返回类型见签名。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agenttasksswe_bench_multilingualpreprocess"><code>uni_agent.tasks.swe_bench_multilingual.preprocess</code></h4>
+<p><strong><code>get_image_name</code></strong> — Return the canonical image ref, mirroring swebench's instance image key. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/swe_bench_multilingual/preprocess.py#L31">源码</a></p>
+<pre><code class="language-python">get_image_name(instance_id: str) -&gt; str
+</code></pre>
+<p><strong><code>build_swe_bench_multilingual</code></strong> — 构建该模块对应的SWE评测数据集。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/swe_bench_multilingual/preprocess.py#L36">源码</a></p>
+<pre><code class="language-python">build_swe_bench_multilingual(max_instances: int | None=None)
+</code></pre>
+<h4 id="uni_agenttasksswe_bench_multilingualreward"><code>uni_agent.tasks.swe_bench_multilingual.reward</code></h4>
+<p><strong><code>compute_reward</code></strong> — Run the official multilingual evaluation flow inside <code>sandbox</code>. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/swe_bench_multilingual/reward.py#L142">源码</a></p>
+<pre><code class="language-python">async compute_reward(metadata: dict, sandbox, eval_timeout: float=1800.0) -&gt; dict
+</code></pre>
+<h4 id="uni_agenttasksswe_bench_multilingualtask"><code>uni_agent.tasks.swe_bench_multilingual.task</code></h4>
+<p><strong><code>SWEBenchMultilingualTaskConfig</code></strong> — 配置数据模型；字段与继承关系见下方及机器清单。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/swe_bench_multilingual/task.py#L26">源码</a></p>
+<p>继承：<code>TaskConfig</code>。</p>
+<p>直接声明字段：<code>name</code>、<code>run_oracle_solution</code>、<code>eval_timeout</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>SWEBenchMultilingualTask</code></strong> — 该任务家族的运行与评测实现。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/swe_bench_multilingual/task.py#L40">源码</a></p>
+<p>继承：<code>Task</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>async run(self) -&gt; TaskResult</code></td>
+<td>执行该对象的运行逻辑；具体返回类型见签名。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agenttasksswe_rebenchpreprocess"><code>uni_agent.tasks.swe_rebench.preprocess</code></h4>
+<p><strong><code>get_image_name</code></strong> — Canonical open-source image ref for a swe-rebench instance. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/swe_rebench/preprocess.py#L15">源码</a></p>
+<pre><code class="language-python">get_image_name(instance_id: str) -&gt; str
+</code></pre>
+<p><strong><code>build_swe_rebench</code></strong> — 构建该模块对应的SWE评测数据集。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/swe_rebench/preprocess.py#L24">源码</a></p>
+<pre><code class="language-python">build_swe_rebench(max_instances: int | None=None)
+</code></pre>
+<h4 id="uni_agenttasksswe_rebenchreward"><code>uni_agent.tasks.swe_rebench.reward</code></h4>
+<p><strong><code>parse_log_pytest</code></strong> — Parse test logs from the PyTest framework into a test-case -&gt; status map. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/swe_rebench/reward.py#L70">源码</a></p>
+<pre><code class="language-python">parse_log_pytest(log: str) -&gt; dict[str, str]
+</code></pre>
+<p><strong><code>parse_log_pytest_v2</code></strong> — Parse PyTest logs (later versions), stripping control codes first. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/swe_rebench/reward.py#L84">源码</a></p>
+<pre><code class="language-python">parse_log_pytest_v2(log: str) -&gt; dict[str, str]
+</code></pre>
+<p><strong><code>compute_reward</code></strong> — Score one instance; <code>eval_timeout</code> (s) comes from the task config. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/swe_rebench/reward.py#L160">源码</a></p>
+<pre><code class="language-python">async compute_reward(metadata, sandbox, eval_timeout: float=600.0) -&gt; dict
+</code></pre>
+<h4 id="uni_agenttasksswe_rebenchtask"><code>uni_agent.tasks.swe_rebench.task</code></h4>
+<p><strong><code>SWEREBenchTaskConfig</code></strong> — 配置数据模型；字段与继承关系见下方及机器清单。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/swe_rebench/task.py#L64">源码</a></p>
+<p>继承：<code>TaskConfig</code>。</p>
+<p>直接声明字段：<code>name</code>、<code>run_oracle_solution</code>、<code>eval_timeout</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>SWEREBenchTask</code></strong> — 该任务家族的运行与评测实现。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/swe_rebench/task.py#L77">源码</a></p>
+<p>继承：<code>Task</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>async run(self) -&gt; TaskResult</code></td>
+<td>执行该对象的运行逻辑；具体返回类型见签名。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agenttasksterminal_benchpreprocess"><code>uni_agent.tasks.terminal_bench.preprocess</code></h4>
+<p><strong><code>BenchmarkSpec</code></strong> — 实现层的数据/辅助声明；字段、类型与用途结合所属模块查阅。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/terminal_bench/preprocess.py#L38">源码</a></p>
+<p>直接声明字段：<code>version</code>、<code>dataset</code>、<code>harbor_ref</code>、<code>expected_tasks</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>parse_dockerfile_workdir</code></strong> — Return the final literal WORKDIR declared by a Dockerfile. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/terminal_bench/preprocess.py#L86">源码</a></p>
+<pre><code class="language-python">parse_dockerfile_workdir(dockerfile: Path) -&gt; str | None
+</code></pre>
+<p><strong><code>pack_directory_base64</code></strong> — Create a deterministic base64 tarball while preserving executable bits. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/terminal_bench/preprocess.py#L109">源码</a></p>
+<pre><code class="language-python">pack_directory_base64(source_dir: Path) -&gt; str
+</code></pre>
+<p><strong><code>discover_task_dirs</code></strong> — Return task directories exported under a dataset root. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/terminal_bench/preprocess.py#L147">源码</a></p>
+<pre><code class="language-python">discover_task_dirs(dataset_dir: Path | str, *, expected_task_count: int | None=None) -&gt; list[Path]
+</code></pre>
+<p><strong><code>build_task_row</code></strong> — Build one provider-agnostic Uni-Agent sample. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/terminal_bench/preprocess.py#L160">源码</a></p>
+<pre><code class="language-python">build_task_row(task_dir: Path, *, benchmark: BenchmarkSpec=BENCHMARKS[DEFAULT_VERSION]) -&gt; dict[str, Any]
+</code></pre>
+<p><strong><code>build_terminal_bench</code></strong> — Build a Hugging Face Dataset for a configured Terminal-Bench release. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/terminal_bench/preprocess.py#L255">源码</a></p>
+<pre><code class="language-python">build_terminal_bench(version: str=DEFAULT_VERSION, *, max_instances: int | None=None)
+</code></pre>
+<p><strong><code>main</code></strong> — 模块命令行入口。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/terminal_bench/preprocess.py#L278">源码</a></p>
+<pre><code class="language-python">main() -&gt; None
+</code></pre>
+<h4 id="uni_agenttasksterminal_benchreward"><code>uni_agent.tasks.terminal_bench.reward</code></h4>
+<p><strong><code>parse_json_mapping</code></strong> — Parse a JSON object stored in a provider-agnostic parquet field. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/terminal_bench/reward.py#L23">源码</a></p>
+<pre><code class="language-python">parse_json_mapping(raw: Any, *, field: str) -&gt; dict[str, Any]
+</code></pre>
+<p><strong><code>resolve_env_mapping</code></strong> — Resolve full-value <code>${VAR}</code> and <code>${VAR:-default}</code> references. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/terminal_bench/reward.py#L33">源码</a></p>
+<pre><code class="language-python">resolve_env_mapping(values: dict[str, Any]) -&gt; dict[str, str]
+</code></pre>
+<p><strong><code>install_archive</code></strong> — Extract one parquet-embedded task archive into the sandbox. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/terminal_bench/reward.py#L53">源码</a></p>
+<pre><code class="language-python">async install_archive(sandbox: SandboxBackend, encoded_archive: str, *, target_dir: str) -&gt; None
+</code></pre>
+<p><strong><code>parse_reward_files</code></strong> — Parse verifier output and select its primary reward. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/terminal_bench/reward.py#L90">源码</a></p>
+<pre><code class="language-python">parse_reward_files(reward_json: str | None, reward_text: str | None) -&gt; tuple[float, dict[str, float]]
+</code></pre>
+<p><strong><code>compute_reward</code></strong> — Upload official tests, execute the verifier, and parse its reward. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/terminal_bench/reward.py#L123">源码</a></p>
+<pre><code class="language-python">async compute_reward(metadata: dict[str, Any], sandbox: SandboxBackend) -&gt; dict[str, Any]
+</code></pre>
+<h4 id="uni_agenttasksterminal_benchtask"><code>uni_agent.tasks.terminal_bench.task</code></h4>
+<p><strong><code>TerminalBenchTaskConfig</code></strong> — 配置数据模型；字段与继承关系见下方及机器清单。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/terminal_bench/task.py#L21">源码</a></p>
+<p>继承：<code>TaskConfig</code>。</p>
+<p>直接声明字段：<code>name</code>、<code>run_oracle_solution</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>build_terminal_bench_sandbox_config</code></strong> — Apply provider-specific task environment settings to a SandboxConfig. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/terminal_bench/task.py#L29">源码</a></p>
+<pre><code class="language-python">build_terminal_bench_sandbox_config(config: SandboxConfig, metadata: dict[str, Any]) -&gt; SandboxConfig
+</code></pre>
+<p><strong><code>TerminalBenchTask</code></strong> — 该任务家族的运行与评测实现。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tasks/terminal_bench/task.py#L104">源码</a></p>
+<p>继承：<code>Task</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>async run(self) -&gt; TaskResult</code></td>
+<td>执行该对象的运行逻辑；具体返回类型见签名。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="124-toolshell">12.4 Tool、编辑器与持久shell</h3>
+<h4 id="uni_agenttoolsbase"><code>uni_agent.tools.base</code></h4>
+<p><strong><code>ToolResult</code></strong> — One tool call's normalized result: the <code>text</code> the model sees plus a <code>status</code> for the loop's counters. <code>status</code> is set by whoever knows it -- <code>Toolbox.call</code> for bad calls / tool errors, the tool itself for a <code>"timeout"</code> -- and defaults to <code>"ok"</code>. <code>to_observation</code> renders the next-turn content (<code>str(result)</code> gives just the text). <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/base.py#L34">源码</a></p>
+<p>直接声明字段：<code>text</code>、<code>status</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>to_observation(self, max_length: int=100000) -&gt; str</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>ToolError</code></strong> — A user-facing <em>runtime</em> failure while executing (bad path, refused command). <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/base.py#L61">源码</a></p>
+<p>继承：<code>Exception</code>。</p>
+<p><strong><code>ToolCallFormatError</code></strong> — A malformed tool call, caught <em>before</em> the tool runs (unknown function, or arguments that don't decode to a JSON object). <code>Toolbox.call</code> returns the message to the policy as an observation so it can self-correct; the wording follows the <code>"Invalid action: ..."</code> convention the policy is trained on. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/base.py#L70">源码</a></p>
+<p>继承：<code>Exception</code>。</p>
+<p><strong><code>build_function_schema</code></strong> — Build an OpenAI-compatible function schema from a Pydantic args model. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/base.py#L121">源码</a></p>
+<pre><code class="language-python">build_function_schema(name: str, description: str, model: type[BaseModel]) -&gt; dict
+</code></pre>
+<p><strong><code>Tool</code></strong> — A host-side tool: a schema plus an async <code>run</code> over the sandbox. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/base.py#L133">源码</a></p>
+<p>继承：<code>abc.ABC</code>。</p>
+<p>直接声明字段：<code>name</code>、<code>description</code>、<code>args_model</code>、<code>config_model</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, sandbox: SandboxBackend, **kwargs: Any)</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>schema(self) -&gt; dict</code></td>
+<td>Return the OpenAI function schema shown to the model.</td>
+</tr>
+<tr>
+<td><code>@classmethod config_schema(cls) -&gt; dict \| None</code></td>
+<td>JSON schema for this tool's construction kwargs, or <code>None</code> if it has none.</td>
+</tr>
+<tr>
+<td><code>async run(self, args: dict[str, Any], *, timeout: float \| None=None) -&gt; ToolResult</code></td>
+<td>Execute the call and return a <code>ToolResult</code>.</td>
+</tr>
+<tr>
+<td><code>async start(self) -&gt; None</code></td>
+<td>Eagerly set up state (open channels); no-op by default.</td>
+</tr>
+<tr>
+<td><code>async close(self) -&gt; None</code></td>
+<td>Release any state the tool holds (open channels). No-op by default.</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>register_tool</code></strong> — Class decorator: register <code>cls</code> under registry key <code>name</code>. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/base.py#L201">源码</a></p>
+<pre><code class="language-python">register_tool(name: str)
+</code></pre>
+<p><strong><code>get_tool</code></strong> — Instantiate a registered tool by name, bound to <code>sandbox</code>. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/base.py#L222">源码</a></p>
+<pre><code class="language-python">get_tool(name: str, sandbox: SandboxBackend, **kwargs: Any) -&gt; Tool
+</code></pre>
+<p><strong><code>Toolbox</code></strong> — A set of tool instances bound to one sandbox for a rollout. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/base.py#L233">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, tools: list[Tool])</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>@classmethod from_specs(cls, specs: list[dict[str, Any]], *, sandbox: SandboxBackend) -&gt; Toolbox</code></td>
+<td>Build a toolbox from <code>{name, ...kwargs}</code> config entries bound to <code>sandbox</code>.</td>
+</tr>
+<tr>
+<td><code>@classmethod all(cls, *, sandbox: SandboxBackend) -&gt; Toolbox</code></td>
+<td>Build a toolbox from every registered tool, each bound to <code>sandbox</code>.</td>
+</tr>
+<tr>
+<td><code>names(self) -&gt; list[str]</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+<tr>
+<td><code>schemas(self) -&gt; list[dict]</code></td>
+<td>OpenAI function schemas for every tool (pass straight to the model).</td>
+</tr>
+<tr>
+<td><code>async start(self) -&gt; None</code></td>
+<td>Eagerly set up every tool once, front-loading first-use cost (no retry).</td>
+</tr>
+<tr>
+<td><code>async __aenter__(self, retry: int=3, timeout: float=60.0) -&gt; Toolbox</code></td>
+<td>Enter a rollout: start every tool (retrying transient failures) and return the ready toolbox. If a tool can't be started, tools already started are closed before the error propagates; <code>close</code> runs again on normal exit.</td>
+</tr>
+<tr>
+<td><code>async __aexit__(self, *exc_info: object) -&gt; bool</code></td>
+<td>退出异步上下文并清理。</td>
+</tr>
+<tr>
+<td><code>async entered(self, **start_kwargs: Any) -&gt; AsyncIterator[Toolbox]</code></td>
+<td>Parametrized <code>async with</code>: same lifecycle as <code>async with toolbox</code>, but forwards <code>retry</code> / <code>timeout</code> to <code>__aenter__</code> (the bare <code>async with</code> can't pass args)::</td>
+</tr>
+<tr>
+<td><code>async call(self, name: str, args: dict[str, Any] \| str \| None=None, *, timeout: float \| None=None) -&gt; ToolResult</code></td>
+<td>Dispatch one tool call, returning the <code>ToolResult</code> for the model.</td>
+</tr>
+<tr>
+<td><code>async close(self) -&gt; None</code></td>
+<td>Close every tool (release open channels); never raises.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agenttoolsedit_file"><code>uni_agent.tools.edit_file</code></h4>
+<p><strong><code>StrReplaceEditorArguments</code></strong> — 模型工具调用的参数schema。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/edit_file.py#L47">源码</a></p>
+<p>继承：<code>BaseModel</code>。</p>
+<p>直接声明字段：<code>command</code>、<code>path</code>、<code>file_text</code>、<code>old_str</code>、<code>new_str</code>、<code>insert_line</code>、<code>view_range</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@classmethod parse_json_view_range(cls, value: Any) -&gt; Any</code></td>
+<td>Accept a JSON-encoded list emitted by an otherwise valid tool call.</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>EditFileTool</code></strong> — 该工具的执行实现；模型可见参数见正文。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/edit_file.py#L100">源码</a></p>
+<p>继承：<code>Tool</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, sandbox: SandboxBackend, **kwargs: Any) -&gt; None</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>async run(self, args: dict[str, Any], *, timeout: float \| None=None) -&gt; ToolResult</code></td>
+<td>执行该对象的运行逻辑；具体返回类型见签名。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agenttoolsfinish"><code>uni_agent.tools.finish</code></h4>
+<p><strong><code>FinishArguments</code></strong> — 模型工具调用的参数schema。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/finish.py#L22">源码</a></p>
+<p>继承：<code>BaseModel</code>。</p>
+<p>直接声明字段：<code>answer</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>FinishTool</code></strong> — 该工具的执行实现；模型可见参数见正文。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/finish.py#L27">源码</a></p>
+<p>继承：<code>Tool</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>async run(self, args: dict[str, Any], *, timeout: float \| None=None) -&gt; ToolResult</code></td>
+<td>执行该对象的运行逻辑；具体返回类型见签名。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agenttoolsshell"><code>uni_agent.tools.shell</code></h4>
+<p><strong><code>CommandResult</code></strong> — Outcome of one command run in a shell session. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/shell.py#L33">源码</a></p>
+<p>直接声明字段：<code>command_id</code>、<code>command</code>、<code>exit_code</code>、<code>stdout</code>、<code>stderr</code>、<code>start_time</code>、<code>end_time</code>、<code>timed_out</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@property duration(self) -&gt; float</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>Shell</code></strong> — Minimal session surface used by <code>ShellTool</code>. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/shell.py#L51">源码</a></p>
+<p>继承：<code>Protocol</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>async start(self) -&gt; None</code></td>
+<td>启动该对象负责的资源/执行环境。</td>
+</tr>
+<tr>
+<td><code>async run(self, command: str, *, timeout: float=120.0) -&gt; CommandResult</code></td>
+<td>执行该对象的运行逻辑；具体返回类型见签名。</td>
+</tr>
+<tr>
+<td><code>async close(self) -&gt; None</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>SandboxShell</code></strong> — <code>Shell</code> backed by sandbox <code>open_shell()</code> (native provider session). <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/shell.py#L61">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, handle: Any)</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>async start(self) -&gt; None</code></td>
+<td>启动该对象负责的资源/执行环境。</td>
+</tr>
+<tr>
+<td><code>async run(self, command: str, *, timeout: float=120.0) -&gt; CommandResult</code></td>
+<td>执行该对象的运行逻辑；具体返回类型见签名。</td>
+</tr>
+<tr>
+<td><code>async close(self) -&gt; None</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>open_shell_session</code></strong> — Prefer a native shell; fall back to tmux-over-exec. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/shell.py#L107">源码</a></p>
+<pre><code class="language-python">async open_shell_session(backend: SandboxBackend, *, env: dict[str, str] | None=None, width: int=120, height: int=40) -&gt; Shell
+</code></pre>
+<p><strong><code>TmuxShell</code></strong> — <code>Shell</code> backed by a detached tmux session, driven via one-shot exec. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/shell.py#L160">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, backend: SandboxBackend, *, session_id: str \| None=None, width: int=120, height: int=40, shell: str='bash', env: dict[str, str] \| None=None)</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>async start(self) -&gt; None</code></td>
+<td>启动该对象负责的资源/执行环境。</td>
+</tr>
+<tr>
+<td><code>async close(self) -&gt; None</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+<tr>
+<td><code>async observe(self) -&gt; ToolResult</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+<tr>
+<td><code>async start_command(self, command: str) -&gt; int</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+<tr>
+<td><code>async poll(self, command_id: int) -&gt; int \| None</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+<tr>
+<td><code>async run(self, command: str, *, timeout: float=120.0) -&gt; CommandResult</code></td>
+<td>执行该对象的运行逻辑；具体返回类型见签名。</td>
+</tr>
+<tr>
+<td><code>async send_keys(self, keys: str \| list[str]) -&gt; None</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+<tr>
+<td><code>async interrupt(self, command_id: int \| None=None) -&gt; int \| None</code></td>
+<td>Send Ctrl-C, then suspend and kill the current job if it stays alive.</td>
+</tr>
+<tr>
+<td><code>async capture_pane(self, *, entire: bool=False) -&gt; str</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+<tr>
+<td><code>async resize(self, *, width: int, height: int) -&gt; None</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>ShellArguments</code></strong> — 模型工具调用的参数schema。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/shell.py#L397">源码</a></p>
+<p>继承：<code>BaseModel</code>。</p>
+<p>直接声明字段：<code>command</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>ShellToolConfig</code></strong> — Construction kwargs for the shell tool (the <code>shell</code> entry's kwargs). <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/shell.py#L401">源码</a></p>
+<p>继承：<code>BaseModel</code>。</p>
+<p>直接声明字段：<code>env_vars</code>、<code>command_timeout</code>、<code>width</code>、<code>height</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>ShellTool</code></strong> — 该工具的执行实现；模型可见参数见正文。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/shell.py#L419">源码</a></p>
+<p>继承：<code>Tool</code>。</p>
+<p>直接声明字段：<code>config</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, sandbox: SandboxBackend, **kwargs: Any) -&gt; None</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>async start(self) -&gt; None</code></td>
+<td>启动该对象负责的资源/执行环境。</td>
+</tr>
+<tr>
+<td><code>async run(self, args: dict[str, Any], *, timeout: float \| None=None) -&gt; ToolResult</code></td>
+<td>执行该对象的运行逻辑；具体返回类型见签名。</td>
+</tr>
+<tr>
+<td><code>async close(self) -&gt; None</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agenttoolssubmit"><code>uni_agent.tools.submit</code></h4>
+<p><strong><code>SubmitArguments</code></strong> — 模型工具调用的参数schema。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/submit.py#L23">源码</a></p>
+<p>继承：<code>BaseModel</code>。</p>
+<p><strong><code>SubmitTool</code></strong> — 该工具的执行实现；模型可见参数见正文。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/tools/submit.py#L30">源码</a></p>
+<p>继承：<code>Tool</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>async run(self, args: dict[str, Any], *, timeout: float \| None=None) -&gt; ToolResult</code></td>
+<td>执行该对象的运行逻辑；具体返回类型见签名。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="125">12.5 训练框架适配与后处理</h3>
+<h4 id="uni_agentframeworkbase"><code>uni_agent.framework.base</code></h4>
+<p><strong><code>AgentRunner</code></strong> — Callable that executes one agent episode against a Framework-owned Gateway session. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/framework/base.py#L13">源码</a></p>
+<p>继承：<code>Protocol</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>async __call__(self, *, session: SessionHandle, raw_prompt: object, sample_index: int, **sample_runner_kwargs: object) -&gt; TaskResult \| None</code></td>
+<td>实现可调用协议；完整参数见签名。</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>AgentFramework</code></strong> — Abstract base for trainer-driven agent frameworks. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/framework/base.py#L26">源码</a></p>
+<p>继承：<code>ABC</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@classmethod from_config(cls, *, config, **kwargs) -&gt; AgentFramework</code></td>
+<td>按配置构造该类。</td>
+</tr>
+<tr>
+<td><code>async generate_sequences(self, prompts: TensorDict) -&gt; None</code></td>
+<td>Run agent sessions and write finalized trajectories to TransferQueue.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentframeworkentry"><code>uni_agent.framework.entry</code></h4>
+<p><strong><code>build_gateway_manager</code></strong> — Spawn the gateway actor pool (driver-side, driver-owned) and return its manager. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/framework/entry.py#L32">源码</a></p>
+<pre><code class="language-python">build_gateway_manager(*, config, llm_client) -&gt; GatewayManager
+</code></pre>
+<p><strong><code>build_agent_framework</code></strong> — Wire the configured framework subclass over an injected gateway manager. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/framework/entry.py#L67">源码</a></p>
+<pre><code class="language-python">build_agent_framework(*, config, gateway_manager, reward_loop_worker_handles=None) -&gt; AgentFramework
+</code></pre>
+<p><strong><code>AgentFrameworkWorker</code></strong> — Ray actor host: initializes TQ in this process and owns one AgentFramework. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/framework/entry.py#L88">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, *, config, gateway_manager, reward_loop_worker_handles=None) -&gt; None</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>async generate_sequences(self, prompts) -&gt; None</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>AgentFrameworkRolloutAdapter</code></strong> — Trainer-facing adapter satisfying the <code>agent_loop_manager_class</code> contract. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/framework/entry.py#L108">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self) -&gt; None</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>@classmethod create(cls, *, config, llm_client, teacher_client=None, reward_loop_worker_handles=None, **_) -&gt; AgentFrameworkRolloutAdapter</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+<tr>
+<td><code>generate_sequences(self, prompts) -&gt; None</code></td>
+<td>Submit a TQ batch generation task without waiting for rollout results.</td>
+</tr>
+<tr>
+<td><code>generate_sequences_and_wait(self, prompts) -&gt; None</code></td>
+<td>Blocking variant of <code>generate_sequences</code> for standalone (non-trainer) runs.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentframeworkframework"><code>uni_agent.framework.framework</code></h4>
+<p><strong><code>GatewayAgentFramework</code></strong> — Reference AgentFramework implementation for Gateway-backed agent loops. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/framework/framework.py#L293">源码</a></p>
+<p>继承：<code>AgentFramework</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, gateway_manager, *, runner_registry: dict[str, _RunnerConfig], reward_loop_worker_handles=None, custom_reward_function_configured: bool=False, processor=None, rollout_config=None, log_dir: str \| None=None, mask_unfinished_episode: bool=False, trajectory_postprocessor: TrajectoryPostprocessor \| None=None, trajectory_postprocessor_kwargs: dict[str, object] \| None=None)</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>@classmethod from_config(cls, *, config, gateway_manager, processor=None, reward_loop_worker_handles=None) -&gt; GatewayAgentFramework</code></td>
+<td>按配置构造该类。</td>
+</tr>
+<tr>
+<td><code>async generate_sequences(self, prompts: TensorDict) -&gt; None</code></td>
+<td>Run rollout-manager generation and write outputs into TransferQueue.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentframeworkmulti_modal_postprocess"><code>uni_agent.framework.multi_modal_postprocess</code></h4>
+<p><strong><code>compute_multi_modal_inputs</code></strong> — Return processor-produced multimodal tensors for a single sample. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/framework/multi_modal_postprocess.py#L31">源码</a></p>
+<pre><code class="language-python">compute_multi_modal_inputs(processor, input_ids: torch.Tensor, multi_modal_data: dict[str, Any] | None, mm_processor_kwargs: dict[str, Any] | None=None) -&gt; dict[str, torch.Tensor]
+</code></pre>
+<p><strong><code>compute_position_ids</code></strong> — Return text-only or multimodal-aware position ids for a single sample. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/framework/multi_modal_postprocess.py#L67">源码</a></p>
+<pre><code class="language-python">compute_position_ids(processor, input_ids: torch.Tensor, attention_mask: torch.Tensor, multi_modal_inputs: dict[str, torch.Tensor]) -&gt; torch.Tensor
+</code></pre>
+<h4 id="uni_agentframeworktask_runner"><code>uni_agent.framework.task_runner</code></h4>
+<p><strong><code>score_from_runner_result</code></strong> — Adapt the managed Runner result for a VERL RewardLoopWorker scorer. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/framework/task_runner.py#L78">源码</a></p>
+<pre><code class="language-python">score_from_runner_result(*, data_source: str, solution_str: str, ground_truth: object, extra_info: dict[str, Any], **_reward_manager_kwargs: Any) -&gt; dict[str, int | float | bool]
+</code></pre>
+<p><strong><code>run_task</code></strong> — Resolve the sample's task, run it against <code>session</code>, and return its result. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/framework/task_runner.py#L101">源码</a></p>
+<pre><code class="language-python">async run_task(*, session: SessionHandle, tools_kwargs: dict[str, Any] | None=None, raw_prompt: Any=None, sample_index: int | None=None, task_config_path: str | None=None, api_key: str='EMPTY', model_name: str | None=None, **_: Any) -&gt; TaskResult
+</code></pre>
+<h3 id="126-collectorstore">12.6 路由、collector、store和策略</h3>
+<h4 id="uni_agentagent_aware_routerbalancer"><code>uni_agent.agent_aware_router.balancer</code></h4>
+<p><strong><code>KVCAwareBalancer</code></strong> — Pure-framework router shell. See module docstring. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/balancer.py#L47">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, servers: dict[str, Any], config: Optional[dict]=None, provider_factory: Callable[..., Any]=None) -&gt; None</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>register_call_back(self, event: str, fn: Callable) -&gt; None</code></td>
+<td>Append <code>fn</code> to the listeners for <code>event</code>.</td>
+</tr>
+<tr>
+<td><code>un_register_call_back(self, event: str, fn: Callable) -&gt; None</code></td>
+<td>Remove <code>fn</code> from <code>event</code>'s callback list (idempotent).</td>
+</tr>
+<tr>
+<td><code>get_all_servers(self) -&gt; list[str]</code></td>
+<td>List all active server ids.</td>
+</tr>
+<tr>
+<td><code>get_status(self) -&gt; dict</code></td>
+<td>Construction + routing snapshot for debugging.</td>
+</tr>
+<tr>
+<td><code>release_server(self, server_id: str, request_id: str \| None=None) -&gt; None</code></td>
+<td>Release a server after a request completes; fires <code>on_release</code>.</td>
+</tr>
+<tr>
+<td><code>acquire_server(self, request_id: str, prompt_ids: list[int] \| None=None) -&gt; tuple[str, Any]</code></td>
+<td>Delegate to <code>route()</code> for a best-first ranking, return <code>(top, handle)</code>.</td>
+</tr>
+<tr>
+<td><code>require_acquire_fields(self) -&gt; list[str]</code></td>
+<td><code>generate()</code> kwargs this router consumes at acquire time.</td>
+</tr>
+<tr>
+<td><code>require_release_fields(self) -&gt; list[str]</code></td>
+<td>Identity fields this router consumes at release time.</td>
+</tr>
+<tr>
+<td><code>clear_sticky_cache(self) -&gt; dict</code></td>
+<td>Drop every sticky binding so returning sessions re-route (verl #7115).</td>
+</tr>
+<tr>
+<td><code>get_total_inflight(self) -&gt; int</code></td>
+<td>Total in-flight requests across the pool (verl #7115 drain polling).</td>
+</tr>
+<tr>
+<td><code>add_servers(self, servers: dict[str, Any]) -&gt; None</code></td>
+<td>Bulk-add servers to the pool (provider is keyed by init-time addresses, untouched here).</td>
+</tr>
+<tr>
+<td><code>remove_servers(self, server_ids: list[str]) -&gt; None</code></td>
+<td>Bulk-remove servers; fires <code>on_servers_removed</code> to invalidate sticky bindings.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routercollectorscollector"><code>uni_agent.agent_aware_router.collectors.collector</code></h4>
+<p><strong><code>Collector</code></strong> — Unified collector — composes Transport + Parser. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/collectors/collector.py#L87">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, transport: Transport, parser: Parser) -&gt; None</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>start(self) -&gt; None</code></td>
+<td>Start the collector — launch event-loop thread and subscribe.</td>
+</tr>
+<tr>
+<td><code>stop(self) -&gt; None</code></td>
+<td>Stop the collector — cancel tasks, drain cleanup, stop event-loop thread.</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>get_collector</code></strong> — Create a Collector by name — one place does both composition and config binding. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/collectors/collector.py#L415">源码</a></p>
+<pre><code class="language-python">get_collector(name: str, collectors_config: CollectorConfig, server_addresses: dict[str, str] | None=None, kv_event_endpoints: dict[str, list[str]] | None=None, balancer_handler=None) -&gt; Collector
+</code></pre>
+<h4 id="uni_agentagent_aware_routercollectorsparsebase"><code>uni_agent.agent_aware_router.collectors.parse.base</code></h4>
+<p><strong><code>KVCacheUpdate</code></strong> — Mutable accumulator for KVCacheStore updates, built by the parser. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/collectors/parse/base.py#L34">源码</a></p>
+<p>直接声明字段：<code>node_id</code>、<code>add_blocks</code>、<code>remove_blocks</code>、<code>clear_all</code>、<code>block_size</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>add(self, layer: Layer, block_hashes: list[str]) -&gt; None</code></td>
+<td>Fold stored blocks into <code>add_blocks</code> under <code>layer</code>.</td>
+</tr>
+<tr>
+<td><code>remove(self, layer: Layer, block_hashes: list[str]) -&gt; None</code></td>
+<td>Fold removed blocks into <code>remove_blocks</code> under <code>layer</code>.</td>
+</tr>
+<tr>
+<td><code>clear(self) -&gt; None</code></td>
+<td>Mark the replica for a full block clear.</td>
+</tr>
+<tr>
+<td><code>set_block_size(self, size: int) -&gt; None</code></td>
+<td>Set the learned block size (first BlockStored wins; set by the parser).</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>MetricsUpdate</code></strong> — Structured update command for PerReplicaStore. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/collectors/parse/base.py#L73">源码</a></p>
+<p>直接声明字段：<code>node_id</code>、<code>metrics</code>、<code>is_delta</code>、<code>request_id</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>StickyUpdate</code></strong> — Structured update command for the per-request store (sticky binding). <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/collectors/parse/base.py#L95">源码</a></p>
+<p>直接声明字段：<code>action</code>、<code>request_id</code>、<code>replica_id</code>、<code>replica_ids</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>Parser</code></strong> — Abstract base for data parsers. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/collectors/parse/base.py#L118">源码</a></p>
+<p>继承：<code>ABC</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parse(self, raw_data: bytes \| str \| Any, node_id: str) -&gt; KVCacheUpdate \| MetricsUpdate \| StickyUpdate \| None</code></td>
+<td>Parse raw data and return a structured update.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routercollectorsparsebasicinflight"><code>uni_agent.agent_aware_router.collectors.parse.basic.inflight</code></h4>
+<p><strong><code>InflightParser</code></strong> — Parse <code>StatisticEvent</code> → inflight + dispatch/complete <code>MetricsUpdate</code> deltas. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/collectors/parse/basic/inflight.py#L70">源码</a></p>
+<p>继承：<code>Parser</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parse(self, raw_data: bytes \| str \| Any, node_id: str) -&gt; MetricsUpdate \| None</code></td>
+<td>Dispatch on acquire/release; ignore other events / non-event payloads.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routercollectorsparsebasicsticky"><code>uni_agent.agent_aware_router.collectors.parse.basic.sticky</code></h4>
+<p><strong><code>StickyParser</code></strong> — Parse <code>StatisticEvent</code> → <code>StickyUpdate</code> for sticky bindings. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/collectors/parse/basic/sticky.py#L38">源码</a></p>
+<p>继承：<code>Parser</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parse(self, raw_data: bytes \| str \| Any, node_id: str) -&gt; StickyUpdate \| None</code></td>
+<td>Dispatch on the event type; ignore non-event payloads.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routercollectorsparsevllmkv"><code>uni_agent.agent_aware_router.collectors.parse.vllm.kv</code></h4>
+<p><strong><code>VLLMKVParser</code></strong> — vLLM KV-cache parser — msgpack payload → KVCacheUpdate. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/collectors/parse/vllm/kv.py#L34">源码</a></p>
+<p>继承：<code>Parser</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self) -&gt; None</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>parse(self, raw_data: bytes \| str, node_id: str) -&gt; KVCacheUpdate \| None</code></td>
+<td>Parse msgpack payload and return structured update command.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routercollectorsparsevllmkv_event"><code>uni_agent.agent_aware_router.collectors.parse.vllm.kv_event</code></h4>
+<p><strong><code>KVCacheEvent</code></strong> — Standardized KV cache event — normalized from backend-specific ZMQ payloads. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/collectors/parse/vllm/kv_event.py#L27">源码</a></p>
+<p>直接声明字段：<code>event_type</code>、<code>node_id</code>、<code>block_hashes</code>、<code>parent_block_hash</code>、<code>token_ids</code>、<code>block_size</code>、<code>medium</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@classmethod from_raw(cls, raw_data: Any, default_node_id: str \| None=None) -&gt; list[KVCacheEvent]</code></td>
+<td>Parse msgpack-decoded raw data into a list of KVCacheEvent instances.</td>
+</tr>
+<tr>
+<td><code>@property is_store(self) -&gt; bool</code></td>
+<td>True if this is a block-stored event.</td>
+</tr>
+<tr>
+<td><code>@property is_remove(self) -&gt; bool</code></td>
+<td>True if this is a block-removed event.</td>
+</tr>
+<tr>
+<td><code>@property is_clear(self) -&gt; bool</code></td>
+<td>True if this is an all-blocks-cleared event.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routercollectorsparsevllmmetrics"><code>uni_agent.agent_aware_router.collectors.parse.vllm.metrics</code></h4>
+<p><strong><code>VLLMMetricsParser</code></strong> — vLLM Prometheus metrics parser — parses HTTP response text. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/collectors/parse/vllm/metrics.py#L32">源码</a></p>
+<p>继承：<code>Parser</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parse(self, raw_data: bytes \| str, node_id: str) -&gt; MetricsUpdate \| None</code></td>
+<td>Parse Prometheus text and return structured metrics.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routercollectorsprovider"><code>uni_agent.agent_aware_router.collectors.provider</code></h4>
+<p><strong><code>CollectorManager</code></strong> — Lifecycle manager for data collectors. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/collectors/provider.py#L28">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, collectors_config: CollectorConfig, collection_names: list[str], server_addresses: dict[str, str] \| None=None, kv_event_endpoints: dict[str, list[str]] \| None=None, balancer_handler=None) -&gt; None</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>start(self) -&gt; None</code></td>
+<td>Start all collectors.</td>
+</tr>
+<tr>
+<td><code>stop(self) -&gt; None</code></td>
+<td>Stop all collectors.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routercollectorstransportbase"><code>uni_agent.agent_aware_router.collectors.transport.base</code></h4>
+<p><strong><code>Transport</code></strong> — Abstract base for data transport layers. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/collectors/transport/base.py#L27">源码</a></p>
+<p>继承：<code>ABC</code>。</p>
+<p>直接声明字段：<code>is_async</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>async subscribe(self, handler: Callable[[bytes \| str, str], None]) -&gt; None</code></td>
+<td>Start data acquisition and deliver each item to handler.</td>
+</tr>
+<tr>
+<td><code>stop(self) -&gt; None</code></td>
+<td>Signal stop and close protocol-level resources (sockets/clients).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routercollectorstransportcallback"><code>uni_agent.agent_aware_router.collectors.transport.callback</code></h4>
+<p><strong><code>StatisticEvent</code></strong> — Packed Balancer callback — the payload the callback transport delivers. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/collectors/transport/callback.py#L36">源码</a></p>
+<p>直接声明字段：<code>event</code>、<code>request_id</code>、<code>replica_id</code>、<code>server_ids</code>、<code>prompt_len</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>CallbackTransport</code></strong> — Pure-forwarder Transport backed by Balancer callbacks. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/collectors/transport/callback.py#L68">源码</a></p>
+<p>继承：<code>Transport</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, balancer_handler: Any) -&gt; None</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>async subscribe(self, handler: Callable[[bytes \| str, str], None]) -&gt; None</code></td>
+<td>Register three callbacks on the Balancer; no loop, returns at once.</td>
+</tr>
+<tr>
+<td><code>stop(self) -&gt; None</code></td>
+<td>Unregister every callback registered by <code>subscribe</code> (idempotent).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routercollectorstransporthttp"><code>uni_agent.agent_aware_router.collectors.transport.http</code></h4>
+<p><strong><code>HTTPTransport</code></strong> — HTTP polling transport — fetches Prometheus metrics from endpoints. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/collectors/transport/http.py#L34">源码</a></p>
+<p>继承：<code>Transport</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, endpoints: dict[str, str], interval: float=5.0, http_timeout: float=10.0) -&gt; None</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>async subscribe(self, handler: Callable[[bytes \| str, str], None]) -&gt; None</code></td>
+<td>Start the HTTP polling loop — delivers response text to handler.</td>
+</tr>
+<tr>
+<td><code>stop(self) -&gt; None</code></td>
+<td>No protocol-level resources to close here.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routercollectorstransportzmq"><code>uni_agent.agent_aware_router.collectors.transport.zmq</code></h4>
+<p><strong><code>ZMQTransport</code></strong> — ZMQ transport — replay + sub dual socket per endpoint. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/collectors/transport/zmq.py#L47">源码</a></p>
+<p>继承：<code>Transport</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, endpoints: dict[str, list[str]], base_retry_delay: float=1.0, max_retry_delay: float=30.0, max_retry_attempts: int=5, retry_backoff_factor: float=2.0) -&gt; None</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>async subscribe(self, handler: Callable[[bytes \| str, str], None]) -&gt; None</code></td>
+<td>Spawn per-endpoint subscription tasks, deliver payloads to handler.</td>
+</tr>
+<tr>
+<td><code>stop(self) -&gt; None</code></td>
+<td>Signal stop, cancel tasks, close ZMQ sockets. No loop dependency.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routerconfigbase"><code>uni_agent.agent_aware_router.config.base</code></h4>
+<p><strong><code>ConfigError</code></strong> — Raised when config validation fails. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/config/base.py#L29">源码</a></p>
+<p>继承：<code>ValueError</code>。</p>
+<p><strong><code>StrategyConfig</code></strong> — Base config for routing strategies. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/config/base.py#L91">源码</a></p>
+<h4 id="uni_agentagent_aware_routerconfigcollector"><code>uni_agent.agent_aware_router.config.collector</code></h4>
+<p><strong><code>CollectorConfig</code></strong> — Config for the collectors module. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/config/collector.py#L30">源码</a></p>
+<p>直接声明字段：<code>http_interval</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<h4 id="uni_agentagent_aware_routerconfigrouter"><code>uni_agent.agent_aware_router.config.router</code></h4>
+<p><strong><code>KVCAwareConfig</code></strong> — Top-level config for KVCAwareBalancer, parsed from OmegaConf DictConfig. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/config/router.py#L44">源码</a></p>
+<p>直接声明字段：<code>strategy</code>、<code>collector</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@classmethod from_config(cls, cfg: DictConfig \| dict) -&gt; KVCAwareConfig</code></td>
+<td>Two-step parsing of VeRL-transmitted config.</td>
+</tr>
+<tr>
+<td><code>apply_override(self, override: dict[str, Any] \| None) -&gt; None</code></td>
+<td>Apply a flat runtime override dict onto the declared config fields.</td>
+</tr>
+<tr>
+<td><code>validate(self) -&gt; None</code></td>
+<td>Validate the full config. Raises ConfigError with all violations.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routerconfigstrategy"><code>uni_agent.agent_aware_router.config.strategy</code></h4>
+<p><strong><code>KVCAwareStrategyConfig</code></strong> — Config for KVCache-Aware routing strategy. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/config/strategy.py#L29">源码</a></p>
+<p>继承：<code>StrategyConfig</code>。</p>
+<p>直接声明字段：<code>load_threshold</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<h4 id="uni_agentagent_aware_routerdebug"><code>uni_agent.agent_aware_router.debug</code></h4>
+<p><strong><code>is_debug_enabled</code></strong> — True when the debug master switch is on (<code>UNI_AGENT_ROUTER_DEBUG</code>). <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/debug.py#L46">源码</a></p>
+<pre><code class="language-python">is_debug_enabled(environ: Mapping[str, str] | None=None) -&gt; bool
+</code></pre>
+<p><strong><code>get_debug_var</code></strong> — Query one <code>UNI_AGENT_ROUTER_&lt;NAME&gt;</code> variable's raw string value. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/debug.py#L52">源码</a></p>
+<pre><code class="language-python">get_debug_var(name: str, environ: Mapping[str, str] | None=None) -&gt; str | None
+</code></pre>
+<h4 id="uni_agentagent_aware_routerinsightemitter"><code>uni_agent.agent_aware_router.insight.emitter</code></h4>
+<p><strong><code>WriteKind</code></strong> — Discriminator for <code>WriteEvent</code> — which store write path fired. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/insight/emitter.py#L48">源码</a></p>
+<p><strong><code>WriteEvent</code></strong> — What the collector hands to <code>Emitter.on_write</code> after a store write. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/insight/emitter.py#L72">源码</a></p>
+<p>直接声明字段：<code>kind</code>、<code>node</code>、<code>deltas</code>、<code>new_values</code>、<code>load</code>、<code>turn_sum</code>、<code>inflight_count</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>Emitter</code></strong> — Singleton bridge from router state to rl-insight. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/insight/emitter.py#L102">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>on_score(self, replica: str, components: dict[str, float]) -&gt; None</code></td>
+<td>Emit A-class score components (load/s_cache/avail/need/remaining).</td>
+</tr>
+<tr>
+<td><code>on_route(self, latency_s: float) -&gt; None</code></td>
+<td>Emit one <code>score()</code> policy-scoring latency sample (global, no replica).</td>
+</tr>
+<tr>
+<td><code>on_write(self, event: WriteEvent) -&gt; None</code></td>
+<td>Emit the B-class primitives for one store write, dispatched by kind.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routerlogging"><code>uni_agent.agent_aware_router.logging</code></h4>
+<p><strong><code>get_router_logger</code></strong> — Return a loguru bound logger for an agent_aware_router component. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/logging.py#L66">源码</a></p>
+<pre><code class="language-python">get_router_logger(name: str) -&gt; loguru.Logger
+</code></pre>
+<h4 id="uni_agentagent_aware_routerserverhttp_server"><code>uni_agent.agent_aware_router.server.http_server</code></h4>
+<p><strong><code>KvEventsHttpServer</code></strong> — vLLMHttpServer plus kv-events port allocation and server getters. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/server/http_server.py#L53">源码</a></p>
+<p>继承：<code>vLLMHttpServer</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, *args, **kwargs)</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>get_kv_events_endpoints(self)</code></td>
+<td>Get kv-events ZMQ endpoint addresses.</td>
+</tr>
+<tr>
+<td><code>async run_server(self, args: argparse.Namespace)</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+<tr>
+<td><code>async run_headless(self, args: argparse.Namespace)</code></td>
+<td>Run headless server in a separate thread.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routerservernet_utils"><code>uni_agent.agent_aware_router.server.net_utils</code></h4>
+<p><strong><code>is_valid_ipv6_address</code></strong> — 检查是否为合法IPv6地址。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/server/net_utils.py#L21">源码</a></p>
+<pre><code class="language-python">is_valid_ipv6_address(address: str) -&gt; bool
+</code></pre>
+<p><strong><code>get_free_port_range</code></strong> — Find <code>count</code> consecutive free ports, optionally holding them open. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/server/net_utils.py#L47">源码</a></p>
+<pre><code class="language-python">get_free_port_range(address: str, count: int, with_alive_sock: bool=False) -&gt; tuple[int, list[socket.socket] | None]
+</code></pre>
+<h4 id="uni_agentagent_aware_routerserverreplica"><code>uni_agent.agent_aware_router.server.replica</code></h4>
+<p><strong><code>KvEventsReplica</code></strong> — vLLMReplica whose per-node actors are KvEventsHttpServer instances. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/server/replica.py#L23">源码</a></p>
+<p>继承：<code>vLLMReplica</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, *args, **kwargs)</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routerstoredata_store"><code>uni_agent.agent_aware_router.store.data_store</code></h4>
+<p><strong><code>DataStore</code></strong> — Unified data access layer — single entry point for all store operations. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/store/data_store.py#L29">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self) -&gt; None</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>get_metric(self, node_id: str, key: str) -&gt; Any</code></td>
+<td>Query a single metric by canonical key.</td>
+</tr>
+<tr>
+<td><code>get_metrics(self, node_id: str) -&gt; dict[str, Any]</code></td>
+<td>Get a node's full metrics snapshot.</td>
+</tr>
+<tr>
+<td><code>get_metric_node_ids(self) -&gt; list[str]</code></td>
+<td>Return all node IDs that have metrics in the store.</td>
+</tr>
+<tr>
+<td><code>refresh_metrics(self, new_data: dict[str, dict[str, Any]]) -&gt; dict[str, dict[str, Any]]</code></td>
+<td>Batch refresh metrics from collectors.</td>
+</tr>
+<tr>
+<td><code>get_block_size(self) -&gt; int \| None</code></td>
+<td>Get learned block size.</td>
+</tr>
+<tr>
+<td><code>set_block_size(self, size: int) -&gt; None</code></td>
+<td>Set block size (learned from first BlockStored event).</td>
+</tr>
+<tr>
+<td><code>add_kv_blocks(self, node_id: str, block_hashes: list[str], layer: Layer=Layer.GPU) -&gt; None</code></td>
+<td>Add KV cache blocks to a node.</td>
+</tr>
+<tr>
+<td><code>remove_kv_blocks(self, node_id: str, block_hashes: list[str], layer: Layer=Layer.GPU) -&gt; None</code></td>
+<td>Remove KV cache blocks from a node.</td>
+</tr>
+<tr>
+<td><code>clear_kv_node(self, node_id: str) -&gt; None</code></td>
+<td>Clear all KV cache blocks for a node.</td>
+</tr>
+<tr>
+<td><code>get_kv_block_count(self) -&gt; int</code></td>
+<td>Return the number of unique block hashes currently cached.</td>
+</tr>
+<tr>
+<td><code>kv_node_has_blocks(self, node_id: str) -&gt; bool</code></td>
+<td>Return True if node_id appears in at least one cached block.</td>
+</tr>
+<tr>
+<td><code>has_kv_block(self, block_hash: str) -&gt; bool</code></td>
+<td>Return True if block_hash is present in the cache index.</td>
+</tr>
+<tr>
+<td><code>get_layer_prefix_hit_rate(self, node_id: str, hash_strs: list[str], layer: Layer=Layer.GPU) -&gt; float</code></td>
+<td>Query prefix-cache hit rate for a node at a given layer.</td>
+</tr>
+<tr>
+<td><code>kv_cache_load(self, node_id: str) -&gt; float</code></td>
+<td>KV-cache load = <code>retained_blocks / num_gpu_blocks</code> (∈ [0,1]).</td>
+</tr>
+<tr>
+<td><code>per_replica_block_counts(self) -&gt; dict[str, int]</code></td>
+<td>Return <code>{replica_id: number of distinct prefix blocks it retains}</code>.</td>
+</tr>
+<tr>
+<td><code>incr_metric(self, node_id: str, key: str, delta: int \| float=1) -&gt; int \| float</code></td>
+<td>Apply a signed delta to one metric for one node (inflight ±1).</td>
+</tr>
+<tr>
+<td><code>incr_metrics(self, node_id: str, deltas: dict[str, int \| float]) -&gt; dict[str, int \| float]</code></td>
+<td>Apply multiple signed deltas to one node under a single lock.</td>
+</tr>
+<tr>
+<td><code>get_sticky_binding(self, request_id: str) -&gt; str \| None</code></td>
+<td>Return the bound replica_id for <code>request_id</code> (None if cold/evicted).</td>
+</tr>
+<tr>
+<td><code>put_sticky_binding(self, request_id: str, replica_id: str) -&gt; None</code></td>
+<td>Bind / refresh <code>request_id → replica_id</code> (driven by <code>on_acquire</code>).</td>
+</tr>
+<tr>
+<td><code>invalidate_sticky_binding(self, request_id: str) -&gt; None</code></td>
+<td>Drop one request_id's sticky binding.</td>
+</tr>
+<tr>
+<td><code>invalidate_sticky_replica(self, replica_id: str) -&gt; None</code></td>
+<td>Drop every sticky binding pointing at a removed replica.</td>
+</tr>
+<tr>
+<td><code>clear_sticky_bindings(self) -&gt; int</code></td>
+<td>Drop every sticky binding regardless of target replica.</td>
+</tr>
+<tr>
+<td><code>sticky_status(self) -&gt; dict</code></td>
+<td>Return a debugging snapshot of the sticky bindings.</td>
+</tr>
+<tr>
+<td><code>incr_per_request(self, request_id: str, key: str, delta: int \| float=1)</code></td>
+<td>Apply a signed delta to one per-request value; return the new value.</td>
+</tr>
+<tr>
+<td><code>get_per_request(self, request_id: str, key: str, default: Any=None)</code></td>
+<td>Return one per-request value (<code>default</code> if unset/evicted).</td>
+</tr>
+<tr>
+<td><code>set_per_request(self, request_id: str, key: str, value: Any) -&gt; None</code></td>
+<td>Set one per-request value (creates the row if new).</td>
+</tr>
+<tr>
+<td><code>del_per_request(self, request_id: str, key: str) -&gt; None</code></td>
+<td>Drop one per-request value (no-op if absent).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routerstorekv_cache_store"><code>uni_agent.agent_aware_router.store.kv_cache_store</code></h4>
+<p><strong><code>KVCacheStore</code></strong> — Mutable data carrier for KV cache mapping tables. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/store/kv_cache_store.py#L25">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self) -&gt; None</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>@classmethod singleton(cls) -&gt; KVCacheStore</code></td>
+<td>Return the shared singleton instance.</td>
+</tr>
+<tr>
+<td><code>clear_replica(self, replica_id: str) -&gt; None</code></td>
+<td>Clear all blocks for a replica from the reverse index.</td>
+</tr>
+<tr>
+<td><code>add_blocks(self, replica_id: str, block_hashes: Iterable[str], layer: Layer=Layer.GPU) -&gt; None</code></td>
+<td>Add blocks to a replica at a layer, updating the reverse index.</td>
+</tr>
+<tr>
+<td><code>remove_blocks(self, replica_id: str, block_hashes: Iterable[str], layer: Layer=Layer.GPU) -&gt; None</code></td>
+<td>Remove blocks from a replica at a layer, updating the reverse index.</td>
+</tr>
+<tr>
+<td><code>per_replica_block_counts(self) -&gt; dict[str, int]</code></td>
+<td>Return <code>{replica_id: number of distinct GPU prefix blocks it retains}</code>.</td>
+</tr>
+<tr>
+<td><code>get_layer_prefix_hit_rate(self, node_id: str, hash_strs: list[str], layer: Layer=Layer.GPU) -&gt; float</code></td>
+<td>Prefix-cache hit rate for a node at a layer, ∈ [0.0, 1.0].</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routerstoreper_replica_store"><code>uni_agent.agent_aware_router.store.per_replica_store</code></h4>
+<p><strong><code>PerReplicaStore</code></strong> — Per-replica metric store: <code>{node_id: {canonical_key: value}}</code>. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/store/per_replica_store.py#L25">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self) -&gt; None</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>@classmethod singleton(cls) -&gt; PerReplicaStore</code></td>
+<td>Return the shared singleton instance.</td>
+</tr>
+<tr>
+<td><code>get(self, node_id: str, key: str \| None=None) -&gt; Any \| dict[str, Any]</code></td>
+<td>Read metrics.</td>
+</tr>
+<tr>
+<td><code>incr(self, node_id: str, key: str, delta: int \| float=1) -&gt; int \| float</code></td>
+<td>Apply a numeric delta to one key for one node (inflight ±1).</td>
+</tr>
+<tr>
+<td><code>incr_many(self, node_id: str, deltas: dict[str, int \| float]) -&gt; dict[str, int \| float]</code></td>
+<td>Apply multiple signed deltas to one node under a single lock.</td>
+</tr>
+<tr>
+<td><code>refresh(self, new_data: dict[str, dict[str, Any]]) -&gt; dict[str, dict[str, Any]]</code></td>
+<td>Batch refresh from collectors.</td>
+</tr>
+<tr>
+<td><code>all_ids(self) -&gt; list[str]</code></td>
+<td>Return all node IDs currently in the store.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routerstoreper_request_store"><code>uni_agent.agent_aware_router.store.per_request_store</code></h4>
+<p><strong><code>PerRequestStore</code></strong> — Singleton per-request state store — <code>request_id → {key: value}</code>, LRU-bounded. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/store/per_request_store.py#L38">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, max_size: int=DEFAULT_PER_REQUEST_MAX_SIZE) -&gt; None</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>@classmethod singleton(cls) -&gt; PerRequestStore</code></td>
+<td>Return the shared singleton (tests construct a fresh instance / reset _instance).</td>
+</tr>
+<tr>
+<td><code>@property max_size(self) -&gt; int</code></td>
+<td>Configured per-request table capacity.</td>
+</tr>
+<tr>
+<td><code>get(self, request_id: str, key: str, default: Any=None) -&gt; Any</code></td>
+<td>Return the per-request value for <code>key</code> (<code>default</code> if unset/evicted).</td>
+</tr>
+<tr>
+<td><code>set(self, request_id: str, key: str, value: Any) -&gt; None</code></td>
+<td>Set <code>request_id</code>'s <code>key</code> to <code>value</code> (creates the row if new).</td>
+</tr>
+<tr>
+<td><code>incr(self, request_id: str, key: str, delta: int \| float=1) -&gt; int \| float</code></td>
+<td>Add <code>delta</code> to <code>request_id</code>'s numeric <code>key</code>; return the new value.</td>
+</tr>
+<tr>
+<td><code>delete(self, request_id: str, key: str) -&gt; None</code></td>
+<td>Drop <code>key</code> from <code>request_id</code>'s row (no-op if absent).</td>
+</tr>
+<tr>
+<td><code>delete_where(self, key: str, value: Any) -&gt; int</code></td>
+<td>Drop <code>key</code> from every request whose value for it equals <code>value</code>.</td>
+</tr>
+<tr>
+<td><code>delete_key(self, key: str) -&gt; int</code></td>
+<td>Drop <code>key</code> from every request that has it, regardless of value.</td>
+</tr>
+<tr>
+<td><code>count(self, key: str) -&gt; int</code></td>
+<td>Number of requests that currently have <code>key</code> set.</td>
+</tr>
+<tr>
+<td><code>reset(self) -&gt; None</code></td>
+<td>Clear all per-request state (test helper; not used on the hot path).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routerstrategiesbase"><code>uni_agent.agent_aware_router.strategies.base</code></h4>
+<p><strong><code>ReplicaInfo</code></strong> — Descriptor of a routable replica. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/strategies/base.py#L23">源码</a></p>
+<p>直接声明字段：<code>replica_id</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<h4 id="uni_agentagent_aware_routerstrategieskvc_aware"><code>uni_agent.agent_aware_router.strategies.kvc_aware</code></h4>
+<p><strong><code>StrategyError</code></strong> — Strategy construction or scoring error. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/strategies/kvc_aware.py#L56">源码</a></p>
+<p>继承：<code>Exception</code>。</p>
+<p><strong><code>KVCacheAwareStrategy</code></strong> — Runtime strategy constructed from a <code>KVCAwareStrategyConfig</code>. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/strategies/kvc_aware.py#L60">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, *, alpha: float, load_threshold: float, layer_weights: dict[Layer, float], memory_overload_filter: bool=True, do_shortcut: bool=True, slow_cut: SlowCut \| str=SlowCut.CAPACITY_TOKEN_AWARE, load_weights: tuple[float, float, float, float]=DEFAULT_LOAD_WEIGHTS, overload_mode: OverloadMode \| str=OverloadMode.KV_CACHE_USAGE_PERC) -&gt; None</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>set_capacity(self, max_num_seqs: int, max_num_batched_tokens: int) -&gt; None</code></td>
+<td>Inject <code>--max-num-seqs</code> from the server handle's rollout config.</td>
+</tr>
+<tr>
+<td><code>@classmethod from_config(cls, cfg: KVCAwareStrategyConfig) -&gt; KVCacheAwareStrategy</code></td>
+<td>Construct from config. <code>max_num_seqs</code> is injected by the Balancer via <code>set_capacity</code> after fetching from the server handle.</td>
+</tr>
+<tr>
+<td><code>is_overloaded(self, store: DataStore, replica: ReplicaInfo) -&gt; bool</code></td>
+<td>Return True if <code>replica</code> is overloaded (<code>load &gt; load_threshold</code>).</td>
+</tr>
+<tr>
+<td><code>score(self, prompt_ids: list[int] \| None, store: DataStore, replicas: list[ReplicaInfo], request_id: str \| None=None) -&gt; list[float]</code></td>
+<td>Score each replica. Larger is better.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routerstrategiesregistry"><code>uni_agent.agent_aware_router.strategies.registry</code></h4>
+<p><strong><code>StrategyRegistry</code></strong> — Class-level registry mapping strategy config type → strategy class. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/strategies/registry.py#L28">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@classmethod register(cls, config_cls: type, strategy_cls: type) -&gt; None</code></td>
+<td>Register a runtime strategy class for a config dataclass type.</td>
+</tr>
+<tr>
+<td><code>@classmethod get(cls, config_cls: type) -&gt; type</code></td>
+<td>Look up the runtime strategy class registered for <code>config_cls</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="uni_agentagent_aware_routerstrategiesrouting"><code>uni_agent.agent_aware_router.strategies.routing</code></h4>
+<p><strong><code>RoutingStrategy</code></strong> — Routing scoring strategy. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/strategies/routing.py#L33">源码</a></p>
+<p>继承：<code>Protocol</code>。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>score(self, prompt_ids: list[int] \| None, store: Any, replicas: list[Any], request_id: str \| None=None) -&gt; list[float]</code></td>
+<td>Score each replica. Larger is better; negatives are allowed.</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>route</code></strong> — Return replica ids ranked best-first by <code>strategy</code>. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/strategies/routing.py#L63">源码</a></p>
+<pre><code class="language-python">route(strategy: Any, prompt_ids: list[int] | None, store: Any, replicas: list[Any], request_id: str | None=None) -&gt; list[str]
+</code></pre>
+<h4 id="uni_agentagent_aware_routertypesemit_spec"><code>uni_agent.agent_aware_router.types.emit_spec</code></h4>
+<p><strong><code>EmitKey</code></strong> — Canonical emit-side metric key names. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/types/emit_spec.py#L39">源码</a></p>
+<p>直接声明字段：<code>KV_CACHE_USAGE_PERC</code>、<code>NUM_REQUESTS_RUNNING</code>、<code>NUM_REQUESTS_WAITING</code>、<code>KV_CACHE_LOAD</code>、<code>INFLIGHT_TOKENS</code>、<code>PROMPT_TOKENS</code>、<code>PROMPT_TOKENS_CACHED</code>、<code>EXTERNAL_PREFIX_CACHE_HITS</code>、<code>ESTIMATED_FLOPS_PER_GPU</code>、<code>DISPATCHED_COUNT</code>、<code>COMPLETED_COUNT</code>、<code>PROMPT_LEN_SUM</code>、<code>INFLIGHT_AVG_TURN</code>、<code>KV_EVICTIONS</code>、<code>LOAD</code>、<code>S_CACHE</code>、<code>AVAIL_RATIO</code>、<code>NEED_RATIO</code>、<code>REMAINING_RATIO</code>、<code>ROUTE_LATENCY_SECONDS</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<h4 id="uni_agentagent_aware_routertypeslayer"><code>uni_agent.agent_aware_router.types.layer</code></h4>
+<p><strong><code>Layer</code></strong> — Canonical cache-layer names (backend-agnostic). <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/types/layer.py#L28">源码</a></p>
+<p>继承：<code>str</code>、<code>Enum</code>。</p>
+<h4 id="uni_agentagent_aware_routertypesmetric_spec"><code>uni_agent.agent_aware_router.types.metric_spec</code></h4>
+<p><strong><code>MetricKey</code></strong> — Canonical metric key names — backend-agnostic, strategy-layer unified. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/types/metric_spec.py#L32">源码</a></p>
+<p>直接声明字段：<code>KV_CACHE_USAGE_PERC</code>、<code>NUM_REQUESTS_RUNNING</code>、<code>NUM_REQUESTS_WAITING</code>、<code>NUM_GPU_BLOCKS</code>、<code>PREFIX_CACHE_QUERIES</code>、<code>PREFIX_CACHE_HITS</code>、<code>TTFT_SECONDS_SUM</code>、<code>TTFT_COUNT</code>、<code>QUEUE_TIME_SECONDS_SUM</code>、<code>QUEUE_TIME_COUNT</code>、<code>TPOT_SECONDS_SUM</code>、<code>TPOT_COUNT</code>、<code>PROMPT_TOKENS</code>、<code>PROMPT_TOKENS_CACHED</code>、<code>GENERATION_TOKENS</code>、<code>EXTERNAL_PREFIX_CACHE_HITS</code>、<code>ESTIMATED_FLOPS_PER_GPU</code>、<code>INFLIGHT_COUNT</code>、<code>INFLIGHT_TOKENS</code>、<code>INFLIGHT_TURN_SUM</code>、<code>DISPATCHED_COUNT</code>、<code>COMPLETED_COUNT</code>、<code>PROMPT_LEN_SUM</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<h4 id="uni_agentagent_aware_routertypesoverload_mode"><code>uni_agent.agent_aware_router.types.overload_mode</code></h4>
+<p><strong><code>OverloadMode</code></strong> — How <code>is_overloaded</code> decides a replica is overloaded. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/types/overload_mode.py#L31">源码</a></p>
+<p>继承：<code>str</code>、<code>Enum</code>。</p>
+<h4 id="uni_agentagent_aware_routertypesslow_cut"><code>uni_agent.agent_aware_router.types.slow_cut</code></h4>
+<p><strong><code>SlowCut</code></strong> — Fallback scoring mode (used after the sticky short-circuit misses). <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/types/slow_cut.py#L28">源码</a></p>
+<p>继承：<code>str</code>、<code>Enum</code>。</p>
+<h4 id="uni_agentagent_aware_routerutilshash"><code>uni_agent.agent_aware_router.utils.hash</code></h4>
+<p><strong><code>compute_hash</code></strong> — Compute xxhash for a single block given parent hash and token bytes. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/utils/hash.py#L26">源码</a></p>
+<pre><code class="language-python">compute_hash(parent_hash: int, block_bytes: bytes, seed: int=0) -&gt; int
+</code></pre>
+<p><strong><code>get_prefix_hashes_incremental</code></strong> — Continue a chained-prefix-hash computation from a checkpoint. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/utils/hash.py#L53">源码</a></p>
+<pre><code class="language-python">get_prefix_hashes_incremental(prompt_ids: list[int], block_size: int, parent_hash: int, n_done: int, seed: int=0) -&gt; tuple[list[int], int]
+</code></pre>
+<h4 id="uni_agentagent_aware_routerutilsknob"><code>uni_agent.agent_aware_router.utils.knob</code></h4>
+<p><strong><code>coerce_knob_value</code></strong> — Coerce <code>raw</code> to <code>default</code>'s type; raise <code>ConfigError</code> on mismatch. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/utils/knob.py#L34">源码</a></p>
+<pre><code class="language-python">coerce_knob_value(name: str, raw: Any, default: Any) -&gt; Any
+</code></pre>
+<h4 id="uni_agentagent_aware_routerutilsprefix_cache"><code>uni_agent.agent_aware_router.utils.prefix_cache</code></h4>
+<p><strong><code>resolve_prefix_hashes</code></strong> — Return <code>str(h)</code> for each full-block chained prefix hash of <code>prompt_ids</code>. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/agent_aware_router/utils/prefix_cache.py#L26">源码</a></p>
+<pre><code class="language-python">resolve_prefix_hashes(prompt_ids: list[int], request_id: str | None, store: Any) -&gt; list[str]
+</code></pre>
+<h3 id="127">12.7 日志上下文</h3>
+<h4 id="uni_agentloggingcontext"><code>uni_agent.logging.context</code></h4>
+<p><strong><code>LogContext</code></strong> — Explicit routing information for one logical execution log. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/logging/context.py#L35">源码</a></p>
+<p>直接声明字段：<code>log_id</code>、<code>log_path</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<p><strong><code>get_current_log_context</code></strong> — Return the logging context bound to the current execution. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/logging/context.py#L48">源码</a></p>
+<pre><code class="language-python">get_current_log_context() -&gt; LogContext | None
+</code></pre>
+<h4 id="uni_agentloggingsession"><code>uni_agent.logging.session</code></h4>
+<p><strong><code>sample_logging</code></strong> — Bind a log ID to records in this block; usable as <code>with</code> or <code>async with</code>. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/logging/session.py#L34">源码</a></p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__init__(self, log_id: str, log_path: Path \| str \| None=None)</code></td>
+<td>构造对象；只列源码显式声明的构造器。</td>
+</tr>
+<tr>
+<td><code>@classmethod from_context(cls, context: LogContext) -&gt; sample_logging</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+<tr>
+<td><code>__enter__(self) -&gt; sample_logging</code></td>
+<td>进入同步上下文。</td>
+</tr>
+<tr>
+<td><code>__exit__(self, *exc_info) -&gt; bool</code></td>
+<td>退出同步上下文并清理。</td>
+</tr>
+<tr>
+<td><code>async __aenter__(self) -&gt; sample_logging</code></td>
+<td>进入异步上下文；生命周期由该类实现。</td>
+</tr>
+<tr>
+<td><code>async __aexit__(self, *exc_info) -&gt; bool</code></td>
+<td>退出异步上下文并清理。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="128">12.8 可选观测接口</h3>
+<h4 id="uni_agentrl_insight__init__"><code>uni_agent.rl_insight.__init__</code></h4>
+<p><strong><code>metric_count</code></strong> — Record a counter increment (no-op when emit is off). <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/rl_insight/__init__.py#L81">源码</a></p>
+<pre><code class="language-python">metric_count(name: str, amount: float=1.0, documentation: str='', **labels: Any) -&gt; None
+</code></pre>
+<p><strong><code>metric_gauge</code></strong> — Record a gauge value (no-op when emit is off). <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/rl_insight/__init__.py#L89">源码</a></p>
+<pre><code class="language-python">metric_gauge(name: str, value: float, documentation: str='', **labels: Any) -&gt; None
+</code></pre>
+<p><strong><code>metric_histogram</code></strong> — Record one histogram sample (no-op when emit is off). <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/rl_insight/__init__.py#L97">源码</a></p>
+<pre><code class="language-python">metric_histogram(name: str, value: float, documentation: str='', **labels: Any) -&gt; None
+</code></pre>
+<p><strong><code>trace_span</code></strong> — Report one completed span through verl's RLInsightLogger (version-gated, no-op when off). <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/rl_insight/__init__.py#L112">源码</a></p>
+<pre><code class="language-python">trace_span(name: str, *, start_time_ns: int, end_time_ns: int, attributes: dict[str, Any] | None=None) -&gt; None
+</code></pre>
+<h4 id="uni_agentrl_insightadapter"><code>uni_agent.rl_insight.adapter</code></h4>
+<p><strong><code>init_rollout_trace_config</code></strong> — Initialize rollout trace identity from the trainer config. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/rl_insight/adapter.py#L116">源码</a></p>
+<pre><code class="language-python">init_rollout_trace_config(config: Any) -&gt; None
+</code></pre>
+<p><strong><code>TaskSpanState</code></strong> — Mutable task result collected by <code>task_span</code>. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/rl_insight/adapter.py#L126">源码</a></p>
+<p>直接声明字段：<code>start_ns</code>、<code>task_name</code>、<code>image_ref</code>、<code>prompt_hash</code>、<code>status</code>、<code>error</code>、<code>reward</code>、<code>accuracy</code>、<code>finished</code>、<code>reward_posted</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>record_result(self, result: Any, *, reward_posted: bool) -&gt; None</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>task_span</code></strong> — Bind task identity and report one completed task span. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/rl_insight/adapter.py#L162">源码</a></p>
+<pre><code class="language-python">task_span(tools_kwargs: dict[str, Any] | None, *, task_name: str, prompt: Any)
+</code></pre>
+<p><strong><code>GenerationSpan</code></strong> — Mutable gateway-generation span state. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/rl_insight/adapter.py#L200">源码</a></p>
+<p>直接声明字段：<code>identity</code>、<code>start_ns</code>、<code>status</code>、<code>error</code>、<code>finish_reason</code>、<code>prompt_tokens</code>、<code>completion_tokens</code>、<code>chain_id</code>、<code>turn</code>、<code>type</code>、<code>tools</code>、<code>content</code>。完整类型/默认值见机器清单；继承字段见基类。</p>
+<table>
+<thead>
+<tr>
+<th>方法签名 / 属性getter</th>
+<th>功能（优先保留源码docstring）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>capacity_exhausted(self, *, prompt_tokens: int, chain_id: int \| None) -&gt; None</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+<tr>
+<td><code>success(self, *, prompt_tokens: int, completion_tokens: int, chain_id: int \| None, turn: int, assistant_msg: dict[str, Any], finish_reason: str \| None) -&gt; None</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+<tr>
+<td><code>failure(self, exc: BaseException) -&gt; None</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+<tr>
+<td><code>report(self) -&gt; None</code></td>
+<td>该类声明的方法；参数和返回类型如下，具体分支见源码。</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>start_generation_span</code></strong> — Start one gateway-generation span. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/rl_insight/adapter.py#L285">源码</a></p>
+<pre><code class="language-python">start_generation_span(identity: dict[str, Any]) -&gt; GenerationSpan
+</code></pre>
+<p><strong><code>agent_loop_session</code></strong> — Create an Agent Loop session, falling back when installed verl is old. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/rl_insight/adapter.py#L290">源码</a></p>
+<pre><code class="language-python">agent_loop_session(*, experiment_name: Any | None=None, sample: Any, session: Any, traj: Any=0, uid: Any=None, global_steps: Any=None, session_id: Any=None)
+</code></pre>
+<h3 id="129">12.9 通用工具</h3>
+<h4 id="uni_agentutils"><code>uni_agent.utils</code></h4>
+<p><strong><code>simple_timer</code></strong> — Accumulate the elapsed wall time of the <code>with</code> block into <code>timing_raw[name]</code>. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/utils.py#L10">源码</a></p>
+<pre><code class="language-python">simple_timer(name: str, timing_raw: dict[str, float])
+</code></pre>
+<p><strong><code>get_event_loop</code></strong> — 获取或创建事件循环。 <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/utils.py#L26">源码</a></p>
+<pre><code class="language-python">get_event_loop()
+</code></pre>
+<p><strong><code>auto_await</code></strong> — Auto await a coroutine function. <a href="https://github.com/verl-project/uni-agent/blob/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent/utils.py#L36">源码</a></p>
+<pre><code class="language-python">auto_await(func)
+</code></pre>
+<h3 id="1210">12.10 包导出、别名与常量</h3>
+<p><code>__all__</code>记录公开导入入口。这里也覆盖非函数声明的导出，例如GatewayActor的Ray别名、ToolStatus类型别名、emitter单例、指标规格常量与版本号。它们不增加HTTP路由数。</p>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>显式导出名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uni_agent</code></td>
+<td><code>__version__</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.agent_aware_router</code></td>
+<td><code>KVCAwareBalancer</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.agent_aware_router.collectors</code></td>
+<td><code>CollectorManager</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.agent_aware_router.collectors.parse</code></td>
+<td><code>Parser</code>, <code>KVCacheUpdate</code>, <code>MetricsUpdate</code>, <code>StickyUpdate</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.agent_aware_router.collectors.parse.basic</code></td>
+<td><code>InflightParser</code>, <code>StickyParser</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.agent_aware_router.collectors.parse.vllm</code></td>
+<td><code>VLLMKVParser</code>, <code>VLLMMetricsParser</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.agent_aware_router.collectors.transport</code></td>
+<td><code>Transport</code>, <code>CallbackTransport</code>, <code>HTTPTransport</code>, <code>ZMQTransport</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.agent_aware_router.config</code></td>
+<td><code>CollectorConfig</code>, <code>ConfigError</code>, <code>KVCAwareConfig</code>, <code>KVCAwareStrategyConfig</code>, <code>StrategyConfig</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.agent_aware_router.insight</code></td>
+<td><code>Emitter</code>, <code>WriteEvent</code>, <code>WriteKind</code>, <code>emitter</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.agent_aware_router.insight.emitter</code></td>
+<td><code>Emitter</code>, <code>WriteEvent</code>, <code>WriteKind</code>, <code>emitter</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.agent_aware_router.server</code></td>
+<td><code>KvEventsHttpServer</code>, <code>KvEventsReplica</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.agent_aware_router.store</code></td>
+<td><code>DataStore</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.agent_aware_router.strategies</code></td>
+<td><code>ReplicaInfo</code>, <code>StrategyRegistry</code>, <code>route</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.agent_aware_router.types</code></td>
+<td><code>EmitKey</code>, <code>EMIT_SPECS</code>, <code>Layer</code>, <code>MetricKey</code>, <code>METRIC_SPECS</code>, <code>OverloadMode</code>, <code>SlowCut</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.agent_aware_router.utils</code></td>
+<td><code>compute_hash</code>, <code>get_prefix_hashes_incremental</code>, <code>coerce_knob_value</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.agents</code></td>
+<td><code>Agent</code>, <code>AgentConfig</code>, <code>ModelConfig</code>, <code>AgentResult</code>, <code>build_agent</code>, <code>get_agent_cls</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.agents.claude_code</code></td>
+<td><code>ClaudeCodeAgent</code>, <code>ClaudeCodeConfig</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.agents.mem_agent</code></td>
+<td><code>ContextManagerResult</code>, <code>MemAgent</code>, <code>MemAgentConfig</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.agents.mini_swe_agent</code></td>
+<td><code>MiniSweAgentAgent</code>, <code>MiniSweAgentConfig</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.agents.react</code></td>
+<td><code>ReActAgent</code>, <code>ReActConfig</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.framework</code></td>
+<td><code>AgentFramework</code>, <code>GatewayAgentFramework</code>, <code>AgentRunner</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.gateway</code></td>
+<td><code>GatewayActor</code>, <code>GatewayManager</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.gateway.adapters</code></td>
+<td><code>anthropic_build_response</code>, <code>anthropic_error_body</code>, <code>anthropic_stream_response</code>, <code>anthropic_to_internal</code>, <code>MalformedRequestError</code>, <code>openai_build_response</code>, <code>openai_error_body</code>, <code>openai_stream_response</code>, <code>openai_to_internal</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.gateway.session</code></td>
+<td><code>InternalGenerationRequest</code>, <code>GatewaySession</code>, <code>MessageCodec</code>, <code>SessionHandle</code>, <code>Trajectory</code>, <code>TrajectoryBuffer</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.logging</code></td>
+<td><code>sample_logging</code>, <code>LogContext</code>, <code>get_current_log_context</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.rl_insight</code></td>
+<td><code>ENABLE_ENV</code>, <code>metric_count</code>, <code>metric_gauge</code>, <code>metric_histogram</code>, <code>trace_span</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.sandbox</code></td>
+<td><code>ExecResult</code>, <code>ImageMap</code>, <code>Sandbox</code>, <code>SandboxBackend</code>, <code>SandboxConfig</code>, <code>LocalSandbox</code>, <code>build_sandbox</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.tasks</code></td>
+<td><code>Task</code>, <code>TaskConfig</code>, <code>TaskConfigResolver</code>, <code>TaskResult</code>, <code>get_task</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.tasks.hotpotqa</code></td>
+<td><code>HotpotQATask</code>, <code>HotpotQATaskConfig</code>, <code>compute_score</code></td>
+</tr>
+<tr>
+<td><code>uni_agent.tools</code></td>
+<td><code>Tool</code>, <code>ToolError</code>, <code>ToolCallFormatError</code>, <code>ToolResult</code>, <code>ToolStatus</code>, <code>Toolbox</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="13">13. 版本、来源与使用边界</h2>
+<ul>
+<li><a href="https://github.com/verl-project/uni-agent/tree/10743439dd0a19da44a94cccad069b135d957bf1/uni_agent">固定版本源码</a>。每个附录声明带源码行号。</li>
+<li><a href="../../evidence/api-inventory.json">api-inventory.json</a>保存签名、字段、导出、路由、源文件SHA256及E2B契约索引。</li>
+<li><a href="../../tools/extract_api_inventory.py">extract_api_inventory.py</a>只解析源码AST与生成客户端；<a href="../../tools/render_api_appendices.py">render_api_appendices.py</a>生成附录，不会导入/启动训练、模型或sandbox。</li>
+<li><code>examples/</code>脚本参数、私有函数、第三方继承API与未来版本新增API不在“Uni-Agent自有公开声明”计数中。配置属性详见正文或JSON字段记录。</li>
+<li>本次新增的是源码核对文档；实际使用范围仍以<a href="../experiments/index.html">实验索引</a>为准，没有据此新增训练或远端服务兼容结论。</li>
+</ul><details><summary>本页目录</summary><div class="toc">
+<ul>
+<li><a href="#1-api">1. 如何理解“所有API”</a></li>
+<li><a href="#2">2. 接口分层速查</a></li>
+<li><a href="#3-gateway-http-api">3. Gateway HTTP API：业务路由完整列表</a><ul>
+<li><a href="#openai">OpenAI兼容请求的实际范围</a></li>
+<li><a href="#anthropic">Anthropic兼容请求的实际范围</a></li>
+<li><a href="#_1">返回、流式和错误</a></li>
+<li><a href="#http">最小HTTP调用示意</a></li>
+<li><a href="#_2">默认文档路由与不存在的控制路由</a></li>
+</ul>
+</li>
+<li><a href="#4-gateway-python-ray">4. Gateway Python / Ray管理接口</a><ul>
+<li><a href="#gatewayactorconfig">GatewayActorConfig与数据对象</a></li>
+<li><a href="#sessioncodec">高级session/codec接口</a></li>
+</ul>
+</li>
+<li><a href="#5-agent">5. Agent接口</a><ul>
+<li><a href="#agent">已注册的agent</a></li>
+</ul>
+</li>
+<li><a href="#6-task">6. Task与配置接口</a></li>
+<li><a href="#7-tool">7. Tool接口及模型可见函数</a></li>
+<li><a href="#8">8. 训练框架适配接口（本次未运行训练）</a></li>
+<li><a href="#9-agent-aware-router">9. Agent-aware router接口</a></li>
+<li><a href="#10-cli">10. 日志、观测与CLI</a></li>
+<li><a href="#11-sandbox">11. Sandbox接口入口</a></li>
+<li><a href="#12">12. 完整公开名称索引（源码附录）</a><ul>
+<li><a href="#121-gatewayadaptersession">12.1 Gateway、adapter、session与轨迹</a></li>
+<li><a href="#122-agent">12.2 Agent、模型客户端与注册</a></li>
+<li><a href="#123-taskreward">12.3 Task、预处理与reward</a></li>
+<li><a href="#124-toolshell">12.4 Tool、编辑器与持久shell</a></li>
+<li><a href="#125">12.5 训练框架适配与后处理</a></li>
+<li><a href="#126-collectorstore">12.6 路由、collector、store和策略</a></li>
+<li><a href="#127">12.7 日志上下文</a></li>
+<li><a href="#128">12.8 可选观测接口</a></li>
+<li><a href="#129">12.9 通用工具</a></li>
+<li><a href="#1210">12.10 包导出、别名与常量</a></li>
+</ul>
+</li>
+<li><a href="#13">13. 版本、来源与使用边界</a></li>
+</ul>
+</div>
+</details><div class="prevnext"><a href="02-evidence-index.html">← 上一篇</a><a href="04-sandbox-and-verdal-api-reference.html">下一篇 →</a></div><footer>原始实验资产保留在 /home/yuhanya/uni-agent-lab；本页面来自已完成的实验记录。</footer></main></div><script>document.getElementById('nav-search').addEventListener('input',e=>{const s=e.target.value.toLowerCase();document.querySelectorAll('#nav-links a').forEach(a=>a.hidden=!a.textContent.toLowerCase().includes(s));});</script></body></html>

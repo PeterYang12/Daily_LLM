@@ -1,0 +1,1342 @@
+diff --git a/debug_bytes.py b/debug_bytes.py
+new file mode 100644
+index 000000000..973092eb1
+--- /dev/null
++++ b/debug_bytes.py
+@@ -0,0 +1,43 @@
++#!/usr/bin/env python3
++
++import sys
++import os
++from tempfile import TemporaryFile
++from _pytest.capture import EncodedFile
++
++def test_bytes():
++    """Test with bytes to see what's really happening"""
++    
++    # Create EncodedFile like FDCapture does
++    tmpfile = EncodedFile(
++        TemporaryFile(buffering=0),
++        encoding="utf-8",
++        errors="replace",
++        write_through=True,
++    )
++    
++    print(f"tmpfile type: {type(tmpfile)}")
++    print(f"tmpfile.fileno(): {tmpfile.fileno()}")
++    
++    # Write bytes directly to the file descriptor
++    test_bytes = b'Greetings from DOS\r'
++    print(f"Writing bytes: {repr(test_bytes)}")
++    
++    # Write to the file descriptor
++    written = os.write(tmpfile.fileno(), test_bytes)
++    print(f"Bytes written: {written}")
++    
++    # Read back as bytes from the buffer
++    tmpfile.seek(0)
++    result_bytes = tmpfile.buffer.read()
++    print(f"Read back bytes: {repr(result_bytes)}")
++    
++    # Read back as text
++    tmpfile.seek(0)
++    result_text = tmpfile.read()
++    print(f"Read back text: {repr(result_text)}")
++    
++    tmpfile.close()
++
++if __name__ == "__main__":
++    test_bytes()
+\ No newline at end of file
+diff --git a/debug_encodedfile.py b/debug_encodedfile.py
+new file mode 100644
+index 000000000..1619c5d56
+--- /dev/null
++++ b/debug_encodedfile.py
+@@ -0,0 +1,70 @@
++#!/usr/bin/env python3
++
++import io
++from tempfile import TemporaryFile
++
++def debug_encodedfile():
++    """Debug what's happening with EncodedFile"""
++    
++    # Create a file like EncodedFile does
++    print("=== Creating EncodedFile ===")
++    buffer = TemporaryFile(buffering=0)
++    print(f"Buffer type: {type(buffer)}")
++    
++    # This is what EncodedFile does
++    try:
++        wrapper = io.TextIOWrapper(
++            buffer,
++            encoding="utf-8",
++            newline="",  # This is the key parameter
++            errors="replace",
++            write_through=True
++        )
++        print(f"Wrapper created successfully")
++        print(f"Wrapper newlines: {wrapper.newlines}")
++        print(f"Wrapper line_buffering: {wrapper.line_buffering}")
++        
++        # Test writing and reading
++        wrapper.write('test\r')
++        wrapper.flush()
++        wrapper.seek(0)
++        result = wrapper.read()
++        print(f"Result: {repr(result)}")
++        
++        # Check the buffer
++        print(f"Buffer type: {type(wrapper.buffer)}")
++        print(f"Buffer: {wrapper.buffer}")
++        
++    except Exception as e:
++        print(f"Error: {e}")
++        import traceback
++        traceback.print_exc()
++        
++    # Now let's see what happens if we create it differently
++    print("\n=== Creating with explicit newline parameter ===")
++    try:
++        buffer2 = TemporaryFile(buffering=0)
++        wrapper2 = io.TextIOWrapper(
++            buffer2,
++            encoding="utf-8",
++            newline="",  # This is the key parameter
++            errors="replace",
++            write_through=True,
++            # Let's also try to set the newline attribute explicitly
++        )
++        print(f"Wrapper2 created successfully")
++        print(f"Wrapper2 newlines: {wrapper2.newlines}")
++        
++        wrapper2.write('test\r')
++        wrapper2.flush()
++        wrapper2.seek(0)
++        result2 = wrapper2.read()
++        print(f"Result2: {repr(result2)}")
++        
++    except Exception as e:
++        print(f"Error: {e}")
++        import traceback
++        traceback.print_exc()
++
++if __name__ == "__main__":
++    debug_encodedfile()
+\ No newline at end of file
+diff --git a/debug_full_flow.py b/debug_full_flow.py
+new file mode 100644
+index 000000000..09e706312
+--- /dev/null
++++ b/debug_full_flow.py
+@@ -0,0 +1,55 @@
++#!/usr/bin/env python3
++
++import sys
++import os
++import io
++from tempfile import TemporaryFile
++from _pytest.capture import FDCapture, EncodedFile
++
++def debug_full_flow():
++    """Debug the full FDCapture flow"""
++    
++    # Create FDCapture like in the real code
++    cap = FDCapture(1)  # stdout
++    
++    print("FDCapture created")
++    print(f"cap.tmpfile type: {type(cap.tmpfile)}")
++    print(f"cap.tmpfile: {cap.tmpfile}")
++    
++    # Check the tmpfile attributes
++    if hasattr(cap.tmpfile, 'buffer'):
++        print(f"tmpfile.buffer type: {type(cap.tmpfile.buffer)}")
++        print(f"tmpfile.buffer: {cap.tmpfile.buffer}")
++    
++    # Start capturing
++    cap.start()
++    print("Capturing started")
++    
++    # Write something
++    print('Greetings from DOS', end='\r')
++    print("Wrote to stdout")
++    
++    # Snap the capture
++    captured = cap.snap()
++    print(f"Captured: {repr(captured)}")
++    
++    # Stop capturing
++    cap.done()
++    
++    # Test with a direct approach
++    print("\n--- Direct approach ---")
++    direct_file = EncodedFile(
++        TemporaryFile(buffering=0),
++        encoding="utf-8",
++        errors="replace",
++        write_through=True,
++    )
++    
++    direct_file.write('Greetings from DOS\r')
++    direct_file.flush()
++    direct_file.seek(0)
++    direct_result = direct_file.read()
++    print(f"Direct result: {repr(direct_result)}")
++
++if __name__ == "__main__":
++    debug_full_flow()
+\ No newline at end of file
+diff --git a/debug_issue.py b/debug_issue.py
+new file mode 100644
+index 000000000..d2f476983
+--- /dev/null
++++ b/debug_issue.py
+@@ -0,0 +1,55 @@
++#!/usr/bin/env python3
++
++import sys
++import os
++import io
++from _pytest.capture import FDCapture, EncodedFile
++from tempfile import TemporaryFile
++
++def debug_capture():
++    """Debug what's happening in the capture process"""
++    
++    # Create a temporary file like FDCapture does
++    tmpfile = EncodedFile(
++        TemporaryFile(buffering=0),
++        encoding="utf-8",
++        errors="replace",
++        write_through=True,
++    )
++    
++    print("tmpfile type:", type(tmpfile))
++    print("tmpfile buffer type:", type(tmpfile.buffer))
++    
++    # Write directly to the file
++    test_string = 'Greetings from DOS\r'
++    print(f"Writing: {repr(test_string)}")
++    
++    # Write to the file directly
++    tmpfile.write(test_string)
++    tmpfile.flush()
++    
++    # Read back
++    tmpfile.seek(0)
++    result = tmpfile.read()
++    print(f"Read back: {repr(result)}")
++    
++    # Test with a regular TextIOWrapper
++    print("\n--- Testing with regular TextIOWrapper ---")
++    regular_file = io.TextIOWrapper(TemporaryFile(buffering=0), encoding="utf-8", newline="", write_through=True)
++    regular_file.write(test_string)
++    regular_file.flush()
++    regular_file.seek(0)
++    result2 = regular_file.read()
++    print(f"Regular TextIOWrapper result: {repr(result2)}")
++    
++    # Test with newline=None
++    print("\n--- Testing with newline=None ---")
++    newline_none_file = io.TextIOWrapper(TemporaryFile(buffering=0), encoding="utf-8", newline=None, write_through=True)
++    newline_none_file.write(test_string)
++    newline_none_file.flush()
++    newline_none_file.seek(0)
++    result3 = newline_none_file.read()
++    print(f"newline=None result: {repr(result3)}")
++
++if __name__ == "__main__":
++    debug_capture()
+\ No newline at end of file
+diff --git a/debug_issue2.py b/debug_issue2.py
+new file mode 100644
+index 000000000..7d265d15f
+--- /dev/null
++++ b/debug_issue2.py
+@@ -0,0 +1,71 @@
++#!/usr/bin/env python3
++
++import sys
++import os
++import io
++from _pytest.capture import EncodedFile
++from tempfile import TemporaryFile
++
++def debug_detailed():
++    """Debug what's happening in detail"""
++    
++    # Create a temporary file like FDCapture does
++    tmpfile = EncodedFile(
++        TemporaryFile(buffering=0),
++        encoding="utf-8",
++        errors="replace",
++        write_through=True,
++    )
++    
++    print("tmpfile.__dict__:", tmpfile.__dict__)
++    print("tmpfile.newlines:", getattr(tmpfile, 'newlines', 'NO NEWLINES ATTRIBUTE'))
++    print("tmpfile.line_buffering:", getattr(tmpfile, 'line_buffering', 'NO LINE BUFFERING'))
++    
++    # Check what the parent class TextIOWrapper has
++    print("\n--- Checking TextIOWrapper parameters ---")
++    # Let's see what happens when we create a TextIOWrapper with the same parameters
++    try:
++        test_file = io.TextIOWrapper(
++            TemporaryFile(buffering=0),
++            encoding="utf-8",
++            errors="replace",
++            write_through=True,
++            newline=""
++        )
++        print("TextIOWrapper with newline='':", test_file.newlines)
++        test_file.write('test\r')
++        test_file.flush()
++        test_file.seek(0)
++        result = test_file.read()
++        print(f"TextIOWrapper result: {repr(result)}")
++    except Exception as e:
++        print(f"Error with TextIOWrapper: {e}")
++    
++    # Test with newline=None
++    try:
++        test_file2 = io.TextIOWrapper(
++            TemporaryFile(buffering=0),
++            encoding="utf-8",
++            errors="replace",
++            write_through=True,
++            newline=None
++        )
++        print("TextIOWrapper with newline=None:", test_file2.newlines)
++        test_file2.write('test\r')
++        test_file2.flush()
++        test_file2.seek(0)
++        result2 = test_file2.read()
++        print(f"TextIOWrapper newline=None result: {repr(result2)}")
++    except Exception as e:
++        print(f"Error with TextIOWrapper newline=None: {e}")
++
++    # Test the actual EncodedFile behavior
++    print("\n--- Testing EncodedFile behavior ---")
++    tmpfile.write('test\r')
++    tmpfile.flush()
++    tmpfile.seek(0)
++    result3 = tmpfile.read()
++    print(f"EncodedFile result: {repr(result3)}")
++
++if __name__ == "__main__":
++    debug_detailed()
+\ No newline at end of file
+diff --git a/debug_issue3.py b/debug_issue3.py
+new file mode 100644
+index 000000000..5abeeb43f
+--- /dev/null
++++ b/debug_issue3.py
+@@ -0,0 +1,64 @@
++#!/usr/bin/env python3
++
++import sys
++import os
++import io
++from tempfile import TemporaryFile
++
++def debug_exact_initialization():
++    """Debug the exact initialization of EncodedFile"""
++    
++    # Let's manually create what EncodedFile does
++    print("Creating TextIOWrapper with parameters from EncodedFile...")
++    
++    # This is what EncodedFile does:
++    buffer = TemporaryFile(buffering=0)
++    print(f"Buffer type: {type(buffer)}")
++    
++    # Create the TextIOWrapper with the exact same parameters as in the code
++    try:
++        wrapper = io.TextIOWrapper(
++            buffer,
++            encoding="utf-8",
++            newline="",  # This is the key parameter
++            errors="replace",
++            write_through=True
++        )
++        print(f"Wrapper created successfully")
++        print(f"Wrapper newlines: {wrapper.newlines}")
++        print(f"Wrapper line_buffering: {wrapper.line_buffering}")
++        
++        # Test writing and reading
++        wrapper.write('test\r')
++        wrapper.flush()
++        wrapper.seek(0)
++        result = wrapper.read()
++        print(f"Result: {repr(result)}")
++        
++    except Exception as e:
++        print(f"Error: {e}")
++        import traceback
++        traceback.print_exc()
++        
++    # Now let's try without newline parameter
++    print("\n--- Without newline parameter ---")
++    try:
++        wrapper2 = io.TextIOWrapper(
++            TemporaryFile(buffering=0),
++            encoding="utf-8",
++            errors="replace",
++            write_through=True
++        )
++        print(f"Wrapper2 newlines: {wrapper2.newlines}")
++        wrapper2.write('test\r')
++        wrapper2.flush()
++        wrapper2.seek(0)
++        result2 = wrapper2.read()
++        print(f"Result2: {repr(result2)}")
++    except Exception as e:
++        print(f"Error: {e}")
++        import traceback
++        traceback.print_exc()
++
++if __name__ == "__main__":
++    debug_exact_initialization()
+\ No newline at end of file
+diff --git a/debug_stdout.py b/debug_stdout.py
+new file mode 100644
+index 000000000..b2748b24d
+--- /dev/null
++++ b/debug_stdout.py
+@@ -0,0 +1,40 @@
++#!/usr/bin/env python3
++
++import sys
++from _pytest.capture import FDCapture
++
++def debug_stdout():
++    """Debug what's happening with stdout"""
++    
++    print("Original stdout:", sys.stdout)
++    print("Original stdout type:", type(sys.stdout))
++    
++    # Create FDCapture
++    cap = FDCapture(1)
++    print("FDCapture created")
++    print("FDCapture tmpfile:", cap.tmpfile)
++    print("FDCapture tmpfile type:", type(cap.tmpfile))
++    
++    # Start capturing
++    cap.start()
++    print("Capturing started")
++    print("sys.stdout after start:", sys.stdout)
++    print("sys.stdout type after start:", type(sys.stdout))
++    
++    # Write directly to stdout
++    print("Writing to stdout...")
++    sys.stdout.write('Greetings from DOS\r')
++    sys.stdout.flush()
++    print("Write completed")
++    
++    # Read back
++    print("Reading back...")
++    captured = cap.snap()
++    print(f"Captured: {repr(captured)}")
++    
++    cap.done()
++    
++    print("Done")
++
++if __name__ == "__main__":
++    debug_stdout()
+\ No newline at end of file
+diff --git a/detailed_debug.py b/detailed_debug.py
+new file mode 100644
+index 000000000..30d17115e
+--- /dev/null
++++ b/detailed_debug.py
+@@ -0,0 +1,62 @@
++#!/usr/bin/env python3
++
++import sys
++import io
++from _pytest.capture import FDCapture, CaptureIO, SysCapture
++
++def test_syscapture():
++    """Test what happens in SysCapture"""
++    print("=== Testing SysCapture directly ===")
++    
++    # Create a CaptureIO like SysCapture would
++    capture_io = CaptureIO()
++    print(f"CaptureIO type: {type(capture_io)}")
++    print(f"CaptureIO buffer type: {type(capture_io.buffer)}")
++    
++    # Write directly to it
++    capture_io.write('Greetings from DOS\r')
++    capture_io.flush()
++    
++    # Read it back
++    result = capture_io.getvalue()
++    print(f"Direct CaptureIO result: {repr(result)}")
++    
++    # Reset and test with a real SysCapture
++    print("\n=== Testing real SysCapture ===")
++    syscap = SysCapture(1, capture_io)
++    syscap.start()
++    
++    # Write to sys.stdout (which should go to the tmpfile)
++    sys.stdout.write('Greetings from DOS\r')
++    sys.stdout.flush()
++    
++    # Read from the tmpfile
++    captured = syscap.snap()
++    print(f"SysCapture snap result: {repr(captured)}")
++    
++    syscap.done()
++
++def test_fd_capture():
++    """Test what happens in FDCapture"""
++    print("\n=== Testing FDCapture ===")
++    
++    # Create FDCapture
++    fdcap = FDCapture(1)
++    print(f"FDCapture tmpfile type: {type(fdcap.tmpfile)}")
++    
++    # Start capturing
++    fdcap.start()
++    
++    # Write to stdout
++    sys.stdout.write('Greetings from DOS\r')
++    sys.stdout.flush()
++    
++    # Read back
++    captured = fdcap.snap()
++    print(f"FDCapture snap result: {repr(captured)}")
++    
++    fdcap.done()
++
++if __name__ == "__main__":
++    test_syscapture()
++    test_fd_capture()
+\ No newline at end of file
+diff --git a/detailed_debug2.py b/detailed_debug2.py
+new file mode 100644
+index 000000000..bccb9c1a7
+--- /dev/null
++++ b/detailed_debug2.py
+@@ -0,0 +1,82 @@
++#!/usr/bin/env python3
++
++import sys
++import io
++from _pytest.capture import FDCapture, CaptureIO, SysCapture
++
++def test_syscapture():
++    """Test what happens in SysCapture"""
++    print("=== Testing SysCapture directly ===")
++    
++    # Create a CaptureIO like SysCapture would
++    capture_io = CaptureIO()
++    print(f"CaptureIO type: {type(capture_io)}")
++    print(f"CaptureIO buffer type: {type(capture_io.buffer)}")
++    
++    # Write directly to it
++    capture_io.write('Greetings from DOS\r')
++    capture_io.flush()
++    
++    # Read it back
++    result = capture_io.getvalue()
++    print(f"Direct CaptureIO result: {repr(result)}")
++    
++    # Reset and test with a real SysCapture
++    print("\n=== Testing real SysCapture ===")
++    # Create a new CaptureIO for the test
++    capture_io2 = CaptureIO()
++    syscap = SysCapture(1, capture_io2)
++    syscap.start()
++    
++    # Write to sys.stdout (which should go to the tmpfile)
++    sys.stdout.write('Greetings from DOS\r')
++    sys.stdout.flush()
++    
++    # Read from the tmpfile
++    captured = syscap.snap()
++    print(f"SysCapture snap result: {repr(captured)}")
++    
++    syscap.done()
++
++def test_fd_capture():
++    """Test what happens in FDCapture"""
++    print("\n=== Testing FDCapture ===")
++    
++    # Create FDCapture
++    fdcap = FDCapture(1)
++    print(f"FDCapture tmpfile type: {type(fdcap.tmpfile)}")
++    
++    # Start capturing
++    fdcap.start()
++    
++    # Write to stdout
++    sys.stdout.write('Greetings from DOS\r')
++    sys.stdout.flush()
++    
++    # Read back
++    captured = fdcap.snap()
++    print(f"FDCapture snap result: {repr(captured)}")
++    
++    fdcap.done()
++
++def test_real_print():
++    """Test with actual print"""
++    print("\n=== Testing with actual print ===")
++    
++    # Create FDCapture
++    fdcap = FDCapture(1)
++    fdcap.start()
++    
++    # Use print with end='\r'
++    print('Greetings from DOS', end='\r')
++    
++    # Read back
++    captured = fdcap.snap()
++    print(f"Print result: {repr(captured)}")
++    
++    fdcap.done()
++
++if __name__ == "__main__":
++    test_syscapture()
++    test_fd_capture()
++    test_real_print()
+\ No newline at end of file
+diff --git a/detailed_debug3.py b/detailed_debug3.py
+new file mode 100644
+index 000000000..1e20a221a
+--- /dev/null
++++ b/detailed_debug3.py
+@@ -0,0 +1,68 @@
++#!/usr/bin/env python3
++
++import sys
++import io
++from _pytest.capture import FDCapture, CaptureIO, SysCapture
++
++def test_with_manual_write():
++    """Test with manual write to sys.stdout"""
++    print("=== Testing manual write ===")
++    
++    # Create FDCapture
++    fdcap = FDCapture(1)
++    fdcap.start()
++    
++    # Write directly to the captured stdout
++    original_stdout = sys.stdout
++    try:
++        sys.stdout = fdcap.tmpfile
++        sys.stdout.write('Greetings from DOS\r')
++        sys.stdout.flush()
++    finally:
++        sys.stdout = original_stdout
++    
++    # Read back
++    captured = fdcap.snap()
++    print(f"Manual write result: {repr(captured)}")
++    
++    fdcap.done()
++
++def test_with_sys_stdout_write():
++    """Test with direct sys.stdout.write"""
++    print("\n=== Testing sys.stdout.write ===")
++    
++    # Create FDCapture
++    fdcap = FDCapture(1)
++    fdcap.start()
++    
++    # Write to sys.stdout directly
++    sys.stdout.write('Greetings from DOS\r')
++    sys.stdout.flush()
++    
++    # Read back
++    captured = fdcap.snap()
++    print(f"sys.stdout.write result: {repr(captured)}")
++    
++    fdcap.done()
++
++def test_with_print():
++    """Test with print"""
++    print("\n=== Testing print ===")
++    
++    # Create FDCapture
++    fdcap = FDCapture(1)
++    fdcap.start()
++    
++    # Use print with end='\r'
++    print('Greetings from DOS', end='\r')
++    
++    # Read back
++    captured = fdcap.snap()
++    print(f"Print result: {repr(captured)}")
++    
++    fdcap.done()
++
++if __name__ == "__main__":
++    test_with_manual_write()
++    test_with_sys_stdout_write()
++    test_with_print()
+\ No newline at end of file
+diff --git a/edge_case_tests.py b/edge_case_tests.py
+new file mode 100644
+index 000000000..ebd6533de
+--- /dev/null
++++ b/edge_case_tests.py
+@@ -0,0 +1,133 @@
++#!/usr/bin/env python3
++"""
++Edge case tests for the carriage return fix.
++"""
++
++import os
++from _pytest.capture import FDCapture, MultiCapture, CaptureIO
++
++
++def test_multiple_carriage_returns():
++    """Test multiple carriage returns in sequence."""
++    # Save original stdout
++    original_stdout_fd = os.dup(1)
++    
++    try:
++        cap = FDCapture(1)
++        cap.start()
++        
++        # Write multiple strings with carriage returns
++        os.write(1, b'Line1\rLine2\rLine3\r')
++        
++        captured = cap.snap()
++        
++        # All carriage returns should be preserved
++        assert captured == 'Line1\rLine2\rLine3\r'
++        
++    finally:
++        os.dup2(original_stdout_fd, 1)
++        os.close(original_stdout_fd)
++        cap.done()
++
++
++def test_mixed_newlines():
++    """Test mixed carriage returns and line feeds."""
++    # Save original stdout
++    original_stdout_fd = os.dup(1)
++    
++    try:
++        cap = FDCapture(1)
++        cap.start()
++        
++        # Write mixed newlines
++        os.write(1, b'Line1\rLine2\nLine3\r\nLine4')
++        
++        captured = cap.snap()
++        
++        # All newlines should be preserved as-is
++        assert captured == 'Line1\rLine2\nLine3\r\nLine4'
++        
++    finally:
++        os.dup2(original_stdout_fd, 1)
++        os.close(original_stdout_fd)
++        cap.done()
++
++
++def test_empty_and_special_cases():
++    """Test edge cases like empty strings and special characters."""
++    # Save original stdout
++    original_stdout_fd = os.dup(1)
++    
++    try:
++        cap = FDCapture(1)
++        cap.start()
++        
++        # Test empty string
++        os.write(1, b'')
++        captured = cap.snap()
++        assert captured == ''
++        
++        # Test just carriage return
++        os.write(1, b'\r')
++        captured = cap.snap()
++        assert captured == '\r'
++        
++        # Test just line feed
++        os.write(1, b'\n')
++        captured = cap.snap()
++        assert captured == '\n'
++        
++        # Test mixed special characters
++        os.write(1, b'\r\n\t\v\f')
++        captured = cap.snap()
++        assert captured == '\r\n\t\v\f'
++        
++    finally:
++        os.dup2(original_stdout_fd, 1)
++        os.close(original_stdout_fd)
++        cap.done()
++
++
++def test_capture_io_still_works():
++    """Ensure that CaptureIO still works correctly."""
++    capture_io = CaptureIO()
++    capture_io.write('Test with \r character')
++    capture_io.flush()
++    result = capture_io.getvalue()
++    
++    # CaptureIO should still work as before
++    assert result == 'Test with \r character'
++
++
++def test_encoded_file_direct_usage():
++    """Test EncodedFile directly to make sure our override works."""
++    from _pytest.capture import EncodedFile
++    from tempfile import TemporaryFile
++    
++    # Create EncodedFile like FDCapture does
++    tmpfile = EncodedFile(
++        TemporaryFile(buffering=0),
++        encoding="utf-8",
++        errors="replace",
++        write_through=True,
++    )
++    
++    # Write with carriage return
++    tmpfile.write('Test\r')
++    tmpfile.flush()
++    
++    # Read back - should preserve \r
++    tmpfile.seek(0)
++    result = tmpfile.read()
++    assert result == 'Test\r'
++    
++    tmpfile.close()
++
++
++if __name__ == "__main__":
++    test_multiple_carriage_returns()
++    test_mixed_newlines()
++    test_empty_and_special_cases()
++    test_capture_io_still_works()
++    test_encoded_file_direct_usage()
++    print("All edge case tests passed!")
+\ No newline at end of file
+diff --git a/exact_issue.py b/exact_issue.py
+new file mode 100644
+index 000000000..9802140d5
+--- /dev/null
++++ b/exact_issue.py
+@@ -0,0 +1,43 @@
++#!/usr/bin/env python3
++
++import sys
++import os
++from tempfile import TemporaryFile
++from _pytest.capture import EncodedFile
++
++def test_exact_issue():
++    """Test the exact issue with EncodedFile"""
++    
++    # This is exactly what happens in FDCapture.__init__
++    tmpfile = EncodedFile(
++        TemporaryFile(buffering=0),
++        encoding="utf-8",
++        errors="replace",
++        write_through=True,
++    )
++    
++    print(f"tmpfile type: {type(tmpfile)}")
++    print(f"tmpfile.__dict__: {getattr(tmpfile, '__dict__', 'No __dict__')}")
++    
++    # Write to the file descriptor
++    test_string = 'Greetings from DOS\r'
++    print(f"Writing: {repr(test_string)}")
++    
++    # Write to the file descriptor (this is what happens in FDCapture.start)
++    written = os.write(tmpfile.fileno(), test_string.encode('utf-8'))
++    print(f"Bytes written: {written}")
++    
++    # Now read back
++    tmpfile.seek(0)
++    result = tmpfile.read()
++    print(f"Read back: {repr(result)}")
++    
++    # Check the buffer directly
++    tmpfile.seek(0)
++    result_bytes = tmpfile.buffer.read()
++    print(f"Buffer read: {repr(result_bytes)}")
++    
++    tmpfile.close()
++
++if __name__ == "__main__":
++    test_exact_issue()
+\ No newline at end of file
+diff --git a/exact_reproduction.py b/exact_reproduction.py
+new file mode 100644
+index 000000000..09b59c9c7
+--- /dev/null
++++ b/exact_reproduction.py
+@@ -0,0 +1,60 @@
++#!/usr/bin/env python3
++
++import sys
++import os
++from _pytest.capture import FDCapture, CaptureIO
++
++def test_exact_reproduction():
++    """Reproduce the exact test case from the issue"""
++    
++    # Create FDCapture for stdout (fd=1)
++    cap = FDCapture(1)
++    cap.start()
++    
++    # This is what happens when we do print('Greetings from DOS', end='\r')
++    # The print function writes to sys.stdout, which is captured by FDCapture
++    print('Greetings from DOS', end='\r')
++    
++    # This is what happens in capfd.readouterr()
++    out, err = cap.readouterr()
++    
++    print(f"Captured out: {repr(out)}")
++    print(f"Captured err: {repr(err)}")
++    
++    # The assertion that fails
++    assert out.endswith('\r'), f"Expected to end with \\r, got {repr(out)}"
++    
++    cap.done()
++
++def test_with_sys_stdout():
++    """Test with direct sys.stdout write"""
++    cap = FDCapture(1)
++    cap.start()
++    
++    # Write directly to sys.stdout
++    sys.stdout.write('Greetings from DOS\r')
++    sys.stdout.flush()
++    
++    out, err = cap.readouterr()
++    
++    print(f"Direct sys.stdout write - out: {repr(out)}")
++    print(f"Direct sys.stdout write - err: {repr(err)}")
++    
++    assert out.endswith('\r'), f"Expected to end with \\r, got {repr(out)}"
++    
++    cap.done()
++
++if __name__ == "__main__":
++    print("=== Testing exact reproduction ===")
++    try:
++        test_exact_reproduction()
++        print("Test 1 passed!")
++    except Exception as e:
++        print(f"Test 1 failed: {e}")
++        
++    print("\n=== Testing with sys.stdout ===")
++    try:
++        test_with_sys_stdout()
++        print("Test 2 passed!")
++    except Exception as e:
++        print(f"Test 2 failed: {e}")
+\ No newline at end of file
+diff --git a/final_verification.py b/final_verification.py
+new file mode 100644
+index 000000000..b06adeb63
+--- /dev/null
++++ b/final_verification.py
+@@ -0,0 +1,46 @@
++#!/usr/bin/env python3
++
++import sys
++import os
++from _pytest.capture import FDCapture
++
++def test_final_verification():
++    """Final verification that the fix works"""
++    # Save original stdout
++    original_stdout_fd = os.dup(1)
++    
++    try:
++        # Create FDCapture
++        cap = FDCapture(1)
++        cap.start()
++        
++        # Write directly to stdout (which is now redirected)
++        # Use os.write to avoid any print capture issues
++        os.write(1, b'Greetings from DOS\r')
++        
++        # Read back the captured data
++        captured = cap.snap()
++        
++        print("Captured data:", repr(captured))
++        
++        # This assertion should pass now
++        if captured.endswith('\r'):
++            print("SUCCESS: Carriage return preserved!")
++            return True
++        else:
++            print("FAILURE: Carriage return not preserved!")
++            return False
++        
++    finally:
++        # Restore stdout
++        os.dup2(original_stdout_fd, 1)
++        os.close(original_stdout_fd)
++        cap.done()
++
++if __name__ == "__main__":
++    success = test_final_verification()
++    if success:
++        print("All tests passed!")
++    else:
++        print("Tests failed!")
++        sys.exit(1)
+\ No newline at end of file
+diff --git a/fix_approach.py b/fix_approach.py
+new file mode 100644
+index 000000000..80082a937
+--- /dev/null
++++ b/fix_approach.py
+@@ -0,0 +1,54 @@
++#!/usr/bin/env python3
++
++import sys
++import os
++import io
++from tempfile import TemporaryFile
++
++def test_workaround():
++    """Test if we can work around the issue"""
++    
++    # Create a regular TextIOWrapper with newline=""
++    print("=== Test with regular TextIOWrapper ===")
++    regular_file = io.TextIOWrapper(
++        TemporaryFile(buffering=0),
++        encoding="utf-8",
++        newline="",  # This should preserve \r
++        errors="replace",
++        write_through=True,
++    )
++    
++    # Write and read
++    regular_file.write('test\r')
++    regular_file.flush()
++    regular_file.seek(0)
++    result = regular_file.read()
++    print(f"Regular result: {repr(result)}")
++    regular_file.close()
++    
++    # Test with a custom class that overrides read
++    print("\n=== Test with custom class ===")
++    class CustomEncodedFile(io.TextIOWrapper):
++        def __init__(self, *args, **kwargs):
++            super().__init__(*args, newline="", **kwargs)
++        
++        def read(self, size=-1):
++            # Override to ensure no newline conversion
++            return super().read(size)
++    
++    custom_file = CustomEncodedFile(
++        TemporaryFile(buffering=0),
++        encoding="utf-8",
++        errors="replace",
++        write_through=True,
++    )
++    
++    custom_file.write('test\r')
++    custom_file.flush()
++    custom_file.seek(0)
++    result2 = custom_file.read()
++    print(f"Custom result: {repr(result2)}")
++    custom_file.close()
++
++if __name__ == "__main__":
++    test_workaround()
+\ No newline at end of file
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 000000000..c0c0a0a04
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,51 @@
++#!/usr/bin/env python3
++
++import sys
++import io
++from _pytest.capture import FDCapture, CaptureIO
++
++def test_cafd_includes_carriage_return():
++    """Reproduce the issue with capfd.readouterr() converting \r to \n"""
++    # Create a capture instance
++    cap = FDCapture(1)  # stdout
++    cap.start()
++    
++    # Write a string with carriage return
++    print('Greetings from DOS', end='\r')
++    
++    # Read it back
++    captured = cap.snap()
++    print(f"Captured: {repr(captured)}")
++    
++    # Stop capturing
++    cap.done()
++    
++    # Test the issue
++    assert captured.endswith('\r'), f"Expected to end with \\r, got {repr(captured)}"
++
++def test_direct_write():
++    """Test writing directly to the tmpfile"""
++    cap = FDCapture(1)
++    cap.start()
++    
++    # Write directly to the tmpfile
++    cap.tmpfile.write('Greetings from DOS\r')
++    cap.tmpfile.flush()
++    
++    captured = cap.snap()
++    print(f"Direct write captured: {repr(captured)}")
++    
++    cap.done()
++    
++    # Test with CaptureIO
++    print("\n--- Testing with CaptureIO ---")
++    capture_io = CaptureIO()
++    capture_io.write('Greetings from DOS\r')
++    capture_io.flush()
++    result = capture_io.getvalue()
++    print(f"CaptureIO result: {repr(result)}")
++
++if __name__ == "__main__":
++    test_cafd_includes_carriage_return()
++    print("Test passed!")
++    test_direct_write()
+\ No newline at end of file
+diff --git a/simple_test_final.py b/simple_test_final.py
+new file mode 100644
+index 000000000..69bf91802
+--- /dev/null
++++ b/simple_test_final.py
+@@ -0,0 +1,37 @@
++#!/usr/bin/env python3
++
++import sys
++import os
++from _pytest.capture import FDCapture
++
++def test_simple():
++    """Simple test of the fix"""
++    # Save original stdout
++    original_stdout_fd = os.dup(1)
++    
++    try:
++        # Create FDCapture
++        cap = FDCapture(1)
++        cap.start()
++        
++        # Write directly to stdout (which is now redirected)
++        sys.stdout.write('Greetings from DOS\r')
++        sys.stdout.flush()
++        
++        # Read back the captured data
++        captured = cap.snap()
++        
++        print(f"Captured data: {repr(captured)}")
++        
++        # This assertion should pass now
++        assert captured.endswith('\r'), f"Expected to end with \\r, got {repr(captured)}"
++        print("Test passed!")
++        
++    finally:
++        # Restore stdout
++        os.dup2(original_stdout_fd, 1)
++        os.close(original_stdout_fd)
++        cap.done()
++
++if __name__ == "__main__":
++    test_simple()
+\ No newline at end of file
+diff --git a/src/_pytest/capture.py b/src/_pytest/capture.py
+index 3f9c60fb9..fb4a73058 100644
+--- a/src/_pytest/capture.py
++++ b/src/_pytest/capture.py
+@@ -189,6 +189,15 @@ class EncodedFile(io.TextIOWrapper):
+         # tests check it.
+         return self.buffer.mode.replace("b", "")
+ 
++    def read(self, size=-1):
++        # Override to preserve \r characters (issue with newline conversion in some Python versions)
++        # Read raw bytes and decode to avoid newline translation
++        if size == -1:
++            raw_data = self.buffer.read()
++        else:
++            raw_data = self.buffer.read(size)
++        return raw_data.decode(self.encoding, self.errors)
++
+ 
+ class CaptureIO(io.TextIOWrapper):
+     def __init__(self) -> None:
+diff --git a/trace_creation.py b/trace_creation.py
+new file mode 100644
+index 000000000..6c841d3e4
+--- /dev/null
++++ b/trace_creation.py
+@@ -0,0 +1,43 @@
++#!/usr/bin/env python3
++
++import sys
++import os
++from tempfile import TemporaryFile
++from _pytest.capture import FDCapture, EncodedFile
++
++def trace_creation():
++    """Trace exactly how EncodedFile is created in FDCapture"""
++    
++    print("=== Creating FDCapture ===")
++    cap = FDCapture(1)
++    print(f"cap.tmpfile type: {type(cap.tmpfile)}")
++    print(f"cap.tmpfile: {cap.tmpfile}")
++    
++    # Check the tmpfile's attributes
++    print(f"cap.tmpfile.__dict__: {getattr(cap.tmpfile, '__dict__', 'No __dict__')}")
++    
++    # Check if it's a TextIOWrapper
++    if hasattr(cap.tmpfile, 'newlines'):
++        print(f"cap.tmpfile.newlines: {cap.tmpfile.newlines}")
++    if hasattr(cap.tmpfile, 'line_buffering'):
++        print(f"cap.tmpfile.line_buffering: {cap.tmpfile.line_buffering}")
++    
++    # Now let's manually create what FDCapture does
++    print("\n=== Manual creation ===")
++    manual_file = EncodedFile(
++        TemporaryFile(buffering=0),
++        encoding="utf-8",
++        errors="replace",
++        write_through=True,
++    )
++    print(f"manual_file type: {type(manual_file)}")
++    print(f"manual_file: {manual_file}")
++    print(f"manual_file.__dict__: {getattr(manual_file, '__dict__', 'No __dict__')}")
++    
++    if hasattr(manual_file, 'newlines'):
++        print(f"manual_file.newlines: {manual_file.newlines}")
++    if hasattr(manual_file, 'line_buffering'):
++        print(f"manual_file.line_buffering: {manual_file.line_buffering}")
++
++if __name__ == "__main__":
++    trace_creation()
+\ No newline at end of file
+diff --git a/understand_issue.py b/understand_issue.py
+new file mode 100644
+index 000000000..ba03a769b
+--- /dev/null
++++ b/understand_issue.py
+@@ -0,0 +1,53 @@
++#!/usr/bin/env python3
++
++import sys
++import os
++from tempfile import TemporaryFile
++import io
++
++def test_textiowrapper_behavior():
++    """Test TextIOWrapper behavior with different newline settings"""
++    
++    # Test 1: Regular TextIOWrapper with newline=""
++    print("=== Test 1: TextIOWrapper with newline='' ===")
++    file1 = io.TextIOWrapper(TemporaryFile(buffering=0), encoding="utf-8", newline="", write_through=True)
++    file1.write('test\r')
++    file1.flush()
++    file1.seek(0)
++    result1 = file1.read()
++    print(f"Result: {repr(result1)}")
++    file1.close()
++    
++    # Test 2: What happens when we write to the underlying buffer directly
++    print("\n=== Test 2: Direct buffer write ===")
++    file2 = io.TextIOWrapper(TemporaryFile(buffering=0), encoding="utf-8", newline="", write_through=True)
++    file2.buffer.write(b'test\r')
++    file2.flush()
++    file2.seek(0)
++    result2 = file2.read()
++    print(f"Result: {repr(result2)}")
++    file2.close()
++    
++    # Test 3: What happens with bytes
++    print("\n=== Test 3: Write bytes directly ===")
++    file3 = io.TextIOWrapper(TemporaryFile(buffering=0), encoding="utf-8", newline="", write_through=True)
++    file3.write('test\r')
++    file3.flush()
++    file3.seek(0)
++    # Read as bytes
++    result3 = file3.buffer.read()
++    print(f"Bytes result: {repr(result3)}")
++    file3.close()
++    
++    # Test 4: What happens when we write to a file descriptor
++    print("\n=== Test 4: Write to file descriptor ===")
++    file4 = io.TextIOWrapper(TemporaryFile(buffering=0), encoding="utf-8", newline="", write_through=True)
++    fd = file4.fileno()
++    os.write(fd, b'test\r')
++    file4.seek(0)
++    result4 = file4.read()
++    print(f"Result: {repr(result4)}")
++    file4.close()
++
++if __name__ == "__main__":
++    test_textiowrapper_behavior()
+\ No newline at end of file
+diff --git a/understand_newline.py b/understand_newline.py
+new file mode 100644
+index 000000000..2d1d5c17a
+--- /dev/null
++++ b/understand_newline.py
+@@ -0,0 +1,52 @@
++#!/usr/bin/env python3
++
++import sys
++import os
++import io
++from tempfile import TemporaryFile
++
++def test_newline_behavior():
++    """Test newline behavior in detail"""
++    
++    # Test 1: What happens with newline="" when reading from buffer
++    print("=== Test 1: newline='' with buffer ===")
++    file1 = io.TextIOWrapper(TemporaryFile(buffering=0), encoding="utf-8", newline="", write_through=True)
++    file1.buffer.write(b'test\r')
++    file1.flush()
++    file1.seek(0)
++    result1 = file1.buffer.read()
++    print(f"Buffer read: {repr(result1)}")
++    file1.close()
++    
++    # Test 2: What happens when we read as text
++    print("\n=== Test 2: newline='' with text read ===")
++    file2 = io.TextIOWrapper(TemporaryFile(buffering=0), encoding="utf-8", newline="", write_through=True)
++    file2.buffer.write(b'test\r')
++    file2.flush()
++    file2.seek(0)
++    result2 = file2.read()
++    print(f"Text read: {repr(result2)}")
++    file2.close()
++    
++    # Test 3: What happens with newline=None
++    print("\n=== Test 3: newline=None ===")
++    file3 = io.TextIOWrapper(TemporaryFile(buffering=0), encoding="utf-8", newline=None, write_through=True)
++    file3.buffer.write(b'test\r')
++    file3.flush()
++    file3.seek(0)
++    result3 = file3.read()
++    print(f"Text read with newline=None: {repr(result3)}")
++    file3.close()
++    
++    # Test 4: What happens with newline="\n" (default)
++    print("\n=== Test 4: newline='\\n' (default) ===")
++    file4 = io.TextIOWrapper(TemporaryFile(buffering=0), encoding="utf-8", newline="\n", write_through=True)
++    file4.buffer.write(b'test\r')
++    file4.flush()
++    file4.seek(0)
++    result4 = file4.read()
++    print(f"Text read with newline='\\n': {repr(result4)}")
++    file4.close()
++
++if __name__ == "__main__":
++    test_newline_behavior()
+\ No newline at end of file

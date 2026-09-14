@@ -1,0 +1,58 @@
+{
+  "instance_id": "mwaskom__seaborn-3069",
+  "repo": "mwaskom/seaborn",
+  "mode": "react",
+  "image": "swebench/sweb.eval.x86_64.mwaskom_1776_seaborn-3069",
+  "finished": true,
+  "agent_seconds": 600.6504850387573,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": false,
+  "eval_completed": true,
+  "source_only_resolved": false,
+  "raw_result_path": "/lab/results/main-react-128k/mwaskom__seaborn-3069/result.json",
+  "captured_patch_sha256": "3decfcfaf9205ce632f4d025f95268a5b4cab80c1faeebec561c8587b15371b8",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "9bbb09d466e777c7091b387e22540a91300f3c70",
+  "candidate_delta_bytes": 17925,
+  "test_paths_changed": [
+    "test_actual_behavior.py",
+    "test_fix.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "test_actual_behavior.py",
+    "test_fix.py"
+  ],
+  "eval_execution_time": 19.195263455156237,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 43.950318813323975,
+  "source_artifact": "results/regraded-main-react/mwaskom__seaborn-3069/result.json",
+  "source_sha256": "a5d55cf964c0e204e21b3cde6f1b67601f560486ef1312a2fa05f771aa09609a",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 0,
+      "failed": 2,
+      "failed_tests": [
+        "tests/_core/test_plot.py::TestScaling::test_nominal_x_axis_tweaks",
+        "tests/_core/test_plot.py::TestScaling::test_nominal_y_axis_tweaks"
+      ]
+    },
+    "PASS_TO_PASS": {
+      "passed": 94,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

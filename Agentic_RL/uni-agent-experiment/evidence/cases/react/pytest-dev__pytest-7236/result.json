@@ -1,0 +1,63 @@
+{
+  "instance_id": "pytest-dev__pytest-7236",
+  "repo": "pytest-dev/pytest",
+  "mode": "react",
+  "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-7236",
+  "finished": true,
+  "agent_seconds": 1053.168449640274,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": false,
+  "eval_completed": true,
+  "source_only_resolved": false,
+  "raw_result_path": "/lab/results/main-react-128k/pytest-dev__pytest-7236/result.json",
+  "captured_patch_sha256": "fbbbb6a850d0c5004cea489ada19c66d4f4a0d550a51001b2cd50699c0a78421",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "51f5b79952266b3ce362086f0c731ab84e638bc1",
+  "candidate_delta_bytes": 25754,
+  "test_paths_changed": [
+    "debug_test.py",
+    "simple_test.py",
+    "test_direct.py",
+    "test_fix_verification.py",
+    "test_tearDown_replacement.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "debug_test.py",
+    "simple_test.py",
+    "test_direct.py",
+    "test_fix_verification.py",
+    "test_tearDown_replacement.py"
+  ],
+  "eval_execution_time": 3.7627159249968827,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 10.852421522140503,
+  "source_artifact": "results/regraded-main-react/pytest-dev__pytest-7236/result.json",
+  "source_sha256": "a31b4728efb378529e70be082727a53ade9b1454ca500287c55d7955a4cd5df6",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 0,
+      "failed": 1,
+      "failed_tests": [
+        "testing/test_unittest.py::test_pdb_teardown_skipped[@unittest.skip]"
+      ]
+    },
+    "PASS_TO_PASS": {
+      "passed": 51,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

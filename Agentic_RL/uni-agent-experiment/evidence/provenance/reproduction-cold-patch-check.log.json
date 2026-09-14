@@ -1,0 +1,8 @@
+{
+  "source": "logs/reproduction-cold-patch-check.log",
+  "last_lines": [
+    "/lab/scripts/check_logging_fork.py:14: DeprecationWarning: This process (pid=1) is multi-threaded, use of fork() may lead to deadlocks in the child.",
+    "  start=time.monotonic();pid=os.fork()",
+    "{\"child_deadlocked\": false, \"elapsed_s\": 0.21197948325425386, \"child_status\": 0, \"expected_deadlock\": false, \"passed\": true}"
+  ]
+}

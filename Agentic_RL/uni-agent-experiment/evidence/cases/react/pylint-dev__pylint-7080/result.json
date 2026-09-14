@@ -1,0 +1,61 @@
+{
+  "instance_id": "pylint-dev__pylint-7080",
+  "repo": "pylint-dev/pylint",
+  "mode": "react",
+  "image": "swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-7080",
+  "finished": true,
+  "agent_seconds": 912.8550033569336,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": true,
+  "eval_completed": true,
+  "source_only_resolved": true,
+  "raw_result_path": "/lab/results/main-react-128k/pylint-dev__pylint-7080/result.json",
+  "captured_patch_sha256": "99b80c54c8448f81b69f6d335d44e66e4010740d9404f8fe86dcd55676e9509c",
+  "image_baseline_patch_bytes": 487087,
+  "image_initial_tree": "3a55ae29baa8adf26e0f8211d621806f435f1580",
+  "candidate_delta_bytes": 539634,
+  "test_paths_changed": [
+    "final_comprehensive_test.py",
+    "simple_recursive_n_test.py",
+    "test_edge_cases.py",
+    "test_exact_scenario.py",
+    "test_issue_exact.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "final_comprehensive_test.py",
+    "simple_recursive_n_test.py",
+    "test_edge_cases.py",
+    "test_exact_scenario.py",
+    "test_issue_exact.py"
+  ],
+  "eval_execution_time": 13.585370040964335,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 32.24887537956238,
+  "source_artifact": "results/regraded-main-react/pylint-dev__pylint-7080/result.json",
+  "source_sha256": "98fe826025986e31b408a55e25998969ffcf348597621eb8f9b8a17ffc3a3837",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 1,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_PASS": {
+      "passed": 120,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

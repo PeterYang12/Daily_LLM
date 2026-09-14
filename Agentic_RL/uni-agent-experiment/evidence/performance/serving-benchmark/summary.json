@@ -1,0 +1,53 @@
+{
+  "protocol": "2048 input tokens; 256 forced output tokens; greedy; prefix cache enabled but unique early request salts; 3 repeats; TP1 GPU0 vs TP4 GPU4-7; same pinned eager BF16 model/backend; other agent experiments on GPU1 continued during measurement. Not an optimized throughput claim.",
+  "results": [
+    {
+      "backend": "tp1",
+      "concurrency": 1,
+      "aggregate_output_tok_s": 40.18742138408534,
+      "mean_ttft_s": 0.0731399009625117,
+      "mean_request_s": 6.356440158871313,
+      "gpu_seconds_per_1000_output_tokens": 24.88343590872925
+    },
+    {
+      "backend": "tp1",
+      "concurrency": 4,
+      "aggregate_output_tok_s": 151.79593287431643,
+      "mean_ttft_s": 0.14574309446228048,
+      "mean_request_s": 6.718846260104328,
+      "gpu_seconds_per_1000_output_tokens": 6.5877991613281965
+    },
+    {
+      "backend": "tp1",
+      "concurrency": 8,
+      "aggregate_output_tok_s": 231.71612535662425,
+      "mean_ttft_s": 0.23251488069460416,
+      "mean_request_s": 8.77743579990541,
+      "gpu_seconds_per_1000_output_tokens": 4.3156400281532115
+    },
+    {
+      "backend": "tp4",
+      "concurrency": 1,
+      "aggregate_output_tok_s": 35.055985256075466,
+      "mean_ttft_s": 0.057538875844329596,
+      "mean_request_s": 7.288884076600273,
+      "gpu_seconds_per_1000_output_tokens": 114.10364447995865
+    },
+    {
+      "backend": "tp4",
+      "concurrency": 4,
+      "aggregate_output_tok_s": 132.22269238618844,
+      "mean_ttft_s": 0.22908691801906875,
+      "mean_request_s": 7.689189161096389,
+      "gpu_seconds_per_1000_output_tokens": 30.266559162555495
+    },
+    {
+      "backend": "tp4",
+      "concurrency": 8,
+      "aggregate_output_tok_s": 211.1691560328833,
+      "mean_ttft_s": 0.22345685904535154,
+      "mean_request_s": 9.613395486104613,
+      "gpu_seconds_per_1000_output_tokens": 18.94441267146855
+    }
+  ]
+}

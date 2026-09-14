@@ -1,0 +1,58 @@
+{
+  "source": "results/pilot-baseline-dns/summary.json",
+  "summary": {
+    "mode": "baseline",
+    "total": 6,
+    "resolved": 0,
+    "eval_completed": 6,
+    "finished": 6,
+    "errors": 0,
+    "agent_errors": 0,
+    "source_only_resolved": 0,
+    "wall_seconds": 13.544905185699463
+  },
+  "per_case": [
+    {
+      "instance_id": "pallets__flask-5014",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 3.5235464572906494
+    },
+    {
+      "instance_id": "psf__requests-6028",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 2.5651230812072754
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5262",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 8.714132308959961
+    },
+    {
+      "instance_id": "pytest-dev__pytest-7432",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 5.108871221542358
+    },
+    {
+      "instance_id": "pytest-dev__pytest-7521",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 7.492602825164795
+    },
+    {
+      "instance_id": "pytest-dev__pytest-7982",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 5.867420673370361
+    }
+  ]
+}

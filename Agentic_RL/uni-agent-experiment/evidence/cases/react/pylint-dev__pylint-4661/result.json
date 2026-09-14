@@ -1,0 +1,55 @@
+{
+  "instance_id": "pylint-dev__pylint-4661",
+  "repo": "pylint-dev/pylint",
+  "mode": "react",
+  "image": "swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-4661",
+  "finished": true,
+  "agent_seconds": 203.6772563457489,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": false,
+  "eval_completed": true,
+  "source_only_resolved": false,
+  "raw_result_path": "/lab/results/main-react-128k/pylint-dev__pylint-4661/result.json",
+  "captured_patch_sha256": "428f0d5e87532d51e3e4fb21f33963726ad8dd9fa0a75d7cb16f5785c4429d3a",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "e39429f9c08dd3fc5aa99f250b4a399d5385b46e",
+  "candidate_delta_bytes": 16031,
+  "test_paths_changed": [
+    "comprehensive_test.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "comprehensive_test.py"
+  ],
+  "eval_execution_time": 1.7211098573170602,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 6.589172840118408,
+  "source_artifact": "results/regraded-main-react/pylint-dev__pylint-4661/result.json",
+  "source_sha256": "ea6c8b3b10936d474747d09bf8c9ab97e5ca899c30e545a68cbfb3d6d5fe74a7",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 0,
+      "failed": 1,
+      "failed_tests": [
+        "tests/lint/unittest_lint.py::test_pylint_home"
+      ]
+    },
+    "PASS_TO_PASS": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

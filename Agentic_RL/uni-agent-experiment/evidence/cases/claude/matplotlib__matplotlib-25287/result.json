@@ -1,0 +1,53 @@
+{
+  "instance_id": "matplotlib__matplotlib-25287",
+  "repo": "matplotlib/matplotlib",
+  "mode": "claude",
+  "image": "swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-25287",
+  "finished": true,
+  "agent_seconds": 169.43956756591797,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": true,
+  "eval_completed": true,
+  "source_only_resolved": true,
+  "raw_result_path": "/lab/results/main-claude-128k/matplotlib__matplotlib-25287/result.json",
+  "captured_patch_sha256": "b930680cd1ee005c9bcd28b25ce1e188bb4c488d710e2f4cb0103567f2d7faef",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "f566c495f20a962b3be122c019f848018756454d",
+  "candidate_delta_bytes": 1674,
+  "test_paths_changed": [
+    "test_fix.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "test_fix.py"
+  ],
+  "eval_execution_time": 86.61972069833428,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 178.07493591308594,
+  "source_artifact": "results/regraded-main-claude/matplotlib__matplotlib-25287/result.json",
+  "source_sha256": "36483a649add8d26767668d095e46b1b25e6a91ea9520ef105474bd9d3125239",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 2,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_PASS": {
+      "passed": 786,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

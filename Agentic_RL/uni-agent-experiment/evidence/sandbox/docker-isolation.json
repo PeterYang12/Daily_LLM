@@ -1,0 +1,22 @@
+{
+  "host_resources_absent": true,
+  "file_persistence": true,
+  "cross_sandbox_file_isolation": true,
+  "binary_large_transfer": true,
+  "upstream_large_write": {
+    "error_type": "RuntimeError",
+    "error": "write_file '/tmp/upstream-large.bin' failed: [Errno 7] Argument list too long: 'docker'"
+  },
+  "network_egress_blocked": true,
+  "kernel_limits": "CapEff:\t0000000000000000\nNoNewPrivs:\t1\n268435456\n128\n100000 100000\n",
+  "exec_timeout_result": {
+    "exit_code": -1,
+    "stdout": "",
+    "stderr": "exec timed out after 0.3s: "
+  },
+  "exec_timeout_reported": true,
+  "timed_out_process_may_survive_until_sandbox_stop": "2",
+  "destroyed_uni-agent-24c624f97c35": true,
+  "destroyed_uni-agent-17ad2fff68ab": true,
+  "all_required_pass": true
+}

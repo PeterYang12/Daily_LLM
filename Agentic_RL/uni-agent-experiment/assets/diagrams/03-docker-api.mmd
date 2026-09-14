@@ -1,0 +1,14 @@
+flowchart LR
+  subgraph H["宿主机：外层Docker"]
+    subgraph A["容器A：Uni-Agent编排"]
+      U["Python任务脚本"] --> CLI["docker客户端<br/>run / exec / cp / rm"]
+    end
+    subgraph B["容器B：sandbox-daemon"]
+      D["常驻dockerd<br/>Docker Engine HTTP API"]
+      S["临时任务sandbox容器"]
+      D -->|创建、启动进程、文件传输、删除| S
+    end
+    CLI <-->|专用Unix socket / HTTP API| D
+  end
+  style A fill:#eaf2ff,stroke:#3875c7
+  style B fill:#fff3dd,stroke:#b98229

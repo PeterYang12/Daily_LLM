@@ -1,0 +1,23 @@
+{
+  "source": "results/xarray-oracle-32g/summary.json",
+  "summary": {
+    "mode": "oracle",
+    "total": 1,
+    "resolved": 0,
+    "eval_completed": 1,
+    "finished": 1,
+    "errors": 0,
+    "agent_errors": 0,
+    "source_only_resolved": 0,
+    "wall_seconds": 13.14002013206482
+  },
+  "per_case": [
+    {
+      "instance_id": "pydata__xarray-3993",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 13.137503862380981
+    }
+  ]
+}

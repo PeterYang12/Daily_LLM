@@ -1,0 +1,110 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>E06：ROCm推理性能——TP1/TP4与AITER配置</title><link rel="stylesheet" href="../style.css"></head><body><header><a href="../index.html"><strong>Uni-Agent × AMD ROCm · 实验记录</strong></a><small>实验 2026-09-12 · 整理 2026-09-14 · 架构、实验结果与可追溯证据</small></header><div class="layout"><nav><input id="nav-search" placeholder="筛选章节"><div id="nav-links"><h3>阅读入口</h3><a class="" href="../index.html">Uni-Agent × AMD ROCm：实验总结与架构说明</a><a class="" href="../00-executive-summary.html">汇报摘要：现有 AMD 机器上完成了什么</a><a class="" href="../01-scope-and-terminology.html">范围与术语：这次到底跑了什么</a><h3>架构与流程</h3><a class="" href="../architecture/01-deployment.html">实际部署：容器、程序和模型分别在哪里</a><a class="" href="../architecture/02-agent-task-flow.html">一道任务的执行流程：谁启动谁，何时调用模型</a><a class="" href="../architecture/03-apis-and-lifecycle.html">API与生命周期：常驻daemon、临时Gateway和任务sandbox</a><h3>实验</h3><a class="" href="index.html">实验目录：跑了什么，得到了什么</a><a class="" href="01-model-and-official-examples.html">E01：模型服务与官方example</a><a class="" href="02-data-and-controls.html">E02：数据选择、环境正负控制与独立判题</a><a class="" href="03-swe-agent-comparison.html">E03：三种agent在同一30B模型上的SWE对照</a><a class="" href="04-docker-sandbox.html">E04：本地Docker sandbox方案</a><a class="" href="05-e2b-sandbox.html">E05：远端E2B兼容sandbox</a><a class="active" href="06-serving-tp-and-aiter.html">E06：ROCm推理性能——TP1/TP4与AITER配置</a><a class="" href="07-replica-scaling.html">E07：一个模型副本与两个模型副本</a><a class="" href="08-trajectories.html">E08：Gateway轨迹与后训练准备范围</a><a class="" href="09-reproducibility-validation.html">E09：环境、实现与复现交付验收</a><h3>结果与结论</h3><a class="" href="../results/01-case-studies.html">五个真实案例：agent到底做了什么</a><a class="" href="../results/02-conclusions-and-next-steps.html">结论、适用范围与下一步</a><a class="" href="../results/03-per-case-matrix.html">全部28题的正式结果矩阵</a><h3>复现</h3><a class="" href="../reproduce/01-environment-and-versions.html">固定环境、模型、数据与容器布局</a><a class="" href="../reproduce/02-replay-guide.html">复现指南：从现有lab重跑，以及迁移到新环境</a><a class="" href="../reproduce/scripts/index.html">脚本快照的用途</a><h3>参考与证据</h3><a class="" href="../references/01-community-comparison.html">社区方案对比：放在正确的层次上看</a><a class="" href="../references/02-evidence-index.html">证据索引与文件来源</a><a class="" href="../references/03-uni-agent-api-reference.html">Uni-Agent API接口总览（固定版本）</a><a class="" href="../references/04-sandbox-and-verdal-api-reference.html">Sandbox API总览：Uni-Agent、Docker与verdal/E2B</a><h3>文档工具</h3><a class="" href="../tools/index.html">文档生成与校验工具</a></div></nav><main><div class="scope">范围：固定30B模型的agent推理、sandbox、评测和轨迹验证；没有执行后训练。</div><p class="source"><a href="../../experiments/06-serving-tp-and-aiter.md">查看Markdown源文件</a></p><h1 id="e06rocmtp1tp4aiter">E06：ROCm推理性能——TP1/TP4与AITER配置</h1>
+<h2 id="_1">目的</h2>
+<p>在agent任务效果之外，单独测量模型服务的输出吞吐和时延，回答两个资源问题：30B放得进单卡时是否要做多卡TP；ROCm推理配置是否有明显优化空间。</p>
+<p>此处没有训练模型，所有配置使用相同BF16权重。图中的两个面板是两组独立实验，不混成一个受控多变量结论。</p>
+<h2 id="_2">测量方法</h2>
+<ul>
+<li>请求：固定2048输入token、256输出token；设置<code>ignore_eos=true</code>以固定输出工作量，temperature=0。</li>
+<li>并发：1、4、8；每种配置各重复3次，每组共18个batch。</li>
+<li>输出统计：从流式接口记录首个文本chunk时间、完整请求耗时、模型usage与整个batch wall time。</li>
+<li>聚合吞吐：batch内实际completion token数 / batch wall time。</li>
+<li>GPU时间指标：GPU数量 × batch wall time / output token数 × 1000；各batch计算后取三次均值，表示分配的GPU时间，不是GPU真实活跃kernel时长或账单。</li>
+<li>prefix cache开启，输入早期加入不同请求标识以减少整段复用；不声称完全不存在任何前缀命中。</li>
+<li>同节点另一张GPU仍运行agent实验，未进行整机独占峰值测试。</li>
+</ul>
+<p><img alt="两组推理对照" src="../../assets/figures/serving-throughput.svg" /></p>
+<h2 id="atp1tp4eager">实验A：单卡TP1与四卡TP4，均为eager</h2>
+<p>TP1使用GPU0；TP4使用GPU4–7。模型、BF16与基础镜像一致。服务配置保持相近，TP4按进程数分配更多CPU/RAM；这不是逐项隔离通信或kernel的性能分析。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">并发</th>
+<th style="text-align: right;">TP1平均token/s</th>
+<th style="text-align: right;">TP4平均token/s</th>
+<th style="text-align: right;">TP1平均请求秒数</th>
+<th style="text-align: right;">TP4平均请求秒数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">40.19</td>
+<td style="text-align: right;">35.06</td>
+<td style="text-align: right;">6.36</td>
+<td style="text-align: right;">7.29</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">151.80</td>
+<td style="text-align: right;">132.22</td>
+<td style="text-align: right;">6.72</td>
+<td style="text-align: right;">7.69</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">231.72</td>
+<td style="text-align: right;">211.17</td>
+<td style="text-align: right;">8.78</td>
+<td style="text-align: right;">9.61</td>
+</tr>
+</tbody>
+</table>
+<p>在此保守eager配置和工作负载下，四卡TP没有获得吞吐收益。单卡能够容纳权重与KV cache，多卡带来的额外开销需要由更合适的工作负载/内核抵消；本次没有对具体瓶颈做kernel级归因。</p>
+<p>不能由此推导“ROCm上的TP永远没用”或“大模型不需要TP”。它支持的是本机这个30B配置优先考虑单卡的决策。</p>
+<h2 id="beageraiter">实验B：单卡eager与AITER + 默认编译/图执行</h2>
+<p>对照组为GPU0上的eager，实验组为GPU2，设置 <code>VLLM_ROCM_USE_AITER=1</code> 并移除 <code>--enforce-eager</code>。两者64K服务上限、显存比例、OMP设置、并发上限、权重与镜像一致。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">并发</th>
+<th style="text-align: right;">eager平均token/s</th>
+<th style="text-align: right;">AITER+图平均token/s</th>
+<th style="text-align: right;">吞吐倍数</th>
+<th style="text-align: right;">优化组三次范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">40.44</td>
+<td style="text-align: right;">193.32</td>
+<td style="text-align: right;">4.78×</td>
+<td style="text-align: right;">192.90–194.16</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">153.01</td>
+<td style="text-align: right;">610.13</td>
+<td style="text-align: right;">3.99×</td>
+<td style="text-align: right;">527.53–651.81</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">234.96</td>
+<td style="text-align: right;"><strong>1035.76</strong></td>
+<td style="text-align: right;"><strong>4.41×</strong></td>
+<td style="text-align: right;">1017.07–1045.17</td>
+</tr>
+</tbody>
+</table>
+<p>该组合同时改变AITER相关kernel与编译/图执行，不能将全部收益归给其中一个开关。所有数据都是短上下文、固定输出长度的服务微基准，不等于真实SWE任务会快4.41倍。</p>
+<h2 id="_3">功能验证与适用结论</h2>
+<p>优化服务完成四种API检查；另有官方ReAct单题和经Gateway的单题修复均通过。它没有替换正式28题使用的128K eager服务，也没有做完整28题的优化前后质量回归。</p>
+<p>可以得到的结论是：这台AMD机器在模型执行配置上存在可观的实际优化空间，单纯增加TP卡数未必是优先选项。最终容量规划还需测量真实上下文长度、并发、工具等待和尾延迟。</p>
+<h2 id="_4">原始统计和脚本</h2>
+<ul>
+<li><a href="../../evidence/performance/serving-benchmark/summary.json">TP平均统计</a>／<a href="../../evidence/performance/serving-benchmark/raw.json">三次原始batch</a></li>
+<li><a href="../../evidence/performance/serving-aiter-benchmark/summary.json">AITER平均统计</a>／<a href="../../evidence/performance/serving-aiter-benchmark/raw.json">三次原始batch</a></li>
+<li><a href="../../reproduce/scripts/benchmark_serving.py">TP测试脚本</a>、<a href="../../reproduce/scripts/benchmark_aiter.py">AITER测试脚本</a></li>
+<li><a href="../../reproduce/scripts/serve_model_aiter.sh">优化服务启动脚本</a>。</li>
+</ul><details><summary>本页目录</summary><div class="toc">
+<ul>
+<li><a href="#_1">目的</a></li>
+<li><a href="#_2">测量方法</a></li>
+<li><a href="#atp1tp4eager">实验A：单卡TP1与四卡TP4，均为eager</a></li>
+<li><a href="#beageraiter">实验B：单卡eager与AITER + 默认编译/图执行</a></li>
+<li><a href="#_3">功能验证与适用结论</a></li>
+<li><a href="#_4">原始统计和脚本</a></li>
+</ul>
+</div>
+</details><div class="prevnext"><a href="05-e2b-sandbox.html">← 上一篇</a><a href="07-replica-scaling.html">下一篇 →</a></div><footer>原始实验资产保留在 /home/yuhanya/uni-agent-lab；本页面来自已完成的实验记录。</footer></main></div><script>document.getElementById('nav-search').addEventListener('input',e=>{const s=e.target.value.toLowerCase();document.querySelectorAll('#nav-links a').forEach(a=>a.hidden=!a.textContent.toLowerCase().includes(s));});</script></body></html>

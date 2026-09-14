@@ -1,0 +1,49 @@
+{
+  "instance_id": "scikit-learn__scikit-learn-25931",
+  "repo": "scikit-learn/scikit-learn",
+  "mode": "mini",
+  "image": "swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-25931",
+  "finished": true,
+  "agent_seconds": 521.3281860351562,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": true,
+  "eval_completed": true,
+  "source_only_resolved": true,
+  "raw_result_path": "/lab/results/main-mini-128k/scikit-learn__scikit-learn-25931/result.json",
+  "captured_patch_sha256": "690ce9b9f2d7a6a465933798e65c6f3417c204bf9f069ebb2b527a07f1687111",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "9079e26dd32eb18b563b34d6ba35b3acce32f8c0",
+  "candidate_delta_bytes": 2030,
+  "test_paths_changed": [],
+  "existing_tests_modified": [],
+  "added_test_paths": [],
+  "eval_execution_time": 13.179360466077924,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 17.267382860183716,
+  "source_artifact": "results/regraded-main-mini/scikit-learn__scikit-learn-25931/result.json",
+  "source_sha256": "c1748ebb8eb22d21906cc87417ea0a481fbfd1d1ad2a2a7d6bc6ece9c0fa295c",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 1,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_PASS": {
+      "passed": 21,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

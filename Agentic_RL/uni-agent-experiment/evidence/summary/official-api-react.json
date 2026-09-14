@@ -1,0 +1,24 @@
+{
+  "source": "results/official-api-react/summary.json",
+  "summary": {
+    "data_path": "/lab/results/data/pilot-six.parquet",
+    "model": "Qwen3-Coder-30B-A3B-Instruct",
+    "rollouts_per_instance": 1,
+    "total_rollouts": 1,
+    "resolved": 1,
+    "wrong_answer": 0,
+    "timeout_or_error": 0,
+    "pass_rate": 1.0,
+    "mean_reward": 1.0,
+    "average_eval_execution_time": 2.169564142357558,
+    "wall_time": 198.92846250534058
+  },
+  "per_case": [
+    {
+      "instance_id": "pallets__flask-5014",
+      "reward": 1.0,
+      "resolved": true,
+      "eval_completed": true
+    }
+  ]
+}

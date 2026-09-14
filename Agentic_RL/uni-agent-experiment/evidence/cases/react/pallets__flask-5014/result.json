@@ -1,0 +1,53 @@
+{
+  "instance_id": "pallets__flask-5014",
+  "repo": "pallets/flask",
+  "mode": "react",
+  "image": "swebench/sweb.eval.x86_64.pallets_1776_flask-5014",
+  "finished": true,
+  "agent_seconds": 268.5327868461609,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": true,
+  "eval_completed": true,
+  "source_only_resolved": true,
+  "raw_result_path": "/lab/results/main-react-128k/pallets__flask-5014/result.json",
+  "captured_patch_sha256": "2a5194d13ba9f64da0eda0e4396655dab36f77a33172c3e631f1abbc8b6433fb",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "c3d16a156c9206389b230b2884557c486e871589",
+  "candidate_delta_bytes": 9959,
+  "test_paths_changed": [
+    "test_empty_name_fix.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "test_empty_name_fix.py"
+  ],
+  "eval_execution_time": 2.178782192990184,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 11.369755029678345,
+  "source_artifact": "results/regraded-main-react/pallets__flask-5014/result.json",
+  "source_sha256": "8db567102c1315de26974884783b927278ae9e4630d65f4791c2ff45d8e9fba0",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 1,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_PASS": {
+      "passed": 59,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

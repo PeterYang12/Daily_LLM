@@ -1,0 +1,15 @@
+name: swe_bench
+sandbox:
+  provider: docker
+agent:
+  name: mini_swe_agent
+  step_limit: 100
+  run_timeout: 1800
+  conda_env: testbed
+  tool_python: /opt/mini-swe-agent/bin/python3
+  run_agent_script: /opt/mini-swe-agent/bin/run_agent.py
+  model:
+    temperature: 0.2
+    top_p: 0.9
+    max_total_tokens: 120000
+    max_tokens_per_turn: 4096

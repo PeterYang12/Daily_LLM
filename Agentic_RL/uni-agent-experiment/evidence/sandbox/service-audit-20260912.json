@@ -1,0 +1,17 @@
+{
+  "utc": "2026-09-12T17:48:50Z",
+  "e2b_running_count": 0,
+  "e2b_ours_running": 0,
+  "models": {
+    "baseline_128k": {
+      "status": 200,
+      "id": "Qwen3-Coder-30B-A3B-Instruct",
+      "max_model_len": 131072
+    },
+    "optimized_64k": {
+      "status": 200,
+      "id": "Qwen3-Coder-30B-A3B-Instruct",
+      "max_model_len": 65536
+    }
+  }
+}

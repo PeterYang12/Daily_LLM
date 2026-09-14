@@ -1,0 +1,57 @@
+{
+  "instance_id": "django__django-14373",
+  "repo": "django/django",
+  "mode": "claude",
+  "image": "swebench/sweb.eval.x86_64.django_1776_django-14373",
+  "finished": true,
+  "agent_seconds": 182.00256991386414,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": true,
+  "eval_completed": true,
+  "source_only_resolved": true,
+  "raw_result_path": "/lab/results/main-claude-128k/django__django-14373/result.json",
+  "captured_patch_sha256": "46c9acefa803168347a3254977fb032d3e9625133fb461ba26710acf0796f659",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "b940d09f1b6d4e8070821f475b72488daf48a3f5",
+  "candidate_delta_bytes": 4152,
+  "test_paths_changed": [
+    "final_test.py",
+    "test_fix_verification.py",
+    "test_y_format.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "final_test.py",
+    "test_fix_verification.py",
+    "test_y_format.py"
+  ],
+  "eval_execution_time": 3.580441983882338,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 17.038022756576538,
+  "source_artifact": "results/regraded-main-claude/django__django-14373/result.json",
+  "source_sha256": "ad1d2df9faffbeeb4436dd919f98ca0da99b96a039dded25e5c68a61544fab99",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 1,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_PASS": {
+      "passed": 19,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

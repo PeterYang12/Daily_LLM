@@ -1,0 +1,17 @@
+{
+  "source": "logs/reproduction-cold-check.log",
+  "last_lines": [
+    "    Found existing installation: verl 0.10.0.dev0",
+    "    Not uninstalling verl at /lab/src/uni-agent/verl, outside environment /lab/envs/cpu",
+    "    Can't uninstall 'verl'. No files were found to uninstall.",
+    "  Attempting uninstall: uni-agent",
+    "    Found existing installation: uni-agent 0.1.0.dev0",
+    "    Not uninstalling uni-agent at /lab/src/uni-agent, outside environment /lab/envs/cpu",
+    "    Can't uninstall 'uni-agent'. No files were found to uninstall.",
+    "Successfully installed uni-agent-0.1.0.dev0 verl-0.10.0.dev0",
+    "",
+    "[notice] A new release of pip is available: 25.0.1 -> 26.2.1",
+    "[notice] To update, run: python -m pip install --upgrade pip",
+    "controller imports and CPU-only isolation passed"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "instance_id": "sphinx-doc__sphinx-7748",
+  "repo": "sphinx-doc/sphinx",
+  "mode": "react",
+  "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-7748",
+  "finished": true,
+  "agent_seconds": 662.4605791568756,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": false,
+  "eval_completed": true,
+  "source_only_resolved": false,
+  "raw_result_path": "/lab/results/main-react-128k/sphinx-doc__sphinx-7748/result.json",
+  "captured_patch_sha256": "cce3defa7e863c2e61cab3db75c05a6e1930f2b1b0dee8e1d949e7532b57ec82",
+  "image_baseline_patch_bytes": 1314,
+  "image_initial_tree": "4a8511d821d64a3c21eab0d0e2c303aa031c07a0",
+  "candidate_delta_bytes": 24118,
+  "test_paths_changed": [
+    "test_comprehensive.py",
+    "test_fix.py",
+    "test_issue.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "test_comprehensive.py",
+    "test_fix.py",
+    "test_issue.py"
+  ],
+  "eval_execution_time": 2.306019695941359,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 8.22721242904663,
+  "source_artifact": "results/regraded-main-react/sphinx-doc__sphinx-7748/result.json",
+  "source_sha256": "f17609e787689f4ca72639175454ac02822fd325f147f96e292d832870ef0adb",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 0,
+      "failed": 2,
+      "failed_tests": [
+        "tests/test_ext_autodoc_configs.py::test_autoclass_content_and_docstring_signature_init",
+        "tests/test_ext_autodoc_configs.py::test_autoclass_content_and_docstring_signature_both"
+      ]
+    },
+    "PASS_TO_PASS": {
+      "passed": 12,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

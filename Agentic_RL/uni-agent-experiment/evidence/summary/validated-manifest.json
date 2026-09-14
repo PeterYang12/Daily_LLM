@@ -1,0 +1,52 @@
+{
+  "parent": "stratified-thirty.parquet",
+  "policy": "Keep iff baseline completes and fails, gold completes and passes. No candidate/model outcomes used. Do not replace excluded rows. Report planned N=30 and validated N separately.",
+  "valid_count": 28,
+  "excluded": [
+    {
+      "instance_id": "psf__requests-2317",
+      "baseline_eval_completed": false,
+      "baseline_resolved": false,
+      "gold_eval_completed": false,
+      "gold_resolved": false
+    },
+    {
+      "instance_id": "pydata__xarray-3993",
+      "baseline_eval_completed": true,
+      "baseline_resolved": false,
+      "gold_eval_completed": true,
+      "gold_resolved": false
+    }
+  ],
+  "sha256": "f19fc8c5c996725b8511e6af50253bbb0c08a3c47d2188137227d0046ee260cc",
+  "instances": [
+    "astropy__astropy-13033",
+    "django__django-14373",
+    "matplotlib__matplotlib-20488",
+    "mwaskom__seaborn-3187",
+    "pallets__flask-5014",
+    "pydata__xarray-4075",
+    "pylint-dev__pylint-7080",
+    "pytest-dev__pytest-7521",
+    "scikit-learn__scikit-learn-11310",
+    "sphinx-doc__sphinx-9367",
+    "sympy__sympy-24213",
+    "astropy__astropy-14539",
+    "django__django-11451",
+    "matplotlib__matplotlib-20859",
+    "mwaskom__seaborn-3069",
+    "psf__requests-1921",
+    "pydata__xarray-6938",
+    "pylint-dev__pylint-4970",
+    "pytest-dev__pytest-7205",
+    "scikit-learn__scikit-learn-25931",
+    "sphinx-doc__sphinx-7748",
+    "sympy__sympy-18211",
+    "astropy__astropy-13977",
+    "django__django-14122",
+    "matplotlib__matplotlib-25287",
+    "psf__requests-5414",
+    "pylint-dev__pylint-4661",
+    "pytest-dev__pytest-7236"
+  ]
+}

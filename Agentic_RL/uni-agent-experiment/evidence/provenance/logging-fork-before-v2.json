@@ -1,0 +1,7 @@
+{
+  "child_deadlocked": true,
+  "elapsed_s": 3.005830680951476,
+  "child_status": 9,
+  "expected_deadlock": true,
+  "passed": true
+}

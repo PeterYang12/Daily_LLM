@@ -1,0 +1,152 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>E08：Gateway轨迹与后训练准备范围</title><link rel="stylesheet" href="../style.css"></head><body><header><a href="../index.html"><strong>Uni-Agent × AMD ROCm · 实验记录</strong></a><small>实验 2026-09-12 · 整理 2026-09-14 · 架构、实验结果与可追溯证据</small></header><div class="layout"><nav><input id="nav-search" placeholder="筛选章节"><div id="nav-links"><h3>阅读入口</h3><a class="" href="../index.html">Uni-Agent × AMD ROCm：实验总结与架构说明</a><a class="" href="../00-executive-summary.html">汇报摘要：现有 AMD 机器上完成了什么</a><a class="" href="../01-scope-and-terminology.html">范围与术语：这次到底跑了什么</a><h3>架构与流程</h3><a class="" href="../architecture/01-deployment.html">实际部署：容器、程序和模型分别在哪里</a><a class="" href="../architecture/02-agent-task-flow.html">一道任务的执行流程：谁启动谁，何时调用模型</a><a class="" href="../architecture/03-apis-and-lifecycle.html">API与生命周期：常驻daemon、临时Gateway和任务sandbox</a><h3>实验</h3><a class="" href="index.html">实验目录：跑了什么，得到了什么</a><a class="" href="01-model-and-official-examples.html">E01：模型服务与官方example</a><a class="" href="02-data-and-controls.html">E02：数据选择、环境正负控制与独立判题</a><a class="" href="03-swe-agent-comparison.html">E03：三种agent在同一30B模型上的SWE对照</a><a class="" href="04-docker-sandbox.html">E04：本地Docker sandbox方案</a><a class="" href="05-e2b-sandbox.html">E05：远端E2B兼容sandbox</a><a class="" href="06-serving-tp-and-aiter.html">E06：ROCm推理性能——TP1/TP4与AITER配置</a><a class="" href="07-replica-scaling.html">E07：一个模型副本与两个模型副本</a><a class="active" href="08-trajectories.html">E08：Gateway轨迹与后训练准备范围</a><a class="" href="09-reproducibility-validation.html">E09：环境、实现与复现交付验收</a><h3>结果与结论</h3><a class="" href="../results/01-case-studies.html">五个真实案例：agent到底做了什么</a><a class="" href="../results/02-conclusions-and-next-steps.html">结论、适用范围与下一步</a><a class="" href="../results/03-per-case-matrix.html">全部28题的正式结果矩阵</a><h3>复现</h3><a class="" href="../reproduce/01-environment-and-versions.html">固定环境、模型、数据与容器布局</a><a class="" href="../reproduce/02-replay-guide.html">复现指南：从现有lab重跑，以及迁移到新环境</a><a class="" href="../reproduce/scripts/index.html">脚本快照的用途</a><h3>参考与证据</h3><a class="" href="../references/01-community-comparison.html">社区方案对比：放在正确的层次上看</a><a class="" href="../references/02-evidence-index.html">证据索引与文件来源</a><a class="" href="../references/03-uni-agent-api-reference.html">Uni-Agent API接口总览（固定版本）</a><a class="" href="../references/04-sandbox-and-verdal-api-reference.html">Sandbox API总览：Uni-Agent、Docker与verdal/E2B</a><h3>文档工具</h3><a class="" href="../tools/index.html">文档生成与校验工具</a></div></nav><main><div class="scope">范围：固定30B模型的agent推理、sandbox、评测和轨迹验证；没有执行后训练。</div><p class="source"><a href="../../experiments/08-trajectories.md">查看Markdown源文件</a></p><h1 id="e08gateway">E08：Gateway轨迹与后训练准备范围</h1>
+<h2 id="_1">目的</h2>
+<p>验证真实agent调用能否经Uni-Agent Gateway保留可追溯的token级交互，并明确这些记录距离实际训练还缺什么。任务修复分数、轨迹结构正确和训练有效是不同验收目标。</p>
+<h2 id="_2">本次怎样记录</h2>
+<p>正式三组agent都通过Gateway访问vLLM。ReAct/Mini使用OpenAI兼容接口，Claude Code使用Anthropic兼容接口；Gateway转换请求，由backend按token ID请求vLLM并要求返回原始生成token ID。</p>
+<p>agent的工具结果在下一轮进入上下文。最终序列用mask区分模型生成部分与非生成上下文；调试文件另外保存消息历史与session状态。它不是简单地把最后一段文字重新分词当成整条轨迹。</p>
+<p>主要字段：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prompt_ids</code></td>
+<td>本条轨迹的初始prompt token</td>
+</tr>
+<tr>
+<td><code>response_ids</code></td>
+<td>后续拼接的序列；可能同时包含生成和工具观察</td>
+</tr>
+<tr>
+<td><code>response_mask</code></td>
+<td>与response_ids对齐，区分生成与非生成部分</td>
+</tr>
+<tr>
+<td><code>response_logprobs</code></td>
+<td>如启用，保存对齐的生成logprob及相关拼接值</td>
+</tr>
+<tr>
+<td><code>num_turns</code></td>
+<td>轨迹交互轮数</td>
+</tr>
+<tr>
+<td><code>reward_score</code>、<code>finished</code></td>
+<td>训练/任务注释字段；调试导出的值可能尚未关联任务结果</td>
+</tr>
+<tr>
+<td>session/instance标识</td>
+<td>用于连接任务结果、候选补丁与模型记录</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">实际检查了什么</h2>
+<p>检查token ID范围，token/mask长度一致，mask为0/1；对于显式启用logprob的运行，检查其长度对齐且数值有限。采样输出、工具结果和判题结果分别保留，不把工具观察token统计为模型生成token。</p>
+<table>
+<thead>
+<tr>
+<th>主实验</th>
+<th style="text-align: right;">session数</th>
+<th style="text-align: right;">token/mask有效</th>
+<th style="text-align: right;">logprob完整session</th>
+<th style="text-align: right;">保留生成token（mask=1）</th>
+<th style="text-align: right;">保留观察token（mask=0）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ReAct</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">365,885</td>
+<td style="text-align: right;">737,366</td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">141,690</td>
+<td style="text-align: right;">643,786</td>
+</tr>
+<tr>
+<td>Mini</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">227,529</td>
+<td style="text-align: right;">351,614</td>
+</tr>
+</tbody>
+</table>
+<p>主实验建立session时未启用logprob保存，因此历史主数据中的该字段为空；没有事后伪造或补写。它不影响本次独立测试判定，但不能把这些记录说成已验收的logprob完整训练输入。</p>
+<h2 id="logprob">独立logprob验收</h2>
+<p>另开三个单题运行，在session参数中显式设置 <code>logprobs=True</code>，验证三种agent路径都能得到完整记录。</p>
+<table>
+<thead>
+<tr>
+<th>路径</th>
+<th>token/mask/logprob检查</th>
+<th style="text-align: right;">保留生成token</th>
+<th style="text-align: right;">保留观察token</th>
+<th>任务结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ReAct</td>
+<td>1/1有效</td>
+<td style="text-align: right;">5,324</td>
+<td style="text-align: right;">14,936</td>
+<td>修复通过，正常结束</td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td>1/1有效</td>
+<td style="text-align: right;">3,027</td>
+<td style="text-align: right;">16,653</td>
+<td>修复通过，正常结束</td>
+</tr>
+<tr>
+<td>Mini</td>
+<td>1/1有效</td>
+<td style="text-align: right;">5,264</td>
+<td style="text-align: right;">7,691</td>
+<td>未修复、未正常结束，但轨迹结构有效</td>
+</tr>
+</tbody>
+</table>
+<p>另一个AITER服务的ReAct单题运行也保留了有效logprob轨迹。这些附加运行用于数据链路验收，不加入正式28题成绩、不增加主实验pass@k。</p>
+<p>Mini的记录说明：失败任务也可以有合法轨迹结构；反过来，补丁成功并不保证所有训练字段都已准备好。</p>
+<h2 id="_4">后训练尚未执行的部分</h2>
+<p>本次调试路径把真实结果保存在逐题JSON中，通过instance/session标识可以关联。没有运行训练框架中的reward attachment、unfinished masking、loss计算、optimizer更新、参数同步或训练断点恢复。</p>
+<p>有些训练算法可以重算logprob或使用其他采样校正方式；本次没有验证这些路径。也不能仅凭轨迹字段齐全就声称模型会变好。</p>
+<p>如果继续训练，至少需要验证：</p>
+<ol>
+<li>数据进入目标训练器时，模型生成token和工具观察的loss mask语义正确。</li>
+<li>reward与相应session/候选一致，结束状态处理符合算法。</li>
+<li>一次更新前后参数确实改变，模型同步到rollout服务。</li>
+<li>完整checkpoint可恢复优化器和数据进度。</li>
+<li>在独立、未用于训练的评测集上做base/final对照。</li>
+</ol>
+<h2 id="_5">证据</h2>
+<ul>
+<li><a href="../../evidence/trajectories/audit.json">全部轨迹审计汇总</a></li>
+<li><a href="../../evidence/summary/trajectory-logprobs-react.json">ReAct独立验收</a>、<a href="../../evidence/summary/trajectory-logprobs-claude.json">Claude</a>、<a href="../../evidence/summary/trajectory-logprobs-mini.json">Mini</a></li>
+<li><a href="../../reproduce/scripts/executed/run_swe.py">最初主实验driver</a>与<a href="../../reproduce/scripts/run_swe.py">后来显式开启logprob的版本</a></li>
+<li>完整token数组保留在原lab各运行的<code>sessions/</code>目录，本目录保留审计与索引。</li>
+</ul><details><summary>本页目录</summary><div class="toc">
+<ul>
+<li><a href="#_1">目的</a></li>
+<li><a href="#_2">本次怎样记录</a></li>
+<li><a href="#_3">实际检查了什么</a></li>
+<li><a href="#logprob">独立logprob验收</a></li>
+<li><a href="#_4">后训练尚未执行的部分</a></li>
+<li><a href="#_5">证据</a></li>
+</ul>
+</div>
+</details><div class="prevnext"><a href="07-replica-scaling.html">← 上一篇</a><a href="09-reproducibility-validation.html">下一篇 →</a></div><footer>原始实验资产保留在 /home/yuhanya/uni-agent-lab；本页面来自已完成的实验记录。</footer></main></div><script>document.getElementById('nav-search').addEventListener('input',e=>{const s=e.target.value.toLowerCase();document.querySelectorAll('#nav-links a').forEach(a=>a.hidden=!a.textContent.toLowerCase().includes(s));});</script></body></html>

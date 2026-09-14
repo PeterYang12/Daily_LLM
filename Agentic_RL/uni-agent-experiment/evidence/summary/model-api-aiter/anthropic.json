@@ -1,0 +1,31 @@
+{
+  "status": 200,
+  "elapsed_s": 0.022545576095581055,
+  "request": {
+    "model": "Qwen3-Coder-30B-A3B-Instruct",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Reply with OK only."
+      }
+    ],
+    "max_tokens": 32
+  },
+  "body": {
+    "id": "chatcmpl-9db87adb9b4dbf2f",
+    "type": "message",
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "OK"
+      }
+    ],
+    "model": "Qwen3-Coder-30B-A3B-Instruct",
+    "stop_reason": "end_turn",
+    "usage": {
+      "input_tokens": 13,
+      "output_tokens": 2
+    }
+  }
+}

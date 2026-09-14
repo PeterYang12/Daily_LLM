@@ -1,0 +1,1578 @@
+[
+  {
+    "run": "aiter-react-swe-smoke",
+    "sessions": 1,
+    "valid_token_mask_sessions": 1,
+    "rl_logprobs_complete_sessions": 1,
+    "generated_tokens": 4031,
+    "observation_tokens": 18068,
+    "rows": [
+      {
+        "instance_id": "pallets__flask-5014",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 4031,
+        "observation_tokens_mask_0": 18068,
+        "trajectory_turns": 30,
+        "issues": [],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 354855
+      }
+    ]
+  },
+  {
+    "run": "main-claude-128k",
+    "sessions": 28,
+    "valid_token_mask_sessions": 28,
+    "rl_logprobs_complete_sessions": 0,
+    "generated_tokens": 141690,
+    "observation_tokens": 643786,
+    "rows": [
+      {
+        "instance_id": "astropy__astropy-13033",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 5692,
+        "observation_tokens_mask_0": 6892,
+        "trajectory_turns": 29,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 120792
+      },
+      {
+        "instance_id": "astropy__astropy-13977",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 4236,
+        "observation_tokens_mask_0": 32278,
+        "trajectory_turns": 26,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 315259
+      },
+      {
+        "instance_id": "astropy__astropy-14539",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 4299,
+        "observation_tokens_mask_0": 31805,
+        "trajectory_turns": 31,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 310537
+      },
+      {
+        "instance_id": "django__django-11451",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 2281,
+        "observation_tokens_mask_0": 14862,
+        "trajectory_turns": 18,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 156557
+      },
+      {
+        "instance_id": "django__django-14122",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 10506,
+        "observation_tokens_mask_0": 89917,
+        "trajectory_turns": 52,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 846487
+      },
+      {
+        "instance_id": "django__django-14373",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 3232,
+        "observation_tokens_mask_0": 10134,
+        "trajectory_turns": 25,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 118737
+      },
+      {
+        "instance_id": "matplotlib__matplotlib-20488",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 3754,
+        "observation_tokens_mask_0": 26362,
+        "trajectory_turns": 21,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 258693
+      },
+      {
+        "instance_id": "matplotlib__matplotlib-20859",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 1617,
+        "observation_tokens_mask_0": 3272,
+        "trajectory_turns": 23,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 53813
+      },
+      {
+        "instance_id": "matplotlib__matplotlib-25287",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 1696,
+        "observation_tokens_mask_0": 37470,
+        "trajectory_turns": 21,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 332957
+      },
+      {
+        "instance_id": "mwaskom__seaborn-3069",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 2809,
+        "observation_tokens_mask_0": 39646,
+        "trajectory_turns": 23,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 361637
+      },
+      {
+        "instance_id": "mwaskom__seaborn-3187",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 10805,
+        "observation_tokens_mask_0": 20438,
+        "trajectory_turns": 43,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 271005
+      },
+      {
+        "instance_id": "pallets__flask-5014",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 2836,
+        "observation_tokens_mask_0": 21780,
+        "trajectory_turns": 33,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 214186
+      },
+      {
+        "instance_id": "psf__requests-1921",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 6506,
+        "observation_tokens_mask_0": 17447,
+        "trajectory_turns": 31,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 211076
+      },
+      {
+        "instance_id": "psf__requests-5414",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 4788,
+        "observation_tokens_mask_0": 19246,
+        "trajectory_turns": 29,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 213160
+      },
+      {
+        "instance_id": "pydata__xarray-4075",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 4855,
+        "observation_tokens_mask_0": 12239,
+        "trajectory_turns": 33,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 156502
+      },
+      {
+        "instance_id": "pydata__xarray-6938",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 4845,
+        "observation_tokens_mask_0": 8527,
+        "trajectory_turns": 36,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 125580
+      },
+      {
+        "instance_id": "pylint-dev__pylint-4661",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 2744,
+        "observation_tokens_mask_0": 7809,
+        "trajectory_turns": 23,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 98300
+      },
+      {
+        "instance_id": "pylint-dev__pylint-4970",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 5217,
+        "observation_tokens_mask_0": 29373,
+        "trajectory_turns": 52,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 296982
+      },
+      {
+        "instance_id": "pylint-dev__pylint-7080",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 8808,
+        "observation_tokens_mask_0": 19334,
+        "trajectory_turns": 43,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 287254
+      },
+      {
+        "instance_id": "pytest-dev__pytest-7205",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 1614,
+        "observation_tokens_mask_0": 6353,
+        "trajectory_turns": 22,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 82810
+      },
+      {
+        "instance_id": "pytest-dev__pytest-7236",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 7191,
+        "observation_tokens_mask_0": 21183,
+        "trajectory_turns": 37,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 252260
+      },
+      {
+        "instance_id": "pytest-dev__pytest-7521",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 7802,
+        "observation_tokens_mask_0": 17521,
+        "trajectory_turns": 44,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 227612
+      },
+      {
+        "instance_id": "scikit-learn__scikit-learn-11310",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 5166,
+        "observation_tokens_mask_0": 29298,
+        "trajectory_turns": 33,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 297728
+      },
+      {
+        "instance_id": "scikit-learn__scikit-learn-25931",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 2955,
+        "observation_tokens_mask_0": 13645,
+        "trajectory_turns": 26,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 152542
+      },
+      {
+        "instance_id": "sphinx-doc__sphinx-7748",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 10099,
+        "observation_tokens_mask_0": 45176,
+        "trajectory_turns": 41,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 467272
+      },
+      {
+        "instance_id": "sphinx-doc__sphinx-9367",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 2125,
+        "observation_tokens_mask_0": 5596,
+        "trajectory_turns": 16,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 73653
+      },
+      {
+        "instance_id": "sympy__sympy-18211",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 6723,
+        "observation_tokens_mask_0": 37545,
+        "trajectory_turns": 37,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 375555
+      },
+      {
+        "instance_id": "sympy__sympy-24213",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 6489,
+        "observation_tokens_mask_0": 18638,
+        "trajectory_turns": 31,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 221958
+      }
+    ]
+  },
+  {
+    "run": "main-mini-128k",
+    "sessions": 28,
+    "valid_token_mask_sessions": 28,
+    "rl_logprobs_complete_sessions": 0,
+    "generated_tokens": 227529,
+    "observation_tokens": 351614,
+    "rows": [
+      {
+        "instance_id": "astropy__astropy-13033",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 8285,
+        "observation_tokens_mask_0": 7809,
+        "trajectory_turns": 56,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 150376
+      },
+      {
+        "instance_id": "astropy__astropy-13977",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 6595,
+        "observation_tokens_mask_0": 7513,
+        "trajectory_turns": 49,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 132936
+      },
+      {
+        "instance_id": "astropy__astropy-14539",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 8115,
+        "observation_tokens_mask_0": 16538,
+        "trajectory_turns": 45,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 217947
+      },
+      {
+        "instance_id": "django__django-11451",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 2928,
+        "observation_tokens_mask_0": 7750,
+        "trajectory_turns": 29,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 102751
+      },
+      {
+        "instance_id": "django__django-14122",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 17519,
+        "observation_tokens_mask_0": 27359,
+        "trajectory_turns": 93,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 388798
+      },
+      {
+        "instance_id": "django__django-14373",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 3523,
+        "observation_tokens_mask_0": 7813,
+        "trajectory_turns": 26,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 101457
+      },
+      {
+        "instance_id": "matplotlib__matplotlib-20488",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 13086,
+        "observation_tokens_mask_0": 10673,
+        "trajectory_turns": 82,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 211674
+      },
+      {
+        "instance_id": "matplotlib__matplotlib-20859",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 3341,
+        "observation_tokens_mask_0": 4857,
+        "trajectory_turns": 41,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 81795
+      },
+      {
+        "instance_id": "matplotlib__matplotlib-25287",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 3040,
+        "observation_tokens_mask_0": 3812,
+        "trajectory_turns": 33,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 68539
+      },
+      {
+        "instance_id": "mwaskom__seaborn-3069",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 10461,
+        "observation_tokens_mask_0": 22213,
+        "trajectory_turns": 86,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 288711
+      },
+      {
+        "instance_id": "mwaskom__seaborn-3187",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 8128,
+        "observation_tokens_mask_0": 9116,
+        "trajectory_turns": 56,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 154163
+      },
+      {
+        "instance_id": "pallets__flask-5014",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 9727,
+        "observation_tokens_mask_0": 11992,
+        "trajectory_turns": 102,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 194161
+      },
+      {
+        "instance_id": "psf__requests-1921",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 4683,
+        "observation_tokens_mask_0": 8065,
+        "trajectory_turns": 34,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 118161
+      },
+      {
+        "instance_id": "psf__requests-5414",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 4942,
+        "observation_tokens_mask_0": 4347,
+        "trajectory_turns": 38,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 89703
+      },
+      {
+        "instance_id": "pydata__xarray-4075",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 2704,
+        "observation_tokens_mask_0": 10086,
+        "trajectory_turns": 23,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 119165
+      },
+      {
+        "instance_id": "pydata__xarray-6938",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 13155,
+        "observation_tokens_mask_0": 16717,
+        "trajectory_turns": 86,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 263011
+      },
+      {
+        "instance_id": "pylint-dev__pylint-4661",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 12513,
+        "observation_tokens_mask_0": 11778,
+        "trajectory_turns": 92,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 217990
+      },
+      {
+        "instance_id": "pylint-dev__pylint-4970",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 5301,
+        "observation_tokens_mask_0": 18180,
+        "trajectory_turns": 70,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 205745
+      },
+      {
+        "instance_id": "pylint-dev__pylint-7080",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 13760,
+        "observation_tokens_mask_0": 17176,
+        "trajectory_turns": 102,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": false,
+        "task_resolved": false,
+        "jsonl_bytes": 311815
+      },
+      {
+        "instance_id": "pytest-dev__pytest-7205",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 2199,
+        "observation_tokens_mask_0": 11583,
+        "trajectory_turns": 32,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 132455
+      },
+      {
+        "instance_id": "pytest-dev__pytest-7236",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 12523,
+        "observation_tokens_mask_0": 18354,
+        "trajectory_turns": 85,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 275145
+      },
+      {
+        "instance_id": "pytest-dev__pytest-7521",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 10986,
+        "observation_tokens_mask_0": 14014,
+        "trajectory_turns": 102,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": false,
+        "task_resolved": false,
+        "jsonl_bytes": 227545
+      },
+      {
+        "instance_id": "scikit-learn__scikit-learn-11310",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 5656,
+        "observation_tokens_mask_0": 8267,
+        "trajectory_turns": 53,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 128099
+      },
+      {
+        "instance_id": "scikit-learn__scikit-learn-25931",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 12280,
+        "observation_tokens_mask_0": 16093,
+        "trajectory_turns": 96,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 252765
+      },
+      {
+        "instance_id": "sphinx-doc__sphinx-7748",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 9852,
+        "observation_tokens_mask_0": 17881,
+        "trajectory_turns": 85,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 243067
+      },
+      {
+        "instance_id": "sphinx-doc__sphinx-9367",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 5846,
+        "observation_tokens_mask_0": 18270,
+        "trajectory_turns": 51,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 213211
+      },
+      {
+        "instance_id": "sympy__sympy-18211",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 10946,
+        "observation_tokens_mask_0": 15217,
+        "trajectory_turns": 102,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": false,
+        "task_resolved": false,
+        "jsonl_bytes": 232060
+      },
+      {
+        "instance_id": "sympy__sympy-24213",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 5435,
+        "observation_tokens_mask_0": 8141,
+        "trajectory_turns": 30,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 125685
+      }
+    ]
+  },
+  {
+    "run": "main-react-128k",
+    "sessions": 28,
+    "valid_token_mask_sessions": 28,
+    "rl_logprobs_complete_sessions": 0,
+    "generated_tokens": 365885,
+    "observation_tokens": 737366,
+    "rows": [
+      {
+        "instance_id": "astropy__astropy-13033",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 7987,
+        "observation_tokens_mask_0": 13722,
+        "trajectory_turns": 42,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 200184
+      },
+      {
+        "instance_id": "astropy__astropy-13977",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 5153,
+        "observation_tokens_mask_0": 32495,
+        "trajectory_turns": 37,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 332918
+      },
+      {
+        "instance_id": "astropy__astropy-14539",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 5723,
+        "observation_tokens_mask_0": 24809,
+        "trajectory_turns": 39,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 268993
+      },
+      {
+        "instance_id": "django__django-11451",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 10496,
+        "observation_tokens_mask_0": 28152,
+        "trajectory_turns": 44,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 346467
+      },
+      {
+        "instance_id": "django__django-14122",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 57367,
+        "observation_tokens_mask_0": 18653,
+        "trajectory_turns": 70,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 686205
+      },
+      {
+        "instance_id": "django__django-14373",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 5362,
+        "observation_tokens_mask_0": 12321,
+        "trajectory_turns": 29,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 157004
+      },
+      {
+        "instance_id": "matplotlib__matplotlib-20488",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 25158,
+        "observation_tokens_mask_0": 53289,
+        "trajectory_turns": 78,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 671530
+      },
+      {
+        "instance_id": "matplotlib__matplotlib-20859",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 4944,
+        "observation_tokens_mask_0": 16337,
+        "trajectory_turns": 40,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 199911
+      },
+      {
+        "instance_id": "matplotlib__matplotlib-25287",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 4395,
+        "observation_tokens_mask_0": 11842,
+        "trajectory_turns": 26,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 151734
+      },
+      {
+        "instance_id": "mwaskom__seaborn-3069",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 13503,
+        "observation_tokens_mask_0": 37670,
+        "trajectory_turns": 77,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 446233
+      },
+      {
+        "instance_id": "mwaskom__seaborn-3187",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 18763,
+        "observation_tokens_mask_0": 27494,
+        "trajectory_turns": 55,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 402453
+      },
+      {
+        "instance_id": "pallets__flask-5014",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 6571,
+        "observation_tokens_mask_0": 24367,
+        "trajectory_turns": 45,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 274290
+      },
+      {
+        "instance_id": "psf__requests-1921",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 15612,
+        "observation_tokens_mask_0": 22797,
+        "trajectory_turns": 65,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 340369
+      },
+      {
+        "instance_id": "psf__requests-5414",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 8725,
+        "observation_tokens_mask_0": 20106,
+        "trajectory_turns": 38,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 257468
+      },
+      {
+        "instance_id": "pydata__xarray-4075",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 4813,
+        "observation_tokens_mask_0": 54865,
+        "trajectory_turns": 32,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 518242
+      },
+      {
+        "instance_id": "pydata__xarray-6938",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 13709,
+        "observation_tokens_mask_0": 24150,
+        "trajectory_turns": 52,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 328147
+      },
+      {
+        "instance_id": "pylint-dev__pylint-4661",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 6469,
+        "observation_tokens_mask_0": 11553,
+        "trajectory_turns": 42,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 167972
+      },
+      {
+        "instance_id": "pylint-dev__pylint-4970",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 16065,
+        "observation_tokens_mask_0": 27234,
+        "trajectory_turns": 46,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 374155
+      },
+      {
+        "instance_id": "pylint-dev__pylint-7080",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 20947,
+        "observation_tokens_mask_0": 27539,
+        "trajectory_turns": 85,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 467590
+      },
+      {
+        "instance_id": "pytest-dev__pytest-7205",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 4643,
+        "observation_tokens_mask_0": 21689,
+        "trajectory_turns": 33,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 242730
+      },
+      {
+        "instance_id": "pytest-dev__pytest-7236",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 22340,
+        "observation_tokens_mask_0": 34520,
+        "trajectory_turns": 61,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 501070
+      },
+      {
+        "instance_id": "pytest-dev__pytest-7521",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 21524,
+        "observation_tokens_mask_0": 40804,
+        "trajectory_turns": 102,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": false,
+        "task_resolved": true,
+        "jsonl_bytes": 541277
+      },
+      {
+        "instance_id": "scikit-learn__scikit-learn-11310",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 5397,
+        "observation_tokens_mask_0": 21834,
+        "trajectory_turns": 39,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 242811
+      },
+      {
+        "instance_id": "scikit-learn__scikit-learn-25931",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 14493,
+        "observation_tokens_mask_0": 30647,
+        "trajectory_turns": 61,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 395851
+      },
+      {
+        "instance_id": "sphinx-doc__sphinx-7748",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 21663,
+        "observation_tokens_mask_0": 37166,
+        "trajectory_turns": 51,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 511370
+      },
+      {
+        "instance_id": "sphinx-doc__sphinx-9367",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 4989,
+        "observation_tokens_mask_0": 17091,
+        "trajectory_turns": 32,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 199404
+      },
+      {
+        "instance_id": "sympy__sympy-18211",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 7340,
+        "observation_tokens_mask_0": 19543,
+        "trajectory_turns": 53,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 236971
+      },
+      {
+        "instance_id": "sympy__sympy-24213",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 11734,
+        "observation_tokens_mask_0": 24677,
+        "trajectory_turns": 51,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 321011
+      }
+    ]
+  },
+  {
+    "run": "pilot-claude-gateway",
+    "sessions": 6,
+    "valid_token_mask_sessions": 6,
+    "rl_logprobs_complete_sessions": 0,
+    "generated_tokens": 30037,
+    "observation_tokens": 103556,
+    "rows": [
+      {
+        "instance_id": "pallets__flask-5014",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 2128,
+        "observation_tokens_mask_0": 9729,
+        "trajectory_turns": 30,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 109503
+      },
+      {
+        "instance_id": "psf__requests-6028",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 6893,
+        "observation_tokens_mask_0": 25018,
+        "trajectory_turns": 25,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 275999
+      },
+      {
+        "instance_id": "pytest-dev__pytest-5262",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 6574,
+        "observation_tokens_mask_0": 13780,
+        "trajectory_turns": 36,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 187312
+      },
+      {
+        "instance_id": "pytest-dev__pytest-7432",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 1881,
+        "observation_tokens_mask_0": 21316,
+        "trajectory_turns": 20,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 204112
+      },
+      {
+        "instance_id": "pytest-dev__pytest-7521",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 10469,
+        "observation_tokens_mask_0": 18253,
+        "trajectory_turns": 48,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 256928
+      },
+      {
+        "instance_id": "pytest-dev__pytest-7982",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 2092,
+        "observation_tokens_mask_0": 15460,
+        "trajectory_turns": 24,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 157146
+      }
+    ]
+  },
+  {
+    "run": "pilot-mini-gateway",
+    "sessions": 6,
+    "valid_token_mask_sessions": 6,
+    "rl_logprobs_complete_sessions": 0,
+    "generated_tokens": 31713,
+    "observation_tokens": 68837,
+    "rows": [
+      {
+        "instance_id": "pallets__flask-5014",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 4831,
+        "observation_tokens_mask_0": 8855,
+        "trajectory_turns": 62,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": false,
+        "task_resolved": false,
+        "jsonl_bytes": 124530
+      },
+      {
+        "instance_id": "psf__requests-6028",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 6272,
+        "observation_tokens_mask_0": 12130,
+        "trajectory_turns": 44,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 165669
+      },
+      {
+        "instance_id": "pytest-dev__pytest-5262",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 6688,
+        "observation_tokens_mask_0": 8990,
+        "trajectory_turns": 62,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": false,
+        "task_resolved": false,
+        "jsonl_bytes": 148544
+      },
+      {
+        "instance_id": "pytest-dev__pytest-7432",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 5921,
+        "observation_tokens_mask_0": 14752,
+        "trajectory_turns": 60,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": false,
+        "jsonl_bytes": 185255
+      },
+      {
+        "instance_id": "pytest-dev__pytest-7521",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 3969,
+        "observation_tokens_mask_0": 12995,
+        "trajectory_turns": 40,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 158324
+      },
+      {
+        "instance_id": "pytest-dev__pytest-7982",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 4032,
+        "observation_tokens_mask_0": 11115,
+        "trajectory_turns": 44,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 135806
+      }
+    ]
+  },
+  {
+    "run": "pilot-react-gateway",
+    "sessions": 6,
+    "valid_token_mask_sessions": 6,
+    "rl_logprobs_complete_sessions": 0,
+    "generated_tokens": 70798,
+    "observation_tokens": 145546,
+    "rows": [
+      {
+        "instance_id": "pallets__flask-5014",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 6844,
+        "observation_tokens_mask_0": 18620,
+        "trajectory_turns": 37,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 228450
+      },
+      {
+        "instance_id": "psf__requests-6028",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 9014,
+        "observation_tokens_mask_0": 24964,
+        "trajectory_turns": 41,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": false,
+        "task_resolved": false,
+        "jsonl_bytes": 298839
+      },
+      {
+        "instance_id": "pytest-dev__pytest-5262",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 16660,
+        "observation_tokens_mask_0": 26683,
+        "trajectory_turns": 62,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": false,
+        "task_resolved": true,
+        "jsonl_bytes": 386070
+      },
+      {
+        "instance_id": "pytest-dev__pytest-7432",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 19084,
+        "observation_tokens_mask_0": 33374,
+        "trajectory_turns": 62,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": false,
+        "task_resolved": false,
+        "jsonl_bytes": 455683
+      },
+      {
+        "instance_id": "pytest-dev__pytest-7521",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 8955,
+        "observation_tokens_mask_0": 20024,
+        "trajectory_turns": 53,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 262717
+      },
+      {
+        "instance_id": "pytest-dev__pytest-7982",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 10241,
+        "observation_tokens_mask_0": 21881,
+        "trajectory_turns": 44,
+        "issues": [
+          "missing_logprobs"
+        ],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 284805
+      }
+    ]
+  },
+  {
+    "run": "trajectory-logprobs-claude",
+    "sessions": 1,
+    "valid_token_mask_sessions": 1,
+    "rl_logprobs_complete_sessions": 1,
+    "generated_tokens": 3027,
+    "observation_tokens": 16653,
+    "rows": [
+      {
+        "instance_id": "pallets__flask-5014",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 3027,
+        "observation_tokens_mask_0": 16653,
+        "trajectory_turns": 30,
+        "issues": [],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 307113
+      }
+    ]
+  },
+  {
+    "run": "trajectory-logprobs-mini",
+    "sessions": 1,
+    "valid_token_mask_sessions": 1,
+    "rl_logprobs_complete_sessions": 1,
+    "generated_tokens": 5264,
+    "observation_tokens": 7691,
+    "rows": [
+      {
+        "instance_id": "pallets__flask-5014",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 5264,
+        "observation_tokens_mask_0": 7691,
+        "trajectory_turns": 62,
+        "issues": [],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": false,
+        "task_resolved": false,
+        "jsonl_bytes": 242932
+      }
+    ]
+  },
+  {
+    "run": "trajectory-logprobs-react",
+    "sessions": 1,
+    "valid_token_mask_sessions": 1,
+    "rl_logprobs_complete_sessions": 1,
+    "generated_tokens": 5324,
+    "observation_tokens": 14936,
+    "rows": [
+      {
+        "instance_id": "pallets__flask-5014",
+        "trajectories": 1,
+        "generated_tokens_mask_1": 5324,
+        "observation_tokens_mask_0": 14936,
+        "trajectory_turns": 40,
+        "issues": [],
+        "raw_reward_fields": "not joined by debug gateway; see TaskResult",
+        "task_finished": true,
+        "task_resolved": true,
+        "jsonl_bytes": 340978
+      }
+    ]
+  }
+]

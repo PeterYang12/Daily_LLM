@@ -1,0 +1,69 @@
+{
+  "instance_id": "pytest-dev__pytest-7521",
+  "repo": "pytest-dev/pytest",
+  "mode": "claude",
+  "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-7521",
+  "finished": true,
+  "agent_seconds": 314.43124890327454,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": true,
+  "eval_completed": true,
+  "source_only_resolved": true,
+  "raw_result_path": "/lab/results/main-claude-128k/pytest-dev__pytest-7521/result.json",
+  "captured_patch_sha256": "9be6cbcbe1d411e9a62c58dc8f2d76ccccbbb5c27102ffe9f6c3b38ae9c75c5b",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "626158e22e5ddc14eecf2829659d96bf49263703",
+  "candidate_delta_bytes": 14003,
+  "test_paths_changed": [
+    "test_comprehensive.py",
+    "test_debug.py",
+    "test_exact_issue.py",
+    "test_exact_repro.py",
+    "test_final_verification.py",
+    "test_fix_verification.py",
+    "test_reproducer.py",
+    "test_simulate_issue.py",
+    "test_textwrapper.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "test_comprehensive.py",
+    "test_debug.py",
+    "test_exact_issue.py",
+    "test_exact_repro.py",
+    "test_final_verification.py",
+    "test_fix_verification.py",
+    "test_reproducer.py",
+    "test_simulate_issue.py",
+    "test_textwrapper.py"
+  ],
+  "eval_execution_time": 7.342678921762854,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 17.471980571746826,
+  "source_artifact": "results/regraded-main-claude/pytest-dev__pytest-7521/result.json",
+  "source_sha256": "6560df8ef3e9a703eaeb3319f2d16e2dfb672b5f989cf725923a880647b1f586",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 2,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_PASS": {
+      "passed": 125,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "instance_id": "sphinx-doc__sphinx-9367",
+  "repo": "sphinx-doc/sphinx",
+  "mode": "react",
+  "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9367",
+  "finished": true,
+  "agent_seconds": 212.6408326625824,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": true,
+  "eval_completed": true,
+  "source_only_resolved": true,
+  "raw_result_path": "/lab/results/main-react-128k/sphinx-doc__sphinx-9367/result.json",
+  "captured_patch_sha256": "aaf99e7c2a8b2a27c5dff596c7056000b699e6efd56139ee093f5393f4eab120",
+  "image_baseline_patch_bytes": 1457,
+  "image_initial_tree": "487c4c5d2223448fa7f8e3959a6ff6c146caa418",
+  "candidate_delta_bytes": 5344,
+  "test_paths_changed": [],
+  "existing_tests_modified": [],
+  "added_test_paths": [],
+  "eval_execution_time": 1.773492245003581,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 4.910966873168945,
+  "source_artifact": "results/regraded-main-react/sphinx-doc__sphinx-9367/result.json",
+  "source_sha256": "a293c415ec952675bd4f424d400081f6b911a064db342482178404c3a99bd667",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 1,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_PASS": {
+      "passed": 25,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

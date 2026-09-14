@@ -1,0 +1,164 @@
+[
+  {
+    "source": "README.md",
+    "html": "site/index.html",
+    "title": "Uni-Agent × AMD ROCm：实验总结与架构说明",
+    "group": "阅读入口"
+  },
+  {
+    "source": "00-executive-summary.md",
+    "html": "site/00-executive-summary.html",
+    "title": "汇报摘要：现有 AMD 机器上完成了什么",
+    "group": "阅读入口"
+  },
+  {
+    "source": "01-scope-and-terminology.md",
+    "html": "site/01-scope-and-terminology.html",
+    "title": "范围与术语：这次到底跑了什么",
+    "group": "阅读入口"
+  },
+  {
+    "source": "architecture/01-deployment.md",
+    "html": "site/architecture/01-deployment.html",
+    "title": "实际部署：容器、程序和模型分别在哪里",
+    "group": "架构与流程"
+  },
+  {
+    "source": "architecture/02-agent-task-flow.md",
+    "html": "site/architecture/02-agent-task-flow.html",
+    "title": "一道任务的执行流程：谁启动谁，何时调用模型",
+    "group": "架构与流程"
+  },
+  {
+    "source": "architecture/03-apis-and-lifecycle.md",
+    "html": "site/architecture/03-apis-and-lifecycle.html",
+    "title": "API与生命周期：常驻daemon、临时Gateway和任务sandbox",
+    "group": "架构与流程"
+  },
+  {
+    "source": "experiments/README.md",
+    "html": "site/experiments/index.html",
+    "title": "实验目录：跑了什么，得到了什么",
+    "group": "实验"
+  },
+  {
+    "source": "experiments/01-model-and-official-examples.md",
+    "html": "site/experiments/01-model-and-official-examples.html",
+    "title": "E01：模型服务与官方example",
+    "group": "实验"
+  },
+  {
+    "source": "experiments/02-data-and-controls.md",
+    "html": "site/experiments/02-data-and-controls.html",
+    "title": "E02：数据选择、环境正负控制与独立判题",
+    "group": "实验"
+  },
+  {
+    "source": "experiments/03-swe-agent-comparison.md",
+    "html": "site/experiments/03-swe-agent-comparison.html",
+    "title": "E03：三种agent在同一30B模型上的SWE对照",
+    "group": "实验"
+  },
+  {
+    "source": "experiments/04-docker-sandbox.md",
+    "html": "site/experiments/04-docker-sandbox.html",
+    "title": "E04：本地Docker sandbox方案",
+    "group": "实验"
+  },
+  {
+    "source": "experiments/05-e2b-sandbox.md",
+    "html": "site/experiments/05-e2b-sandbox.html",
+    "title": "E05：远端E2B兼容sandbox",
+    "group": "实验"
+  },
+  {
+    "source": "experiments/06-serving-tp-and-aiter.md",
+    "html": "site/experiments/06-serving-tp-and-aiter.html",
+    "title": "E06：ROCm推理性能——TP1/TP4与AITER配置",
+    "group": "实验"
+  },
+  {
+    "source": "experiments/07-replica-scaling.md",
+    "html": "site/experiments/07-replica-scaling.html",
+    "title": "E07：一个模型副本与两个模型副本",
+    "group": "实验"
+  },
+  {
+    "source": "experiments/08-trajectories.md",
+    "html": "site/experiments/08-trajectories.html",
+    "title": "E08：Gateway轨迹与后训练准备范围",
+    "group": "实验"
+  },
+  {
+    "source": "experiments/09-reproducibility-validation.md",
+    "html": "site/experiments/09-reproducibility-validation.html",
+    "title": "E09：环境、实现与复现交付验收",
+    "group": "实验"
+  },
+  {
+    "source": "results/01-case-studies.md",
+    "html": "site/results/01-case-studies.html",
+    "title": "五个真实案例：agent到底做了什么",
+    "group": "结果与结论"
+  },
+  {
+    "source": "results/02-conclusions-and-next-steps.md",
+    "html": "site/results/02-conclusions-and-next-steps.html",
+    "title": "结论、适用范围与下一步",
+    "group": "结果与结论"
+  },
+  {
+    "source": "results/03-per-case-matrix.md",
+    "html": "site/results/03-per-case-matrix.html",
+    "title": "全部28题的正式结果矩阵",
+    "group": "结果与结论"
+  },
+  {
+    "source": "reproduce/01-environment-and-versions.md",
+    "html": "site/reproduce/01-environment-and-versions.html",
+    "title": "固定环境、模型、数据与容器布局",
+    "group": "复现"
+  },
+  {
+    "source": "reproduce/02-replay-guide.md",
+    "html": "site/reproduce/02-replay-guide.html",
+    "title": "复现指南：从现有lab重跑，以及迁移到新环境",
+    "group": "复现"
+  },
+  {
+    "source": "references/01-community-comparison.md",
+    "html": "site/references/01-community-comparison.html",
+    "title": "社区方案对比：放在正确的层次上看",
+    "group": "参考与证据"
+  },
+  {
+    "source": "references/02-evidence-index.md",
+    "html": "site/references/02-evidence-index.html",
+    "title": "证据索引与文件来源",
+    "group": "参考与证据"
+  },
+  {
+    "source": "references/03-uni-agent-api-reference.md",
+    "html": "site/references/03-uni-agent-api-reference.html",
+    "title": "Uni-Agent API接口总览（固定版本）",
+    "group": "参考与证据"
+  },
+  {
+    "source": "references/04-sandbox-and-verdal-api-reference.md",
+    "html": "site/references/04-sandbox-and-verdal-api-reference.html",
+    "title": "Sandbox API总览：Uni-Agent、Docker与verdal/E2B",
+    "group": "参考与证据"
+  },
+  {
+    "source": "tools/README.md",
+    "html": "site/tools/index.html",
+    "title": "文档生成与校验工具",
+    "group": "文档工具"
+  },
+  {
+    "source": "reproduce/scripts/README.md",
+    "html": "site/reproduce/scripts/index.html",
+    "title": "脚本快照的用途",
+    "group": "复现"
+  }
+]

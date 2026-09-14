@@ -1,0 +1,55 @@
+{
+  "instance_id": "pallets__flask-5014",
+  "repo": "pallets/flask",
+  "mode": "mini",
+  "image": "swebench/sweb.eval.x86_64.pallets_1776_flask-5014",
+  "finished": true,
+  "agent_seconds": 385.59783577919006,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": true,
+  "eval_completed": true,
+  "source_only_resolved": true,
+  "raw_result_path": "/lab/results/main-mini-128k/pallets__flask-5014/result.json",
+  "captured_patch_sha256": "d217ab41cecc44cefefec09e297cea6333fbb935668ce5fc34ad9ff12ef33124",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "c3d16a156c9206389b230b2884557c486e871589",
+  "candidate_delta_bytes": 57208,
+  "test_paths_changed": [
+    "test_blueprint_empty_name.py",
+    "test_empty_blueprint.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "test_blueprint_empty_name.py",
+    "test_empty_blueprint.py"
+  ],
+  "eval_execution_time": 2.387098044157028,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 7.8302388191223145,
+  "source_artifact": "results/regraded-main-mini/pallets__flask-5014/result.json",
+  "source_sha256": "3d893458f1d32df1015d62b88d7929e23fd655020a4db9293b83fb7f73cf8371",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 1,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_PASS": {
+      "passed": 59,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

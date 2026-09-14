@@ -1,0 +1,71 @@
+{
+  "instance_id": "astropy__astropy-13977",
+  "repo": "astropy/astropy",
+  "mode": "claude",
+  "image": "swebench/sweb.eval.x86_64.astropy_1776_astropy-13977",
+  "finished": true,
+  "agent_seconds": 204.84804725646973,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": false,
+  "eval_completed": true,
+  "source_only_resolved": false,
+  "raw_result_path": "/lab/results/main-claude-128k/astropy__astropy-13977/result.json",
+  "captured_patch_sha256": "08893571e004c52fdd2e7fa0e22f47e6f5e91a56c2bbedcda1564f350ec10d8b",
+  "image_baseline_patch_bytes": 305,
+  "image_initial_tree": "68be81398569d66614f3632c90aa555b1c022b9f",
+  "candidate_delta_bytes": 7773,
+  "test_paths_changed": [
+    "test_comprehensive.py",
+    "test_fix.py",
+    "test_issue.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "test_comprehensive.py",
+    "test_fix.py",
+    "test_issue.py"
+  ],
+  "eval_execution_time": 45.09080197196454,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 94.78406095504761,
+  "source_artifact": "results/regraded-main-claude/astropy__astropy-13977/result.json",
+  "source_sha256": "213267b3110a53ce6644cb4632973f1d283aa111291f06d7c4813639204c36b8",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 12,
+      "failed": 8,
+      "failed_tests": [
+        "astropy/units/tests/test_quantity_ufuncs.py::TestUfuncReturnsNotImplemented::TestBinaryUfuncs::test_full[empty-duck_quantity0-quantity0-add]",
+        "astropy/units/tests/test_quantity_ufuncs.py::TestUfuncReturnsNotImplemented::TestBinaryUfuncs::test_full[empty-duck_quantity0-quantity0-multiply]",
+        "astropy/units/tests/test_quantity_ufuncs.py::TestUfuncReturnsNotImplemented::TestBinaryUfuncs::test_full[empty-duck_quantity0-quantity1-add]",
+        "astropy/units/tests/test_quantity_ufuncs.py::TestUfuncReturnsNotImplemented::TestBinaryUfuncs::test_full[empty-duck_quantity0-quantity1-multiply]",
+        "astropy/units/tests/test_quantity_ufuncs.py::TestUfuncReturnsNotImplemented::TestBinaryUfuncs::test_full[empty-duck_quantity1-quantity0-add]",
+        "astropy/units/tests/test_quantity_ufuncs.py::TestUfuncReturnsNotImplemented::TestBinaryUfuncs::test_full[empty-duck_quantity1-quantity0-multiply]",
+        "astropy/units/tests/test_quantity_ufuncs.py::TestUfuncReturnsNotImplemented::TestBinaryUfuncs::test_full[empty-duck_quantity1-quantity1-add]",
+        "astropy/units/tests/test_quantity_ufuncs.py::TestUfuncReturnsNotImplemented::TestBinaryUfuncs::test_full[empty-duck_quantity1-quantity1-multiply]"
+      ]
+    },
+    "PASS_TO_PASS": {
+      "passed": 318,
+      "failed": 4,
+      "failed_tests": [
+        "astropy/units/tests/test_quantity_ufuncs.py::TestUfuncReturnsNotImplemented::TestBinaryUfuncs::test_basic[duck_quantity1-quantity0-add]",
+        "astropy/units/tests/test_quantity_ufuncs.py::TestUfuncReturnsNotImplemented::TestBinaryUfuncs::test_basic[duck_quantity1-quantity0-less]",
+        "astropy/units/tests/test_quantity_ufuncs.py::TestUfuncReturnsNotImplemented::TestBinaryUfuncs::test_basic[duck_quantity1-quantity1-add]",
+        "astropy/units/tests/test_quantity_ufuncs.py::TestUfuncReturnsNotImplemented::TestBinaryUfuncs::test_basic[duck_quantity1-quantity1-less]"
+      ]
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

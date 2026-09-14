@@ -1,0 +1,410 @@
+diff --git a/src/_pytest/capture.py b/src/_pytest/capture.py
+index 3f9c60fb9..2465bbd05 100644
+--- a/src/_pytest/capture.py
++++ b/src/_pytest/capture.py
+@@ -387,6 +387,7 @@ class FDCaptureBinary:
+                 # TODO: Remove type ignore, fixed in next mypy release.
+                 TemporaryFile(buffering=0),  # type: ignore[arg-type]
+                 encoding="utf-8",
++                newline="",
+                 errors="replace",
+                 write_through=True,
+             )
+diff --git a/test_comprehensive.py b/test_comprehensive.py
+new file mode 100644
+index 000000000..cc6db7892
+--- /dev/null
++++ b/test_comprehensive.py
+@@ -0,0 +1,35 @@
++import sys
++
++def test_cafd_includes_carriage_return(capfd):
++    print('Greetings from DOS', end='\r')
++    out, err = capfd.readouterr()
++    print(f"Captured output: {repr(out)}")
++    print(f"Ends with carriage return: {out.endswith(chr(13))}")
++    print(f"Ends with newline: {out.endswith(chr(10))}")
++    assert out.endswith('\r')
++
++def test_normal_newline(capfd):
++    print('Normal line')
++    out, err = capfd.readouterr()
++    print(f"Normal output: {repr(out)}")
++    assert out.endswith('\n')
++
++def test_multiple_carriage_returns(capfd):
++    print('Line 1', end='\r')
++    print('Line 2', end='\r')
++    out, err = capfd.readouterr()
++    print(f"Multiple CR output: {repr(out)}")
++    # Should contain both carriage returns
++    assert '\r' in out
++    assert out.endswith('\r')
++
++def test_carriage_return_with_sys_stdout():
++    # Test what happens with direct sys.stdout
++    old_stdout = sys.stdout
++    from io import StringIO
++    sys.stdout = StringIO()
++    print('Greetings from DOS', end='\r')
++    result = sys.stdout.getvalue()
++    sys.stdout = old_stdout
++    print(f"Direct sys.stdout result: {repr(result)}")
++    assert result.endswith('\r')
+\ No newline at end of file
+diff --git a/test_debug.py b/test_debug.py
+new file mode 100644
+index 000000000..b873b8501
+--- /dev/null
++++ b/test_debug.py
+@@ -0,0 +1,44 @@
++import io
++import sys
++from io import TextIOWrapper
++
++# Test what happens with newline parameter in TextIOWrapper
++def test_newline_behavior():
++    # Test with newline=""
++    print("Testing newline behavior...")
++    
++    # Create a BytesIO buffer
++    buffer = io.BytesIO()
++    
++    # Create TextIOWrapper with newline=""
++    wrapper = TextIOWrapper(buffer, encoding="UTF-8", newline="", write_through=True)
++    
++    # Write a string with carriage return
++    wrapper.write('Greetings from DOS\r')
++    wrapper.flush()
++    
++    # Get the value
++    buffer.seek(0)
++    result = buffer.getvalue().decode("UTF-8")
++    print(f"With newline='': {repr(result)}")
++    
++    # Test with default newline behavior
++    buffer2 = io.BytesIO()
++    wrapper2 = TextIOWrapper(buffer2, encoding="UTF-8", newline=None, write_through=True)
++    wrapper2.write('Greetings from DOS\r')
++    wrapper2.flush()
++    buffer2.seek(0)
++    result2 = buffer2.getvalue().decode("UTF-8")
++    print(f"With newline=None: {repr(result2)}")
++    
++    # Test with newline="\n"
++    buffer3 = io.BytesIO()
++    wrapper3 = TextIOWrapper(buffer3, encoding="UTF-8", newline="\n", write_through=True)
++    wrapper3.write('Greetings from DOS\r')
++    wrapper3.flush()
++    buffer3.seek(0)
++    result3 = buffer3.getvalue().decode("UTF-8")
++    print(f"With newline='\\n': {repr(result3)}")
++
++if __name__ == "__main__":
++    test_newline_behavior()
+\ No newline at end of file
+diff --git a/test_exact_issue.py b/test_exact_issue.py
+new file mode 100644
+index 000000000..15964f233
+--- /dev/null
++++ b/test_exact_issue.py
+@@ -0,0 +1,31 @@
++# Test that reproduces the exact issue from the bug report
++def test_progress_percentage_sameline(capfd):
++    # run the test as if it was in a 4x1 terminal
++    import os
++    os.environ['COLUMNS'] = '4'
++    os.environ['LINES'] = '1'
++    
++    # Mock the ProgressIndicatorPercent class
++    class ProgressIndicatorPercent:
++        def __init__(self, total, step, start, msg):
++            self.total = total
++            self.step = step
++            self.start = start
++            self.msg = msg
++            self.logger = type('Logger', (), {'setLevel': lambda x: None})()
++            
++        def show(self, value):
++            print(f"{value:3.0f}%".format(value), end='\r')
++    
++    pi = ProgressIndicatorPercent(1000, 5, 0, "%3.0f%%")
++    pi.logger.setLevel('INFO')
++    pi.show(0)
++    out, err = capfd.readouterr()
++    # This was failing before the fix - err should end with '\r'
++    assert err == '  0%\r'
++
++def test_carriage_return_preservation(capfd):
++    # This is the exact test case from the issue
++    print('Greetings from DOS', end='\r')
++    out, err = capfd.readouterr()
++    assert out.endswith('\r')
+\ No newline at end of file
+diff --git a/test_exact_repro.py b/test_exact_repro.py
+new file mode 100644
+index 000000000..9d41776a1
+--- /dev/null
++++ b/test_exact_repro.py
+@@ -0,0 +1,40 @@
++import sys
++from io import StringIO
++
++# Try to reproduce the exact scenario from the issue
++def test_progress_percentage_sameline(capfd):
++    # This mimics what borgbackup does
++    # run the test as if it was in a 4x1 terminal
++    import os
++    os.environ['COLUMNS'] = '4'
++    os.environ['LINES'] = '1'
++    
++    # Create a mock ProgressIndicatorPercent class
++    class ProgressIndicatorPercent:
++        def __init__(self, total, step, start, msg):
++            self.total = total
++            self.step = step
++            self.start = start
++            self.msg = msg
++            self.logger = type('Logger', (), {'setLevel': lambda x: None})()
++            
++        def show(self, value):
++            # This is what would normally be called to show progress
++            # The key is that it uses print with end='\r'
++            print(f"{value:3.0f}%".format(value), end='\r')
++    
++    pi = ProgressIndicatorPercent(1000, 5, 0, "%3.0f%%")
++    pi.logger.setLevel('INFO')
++    pi.show(0)
++    out, err = capfd.readouterr()
++    print(f"Captured output: {repr(out)}")
++    print(f"Expected: '  0%\\r'")
++    print(f"Actual ends with \\r: {out.endswith(chr(13))}")
++    print(f"Actual ends with \\n: {out.endswith(chr(10))}")
++    assert err == '  0%\r'
++
++def test_simple_carriage_return(capfd):
++    print('Greetings from DOS', end='\r')
++    out, err = capfd.readouterr()
++    print(f"Simple test - captured: {repr(out)}")
++    assert out.endswith('\r')
+\ No newline at end of file
+diff --git a/test_final_verification.py b/test_final_verification.py
+new file mode 100644
+index 000000000..0e78dbed5
+--- /dev/null
++++ b/test_final_verification.py
+@@ -0,0 +1,23 @@
++# Final verification test for the carriage return fix
++def test_carriage_return_preserved(capfd):
++    """Test that carriage returns are preserved in capfd output."""
++    print('Test\r', end='')
++    out, err = capfd.readouterr()
++    # The carriage return should be preserved, not converted to newline
++    assert out.endswith('\r')
++    assert not out.endswith('\n')
++
++def test_multiple_carriage_returns(capfd):
++    """Test multiple carriage returns are preserved."""
++    print('Line1\r', end='')
++    print('Line2\r', end='')
++    out, err = capfd.readouterr()
++    # Both carriage returns should be preserved
++    assert '\r' in out
++    assert out.endswith('\r')
++
++def test_normal_newlines_still_work(capfd):
++    """Test that normal newlines still work correctly."""
++    print('Normal line')
++    out, err = capfd.readouterr()
++    assert out.endswith('\n')
+\ No newline at end of file
+diff --git a/test_fix_verification.py b/test_fix_verification.py
+new file mode 100644
+index 000000000..f6444a590
+--- /dev/null
++++ b/test_fix_verification.py
+@@ -0,0 +1,34 @@
++import sys
++import os
++sys.path.insert(0, '/testbed/src')
++
++from _pytest.capture import FDCapture
++
++def test_fixed_fdcapture_behavior():
++    print("Testing fixed FDCapture behavior...")
++    
++    # Create an FDCapture instance (simulating stdout capture)
++    capture = FDCapture(1)  # stdout
++    
++    # Start capturing
++    capture.start()
++    
++    # Write something with carriage return
++    import sys
++    sys.stdout.write('Greetings from DOS\r')
++    sys.stdout.flush()
++    
++    # Stop capturing and read
++    capture.suspend()
++    result = capture.snap()
++    capture.done()
++    
++    print(f"Captured result: {repr(result)}")
++    print(f"Ends with carriage return: {result.endswith(chr(13))}")
++    print(f"Ends with newline: {result.endswith(chr(10))}")
++    
++    # This should pass now
++    assert result.endswith('\r'), f"Expected to end with \\r, got {repr(result)}"
++
++if __name__ == "__main__":
++    test_fixed_fdcapture_behavior()
+\ No newline at end of file
+diff --git a/test_reproducer.py b/test_reproducer.py
+new file mode 100644
+index 000000000..d85dd0fa8
+--- /dev/null
++++ b/test_reproducer.py
+@@ -0,0 +1,4 @@
++def test_cafd_includes_carriage_return(capfd):
++    print('Greetings from DOS', end='\r')
++    out, err = capfd.readouterr()
++    assert out.endswith('\r')
+\ No newline at end of file
+diff --git a/test_simulate_issue.py b/test_simulate_issue.py
+new file mode 100644
+index 000000000..be12e02c6
+--- /dev/null
++++ b/test_simulate_issue.py
+@@ -0,0 +1,73 @@
++import io
++from io import TextIOWrapper
++from tempfile import TemporaryFile
++
++# Simulate what happens in FDCaptureBinary with the current code
++def test_current_fdcapture_behavior():
++    print("Testing current FDCapture behavior...")
++    
++    # This is what happens in FDCaptureBinary.__init__()
++    tmpfile = TextIOWrapper(
++        TemporaryFile(buffering=0),
++        encoding="utf-8",
++        errors="replace",
++        write_through=True,
++    )
++    
++    # Write something with carriage return
++    tmpfile.write('Greetings from DOS\r')
++    tmpfile.flush()
++    
++    # Now read it back - this is what happens in snap()
++    tmpfile.seek(0)
++    result = tmpfile.read()  # This is what FDCapture.snap() does
++    print(f"Current behavior result: {repr(result)}")
++    
++    # What if we use newline=""
++    tmpfile2 = TextIOWrapper(
++        TemporaryFile(buffering=0),
++        encoding="utf-8",
++        newline="",  # This is the key difference
++        errors="replace",
++        write_through=True,
++    )
++    
++    tmpfile2.write('Greetings from DOS\r')
++    tmpfile2.flush()
++    
++    tmpfile2.seek(0)
++    result2 = tmpfile2.read()
++    print(f"With newline='': {repr(result2)}")
++
++# Test the exact scenario from the issue
++def test_exact_issue_scenario():
++    print("\nTesting exact issue scenario...")
++    
++    # This is what happens in the problematic code
++    # The issue is that carriage returns are being converted to newlines
++    # Let's see what happens when we simulate the old vs new behavior
++    
++    # Simulate the old behavior (what might have been in 6.0.0rc1)
++    # The old EncodedFile was created with newline=None by default
++    # But the current EncodedFile doesn't pass newline parameter
++    
++    # Let's check what the current EncodedFile actually does
++    print("Current EncodedFile behavior:")
++    buffer = io.BytesIO()
++    # This is what happens in the current code
++    wrapper = TextIOWrapper(buffer, encoding="utf-8", errors="replace", write_through=True)
++    wrapper.write('  0%\r')
++    wrapper.flush()
++    buffer.seek(0)
++    result = buffer.getvalue().decode("utf-8")
++    print(f"Written to buffer: {repr(result)}")
++    
++    # Now read it back using the same approach
++    buffer.seek(0)
++    wrapper2 = TextIOWrapper(buffer, encoding="utf-8", errors="replace", write_through=True)
++    read_result = wrapper2.read()
++    print(f"Read back: {repr(read_result)}")
++
++if __name__ == "__main__":
++    test_current_fdcapture_behavior()
++    test_exact_issue_scenario()
+\ No newline at end of file
+diff --git a/test_textwrapper.py b/test_textwrapper.py
+new file mode 100644
+index 000000000..13f3ce49c
+--- /dev/null
++++ b/test_textwrapper.py
+@@ -0,0 +1,51 @@
++import io
++from io import TextIOWrapper
++
++def test_textwrapper_newline_behavior():
++    print("Testing TextIOWrapper newline behavior...")
++    
++    # Test 1: Create a TextIOWrapper with newline=""
++    buffer1 = io.BytesIO()
++    wrapper1 = TextIOWrapper(buffer1, encoding="UTF-8", newline="", write_through=True)
++    wrapper1.write('Hello\rWorld')
++    wrapper1.flush()
++    buffer1.seek(0)
++    result1 = buffer1.getvalue().decode("UTF-8")
++    print(f"TextIOWrapper with newline='': {repr(result1)}")
++    
++    # Test 2: Create a TextIOWrapper with newline=None
++    buffer2 = io.BytesIO()
++    wrapper2 = TextIOWrapper(buffer2, encoding="UTF-8", newline=None, write_through=True)
++    wrapper2.write('Hello\rWorld')
++    wrapper2.flush()
++    buffer2.seek(0)
++    result2 = buffer2.getvalue().decode("UTF-8")
++    print(f"TextIOWrapper with newline=None: {repr(result2)}")
++    
++    # Test 3: Create a TextIOWrapper with default newline behavior
++    buffer3 = io.BytesIO()
++    wrapper3 = TextIOWrapper(buffer3, encoding="UTF-8", write_through=True)
++    wrapper3.write('Hello\rWorld')
++    wrapper3.flush()
++    buffer3.seek(0)
++    result3 = buffer3.getvalue().decode("UTF-8")
++    print(f"TextIOWrapper with default newline: {repr(result3)}")
++    
++    # Test 4: What happens when we read from a file that has \r
++    buffer4 = io.BytesIO()
++    buffer4.write(b'Hello\rWorld')
++    buffer4.seek(0)
++    wrapper4 = TextIOWrapper(buffer4, encoding="UTF-8", newline="", write_through=True)
++    result4 = wrapper4.read()
++    print(f"Reading from buffer with \\r and newline='': {repr(result4)}")
++    
++    # Test 5: What happens when we read from a file that has \r with default newline
++    buffer5 = io.BytesIO()
++    buffer5.write(b'Hello\rWorld')
++    buffer5.seek(0)
++    wrapper5 = TextIOWrapper(buffer5, encoding="UTF-8", write_through=True)
++    result5 = wrapper5.read()
++    print(f"Reading from buffer with \\r and default newline: {repr(result5)}")
++
++if __name__ == "__main__":
++    test_textwrapper_newline_behavior()
+\ No newline at end of file

@@ -1,0 +1,55 @@
+{
+  "status": 200,
+  "elapsed_s": 0.028467655181884766,
+  "request": {
+    "model": "Qwen3-Coder-30B-A3B-Instruct",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Reply with OK only."
+      }
+    ],
+    "max_tokens": 32,
+    "temperature": 0
+  },
+  "body": {
+    "id": "chatcmpl-9aabf4fdc4b0e716",
+    "object": "chat.completion",
+    "created": 1789231900,
+    "model": "Qwen3-Coder-30B-A3B-Instruct",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "OK",
+          "refusal": null,
+          "annotations": null,
+          "audio": null,
+          "function_call": null,
+          "reasoning": null
+        },
+        "logprobs": null,
+        "finish_reason": "stop",
+        "stop_reason": null,
+        "token_ids": null,
+        "routed_experts": null
+      }
+    ],
+    "service_tier": null,
+    "system_fingerprint": "vllm-0.28.1rc1.dev337+g27a94d1ce-f1c9f21c",
+    "usage": {
+      "prompt_tokens": 13,
+      "total_tokens": 15,
+      "completion_tokens": 2,
+      "prompt_tokens_details": null,
+      "completion_tokens_details": null
+    },
+    "prompt_logprobs": null,
+    "prompt_token_ids": null,
+    "prompt_text": null,
+    "kv_transfer_params": null,
+    "ec_transfer_params": null,
+    "metrics": null
+  }
+}

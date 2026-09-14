@@ -1,0 +1,58 @@
+name: swe_bench
+sandbox:
+  provider: docker
+  sandbox_kwargs:
+    pull_policy: never
+    run_args:
+    - --dns
+    - 10.145.80.1
+    - --cpus
+    - '2'
+    - --memory
+    - 8g
+    - --pids-limit
+    - '512'
+    - --security-opt
+    - no-new-privileges
+    - --mount
+    - type=bind,src=/home/yuhanya/uni-agent-lab/cache/tmux,dst=/opt/ua-tmux,readonly
+    - --mount
+    - type=bind,src=/home/yuhanya/uni-agent-lab/cache/tmux/tmux,dst=/usr/local/bin/tmux,readonly
+    - --mount
+    - type=bind,src=/home/yuhanya/uni-agent-lab/cache/claude-2.1.236,dst=/usr/local/bin/claude,readonly
+    - --label
+    - ua-lab.owner=uni-agent-rocm-lab
+    - --label
+    - ua-lab.ttl-seconds=3600
+agent:
+  name: claude_code
+  max_turns: 100
+  run_timeout: 1800
+  verbose: true
+  model:
+    temperature: 0.2
+    top_p: 0.9
+    max_total_tokens: 120000
+    max_tokens_per_turn: 4096
+  extra_args:
+  - --bare
+  - --no-session-persistence
+  - --output-format
+  - stream-json
+  extra_env:
+    CLAUDE_CODE_MAX_OUTPUT_TOKENS: '4096'
+prompt_template:
+- role: user
+  content: 'Read the following task description and resolve the issue in the current
+    directory.
+
+
+    Task description:
+
+    {problem_statement}
+
+
+    Inspect the relevant code, make the minimal correct changes, and verify the result
+    with appropriate tests or checks. Do not modify tests or commit changes. When
+    finished, briefly summarize what changed and how it was verified.'
+eval_timeout: 600

@@ -1,0 +1,30 @@
+[
+  {
+    "event": "create",
+    "sandbox_id": "01a09656-bfd1-73b1-96c8-ea38435cc930",
+    "elapsed_s": 0.703883171081543,
+    "envd_api_url": "[user-provided E2B endpoint]"
+  },
+  {
+    "event": "exec",
+    "command": "uname -a; id; python3 --version; command -v tmux || true",
+    "exit_code": 0,
+    "stdout": "Linux instance 6.1.175 #1 SMP PREEMPT_DYNAMIC Wed Jul 22 20:03:46 CST 2026 x86_64 GNU/Linux\nuid=0(root) gid=0(root) groups=0(root)\nPython 3.12.14\n",
+    "stderr": ""
+  },
+  {
+    "event": "exec",
+    "command": "printf sandbox-persist > /tmp/ua-marker; cat /tmp/ua-marker",
+    "exit_code": 0,
+    "stdout": "sandbox-persist",
+    "stderr": ""
+  },
+  {
+    "event": "file_read",
+    "content": "hello sandbox \u4e2d\u6587\n"
+  },
+  {
+    "event": "kill",
+    "result": true
+  }
+]

@@ -1,0 +1,57 @@
+{
+  "instance_id": "astropy__astropy-13033",
+  "repo": "astropy/astropy",
+  "mode": "mini",
+  "image": "swebench/sweb.eval.x86_64.astropy_1776_astropy-13033",
+  "finished": true,
+  "agent_seconds": 319.347452878952,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": false,
+  "eval_completed": true,
+  "source_only_resolved": false,
+  "raw_result_path": "/lab/results/main-mini-128k/astropy__astropy-13033/result.json",
+  "captured_patch_sha256": "d7450ca7049e8dd4fa66d4ca18641aa12e6b99cb1acda79c9f2ff939ebb4652f",
+  "image_baseline_patch_bytes": 305,
+  "image_initial_tree": "5e7722a78e2dd470dbd8a2cdd40a0ff8a8146d34",
+  "candidate_delta_bytes": 10842,
+  "test_paths_changed": [
+    "test_fix.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "test_fix.py"
+  ],
+  "eval_execution_time": 43.555390457157046,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 95.82207441329956,
+  "source_artifact": "results/regraded-main-mini/astropy__astropy-13033/result.json",
+  "source_sha256": "ba0ebe2aaa556be058ccf6f995f130522c443a3989d995e37b1b651d3b94f58a",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 0,
+      "failed": 1,
+      "failed_tests": [
+        "astropy/timeseries/tests/test_sampled.py::test_required_columns"
+      ]
+    },
+    "PASS_TO_PASS": {
+      "passed": 19,
+      "failed": 1,
+      "failed_tests": [
+        "astropy/timeseries/tests/test_sampled.py::test_empty_initialization_invalid"
+      ]
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

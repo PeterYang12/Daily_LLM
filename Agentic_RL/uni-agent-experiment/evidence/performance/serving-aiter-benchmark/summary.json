@@ -1,0 +1,53 @@
+{
+  "protocol": "2048 input tokens; 256 forced output tokens; greedy; prefix cache enabled but unique early request salts; 3 repeats; TP1 eager GPU0 vs TP1 AITER plus default compilation/graphs GPU2; same pinned BF16 model/image, 64K cap, memory ratio and OMP setting; other agent experiments on GPU1 continued during measurement. Not an optimized throughput claim.",
+  "results": [
+    {
+      "backend": "tp1_eager",
+      "concurrency": 1,
+      "aggregate_output_tok_s": 40.44342470131389,
+      "mean_ttft_s": 0.07170446900029977,
+      "mean_request_s": 6.315990523279955,
+      "gpu_seconds_per_1000_output_tokens": 24.72590907806686
+    },
+    {
+      "backend": "tp1_eager",
+      "concurrency": 4,
+      "aggregate_output_tok_s": 153.01407014902182,
+      "mean_ttft_s": 0.11560806317720562,
+      "mean_request_s": 6.658502234999712,
+      "gpu_seconds_per_1000_output_tokens": 6.535355844638009
+    },
+    {
+      "backend": "tp1_eager",
+      "concurrency": 8,
+      "aggregate_output_tok_s": 234.95782571427353,
+      "mean_ttft_s": 0.18103096300425628,
+      "mean_request_s": 8.652719393547159,
+      "gpu_seconds_per_1000_output_tokens": 4.256084258107269
+    },
+    {
+      "backend": "tp1_aiter_graph",
+      "concurrency": 1,
+      "aggregate_output_tok_s": 193.31800947561933,
+      "mean_ttft_s": 0.06426772273456056,
+      "mean_request_s": 1.3103492938292522,
+      "gpu_seconds_per_1000_output_tokens": 5.172872219191049
+    },
+    {
+      "backend": "tp1_aiter_graph",
+      "concurrency": 4,
+      "aggregate_output_tok_s": 610.1341422043857,
+      "mean_ttft_s": 0.245230576954782,
+      "mean_request_s": 1.661046388015772,
+      "gpu_seconds_per_1000_output_tokens": 1.6552551220835692
+    },
+    {
+      "backend": "tp1_aiter_graph",
+      "concurrency": 8,
+      "aggregate_output_tok_s": 1035.7637955668106,
+      "mean_ttft_s": 0.22421687104118368,
+      "mean_request_s": 1.9233123058802448,
+      "gpu_seconds_per_1000_output_tokens": 0.9656297971408397
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "instance_id": "mwaskom__seaborn-3187",
+  "repo": "mwaskom/seaborn",
+  "mode": "mini",
+  "image": "swebench/sweb.eval.x86_64.mwaskom_1776_seaborn-3187",
+  "finished": true,
+  "agent_seconds": 338.4356245994568,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": false,
+  "eval_completed": true,
+  "source_only_resolved": false,
+  "raw_result_path": "/lab/results/main-mini-128k/mwaskom__seaborn-3187/result.json",
+  "captured_patch_sha256": "7ea54ff8399578cfd626255d87fc19799a272ebca45ef37e1d944cf446d5c44a",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "8b530ce017437324b9e3a39af220965bf0e71558",
+  "candidate_delta_bytes": 32793,
+  "test_paths_changed": [],
+  "existing_tests_modified": [],
+  "added_test_paths": [],
+  "eval_execution_time": 36.16805043676868,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 38.337794065475464,
+  "source_artifact": "results/regraded-main-mini/mwaskom__seaborn-3187/result.json",
+  "source_sha256": "c69d057bb594652024ed6773cef61ea3dbf86d23a888008864441573a75ad86e",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 1,
+      "failed": 1,
+      "failed_tests": [
+        "tests/test_relational.py::TestRelationalPlotter::test_legend_has_no_offset"
+      ]
+    },
+    "PASS_TO_PASS": {
+      "passed": 248,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

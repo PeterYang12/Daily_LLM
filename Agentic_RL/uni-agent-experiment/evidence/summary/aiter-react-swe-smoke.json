@@ -1,0 +1,24 @@
+{
+  "source": "results/aiter-react-swe-smoke/summary.json",
+  "summary": {
+    "mode": "react",
+    "total": 1,
+    "resolved": 1,
+    "eval_completed": 1,
+    "finished": 1,
+    "errors": 0,
+    "agent_errors": 0,
+    "source_only_resolved": 1,
+    "wall_seconds": 50.82904076576233
+  },
+  "per_case": [
+    {
+      "instance_id": "pallets__flask-5014",
+      "resolved": true,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 50.82795763015747,
+      "agent_seconds": 46.54266405105591
+    }
+  ]
+}

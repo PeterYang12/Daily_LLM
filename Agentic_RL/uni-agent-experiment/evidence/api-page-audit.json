@@ -1,0 +1,28 @@
+[
+  {
+    "page": "site/references/03-uni-agent-api-reference.html",
+    "desktop": {
+      "width": 1500,
+      "scrollWidth": 1500,
+      "tables": 83,
+      "malformedTables": []
+    },
+    "mobile": {
+      "width": 390,
+      "scrollWidth": 390
+    }
+  },
+  {
+    "page": "site/references/04-sandbox-and-verdal-api-reference.html",
+    "desktop": {
+      "width": 1500,
+      "scrollWidth": 1500,
+      "tables": 30,
+      "malformedTables": []
+    },
+    "mobile": {
+      "width": 390,
+      "scrollWidth": 390
+    }
+  }
+]

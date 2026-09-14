@@ -1,0 +1,49 @@
+{
+  "instance_id": "sympy__sympy-18211",
+  "repo": "sympy/sympy",
+  "mode": "react",
+  "image": "swebench/sweb.eval.x86_64.sympy_1776_sympy-18211",
+  "finished": true,
+  "agent_seconds": 255.28557324409485,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": true,
+  "eval_completed": true,
+  "source_only_resolved": true,
+  "raw_result_path": "/lab/results/main-react-128k/sympy__sympy-18211/result.json",
+  "captured_patch_sha256": "e7cd535a5082edc47fc97cb0b876d8f906354bd66c79b24a0001a1136251fd1d",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "2df3950f950f7ef7dbf1a862d2f94a8118bc4bbe",
+  "candidate_delta_bytes": 4384,
+  "test_paths_changed": [],
+  "existing_tests_modified": [],
+  "added_test_paths": [],
+  "eval_execution_time": 6.900482538156211,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 9.493604898452759,
+  "source_artifact": "results/regraded-main-react/sympy__sympy-18211/result.json",
+  "source_sha256": "f9d867b97b7f6a203bc5c4edaba5159e6d02b9dbd0f1cca46e440bcfdf513009",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 1,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_PASS": {
+      "passed": 54,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

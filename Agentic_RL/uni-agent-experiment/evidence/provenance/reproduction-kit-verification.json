@@ -1,0 +1,15 @@
+{
+  "archive": "uni-agent-rocm-reproduction-kit-20260912.tar.gz",
+  "sha256": "5851f6fae73178e49f5eddaad66137f9232052271cd1c12281c368dd29e7f200",
+  "bytes": 24982783,
+  "entries_verified": 3137,
+  "regular_files": 2735,
+  "symlinks": 5,
+  "source_commit": "10743439dd0a19da44a94cccad069b135d957bf1",
+  "verl_commit": "a9f2985159536a607211dcac730d3f5d55028950",
+  "expected_local_patch_only": "uni_agent/logging/handlers.py",
+  "all_runtime_source_hashes_match": true,
+  "secrets_models_envs_excluded": true,
+  "full_extract_verification": true,
+  "extractor": "GNU tar --no-same-owner --no-same-permissions; all paths/types and internal symlinks validated before extraction"
+}

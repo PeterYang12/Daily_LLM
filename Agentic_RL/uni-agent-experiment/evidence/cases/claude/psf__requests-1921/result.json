@@ -1,0 +1,63 @@
+{
+  "instance_id": "psf__requests-1921",
+  "repo": "psf/requests",
+  "mode": "claude",
+  "image": "swebench/sweb.eval.x86_64.psf_1776_requests-1921",
+  "finished": true,
+  "agent_seconds": 322.03462982177734,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": true,
+  "eval_completed": true,
+  "source_only_resolved": true,
+  "raw_result_path": "/lab/results/main-claude-128k/psf__requests-1921/result.json",
+  "captured_patch_sha256": "af5086e5835568bace9a74c21fdcd0c511f4b96db688b38f5ccababe5be1419b",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "cf441cdcaa76806a078893bffa79922351a92b0a",
+  "candidate_delta_bytes": 25712,
+  "test_paths_changed": [
+    "test_edge_cases.py",
+    "test_exact_issue.py",
+    "test_fix.py",
+    "test_merge_logic.py",
+    "test_merge_setting.py",
+    "test_session_header_issue.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "test_edge_cases.py",
+    "test_exact_issue.py",
+    "test_fix.py",
+    "test_merge_logic.py",
+    "test_merge_setting.py",
+    "test_session_header_issue.py"
+  ],
+  "eval_execution_time": 75.77047705696896,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 136.30083680152893,
+  "source_artifact": "results/regraded-main-claude/psf__requests-1921/result.json",
+  "source_sha256": "9d1b37192be3cb8f4b45e84566633c20fa38ec8bf7401a92926ef23b80be5c38",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 6,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_PASS": {
+      "passed": 107,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

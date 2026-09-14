@@ -1,0 +1,53 @@
+{
+  "instance_id": "scikit-learn__scikit-learn-25931",
+  "repo": "scikit-learn/scikit-learn",
+  "mode": "react",
+  "image": "swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-25931",
+  "finished": true,
+  "agent_seconds": 510.80284428596497,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": true,
+  "eval_completed": true,
+  "source_only_resolved": true,
+  "raw_result_path": "/lab/results/main-react-128k/scikit-learn__scikit-learn-25931/result.json",
+  "captured_patch_sha256": "5513e36f68a4a4383d5544d22d710038997ae6af2f808519ba7afe555764fab7",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "9079e26dd32eb18b563b34d6ba35b3acce32f8c0",
+  "candidate_delta_bytes": 17722,
+  "test_paths_changed": [
+    "test_fix_comprehensive.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "test_fix_comprehensive.py"
+  ],
+  "eval_execution_time": 13.892029366921633,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 31.003164291381836,
+  "source_artifact": "results/regraded-main-react/scikit-learn__scikit-learn-25931/result.json",
+  "source_sha256": "bd446e3d5da37558e7aef535191634b971ffaf463e131d2dbf6adeeaff899f7e",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 1,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_PASS": {
+      "passed": 21,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

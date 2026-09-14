@@ -1,0 +1,57 @@
+diff --git a/src/flask/blueprints.py b/src/flask/blueprints.py
+index eb50585d..f53e2540 100644
+--- a/src/flask/blueprints.py
++++ b/src/flask/blueprints.py
+@@ -193,6 +193,9 @@ class Blueprint(Scaffold):
+         if "." in name:
+             raise ValueError("'name' may not contain a dot '.' character.")
+ 
++        if not name:
++            raise ValueError("'name' must not be empty.")
++
+         self.name = name
+         self.url_prefix = url_prefix
+         self.subdomain = subdomain
+diff --git a/test_empty_name.py b/test_empty_name.py
+new file mode 100644
+index 00000000..2a82d697
+--- /dev/null
++++ b/test_empty_name.py
+@@ -0,0 +1,36 @@
++#!/usr/bin/env python3
++"""
++Test script to verify that empty blueprint names raise ValueError
++"""
++
++import sys
++import os
++import unittest
++
++# Add the src directory to the path so we can import flask
++sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
++
++import flask
++
++
++class TestBlueprintEmptyName(unittest.TestCase):
++    def test_blueprint_empty_name_raises_valueerror(self):
++        """Test that creating a Blueprint with an empty name raises ValueError"""
++        with self.assertRaises(ValueError) as context:
++            flask.Blueprint("", __name__)
++        self.assertIn("'name' must not be empty.", str(context.exception))
++
++    def test_blueprint_none_name_raises_valueerror(self):
++        """Test that creating a Blueprint with a None name raises ValueError"""
++        with self.assertRaises(ValueError) as context:
++            flask.Blueprint(None, __name__)
++        self.assertIn("'name' must not be empty.", str(context.exception))
++
++    def test_blueprint_valid_name_works(self):
++        """Test that creating a Blueprint with a valid name works"""
++        bp = flask.Blueprint("valid_name", __name__)
++        self.assertEqual(bp.name, "valid_name")
++
++
++if __name__ == "__main__":
++    unittest.main()
+\ No newline at end of file

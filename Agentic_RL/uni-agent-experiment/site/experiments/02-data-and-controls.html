@@ -1,0 +1,152 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>E02：数据选择、环境正负控制与独立判题</title><link rel="stylesheet" href="../style.css"></head><body><header><a href="../index.html"><strong>Uni-Agent × AMD ROCm · 实验记录</strong></a><small>实验 2026-09-12 · 整理 2026-09-14 · 架构、实验结果与可追溯证据</small></header><div class="layout"><nav><input id="nav-search" placeholder="筛选章节"><div id="nav-links"><h3>阅读入口</h3><a class="" href="../index.html">Uni-Agent × AMD ROCm：实验总结与架构说明</a><a class="" href="../00-executive-summary.html">汇报摘要：现有 AMD 机器上完成了什么</a><a class="" href="../01-scope-and-terminology.html">范围与术语：这次到底跑了什么</a><h3>架构与流程</h3><a class="" href="../architecture/01-deployment.html">实际部署：容器、程序和模型分别在哪里</a><a class="" href="../architecture/02-agent-task-flow.html">一道任务的执行流程：谁启动谁，何时调用模型</a><a class="" href="../architecture/03-apis-and-lifecycle.html">API与生命周期：常驻daemon、临时Gateway和任务sandbox</a><h3>实验</h3><a class="" href="index.html">实验目录：跑了什么，得到了什么</a><a class="" href="01-model-and-official-examples.html">E01：模型服务与官方example</a><a class="active" href="02-data-and-controls.html">E02：数据选择、环境正负控制与独立判题</a><a class="" href="03-swe-agent-comparison.html">E03：三种agent在同一30B模型上的SWE对照</a><a class="" href="04-docker-sandbox.html">E04：本地Docker sandbox方案</a><a class="" href="05-e2b-sandbox.html">E05：远端E2B兼容sandbox</a><a class="" href="06-serving-tp-and-aiter.html">E06：ROCm推理性能——TP1/TP4与AITER配置</a><a class="" href="07-replica-scaling.html">E07：一个模型副本与两个模型副本</a><a class="" href="08-trajectories.html">E08：Gateway轨迹与后训练准备范围</a><a class="" href="09-reproducibility-validation.html">E09：环境、实现与复现交付验收</a><h3>结果与结论</h3><a class="" href="../results/01-case-studies.html">五个真实案例：agent到底做了什么</a><a class="" href="../results/02-conclusions-and-next-steps.html">结论、适用范围与下一步</a><a class="" href="../results/03-per-case-matrix.html">全部28题的正式结果矩阵</a><h3>复现</h3><a class="" href="../reproduce/01-environment-and-versions.html">固定环境、模型、数据与容器布局</a><a class="" href="../reproduce/02-replay-guide.html">复现指南：从现有lab重跑，以及迁移到新环境</a><a class="" href="../reproduce/scripts/index.html">脚本快照的用途</a><h3>参考与证据</h3><a class="" href="../references/01-community-comparison.html">社区方案对比：放在正确的层次上看</a><a class="" href="../references/02-evidence-index.html">证据索引与文件来源</a><a class="" href="../references/03-uni-agent-api-reference.html">Uni-Agent API接口总览（固定版本）</a><a class="" href="../references/04-sandbox-and-verdal-api-reference.html">Sandbox API总览：Uni-Agent、Docker与verdal/E2B</a><h3>文档工具</h3><a class="" href="../tools/index.html">文档生成与校验工具</a></div></nav><main><div class="scope">范围：固定30B模型的agent推理、sandbox、评测和轨迹验证；没有执行后训练。</div><p class="source"><a href="../../experiments/02-data-and-controls.md">查看Markdown源文件</a></p><h1 id="e02">E02：数据选择、环境正负控制与独立判题</h1>
+<h2 id="_1">目的</h2>
+<p>让“模型没有修好”与“测试环境本身不可用”能够区分。评分前先确认每道题的原始仓库会失败、官方gold修复会通过，再固定正式比较的题集。</p>
+<h2 id="_2">数据与选择规则</h2>
+<p>源数据为 <code>princeton-nlp/SWE-bench_Verified</code>，test split共500题，固定revision <code>c104f840cc67f8b6eec6f759ebc8b2693d585d4a</code>。预处理调用Uni-Agent上游函数，得到任务名称、镜像、问题描述与判题metadata。</p>
+<p>先使用固定六题pilot打通链路，再按以下规则选择30题扩展集：</p>
+<ol>
+<li>按仓库分组，仓库名和题号先排序。</li>
+<li>使用Python <code>random.Random(20260912)</code>，按仓库顺序打乱各组题号。</li>
+<li>按排序后的仓库轮询，每次取一题，直到30题。</li>
+<li>在这些题的模型作答前冻结名单。按环境控制排除不合格题，<strong>不补选替代题</strong>。</li>
+</ol>
+<p>这种分层策略强调跨项目覆盖，并不保持500题原始仓库占比。它适合工程探索，不提供全量榜单的代表性保证。</p>
+<table>
+<thead>
+<tr>
+<th>仓库</th>
+<th style="text-align: right;">预选</th>
+<th style="text-align: right;">环境合格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>astropy/astropy</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>django/django</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>matplotlib/matplotlib</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>mwaskom/seaborn</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>pallets/flask</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td>psf/requests</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>pydata/xarray</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>pylint-dev/pylint</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>pytest-dev/pytest</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>scikit-learn/scikit-learn</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>sphinx-doc/sphinx</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td>sympy/sympy</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td style="text-align: right;"><strong>30</strong></td>
+<td style="text-align: right;"><strong>28</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">正负控制怎么做</h2>
+<p>每次使用新的任务容器。负控制不调用模型，也不改生产代码，直接执行verifier；正控制应用数据集的官方gold patch，再执行同一verifier。问题描述给agent，gold/test patch用于控制器与判题阶段，不作为agent输入。</p>
+<table>
+<thead>
+<tr>
+<th>控制集</th>
+<th style="text-align: right;">原始代码通过数</th>
+<th style="text-align: right;">gold通过数</th>
+<th>完成判题情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pilot六题</td>
+<td style="text-align: right;">0/6</td>
+<td style="text-align: right;">6/6</td>
+<td>两组均6/6完成</td>
+</tr>
+<tr>
+<td>预选30题</td>
+<td style="text-align: right;">0/30</td>
+<td style="text-align: right;">28/30</td>
+<td>两组均29/30完成</td>
+</tr>
+</tbody>
+</table>
+<p>两个环境未就绪样本：</p>
+<ul>
+<li><code>psf__requests-2317</code>：原始和gold判题均达到600秒预算。测试源码使用HTTPBIN_URL，默认指向外网httpbin服务；本次未建立可靠完成的环境控制。</li>
+<li><code>pydata__xarray-3993</code>：gold未通过。额外把内存预算提高到32GiB仍未通过，记录的OOM计数为0；保留为环境问题，不计成模型解题失败。</li>
+</ul>
+<p>最终有效28题的规则是：<code>baseline.eval_completed &amp;&amp; !baseline.resolved &amp;&amp; gold.eval_completed &amp;&amp; gold.resolved</code>。不能直接将程序exit0当成环境合格，必须看gold实际是否通过。</p>
+<h2 id="_4">从候选补丁到最终分数</h2>
+<p><img alt="评分与证据流" src="../../assets/diagrams/05-evaluation-evidence.svg" /></p>
+<p><a href="../../assets/diagrams/05-evaluation-evidence.mmd">Mermaid源文件</a></p>
+<p>每个agent的候选先保存，再送到新建容器评分。为消除公开SWE镜像自带的安装配置改动，所有正式候选使用统一的确定性归因规则：</p>
+<ol>
+<li>记录原始任务镜像相对数据base commit的预置差异和初始Git tree。</li>
+<li>在专用变换容器中，把保存的候选base diff还原成agent结束时的文件状态。</li>
+<li>相对初始镜像tree计算<code>candidate-delta.patch</code>，只保留agent引入的改动。</li>
+<li>在另一个新建镜像实例中应用delta，运行上游SWE verifier。</li>
+<li>按路径检查测试文件改动；有相应变化时，再剥离这些hunk做独立复验。</li>
+</ol>
+<p>整个归因／回放过程没有再次调用模型，没有挑选最佳采样。最终指标来自 <code>regraded-main-*</code>；<code>main-*-128k</code>是原始生成与首次回放记录。每个正式原始作业有5题遇到镜像预置差异重复应用，统一回放后所有84题均完成判题。</p>
+<p>“剥离测试路径”按明确的文件路径规则识别测试，仍可能保留新建的复现脚本；不能把它等同于人工整理后的最小生产补丁。</p>
+<h2 id="_5">得到的结论与证据</h2>
+<p>本次建立了有效分母、跨项目小样本和可重放的候选评分。模型结果与环境可用性分别报告，三种agent使用同一个28题集合。</p>
+<ul>
+<li><a href="../../evidence/summary/manifest.json">30题选择及原始数据manifest</a></li>
+<li><a href="../../evidence/summary/validated-manifest.json">最终28题及排除项</a></li>
+<li><a href="../../evidence/summary/thirty-baseline-dns.json">原始代码控制</a>、<a href="../../evidence/summary/thirty-oracle-dns.json">gold控制</a></li>
+<li><a href="../../reproduce/scripts/prepare_data.py">预处理脚本</a>、<a href="../../reproduce/scripts/regrade_swe.py">候选回放脚本</a></li>
+<li><a href="../results/03-per-case-matrix.html">全部题号与结果</a>。</li>
+</ul><details><summary>本页目录</summary><div class="toc">
+<ul>
+<li><a href="#_1">目的</a></li>
+<li><a href="#_2">数据与选择规则</a></li>
+<li><a href="#_3">正负控制怎么做</a></li>
+<li><a href="#_4">从候选补丁到最终分数</a></li>
+<li><a href="#_5">得到的结论与证据</a></li>
+</ul>
+</div>
+</details><div class="prevnext"><a href="01-model-and-official-examples.html">← 上一篇</a><a href="03-swe-agent-comparison.html">下一篇 →</a></div><footer>原始实验资产保留在 /home/yuhanya/uni-agent-lab；本页面来自已完成的实验记录。</footer></main></div><script>document.getElementById('nav-search').addEventListener('input',e=>{const s=e.target.value.toLowerCase();document.querySelectorAll('#nav-links a').forEach(a=>a.hidden=!a.textContent.toLowerCase().includes(s));});</script></body></html>

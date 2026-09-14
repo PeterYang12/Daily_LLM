@@ -1,0 +1,20 @@
+{
+  "main_cases": 28,
+  "agent_results": 84,
+  "all_final_verifiers_completed": true,
+  "dataset_gate_recomputed": true,
+  "performance_batches_recomputed": 54,
+  "copied_files_sha_verified": 117,
+  "markdown_pages": 27,
+  "missing_links": [],
+  "credential_pattern_matches": [],
+  "api_reference": {
+    "public_declarations": 238,
+    "declared_methods": 320,
+    "gateway_business_routes": 2,
+    "e2b_rest_contracts": 46,
+    "envd_rpc_contracts": 17,
+    "python_examples_syntax_checked": 3,
+    "scope": "Static source/documentation coverage, not remote compatibility tests"
+  }
+}

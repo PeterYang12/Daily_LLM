@@ -1,0 +1,54 @@
+{
+  "instance_id": "psf__requests-5414",
+  "repo": "psf/requests",
+  "mode": "mini",
+  "image": "swebench/sweb.eval.x86_64.psf_1776_requests-5414",
+  "finished": true,
+  "agent_seconds": 158.12881708145142,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": false,
+  "eval_completed": true,
+  "source_only_resolved": false,
+  "raw_result_path": "/lab/results/main-mini-128k/psf__requests-5414/result.json",
+  "captured_patch_sha256": "8d633247579c871cbfebaef1906b4dcb474a19fcb6dfb9afcda8179faecb58bf",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "53efabc385903fe54c39ebfaef55ef929458ed69",
+  "candidate_delta_bytes": 1113,
+  "test_paths_changed": [],
+  "existing_tests_modified": [],
+  "added_test_paths": [],
+  "eval_execution_time": 1.839510755147785,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 4.11607027053833,
+  "source_artifact": "results/regraded-main-mini/psf__requests-5414/result.json",
+  "source_sha256": "2c92297b00dcaf10359ac4bebd7176ff24069cce43d0bbe5db123228b7b040e2",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 0,
+      "failed": 1,
+      "failed_tests": [
+        "tests/test_requests.py::TestRequests::test_invalid_url[InvalidURL-http://.example.com]"
+      ]
+    },
+    "PASS_TO_PASS": {
+      "passed": 128,
+      "failed": 2,
+      "failed_tests": [
+        "tests/test_requests.py::TestTimeout::test_connect_timeout[timeout0]",
+        "tests/test_requests.py::TestTimeout::test_total_timeout_connect[timeout0]"
+      ]
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

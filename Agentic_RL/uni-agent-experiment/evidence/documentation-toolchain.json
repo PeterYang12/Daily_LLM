@@ -1,0 +1,12 @@
+{
+  "mermaid": {
+    "package": "mermaid",
+    "version": "11.12.0",
+    "integrity": "sha512-ZudVx73BwrMJfCFmSSJT84y6u5brEoV8DOItdHomNLz32uBjNrelm7mg95X7g+C6UoQH/W6mBLGDEDv73JdxBg==",
+    "url": "https://registry.npmjs.org/mermaid/-/mermaid-11.12.0.tgz"
+  },
+  "matplotlib": "3.10.8",
+  "markdown": "3.8.2",
+  "playwright": "1.55.0",
+  "note": "Documentation rendering only; no model or benchmark rerun."
+}

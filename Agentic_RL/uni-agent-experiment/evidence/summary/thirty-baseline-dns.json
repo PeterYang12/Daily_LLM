@@ -1,0 +1,226 @@
+{
+  "source": "results/thirty-baseline-dns/summary.json",
+  "summary": {
+    "mode": "baseline",
+    "total": 30,
+    "resolved": 0,
+    "eval_completed": 29,
+    "finished": 30,
+    "errors": 0,
+    "agent_errors": 0,
+    "source_only_resolved": 0,
+    "wall_seconds": 608.7546901702881
+  },
+  "per_case": [
+    {
+      "instance_id": "astropy__astropy-13033",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 45.521580934524536
+    },
+    {
+      "instance_id": "django__django-14373",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 4.499610185623169
+    },
+    {
+      "instance_id": "matplotlib__matplotlib-20488",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 14.909484624862671
+    },
+    {
+      "instance_id": "mwaskom__seaborn-3187",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 37.130147218704224
+    },
+    {
+      "instance_id": "pallets__flask-5014",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 3.4197754859924316
+    },
+    {
+      "instance_id": "psf__requests-2317",
+      "resolved": false,
+      "eval_completed": false,
+      "finished": true,
+      "wall_seconds": 600.8318541049957
+    },
+    {
+      "instance_id": "pydata__xarray-4075",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 7.7048656940460205
+    },
+    {
+      "instance_id": "pylint-dev__pylint-7080",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 15.006223201751709
+    },
+    {
+      "instance_id": "pytest-dev__pytest-7521",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 8.117040634155273
+    },
+    {
+      "instance_id": "scikit-learn__scikit-learn-11310",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 6.777935981750488
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-9367",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 2.7932562828063965
+    },
+    {
+      "instance_id": "sympy__sympy-24213",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 4.551008701324463
+    },
+    {
+      "instance_id": "astropy__astropy-14539",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 32.26425886154175
+    },
+    {
+      "instance_id": "django__django-11451",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 9.421097040176392
+    },
+    {
+      "instance_id": "matplotlib__matplotlib-20859",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 13.260441780090332
+    },
+    {
+      "instance_id": "mwaskom__seaborn-3069",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 20.452013731002808
+    },
+    {
+      "instance_id": "psf__requests-1921",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 59.17338156700134
+    },
+    {
+      "instance_id": "pydata__xarray-6938",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 14.039355516433716
+    },
+    {
+      "instance_id": "pylint-dev__pylint-4970",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 2.7286574840545654
+    },
+    {
+      "instance_id": "pytest-dev__pytest-7205",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 6.6435770988464355
+    },
+    {
+      "instance_id": "scikit-learn__scikit-learn-25931",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 15.241460800170898
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-7748",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 3.034327745437622
+    },
+    {
+      "instance_id": "sympy__sympy-18211",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 7.598544359207153
+    },
+    {
+      "instance_id": "astropy__astropy-13977",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 48.92971992492676
+    },
+    {
+      "instance_id": "django__django-14122",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 4.469925880432129
+    },
+    {
+      "instance_id": "matplotlib__matplotlib-25287",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 102.99255585670471
+    },
+    {
+      "instance_id": "psf__requests-5414",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 2.7263457775115967
+    },
+    {
+      "instance_id": "pydata__xarray-3993",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 12.52445387840271
+    },
+    {
+      "instance_id": "pylint-dev__pylint-4661",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 2.826672077178955
+    },
+    {
+      "instance_id": "pytest-dev__pytest-7236",
+      "resolved": false,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 4.628833055496216
+    }
+  ]
+}

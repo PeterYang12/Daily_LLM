@@ -1,0 +1,24 @@
+{
+  "source": "results/trajectory-logprobs-react/summary.json",
+  "summary": {
+    "mode": "react",
+    "total": 1,
+    "resolved": 1,
+    "eval_completed": 1,
+    "finished": 1,
+    "errors": 0,
+    "agent_errors": 0,
+    "source_only_resolved": 1,
+    "wall_seconds": 170.38917064666748
+  },
+  "per_case": [
+    {
+      "instance_id": "pallets__flask-5014",
+      "resolved": true,
+      "eval_completed": true,
+      "finished": true,
+      "wall_seconds": 170.3880078792572,
+      "agent_seconds": 166.32045340538025
+    }
+  ]
+}

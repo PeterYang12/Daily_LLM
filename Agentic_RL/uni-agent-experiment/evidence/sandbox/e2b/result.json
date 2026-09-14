@@ -1,0 +1,15 @@
+{
+  "provider": "e2b",
+  "model": "Qwen3-Coder-30B-A3B-Instruct",
+  "sandbox_id": "01a09662-ed82-72f0-898c-48531e98bd3f",
+  "finished": true,
+  "agent_info": {
+    "steps": 13,
+    "num_tool_calls": 13,
+    "timeouts": 0,
+    "errors": 0,
+    "total_tokens": 6433
+  },
+  "resolved": true,
+  "wall_seconds": 107.95068073272705
+}

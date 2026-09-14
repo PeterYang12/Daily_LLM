@@ -1,0 +1,85 @@
+agent,instance_id,repo,resolved,source_only_resolved,finished,eval_completed,existing_tests_modified,agent_seconds,error,result_path
+ReAct,astropy__astropy-13033,astropy/astropy,False,False,True,True,,315.4633889198303,,results/regraded-main-react/astropy__astropy-13033/result.json
+ReAct,django__django-14373,django/django,True,True,True,True,,204.96709847450256,,results/regraded-main-react/django__django-14373/result.json
+ReAct,matplotlib__matplotlib-20488,matplotlib/matplotlib,True,True,True,True,,998.7956256866455,,results/regraded-main-react/matplotlib__matplotlib-20488/result.json
+ReAct,mwaskom__seaborn-3187,mwaskom/seaborn,False,False,True,True,,774.4034042358398,,results/regraded-main-react/mwaskom__seaborn-3187/result.json
+ReAct,pallets__flask-5014,pallets/flask,True,True,True,True,,268.5327868461609,,results/regraded-main-react/pallets__flask-5014/result.json
+ReAct,pydata__xarray-4075,pydata/xarray,True,True,True,True,,232.6685667037964,,results/regraded-main-react/pydata__xarray-4075/result.json
+ReAct,pylint-dev__pylint-7080,pylint-dev/pylint,True,True,True,True,,912.8550033569336,,results/regraded-main-react/pylint-dev__pylint-7080/result.json
+ReAct,pytest-dev__pytest-7521,pytest-dev/pytest,True,True,False,True,,906.9787628650665,,results/regraded-main-react/pytest-dev__pytest-7521/result.json
+ReAct,scikit-learn__scikit-learn-11310,scikit-learn/scikit-learn,True,True,True,True,,254.4912269115448,,results/regraded-main-react/scikit-learn__scikit-learn-11310/result.json
+ReAct,sphinx-doc__sphinx-9367,sphinx-doc/sphinx,True,True,True,True,,212.6408326625824,,results/regraded-main-react/sphinx-doc__sphinx-9367/result.json
+ReAct,sympy__sympy-24213,sympy/sympy,True,True,True,True,,530.0730521678925,,results/regraded-main-react/sympy__sympy-24213/result.json
+ReAct,astropy__astropy-14539,astropy/astropy,True,True,True,True,,289.2291269302368,,results/regraded-main-react/astropy__astropy-14539/result.json
+ReAct,django__django-11451,django/django,True,True,True,True,,473.1720597743988,,results/regraded-main-react/django__django-11451/result.json
+ReAct,matplotlib__matplotlib-20859,matplotlib/matplotlib,True,True,True,True,,243.73972034454346,,results/regraded-main-react/matplotlib__matplotlib-20859/result.json
+ReAct,mwaskom__seaborn-3069,mwaskom/seaborn,False,False,True,True,,600.6504850387573,,results/regraded-main-react/mwaskom__seaborn-3069/result.json
+ReAct,psf__requests-1921,psf/requests,True,True,True,True,,583.6723747253418,,results/regraded-main-react/psf__requests-1921/result.json
+ReAct,pydata__xarray-6938,pydata/xarray,False,False,True,True,,535.0773680210114,,results/regraded-main-react/pydata__xarray-6938/result.json
+ReAct,pylint-dev__pylint-4970,pylint-dev/pylint,False,False,True,True,,530.9070253372192,,results/regraded-main-react/pylint-dev__pylint-4970/result.json
+ReAct,pytest-dev__pytest-7205,pytest-dev/pytest,True,True,True,True,,171.61374711990356,,results/regraded-main-react/pytest-dev__pytest-7205/result.json
+ReAct,scikit-learn__scikit-learn-25931,scikit-learn/scikit-learn,True,True,True,True,,510.80284428596497,,results/regraded-main-react/scikit-learn__scikit-learn-25931/result.json
+ReAct,sphinx-doc__sphinx-7748,sphinx-doc/sphinx,False,False,True,True,,662.4605791568756,,results/regraded-main-react/sphinx-doc__sphinx-7748/result.json
+ReAct,sympy__sympy-18211,sympy/sympy,True,True,True,True,,255.28557324409485,,results/regraded-main-react/sympy__sympy-18211/result.json
+ReAct,astropy__astropy-13977,astropy/astropy,False,False,True,True,,177.03711700439453,,results/regraded-main-react/astropy__astropy-13977/result.json
+ReAct,django__django-14122,django/django,False,False,True,True,,1599.503926038742,,results/regraded-main-react/django__django-14122/result.json
+ReAct,matplotlib__matplotlib-25287,matplotlib/matplotlib,True,True,True,True,,146.43634462356567,,results/regraded-main-react/matplotlib__matplotlib-25287/result.json
+ReAct,psf__requests-5414,psf/requests,False,False,True,True,,263.3948919773102,,results/regraded-main-react/psf__requests-5414/result.json
+ReAct,pylint-dev__pylint-4661,pylint-dev/pylint,False,False,True,True,,203.6772563457489,,results/regraded-main-react/pylint-dev__pylint-4661/result.json
+ReAct,pytest-dev__pytest-7236,pytest-dev/pytest,False,False,True,True,,1053.168449640274,,results/regraded-main-react/pytest-dev__pytest-7236/result.json
+Claude Code,astropy__astropy-13033,astropy/astropy,False,False,True,True,,260.9719429016113,,results/regraded-main-claude/astropy__astropy-13033/result.json
+Claude Code,django__django-14373,django/django,True,True,True,True,,182.00256991386414,,results/regraded-main-claude/django__django-14373/result.json
+Claude Code,matplotlib__matplotlib-20488,matplotlib/matplotlib,True,True,True,True,,198.49779081344604,,results/regraded-main-claude/matplotlib__matplotlib-20488/result.json
+Claude Code,mwaskom__seaborn-3187,mwaskom/seaborn,False,False,True,True,,548.93026471138,,results/regraded-main-claude/mwaskom__seaborn-3187/result.json
+Claude Code,pallets__flask-5014,pallets/flask,True,True,True,True,,161.42597150802612,,results/regraded-main-claude/pallets__flask-5014/result.json
+Claude Code,pydata__xarray-4075,pydata/xarray,False,False,True,True,xarray/tests/test_weighted.py,227.04363584518433,,results/regraded-main-claude/pydata__xarray-4075/result.json
+Claude Code,pylint-dev__pylint-7080,pylint-dev/pylint,False,False,True,True,,347.7945475578308,,results/regraded-main-claude/pylint-dev__pylint-7080/result.json
+Claude Code,pytest-dev__pytest-7521,pytest-dev/pytest,True,True,True,True,,314.43124890327454,,results/regraded-main-claude/pytest-dev__pytest-7521/result.json
+Claude Code,scikit-learn__scikit-learn-11310,scikit-learn/scikit-learn,True,True,True,True,,271.4438416957855,,results/regraded-main-claude/scikit-learn__scikit-learn-11310/result.json
+Claude Code,sphinx-doc__sphinx-9367,sphinx-doc/sphinx,True,True,True,True,tests/test_pycode_ast.py,106.78871488571167,,results/regraded-main-claude/sphinx-doc__sphinx-9367/result.json
+Claude Code,sympy__sympy-24213,sympy/sympy,True,True,True,True,,318.9895441532135,,results/regraded-main-claude/sympy__sympy-24213/result.json
+Claude Code,astropy__astropy-14539,astropy/astropy,False,False,True,True,,243.89191102981567,,results/regraded-main-claude/astropy__astropy-14539/result.json
+Claude Code,django__django-11451,django/django,True,True,True,True,,172.23861289024353,,results/regraded-main-claude/django__django-11451/result.json
+Claude Code,matplotlib__matplotlib-20859,matplotlib/matplotlib,False,False,True,True,,89.29055786132812,,results/regraded-main-claude/matplotlib__matplotlib-20859/result.json
+Claude Code,mwaskom__seaborn-3069,mwaskom/seaborn,False,False,True,True,,171.31145000457764,,results/regraded-main-claude/mwaskom__seaborn-3069/result.json
+Claude Code,psf__requests-1921,psf/requests,True,True,True,True,,322.03462982177734,,results/regraded-main-claude/psf__requests-1921/result.json
+Claude Code,pydata__xarray-6938,pydata/xarray,False,False,True,True,,221.98243403434753,,results/regraded-main-claude/pydata__xarray-6938/result.json
+Claude Code,pylint-dev__pylint-4970,pylint-dev/pylint,False,False,True,True,,273.29120993614197,,results/regraded-main-claude/pylint-dev__pylint-4970/result.json
+Claude Code,pytest-dev__pytest-7205,pytest-dev/pytest,True,True,True,True,,91.1369731426239,,results/regraded-main-claude/pytest-dev__pytest-7205/result.json
+Claude Code,scikit-learn__scikit-learn-25931,scikit-learn/scikit-learn,False,False,True,True,,140.3959424495697,,results/regraded-main-claude/scikit-learn__scikit-learn-25931/result.json
+Claude Code,sphinx-doc__sphinx-7748,sphinx-doc/sphinx,False,False,True,True,,499.88291573524475,,results/regraded-main-claude/sphinx-doc__sphinx-7748/result.json
+Claude Code,sympy__sympy-18211,sympy/sympy,False,False,True,True,,298.6063234806061,,results/regraded-main-claude/sympy__sympy-18211/result.json
+Claude Code,astropy__astropy-13977,astropy/astropy,False,False,True,True,,204.84804725646973,,results/regraded-main-claude/astropy__astropy-13977/result.json
+Claude Code,django__django-14122,django/django,False,False,True,True,,559.9973077774048,,results/regraded-main-claude/django__django-14122/result.json
+Claude Code,matplotlib__matplotlib-25287,matplotlib/matplotlib,True,True,True,True,,169.43956756591797,,results/regraded-main-claude/matplotlib__matplotlib-25287/result.json
+Claude Code,psf__requests-5414,psf/requests,False,False,True,True,,343.87934374809265,,results/regraded-main-claude/psf__requests-5414/result.json
+Claude Code,pylint-dev__pylint-4661,pylint-dev/pylint,False,False,True,True,,136.42572832107544,,results/regraded-main-claude/pylint-dev__pylint-4661/result.json
+Claude Code,pytest-dev__pytest-7236,pytest-dev/pytest,False,False,True,True,,297.0454156398773,,results/regraded-main-claude/pytest-dev__pytest-7236/result.json
+mini-swe-agent,astropy__astropy-13033,astropy/astropy,False,False,True,True,,319.347452878952,,results/regraded-main-mini/astropy__astropy-13033/result.json
+mini-swe-agent,django__django-14373,django/django,True,True,True,True,,137.42397785186768,,results/regraded-main-mini/django__django-14373/result.json
+mini-swe-agent,matplotlib__matplotlib-20488,matplotlib/matplotlib,False,False,True,True,,503.84830951690674,,results/regraded-main-mini/matplotlib__matplotlib-20488/result.json
+mini-swe-agent,mwaskom__seaborn-3187,mwaskom/seaborn,False,False,True,True,,338.4356245994568,,results/regraded-main-mini/mwaskom__seaborn-3187/result.json
+mini-swe-agent,pallets__flask-5014,pallets/flask,True,True,True,True,,385.59783577919006,,results/regraded-main-mini/pallets__flask-5014/result.json
+mini-swe-agent,pydata__xarray-4075,pydata/xarray,True,True,True,True,,121.50424885749817,,results/regraded-main-mini/pydata__xarray-4075/result.json
+mini-swe-agent,pylint-dev__pylint-7080,pylint-dev/pylint,False,False,False,True,,569.4286663532257,,results/regraded-main-mini/pylint-dev__pylint-7080/result.json
+mini-swe-agent,pytest-dev__pytest-7521,pytest-dev/pytest,False,False,False,True,,454.1093144416809,,results/regraded-main-mini/pytest-dev__pytest-7521/result.json
+mini-swe-agent,scikit-learn__scikit-learn-11310,scikit-learn/scikit-learn,True,True,True,True,,238.69073128700256,,results/regraded-main-mini/scikit-learn__scikit-learn-11310/result.json
+mini-swe-agent,sphinx-doc__sphinx-9367,sphinx-doc/sphinx,True,True,True,True,tests/test_pycode_ast.py,249.85580945014954,,results/regraded-main-mini/sphinx-doc__sphinx-9367/result.json
+mini-swe-agent,sympy__sympy-24213,sympy/sympy,True,True,True,True,,227.26930332183838,,results/regraded-main-mini/sympy__sympy-24213/result.json
+mini-swe-agent,astropy__astropy-14539,astropy/astropy,False,False,True,True,,327.0639214515686,,results/regraded-main-mini/astropy__astropy-14539/result.json
+mini-swe-agent,django__django-11451,django/django,True,True,True,True,,116.70388841629028,,results/regraded-main-mini/django__django-11451/result.json
+mini-swe-agent,matplotlib__matplotlib-20859,matplotlib/matplotlib,True,True,True,True,,141.98552346229553,,results/regraded-main-mini/matplotlib__matplotlib-20859/result.json
+mini-swe-agent,mwaskom__seaborn-3069,mwaskom/seaborn,False,False,True,True,,488.0938642024994,,results/regraded-main-mini/mwaskom__seaborn-3069/result.json
+mini-swe-agent,psf__requests-1921,psf/requests,True,True,True,True,,247.30215191841125,,results/regraded-main-mini/psf__requests-1921/result.json
+mini-swe-agent,pydata__xarray-6938,pydata/xarray,False,False,True,True,,606.1869790554047,,results/regraded-main-mini/pydata__xarray-6938/result.json
+mini-swe-agent,pylint-dev__pylint-4970,pylint-dev/pylint,False,False,True,True,,261.5329372882843,,results/regraded-main-mini/pylint-dev__pylint-4970/result.json
+mini-swe-agent,pytest-dev__pytest-7205,pytest-dev/pytest,True,True,True,True,,119.1517264842987,,results/regraded-main-mini/pytest-dev__pytest-7205/result.json
+mini-swe-agent,scikit-learn__scikit-learn-25931,scikit-learn/scikit-learn,True,True,True,True,,521.3281860351562,,results/regraded-main-mini/scikit-learn__scikit-learn-25931/result.json
+mini-swe-agent,sphinx-doc__sphinx-7748,sphinx-doc/sphinx,False,False,True,True,,390.48046612739563,,results/regraded-main-mini/sphinx-doc__sphinx-7748/result.json
+mini-swe-agent,sympy__sympy-18211,sympy/sympy,False,False,False,True,,436.09934544563293,,results/regraded-main-mini/sympy__sympy-18211/result.json
+mini-swe-agent,astropy__astropy-13977,astropy/astropy,False,False,True,True,,228.88056898117065,,results/regraded-main-mini/astropy__astropy-13977/result.json
+mini-swe-agent,django__django-14122,django/django,False,False,True,True,,823.2539021968842,,results/regraded-main-mini/django__django-14122/result.json
+mini-swe-agent,matplotlib__matplotlib-25287,matplotlib/matplotlib,True,True,True,True,,115.60227227210999,,results/regraded-main-mini/matplotlib__matplotlib-25287/result.json
+mini-swe-agent,psf__requests-5414,psf/requests,False,False,True,True,,158.12881708145142,,results/regraded-main-mini/psf__requests-5414/result.json
+mini-swe-agent,pylint-dev__pylint-4661,pylint-dev/pylint,False,False,True,True,,413.4411861896515,,results/regraded-main-mini/pylint-dev__pylint-4661/result.json
+mini-swe-agent,pytest-dev__pytest-7236,pytest-dev/pytest,False,False,True,True,,411.8882372379303,,results/regraded-main-mini/pytest-dev__pytest-7236/result.json

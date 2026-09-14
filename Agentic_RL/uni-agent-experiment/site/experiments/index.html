@@ -1,0 +1,69 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>实验目录：跑了什么，得到了什么</title><link rel="stylesheet" href="../style.css"></head><body><header><a href="../index.html"><strong>Uni-Agent × AMD ROCm · 实验记录</strong></a><small>实验 2026-09-12 · 整理 2026-09-14 · 架构、实验结果与可追溯证据</small></header><div class="layout"><nav><input id="nav-search" placeholder="筛选章节"><div id="nav-links"><h3>阅读入口</h3><a class="" href="../index.html">Uni-Agent × AMD ROCm：实验总结与架构说明</a><a class="" href="../00-executive-summary.html">汇报摘要：现有 AMD 机器上完成了什么</a><a class="" href="../01-scope-and-terminology.html">范围与术语：这次到底跑了什么</a><h3>架构与流程</h3><a class="" href="../architecture/01-deployment.html">实际部署：容器、程序和模型分别在哪里</a><a class="" href="../architecture/02-agent-task-flow.html">一道任务的执行流程：谁启动谁，何时调用模型</a><a class="" href="../architecture/03-apis-and-lifecycle.html">API与生命周期：常驻daemon、临时Gateway和任务sandbox</a><h3>实验</h3><a class="active" href="index.html">实验目录：跑了什么，得到了什么</a><a class="" href="01-model-and-official-examples.html">E01：模型服务与官方example</a><a class="" href="02-data-and-controls.html">E02：数据选择、环境正负控制与独立判题</a><a class="" href="03-swe-agent-comparison.html">E03：三种agent在同一30B模型上的SWE对照</a><a class="" href="04-docker-sandbox.html">E04：本地Docker sandbox方案</a><a class="" href="05-e2b-sandbox.html">E05：远端E2B兼容sandbox</a><a class="" href="06-serving-tp-and-aiter.html">E06：ROCm推理性能——TP1/TP4与AITER配置</a><a class="" href="07-replica-scaling.html">E07：一个模型副本与两个模型副本</a><a class="" href="08-trajectories.html">E08：Gateway轨迹与后训练准备范围</a><a class="" href="09-reproducibility-validation.html">E09：环境、实现与复现交付验收</a><h3>结果与结论</h3><a class="" href="../results/01-case-studies.html">五个真实案例：agent到底做了什么</a><a class="" href="../results/02-conclusions-and-next-steps.html">结论、适用范围与下一步</a><a class="" href="../results/03-per-case-matrix.html">全部28题的正式结果矩阵</a><h3>复现</h3><a class="" href="../reproduce/01-environment-and-versions.html">固定环境、模型、数据与容器布局</a><a class="" href="../reproduce/02-replay-guide.html">复现指南：从现有lab重跑，以及迁移到新环境</a><a class="" href="../reproduce/scripts/index.html">脚本快照的用途</a><h3>参考与证据</h3><a class="" href="../references/01-community-comparison.html">社区方案对比：放在正确的层次上看</a><a class="" href="../references/02-evidence-index.html">证据索引与文件来源</a><a class="" href="../references/03-uni-agent-api-reference.html">Uni-Agent API接口总览（固定版本）</a><a class="" href="../references/04-sandbox-and-verdal-api-reference.html">Sandbox API总览：Uni-Agent、Docker与verdal/E2B</a><h3>文档工具</h3><a class="" href="../tools/index.html">文档生成与校验工具</a></div></nav><main><div class="scope">范围：固定30B模型的agent推理、sandbox、评测和轨迹验证；没有执行后训练。</div><p class="source"><a href="../../experiments/README.md">查看Markdown源文件</a></p><h1 id="_1">实验目录：跑了什么，得到了什么</h1>
+<p>以下按实验目标整理。小样本示例、正式同题对照、推理微基准和基础设施验收分别计数，不把它们合成一个SWE分数。</p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>实验</th>
+<th>实际执行</th>
+<th>主要产出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E01</td>
+<td><a href="01-model-and-official-examples.html">模型与官方示例</a></td>
+<td>8卡基础计算；4种模型API；官方ReAct/Claude各1题；优化服务附加验证</td>
+<td>AMD环境和实际agent入口可运行</td>
+</tr>
+<tr>
+<td>E02</td>
+<td><a href="02-data-and-controls.html">数据与正负控制</a></td>
+<td>固定500题源数据；六题pilot；分层30题原始/gold控制</td>
+<td>合格28题与排除清单</td>
+</tr>
+<tr>
+<td>E03</td>
+<td><a href="03-swe-agent-comparison.html">三种agent正式对照</a></td>
+<td>pilot各6题；主实验各28题；所有候选独立回放</td>
+<td>17/28、11/28、12/28及成本/约束指标</td>
+</tr>
+<tr>
+<td>E04</td>
+<td><a href="04-docker-sandbox.html">本地Docker sandbox</a></td>
+<td>官方工具demo；隔离/资源/生命周期；10测试代码任务；TTL控制</td>
+<td>本地可执行方案与权限边界</td>
+</tr>
+<tr>
+<td>E05</td>
+<td><a href="05-e2b-sandbox.html">远端E2B sandbox</a></td>
+<td>SDK创建/执行/读写/销毁；官方demo；ReAct代码修复</td>
+<td>远端工具执行方案，10测试通过</td>
+</tr>
+<tr>
+<td>E06</td>
+<td><a href="06-serving-tp-and-aiter.html">TP与AITER性能</a></td>
+<td>TP1/TP4；eager/AITER+图执行；每组18个batch</td>
+<td>当前配置的多卡取舍与4.41×单卡加速</td>
+</tr>
+<tr>
+<td>E07</td>
+<td><a href="07-replica-scaling.html">副本扩展</a></td>
+<td>1/2个优化副本，并发8/16/32，各3次</td>
+<td>高并发32时约1.80×吞吐扩展</td>
+</tr>
+<tr>
+<td>E08</td>
+<td><a href="08-trajectories.html">轨迹验证</a></td>
+<td>所有Gateway作业token/mask检查；三种agent独立logprob验收</td>
+<td>明确可用的记录范围与后训练缺口</td>
+</tr>
+<tr>
+<td>E09</td>
+<td><a href="09-reproducibility-validation.html">复现与验收</a></td>
+<td>58项CPU依赖冷重建；日志并发验证；归档解包与hash检查</td>
+<td>可追溯源码/依赖/数据/命令</td>
+</tr>
+</tbody>
+</table>
+<p>每页给出目的、配置、操作、结果、可支持的结论以及证据链接。工程适配仅在影响解释或复现时说明；本目录的主体是实验产出。</p><details><summary>本页目录</summary></details><div class="prevnext"><a href="../architecture/03-apis-and-lifecycle.html">← 上一篇</a><a href="01-model-and-official-examples.html">下一篇 →</a></div><footer>原始实验资产保留在 /home/yuhanya/uni-agent-lab；本页面来自已完成的实验记录。</footer></main></div><script>document.getElementById('nav-search').addEventListener('input',e=>{const s=e.target.value.toLowerCase();document.querySelectorAll('#nav-links a').forEach(a=>a.hidden=!a.textContent.toLowerCase().includes(s));});</script></body></html>

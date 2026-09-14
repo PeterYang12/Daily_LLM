@@ -1,0 +1,55 @@
+{
+  "instance_id": "mwaskom__seaborn-3187",
+  "repo": "mwaskom/seaborn",
+  "mode": "claude",
+  "image": "swebench/sweb.eval.x86_64.mwaskom_1776_seaborn-3187",
+  "finished": true,
+  "agent_seconds": 548.93026471138,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": false,
+  "eval_completed": true,
+  "source_only_resolved": false,
+  "raw_result_path": "/lab/results/main-claude-128k/mwaskom__seaborn-3187/result.json",
+  "captured_patch_sha256": "e21a02fe44257455f1552f3bba1b7cb3c7198439d56939f60c2cc1e7555b5306",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "8b530ce017437324b9e3a39af220965bf0e71558",
+  "candidate_delta_bytes": 3542,
+  "test_paths_changed": [
+    "test_legend_issue.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "test_legend_issue.py"
+  ],
+  "eval_execution_time": 35.5421612537466,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 74.67366433143616,
+  "source_artifact": "results/regraded-main-claude/mwaskom__seaborn-3187/result.json",
+  "source_sha256": "ad789e2b1811ce3db738ca0076cea50023838df03421c3e5386f8ba5dbe337a1",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 1,
+      "failed": 1,
+      "failed_tests": [
+        "tests/test_relational.py::TestRelationalPlotter::test_legend_has_no_offset"
+      ]
+    },
+    "PASS_TO_PASS": {
+      "passed": 248,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

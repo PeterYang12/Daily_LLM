@@ -1,0 +1,55 @@
+{
+  "instance_id": "pylint-dev__pylint-7080",
+  "repo": "pylint-dev/pylint",
+  "mode": "mini",
+  "image": "swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-7080",
+  "finished": false,
+  "agent_seconds": 569.4286663532257,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": false,
+  "eval_completed": true,
+  "source_only_resolved": false,
+  "raw_result_path": "/lab/results/main-mini-128k/pylint-dev__pylint-7080/result.json",
+  "captured_patch_sha256": "0f5404c4614a86fef5f6aedaace1cd549a979df9c0054c8bb1f4c26f56243e35",
+  "image_baseline_patch_bytes": 487087,
+  "image_initial_tree": "3a55ae29baa8adf26e0f8211d621806f435f1580",
+  "candidate_delta_bytes": 540985,
+  "test_paths_changed": [
+    "test_bug/src/gen/test_file.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "test_bug/src/gen/test_file.py"
+  ],
+  "eval_execution_time": 14.052801155950874,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 35.53796172142029,
+  "source_artifact": "results/regraded-main-mini/pylint-dev__pylint-7080/result.json",
+  "source_sha256": "ba0787c0c13da29c7a25506919e4b04f16c891d3414133f6e59efb1efe85beb4",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 0,
+      "failed": 1,
+      "failed_tests": [
+        "tests/test_self.py::TestRunTC::test_ignore_path_recursive_current_dir"
+      ]
+    },
+    "PASS_TO_PASS": {
+      "passed": 120,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

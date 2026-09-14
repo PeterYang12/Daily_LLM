@@ -1,0 +1,55 @@
+{
+  "instance_id": "matplotlib__matplotlib-20859",
+  "repo": "matplotlib/matplotlib",
+  "mode": "mini",
+  "image": "swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-20859",
+  "finished": true,
+  "agent_seconds": 141.98552346229553,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": true,
+  "eval_completed": true,
+  "source_only_resolved": true,
+  "raw_result_path": "/lab/results/main-mini-128k/matplotlib__matplotlib-20859/result.json",
+  "captured_patch_sha256": "c3f38b21c7836acc667a98bf1cdc490d150f391ca5687555e701b3ac1e696a39",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "61c04b19ab9592cd3ac314fb1518c6be6363fa6a",
+  "candidate_delta_bytes": 54853,
+  "test_paths_changed": [
+    "test_comprehensive.py",
+    "test_subfigure_legend.py"
+  ],
+  "existing_tests_modified": [],
+  "added_test_paths": [
+    "test_comprehensive.py",
+    "test_subfigure_legend.py"
+  ],
+  "eval_execution_time": 12.478006158955395,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 30.6333589553833,
+  "source_artifact": "results/regraded-main-mini/matplotlib__matplotlib-20859/result.json",
+  "source_sha256": "e0977476bd7f17a5055022739b5178de970361c42ae798bb0df23f17801b6576",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 1,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_PASS": {
+      "passed": 88,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

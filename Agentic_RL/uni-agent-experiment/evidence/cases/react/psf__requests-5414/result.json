@@ -1,0 +1,52 @@
+{
+  "instance_id": "psf__requests-5414",
+  "repo": "psf/requests",
+  "mode": "react",
+  "image": "swebench/sweb.eval.x86_64.psf_1776_requests-5414",
+  "finished": true,
+  "agent_seconds": 263.3948919773102,
+  "agent_error": null,
+  "trajectory_count": 1,
+  "trajectory_error": null,
+  "resolved": false,
+  "eval_completed": true,
+  "source_only_resolved": false,
+  "raw_result_path": "/lab/results/main-react-128k/psf__requests-5414/result.json",
+  "captured_patch_sha256": "8d551471d3a7236e4e137df740c22e06ef0fd475afd2ec82f883bb3dc3206483",
+  "image_baseline_patch_bytes": 0,
+  "image_initial_tree": "53efabc385903fe54c39ebfaef55ef929458ed69",
+  "candidate_delta_bytes": 12726,
+  "test_paths_changed": [],
+  "existing_tests_modified": [],
+  "added_test_paths": [],
+  "eval_execution_time": 1.9164526769891381,
+  "source_only_eval_completed": true,
+  "regrade_seconds": 4.856706380844116,
+  "source_artifact": "results/regraded-main-react/psf__requests-5414/result.json",
+  "source_sha256": "1d262f22c32314bbb8600550017169db543c9279069c62b8896ae82c6e4042c1",
+  "test_summary": {
+    "FAIL_TO_PASS": {
+      "passed": 1,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_PASS": {
+      "passed": 128,
+      "failed": 2,
+      "failed_tests": [
+        "tests/test_requests.py::TestTimeout::test_connect_timeout[timeout1]",
+        "tests/test_requests.py::TestTimeout::test_total_timeout_connect[timeout0]"
+      ]
+    },
+    "FAIL_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    },
+    "PASS_TO_FAIL": {
+      "passed": 0,
+      "failed": 0,
+      "failed_tests": []
+    }
+  }
+}

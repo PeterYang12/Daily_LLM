@@ -1,0 +1,27 @@
+diff --git a/django/db/models/sql/compiler.py b/django/db/models/sql/compiler.py
+index 850734709d..8f6d573173 100644
+--- a/django/db/models/sql/compiler.py
++++ b/django/db/models/sql/compiler.py
+@@ -129,6 +129,22 @@ class SQLCompiler:
+             # Skip References to the select clause, as all expressions in the
+             # select clause are already part of the group by.
+             if not is_ref:
++                # Skip Meta.ordering fields to prevent them from being added to GROUP BY.
++                # When self._meta_ordering is set, we don't want to add those fields to GROUP BY.
++                # This is a simple check to avoid adding fields that would be from Meta.ordering.
++                if self._meta_ordering:
++                    # Check if this expression is a field reference that matches Meta.ordering
++                    try:
++                        # If this is a field expression, check if it's from Meta.ordering
++                        if hasattr(expr, 'source') and hasattr(expr.source, 'target'):
++                            field_name = expr.source.target.name
++                            # Check if this field is in Meta.ordering (ignoring direction)
++                            meta_ordering_fields = [f.lstrip('-') for f in self._meta_ordering]
++                            if field_name in meta_ordering_fields:
++                                continue  # Skip adding this to GROUP BY
++                    except Exception:
++                        # If we can't determine, proceed normally
++                        pass
+                 expressions.extend(expr.get_group_by_cols())
+         having_group_by = self.having.get_group_by_cols() if self.having else ()
+         for expr in having_group_by:

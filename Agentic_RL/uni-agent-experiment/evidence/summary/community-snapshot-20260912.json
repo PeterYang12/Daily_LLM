@@ -1,0 +1,194 @@
+[
+  {
+    "full_name": "OpenHands/OpenHands",
+    "html_url": "https://github.com/OpenHands/OpenHands",
+    "description": "🙌 OpenHands: AI-Driven Development",
+    "stargazers_count": 87621,
+    "forks_count": 11476,
+    "pushed_at": "2026-09-12T13:13:16Z",
+    "default_branch": "main",
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    }
+  },
+  {
+    "full_name": "SWE-agent/SWE-agent",
+    "html_url": "https://github.com/SWE-agent/SWE-agent",
+    "description": "SWE-agent takes a GitHub issue and tries to automatically fix it, using your LM of choice. It can also be employed for offensive cybersecurity or competitive coding challenges. [NeurIPS 2024] ",
+    "stargazers_count": 20307,
+    "forks_count": 2218,
+    "pushed_at": "2026-09-07T22:17:28Z",
+    "default_branch": "main",
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    }
+  },
+  {
+    "full_name": "SWE-agent/mini-swe-agent",
+    "html_url": "https://github.com/SWE-agent/mini-swe-agent",
+    "description": "The 100 line AI agent that solves GitHub issues or helps you in your command line. Radically simple, no huge configs, no giant monorepo—but scores >74% on SWE-bench verified!",
+    "stargazers_count": 7450,
+    "forks_count": 1013,
+    "pushed_at": "2026-09-07T22:16:21Z",
+    "default_branch": "main",
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    }
+  },
+  {
+    "full_name": "THUDM/slime",
+    "html_url": "https://github.com/THUDM/slime",
+    "description": "slime is an LLM post-training framework for RL Scaling.",
+    "stargazers_count": 8447,
+    "forks_count": 1244,
+    "pushed_at": "2026-09-03T11:54:49Z",
+    "default_branch": "main",
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0",
+      "url": "https://api.github.com/licenses/apache-2.0",
+      "node_id": "MDc6TGljZW5zZTI="
+    }
+  },
+  {
+    "full_name": "opensandbox-group/OpenSandbox",
+    "html_url": "https://github.com/opensandbox-group/OpenSandbox",
+    "description": "Secure, Fast, and Extensible Sandbox runtime for AI agents.",
+    "stargazers_count": 15146,
+    "forks_count": 1381,
+    "pushed_at": "2026-09-12T14:47:03Z",
+    "default_branch": "main",
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0",
+      "url": "https://api.github.com/licenses/apache-2.0",
+      "node_id": "MDc6TGljZW5zZTI="
+    }
+  },
+  {
+    "full_name": "e2b-dev/E2B",
+    "html_url": "https://github.com/e2b-dev/E2B",
+    "description": "Open-source, secure environment with real-world tools for enterprise-grade agents.",
+    "stargazers_count": 13761,
+    "forks_count": 1031,
+    "pushed_at": "2026-09-11T17:44:19Z",
+    "default_branch": "main",
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0",
+      "url": "https://api.github.com/licenses/apache-2.0",
+      "node_id": "MDc6TGljZW5zZTI="
+    }
+  },
+  {
+    "full_name": "harbor-framework/harbor",
+    "html_url": "https://github.com/harbor-framework/harbor",
+    "description": "Framework for evaluating and improving agents ",
+    "stargazers_count": 5158,
+    "forks_count": 1776,
+    "pushed_at": "2026-09-12T07:14:11Z",
+    "default_branch": "main",
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0",
+      "url": "https://api.github.com/licenses/apache-2.0",
+      "node_id": "MDc6TGljZW5zZTI="
+    }
+  },
+  {
+    "full_name": "microsoft/agent-lightning",
+    "html_url": "https://github.com/microsoft/agent-lightning",
+    "description": "The absolute trainer to light up AI agents.",
+    "stargazers_count": 18069,
+    "forks_count": 1583,
+    "pushed_at": "2026-09-02T04:47:55Z",
+    "default_branch": "main",
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    }
+  },
+  {
+    "full_name": "radixark/miles",
+    "html_url": "https://github.com/radixark/miles",
+    "description": "Miles is an enterprise-facing reinforcement learning framework for LLM and VLM post-training, forked from and co-evolving with slime.",
+    "stargazers_count": 2810,
+    "forks_count": 483,
+    "pushed_at": "2026-09-12T15:37:07Z",
+    "default_branch": "main",
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0",
+      "url": "https://api.github.com/licenses/apache-2.0",
+      "node_id": "MDc6TGljZW5zZTI="
+    }
+  },
+  {
+    "full_name": "rllm-org/rllm",
+    "html_url": "https://github.com/rllm-org/rllm",
+    "description": "Democratizing Reinforcement Learning for LLMs",
+    "stargazers_count": 5823,
+    "forks_count": 615,
+    "pushed_at": "2026-09-11T04:51:48Z",
+    "default_branch": "main",
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0",
+      "url": "https://api.github.com/licenses/apache-2.0",
+      "node_id": "MDc6TGljZW5zZTI="
+    }
+  },
+  {
+    "full_name": "verl-project/uni-agent",
+    "html_url": "https://github.com/verl-project/uni-agent",
+    "description": "Uni-Agent is a framework for training long-horizon agents.",
+    "stargazers_count": 599,
+    "forks_count": 113,
+    "pushed_at": "2026-09-11T10:59:05Z",
+    "default_branch": "main",
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0",
+      "url": "https://api.github.com/licenses/apache-2.0",
+      "node_id": "MDc6TGljZW5zZTI="
+    }
+  },
+  {
+    "full_name": "verl-project/verl",
+    "html_url": "https://github.com/verl-project/verl",
+    "description": "verl/HybridFlow: A Flexible and Efficient RL Post-Training Framework ",
+    "stargazers_count": 23396,
+    "forks_count": 4530,
+    "pushed_at": "2026-09-11T23:27:37Z",
+    "default_branch": "main",
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0",
+      "url": "https://api.github.com/licenses/apache-2.0",
+      "node_id": "MDc6TGljZW5zZTI="
+    }
+  }
+]

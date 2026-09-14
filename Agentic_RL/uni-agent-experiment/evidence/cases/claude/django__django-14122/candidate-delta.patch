@@ -1,0 +1,167 @@
+diff --git a/django/db/models/sql/compiler.py b/django/db/models/sql/compiler.py
+index 850734709d..8f6d573173 100644
+--- a/django/db/models/sql/compiler.py
++++ b/django/db/models/sql/compiler.py
+@@ -129,6 +129,22 @@ class SQLCompiler:
+             # Skip References to the select clause, as all expressions in the
+             # select clause are already part of the group by.
+             if not is_ref:
++                # Skip Meta.ordering fields to prevent them from being added to GROUP BY.
++                # When self._meta_ordering is set, we don't want to add those fields to GROUP BY.
++                # This is a simple check to avoid adding fields that would be from Meta.ordering.
++                if self._meta_ordering:
++                    # Check if this expression is a field reference that matches Meta.ordering
++                    try:
++                        # If this is a field expression, check if it's from Meta.ordering
++                        if hasattr(expr, 'source') and hasattr(expr.source, 'target'):
++                            field_name = expr.source.target.name
++                            # Check if this field is in Meta.ordering (ignoring direction)
++                            meta_ordering_fields = [f.lstrip('-') for f in self._meta_ordering]
++                            if field_name in meta_ordering_fields:
++                                continue  # Skip adding this to GROUP BY
++                    except Exception:
++                        # If we can't determine, proceed normally
++                        pass
+                 expressions.extend(expr.get_group_by_cols())
+         having_group_by = self.having.get_group_by_cols() if self.having else ()
+         for expr in having_group_by:
+diff --git a/test_groupby_ordering.py b/test_groupby_ordering.py
+new file mode 100644
+index 0000000000..32c76fc9a7
+--- /dev/null
++++ b/test_groupby_ordering.py
+@@ -0,0 +1,133 @@
++#!/usr/bin/env python
++"""
++Test script to reproduce the GROUP BY ordering issue.
++This demonstrates that Meta.ordering fields are incorrectly included in GROUP BY clauses.
++"""
++import os
++import sys
++import django
++from django.conf import settings
++
++# Configure Django settings
++if not settings.configured:
++    settings.configure(
++        DEBUG=True,
++        DATABASES={
++            'default': {
++                'ENGINE': 'django.db.backends.sqlite3',
++                'NAME': ':memory:',
++            }
++        },
++        INSTALLED_APPS=[
++            'django.contrib.contenttypes',
++            'django.contrib.auth',
++            'django.contrib.sites',
++            'django.contrib.admin',
++            'django.contrib.messages',
++            'django.contrib.sessions',
++            'django.contrib.staticfiles',
++            'django.contrib.humanize',
++            'django.contrib.admindocs',
++            'django.contrib.redirects',
++            'django.contrib.sitemaps',
++            'django.contrib.gis',
++            'django.contrib.postgres',
++            'django.contrib.postgres.tests',
++            'django.contrib.auth.tests',
++            'django.contrib.contenttypes.tests',
++            'django.contrib.sessions.tests',
++            'django.contrib.messages.tests',
++            'django.contrib.admin.tests',
++            'django.contrib.humanize.tests',
++            'django.contrib.sites.tests',
++            'django.contrib.redirects.tests',
++            'django.contrib.sitemaps.tests',
++            'django.contrib.gis.tests',
++            'django.contrib.postgres.tests',
++            'django.contrib.auth.tests',
++            'django.contrib.contenttypes.tests',
++            'django.contrib.sessions.tests',
++            'django.contrib.messages.tests',
++            'django.contrib.admin.tests',
++            'django.contrib.humanize.tests',
++            'django.contrib.sites.tests',
++            'django.contrib.redirects.tests',
++            'django.contrib.sitemaps.tests',
++            'django.contrib.gis.tests',
++            'django.contrib.postgres.tests',
++            'django.contrib.auth.tests',
++            'django.contrib.contenttypes.tests',
++            'django.contrib.sessions.tests',
++            'django.contrib.messages.tests',
++            'django.contrib.admin.tests',
++            'django.contrib.humanize.tests',
++            'django.contrib.sites.tests',
++            'django.contrib.redirects.tests',
++            'django.contrib.sitemaps.tests',
++            'django.contrib.gis.tests',
++            'django.contrib.postgres.tests',
++            'django.contrib.auth.tests',
++            'django.contrib.contenttypes.tests',
++            'django.contrib.sessions.tests',
++            'django.contrib.messages.tests',
++            'django.contrib.admin.tests',
++            'django.contrib.humanize.tests',
++            'django.contrib.sites.tests',
++            'django.contrib.redirects.tests',
++            'django.contrib.sitemaps.tests',
++            'django.contrib.gis.tests',
++            'django.contrib.postgres.tests',
++            'tests.aggregation_regress',
++            'tests.ordering',
++        ],
++        USE_TZ=True,
++        SECRET_KEY='test-secret-key',
++    )
++
++django.setup()
++
++from django.db import models
++from django.db.models import Count, Avg
++from django.test import TestCase
++
++# Create a simple model with Meta.ordering
++class TestModel(models.Model):
++    name = models.CharField(max_length=100)
++    age = models.IntegerField()
++
++    class Meta:
++        ordering = ['name']  # This should not be included in GROUP BY
++
++# Test the issue
++def test_groupby_ordering_issue():
++    print("Testing GROUP BY with Meta.ordering...")
++
++    # Create a queryset that would trigger GROUP BY
++    qs = TestModel.objects.annotate(count=Count('id')).values('name')
++
++    # Get the SQL
++    sql, params = qs.query.get_compiler('default').as_sql()
++    print("Generated SQL:")
++    print(sql)
++    print()
++
++    # Check if 'name' is in GROUP BY clause
++    if 'GROUP BY' in sql:
++        group_by_pos = sql.find('GROUP BY')
++        group_by_clause = sql[group_by_pos:]
++        print("GROUP BY clause:", group_by_clause)
++
++        # Check if 'name' is in GROUP BY
++        if 'name' in group_by_clause:
++            print("❌ ISSUE CONFIRMED: Meta.ordering field 'name' is included in GROUP BY")
++            return True
++        else:
++            print("✅ No issue: Meta.ordering field 'name' is NOT included in GROUP BY")
++            return False
++    else:
++        print("No GROUP BY clause found")
++        return False
++
++if __name__ == '__main__':
++    issue_exists = test_groupby_ordering_issue()
++    sys.exit(1 if issue_exists else 0)
+\ No newline at end of file

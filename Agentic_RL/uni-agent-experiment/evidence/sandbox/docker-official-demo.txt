@@ -1,0 +1,81 @@
+2026-09-12 15:45:10 | demo                   | INFO     | 
+================================================================
+  sandbox (provider=docker)
+================================================================
+2026-09-12 15:45:10 | demo                   | INFO     | 
+================================================================
+  toolbox_operations: start — install dep -> create script -> run -> cat output
+================================================================
+2026-09-12 15:45:10 | demo                   | INFO     | tools selected : ['stateful_shell', 'str_replace_editor']
+2026-09-12 15:45:10 | demo                   | INFO     | (shell keeps a persistent shell channel; the editor is stateless)
+2026-09-12 15:45:10 | demo                   | INFO     | each tool owns its own state
+2026-09-12 15:45:10 | tools.shell            | INFO     | stateful_shell using tmux shell (DockerSandbox)
+2026-09-12 15:45:10 | demo                   | INFO     | -> tool schemas : ['shell', 'str_replace_editor']
+2026-09-12 15:45:11 | demo                   | INFO     | [Step 0] shell: show shell env from config
+2026-09-12 15:45:11 | demo                   | INFO     | Output:
+    | [exit code: 0]
+    | [stdout]
+    | PAGER=cat TQDM_DISABLE=1
+2026-09-12 15:45:11 | demo                   | INFO     | [Step 1] shell: pip install numpy (persists in this sandbox)
+2026-09-12 15:45:51 | demo                   | INFO     | Output:
+    | [exit code: 0]
+    | [stdout]
+    | installed
+    | [stderr]
+    | WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-09-12 15:45:51 | demo                   | INFO     | [Step 2] str_replace_editor create /tmp/demo.py (writes via data plane)
+2026-09-12 15:45:51 | demo                   | INFO     | Output:
+    | File created successfully at: /tmp/demo.py
+2026-09-12 15:45:51 | demo                   | INFO     | [Step 3] str_replace_editor view /tmp/demo.py
+2026-09-12 15:45:52 | demo                   | INFO     | Output:
+    | Here's the result of running `cat -n` on /tmp/demo.py:
+    |      1	import numpy as np
+    |      2	print('sum =', int(np.array([1, 2, 4]).sum()))
+    |      3	
+2026-09-12 15:45:52 | demo                   | INFO     | [Step 4] shell: run script -> /tmp/demo_out.txt
+2026-09-12 15:45:52 | demo                   | INFO     | Output:
+    | [exit code: 0]
+    | [stdout]
+    | (empty)
+2026-09-12 15:45:52 | demo                   | INFO     | [Step 5] shell: cat /tmp/demo_out.txt (proves the file persisted)
+2026-09-12 15:45:52 | demo                   | INFO     | Output:
+    | [exit code: 0]
+    | [stdout]
+    | sum = 7
+2026-09-12 15:45:52 | demo                   | INFO     | [Step 6] str_replace_editor str_replace (sum -> product), then re-run
+2026-09-12 15:45:53 | demo                   | INFO     | Output:
+    | [exit code: 0]
+    | [stdout]
+    | product = 8
+2026-09-12 15:45:53 | demo                   | INFO     | [Step 7] stateful shell: cd /tmp, then a later call still sees it
+2026-09-12 15:45:53 | demo                   | INFO     | Output:
+    | [exit code: 0]
+    | [stdout]
+    | cwd=/tmp
+    | product = 8
+2026-09-12 15:45:54 | demo                   | INFO     | 
+================================================================
+  toolbox_operations: done
+================================================================
+2026-09-12 15:45:54 | demo                   | INFO     | 
+================================================================
+  file_operations: start — write_file / read_file / upload / download
+================================================================
+2026-09-12 15:45:54 | demo                   | INFO     | [Step 1] sandbox.write_file -> /tmp/sandbox_write.txt
+2026-09-12 15:45:54 | demo                   | INFO     | [Step 2] sandbox.read_file /tmp/sandbox_write.txt
+2026-09-12 15:45:54 | demo                   | INFO     | Output:
+    | hello from write_file
+2026-09-12 15:45:54 | demo                   | INFO     | [Step 3] sandbox.upload host file -> /tmp/sandbox_upload.txt
+2026-09-12 15:45:54 | demo                   | INFO     | Output:
+    | hello from upload
+2026-09-12 15:45:54 | demo                   | INFO     | [Step 4] sandbox.download /tmp/sandbox_upload.txt -> host
+2026-09-12 15:45:54 | demo                   | INFO     | Output:
+    | hello from upload
+2026-09-12 15:45:54 | demo                   | INFO     | 
+================================================================
+  file_operations: done
+================================================================
+2026-09-12 15:45:54 | demo                   | INFO     | 
+================================================================
+  Demo done
+================================================================
