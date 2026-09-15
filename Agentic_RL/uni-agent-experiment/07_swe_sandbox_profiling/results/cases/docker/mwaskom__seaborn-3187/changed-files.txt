@@ -1,0 +1,7 @@
+A	edge_case_tests.py
+A	final_verification.py
+A	reproduce_issue.py
+M	seaborn/_core/scales.py
+A	test_fix.py
+A	test_real_scenario.py
+A	test_realistic.py

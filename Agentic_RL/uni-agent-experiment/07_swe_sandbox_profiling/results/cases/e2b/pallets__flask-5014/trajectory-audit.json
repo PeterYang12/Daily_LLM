@@ -1,0 +1,12 @@
+{
+  "valid": true,
+  "rows": [
+    {
+      "valid": true,
+      "generated_tokens": 4952,
+      "context_tokens": 22757,
+      "num_turns": 33
+    }
+  ],
+  "trajectory_count": 1
+}

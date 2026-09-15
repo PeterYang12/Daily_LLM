@@ -1,0 +1,182 @@
+[
+  {
+    "backend": "eager",
+    "input_length": 2048,
+    "concurrency": 1,
+    "output_tokens_per_s": 40.0343905275098,
+    "mean_ttft_s": 0.07073889796932538,
+    "mean_request_s": 6.394382627215236,
+    "throughput_min": 39.97510195687905,
+    "throughput_max": 40.07591509227307
+  },
+  {
+    "backend": "eager",
+    "input_length": 2048,
+    "concurrency": 4,
+    "output_tokens_per_s": 151.5843189881588,
+    "mean_ttft_s": 0.1319332553539425,
+    "mean_request_s": 6.75456879582877,
+    "throughput_min": 151.35357447253907,
+    "throughput_max": 151.8022268572687
+  },
+  {
+    "backend": "eager",
+    "input_length": 2048,
+    "concurrency": 8,
+    "output_tokens_per_s": 236.16668962171337,
+    "mean_ttft_s": 0.23427378380438313,
+    "mean_request_s": 8.66452067613136,
+    "throughput_min": 235.96471981690286,
+    "throughput_max": 236.4915308342149
+  },
+  {
+    "backend": "eager",
+    "input_length": 16384,
+    "concurrency": 1,
+    "output_tokens_per_s": 37.14415600709975,
+    "mean_ttft_s": 0.5335110817104578,
+    "mean_request_s": 6.8918471545912325,
+    "throughput_min": 37.141292323298124,
+    "throughput_max": 37.14943021341036
+  },
+  {
+    "backend": "eager",
+    "input_length": 16384,
+    "concurrency": 4,
+    "output_tokens_per_s": 94.12082088328528,
+    "mean_ttft_s": 2.4657451048260555,
+    "mean_request_s": 10.812725162987286,
+    "throughput_min": 94.04061881135253,
+    "throughput_max": 94.22628839236985
+  },
+  {
+    "backend": "eager",
+    "input_length": 16384,
+    "concurrency": 8,
+    "output_tokens_per_s": 105.74723811010091,
+    "mean_ttft_s": 5.412758431067535,
+    "mean_request_s": 19.193040701405454,
+    "throughput_min": 105.66073400550718,
+    "throughput_max": 105.81852138885499
+  },
+  {
+    "backend": "eager",
+    "input_length": 65536,
+    "concurrency": 1,
+    "output_tokens_per_s": 21.54985117549479,
+    "mean_ttft_s": 5.49820638820529,
+    "mean_request_s": 11.878624859110763,
+    "throughput_min": 21.530374642357142,
+    "throughput_max": 21.572875544645918
+  },
+  {
+    "backend": "eager",
+    "input_length": 65536,
+    "concurrency": 4,
+    "output_tokens_per_s": 20.44291067597036,
+    "mean_ttft_s": 22.874064260240022,
+    "mean_request_s": 49.78301426329805,
+    "throughput_min": 20.424374013607306,
+    "throughput_max": 20.46816291172196
+  },
+  {
+    "backend": "eager",
+    "input_length": 65536,
+    "concurrency": 8,
+    "output_tokens_per_s": 17.193538066578903,
+    "mean_ttft_s": 49.956068412575405,
+    "mean_request_s": 118.35794402538643,
+    "throughput_min": 17.188323137395482,
+    "throughput_max": 17.199925952347062
+  },
+  {
+    "backend": "aiter_graph",
+    "input_length": 2048,
+    "concurrency": 1,
+    "output_tokens_per_s": 189.21940411490849,
+    "mean_ttft_s": 0.06481659847001235,
+    "mean_request_s": 1.3528131221731503,
+    "throughput_min": 188.95065767658053,
+    "throughput_max": 189.7125060409379
+  },
+  {
+    "backend": "aiter_graph",
+    "input_length": 2048,
+    "concurrency": 4,
+    "output_tokens_per_s": 572.2780169315718,
+    "mean_ttft_s": 0.13133226206991822,
+    "mean_request_s": 1.7889053559629247,
+    "throughput_min": 563.5974973320797,
+    "throughput_max": 586.0838776971318
+  },
+  {
+    "backend": "aiter_graph",
+    "input_length": 2048,
+    "concurrency": 8,
+    "output_tokens_per_s": 923.5636702258016,
+    "mean_ttft_s": 0.21779318763098368,
+    "mean_request_s": 2.2105740583501756,
+    "throughput_min": 914.2851381053104,
+    "throughput_max": 939.745649411047
+  },
+  {
+    "backend": "aiter_graph",
+    "input_length": 16384,
+    "concurrency": 1,
+    "output_tokens_per_s": 138.5373788411162,
+    "mean_ttft_s": 0.49937225769584376,
+    "mean_request_s": 1.8476301234525938,
+    "throughput_min": 138.3624996702647,
+    "throughput_max": 138.6592435572194
+  },
+  {
+    "backend": "aiter_graph",
+    "input_length": 16384,
+    "concurrency": 4,
+    "output_tokens_per_s": 169.07410218932347,
+    "mean_ttft_s": 2.3662661109895757,
+    "mean_request_s": 6.03432131500449,
+    "throughput_min": 168.8903730683082,
+    "throughput_max": 169.28326583519325
+  },
+  {
+    "backend": "aiter_graph",
+    "input_length": 16384,
+    "concurrency": 8,
+    "output_tokens_per_s": 153.09833134006755,
+    "mean_ttft_s": 5.2161514233642565,
+    "mean_request_s": 13.318881263374351,
+    "throughput_min": 152.8881587480645,
+    "throughput_max": 153.30189058215277
+  },
+  {
+    "backend": "aiter_graph",
+    "input_length": 65536,
+    "concurrency": 1,
+    "output_tokens_per_s": 37.12815722935291,
+    "mean_ttft_s": 5.301477789257963,
+    "mean_request_s": 6.894271702039987,
+    "throughput_min": 37.08437796116786,
+    "throughput_max": 37.15665244160095
+  },
+  {
+    "backend": "aiter_graph",
+    "input_length": 65536,
+    "concurrency": 4,
+    "output_tokens_per_s": 22.374153984920454,
+    "mean_ttft_s": 22.43415252530637,
+    "mean_request_s": 45.662365351687185,
+    "throughput_min": 22.37186775182661,
+    "throughput_max": 22.376868138440976
+  },
+  {
+    "backend": "aiter_graph",
+    "input_length": 65536,
+    "concurrency": 8,
+    "output_tokens_per_s": 17.880385170018492,
+    "mean_ttft_s": 49.23649948259117,
+    "mean_request_s": 114.21227756942001,
+    "throughput_min": 17.87737612553165,
+    "throughput_max": 17.88276632626789
+  }
+]

@@ -23,6 +23,17 @@ def main():
         selected.append({'current': helper, 'export_path': 'scripts/' + name,
                          'sha256': hashlib.sha256((ROOT / helper).read_bytes()).hexdigest(),
                          'origin': 'Manual replay helper added after the recorded experiments'})
+    profiling = ROOT / '07_swe_sandbox_profiling'
+    if profiling.exists():
+        records = json.loads((profiling / 'results/source-manifest.json').read_text())['copied_files']
+        for record in records:
+            relative = record['destination']
+            if not relative.startswith('code/'):
+                continue
+            selected.append({'current': '07_swe_sandbox_profiling/' + relative,
+                             'export_path': 'scripts/swe_sandbox_profile/' + relative.removeprefix('code/'),
+                             'sha256': record['sha256'],
+                             'origin': '2026-09-14 SWE sandbox profiling study'})
     # Validate the entire selection before creating an output directory.
     for record in selected:
         source = ROOT / record['current']

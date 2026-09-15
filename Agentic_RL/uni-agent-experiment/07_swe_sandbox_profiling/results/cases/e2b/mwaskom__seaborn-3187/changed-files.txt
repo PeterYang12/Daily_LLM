@@ -1,0 +1,9 @@
+A	direct_test.py
+A	edge_case_tests.py
+A	final_verification.py
+A	reproduce_issue.py
+A	reproduce_issue_simple.py
+M	seaborn/_core/scales.py
+A	test_fix.py
+A	test_fix_simple.py
+A	test_seaborn_code.py

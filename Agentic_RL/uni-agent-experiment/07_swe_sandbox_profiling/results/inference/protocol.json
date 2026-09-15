@@ -1,0 +1,19 @@
+{
+  "source_trajectory": "/lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pylint-dev__pylint-7080/sessions/profile-6e84e98192b248f0/trajectories.jsonl",
+  "source_sha256": "586c50b06e39179ca254203b841dfba6ca73c9cb5691a83ccb0ba7826d370ebc",
+  "input_lengths": [
+    2048,
+    16384,
+    65536
+  ],
+  "concurrency": [
+    1,
+    4,
+    8
+  ],
+  "repeats": 3,
+  "forced_output_tokens": 256,
+  "logprobs": 1,
+  "return_token_ids": true,
+  "note": "Context sampled/repeated from an actual rollout; unique first-block salts prevent cross-request prefix reuse. Same input IDs sent to both endpoints per paired batch. This is a serving microbenchmark, not another task score."
+}

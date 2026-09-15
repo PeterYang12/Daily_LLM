@@ -1,0 +1,30 @@
+{
+  "libraries": [
+    {
+      "name": "libevent_core-2.1.so.7",
+      "source": "/usr/lib/x86_64-linux-gnu/libevent_core-2.1.so.7.0.1",
+      "sha256": "0b7a5ee57efae362e849fee23518023b48af19f07aec31de6294e19b9ab7e5c1"
+    },
+    {
+      "name": "libtinfo.so.6",
+      "source": "/usr/lib/x86_64-linux-gnu/libtinfo.so.6.3",
+      "sha256": "1594d475b771bf8cbb547f0e9b0c842ec37628d42c6747960b4d7c12a4cf4427"
+    },
+    {
+      "name": "libutempter.so.0",
+      "source": "/usr/lib/x86_64-linux-gnu/libutempter.so.1.2.1",
+      "sha256": "d55f4fd318d57f674c2572cb45cd93f7b6f964409421e03a6186a340919f4c39"
+    },
+    {
+      "name": "libm.so.6",
+      "source": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+      "sha256": "1a08a427bbf3790aa434d2310e8c724846ec72ba7811982e85b0002dd296ca92"
+    },
+    {
+      "name": "libresolv.so.2",
+      "source": "/usr/lib/x86_64-linux-gnu/libresolv.so.2",
+      "sha256": "4ed65f06525c7718eafdb95042c1c03f3e8b10f20729f31b1dadf0d05e3fe495"
+    }
+  ],
+  "archive_sha256": "5c87ae6c81597661fd5d2255965b412e3fdfb9c705409c8d68a108864495bcc4"
+}

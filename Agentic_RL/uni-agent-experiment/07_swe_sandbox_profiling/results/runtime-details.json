@@ -1,0 +1,15 @@
+{
+  "captured_unix": 1789406553.9808753,
+  "uni_agent_commit": "10743439dd0a19da44a94cccad069b135d957bf1",
+  "tracked_runtime_diff_sha256": "05b4a7345c8335ab0cf8014b21e4179aad89a2d4526165e94d5d60da16ab71d4",
+  "tracked_runtime_diff": "uni-agent-runtime.patch",
+  "packages": {
+    "e2b": "2.49.1",
+    "swebench": "4.1.0",
+    "transformers": "5.16.1",
+    "httpx": "0.28.1"
+  },
+  "primary_serving_gpu_pci": "0000:66:00.0",
+  "baseline_serving_gpu_pci": "0000:06:00.0",
+  "note": "Framework checkout captured at completion; the only tracked difference is the preexisting logging/fork synchronization patch. Benchmark driver sources were frozen before the primary runs."
+}

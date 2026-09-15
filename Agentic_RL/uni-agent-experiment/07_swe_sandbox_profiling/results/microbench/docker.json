@@ -1,0 +1,879 @@
+[
+  {
+    "operation": "exec_true",
+    "n": 30,
+    "median_s": 0.040131123969331384,
+    "mean_s": 0.040054001426324246,
+    "p95_s": 0.0427784938365221,
+    "min_s": 0.036740511655807495,
+    "max_s": 0.04291316540911794,
+    "samples": [
+      {
+        "elapsed_s": 0.04010530421510339,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.042032554280012846,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.0427784938365221,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.03975426312536001,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.040291634388267994,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.03903406299650669,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.03977003274485469,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.04203810403123498,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.04019874380901456,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.04150100378319621,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.04063637321814895,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.04291316540911794,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.039928533136844635,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.04087201412767172,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.039842613972723484,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.039179862942546606,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.04105900367721915,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.04178295377641916,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.036740511655807495,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.04015694372355938,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.03834671201184392,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.03811816265806556,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.041268613655120134,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.03841455280780792,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.041852244175970554,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.03723286231979728,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.03957928391173482,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.037841692101210356,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.04141324432566762,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      },
+      {
+        "elapsed_s": 0.0369365019723773,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "exit_code": 0
+        }
+      }
+    ]
+  },
+  {
+    "operation": "exec_python_sleep_100ms",
+    "n": 10,
+    "median_s": 0.15232801088131964,
+    "mean_s": 0.1527960122562945,
+    "p95_s": 0.15634571202099323,
+    "min_s": 0.14975306997075677,
+    "max_s": 0.15634571202099323,
+    "samples": [
+      {
+        "elapsed_s": 0.1502285310998559,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "inner_sleep_s": 0.10007108375430107
+        }
+      },
+      {
+        "elapsed_s": 0.15239350078627467,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "inner_sleep_s": 0.10006692400202155
+        }
+      },
+      {
+        "elapsed_s": 0.1530699608847499,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "inner_sleep_s": 0.10006642388179898
+        }
+      },
+      {
+        "elapsed_s": 0.15466118231415749,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "inner_sleep_s": 0.1000690539367497
+        }
+      },
+      {
+        "elapsed_s": 0.1522625209763646,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "inner_sleep_s": 0.1000663130544126
+        }
+      },
+      {
+        "elapsed_s": 0.15133398119360209,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "inner_sleep_s": 0.10008971393108368
+        }
+      },
+      {
+        "elapsed_s": 0.1518626413308084,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "inner_sleep_s": 0.10005908412858844
+        }
+      },
+      {
+        "elapsed_s": 0.14975306997075677,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "inner_sleep_s": 0.10006710281595588
+        }
+      },
+      {
+        "elapsed_s": 0.15634571202099323,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "inner_sleep_s": 0.10006737289950252
+        }
+      },
+      {
+        "elapsed_s": 0.15604902198538184,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "inner_sleep_s": 0.10008202400058508
+        }
+      }
+    ]
+  },
+  {
+    "operation": "write_1024",
+    "n": 20,
+    "median_s": 0.06804276816546917,
+    "mean_s": 0.06769379184115679,
+    "p95_s": 0.07364176493138075,
+    "min_s": 0.060804090928286314,
+    "max_s": 0.07364176493138075,
+    "samples": [
+      {
+        "elapsed_s": 0.07364176493138075,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.07198381423950195,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.06998962396755815,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.06324009131640196,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.07181263389065862,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.07081984402611852,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.06855406193062663,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.06812885403633118,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.06795668229460716,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.06688354257494211,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.0631363121792674,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.06524078128859401,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.06260721012949944,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.06908368319272995,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.0712748751975596,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.07070525316521525,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.0642637019045651,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.06660950323566794,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.060804090928286314,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.06713951239362359,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1024
+        }
+      }
+    ]
+  },
+  {
+    "operation": "read_1024",
+    "n": 20,
+    "median_s": 0.03998425346799195,
+    "mean_s": 0.040610278188250956,
+    "p95_s": 0.04434749484062195,
+    "min_s": 0.037651452235877514,
+    "max_s": 0.04434749484062195,
+    "samples": [
+      {
+        "elapsed_s": 0.0390641731210053,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.03972703404724598,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.0391236930154264,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.04375971481204033,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.04001873405650258,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.04099369281902909,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.03931264393031597,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.04310427373275161,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.04145467421039939,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.04355409508571029,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.04434749484062195,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.039475844241678715,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.04005687264725566,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.03900388302281499,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.039949772879481316,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.04200091399252415,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.04086316330358386,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.03936184383928776,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.037651452235877514,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      },
+      {
+        "elapsed_s": 0.03938159393146634,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1024
+        }
+      }
+    ]
+  },
+  {
+    "operation": "write_1048576",
+    "n": 5,
+    "median_s": 0.06872184295207262,
+    "mean_s": 0.0690641289576888,
+    "p95_s": 0.07200970500707626,
+    "min_s": 0.06640402181074023,
+    "max_s": 0.07200970500707626,
+    "samples": [
+      {
+        "elapsed_s": 0.0709850532002747,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1048576
+        }
+      },
+      {
+        "elapsed_s": 0.06872184295207262,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1048576
+        }
+      },
+      {
+        "elapsed_s": 0.06720002181828022,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1048576
+        }
+      },
+      {
+        "elapsed_s": 0.06640402181074023,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1048576
+        }
+      },
+      {
+        "elapsed_s": 0.07200970500707626,
+        "http_calls": 0,
+        "docker_cli_calls": 2,
+        "result": {
+          "bytes": 1048576
+        }
+      }
+    ]
+  },
+  {
+    "operation": "read_1048576",
+    "n": 5,
+    "median_s": 0.04770114505663514,
+    "mean_s": 0.047262641787528994,
+    "p95_s": 0.049324396066367626,
+    "min_s": 0.043698905035853386,
+    "max_s": 0.049324396066367626,
+    "samples": [
+      {
+        "elapsed_s": 0.04770114505663514,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1048576
+        }
+      },
+      {
+        "elapsed_s": 0.043698905035853386,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1048576
+        }
+      },
+      {
+        "elapsed_s": 0.047196825966238976,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1048576
+        }
+      },
+      {
+        "elapsed_s": 0.049324396066367626,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1048576
+        }
+      },
+      {
+        "elapsed_s": 0.04839193681254983,
+        "http_calls": 0,
+        "docker_cli_calls": 1,
+        "result": {
+          "bytes": 1048576
+        }
+      }
+    ]
+  },
+  {
+    "operation": "stateful_shell_true",
+    "n": 10,
+    "median_s": 0.2335746129974723,
+    "mean_s": 0.23331727529875934,
+    "p95_s": 0.23892326094210148,
+    "min_s": 0.2270180364139378,
+    "max_s": 0.23892326094210148,
+    "samples": [
+      {
+        "elapsed_s": 0.23892326094210148,
+        "http_calls": 0,
+        "docker_cli_calls": 6,
+        "result": {
+          "status": "ok"
+        }
+      },
+      {
+        "elapsed_s": 0.2335100481286645,
+        "http_calls": 0,
+        "docker_cli_calls": 6,
+        "result": {
+          "status": "ok"
+        }
+      },
+      {
+        "elapsed_s": 0.22732662595808506,
+        "http_calls": 0,
+        "docker_cli_calls": 6,
+        "result": {
+          "status": "ok"
+        }
+      },
+      {
+        "elapsed_s": 0.23202383797615767,
+        "http_calls": 0,
+        "docker_cli_calls": 6,
+        "result": {
+          "status": "ok"
+        }
+      },
+      {
+        "elapsed_s": 0.23229359788820148,
+        "http_calls": 0,
+        "docker_cli_calls": 6,
+        "result": {
+          "status": "ok"
+        }
+      },
+      {
+        "elapsed_s": 0.2270180364139378,
+        "http_calls": 0,
+        "docker_cli_calls": 6,
+        "result": {
+          "status": "ok"
+        }
+      },
+      {
+        "elapsed_s": 0.23527441918849945,
+        "http_calls": 0,
+        "docker_cli_calls": 6,
+        "result": {
+          "status": "ok"
+        }
+      },
+      {
+        "elapsed_s": 0.23363917786628008,
+        "http_calls": 0,
+        "docker_cli_calls": 6,
+        "result": {
+          "status": "ok"
+        }
+      },
+      {
+        "elapsed_s": 0.23725125892087817,
+        "http_calls": 0,
+        "docker_cli_calls": 6,
+        "result": {
+          "status": "ok"
+        }
+      },
+      {
+        "elapsed_s": 0.23591248970478773,
+        "http_calls": 0,
+        "docker_cli_calls": 6,
+        "result": {
+          "status": "ok"
+        }
+      }
+    ]
+  }
+]

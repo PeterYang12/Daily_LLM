@@ -1,0 +1,20 @@
+flowchart TB
+  subgraph cpu["ua-lab-cpu"]
+    driver["Experiment driver: run.py"]
+    task["Uni-Agent run_task + ProfileSWETask"]
+    react["Upstream ReAct agent and tools"]
+    gateway["Uni-Agent Gateway session"]
+    adapter["Selected sandbox provider"]
+    export["Finalize session and export scored trajectory"]
+    driver --> task
+    task -->|starts| react
+    react <-->|model requests| gateway
+    react <-->|tool actions and observations| adapter
+    task -.->|create, verify, destroy| adapter
+    driver -->|after task result| export
+  end
+  gateway <-->|local HTTP inference| model["Separate vLLM ROCm container<br/>Qwen3-Coder 30B<br/>One AMD GPU"]
+  adapter <-->|Docker CLI and dedicated socket| daemon["Local sandbox-daemon container<br/>Docker-in-Docker"]
+  adapter <-->|E2B SDK: lifecycle, commands, files| api["Remote E2B-compatible service"]
+  daemon --> local["SWE image by digest<br/>Fresh execution sandbox<br/>Then a fresh verifier sandbox"]
+  api --> remote["Template from the same SWE image<br/>Fresh execution sandbox<br/>Then a fresh verifier sandbox"]

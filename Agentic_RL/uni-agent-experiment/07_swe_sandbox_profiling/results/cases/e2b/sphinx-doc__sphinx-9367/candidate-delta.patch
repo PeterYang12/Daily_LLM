@@ -1,0 +1,338 @@
+diff --git a/debug_ast.py b/debug_ast.py
+new file mode 100644
+index 000000000..cdda72107
+--- /dev/null
++++ b/debug_ast.py
+@@ -0,0 +1,33 @@
++#!/usr/bin/env python3
++"""
++Debug script to understand AST structure for tuples.
++"""
++
++import ast
++
++def debug_tuple_ast():
++    # Test cases for tuple AST structure
++    test_cases = [
++        "(1,)",  # Single element tuple - should keep comma
++        "(1, 2, 3)",  # Multi-element tuple
++        "()",  # Empty tuple
++        "(1)",  # Single element without comma (should not be tuple)
++    ]
++    
++    print("Debugging AST structure:")
++    for source in test_cases:
++        try:
++            tree = ast.parse(source)
++            node = tree.body[0].value
++            print(f"Source: {source}")
++            print(f"  Node type: {type(node).__name__}")
++            if hasattr(node, 'elts'):
++                print(f"  Elements: {len(node.elts)}")
++                for i, elt in enumerate(node.elts):
++                    print(f"    Element {i}: {type(elt).__name__}")
++            print()
++        except Exception as e:
++            print(f"Source: {source} | ERROR: {e}")
++
++if __name__ == "__main__":
++    debug_tuple_ast()
+\ No newline at end of file
+diff --git a/edge_case_tests.py b/edge_case_tests.py
+new file mode 100644
+index 000000000..84fad66ea
+--- /dev/null
++++ b/edge_case_tests.py
+@@ -0,0 +1,50 @@
++#!/usr/bin/env python3
++"""
++Test edge cases for the tuple rendering fix.
++"""
++
++from sphinx.pycode import ast
++
++def test_edge_cases():
++    # Test cases for edge cases
++    test_cases = [
++        # Basic cases
++        ("(1,)", "(1,)"),  # Single element tuple - should keep comma
++        ("(1, 2, 3)", "(1, 2, 3)"),  # Multi-element tuple
++        ("()", "()"),  # Empty tuple
++        ("(1)", "1"),  # Single element without comma (should not be tuple)
++        
++        # More complex cases
++        ("('a',)", "('a',)"),  # Single element string tuple
++        ("(1.5,)", "(1.5,)"),  # Single element float tuple
++        ("(True,)", "(True,)"),  # Single element bool tuple
++        ("(None,)", "(None,)"),  # Single element None tuple
++        
++        # Nested cases
++        ("((1,),)", "((1,),)"),  # Nested single element tuple
++        ("(1, (2, 3))", "(1, (2, 3))"),  # Mixed tuple and nested tuple
++        
++        # Complex expressions
++        ("(a + b,)", "(a + b,)"),  # Single element with expression
++        ("(func(),)", "(func(),)"),  # Single element with function call
++    ]
++    
++    print("Testing edge cases for tuple rendering:")
++    all_passed = True
++    for source, expected in test_cases:
++        try:
++            module = ast.parse(source)
++            result = ast.unparse(module.body[0].value, source)
++            status = "PASS" if result == expected else "FAIL"
++            if result != expected:
++                all_passed = False
++            print(f"Source: {source:20} | Expected: {expected:15} | Got: {result:15} | {status}")
++        except Exception as e:
++            print(f"Source: {source:20} | ERROR: {e}")
++            all_passed = False
++    
++    print(f"\nAll tests passed: {all_passed}")
++    return all_passed
++
++if __name__ == "__main__":
++    test_edge_cases()
+\ No newline at end of file
+diff --git a/final_test.py b/final_test.py
+new file mode 100644
+index 000000000..085f06706
+--- /dev/null
++++ b/final_test.py
+@@ -0,0 +1,33 @@
++#!/usr/bin/env python3
++"""
++Final test with the exact case mentioned in the issue.
++"""
++
++from sphinx.pycode import ast
++
++def test_issue_case():
++    # This is the exact test case mentioned in the issue
++    source = "(1,)"
++    expected = "(1,)"
++    
++    print(f"Testing the exact case from the issue:")
++    print(f"Source: {source}")
++    print(f"Expected: {expected}")
++    
++    try:
++        module = ast.parse(source)
++        result = ast.unparse(module.body[0].value, source)
++        print(f"Got: {result}")
++        
++        if result == expected:
++            print("SUCCESS: Issue is fixed!")
++            return True
++        else:
++            print("FAILURE: Issue is not fixed!")
++            return False
++    except Exception as e:
++        print(f"ERROR: {e}")
++        return False
++
++if __name__ == "__main__":
++    test_issue_case()
+\ No newline at end of file
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 000000000..548a2fe8e
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,29 @@
++#!/usr/bin/env python3
++"""
++Script to reproduce the 1-element tuple rendering issue.
++"""
++
++from sphinx.pycode import ast
++
++def test_tuple_rendering():
++    # Test cases for tuple rendering
++    test_cases = [
++        ("(1,)", "(1,)"),  # Single element tuple - should keep comma
++        ("(1, 2, 3)", "(1, 2, 3)"),  # Multi-element tuple
++        ("()", "()"),  # Empty tuple
++        ("(1)", "1"),  # Single element without comma (should not be tuple)
++    ]
++    
++    print("Testing tuple rendering:")
++    for source, expected in test_cases:
++        try:
++            module = ast.parse(source)
++            result = ast.unparse(module.body[0].value, source)
++            print(f"Source: {source:10} | Expected: {expected:10} | Got: {result}")
++            if result != expected:
++                print(f"  ERROR: Expected {expected}, got {result}")
++        except Exception as e:
++            print(f"Source: {source:10} | ERROR: {e}")
++
++if __name__ == "__main__":
++    test_tuple_rendering()
+\ No newline at end of file
+diff --git a/sphinx/pycode/ast.py b/sphinx/pycode/ast.py
+index f541ec0a9..044a2a864 100644
+--- a/sphinx/pycode/ast.py
++++ b/sphinx/pycode/ast.py
+@@ -214,6 +214,18 @@ class _UnparseVisitor(ast.NodeVisitor):
+ 
+     def visit_Tuple(self, node: ast.Tuple) -> str:
+         if node.elts:
++            # For single-element tuples, check if we should preserve the trailing comma
++            if len(node.elts) == 1:
++                # If we have access to the original source, check if it was a tuple with comma
++                if self.code and sys.version_info > (3, 8):
++                    try:
++                        source_segment = ast.get_source_segment(self.code, node)
++                        # If the source segment ends with ',)', it's a single-element tuple
++                        if source_segment.endswith(',)'):
++                            return "(" + self.visit(node.elts[0]) + ",)"
++                    except (ValueError, TypeError):
++                        # Fall back to default behavior if we can't get source segment
++                        pass
+             return "(" + ", ".join(self.visit(e) for e in node.elts) + ")"
+         else:
+             return "()"
+diff --git a/test_edge_cases_more.py b/test_edge_cases_more.py
+new file mode 100644
+index 000000000..22dc03c92
+--- /dev/null
++++ b/test_edge_cases_more.py
+@@ -0,0 +1,40 @@
++#!/usr/bin/env python3
++"""
++Test more edge cases for the tuple rendering fix.
++"""
++
++import ast
++from sphinx.pycode import ast as sphinx_ast
++
++def test_source_segment_edge_cases():
++    # Test cases that might cause issues with source segment extraction
++    test_cases = [
++        "(1,)",  # Normal case
++        "(1, 2, 3)",  # Multi-element
++        "()",  # Empty
++        "(1)",  # Not a tuple
++        "(1, 2, 3, 4, 5)",  # Many elements
++        "('hello', 'world')",  # String elements
++        "(1 + 2,)",  # Expression element
++        "((1, 2), (3, 4))",  # Nested tuples
++    ]
++    
++    print("Testing source segment edge cases:")
++    for source in test_cases:
++        try:
++            # Test with sphinx ast
++            module = sphinx_ast.parse(source)
++            result = sphinx_ast.unparse(module.body[0].value, source)
++            print(f"Source: {source:25} | Result: {result}")
++            
++            # Also test with standard ast to make sure we're not breaking anything
++            std_module = ast.parse(source)
++            std_result = ast.unparse(std_module.body[0].value) if hasattr(ast, 'unparse') else "N/A"
++            print(f"  Standard AST result: {std_result}")
++            print()
++        except Exception as e:
++            print(f"Source: {source:25} | ERROR: {e}")
++            print()
++
++if __name__ == "__main__":
++    test_source_segment_edge_cases()
+\ No newline at end of file
+diff --git a/test_source_segment.py b/test_source_segment.py
+new file mode 100644
+index 000000000..418f58708
+--- /dev/null
++++ b/test_source_segment.py
+@@ -0,0 +1,36 @@
++#!/usr/bin/env python3
++"""
++Test how source segments work.
++"""
++
++import ast
++
++def test_source_segment():
++    # Test cases
++    test_cases = [
++        "(1,)",
++        "(1, 2, 3)",
++        "()",
++        "(1)",
++    ]
++    
++    for source in test_cases:
++        try:
++            tree = ast.parse(source)
++            node = tree.body[0].value
++            print(f"Source: {source}")
++            print(f"  Node type: {type(node).__name__}")
++            
++            # Try to get source segment if possible
++            if hasattr(ast, 'get_source_segment') and source:
++                try:
++                    segment = ast.get_source_segment(source, node)
++                    print(f"  Source segment: {segment}")
++                except Exception as e:
++                    print(f"  Error getting source segment: {e}")
++            print()
++        except Exception as e:
++            print(f"Source: {source} | ERROR: {e}")
++
++if __name__ == "__main__":
++    test_source_segment()
+\ No newline at end of file
+diff --git a/understand_approach.py b/understand_approach.py
+new file mode 100644
+index 000000000..85f496685
+--- /dev/null
++++ b/understand_approach.py
+@@ -0,0 +1,45 @@
++#!/usr/bin/env python3
++"""
++Try to understand how to get the source for a tuple node.
++"""
++
++import ast
++
++def test_tuple_source():
++    # Test cases
++    test_cases = [
++        "(1,)",
++        "(1, 2, 3)",
++        "()",
++        "(1)",
++    ]
++    
++    for source in test_cases:
++        try:
++            tree = ast.parse(source)
++            node = tree.body[0].value
++            print(f"Source: {source}")
++            print(f"  Node type: {type(node).__name__}")
++            
++            # Try to get source segment for the tuple node
++            if hasattr(ast, 'get_source_segment') and source:
++                try:
++                    # This might not work for all cases, but let's see
++                    segment = ast.get_source_segment(source, node)
++                    print(f"  Source segment: {segment}")
++                    
++                    # Check if it has a trailing comma
++                    if segment.endswith(',)'):
++                        print(f"  Has trailing comma: True")
++                    elif segment.endswith(')'):
++                        print(f"  Has trailing comma: False")
++                    else:
++                        print(f"  Unexpected format")
++                except Exception as e:
++                    print(f"  Error getting source segment: {e}")
++            print()
++        except Exception as e:
++            print(f"Source: {source} | ERROR: {e}")
++
++if __name__ == "__main__":
++    test_tuple_source()
+\ No newline at end of file

@@ -1,0 +1,35 @@
+{
+  "captured_unix": 1789406632.8213265,
+  "services": [
+    {
+      "name": "ua-lab-model-128k",
+      "id": "f3b42dd329101d8a53fc51c4f149c129834c7a1ccd7adf5d40d76061a50860bf",
+      "image_id": "sha256:037450d42652d33826174ac1a6f9f8ef2ec47c51042aa4becee52d44be132862",
+      "command": [
+        "/serve_model.sh"
+      ],
+      "entrypoint": [
+        "bash"
+      ],
+      "started_at": "2026-09-14T14:41:17.490668246Z",
+      "cpu_quota": 24000000000,
+      "memory_bytes": 206158430208,
+      "image_reference": "vllm/vllm-openai-rocm@sha256:91e381f072d6a44e1e4c97c82dce06e50e5189905cb3999a11471c5a8fc6a563"
+    },
+    {
+      "name": "ua-profile-model-aiter-128k",
+      "id": "d4e8f276d691228e12bbd3638843649642c150861820158ffba737b8bcd9ab7c",
+      "image_id": "sha256:037450d42652d33826174ac1a6f9f8ef2ec47c51042aa4becee52d44be132862",
+      "command": [
+        "/serve_model.sh"
+      ],
+      "entrypoint": [
+        "bash"
+      ],
+      "started_at": "2026-09-14T15:11:20.706505937Z",
+      "cpu_quota": 24000000000,
+      "memory_bytes": 206158430208,
+      "image_reference": "vllm/vllm-openai-rocm@sha256:91e381f072d6a44e1e4c97c82dce06e50e5189905cb3999a11471c5a8fc6a563"
+    }
+  ]
+}

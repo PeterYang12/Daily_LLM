@@ -1,0 +1,586 @@
+diff --git a/compare_behavior.py b/compare_behavior.py
+new file mode 100644
+index 000000000..6b7846ae1
+--- /dev/null
++++ b/compare_behavior.py
+@@ -0,0 +1,47 @@
++#!/usr/bin/env python3
++
++import sys
++import io
++from _pytest.capture import FDCapture, SysCapture, CaptureIO
++
++def test_without_capture():
++    """Test what happens without capture"""
++    print("Testing without capture:")
++    print('Greetings from DOS', end='\r')
++    print("Done without capture")
++
++def test_with_capture():
++    """Test what happens with capture"""
++    print("Testing with capture:")
++    
++    # Create a SysCapture to mimic what happens in FDCapture for stdout
++    tmpfile = CaptureIO()
++    syscap = SysCapture(1, tmpfile)
++    
++    # Start capturing
++    syscap.start()
++    
++    # Write directly to stdout (which is now redirected)
++    print('Greetings from DOS', end='\r')
++    
++    # Stop capturing
++    syscap.done()
++    
++    # Check what's in the tmpfile
++    print("Checking tmpfile content:")
++    tmpfile.seek(0)
++    content = tmpfile.read()
++    print(f"Content: {repr(content)}")
++    
++    # Try to get the value
++    tmpfile.seek(0)
++    try:
++        value = tmpfile.getvalue()
++        print(f"Value: {repr(value)}")
++    except Exception as e:
++        print(f"Error getting value: {e}")
++
++if __name__ == "__main__":
++    test_without_capture()
++    print()
++    test_with_capture()
+\ No newline at end of file
+diff --git a/debug_capture.py b/debug_capture.py
+new file mode 100644
+index 000000000..ffc834c9f
+--- /dev/null
++++ b/debug_capture.py
+@@ -0,0 +1,53 @@
++#!/usr/bin/env python3
++
++import sys
++import io
++import tempfile
++from _pytest.capture import FDCapture, EncodedFile
++
++def debug_capture():
++    """Debug what happens during capture"""
++    
++    # Create an FDCapture instance for stdout (fd 1)
++    cap = FDCapture(1)
++    
++    print(f"Before start - cap.tmpfile type: {type(cap.tmpfile)}")
++    print(f"Before start - cap.tmpfile: {cap.tmpfile}")
++    
++    # Start capturing
++    cap.start()
++    
++    print(f"After start - cap.tmpfile type: {type(cap.tmpfile)}")
++    print(f"After start - cap.tmpfile: {cap.tmpfile}")
++    
++    # Let's see what happens when we write directly to the tmpfile
++    print("Writing 'Hello\\rWorld' to tmpfile...")
++    cap.tmpfile.write('Hello\rWorld')
++    cap.tmpfile.flush()
++    
++    print(f"After write - cap.tmpfile type: {type(cap.tmpfile)}")
++    
++    # Now let's try the snap method properly
++    cap.done()
++    
++    # Try to read the content from the buffer directly
++    # We need to access the underlying buffer
++    if hasattr(cap.tmpfile, 'buffer'):
++        print(f"Buffer type: {type(cap.tmpfile.buffer)}")
++        cap.tmpfile.buffer.seek(0)
++        content = cap.tmpfile.buffer.read()
++        print(f"Content from buffer.read(): {repr(content)}")
++    
++    # Now let's try the snap method properly
++    cap2 = FDCapture(1)
++    cap2.start()
++    cap2.tmpfile.write('Hello\rWorld')
++    cap2.tmpfile.flush()
++    cap2.done()
++    
++    # This should work now
++    result = cap2.snap()
++    print(f"Result from snap(): {repr(result)}")
++
++if __name__ == "__main__":
++    debug_capture()
+\ No newline at end of file
+diff --git a/debug_minimal.py b/debug_minimal.py
+new file mode 100644
+index 000000000..8f1793a1c
+--- /dev/null
++++ b/debug_minimal.py
+@@ -0,0 +1,47 @@
++#!/usr/bin/env python3
++
++import io
++import tempfile
++import sys
++
++# Test what happens with different file types and newline handling
++def test_file_types():
++    print("Testing different file types:")
++    
++    # Test 1: Regular TextIOWrapper with newline=""
++    print("\n1. Regular TextIOWrapper with newline='':")
++    bytes_io = io.BytesIO()
++    wrapper = io.TextIOWrapper(bytes_io, encoding='utf-8', newline='')
++    wrapper.write('Hello\rWorld')
++    wrapper.flush()
++    bytes_io.seek(0)
++    content = bytes_io.getvalue().decode('utf-8')
++    print(f"   Content: {repr(content)}")
++    
++    # Test 2: Regular TextIOWrapper with newline='\n' (default)
++    print("\n2. Regular TextIOWrapper with newline='\\n' (default):")
++    bytes_io2 = io.BytesIO()
++    wrapper2 = io.TextIOWrapper(bytes_io2, encoding='utf-8', newline='\n')
++    wrapper2.write('Hello\rWorld')
++    wrapper2.flush()
++    bytes_io2.seek(0)
++    content2 = bytes_io2.getvalue().decode('utf-8')
++    print(f"   Content: {repr(content2)}")
++    
++    # Test 3: What happens when we write to a file and read back
++    print("\n3. Writing to file and reading back:")
++    with tempfile.NamedTemporaryFile(mode='w', delete=False) as f:
++        temp_filename = f.name
++        f.write('Hello\rWorld')
++        f.flush()
++    
++    with open(temp_filename, 'r') as f:
++        content3 = f.read()
++        print(f"   Content: {repr(content3)}")
++    
++    # Clean up
++    import os
++    os.unlink(temp_filename)
++
++if __name__ == "__main__":
++    test_file_types()
+\ No newline at end of file
+diff --git a/edge_case_tests.py b/edge_case_tests.py
+new file mode 100644
+index 000000000..a97164a12
+--- /dev/null
++++ b/edge_case_tests.py
+@@ -0,0 +1,50 @@
++#!/usr/bin/env python3
++
++import pytest
++
++def test_carriage_return_at_end(capfd):
++    """Test that carriage return at end of line is preserved"""
++    print('Test line', end='\r')
++    out, err = capfd.readouterr()
++    assert out.endswith('\r')
++
++def test_multiple_carriage_returns(capfd):
++    """Test multiple carriage returns"""
++    print('Line1', end='\r')
++    print('Line2', end='\r')
++    print('Line3')
++    out, err = capfd.readouterr()
++    # Should have the last line with newline, and previous lines with \r
++    # Note: The first two lines will be overwritten by the third line's newline
++    # But the \r characters should be preserved in the captured output
++    assert 'Line1\r' in out
++    assert 'Line2\r' in out
++
++def test_carriage_return_in_middle(capfd):
++    """Test carriage return in middle of text"""
++    print('Hello\rWorld')
++    out, err = capfd.readouterr()
++    assert out == 'Hello\rWorld\n'
++
++def test_direct_write_preserves_carriage_return(capfd):
++    """Test that direct writes to tmpfile preserve carriage returns"""
++    # This tests the core functionality of our fix
++    import sys
++    from _pytest.capture import FDCapture
++    
++    cap = FDCapture(1)
++    cap.start()
++    
++    # Write directly to the tmpfile
++    cap.tmpfile.write('Direct test\r')
++    cap.tmpfile.flush()
++    
++    cap.done()
++    result = cap.snap()
++    
++    # This should preserve the \r
++    assert result == 'Direct test\r'
++
++if __name__ == "__main__":
++    # Run with pytest
++    pytest.main([__file__, "-v"])
+\ No newline at end of file
+diff --git a/mimic_capture.py b/mimic_capture.py
+new file mode 100644
+index 000000000..9de2a2572
+--- /dev/null
++++ b/mimic_capture.py
+@@ -0,0 +1,44 @@
++#!/usr/bin/env python3
++
++import sys
++import io
++from _pytest.capture import CaptureIO
++
++# Let's mimic exactly what happens in the capture system
++def mimic_capture():
++    """Mimic what happens in the capture system"""
++    
++    # This is what happens in FDCapture.__init__ for stdout (fd 1)
++    # It creates a SysCapture with a CaptureIO as tmpfile
++    tmpfile = CaptureIO()
++    
++    print(f"tmpfile type: {type(tmpfile)}")
++    print(f"tmpfile buffer type: {type(tmpfile.buffer)}")
++    
++    # Now let's write to it like print would
++    print("Writing to tmpfile like print would...")
++    tmpfile.write('Greetings from DOS\r')
++    tmpfile.flush()
++    
++    # Get the content
++    content = tmpfile.getvalue()
++    print(f"Content from getvalue(): {repr(content)}")
++    
++    # Try to read it directly from the buffer
++    tmpfile.seek(0)
++    direct_content = tmpfile.read()
++    print(f"Content from read(): {repr(direct_content)}")
++    
++    # Test with a regular TextIOWrapper to see if there's a difference
++    print("\nTesting with regular TextIOWrapper:")
++    regular_io = io.TextIOWrapper(io.BytesIO(), encoding="UTF-8", newline="")
++    regular_io.write('Greetings from DOS\r')
++    regular_io.flush()
++    # Get the bytes and decode
++    regular_io.seek(0)
++    regular_bytes = regular_io.buffer.read()
++    regular_content = regular_bytes.decode('utf-8')
++    print(f"Regular TextIOWrapper content: {repr(regular_content)}")
++
++if __name__ == "__main__":
++    mimic_capture()
+\ No newline at end of file
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 000000000..713a7ba1f
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,126 @@
++#!/usr/bin/env python3
++
++import sys
++import io
++import os
++from _pytest.capture import FDCapture
++
++def test_cafd_includes_carriage_return():
++    """Reproduce the issue with capfd.readouterr() converting \r to \n"""
++    # Create an FDCapture instance for stdout (fd 1)
++    cap = FDCapture(1)
++    
++    # Start capturing
++    cap.start()
++    
++    # Print with carriage return (like in the original issue)
++    print('Greetings from DOS', end='\r')
++    
++    # Stop capturing
++    cap.done()
++    
++    # Read captured output
++    result = cap.snap()
++    
++    print(f"Captured result: {repr(result)}")
++    print(f"Ends with carriage return: {result.endswith(chr(13))}")
++    print(f"Ends with newline: {result.endswith(chr(10))}")
++    
++    # This should pass but fails in pytest 6.0.0rc1
++    try:
++        assert result.endswith('\r'), f"Expected to end with '\\r', but got {repr(result)}"
++        print("SUCCESS: Result ends with carriage return")
++        return True
++    except AssertionError as e:
++        print(f"FAILED: {e}")
++        return False
++
++def test_simple_carriage_return():
++    """Test simple carriage return handling"""
++    # Create an FDCapture instance for stdout (fd 1)
++    cap = FDCapture(1)
++    
++    # Start capturing
++    cap.start()
++    
++    # Write directly with carriage return
++    cap.tmpfile.write('Hello\rWorld')
++    cap.tmpfile.flush()
++    
++    # Stop capturing
++    cap.done()
++    
++    # Read captured output
++    result = cap.snap()
++    
++    print(f"Direct write result: {repr(result)}")
++    
++    # This should pass but might fail in pytest 6.0.0rc1
++    try:
++        assert result == 'Hello\rWorld', f"Expected 'Hello\\rWorld', but got {repr(result)}"
++        print("SUCCESS: Direct write works correctly")
++        return True
++    except AssertionError as e:
++        print(f"FAILED: {e}")
++        return False
++
++def test_with_real_print():
++    """Test using a real print call with capfd fixture"""
++    # We'll simulate what happens in pytest's capfd fixture
++    import tempfile
++    import contextlib
++    
++    # Create a temporary file to simulate the capture
++    tmpfile = tempfile.TemporaryFile(mode='w', buffering=0)
++    
++    # Save original stdout
++    old_stdout = sys.stdout
++    
++    try:
++        # Redirect stdout to our temp file
++        sys.stdout = tmpfile
++        
++        # Print with carriage return
++        print('Greetings from DOS', end='\r')
++        
++        # Restore stdout
++        sys.stdout = old_stdout
++        
++        # Read from temp file
++        tmpfile.seek(0)
++        result = tmpfile.read()
++        
++        print(f"Real print result: {repr(result)}")
++        
++        # This should pass
++        try:
++            assert result == 'Greetings from DOS\r', f"Expected 'Greetings from DOS\\r', but got {repr(result)}"
++            print("SUCCESS: Real print works correctly")
++            return True
++        except AssertionError as e:
++            print(f"FAILED: {e}")
++            return False
++    finally:
++        sys.stdout = old_stdout
++        tmpfile.close()
++
++if __name__ == "__main__":
++    print("Testing carriage return handling in FDCapture...")
++    print("=" * 50)
++    
++    print("\nTest 1: Using print with end='\r'")
++    success1 = test_cafd_includes_carriage_return()
++    
++    print("\nTest 2: Direct write with carriage return")
++    success2 = test_simple_carriage_return()
++    
++    print("\nTest 3: Real print behavior")
++    success3 = test_with_real_print()
++    
++    print("\n" + "=" * 50)
++    if success1 and success2 and success3:
++        print("All tests PASSED")
++        sys.exit(0)
++    else:
++        print("Some tests FAILED")
++        sys.exit(1)
+\ No newline at end of file
+diff --git a/simple_repro.py b/simple_repro.py
+new file mode 100644
+index 000000000..46096711d
+--- /dev/null
++++ b/simple_repro.py
+@@ -0,0 +1,53 @@
++#!/usr/bin/env python3
++
++import io
++import tempfile
++import os
++import sys
++
++# Let's try to reproduce the exact issue by mimicking what happens in FDCapture
++def test_exact_scenario():
++    print("Testing exact scenario...")
++    
++    # Create a BytesIO to simulate what happens in EncodedFile
++    bytes_io = io.BytesIO()
++    
++    # Create a TextIOWrapper with newline="" (like EncodedFile)
++    wrapper = io.TextIOWrapper(bytes_io, encoding='utf-8', newline='')
++    
++    print(f"Wrapper type: {type(wrapper)}")
++    print(f"Wrapper newline: {wrapper.newlines}")
++    
++    # Write with \r
++    print("Writing 'Hello\\rWorld'...")
++    wrapper.write('Hello\rWorld')
++    wrapper.flush()
++    
++    # Now read back
++    print("Reading back...")
++    bytes_io.seek(0)
++    content = bytes_io.getvalue().decode('utf-8')
++    print(f"Content from getvalue(): {repr(content)}")
++    
++    # Try to read directly from the wrapper
++    bytes_io.seek(0)
++    wrapper.seek(0)
++    content2 = wrapper.read()
++    print(f"Content from wrapper.read(): {repr(content2)}")
++    
++    # Test with a regular file
++    print("\nTesting with regular file:")
++    with tempfile.NamedTemporaryFile(mode='w', delete=False) as f:
++        temp_filename = f.name
++        f.write('Hello\rWorld')
++        f.flush()
++    
++    with open(temp_filename, 'r') as f:
++        content3 = f.read()
++        print(f"Content from file read: {repr(content3)}")
++    
++    # Clean up
++    os.unlink(temp_filename)
++
++if __name__ == "__main__":
++    test_exact_scenario()
+\ No newline at end of file
+diff --git a/src/_pytest/capture.py b/src/_pytest/capture.py
+index 3f9c60fb9..6fbdad775 100644
+--- a/src/_pytest/capture.py
++++ b/src/_pytest/capture.py
+@@ -177,6 +177,12 @@ def pytest_load_initial_conftests(early_config: Config):
+ class EncodedFile(io.TextIOWrapper):
+     __slots__ = ()
+ 
++    def __init__(self, *args, **kwargs) -> None:
++        # Ensure newline="" is explicitly set to preserve line endings
++        if 'newline' not in kwargs:
++            kwargs['newline'] = ""
++        super().__init__(*args, **kwargs)
++
+     @property
+     def name(self) -> str:
+         # Ensure that file.name is a string. Workaround for a Python bug
+diff --git a/trace_capture.py b/trace_capture.py
+new file mode 100644
+index 000000000..69996aa0e
+--- /dev/null
++++ b/trace_capture.py
+@@ -0,0 +1,43 @@
++#!/usr/bin/env python3
++
++import sys
++import io
++from _pytest.capture import FDCapture
++
++# Let's trace what happens when we do the actual print
++def trace_print():
++    """Trace what happens with print and \r"""
++    
++    # Create a capture to see what happens
++    cap = FDCapture(1)
++    
++    # Start capturing
++    cap.start()
++    
++    # This is what happens in the test
++    print('Greetings from DOS', end='\r')
++    
++    # Let's see what's in the tmpfile
++    # We can't directly access it, but we can check the syscapture
++    
++    # Stop capturing
++    cap.done()
++    
++    # Now let's look at the syscapture
++    print(f"syscapture type: {type(cap.syscapture)}")
++    print(f"syscapture tmpfile: {cap.syscapture.tmpfile}")
++    
++    # Try to get the content from syscapture
++    if hasattr(cap.syscapture, 'tmpfile'):
++        # This is a SysCapture, so it should have a getvalue method
++        if hasattr(cap.syscapture.tmpfile, 'getvalue'):
++            content = cap.syscapture.tmpfile.getvalue()
++            print(f"Syscapture content: {repr(content)}")
++        elif hasattr(cap.syscapture.tmpfile, 'read'):
++            # Try to read from it
++            cap.syscapture.tmpfile.seek(0)
++            content = cap.syscapture.tmpfile.read()
++            print(f"Syscapture content (read): {repr(content)}")
++
++if __name__ == "__main__":
++    trace_print()
+\ No newline at end of file
+diff --git a/trace_syscapture.py b/trace_syscapture.py
+new file mode 100644
+index 000000000..d110f0ba1
+--- /dev/null
++++ b/trace_syscapture.py
+@@ -0,0 +1,43 @@
++#!/usr/bin/env python3
++
++import sys
++from _pytest.capture import SysCapture, CaptureIO
++
++def trace_syscapture():
++    """Trace what happens with SysCapture"""
++    
++    # This is what happens in FDCapture.__init__ for stdout (fd 1)
++    # It creates a SysCapture with a CaptureIO as tmpfile
++    tmpfile = CaptureIO()
++    
++    print(f"tmpfile type: {type(tmpfile)}")
++    print(f"tmpfile buffer type: {type(tmpfile.buffer)}")
++    
++    # Create a SysCapture with this tmpfile
++    syscap = SysCapture(1, tmpfile)
++    
++    print(f"syscap type: {type(syscap)}")
++    print(f"syscap.tmpfile type: {type(syscap.tmpfile)}")
++    
++    # Start capturing
++    syscap.start()
++    
++    # Write to stdout (which is now redirected to our tmpfile)
++    print("Writing to stdout (which is redirected)...")
++    print('Greetings from DOS', end='\r')
++    
++    # Stop capturing
++    syscap.done()
++    
++    # Check what's in the tmpfile
++    print("Checking tmpfile content...")
++    content = tmpfile.getvalue()
++    print(f"tmpfile content: {repr(content)}")
++    
++    # Try to read directly
++    tmpfile.seek(0)
++    direct_content = tmpfile.read()
++    print(f"Direct read content: {repr(direct_content)}")
++
++if __name__ == "__main__":
++    trace_syscapture()
+\ No newline at end of file

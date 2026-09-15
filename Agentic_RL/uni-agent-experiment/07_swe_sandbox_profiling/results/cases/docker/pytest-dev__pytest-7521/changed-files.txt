@@ -1,0 +1,15 @@
+A	compare_behavior.py
+A	complete_test.py
+A	debug_capture.py
+A	debug_minimal.py
+A	direct_write_test.py
+A	edge_case_tests.py
+A	mimic_capture.py
+A	real_pytest_test.py
+A	reproduce_issue.py
+A	simple_repro.py
+A	simple_test.py
+M	src/_pytest/capture.py
+A	test_with_pytest.py
+A	trace_capture.py
+A	trace_syscapture.py

@@ -1,0 +1,32 @@
+{
+  "models": [
+    {
+      "name": "ua-lab-model-128k",
+      "image_id": "sha256:037450d42652d33826174ac1a6f9f8ef2ec47c51042aa4becee52d44be132862",
+      "id": "f3b42dd329101d8a53fc51c4f149c129834c7a1ccd7adf5d40d76061a50860bf",
+      "env": [
+        "HIP_VISIBLE_DEVICES=1",
+        "OMP_NUM_THREADS=8"
+      ]
+    },
+    {
+      "name": "ua-profile-model-aiter-128k",
+      "image_id": "sha256:037450d42652d33826174ac1a6f9f8ef2ec47c51042aa4becee52d44be132862",
+      "id": "d4e8f276d691228e12bbd3638843649642c150861820158ffba737b8bcd9ab7c",
+      "env": [
+        "HIP_VISIBLE_DEVICES=2",
+        "OMP_NUM_THREADS=8",
+        "VLLM_ROCM_USE_AITER=1"
+      ]
+    }
+  ],
+  "source_sha256": {
+    "scripts/swe_sandbox_profile/providers.py": "d7c7e7b31190e9b65d54b3086fd936b30abcae4e9ce4998722d2fff23d9713ec",
+    "scripts/swe_sandbox_profile/run.py": "399ab4b9425edfa42cfd7fad3970afac6fd8bdb744796604f53deee297059897",
+    "scripts/swe_sandbox_profile/profiling.py": "61cc4be9d61c383001fda9ccef525cb33f8a35d6202470757b5a40eb119aed37",
+    "scripts/swe_sandbox_profile/monitor.py": "a5143f1baf646bd93443a55b959fb953ba078826685d5b63dc99f0b9ddc0bd39",
+    "scripts/swe_sandbox_profile/microbench.py": "0dbebbb20ef2428b7d17cf850997dfe590904a267a7e22fb7fc0edebab9c474a",
+    "scripts/swe_sandbox_profile/prepare_templates.py": "8a8c196fe2d1808df7af5584dc603081b8b0ee451ee1eba780941fd4d018c735",
+    "scripts/swe_sandbox_profile/serve_optimized_128k.sh": "c4803eda638d1f57b85d3214b7e126f6aacfd8e1910d08f669cd91cfd574054c"
+  }
+}

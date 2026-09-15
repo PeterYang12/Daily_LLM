@@ -1,0 +1,13 @@
+M	astropy/timeseries/core.py
+A	better_test.py
+A	comprehensive_test.py
+A	debug_test.py
+A	debug_test2.py
+A	edge_case_final.py
+A	edge_case_tests.py
+A	final_test.py
+A	precise_original.py
+A	precise_test.py
+A	reproduce_issue.py
+A	simple_test.py
+A	test_detailed.py

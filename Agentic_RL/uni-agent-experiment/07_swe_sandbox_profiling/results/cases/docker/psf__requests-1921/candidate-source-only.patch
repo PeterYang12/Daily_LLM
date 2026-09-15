@@ -1,0 +1,278 @@
+diff --git a/edge_case_tests.py b/edge_case_tests.py
+new file mode 100644
+index 0000000..42d0582
+--- /dev/null
++++ b/edge_case_tests.py
+@@ -0,0 +1,119 @@
++#!/usr/bin/env python
++"""
++Edge case tests for the session header fix.
++"""
++import requests
++from requests.sessions import merge_setting
++
++def test_edge_cases():
++    """Test edge cases for header merging"""
++    print("=== Edge Case Tests ===")
++    
++    # Test 1: Session header set to None, request header also None
++    print("\n1. Session header None, request header None:")
++    session_headers = {'Accept-Encoding': None}
++    request_headers = {'Accept-Encoding': None}
++    result = merge_setting(request_headers, session_headers)
++    print(f"   Result: {dict(result)}")
++    assert 'Accept-Encoding' not in result
++    
++    # Test 2: Session header None, request header has value
++    print("\n2. Session header None, request header has value:")
++    session_headers = {'Accept-Encoding': None}
++    request_headers = {'Accept-Encoding': 'deflate'}
++    result = merge_setting(request_headers, session_headers)
++    print(f"   Result: {dict(result)}")
++    assert 'Accept-Encoding' in result
++    assert result['Accept-Encoding'] == 'deflate'
++    
++    # Test 3: Session header has value, request header None
++    print("\n3. Session header has value, request header None:")
++    session_headers = {'Accept-Encoding': 'gzip'}
++    request_headers = {'Accept-Encoding': None}
++    result = merge_setting(request_headers, session_headers)
++    print(f"   Result: {dict(result)}")
++    assert 'Accept-Encoding' not in result
++    
++    # Test 4: Multiple session headers with some set to None
++    print("\n4. Multiple session headers with some None:")
++    session_headers = {
++        'Accept-Encoding': None,
++        'User-Agent': 'test-agent',
++        'Content-Type': None,
++        'Custom-Header': 'custom-value'
++    }
++    request_headers = {}
++    result = merge_setting(request_headers, session_headers)
++    print(f"   Result: {dict(result)}")
++    assert 'Accept-Encoding' not in result
++    assert 'Content-Type' not in result
++    assert 'User-Agent' in result
++    assert 'Custom-Header' in result
++    
++    # Test 5: Session headers None, request headers with values
++    print("\n5. Session headers None, request headers with values:")
++    session_headers = {
++        'Accept-Encoding': None,
++        'User-Agent': None
++    }
++    request_headers = {
++        'Accept-Encoding': 'deflate',
++        'Content-Type': 'application/json'
++    }
++    result = merge_setting(request_headers, session_headers)
++    print(f"   Result: {dict(result)}")
++    assert 'Accept-Encoding' in result
++    assert result['Accept-Encoding'] == 'deflate'
++    assert 'Content-Type' in result
++    assert result['Content-Type'] == 'application/json'
++    assert 'User-Agent' not in result
++    
++    # Test 6: Empty session headers
++    print("\n6. Empty session headers:")
++    session_headers = {}
++    request_headers = {'Accept-Encoding': 'deflate'}
++    result = merge_setting(request_headers, session_headers)
++    print(f"   Result: {dict(result)}")
++    assert 'Accept-Encoding' in result
++    assert result['Accept-Encoding'] == 'deflate'
++    
++    # Test 7: Empty request headers
++    print("\n7. Empty request headers:")
++    session_headers = {'Accept-Encoding': 'gzip'}
++    request_headers = {}
++    result = merge_setting(request_headers, session_headers)
++    print(f"   Result: {dict(result)}")
++    assert 'Accept-Encoding' in result
++    assert result['Accept-Encoding'] == 'gzip'
++    
++    # Test 8: Using actual Session object with complex scenario
++    print("\n8. Complex session scenario:")
++    session = requests.Session()
++    # Set some headers to None
++    session.headers['Accept-Encoding'] = None
++    session.headers['User-Agent'] = None  # This should also work
++    # Set some normal headers
++    session.headers['Custom-Header'] = 'custom-value'
++    
++    print(f"   Session headers: {dict(session.headers)}")
++    
++    # Test merge
++    merged = merge_setting({}, session.headers)
++    print(f"   Merged result: {dict(merged)}")
++    assert 'Accept-Encoding' not in merged
++    assert 'User-Agent' not in merged
++    assert 'Custom-Header' in merged
++    
++    # Test with request headers
++    request_headers = {'Accept-Encoding': 'deflate'}
++    merged2 = merge_setting(request_headers, session.headers)
++    print(f"   Merged with request headers: {dict(merged2)}")
++    assert 'Accept-Encoding' in merged2
++    assert merged2['Accept-Encoding'] == 'deflate'
++    assert 'User-Agent' not in merged2
++    assert 'Custom-Header' in merged2
++    
++    print("\n=== All edge case tests passed! ===")
++
++if __name__ == "__main__":
++    test_edge_cases()
+\ No newline at end of file
+diff --git a/final_demo.py b/final_demo.py
+new file mode 100644
+index 0000000..768f64b
+--- /dev/null
++++ b/final_demo.py
+@@ -0,0 +1,63 @@
++#!/usr/bin/env python
++"""
++Final demonstration that the issue has been fixed.
++"""
++import requests
++from requests.sessions import merge_setting
++
++def demonstrate_fix():
++    """Demonstrate that the issue described in the GitHub issue is fixed"""
++    print("=== Demonstrating the fix for GitHub issue ===")
++    
++    # Reproduce the exact example from the issue
++    print("\n1. Creating session and setting Accept-Encoding to None:")
++    session = requests.Session()
++    # Do not send Accept-Encoding
++    session.headers['Accept-Encoding'] = None
++    
++    print("   Session headers after setting Accept-Encoding to None:")
++    for key, value in session.headers.items():
++        print(f"     {key}: {value}")
++    
++    # Show that the merge now works correctly
++    print("\n2. Merging with empty request headers (this is what happens in a request):")
++    merged = merge_setting({}, session.headers)
++    print("   Merged headers:")
++    for key, value in merged.items():
++        print(f"     {key}: {value}")
++    
++    # Verify that Accept-Encoding is not in the merged result
++    has_accept_encoding = 'Accept-Encoding' in merged
++    print(f"\n3. Does 'Accept-Encoding' appear in merged headers? {has_accept_encoding}")
++    
++    if not has_accept_encoding:
++        print("   ✓ SUCCESS: Accept-Encoding header is properly removed!")
++    else:
++        print("   ✗ FAILURE: Accept-Encoding header is still present")
++        return False
++    
++    # Compare with the workaround
++    print("\n4. Comparing with the workaround (deleting header):")
++    session2 = requests.Session()
++    del session2.headers['Accept-Encoding']
++    merged2 = merge_setting({}, session2.headers)
++    print("   Merged headers with deletion workaround:")
++    for key, value in merged2.items():
++        print(f"     {key}: {value}")
++    
++    # Both should have the same result
++    same_result = set(merged.keys()) == set(merged2.keys())
++    print(f"\n5. Do both methods produce the same result? {same_result}")
++    
++    if same_result:
++        print("   ✓ SUCCESS: Both methods produce identical results!")
++    else:
++        print("   ✗ FAILURE: Methods produce different results")
++        return False
++    
++    print("\n=== Issue has been successfully fixed! ===")
++    return True
++
++if __name__ == "__main__":
++    success = demonstrate_fix()
++    exit(0 if success else 1)
+\ No newline at end of file
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000..5f78cb1
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,51 @@
++#!/usr/bin/env python
++"""
++Script to reproduce the issue with session headers.
++"""
++import requests
++from requests.sessions import merge_setting
++from requests.structures import CaseInsensitiveDict
++
++def test_session_header_issue():
++    """Test the issue with setting session headers to None"""
++    print("Testing session header issue...")
++    
++    # Create a session
++    session = requests.Session()
++    
++    # Check initial headers
++    print("Initial headers:")
++    for key, value in session.headers.items():
++        print(f"  {key}: {value}")
++    
++    # Set Accept-Encoding to None (this should remove the header)
++    print("\nSetting Accept-Encoding to None...")
++    session.headers['Accept-Encoding'] = None
++    
++    # Check headers after setting to None
++    print("Headers after setting Accept-Encoding to None:")
++    for key, value in session.headers.items():
++        print(f"  {key}: {value}")
++    
++    # Test what happens when we merge with a request that doesn't specify headers
++    print("\nTesting merge_setting function...")
++    request_headers = {}  # No headers specified in request
++    session_headers = session.headers
++    
++    merged = merge_setting(request_headers, session_headers)
++    print("Merged headers:")
++    for key, value in merged.items():
++        print(f"  {key}: {value}")
++    
++    # Test the workaround (deleting the header)
++    print("\nTesting workaround (deleting header)...")
++    session2 = requests.Session()
++    del session2.headers['Accept-Encoding']
++    
++    merged2 = merge_setting({}, session2.headers)
++    print("Merged headers after deletion:")
++    for key, value in merged2.items():
++        print(f"  {key}: {value}")
++
++if __name__ == "__main__":
++    test_session_header_issue()
+\ No newline at end of file
+diff --git a/requests/sessions.py b/requests/sessions.py
+index a023e4e..3dc9b58 100644
+--- a/requests/sessions.py
++++ b/requests/sessions.py
+@@ -51,10 +51,17 @@ def merge_setting(request_setting, session_setting, dict_class=OrderedDict):
+     ):
+         return request_setting
+ 
+-    merged_setting = dict_class(to_key_val_list(session_setting))
++    # Create a copy of session_setting without None values
++    filtered_session_setting = dict_class(to_key_val_list(session_setting))
++    for (k, v) in session_setting.items():
++        if v is None:
++            if k in filtered_session_setting:
++                del filtered_session_setting[k]
++
++    merged_setting = dict_class(to_key_val_list(filtered_session_setting))
+     merged_setting.update(to_key_val_list(request_setting))
+ 
+-    # Remove keys that are set to None.
++    # Remove keys that are set to None in request_setting
+     for (k, v) in request_setting.items():
+         if v is None:
+             del merged_setting[k]

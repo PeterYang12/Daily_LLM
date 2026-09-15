@@ -12,7 +12,8 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[3]
 EXPERIMENTS = ['01_model_and_examples', '02_swe_bench_comparison', '03_docker_sandbox',
-               '04_e2b_sandbox', '05_inference_performance', '06_trajectories_and_reproduction']
+               '04_e2b_sandbox', '05_inference_performance', '06_trajectories_and_reproduction',
+               '07_swe_sandbox_profiling']
 PROVENANCE = ROOT / EXPERIMENTS[5] / 'results/provenance'
 
 
@@ -59,8 +60,49 @@ def main():
             assert math.isclose(sum(q['aggregate_output_tok_s'] for q in group) / 3,
                                 row['aggregate_output_tok_s'], rel_tol=1e-10)
 
+    profile = EXPERIMENTS[6] + '/results/'
+    profile_records = load(profile + 'source-manifest.json')['copied_files']
+    for record in profile_records:
+        path = ROOT / EXPERIMENTS[6] / record['destination']
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == record['sha256'], str(path)
+    counts = load(profile + 'experiment-counts.json')
+    assert counts == {'primary_rollouts': 24, 'accepted_controls': 48, 'fixed_operation_samples': 200,
+                      'scheduling_attempts': 16, 'serving_batches': 54, 'logprob_batches': 24,
+                      'verifier_cpu_runs': 12}, counts
+    cases = load(profile + 'cases.json')
+    assert len(cases) == 24
+    for provider in ['docker', 'e2b']:
+        group = [r for r in cases if r['provider'] == provider]
+        assert len(group) == 12 and sum(r['resolved'] for r in group) == 9
+        assert all(r['eval_completed'] and r['trajectory_valid'] and not r['error'] for r in group)
+        for row in group:
+            path = profile + 'cases/' + provider + '/' + row['instance_id'] + '/'
+            raw = load(path + 'result.json')
+            assert raw['resolved'] == row['resolved'] and raw['cleanup_completed']
+            assert load(path + 'trajectory-audit.json')['valid']
+        assert math.isclose(sum(r['wall_seconds'] for r in group) / 12,
+                            load(profile + 'summary.json')['providers'][provider]['mean_wall_s'])
+    controls = load(profile + 'controls.json')
+    assert len(controls) == 48
+    assert all(r['eval_completed'] and r['resolved'] == (r['mode'] == 'oracle') for r in controls)
+    for iid in {r['instance_id'] for r in cases}:
+        states = [r['initial_state'] for r in controls if r['instance_id'] == iid and r['mode'] == 'baseline']
+        assert len(states) == 2 and states[0]['tree'] == states[1]['tree'] and states[0]['head'] == states[1]['head']
+    serving = load(profile + 'inference/raw.json')
+    assert len(serving) == 54
+    for stat in load(profile + 'inference/summary.json'):
+        group = [r for r in serving if all(r[k] == stat[k] for k in ['backend', 'input_length', 'concurrency'])]
+        assert len(group) == 3 and all(r['output_tokens'] == r['concurrency'] * 256 for r in group)
+        assert math.isclose(sum(r['output_tokens_per_s'] for r in group) / 3, stat['output_tokens_per_s'])
+    overhead = load(profile + 'inference/logprob-overhead.json')['results']
+    assert len(overhead) == 24
+    assert len({(r['backend'], r['concurrency'], r['repeat'], r['logprobs']) for r in overhead}) == 24
+    probe = load(profile + 'verifier-cpu-probe.json')
+    assert len(probe) == 12 and all(r['resolved'] and r['resources'] for r in probe)
+    assert not load(profile + 'service-audit.json')['owned_running_after']
+
     markdown = list(ROOT.rglob('*.md'))
-    assert len(markdown) <= 20, 'Keep the authored documentation compact.'
+    assert len(markdown) <= 24, 'Keep the authored documentation compact.'
     missing, non_english = [], []
     shell_blocks = 0
     for path in markdown:
@@ -100,6 +142,7 @@ def main():
               'agent_results': 84, 'qualified_tasks': 28, 'performance_batches_recomputed': 54,
               'python_files_parsed': len(code), 'shell_examples_checked': shell_blocks,
               'english_diagrams': len(diagrams), 'missing_links': missing,
+              'profiling_artifacts_verified': len(profile_records), 'profiling_experiments': counts,
               'scope': 'Offline documentation checks; no model, training, or sandbox execution.'}
     (PROVENANCE / 'bundle-validation.json').write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps(report))

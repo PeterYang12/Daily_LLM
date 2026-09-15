@@ -1,0 +1,175 @@
+diff --git a/edge_case_tests.py b/edge_case_tests.py
+new file mode 100644
+index 0000000000..c16dc43d03
+--- /dev/null
++++ b/edge_case_tests.py
+@@ -0,0 +1,115 @@
++#!/usr/bin/env python3
++
++from sympy.physics import units
++from sympy.physics.units.systems.si import SI
++
++def test_edge_cases():
++    print("=== Edge Case Tests ===")
++    
++    # Test 1: Original issue case
++    print("Test 1: Original issue case")
++    v1 = units.Quantity('v1')
++    SI.set_quantity_dimension(v1, units.velocity)
++    SI.set_quantity_scale_factor(v1, 2 * units.meter / units.second)
++
++    a1 = units.Quantity('a1')
++    SI.set_quantity_dimension(a1, units.acceleration)
++    SI.set_quantity_scale_factor(a1, -9.8 * units.meter / units.second**2)
++
++    t1 = units.Quantity('t1')
++    SI.set_quantity_dimension(t1, units.time)
++    SI.set_quantity_scale_factor(t1, 5 * units.second)
++
++    expr1 = a1*t1 + v1
++    try:
++        result = SI._collect_factor_and_dimension(expr1)
++        print("  PASSED:", result)
++    except Exception as e:
++        print("  FAILED:", e)
++
++    # Test 2: Multiple additions with equivalent dimensions
++    print("Test 2: Multiple additions with equivalent dimensions")
++    expr2 = v1 + v1 + v1
++    try:
++        result = SI._collect_factor_and_dimension(expr2)
++        print("  PASSED:", result)
++    except Exception as e:
++        print("  FAILED:", e)
++
++    # Test 3: Complex expression with multiple operations
++    print("Test 3: Complex expression with multiple operations")
++    m = units.Quantity('m')
++    SI.set_quantity_dimension(m, units.mass)
++    SI.set_quantity_scale_factor(m, 10 * units.kilogram)
++
++    force_expr = m * a1  # mass * acceleration = force
++    energy_expr = force_expr * t1  # force * time = energy (in some contexts)
++    expr3 = energy_expr + force_expr * t1  # This should work
++    try:
++        result = SI._collect_factor_and_dimension(expr3)
++        print("  PASSED:", result)
++    except Exception as e:
++        print("  FAILED:", e)
++
++    # Test 4: Addition with incompatible dimensions (should fail)
++    print("Test 4: Addition with incompatible dimensions (should fail)")
++    expr4 = v1 + m  # velocity + mass
++    try:
++        result = SI._collect_factor_and_dimension(expr4)
++        print("  UNEXPECTED SUCCESS:", result)
++    except ValueError as e:
++        print("  EXPECTED FAILURE:", e)
++    except Exception as e:
++        print("  UNEXPECTED ERROR:", e)
++
++    # Test 5: Division that should result in equivalent dimensions
++    print("Test 5: Division that should result in equivalent dimensions")
++    dist = units.Quantity('dist')
++    SI.set_quantity_dimension(dist, units.length)
++    SI.set_quantity_scale_factor(dist, 100 * units.meter)
++
++    time = units.Quantity('time')
++    SI.set_quantity_dimension(time, units.time)
++    SI.set_quantity_scale_factor(time, 10 * units.second)
++
++    velocity_expr = dist / time  # distance / time = velocity
++    expr5 = velocity_expr + v1  # velocity + velocity
++    try:
++        result = SI._collect_factor_and_dimension(expr5)
++        print("  PASSED:", result)
++    except Exception as e:
++        print("  FAILED:", e)
++
++    # Test 6: Power operations
++    print("Test 6: Power operations")
++    expr6 = v1**2  # velocity squared
++    try:
++        result = SI._collect_factor_and_dimension(expr6)
++        print("  PASSED:", result)
++    except Exception as e:
++        print("  FAILED:", e)
++
++    # Test 7: Mixed operations
++    print("Test 7: Mixed operations")
++    expr7 = (a1 * t1) + (dist / time)  # acceleration*time + distance/time
++    try:
++        result = SI._collect_factor_and_dimension(expr7)
++        print("  PASSED:", result)
++    except Exception as e:
++        print("  FAILED:", e)
++
++    # Test 8: More complex equivalent dimensions
++    print("Test 8: More complex equivalent dimensions")
++    # Force = mass * acceleration
++    force = m * a1
++    # Power = force * velocity
++    power = force * v1
++    expr8 = power + (force * v1)  # power + power
++    try:
++        result = SI._collect_factor_and_dimension(expr8)
++        print("  PASSED:", result)
++    except Exception as e:
++        print("  FAILED:", e)
++
++if __name__ == "__main__":
++    test_edge_cases()
+\ No newline at end of file
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..7c814de3cb
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,33 @@
++#!/usr/bin/env python3
++
++from sympy.physics import units
++from sympy.physics.units.systems.si import SI
++
++# Create quantities
++v1 = units.Quantity('v1')
++SI.set_quantity_dimension(v1, units.velocity)
++SI.set_quantity_scale_factor(v1, 2 * units.meter / units.second)
++
++a1 = units.Quantity('a1')
++SI.set_quantity_dimension(a1, units.acceleration)
++SI.set_quantity_scale_factor(a1, -9.8 * units.meter / units.second**2)
++
++t1 = units.Quantity('t1')
++SI.set_quantity_dimension(t1, units.time)
++SI.set_quantity_scale_factor(t1, 5 * units.second)
++
++# Create expression
++expr1 = a1*t1 + v1
++
++print("v1 dimension:", SI.get_quantity_dimension(v1))
++print("a1 dimension:", SI.get_quantity_dimension(a1))
++print("t1 dimension:", SI.get_quantity_dimension(t1))
++print("a1*t1 dimension:", SI.get_quantity_dimension(a1*t1))
++print("expr1 dimension:", SI.get_quantity_dimension(expr1))
++
++print("\nTrying to collect factor and dimension...")
++try:
++    result = SI._collect_factor_and_dimension(expr1)
++    print("Success:", result)
++except Exception as e:
++    print("Error:", e)
+\ No newline at end of file
+diff --git a/sympy/physics/units/unitsystem.py b/sympy/physics/units/unitsystem.py
+index a436880c4b..5705c821c2 100755
+--- a/sympy/physics/units/unitsystem.py
++++ b/sympy/physics/units/unitsystem.py
+@@ -175,7 +175,7 @@ def _collect_factor_and_dimension(self, expr):
+             for addend in expr.args[1:]:
+                 addend_factor, addend_dim = \
+                     self._collect_factor_and_dimension(addend)
+-                if dim != addend_dim:
++                if not self.get_dimension_system().equivalent_dims(dim, addend_dim):
+                     raise ValueError(
+                         'Dimension of "{}" is {}, '
+                         'but it should be {}'.format(

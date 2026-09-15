@@ -1,0 +1,7 @@
+A	debug_merge.py
+A	edge_case_tests.py
+A	final_verification.py
+A	reproduce_issue.py
+M	requests/sessions.py
+A	test_fix_verification.py
+A	test_merge_setting.py

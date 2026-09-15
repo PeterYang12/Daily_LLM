@@ -1,0 +1,9 @@
+{
+  "primary_rollouts": 24,
+  "accepted_controls": 48,
+  "fixed_operation_samples": 200,
+  "scheduling_attempts": 16,
+  "serving_batches": 54,
+  "logprob_batches": 24,
+  "verifier_cpu_runs": 12
+}

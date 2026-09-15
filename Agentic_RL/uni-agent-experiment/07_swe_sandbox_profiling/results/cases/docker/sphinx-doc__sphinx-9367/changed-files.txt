@@ -1,0 +1,5 @@
+A	debug_ast.py
+A	debug_nested.py
+A	edge_case_tests.py
+A	reproduce_issue.py
+M	sphinx/pycode/ast.py

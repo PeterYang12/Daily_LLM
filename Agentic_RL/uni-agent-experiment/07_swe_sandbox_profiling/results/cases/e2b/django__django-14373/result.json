@@ -1,0 +1,112 @@
+{
+  "instance_id": "django__django-14373",
+  "trial_id": "django__django-14373",
+  "provider": "e2b",
+  "mode": "react",
+  "tag": "main-optimized",
+  "output": "/lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/django__django-14373",
+  "started_unix": 1789400206.2102234,
+  "slot": 0,
+  "base_url": "http://172.30.90.9:8000/v1",
+  "finished": true,
+  "agent_info": {
+    "steps": 24,
+    "num_tool_calls": 24,
+    "timeouts": 0,
+    "errors": 0,
+    "total_tokens": 18162
+  },
+  "patch_bytes": 4709,
+  "source_patch_bytes": 4709,
+  "excluded_test_paths": [],
+  "existing_tests_modified": [],
+  "eval_completed": true,
+  "eval_execution_time": 3.176828966010362,
+  "eval_report": {
+    "resolved": true,
+    "found_eval_status": true,
+    "test_status": {
+      "FAIL_TO_PASS": {
+        "success": [
+          "test_Y_format_year_before_1000 (utils_tests.test_dateformat.DateFormatTests)"
+        ],
+        "failure": []
+      },
+      "PASS_TO_PASS": {
+        "success": [
+          "test_am_pm (utils_tests.test_dateformat.DateFormatTests)",
+          "test_date (utils_tests.test_dateformat.DateFormatTests)",
+          "test_date_formats (utils_tests.test_dateformat.DateFormatTests)",
+          "test_dateformat (utils_tests.test_dateformat.DateFormatTests)",
+          "test_datetime_with_local_tzinfo (utils_tests.test_dateformat.DateFormatTests)",
+          "test_datetime_with_tzinfo (utils_tests.test_dateformat.DateFormatTests)",
+          "test_day_of_year_leap (utils_tests.test_dateformat.DateFormatTests)",
+          "test_empty_format (utils_tests.test_dateformat.DateFormatTests)",
+          "test_epoch (utils_tests.test_dateformat.DateFormatTests)",
+          "test_futuredates (utils_tests.test_dateformat.DateFormatTests)",
+          "test_invalid_time_format_specifiers (utils_tests.test_dateformat.DateFormatTests)",
+          "test_microsecond (utils_tests.test_dateformat.DateFormatTests)",
+          "test_naive_ambiguous_datetime (utils_tests.test_dateformat.DateFormatTests)",
+          "test_naive_datetime (utils_tests.test_dateformat.DateFormatTests)",
+          "test_r_format_with_non_en_locale (utils_tests.test_dateformat.DateFormatTests)",
+          "test_time_formats (utils_tests.test_dateformat.DateFormatTests)",
+          "test_timezones (utils_tests.test_dateformat.DateFormatTests)",
+          "test_twelve_hour_format (utils_tests.test_dateformat.DateFormatTests)",
+          "test_y_format_year_before_1000 (utils_tests.test_dateformat.DateFormatTests)"
+        ],
+        "failure": []
+      },
+      "FAIL_TO_FAIL": {
+        "success": [],
+        "failure": []
+      },
+      "PASS_TO_FAIL": {
+        "success": [],
+        "failure": []
+      }
+    }
+  },
+  "resolved": true,
+  "cleanup_completed": true,
+  "cleanup_steps": [
+    "agent",
+    "final"
+  ],
+  "reward": 1.0,
+  "trajectory_valid": true,
+  "wall_seconds": 79.47921348363161,
+  "ended_unix": 1789400285.6894379,
+  "timings_s": {
+    "session_setup": 1.184e-05,
+    "provision": 7.583501998,
+    "agent": 62.245614406,
+    "capture_patch": 1.141194823,
+    "agent_cleanup": 0.337828721,
+    "verifier_provision": 4.402534493,
+    "verify": 3.39069871,
+    "cleanup": 0.286339707,
+    "trajectory_export": 0.016202315
+  },
+  "agent_breakdown_s": {
+    "model_roundtrip": 27.287252332,
+    "model_api": 26.91748074,
+    "gateway_http": 27.233928563,
+    "codec": 0.263468054,
+    "tool_call": 33.005384868,
+    "tool_init": 1.274704853,
+    "tool_close": 0.650019165
+  },
+  "client_operations": {
+    "http_send": 59,
+    "docker_cli": 0,
+    "sandbox_exec": 115,
+    "file_read": 6,
+    "file_write": 25,
+    "tool_call": 25,
+    "model_api": 24
+  },
+  "model_tokens": {
+    "prompt": 286828,
+    "generated": 4382
+  }
+}

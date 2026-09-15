@@ -1,0 +1,5 @@
+A	final_verification.py
+A	fix_lognorm.py
+M	lib/matplotlib/colors.py
+A	reproduce_issue.py
+A	test_fix_verification.py

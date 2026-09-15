@@ -1,0 +1,216 @@
+diff --git a/debug_ast.py b/debug_ast.py
+new file mode 100644
+index 000000000..5029650bd
+--- /dev/null
++++ b/debug_ast.py
+@@ -0,0 +1,28 @@
++#!/usr/bin/env python3
++"""
++Debug script to understand how AST represents tuples.
++"""
++
++import ast
++
++def debug_tuple_ast():
++    # Test different tuple representations
++    test_cases = [
++        "(1,)",      # 1-element tuple
++        "(1, 2, 3)", # Multi-element tuple
++        "()",        # Empty tuple
++        "(1)",       # Integer in parentheses
++    ]
++    
++    for source in test_cases:
++        print(f"Source: {source}")
++        tree = ast.parse(source, mode='eval')
++        print(f"  AST type: {type(tree.body)}")
++        if isinstance(tree.body, ast.Tuple):
++            print(f"  Elements: {len(tree.body.elts)}")
++            for i, elt in enumerate(tree.body.elts):
++                print(f"    Element {i}: {type(elt)} = {ast.dump(elt)}")
++        print()
++
++if __name__ == "__main__":
++    debug_tuple_ast()
+\ No newline at end of file
+diff --git a/debug_nested.py b/debug_nested.py
+new file mode 100644
+index 000000000..82f63e846
+--- /dev/null
++++ b/debug_nested.py
+@@ -0,0 +1,53 @@
++#!/usr/bin/env python3
++"""
++Debug nested tuple behavior.
++"""
++
++import ast
++from sphinx.pycode import ast as sphinx_ast
++
++def debug_nested():
++    # Test nested tuples
++    test_cases = [
++        "((1,))",
++        "(1,)",
++        "(1, 2)",
++        "((1, 2))",
++    ]
++    
++    for source in test_cases:
++        print(f"Source: {source}")
++        tree = ast.parse(source, mode='eval')
++        print(f"  AST type: {type(tree.body)}")
++        print(f"  AST dump: {ast.dump(tree.body)}")
++        if isinstance(tree.body, ast.Tuple):
++            print(f"  Elements: {len(tree.body.elts)}")
++            for i, elt in enumerate(tree.body.elts):
++                print(f"    Element {i}: {type(elt)} = {ast.dump(elt)}")
++                if isinstance(elt, ast.Tuple):
++                    print(f"      Nested elements: {len(elt.elts)}")
++        print()
++
++def debug_sphinx_unparse():
++    test_cases = [
++        "((1,))",
++        "(1,)",
++        "(1, 2)",
++        "((1, 2))",
++    ]
++    
++    for source in test_cases:
++        print(f"Source: {source}")
++        try:
++            module = sphinx_ast.parse(source)
++            result = sphinx_ast.unparse(module.body[0].value, source)
++            print(f"  Result: {result}")
++        except Exception as e:
++            print(f"  ERROR: {e}")
++        print()
++
++if __name__ == "__main__":
++    print("=== AST Analysis ===")
++    debug_nested()
++    print("=== Sphinx Unparse ===")
++    debug_sphinx_unparse()
+\ No newline at end of file
+diff --git a/edge_case_tests.py b/edge_case_tests.py
+new file mode 100644
+index 000000000..cc94e87cc
+--- /dev/null
++++ b/edge_case_tests.py
+@@ -0,0 +1,60 @@
++#!/usr/bin/env python3
++"""
++Test edge cases for the tuple fix.
++"""
++
++from sphinx.pycode import ast
++
++def test_edge_cases():
++    # Test various edge cases for tuple rendering
++    test_cases = [
++        # Basic cases
++        ("(1,)", "(1,)"),              # 1-element tuple
++        ("(1, 2, 3)", "(1, 2, 3)"),    # Multi-element tuple
++        ("()", "()"),                  # Empty tuple
++        
++        # Nested tuples (note: ((1,)) and (1,) are equivalent in Python)
++        ("((1,))", "(1,)"),            # Nested 1-element tuple (equivalent to (1,))
++        ("((1, 2))", "(1, 2)"),        # Nested multi-element tuple (equivalent to (1, 2))
++        
++        # Tuples with different element types
++        ("('a',)", "('a',)"),         # String element
++        ("(1.5,)", "(1.5,)"),         # Float element
++        ("(None,)", "(None,)"),       # None element
++        ("(True,)", "(True,)"),       # Boolean element
++        
++        # Complex expressions in tuples
++        ("(1 + 2,)", "(1 + 2,)"),     # Expression element
++        ("([1, 2],)", "([1, 2],)"),   # List element
++        ("({'a': 1},)", "({'a': 1},)"), # Dict element
++        
++        # Mixed with other constructs
++        ("[1, (2,)]", "[1, (2,)]"),   # Tuple inside list
++        ("(1, (2, 3))", "(1, (2, 3))"), # Mixed tuple nesting
++    ]
++    
++    print("Testing edge cases for tuple rendering...")
++    all_passed = True
++    for source, expected in test_cases:
++        try:
++            module = ast.parse(source)
++            result = ast.unparse(module.body[0].value, source)
++            status = "✓" if result == expected else "✗"
++            if result != expected:
++                print(f"{status} Source: {source:<20} Expected: {expected:<20} Got: {result}")
++                all_passed = False
++            else:
++                print(f"{status} Source: {source:<20} Expected: {expected:<20} Got: {result}")
++        except Exception as e:
++            print(f"✗ Source: {source:<20} ERROR: {e}")
++            all_passed = False
++    
++    if all_passed:
++        print("\nAll edge case tests passed!")
++    else:
++        print("\nSome edge case tests failed!")
++    
++    return all_passed
++
++if __name__ == "__main__":
++    test_edge_cases()
+\ No newline at end of file
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 000000000..c6f9fc4f8
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,29 @@
++#!/usr/bin/env python3
++"""
++Script to reproduce the 1-element tuple rendering issue.
++"""
++
++from sphinx.pycode import ast
++
++def test_tuple_rendering():
++    # Test cases for tuple rendering
++    test_cases = [
++        ("(1,)", "(1,)"),  # 1-element tuple - should keep trailing comma
++        ("(1, 2, 3)", "(1, 2, 3)"),  # Multi-element tuple
++        ("()", "()"),  # Empty tuple
++    ]
++    
++    print("Testing tuple rendering...")
++    for source, expected in test_cases:
++        try:
++            module = ast.parse(source)
++            result = ast.unparse(module.body[0].value, source)
++            status = "✓" if result == expected else "✗"
++            print(f"{status} Source: {source:<12} Expected: {expected:<12} Got: {result}")
++            if result != expected:
++                print(f"   ERROR: Expected {expected}, got {result}")
++        except Exception as e:
++            print(f"✗ Source: {source:<12} ERROR: {e}")
++
++if __name__ == "__main__":
++    test_tuple_rendering()
+\ No newline at end of file
+diff --git a/sphinx/pycode/ast.py b/sphinx/pycode/ast.py
+index f541ec0a9..36d47a38a 100644
+--- a/sphinx/pycode/ast.py
++++ b/sphinx/pycode/ast.py
+@@ -214,7 +214,12 @@ class _UnparseVisitor(ast.NodeVisitor):
+ 
+     def visit_Tuple(self, node: ast.Tuple) -> str:
+         if node.elts:
+-            return "(" + ", ".join(self.visit(e) for e in node.elts) + ")"
++            if len(node.elts) == 1:
++                # For 1-element tuples, always add trailing comma to distinguish from
++                # parenthesized expressions
++                return "(" + self.visit(node.elts[0]) + ",)"
++            else:
++                return "(" + ", ".join(self.visit(e) for e in node.elts) + ")"
+         else:
+             return "()"
+ 

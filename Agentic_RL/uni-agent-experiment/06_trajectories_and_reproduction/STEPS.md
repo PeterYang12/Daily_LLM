@@ -17,7 +17,7 @@ python3 06_trajectories_and_reproduction/code/export_code.py \
   --output /tmp/uni-agent-replay-code
 ```
 
-Use a destination that does not exist. The exporter collects the six folders into the original `scripts/`, `configs/`, and `patches/` layout and verifies hashes. This resolves cross-experiment imports. It exports code only, without installing dependencies or starting containers.
+Use a destination that does not exist. The exporter collects all seven folders into the original `scripts/`, `configs/`, and `patches/` layout and verifies hashes. This resolves cross-experiment imports. It exports code only, without installing dependencies or starting containers. Experiment 7 replay helpers are under `scripts/swe_sandbox_profile/`; its manifest and tmux bundle remain in that experiment's `configs/` and `assets/` directories.
 
 Original main-run versions remain under `scripts/executed/`. The ordinary `scripts/run_swe.py` is the later version with explicit logprob capture.
 
@@ -62,4 +62,3 @@ The kit includes source/config/data snapshots, not weights, Docker layers, envir
 Image digests and model hashes are in [experiment 1](../01_model_and_examples/results/environment/); dependency locks are in its [configs/](../01_model_and_examples/configs/). The CPU rebuild validates selected inference paths, not all verl training dependencies.
 
 Regenerate English figures with [generate_figures.py](code/reporting/generate_figures.py) and [render_diagrams.py](code/reporting/render_diagrams.py). They read saved data and local Mermaid assets only.
-

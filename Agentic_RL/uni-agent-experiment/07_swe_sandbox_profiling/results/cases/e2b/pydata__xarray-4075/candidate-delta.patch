@@ -1,0 +1,179 @@
+diff --git a/edge_case_tests.py b/edge_case_tests.py
+new file mode 100644
+index 00000000..7e3f1f53
+--- /dev/null
++++ b/edge_case_tests.py
+@@ -0,0 +1,76 @@
++#!/usr/bin/env python3
++"""
++Additional edge case tests for the boolean weights fix.
++"""
++
++import numpy as np
++import xarray as xr
++
++def test_boolean_weights_edge_cases():
++    """Test various edge cases with boolean weights."""
++    print("Testing edge cases with boolean weights...")
++    
++    # Test case 1: Original issue
++    print("\n1. Original issue test case:")
++    dta = xr.DataArray([1., 1., 1.])
++    wgt = xr.DataArray(np.array([1, 1, 0], dtype=bool))
++    result = dta.weighted(wgt).mean()
++    expected = 1.0
++    print(f"   Result: {result.values}, Expected: {expected}")
++    assert result.values == expected, f"Expected {expected}, got {result.values}"
++    print("   ✓ PASSED")
++    
++    # Test case 2: All True weights
++    print("\n2. All True weights:")
++    dta = xr.DataArray([1., 2., 3.])
++    wgt = xr.DataArray([True, True, True])
++    result = dta.weighted(wgt).mean()
++    expected = 2.0  # (1*1 + 2*1 + 3*1) / (1 + 1 + 1) = 6/3 = 2
++    print(f"   Result: {result.values}, Expected: {expected}")
++    assert result.values == expected, f"Expected {expected}, got {result.values}"
++    print("   ✓ PASSED")
++    
++    # Test case 3: All False weights
++    print("\n3. All False weights:")
++    dta = xr.DataArray([1., 2., 3.])
++    wgt = xr.DataArray([False, False, False])
++    result = dta.weighted(wgt).mean()
++    # Should return NaN since sum of weights is 0
++    print(f"   Result: {result.values}")
++    assert np.isnan(result.values), f"Expected NaN, got {result.values}"
++    print("   ✓ PASSED")
++    
++    # Test case 4: Mixed boolean and numeric weights
++    print("\n4. Mixed boolean and numeric weights:")
++    dta = xr.DataArray([1., 2., 3.])
++    wgt = xr.DataArray([True, 2, False])  # Mix of bool and int
++    result = dta.weighted(wgt).mean()
++    expected = (1*1 + 2*2 + 3*0) / (1 + 2 + 0)  # (1 + 4 + 0) / 3 = 5/3
++    print(f"   Result: {result.values}, Expected: {expected}")
++    assert np.isclose(result.values, expected), f"Expected {expected}, got {result.values}"
++    print("   ✓ PASSED")
++    
++    # Test case 5: 2D array with boolean weights
++    print("\n5. 2D array with boolean weights:")
++    dta = xr.DataArray([[1., 2.], [3., 4.]])
++    wgt = xr.DataArray([[True, False], [True, True]])
++    result = dta.weighted(wgt).mean()
++    expected = (1*1 + 2*0 + 3*1 + 4*1) / (1 + 0 + 1 + 1)  # (1 + 0 + 3 + 4) / 3 = 8/3
++    print(f"   Result: {result.values}, Expected: {expected}")
++    assert np.isclose(result.values, expected), f"Expected {expected}, got {result.values}"
++    print("   ✓ PASSED")
++    
++    # Test case 6: With NaN values in data
++    print("\n6. With NaN values in data:")
++    dta = xr.DataArray([1., np.nan, 3.])
++    wgt = xr.DataArray([True, True, False])
++    result = dta.weighted(wgt).mean()
++    expected = 1.0  # Only first element contributes, weight = 1
++    print(f"   Result: {result.values}, Expected: {expected}")
++    assert result.values == expected, f"Expected {expected}, got {result.values}"
++    print("   ✓ PASSED")
++    
++    print("\nAll edge case tests passed!")
++
++if __name__ == "__main__":
++    test_boolean_weights_edge_cases()
+\ No newline at end of file
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 00000000..446394c3
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,73 @@
++#!/usr/bin/env python3
++"""
++Script to reproduce the boolean weights issue in weighted mean.
++"""
++
++import numpy as np
++import xarray as xr
++
++def test_boolean_weights_issue():
++    """Reproduce the issue described in the bug report."""
++    print("Testing boolean weights issue...")
++    
++    # Create test data as described in the issue
++    dta = xr.DataArray([1., 1., 1.])
++    wgt = xr.DataArray(np.array([1, 1, 0], dtype=np.bool))
++
++    print("Data array:")
++    print(dta)
++    print("\nWeights array:")
++    print(wgt)
++    print("\nWeights dtype:", wgt.dtype)
++    
++    # Calculate the weighted mean
++    result = dta.weighted(wgt).mean()
++    
++    print("\nResult of weighted mean:")
++    print(result)
++    print("Result value:", result.values)
++    
++    # Expected result should be 1.0, not 2.0
++    expected = 1.0
++    print(f"\nExpected result: {expected}")
++    print(f"Actual result: {result.values}")
++    
++    # Check if they match
++    if result.values == expected:
++        print("✓ Test PASSED - Issue is fixed")
++        return True
++    else:
++        print("✗ Test FAILED - Issue still exists")
++        return False
++
++def test_dot_product_behavior():
++    """Test the dot product behavior with boolean arrays."""
++    print("\n" + "="*50)
++    print("Testing dot product behavior with boolean arrays...")
++    
++    dta = xr.DataArray([1., 1., 1.])
++    wgt = xr.DataArray(np.array([1, 1, 0], dtype=np.bool))
++    
++    # Test the dot product behavior
++    mask = dta.notnull()
++    print("Mask (dta.notnull()):")
++    print(mask)
++    print("Mask dtype:", mask.dtype)
++    
++    sum_of_weights = xr.dot(mask, wgt)
++    print("\nsum_of_weights = xr.dot(dta.notnull(), wgt):")
++    print(sum_of_weights)
++    print("sum_of_weights dtype:", sum_of_weights.dtype)
++    
++    # Test the suggested fix
++    sum_of_weights_fixed = xr.dot(mask, wgt * 1)
++    print("\nsum_of_weights_fixed = xr.dot(dta.notnull(), wgt * 1):")
++    print(sum_of_weights_fixed)
++    print("sum_of_weights_fixed dtype:", sum_of_weights_fixed.dtype)
++
++if __name__ == "__main__":
++    success = test_boolean_weights_issue()
++    test_dot_product_behavior()
++    
++    if not success:
++        exit(1)
+\ No newline at end of file
+diff --git a/xarray/core/weighted.py b/xarray/core/weighted.py
+index 996d2e4c..6c6267d3 100644
+--- a/xarray/core/weighted.py
++++ b/xarray/core/weighted.py
+@@ -142,7 +142,10 @@ class Weighted:
+         # we need to mask data values that are nan; else the weights are wrong
+         mask = da.notnull()
+ 
+-        sum_of_weights = self._reduce(mask, self.weights, dim=dim, skipna=False)
++        # Ensure weights are numeric for proper sum calculation
++        # This handles the case where weights are boolean arrays
++        weights = self.weights.astype(float)
++        sum_of_weights = self._reduce(mask, weights, dim=dim, skipna=False)
+ 
+         # 0-weights are not valid
+         valid_weights = sum_of_weights != 0.0

@@ -1,0 +1,9 @@
+A	check_equivalence.py
+A	debug_dimensions.py
+A	debug_dimensions2.py
+A	debug_fix.py
+A	debug_test6.py
+A	edge_case_tests.py
+A	reproduce_issue.py
+M	sympy/physics/units/unitsystem.py
+A	test_fix.py

@@ -1,0 +1,842 @@
+diff --git a/debug_detailed.py b/debug_detailed.py
+new file mode 100644
+index 000000000..4655bf514
+--- /dev/null
++++ b/debug_detailed.py
+@@ -0,0 +1,165 @@
++#!/usr/bin/env python3
++
++import numpy as np
++import matplotlib as mpl
++import matplotlib.pyplot as plt
++from matplotlib import colors, image as mimage
++import traceback
++
++def debug_detailed():
++    """Debug the exact issue in _make_image"""
++    print("Creating test data...")
++    data = np.full((5, 5), -1, dtype=np.float64)
++    data[0:2, :] = 1E20
++    
++    print("Data shape:", data.shape)
++    print("Data values:", data)
++    print("Data min:", data.min())
++    print("Data max:", data.max())
++    
++    # Create a figure and axis
++    fig, ax = plt.subplots()
++    
++    # Create the image with LogNorm
++    im = ax.imshow(data, norm=colors.LogNorm(vmin=100, vmax=1E20),
++                   interpolation='nearest', cmap='viridis')
++    
++    print(f"\nImage norm vmin: {im.norm.vmin}")
++    print(f"Image norm vmax: {im.norm.vmax}")
++    
++    # Now let's manually trace through what happens in _make_image
++    # This is a simplified version of what happens in _make_image
++    
++    # Step 1: Get the data
++    A = im._A
++    print(f"\nA shape: {A.shape}")
++    print(f"A min: {A.min()}")
++    print(f"A max: {A.max()}")
++    
++    # Step 2: Get a_min and a_max
++    a_min = A.min()
++    a_max = A.max()
++    print(f"a_min: {a_min}")
++    print(f"a_max: {a_max}")
++    
++    # Step 3: Get vmin, vmax from norm
++    vmin, vmax = im.norm.vmin, im.norm.vmax
++    print(f"norm vmin: {vmin}")
++    print(f"norm vmax: {vmax}")
++    
++    # Step 4: Create vrange
++    scaled_dtype = np.float64  # This is what's used in the code
++    vrange = np.array([vmin, vmax], dtype=scaled_dtype)
++    print(f"vrange: {vrange}")
++    
++    # Step 5: Apply transformations that happen in _make_image
++    offset = .1
++    frac = .8
++    
++    # This is where the issue might be
++    print(f"\nBefore scaling:")
++    print(f"a_min: {a_min}")
++    print(f"a_max: {a_max}")
++    print(f"vrange: {vrange}")
++    
++    # Apply the scaling operations
++    A_scaled = A.copy().astype(scaled_dtype)
++    A_scaled -= a_min
++    vrange -= a_min
++    
++    print(f"After subtracting a_min:")
++    print(f"A_scaled min: {A_scaled.min()}")
++    print(f"A_scaled max: {A_scaled.max()}")
++    print(f"vrange: {vrange}")
++    
++    # Convert a_min and a_max to item for consistency
++    a_min = a_min.astype(scaled_dtype).item()
++    a_max = a_max.astype(scaled_dtype).item()
++    
++    print(f"After converting to item:")
++    print(f"a_min: {a_min}")
++    print(f"a_max: {a_max}")
++    
++    # Apply the scaling
++    if a_min != a_max:
++        A_scaled /= ((a_max - a_min) / frac)
++        vrange /= ((a_max - a_min) / frac)
++    
++    A_scaled += offset
++    vrange += offset
++    
++    print(f"After scaling:")
++    print(f"A_scaled min: {A_scaled.min()}")
++    print(f"A_scaled max: {A_scaled.max()}")
++    print(f"vrange: {vrange}")
++    
++    # Now resample (this is where the issue likely occurs)
++    # For simplicity, let's just create a resampled version
++    A_resampled = A_scaled.copy()
++    
++    # Un-scale
++    A_resampled -= offset
++    vrange -= offset
++    
++    print(f"After un-scaling:")
++    print(f"A_resampled min: {A_resampled.min()}")
++    print(f"A_resampled max: {A_resampled.max()}")
++    print(f"vrange: {vrange}")
++    
++    # Apply final scaling
++    if a_min != a_max:
++        A_resampled *= ((a_max - a_min) / frac)
++        vrange *= ((a_max - a_min) / frac)
++    
++    A_resampled += a_min
++    vrange += a_min
++    
++    print(f"After final scaling:")
++    print(f"A_resampled min: {A_resampled.min()}")
++    print(f"A_resampled max: {A_resampled.max()}")
++    print(f"vrange: {vrange}")
++    
++    # Now create the masked array
++    out_mask = np.zeros_like(A_resampled, dtype=bool)  # Simplified
++    resampled_masked = np.ma.masked_array(A_resampled, out_mask)
++    
++    print(f"\nresampled_masked min: {resampled_masked.min()}")
++    print(f"resampled_masked max: {resampled_masked.max()}")
++    
++    # Now try to call the norm with the s_vmin, s_vmax from vrange
++    s_vmin, s_vmax = vrange
++    print(f"\nUsing s_vmin: {s_vmin}, s_vmax: {s_vmax}")
++    
++    # Apply the LogNorm fix that happens in _make_image
++    if isinstance(im.norm, colors.LogNorm):
++        if s_vmin < 0:
++            s_vmin = max(s_vmin, np.finfo(scaled_dtype).eps)
++        print(f"After LogNorm fix: s_vmin = {s_vmin}")
++    
++    # Now try to call the norm
++    print(f"About to call norm with vmin={s_vmin}, vmax={s_vmax}")
++    try:
++        with mpl.cbook._setattr_cm(im.norm, vmin=s_vmin, vmax=s_vmax):
++            result = im.norm(resampled_masked)
++        print("Norm call succeeded!")
++        print(f"Result shape: {result.shape}")
++        print(f"Result min: {result.min()}")
++        print(f"Result max: {result.max()}")
++    except Exception as e:
++        print(f"Error in norm call: {e}")
++        traceback.print_exc()
++        
++        # Let's also test the transform directly
++        print("\nTesting transform directly:")
++        try:
++            t_vmin, t_vmax = im.norm._trf.transform([s_vmin, s_vmax])
++            print(f"Transformed vmin: {t_vmin}")
++            print(f"Transformed vmax: {t_vmax}")
++            print(f"Are they finite? {np.isfinite([t_vmin, t_vmax]).all()}")
++        except Exception as e2:
++            print(f"Error in transform: {e2}")
++            traceback.print_exc()
++
++if __name__ == "__main__":
++    print("Detailed debugging of huge range log issue...")
++    debug_detailed()
+\ No newline at end of file
+diff --git a/debug_issue.py b/debug_issue.py
+new file mode 100644
+index 000000000..d3f0129ed
+--- /dev/null
++++ b/debug_issue.py
+@@ -0,0 +1,57 @@
++#!/usr/bin/env python3
++
++import numpy as np
++import matplotlib as mpl
++import matplotlib.pyplot as plt
++from matplotlib import colors, image as mimage
++import traceback
++
++def debug_lognorm_issue():
++    """Debug the LogNorm issue in detail"""
++    print("Creating test data...")
++    data = np.full((5, 5), -1, dtype=np.float64)
++    data[0:2, :] = 1E20
++    
++    print("Data shape:", data.shape)
++    print("Data values:", data)
++    print("Data min:", data.min())
++    print("Data max:", data.max())
++    
++    # Create a LogNorm with specific vmin and vmax
++    norm = colors.LogNorm(vmin=100, vmax=1E20)
++    print(f"LogNorm vmin: {norm.vmin}")
++    print(f"LogNorm vmax: {norm.vmax}")
++    
++    # Let's see what happens when we call transform on these values
++    print("\nTesting transform on vmin and vmax...")
++    try:
++        t_vmin, t_vmax = norm._trf.transform([norm.vmin, norm.vmax])
++        print(f"Transformed vmin: {t_vmin}")
++        print(f"Transformed vmax: {t_vmax}")
++        print(f"Are they finite? {np.isfinite([t_vmin, t_vmax]).all()}")
++    except Exception as e:
++        print(f"Error in transform: {e}")
++        traceback.print_exc()
++    
++    # Now let's try to call the norm on some data
++    print("\nTesting norm call...")
++    try:
++        # Create a masked array similar to what happens in _make_image
++        test_data = np.ma.masked_array(data, mask=np.zeros_like(data, dtype=bool))
++        print("Test data shape:", test_data.shape)
++        print("Test data min:", test_data.min())
++        print("Test data max:", test_data.max())
++        
++        result = norm(test_data)
++        print("Norm call successful")
++        print("Result shape:", result.shape)
++        print("Result min:", result.min())
++        print("Result max:", result.max())
++        
++    except Exception as e:
++        print(f"Error in norm call: {e}")
++        traceback.print_exc()
++
++if __name__ == "__main__":
++    print("Debugging huge range log issue...")
++    debug_lognorm_issue()
+\ No newline at end of file
+diff --git a/debug_real_case.py b/debug_real_case.py
+new file mode 100644
+index 000000000..61d530d8b
+--- /dev/null
++++ b/debug_real_case.py
+@@ -0,0 +1,126 @@
++#!/usr/bin/env python3
++
++import numpy as np
++import matplotlib as mpl
++import matplotlib.pyplot as plt
++from matplotlib import colors, image as mimage
++import traceback
++
++def debug_real_case():
++    """Debug the real case that's happening in the test"""
++    print("Creating exact test data...")
++    # This is the exact data from the test
++    data = np.full((5, 5), -1, dtype=np.float64)
++    data[0:2, :] = 1E20
++    
++    print("Data shape:", data.shape)
++    print("Data values:")
++    print(data)
++    print("Data min:", data.min())
++    print("Data max:", data.max())
++    
++    # Let's see what happens when we call the image drawing code
++    # We'll manually step through the _make_image logic
++    
++    # Create a figure and axis
++    fig, ax = plt.subplots()
++    
++    # Create the image with LogNorm (exact same as test)
++    im = ax.imshow(data, norm=colors.LogNorm(vmin=100, vmax=data.max()),
++                   interpolation='nearest', cmap='viridis')
++    
++    print(f"\nImage norm vmin: {im.norm.vmin}")
++    print(f"Image norm vmax: {im.norm.vmax}")
++    
++    # Now let's see what happens when we call make_image
++    # This is a simplified version of what happens in make_image
++    
++    # The key is that the data gets resampled, and during resampling
++    # the values can change, which can lead to the issue
++    
++    # Let's simulate what happens in the resampling process
++    # by looking at the actual data that gets passed to the norm
++    
++    # The problem might be in the resampling process itself
++    # Let's see what happens when we manually create a resampled version
++    
++    # Simulate the resampling process
++    # For now, let's just see what the actual values are that get passed to norm
++    
++    # Let's trace through the exact error path
++    # The error happens in _make_image when it calls:
++    # output = self.norm(resampled_masked)
++    
++    # Let's see what happens when we create a masked array with the data
++    # and then call norm on it
++    
++    # Create a masked array like in _make_image
++    # The key is that the data gets resampled, and the resampled data
++    # might have different properties
++    
++    # Let's see what happens with the actual data that gets passed to norm
++    # by looking at the exact values that would be in resampled_masked
++    
++    # The problem is that during resampling, the values can become 0 or very small
++    # Let's simulate what might happen
++    
++    # Let's create a scenario where we get 0 values in the resampled data
++    # This is likely what's happening in the actual resampling
++    
++    # Simulate the issue: when resampling, we might get 0 values
++    # which when passed to LogNorm cause the issue
++    
++    print("\n--- Simulating the issue ---")
++    
++    # Create a masked array that might have 0 values
++    # This simulates what might happen during resampling
++    test_data = np.array([[1e+20, 1e+20, 1e+20, 1e+20, 1e+20],
++                          [1e+20, 1e+20, 1e+20, 1e+20, 1e+20],
++                          [-1.0, -1.0, -1.0, -1.0, -1.0],
++                          [-1.0, -1.0, -1.0, -1.0, -1.0],
++                          [-1.0, -1.0, -1.0, -1.0, -1.0]])
++    
++    # Simulate what happens during resampling - let's say some values become 0
++    # This is a hypothetical case that might happen during resampling
++    resampled_data = test_data.copy()
++    # Let's say during resampling, some values become 0
++    resampled_data[0, 0] = 0.0  # This is what causes the issue
++    
++    print("Simulated resampled data with 0:")
++    print(resampled_data)
++    
++    # Create masked array
++    out_mask = np.zeros_like(resampled_data, dtype=bool)
++    resampled_masked = np.ma.masked_array(resampled_data, out_mask)
++    
++    print(f"resampled_masked min: {resampled_masked.min()}")
++    print(f"resampled_masked max: {resampled_masked.max()}")
++    
++    # Now try to call norm with the same vmin/vmax as in the test
++    norm = colors.LogNorm(vmin=100, vmax=1E20)
++    
++    print(f"Calling norm with vmin={norm.vmin}, vmax={norm.vmax}")
++    try:
++        result = norm(resampled_masked)
++        print("Norm call succeeded!")
++        print(f"Result shape: {result.shape}")
++        print(f"Result min: {result.min()}")
++        print(f"Result max: {result.max()}")
++    except Exception as e:
++        print(f"Error in norm call: {e}")
++        traceback.print_exc()
++        
++        # Let's also test what happens with the transform directly
++        print("\nTesting transform directly:")
++        try:
++            t_vmin, t_vmax = norm._trf.transform([norm.vmin, norm.vmax])
++            print(f"Transformed vmin: {t_vmin}")
++            print(f"Transformed vmax: {t_vmax}")
++            print(f"Are they finite? {np.isfinite([t_vmin, t_vmax]).all()}")
++        except Exception as e2:
++            print(f"Error in transform: {e2}")
++            traceback.print_exc()
++
++if __name__ == "__main__":
++    print("Debugging real case...")
++    debug_real_case()
+\ No newline at end of file
+diff --git a/debug_trace.py b/debug_trace.py
+new file mode 100644
+index 000000000..f637375ac
+--- /dev/null
++++ b/debug_trace.py
+@@ -0,0 +1,111 @@
++#!/usr/bin/env python3
++
++import numpy as np
++
++def trace_scaling():
++    """Trace the exact scaling logic"""
++    # Simulate the exact scenario
++    a_min = 1e+20
++    a_max = 1e+20
++    vmin = 100.0
++    vmax = 1e+20
++    scaled_dtype = np.float64
++    offset = .1
++    frac = .8
++    
++    print(f"Initial values:")
++    print(f"a_min: {a_min}")
++    print(f"a_max: {a_max}")
++    print(f"vmin: {vmin}")
++    print(f"vmax: {vmax}")
++    
++    # Create vrange
++    vrange = np.array([vmin, vmax], dtype=scaled_dtype)
++    print(f"vrange: {vrange}")
++    
++    # Subtract a_min
++    vrange -= a_min
++    print(f"After vrange -= a_min: {vrange}")
++    
++    # Convert a_min and a_max to item
++    a_min = float(a_min)
++    a_max = float(a_max)
++    print(f"After converting to item:")
++    print(f"a_min: {a_min}")
++    print(f"a_max: {a_max}")
++    
++    # Apply scaling (this won't happen since a_min == a_max)
++    print(f"a_min != a_max: {a_min != a_max}")
++    
++    # Add offset
++    vrange += offset
++    print(f"After vrange += offset: {vrange}")
++    
++    # Un-scale (subtract offset)
++    vrange -= offset
++    print(f"After vrange -= offset: {vrange}")
++    
++    # Apply final scaling (this won't happen since a_min == a_max)
++    print(f"a_min != a_max: {a_min != a_max}")
++    
++    # Add a_min back
++    vrange += a_min
++    print(f"After vrange += a_min: {vrange}")
++    
++    print(f"Final vrange: {vrange}")
++    
++    # Now let's see what happens with the actual data
++    print("\n--- Testing with actual data ---")
++    data = np.full((5, 5), -1, dtype=np.float64)
++    data[0:2, :] = 1E20
++    
++    print(f"Data min: {data.min()}")
++    print(f"Data max: {data.max()}")
++    
++    # The issue is that when we have a mix of values like this:
++    # -1.0 and 1e+20, the a_min becomes -1.0 and a_max becomes 1e+20
++    # But in the case where all values are the same (1e+20), 
++    # a_min = a_max = 1e+20
++    
++    # Let's simulate what happens when we have a case where all values are the same
++    same_data = np.full((5, 5), 1e+20, dtype=np.float64)
++    print(f"Same data min: {same_data.min()}")
++    print(f"Same data max: {same_data.max()}")
++    
++    a_min = same_data.min()
++    a_max = same_data.max()
++    print(f"a_min: {a_min}")
++    print(f"a_max: {a_max}")
++    
++    # Create vrange
++    vrange = np.array([vmin, vmax], dtype=scaled_dtype)
++    print(f"vrange: {vrange}")
++    
++    # Subtract a_min
++    vrange -= a_min
++    print(f"After vrange -= a_min: {vrange}")
++    
++    # Convert to item
++    a_min = float(a_min)
++    a_max = float(a_max)
++    print(f"After converting to item:")
++    print(f"a_min: {a_min}")
++    print(f"a_max: {a_max}")
++    
++    # Apply scaling (this won't happen since a_min == a_max)
++    print(f"a_min != a_max: {a_min != a_max}")
++    
++    # Add offset
++    vrange += offset
++    print(f"After vrange += offset: {vrange}")
++    
++    # Un-scale (subtract offset)
++    vrange -= offset
++    print(f"After vrange -= offset: {vrange}")
++    
++    # Add a_min back
++    vrange += a_min
++    print(f"After vrange += a_min: {vrange}")
++
++if __name__ == "__main__":
++    trace_scaling()
+\ No newline at end of file
+diff --git a/edge_case_tests.py b/edge_case_tests.py
+new file mode 100644
+index 000000000..084461842
+--- /dev/null
++++ b/edge_case_tests.py
+@@ -0,0 +1,100 @@
++#!/usr/bin/env python3
++
++import numpy as np
++import matplotlib as mpl
++import matplotlib.pyplot as plt
++from matplotlib import colors, image as mimage
++import traceback
++
++def test_edge_cases():
++    """Test edge cases for the LogNorm fix"""
++    
++    print("Testing edge cases for LogNorm fix...")
++    
++    # Test 1: Original failing case
++    print("\n1. Testing original failing case...")
++    data = np.full((5, 5), -1, dtype=np.float64)
++    data[0:2, :] = 1E20
++    
++    try:
++        fig, ax = plt.subplots()
++        im = ax.imshow(data, norm=colors.LogNorm(vmin=100, vmax=data.max()),
++                       interpolation='nearest', cmap='viridis')
++        fig.canvas.draw()
++        plt.close(fig)
++        print("   ✓ Original case passed")
++    except Exception as e:
++        print(f"   ✗ Original case failed: {e}")
++        return False
++    
++    # Test 2: All same values (the case that caused the issue)
++    print("\n2. Testing all same values case...")
++    data = np.full((5, 5), 1E20, dtype=np.float64)
++    
++    try:
++        fig, ax = plt.subplots()
++        im = ax.imshow(data, norm=colors.LogNorm(vmin=100, vmax=1E20),
++                       interpolation='nearest', cmap='viridis')
++        fig.canvas.draw()
++        plt.close(fig)
++        print("   ✓ All same values case passed")
++    except Exception as e:
++        print(f"   ✗ All same values case failed: {e}")
++        return False
++    
++    # Test 3: Very small values
++    print("\n3. Testing very small values...")
++    data = np.full((5, 5), 1E-20, dtype=np.float64)
++    
++    try:
++        fig, ax = plt.subplots()
++        im = ax.imshow(data, norm=colors.LogNorm(vmin=1E-19, vmax=1E-18),
++                       interpolation='nearest', cmap='viridis')
++        fig.canvas.draw()
++        plt.close(fig)
++        print("   ✓ Very small values case passed")
++    except Exception as e:
++        print(f"   ✗ Very small values case failed: {e}")
++        return False
++    
++    # Test 4: Mix of positive and negative (but positive values only used for LogNorm)
++    print("\n4. Testing mix of positive/negative values...")
++    data = np.full((5, 5), -1, dtype=np.float64)
++    data[0:2, :] = 1E10
++    
++    try:
++        fig, ax = plt.subplots()
++        im = ax.imshow(data, norm=colors.LogNorm(vmin=100, vmax=1E10),
++                       interpolation='nearest', cmap='viridis')
++        fig.canvas.draw()
++        plt.close(fig)
++        print("   ✓ Mix of positive/negative values case passed")
++    except Exception as e:
++        print(f"   ✗ Mix of positive/negative values case failed: {e}")
++        return False
++    
++    # Test 5: Zero values (should be masked by LogNorm anyway)
++    print("\n5. Testing zero values...")
++    data = np.full((5, 5), 0.0, dtype=np.float64)
++    data[0, 0] = 1E10  # Make one value non-zero
++    
++    try:
++        fig, ax = plt.subplots()
++        im = ax.imshow(data, norm=colors.LogNorm(vmin=100, vmax=1E10),
++                       interpolation='nearest', cmap='viridis')
++        fig.canvas.draw()
++        plt.close(fig)
++        print("   ✓ Zero values case passed")
++    except Exception as e:
++        print(f"   ✗ Zero values case failed: {e}")
++        return False
++    
++    print("\n✓ All edge cases passed!")
++    return True
++
++if __name__ == "__main__":
++    success = test_edge_cases()
++    if success:
++        print("\nAll edge case tests passed!")
++    else:
++        print("\nSome edge case tests failed!")
+\ No newline at end of file
+diff --git a/lib/matplotlib/image.py b/lib/matplotlib/image.py
+index 95bb42d75..8722a442e 100644
+--- a/lib/matplotlib/image.py
++++ b/lib/matplotlib/image.py
+@@ -533,8 +533,8 @@ class _ImageBase(martist.Artist, cm.ScalarMappable):
+                 # that may have moved input values in/out of range
+                 s_vmin, s_vmax = vrange
+                 if isinstance(self.norm, mcolors.LogNorm):
+-                    if s_vmin < 0:
+-                        s_vmin = max(s_vmin, np.finfo(scaled_dtype).eps)
++                    if s_vmin <= 0:
++                        s_vmin = np.finfo(scaled_dtype).eps
+                 with cbook._setattr_cm(self.norm,
+                                        vmin=s_vmin,
+                                        vmax=s_vmax,
+diff --git a/reproduce_exact.py b/reproduce_exact.py
+new file mode 100644
+index 000000000..a620ec650
+--- /dev/null
++++ b/reproduce_exact.py
+@@ -0,0 +1,168 @@
++#!/usr/bin/env python3
++
++import numpy as np
++import matplotlib as mpl
++import matplotlib.pyplot as plt
++from matplotlib import colors, image as mimage
++import traceback
++
++def reproduce_exact():
++    """Reproduce the exact test case"""
++    print("Creating exact test data...")
++    # This is the exact data from the test
++    data = np.full((5, 5), -1, dtype=np.float64)
++    data[0:2, :] = 1E20
++    
++    print("Data shape:", data.shape)
++    print("Data values:")
++    print(data)
++    print("Data min:", data.min())
++    print("Data max:", data.max())
++    
++    # Create a figure and axis
++    fig, ax = plt.subplots()
++    
++    # Create the image with LogNorm (exact same as test)
++    im = ax.imshow(data, norm=colors.LogNorm(vmin=100, vmax=data.max()),
++                   interpolation='nearest', cmap='viridis')
++    
++    print(f"\nImage norm vmin: {im.norm.vmin}")
++    print(f"Image norm vmax: {im.norm.vmax}")
++    
++    # Now let's manually trace through the exact _make_image logic
++    # This is a simplified version of what happens in _make_image
++    
++    # Step 1: Get the data
++    A = im._A
++    print(f"\nA shape: {A.shape}")
++    print(f"A min: {A.min()}")
++    print(f"A max: {A.max()}")
++    
++    # Step 2: Get a_min and a_max (this is where the issue might be)
++    a_min = A.min()
++    a_max = A.max()
++    print(f"a_min: {a_min}")
++    print(f"a_max: {a_max}")
++    
++    # Step 3: Get vmin, vmax from norm
++    vmin, vmax = im.norm.vmin, im.norm.vmax
++    print(f"norm vmin: {vmin}")
++    print(f"norm vmax: {vmax}")
++    
++    # Step 4: Create vrange
++    scaled_dtype = np.float64  # This is what's used in the code
++    vrange = np.array([vmin, vmax], dtype=scaled_dtype)
++    print(f"vrange: {vrange}")
++    
++    # Step 5: Apply the exact transformations from _make_image
++    offset = .1
++    frac = .8
++    
++    print(f"\n--- Applying transformations ---")
++    print(f"Before: a_min={a_min}, a_max={a_max}")
++    print(f"Before: vrange={vrange}")
++    
++    # This is the key part - the transformations
++    A_scaled = A.copy().astype(scaled_dtype)
++    print(f"A_scaled shape: {A_scaled.shape}")
++    
++    # Subtract a_min from A_scaled
++    A_scaled -= a_min
++    print(f"After A_scaled -= a_min: min={A_scaled.min()}, max={A_scaled.max()}")
++    
++    # Subtract a_min from vrange
++    vrange -= a_min
++    print(f"After vrange -= a_min: {vrange}")
++    
++    # Convert a_min and a_max to item for consistency
++    a_min = a_min.astype(scaled_dtype).item()
++    a_max = a_max.astype(scaled_dtype).item()
++    print(f"After converting to item: a_min={a_min}, a_max={a_max}")
++    
++    # Apply scaling operations
++    print(f"a_min != a_max: {a_min != a_max}")
++    if a_min != a_max:
++        print("Applying scaling...")
++        A_scaled /= ((a_max - a_min) / frac)
++        vrange /= ((a_max - a_min) / frac)
++    else:
++        print("Skipping scaling (a_min == a_max)")
++    
++    print(f"After scaling (if applied): A_scaled min={A_scaled.min()}, max={A_scaled.max()}")
++    print(f"After scaling (if applied): vrange={vrange}")
++    
++    # Add offset
++    A_scaled += offset
++    vrange += offset
++    print(f"After adding offset: A_scaled min={A_scaled.min()}, max={A_scaled.max()}")
++    print(f"After adding offset: vrange={vrange}")
++    
++    # Resample (simplified)
++    A_resampled = A_scaled.copy()
++    
++    # Un-scale
++    A_resampled -= offset
++    vrange -= offset
++    print(f"After un-scaling: A_resampled min={A_resampled.min()}, max={A_resampled.max()}")
++    print(f"After un-scaling: vrange={vrange}")
++    
++    # Apply final scaling
++    if a_min != a_max:
++        A_resampled *= ((a_max - a_min) / frac)
++        vrange *= ((a_max - a_min) / frac)
++    else:
++        print("Skipping final scaling (a_min == a_max)")
++    
++    print(f"After final scaling (if applied): A_resampled min={A_resampled.min()}, max={A_resampled.max()}")
++    print(f"After final scaling (if applied): vrange={vrange}")
++    
++    # Add a_min back
++    A_resampled += a_min
++    vrange += a_min
++    print(f"After adding a_min back: A_resampled min={A_resampled.min()}, max={A_resampled.max()}")
++    print(f"After adding a_min back: vrange={vrange}")
++    
++    # Now create the masked array
++    out_mask = np.zeros_like(A_resampled, dtype=bool)  # Simplified
++    resampled_masked = np.ma.masked_array(A_resampled, out_mask)
++    
++    print(f"\nresampled_masked min: {resampled_masked.min()}")
++    print(f"resampled_masked max: {resampled_masked.max()}")
++    
++    # Now try to call the norm with the s_vmin, s_vmax from vrange
++    s_vmin, s_vmax = vrange
++    print(f"\nUsing s_vmin: {s_vmin}, s_vmax: {s_vmax}")
++    
++    # Apply the LogNorm fix that happens in _make_image
++    if isinstance(im.norm, colors.LogNorm):
++        if s_vmin < 0:
++            s_vmin = max(s_vmin, np.finfo(scaled_dtype).eps)
++        print(f"After LogNorm fix: s_vmin = {s_vmin}")
++    
++    # Now try to call the norm
++    print(f"About to call norm with vmin={s_vmin}, vmax={s_vmax}")
++    try:
++        with mpl.cbook._setattr_cm(im.norm, vmin=s_vmin, vmax=s_vmax):
++            result = im.norm(resampled_masked)
++        print("Norm call succeeded!")
++        print(f"Result shape: {result.shape}")
++        print(f"Result min: {result.min()}")
++        print(f"Result max: {result.max()}")
++    except Exception as e:
++        print(f"Error in norm call: {e}")
++        traceback.print_exc()
++        
++        # Let's also test the transform directly
++        print("\nTesting transform directly:")
++        try:
++            t_vmin, t_vmax = im.norm._trf.transform([s_vmin, s_vmax])
++            print(f"Transformed vmin: {t_vmin}")
++            print(f"Transformed vmax: {t_vmax}")
++            print(f"Are they finite? {np.isfinite([t_vmin, t_vmax]).all()}")
++        except Exception as e2:
++            print(f"Error in transform: {e2}")
++            traceback.print_exc()
++
++if __name__ == "__main__":
++    print("Reproducing exact test case...")
++    reproduce_exact()
+\ No newline at end of file
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 000000000..057e6a62c
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,51 @@
++#!/usr/bin/env python3
++
++import numpy as np
++import matplotlib as mpl
++import matplotlib.pyplot as plt
++from matplotlib import colors, image as mimage
++import traceback
++
++def test_huge_range_log():
++    """Reproduce the failing test case"""
++    print("Creating test data...")
++    data = np.full((5, 5), -1, dtype=np.float64)
++    data[0:2, :] = 1E20
++    
++    print("Data shape:", data.shape)
++    print("Data values:", data)
++    print("Data min:", data.min())
++    print("Data max:", data.max())
++    
++    # Create a figure and axis
++    fig, ax = plt.subplots()
++    
++    # Try to create the image with LogNorm
++    print("Creating image with LogNorm...")
++    try:
++        im = ax.imshow(data, norm=colors.LogNorm(vmin=100, vmax=data.max()),
++                       interpolation='nearest', cmap='viridis')
++        print("Image created successfully")
++        
++        # Try to draw it
++        print("Attempting to draw...")
++        fig.canvas.draw()
++        print("Draw successful")
++        
++    except Exception as e:
++        print("Error occurred:")
++        print(f"Exception type: {type(e).__name__}")
++        print(f"Exception message: {e}")
++        traceback.print_exc()
++        return False
++    
++    plt.close(fig)
++    return True
++
++if __name__ == "__main__":
++    print("Testing huge range log issue...")
++    success = test_huge_range_log()
++    if success:
++        print("Test passed!")
++    else:
++        print("Test failed!")
+\ No newline at end of file

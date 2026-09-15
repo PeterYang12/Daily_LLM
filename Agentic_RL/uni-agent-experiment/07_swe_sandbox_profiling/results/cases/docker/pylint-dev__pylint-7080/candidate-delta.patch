@@ -1,0 +1,1947 @@
+diff --git a/debug_detailed.py b/debug_detailed.py
+new file mode 100644
+index 00000000..d61227c6
+--- /dev/null
++++ b/debug_detailed.py
+@@ -0,0 +1,103 @@
++#!/usr/bin/env python3
++
++"""Detailed debug script to trace the exact execution path."""
++
++import os
++import tempfile
++import shutil
++import sys
++
++# Add the pylint directory to the path so we can import it
++sys.path.insert(0, '/testbed')
++
++# Create a temporary directory structure
++test_dir = tempfile.mkdtemp(prefix="pylint_debug_detailed_")
++print(f"Test directory: {test_dir}")
++
++# Create the source directory structure
++src_dir = os.path.join(test_dir, "src")
++gen_dir = os.path.join(src_dir, "gen")
++os.makedirs(gen_dir, exist_ok=True)
++
++# Create a pyproject.toml file with ignore-paths configuration
++pyproject_content = '''[tool.pylint.MASTER]
++ignore-paths = [
++  # Auto generated
++  "^src/gen/.*$",
++]
++'''
++
++pyproject_path = os.path.join(test_dir, "pyproject.toml")
++with open(pyproject_path, "w") as f:
++    f.write(pyproject_content)
++
++# Create some test Python files
++src_files = [
++    os.path.join(src_dir, "main.py"),
++    os.path.join(gen_dir, "about.py"),
++    os.path.join(gen_dir, "design.py"),
++]
++
++# Create main.py
++with open(src_files[0], "w") as f:
++    f.write("# Main file\nprint('Hello world')\n")
++
++# Create auto-generated files
++with open(src_files[1], "w") as f:
++    f.write("# Auto-generated file\n# Empty comment\nx = 1\n")
++
++with open(src_files[2], "w") as f:
++    f.write("# Auto-generated file\n# Empty comment\ny = 2\n")
++
++print("Created test files:")
++for f in src_files:
++    print(f"  {f}")
++
++# Now let's manually trace what happens in the _discover_files method
++from pylint.lint.expand_modules import _is_ignored_file
++import re
++
++# Simulate what happens in _discover_files
++print("\n=== Simulating _discover_files behavior ===")
++
++# Get the ignore patterns from config (this is what we'd get from self.config.ignore_paths)
++ignore_paths_patterns = [re.compile("^src/gen/.*$")]
++print(f"Ignore patterns: {ignore_paths_patterns}")
++
++# Walk through the directory structure
++print(f"\nWalking directory: {src_dir}")
++for root, dirs, files in os.walk(src_dir):
++    print(f"Root: {root}")
++    print(f"  Dirs: {dirs}")
++    print(f"  Files: {files}")
++    
++    # This is what happens in _discover_files line 600-605
++    is_root_ignored = _is_ignored_file(
++        root,
++        [],  # self.config.ignore
++        [],  # self.config.ignore_patterns
++        ignore_paths_patterns  # self.config.ignore_paths
++    )
++    print(f"  Root {root} ignored: {is_root_ignored}")
++    
++    # If root is ignored, skip it
++    if is_root_ignored:
++        print(f"  Skipping subtree {root}")
++        continue
++    
++    # Process files in this directory
++    for file in files:
++        if file.endswith('.py'):
++            full_path = os.path.join(root, file)
++            print(f"  Processing file: {full_path}")
++            is_file_ignored = _is_ignored_file(
++                full_path,
++                [],  # self.config.ignore
++                [],  # self.config.ignore_patterns
++                ignore_paths_patterns  # self.config.ignore_paths
++            )
++            print(f"    File {full_path} ignored: {is_file_ignored}")
++
++# Clean up
++shutil.rmtree(test_dir)
++print(f"\nCleaned up test directory: {test_dir}")
+\ No newline at end of file
+diff --git a/debug_fix.py b/debug_fix.py
+new file mode 100644
+index 00000000..ea7ac072
+--- /dev/null
++++ b/debug_fix.py
+@@ -0,0 +1,110 @@
++#!/usr/bin/env python3
++
++"""Debug the fix to understand what's happening."""
++
++import os
++import tempfile
++import shutil
++import sys
++
++# Add the pylint directory to the path so we can import it
++sys.path.insert(0, '/testbed')
++
++# Create a temporary directory structure
++test_dir = tempfile.mkdtemp(prefix="pylint_debug_fix_")
++print(f"Test directory: {test_dir}")
++
++# Create the source directory structure
++src_dir = os.path.join(test_dir, "src")
++gen_dir = os.path.join(src_dir, "gen")
++os.makedirs(gen_dir, exist_ok=True)
++
++# Create a pyproject.toml file with ignore-paths configuration
++pyproject_content = '''[tool.pylint.MASTER]
++ignore-paths = [
++  # Auto generated
++  "^src/gen/.*$",
++]
++'''
++
++pyproject_path = os.path.join(test_dir, "pyproject.toml")
++with open(pyproject_path, "w") as f:
++    f.write(pyproject_content)
++
++# Create some test Python files
++src_files = [
++    os.path.join(src_dir, "main.py"),
++    os.path.join(gen_dir, "about.py"),
++    os.path.join(gen_dir, "design.py"),
++]
++
++# Create main.py
++with open(src_files[0], "w") as f:
++    f.write("# Main file\nprint('Hello world')\n")
++
++# Create auto-generated files
++with open(src_files[1], "w") as f:
++    f.write("# Auto-generated file\n# Empty comment\nx = 1\n")
++
++with open(src_files[2], "w") as f:
++    f.write("# Auto-generated file\n# Empty comment\ny = 2\n")
++
++print("Created test files:")
++for f in src_files:
++    print(f"  {f}")
++
++# Let's manually test what happens in our fixed _discover_files
++from pylint.lint.expand_modules import _is_ignored_file
++import re
++
++# Simulate what happens in _discover_files with our fix
++print("\n=== Simulating fixed _discover_files behavior ===")
++
++# Get the ignore patterns from config (this is what we'd get from self.config.ignore_paths)
++ignore_paths_patterns = [re.compile("^src/gen/.*$")]
++print(f"Ignore patterns: {ignore_paths_patterns}")
++
++# Walk through the directory structure
++print(f"\nWalking directory: {src_dir}")
++print(f"Current working directory: {os.getcwd()}")
++
++for root, dirs, files in os.walk(src_dir):
++    print(f"Root: {root}")
++    print(f"  Dirs: {dirs}")
++    print(f"  Files: {files}")
++    
++    # This is what happens in our fixed _discover_files line 600-608
++    rel_root = os.path.relpath(root, os.getcwd())
++    print(f"  Relative root: {rel_root}")
++    
++    is_root_ignored = _is_ignored_file(
++        rel_root,
++        [],  # self.config.ignore
++        [],  # self.config.ignore_patterns
++        ignore_paths_patterns  # self.config.ignore_paths
++    )
++    print(f"  Relative root {rel_root} ignored: {is_root_ignored}")
++    
++    # If root is ignored, skip it
++    if is_root_ignored:
++        print(f"  Skipping subtree {root}")
++        continue
++    
++    # Process files in this directory
++    for file in files:
++        if file.endswith('.py'):
++            full_path = os.path.join(root, file)
++            print(f"  Processing file: {full_path}")
++            # For files, we also need to check if they should be ignored
++            rel_file = os.path.relpath(full_path, os.getcwd())
++            is_file_ignored = _is_ignored_file(
++                rel_file,
++                [],  # self.config.ignore
++                [],  # self.config.ignore_patterns
++                ignore_paths_patterns  # self.config.ignore_paths
++            )
++            print(f"    File {rel_file} ignored: {is_file_ignored}")
++
++# Clean up
++shutil.rmtree(test_dir)
++print(f"\nCleaned up test directory: {test_dir}")
+\ No newline at end of file
+diff --git a/debug_issue.py b/debug_issue.py
+new file mode 100644
+index 00000000..8758101c
+--- /dev/null
++++ b/debug_issue.py
+@@ -0,0 +1,85 @@
++#!/usr/bin/env python3
++
++"""Debug script to understand how ignore paths work."""
++
++import os
++import tempfile
++import shutil
++from pathlib import Path
++
++# Create a temporary directory structure
++test_dir = tempfile.mkdtemp(prefix="pylint_debug_")
++print(f"Test directory: {test_dir}")
++
++# Create the source directory structure
++src_dir = os.path.join(test_dir, "src")
++gen_dir = os.path.join(src_dir, "gen")
++os.makedirs(gen_dir, exist_ok=True)
++
++# Create a pyproject.toml file with ignore-paths configuration
++pyproject_content = '''[tool.pylint.MASTER]
++ignore-paths = [
++  # Auto generated
++  "^src/gen/.*$",
++]
++'''
++
++pyproject_path = os.path.join(test_dir, "pyproject.toml")
++with open(pyproject_path, "w") as f:
++    f.write(pyproject_content)
++
++# Create some test Python files
++src_files = [
++    os.path.join(src_dir, "main.py"),
++    os.path.join(gen_dir, "about.py"),
++    os.path.join(gen_dir, "design.py"),
++]
++
++# Create main.py
++with open(src_files[0], "w") as f:
++    f.write("# Main file\nprint('Hello world')\n")
++
++# Create auto-generated files
++with open(src_files[1], "w") as f:
++    f.write("# Auto-generated file\n# Empty comment\nx = 1\n")
++
++with open(src_files[2], "w") as f:
++    f.write("# Auto-generated file\n# Empty comment\ny = 2\n")
++
++print("Created test files:")
++for f in src_files:
++    print(f"  {f}")
++
++# Let's manually test the _is_ignored_file function
++from pylint.lint.expand_modules import _is_ignored_file
++import re
++
++# Test the ignore pattern
++ignore_paths_re = [re.compile("^src/gen/.*$")]
++print(f"\nIgnore patterns: {ignore_paths_re}")
++
++# Test with the actual paths
++for f in src_files:
++    is_ignored = _is_ignored_file(
++        f, 
++        [],  # ignore_list
++        [],  # ignore_list_re
++        ignore_paths_re  # ignore_list_paths_re
++    )
++    print(f"File {f}: ignored = {is_ignored}")
++
++# Test with paths relative to test_dir
++print("\nTesting relative paths:")
++for f in src_files:
++    rel_path = os.path.relpath(f, test_dir)
++    is_ignored = _is_ignored_file(
++        rel_path, 
++        [],  # ignore_list
++        [],  # ignore_list_re
++        ignore_paths_re  # ignore_list_paths_re
++    )
++    print(f"Relative path {rel_path}: ignored = {is_ignored}")
++
++# Clean up
++shutil.rmtree(test_dir)
++print(f"\nCleaned up test directory: {test_dir}")
+\ No newline at end of file
+diff --git a/debug_paths.py b/debug_paths.py
+new file mode 100644
+index 00000000..d407d1dc
+--- /dev/null
++++ b/debug_paths.py
+@@ -0,0 +1,94 @@
++#!/usr/bin/env python3
++
++"""Debug what paths should be used for ignore checking."""
++
++import os
++import tempfile
++import shutil
++import sys
++
++# Create a temporary directory structure
++test_dir = tempfile.mkdtemp(prefix="pylint_paths_test_")
++print(f"Test directory: {test_dir}")
++
++# Change to the test directory to simulate the command being run from there
++original_cwd = os.getcwd()
++os.chdir(test_dir)
++
++try:
++    # Create the source directory structure
++    src_dir = os.path.join(test_dir, "src")
++    gen_dir = os.path.join(src_dir, "gen")
++    os.makedirs(gen_dir, exist_ok=True)
++
++    # Create some test Python files
++    src_files = [
++        os.path.join(src_dir, "main.py"),
++        os.path.join(gen_dir, "about.py"),
++        os.path.join(gen_dir, "design.py"),
++    ]
++
++    # Create main.py
++    with open(src_files[0], "w") as f:
++        f.write("# Main file\nprint('Hello world')\n")
++
++    # Create auto-generated files
++    with open(src_files[1], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\nx = 1\n")
++
++    with open(src_files[2], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\ny = 2\n")
++
++    print("Created test files:")
++    for f in src_files:
++        print(f"  {f}")
++
++    # Simulate what happens when we run `pylint --recursive=y src/`
++    # This means we're walking from the current directory (test_dir) 
++    # and looking for files in src/
++    print(f"\nCurrent working directory: {os.getcwd()}")
++    print(f"src_dir: {src_dir}")
++    
++    # Walk through the directory structure
++    print("\nWalking from current directory:")
++    for root, dirs, files in os.walk("."):
++        print(f"Root: {root}")
++        print(f"  Dirs: {dirs}")
++        print(f"  Files: {files}")
++        
++        # What should be the relative path for ignore checking?
++        # If we're in test_dir and walking src/, the relative paths should be:
++        # src/ -> src
++        # src/gen/ -> src/gen
++        # src/gen/about.py -> src/gen/about.py
++        
++        # But the ignore pattern is "^src/gen/.*$"
++        # So we want to check if the relative path matches this pattern
++        
++        # Let's compute the relative path from the current directory
++        rel_path = os.path.relpath(root, ".")
++        print(f"  Relative path from .: {rel_path}")
++        
++        # For the ignore pattern to work, we should check if this relative path matches
++        # the pattern "^src/gen/.*$"
++        import re
++        pattern = re.compile("^src/gen/.*$")
++        matches = pattern.match(rel_path)
++        print(f"  Matches ignore pattern: {bool(matches)}")
++        
++        # For files, we also need to check them
++        for file in files:
++            if file.endswith('.py'):
++                full_path = os.path.join(root, file)
++                rel_file = os.path.relpath(full_path, ".")
++                print(f"    File: {full_path}")
++                print(f"    Relative file: {rel_file}")
++                matches_file = pattern.match(rel_file)
++                print(f"    File matches ignore pattern: {bool(matches_file)}")
++
++finally:
++    # Change back to original directory
++    os.chdir(original_cwd)
++    # Clean up
++    shutil.rmtree(test_dir)
++    print(f"\nCleaned up test directory: {test_dir}")
+\ No newline at end of file
+diff --git a/debug_pattern_matching.py b/debug_pattern_matching.py
+new file mode 100644
+index 00000000..f491dc82
+--- /dev/null
++++ b/debug_pattern_matching.py
+@@ -0,0 +1,84 @@
++#!/usr/bin/env python3
++
++"""Debug the pattern matching directly."""
++
++import os
++import tempfile
++import shutil
++import sys
++
++# Add the pylint directory to the path so we can import it
++sys.path.insert(0, '/testbed')
++
++# Create a temporary directory structure
++test_dir = tempfile.mkdtemp(prefix="pylint_debug_pattern_")
++print(f"Test directory: {test_dir}")
++
++# Change to the test directory to simulate the command being run from there
++original_cwd = os.getcwd()
++os.chdir(test_dir)
++
++try:
++    # Create the source directory structure
++    src_dir = os.path.join(test_dir, "src")
++    gen_dir = os.path.join(src_dir, "gen")
++    os.makedirs(gen_dir, exist_ok=True)
++
++    # Create some test Python files
++    src_files = [
++        os.path.join(src_dir, "main.py"),
++        os.path.join(gen_dir, "about.py"),
++        os.path.join(gen_dir, "design.py"),
++    ]
++
++    # Create main.py
++    with open(src_files[0], "w") as f:
++        f.write("# Main file\nprint('Hello world')\n")
++
++    # Create auto-generated files
++    with open(src_files[1], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\nx = 1\n")
++
++    with open(src_files[2], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\ny = 2\n")
++
++    print("Created test files:")
++    for f in src_files:
++        print(f"  {f}")
++
++    # Test the pattern matching directly
++    import re
++    
++    # Test the user's pattern
++    pattern = re.compile("^src/gen/.*$")
++    print(f"Pattern: {pattern.pattern}")
++    
++    # Test with different paths
++    test_paths = [
++        "src",
++        "src/gen", 
++        "src/gen/about.py",
++        "/tmp/pylint_debug_pattern_*/src/gen/about.py"  # This won't match
++    ]
++    
++    for path in test_paths:
++        matches = pattern.match(path)
++        print(f"Pattern matches '{path}': {bool(matches)}")
++        
++    # Test with the actual relative paths that would be generated
++    print(f"\nActual relative paths from current directory:")
++    for root, dirs, files in os.walk(src_dir):
++        try:
++            rel_root = os.path.relpath(root, os.getcwd())
++            print(f"  {root} -> {rel_root}")
++            matches = pattern.match(rel_root)
++            print(f"    Pattern matches: {bool(matches)}")
++        except Exception as e:
++            print(f"    Error: {e}")
++
++finally:
++    # Change back to original directory
++    os.chdir(original_cwd)
++    # Clean up
++    shutil.rmtree(test_dir)
++    print(f"\nCleaned up test directory: {test_dir}")
+\ No newline at end of file
+diff --git a/debug_real_execution.py b/debug_real_execution.py
+new file mode 100644
+index 00000000..b1555782
+--- /dev/null
++++ b/debug_real_execution.py
+@@ -0,0 +1,164 @@
++#!/usr/bin/env python3
++
++"""Debug the actual execution path by adding debug prints."""
++
++import os
++import tempfile
++import shutil
++import sys
++
++# Add the pylint directory to the path so we can import it
++sys.path.insert(0, '/testbed')
++
++# Monkey patch to add debug prints
++original_discover_files = None
++
++def debug_discover_files(self, files_or_modules):
++    print(f"DEBUG: _discover_files called with files_or_modules: {files_or_modules}")
++    for something in files_or_modules:
++        print(f"DEBUG: Processing something: {something}")
++        if os.path.isdir(something) and not os.path.isfile(
++            os.path.join(something, "__init__.py")
++        ):
++            print(f"DEBUG: Walking directory: {something}")
++            skip_subtrees: list[str] = []
++            for root, _, files in os.walk(something):
++                print(f"DEBUG: Walking root: {root}")
++                if any(root.startswith(s) for s in skip_subtrees):
++                    # Skip subtree of already discovered package.
++                    print(f"DEBUG: Skipping subtree {root}")
++                    continue
++
++                # Convert absolute path to relative path for ignore checking
++                # This ensures ignore_paths patterns work correctly
++                # The relative path should be relative to the current working directory
++                try:
++                    rel_root = os.path.relpath(root, os.getcwd())
++                    print(f"DEBUG: Root {root} -> relative {rel_root}")
++                except ValueError:
++                    # If something goes wrong with relpath, fall back to using the root
++                    rel_root = root
++                    print(f"DEBUG: Root {root} -> relative fallback {rel_root}")
++                
++                # Import here to avoid circular imports
++                from pylint.lint.expand_modules import _is_ignored_file
++                is_root_ignored = _is_ignored_file(
++                    rel_root,
++                    self.config.ignore,
++                    self.config.ignore_patterns,
++                    self.config.ignore_paths,
++                )
++                print(f"DEBUG: Root {rel_root} ignored: {is_root_ignored}")
++                
++                if is_root_ignored:
++                    skip_subtrees.append(root)
++                    print(f"DEBUG: Skipping root {root}")
++                    continue
++
++                if "__init__.py" in files:
++                    skip_subtrees.append(root)
++                    print(f"DEBUG: Yielding root {root}")
++                    yield root
++                else:
++                    print(f"DEBUG: Yielding files from {root}")
++                    yield from (
++                        os.path.join(root, file)
++                        for file in files
++                        if file.endswith(".py")
++                    )
++        else:
++            print(f"DEBUG: Yielding something directly: {something}")
++            yield something
++
++# Create a temporary directory structure
++test_dir = tempfile.mkdtemp(prefix="pylint_debug_real_")
++print(f"Test directory: {test_dir}")
++
++# Change to the test directory to simulate the command being run from there
++original_cwd = os.getcwd()
++os.chdir(test_dir)
++
++try:
++    # Create the source directory structure
++    src_dir = os.path.join(test_dir, "src")
++    gen_dir = os.path.join(src_dir, "gen")
++    os.makedirs(gen_dir, exist_ok=True)
++
++    # Create a pyproject.toml file with ignore-paths configuration
++    pyproject_content = '''[tool.pylint.MASTER]
++ignore-paths = [
++  # Auto generated
++  "^src/gen/.*$",
++]
++'''
++
++    pyproject_path = os.path.join(test_dir, "pyproject.toml")
++    with open(pyproject_path, "w") as f:
++        f.write(pyproject_content)
++
++    # Create some test Python files
++    src_files = [
++        os.path.join(src_dir, "main.py"),
++        os.path.join(gen_dir, "about.py"),
++        os.path.join(gen_dir, "design.py"),
++    ]
++
++    # Create main.py
++    with open(src_files[0], "w") as f:
++        f.write("# Main file\nprint('Hello world')\n")
++
++    # Create auto-generated files
++    with open(src_files[1], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\nx = 1\n")
++
++    with open(src_files[2], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\ny = 2\n")
++
++    print("Created test files:")
++    for f in src_files:
++        print(f"  {f}")
++
++    # Monkey patch the method
++    from pylint.lint.pylinter import PyLinter
++    original_discover_files = PyLinter._discover_files
++    PyLinter._discover_files = debug_discover_files
++
++    # Now let's test the actual pylint behavior by running it directly
++    import subprocess
++
++    print("\n=== Running pylint with --recursive=y ===")
++    try:
++        result = subprocess.run([
++            sys.executable, "-m", "pylint", 
++            "--recursive=y", 
++            "--verbose",
++            src_dir
++        ], capture_output=True, text=True, timeout=30)
++        
++        print("Return code:", result.returncode)
++        print("STDOUT:")
++        print(result.stdout)
++        if result.stderr:
++            print("STDERR:")
++            print(result.stderr)
++            
++        # Check if gen files were checked
++        if "src/gen/about.py" in result.stdout or "src/gen/design.py" in result.stdout:
++            print("\nISSUE STILL EXISTS: gen files were checked despite ignore-paths configuration!")
++        else:
++            print("\nFIXED: gen files were properly ignored.")
++            
++    except subprocess.TimeoutExpired:
++        print("Command timed out")
++    except Exception as e:
++        print(f"Error running pylint: {e}")
++
++finally:
++    # Restore original method
++    if original_discover_files:
++        PyLinter._discover_files = original_discover_files
++    # Change back to original directory
++    os.chdir(original_cwd)
++    # Clean up
++    shutil.rmtree(test_dir)
++    print(f"\nCleaned up test directory: {test_dir}")
+\ No newline at end of file
+diff --git a/pylint/lint/pylinter.py b/pylint/lint/pylinter.py
+index e2bbf061..85270c22 100755
+--- a/pylint/lint/pylinter.py
++++ b/pylint/lint/pylinter.py
+@@ -597,8 +597,19 @@ class PyLinter(
+                         # Skip subtree of already discovered package.
+                         continue
+ 
++                    # For ignore checking, we need to make sure we're using the right path format
++                    # The ignore_paths patterns are meant to match against paths relative to 
++                    # the current working directory, but os.walk gives us absolute paths.
++                    # We'll make the path relative to the current working directory
++                    # for ignore checking purposes.
++                    try:
++                        ignore_path = os.path.relpath(root, os.getcwd())
++                    except (ValueError, OSError):
++                        # If that fails, keep the absolute path
++                        ignore_path = root
++                    
+                     if _is_ignored_file(
+-                        root,
++                        ignore_path,
+                         self.config.ignore,
+                         self.config.ignore_patterns,
+                         self.config.ignore_paths,
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 00000000..be89d349
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,85 @@
++#!/usr/bin/env python3
++
++"""Script to reproduce the issue where --recursive=y ignores ignore-paths."""
++
++import os
++import tempfile
++import shutil
++from pathlib import Path
++
++# Create a temporary directory structure
++test_dir = tempfile.mkdtemp(prefix="pylint_test_")
++print(f"Test directory: {test_dir}")
++
++# Create the source directory structure
++src_dir = os.path.join(test_dir, "src")
++gen_dir = os.path.join(src_dir, "gen")
++os.makedirs(gen_dir, exist_ok=True)
++
++# Create a pyproject.toml file with ignore-paths configuration
++pyproject_content = '''[tool.pylint.MASTER]
++ignore-paths = [
++  # Auto generated
++  "^src/gen/.*$",
++]
++'''
++
++pyproject_path = os.path.join(test_dir, "pyproject.toml")
++with open(pyproject_path, "w") as f:
++    f.write(pyproject_content)
++
++# Create some test Python files
++src_files = [
++    os.path.join(src_dir, "main.py"),
++    os.path.join(gen_dir, "about.py"),
++    os.path.join(gen_dir, "design.py"),
++]
++
++# Create main.py
++with open(src_files[0], "w") as f:
++    f.write("# Main file\nprint('Hello world')\n")
++
++# Create auto-generated files
++with open(src_files[1], "w") as f:
++    f.write("# Auto-generated file\n# Empty comment\nx = 1\n")
++
++with open(src_files[2], "w") as f:
++    f.write("# Auto-generated file\n# Empty comment\ny = 2\n")
++
++print("Created test files:")
++for f in src_files:
++    print(f"  {f}")
++
++# Now let's run pylint with --recursive=y and see if ignore-paths is respected
++import subprocess
++import sys
++
++print("\nRunning pylint with --recursive=y...")
++try:
++    result = subprocess.run([
++        sys.executable, "-m", "pylint", 
++        "--recursive=y", 
++        "--verbose",
++        src_dir
++    ], cwd=test_dir, capture_output=True, text=True, timeout=30)
++    
++    print("Return code:", result.returncode)
++    print("STDOUT:")
++    print(result.stdout)
++    print("STDERR:")
++    print(result.stderr)
++    
++    # Check if gen files were checked
++    if "src/gen/about.py" in result.stdout or "src/gen/design.py" in result.stdout:
++        print("\nISSUE REPRODUCED: gen files were checked despite ignore-paths configuration!")
++    else:
++        print("\nNo issue found: gen files were properly ignored.")
++        
++except subprocess.TimeoutExpired:
++    print("Command timed out")
++except Exception as e:
++    print(f"Error running pylint: {e}")
++
++# Clean up
++shutil.rmtree(test_dir)
++print(f"\nCleaned up test directory: {test_dir}")
+\ No newline at end of file
+diff --git a/test_config_loading.py b/test_config_loading.py
+new file mode 100644
+index 00000000..48b94fc2
+--- /dev/null
++++ b/test_config_loading.py
+@@ -0,0 +1,89 @@
++#!/usr/bin/env python3
++
++"""Test to see if ignore_paths are loaded correctly."""
++
++import os
++import tempfile
++import shutil
++import sys
++
++# Add the pylint directory to the path so we can import it
++sys.path.insert(0, '/testbed')
++
++# Create a temporary directory structure
++test_dir = tempfile.mkdtemp(prefix="pylint_config_test_")
++print(f"Test directory: {test_dir}")
++
++# Change to the test directory to simulate the command being run from there
++original_cwd = os.getcwd()
++os.chdir(test_dir)
++
++try:
++    # Create the source directory structure
++    src_dir = os.path.join(test_dir, "src")
++    gen_dir = os.path.join(src_dir, "gen")
++    os.makedirs(gen_dir, exist_ok=True)
++
++    # Create a pyproject.toml file with ignore-paths configuration
++    pyproject_content = '''[tool.pylint.MASTER]
++ignore-paths = [
++  # Auto generated
++  "^src/gen/.*$",
++]
++'''
++
++    pyproject_path = os.path.join(test_dir, "pyproject.toml")
++    with open(pyproject_path, "w") as f:
++        f.write(pyproject_content)
++
++    # Create some test Python files
++    src_files = [
++        os.path.join(src_dir, "main.py"),
++        os.path.join(gen_dir, "about.py"),
++        os.path.join(gen_dir, "design.py"),
++    ]
++
++    # Create main.py
++    with open(src_files[0], "w") as f:
++        f.write("# Main file\nprint('Hello world')\n")
++
++    # Create auto-generated files
++    with open(src_files[1], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\nx = 1\n")
++
++    with open(src_files[2], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\ny = 2\n")
++
++    print("Created test files:")
++    for f in src_files:
++        print(f"  {f}")
++
++    # Test loading config directly
++    from pylint.lint import PyLinter
++    linter = PyLinter()
++    
++    # Try to load the config file
++    try:
++        linter.read_config_file(pyproject_path)
++        print(f"ignore_paths after loading config: {linter.config.ignore_paths}")
++        
++        # Test if the patterns are compiled correctly
++        import re
++        for pattern in linter.config.ignore_paths:
++            print(f"Pattern: {pattern.pattern}")
++            # Test if it matches a relative path
++            test_path = "src/gen/about.py"
++            matches = pattern.match(test_path)
++            print(f"  Matches {test_path}: {bool(matches)}")
++            
++    except Exception as e:
++        print(f"Error loading config: {e}")
++        import traceback
++        traceback.print_exc()
++
++finally:
++    # Change back to original directory
++    os.chdir(original_cwd)
++    # Clean up
++    shutil.rmtree(test_dir)
++    print(f"\nCleaned up test directory: {test_dir}")
+\ No newline at end of file
+diff --git a/test_config_loading2.py b/test_config_loading2.py
+new file mode 100644
+index 00000000..2ee5fac2
+--- /dev/null
++++ b/test_config_loading2.py
+@@ -0,0 +1,86 @@
++#!/usr/bin/env python3
++
++"""Test to see if ignore_paths are loaded correctly with .pylintrc."""
++
++import os
++import tempfile
++import shutil
++import sys
++
++# Add the pylint directory to the path so we can import it
++sys.path.insert(0, '/testbed')
++
++# Create a temporary directory structure
++test_dir = tempfile.mkdtemp(prefix="pylint_config_test2_")
++print(f"Test directory: {test_dir}")
++
++# Change to the test directory to simulate the command being run from there
++original_cwd = os.getcwd()
++os.chdir(test_dir)
++
++try:
++    # Create the source directory structure
++    src_dir = os.path.join(test_dir, "src")
++    gen_dir = os.path.join(src_dir, "gen")
++    os.makedirs(gen_dir, exist_ok=True)
++
++    # Create a .pylintrc file with ignore-paths configuration
++    pylintrc_content = '''[MASTER]
++ignore-paths = ^src/gen/.*$
++'''
++
++    pylintrc_path = os.path.join(test_dir, ".pylintrc")
++    with open(pylintrc_path, "w") as f:
++        f.write(pylintrc_content)
++
++    # Create some test Python files
++    src_files = [
++        os.path.join(src_dir, "main.py"),
++        os.path.join(gen_dir, "about.py"),
++        os.path.join(gen_dir, "design.py"),
++    ]
++
++    # Create main.py
++    with open(src_files[0], "w") as f:
++        f.write("# Main file\nprint('Hello world')\n")
++
++    # Create auto-generated files
++    with open(src_files[1], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\nx = 1\n")
++
++    with open(src_files[2], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\ny = 2\n")
++
++    print("Created test files:")
++    for f in src_files:
++        print(f"  {f}")
++
++    # Test loading config directly
++    from pylint.lint import PyLinter
++    linter = PyLinter()
++    
++    # Try to load the config file
++    try:
++        linter.read_config_file(pylintrc_path)
++        print(f"ignore_paths after loading config: {linter.config.ignore_paths}")
++        
++        # Test if the patterns are compiled correctly
++        import re
++        for pattern in linter.config.ignore_paths:
++            print(f"Pattern: {pattern.pattern}")
++            # Test if it matches a relative path
++            test_path = "src/gen/about.py"
++            matches = pattern.match(test_path)
++            print(f"  Matches {test_path}: {bool(matches)}")
++            
++    except Exception as e:
++        print(f"Error loading config: {e}")
++        import traceback
++        traceback.print_exc()
++
++finally:
++    # Change back to original directory
++    os.chdir(original_cwd)
++    # Clean up
++    shutil.rmtree(test_dir)
++    print(f"\nCleaned up test directory: {test_dir}")
+\ No newline at end of file
+diff --git a/test_debug_config.py b/test_debug_config.py
+new file mode 100644
+index 00000000..62285730
+--- /dev/null
++++ b/test_debug_config.py
+@@ -0,0 +1,97 @@
++#!/usr/bin/env python3
++
++"""Debug what's happening with config loading."""
++
++import os
++import tempfile
++import shutil
++import sys
++
++# Add the pylint directory to the path so we can import it
++sys.path.insert(0, '/testbed')
++
++# Create a temporary directory structure
++test_dir = tempfile.mkdtemp(prefix="pylint_debug_config_")
++print(f"Test directory: {test_dir}")
++
++# Change to the test directory to simulate the command being run from there
++original_cwd = os.getcwd()
++os.chdir(test_dir)
++
++try:
++    # Create the source directory structure
++    src_dir = os.path.join(test_dir, "src")
++    gen_dir = os.path.join(src_dir, "gen")
++    os.makedirs(gen_dir, exist_ok=True)
++
++    # Create a pyproject.toml file with ignore-paths configuration
++    pyproject_content = '''[tool.pylint.MASTER]
++ignore-paths = [
++  # Auto generated
++  "^src/gen/.*$",
++]
++'''
++
++    pyproject_path = os.path.join(test_dir, "pyproject.toml")
++    with open(pyproject_path, "w") as f:
++        f.write(pyproject_content)
++
++    # Create some test Python files
++    src_files = [
++        os.path.join(src_dir, "main.py"),
++        os.path.join(gen_dir, "about.py"),
++        os.path.join(gen_dir, "design.py"),
++    ]
++
++    # Create main.py
++    with open(src_files[0], "w") as f:
++        f.write("# Main file\nprint('Hello world')\n")
++
++    # Create auto-generated files
++    with open(src_files[1], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\nx = 1\n")
++
++    with open(src_files[2], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\ny = 2\n")
++
++    print("Created test files:")
++    for f in src_files:
++        print(f"  {f}")
++
++    # Test loading config directly
++    from pylint.lint import PyLinter
++    linter = PyLinter()
++    
++    # Try to load the config file
++    try:
++        print(f"Loading config from: {pyproject_path}")
++        linter.read_config_file(pyproject_path)
++        print(f"ignore_paths after loading config: {linter.config.ignore_paths}")
++        
++        # Test if the patterns are compiled correctly
++        import re
++        for i, pattern in enumerate(linter.config.ignore_paths):
++            print(f"Pattern {i}: {pattern.pattern}")
++            # Test if it matches a relative path
++            test_path = "src/gen/about.py"
++            matches = pattern.match(test_path)
++            print(f"  Matches {test_path}: {bool(matches)}")
++            
++        # Test with absolute path
++        test_abs_path = os.path.join(test_dir, "src", "gen", "about.py")
++        print(f"Absolute path: {test_abs_path}")
++        for i, pattern in enumerate(linter.config.ignore_paths):
++            matches = pattern.match(test_abs_path)
++            print(f"  Pattern {i} matches absolute path: {bool(matches)}")
++            
++    except Exception as e:
++        print(f"Error loading config: {e}")
++        import traceback
++        traceback.print_exc()
++
++finally:
++    # Change back to original directory
++    os.chdir(original_cwd)
++    # Clean up
++    shutil.rmtree(test_dir)
++    print(f"\nCleaned up test directory: {test_dir}")
+\ No newline at end of file
+diff --git a/test_direct_ignore.py b/test_direct_ignore.py
+new file mode 100644
+index 00000000..4ba304b8
+--- /dev/null
++++ b/test_direct_ignore.py
+@@ -0,0 +1,87 @@
++#!/usr/bin/env python3
++
++"""Test the ignore functionality directly."""
++
++import os
++import tempfile
++import shutil
++import sys
++
++# Add the pylint directory to the path so we can import it
++sys.path.insert(0, '/testbed')
++
++# Create a temporary directory structure
++test_dir = tempfile.mkdtemp(prefix="pylint_direct_test_")
++print(f"Test directory: {test_dir}")
++
++# Change to the test directory to simulate the command being run from there
++original_cwd = os.getcwd()
++os.chdir(test_dir)
++
++try:
++    # Create the source directory structure
++    src_dir = os.path.join(test_dir, "src")
++    gen_dir = os.path.join(src_dir, "gen")
++    os.makedirs(gen_dir, exist_ok=True)
++
++    # Create some test Python files
++    src_files = [
++        os.path.join(src_dir, "main.py"),
++        os.path.join(gen_dir, "about.py"),
++        os.path.join(gen_dir, "design.py"),
++    ]
++
++    # Create main.py
++    with open(src_files[0], "w") as f:
++        f.write("# Main file\nprint('Hello world')\n")
++
++    # Create auto-generated files
++    with open(src_files[1], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\nx = 1\n")
++
++    with open(src_files[2], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\ny = 2\n")
++
++    print("Created test files:")
++    for f in src_files:
++        print(f"  {f}")
++
++    # Test the _is_ignored_file function directly
++    from pylint.lint.expand_modules import _is_ignored_file
++    import re
++
++    # Test with a working ignore pattern that matches the full path
++    # This should work because it's matching the full path
++    ignore_paths_patterns = [re.compile(".*src/gen/.*")]
++    print(f"\nTesting with pattern: {ignore_paths_patterns[0].pattern}")
++    
++    for f in src_files:
++        is_ignored = _is_ignored_file(
++            f,  # absolute path
++            [],  # ignore_list
++            [],  # ignore_list_re
++            ignore_paths_patterns  # ignore_list_paths_re
++        )
++        print(f"File {f}: ignored = {is_ignored}")
++
++    # Test with the pattern from the user's config
++    ignore_paths_patterns = [re.compile("^src/gen/.*$")]
++    print(f"\nTesting with user pattern: {ignore_paths_patterns[0].pattern}")
++    
++    # Test with relative paths
++    for f in src_files:
++        rel_path = os.path.relpath(f, test_dir)
++        is_ignored = _is_ignored_file(
++            rel_path,  # relative path
++            [],  # ignore_list
++            [],  # ignore_list_re
++            ignore_paths_patterns  # ignore_list_paths_re
++        )
++        print(f"Relative path {rel_path}: ignored = {is_ignored}")
++
++finally:
++    # Change back to original directory
++    os.chdir(original_cwd)
++    # Clean up
++    shutil.rmtree(test_dir)
++    print(f"\nCleaned up test directory: {test_dir}")
+\ No newline at end of file
+diff --git a/test_direct_path_conversion.py b/test_direct_path_conversion.py
+new file mode 100644
+index 00000000..473699cb
+--- /dev/null
++++ b/test_direct_path_conversion.py
+@@ -0,0 +1,144 @@
++#!/usr/bin/env python3
++
++"""Direct test of the path conversion logic."""
++
++import os
++import tempfile
++import shutil
++import sys
++
++# Add the pylint directory to the path so we can import it
++sys.path.insert(0, '/testbed')
++
++# Create a temporary directory structure
++test_dir = tempfile.mkdtemp(prefix="pylint_direct_path_test_")
++print(f"Test directory: {test_dir}")
++
++# Change to the test directory to simulate the command being run from there
++original_cwd = os.getcwd()
++os.chdir(test_dir)
++
++try:
++    # Create the source directory structure
++    src_dir = os.path.join(test_dir, "src")
++    gen_dir = os.path.join(src_dir, "gen")
++    os.makedirs(gen_dir, exist_ok=True)
++
++    # Create some test Python files
++    src_files = [
++        os.path.join(src_dir, "main.py"),
++        os.path.join(gen_dir, "about.py"),
++        os.path.join(gen_dir, "design.py"),
++    ]
++
++    # Create main.py
++    with open(src_files[0], "w") as f:
++        f.write("# Main file\nprint('Hello world')\n")
++
++    # Create auto-generated files
++    with open(src_files[1], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\nx = 1\n")
++
++    with open(src_files[2], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\ny = 2\n")
++
++    print("Created test files:")
++    for f in src_files:
++        print(f"  {f}")
++
++    # Test the actual _discover_files method with our fix
++    # We'll monkey patch it to add debug prints
++    from pylint.lint.pylinter import PyLinter
++    original_discover_files = PyLinter._discover_files
++    
++    def debug_discover_files(self, files_or_modules):
++        print(f"DEBUG: _discover_files called with: {files_or_modules}")
++        for something in files_or_modules:
++            print(f"DEBUG: Processing something: {something}")
++            if os.path.isdir(something) and not os.path.isfile(
++                os.path.join(something, "__init__.py")
++            ):
++                print(f"DEBUG: Walking directory: {something}")
++                skip_subtrees: list[str] = []
++                for root, _, files in os.walk(something):
++                    print(f"DEBUG: Walking root: {root}")
++                    if any(root.startswith(s) for s in skip_subtrees):
++                        print(f"DEBUG: Skipping subtree {root}")
++                        continue
++
++                    # Our fix - convert to relative path for ignore checking
++                    try:
++                        ignore_path = os.path.relpath(root, os.getcwd())
++                        print(f"DEBUG: Converting {root} -> {ignore_path}")
++                    except (ValueError, OSError) as e:
++                        ignore_path = root
++                        print(f"DEBUG: Failed to convert, keeping {root}: {e}")
++                    
++                    # Import here to avoid circular imports
++                    from pylint.lint.expand_modules import _is_ignored_file
++                    is_root_ignored = _is_ignored_file(
++                        ignore_path,
++                        self.config.ignore,
++                        self.config.ignore_patterns,
++                        self.config.ignore_paths,
++                    )
++                    print(f"DEBUG: Root {ignore_path} ignored: {is_root_ignored}")
++                    
++                    if is_root_ignored:
++                        skip_subtrees.append(root)
++                        print(f"DEBUG: Skipping root {root}")
++                        continue
++
++                    if "__init__.py" in files:
++                        skip_subtrees.append(root)
++                        print(f"DEBUG: Yielding root {root}")
++                        yield root
++                    else:
++                        print(f"DEBUG: Yielding files from {root}")
++                        yield from (
++                            os.path.join(root, file)
++                            for file in files
++                            if file.endswith(".py")
++                        )
++            else:
++                print(f"DEBUG: Yielding something directly: {something}")
++                yield something
++
++    # Monkey patch the method
++    PyLinter._discover_files = debug_discover_files
++
++    # Now test with a simple ignore pattern that we know works
++    import re
++    linter = PyLinter()
++    linter.config.ignore_paths = [re.compile(".*gen/.*")]  # This should work
++    linter.config.ignore = []
++    linter.config.ignore_patterns = []
++    
++    print("\n=== Testing with working pattern (.*gen/.*) ===")
++    discovered_files = list(linter._discover_files([src_dir]))
++    print(f"Discovered files: {discovered_files}")
++    
++    # Test with the user's pattern
++    linter.config.ignore_paths = [re.compile("^src/gen/.*$")]  # This is the user's pattern
++    
++    print("\n=== Testing with user's pattern (^src/gen/.*) ===")
++    discovered_files = list(linter._discover_files([src_dir]))
++    print(f"Discovered files: {discovered_files}")
++    
++    # Check if gen files are in the discovered files
++    gen_files_discovered = [f for f in discovered_files if 'gen' in f]
++    print(f"Gen files discovered: {gen_files_discovered}")
++    
++    if gen_files_discovered:
++        print("ISSUE: Gen files were discovered (should be ignored)")
++    else:
++        print("SUCCESS: No gen files were discovered (they were properly ignored)")
++
++finally:
++    # Restore original method
++    PyLinter._discover_files = original_discover_files
++    # Change back to original directory
++    os.chdir(original_cwd)
++    # Clean up
++    shutil.rmtree(test_dir)
++    print(f"\nCleaned up test directory: {test_dir}")
+\ No newline at end of file
+diff --git a/test_exact_user_pattern.py b/test_exact_user_pattern.py
+new file mode 100644
+index 00000000..0f0af111
+--- /dev/null
++++ b/test_exact_user_pattern.py
+@@ -0,0 +1,122 @@
++#!/usr/bin/env python3
++
++"""Test with the exact user pattern to understand the issue."""
++
++import os
++import tempfile
++import shutil
++import sys
++
++# Add the pylint directory to the path so we can import it
++sys.path.insert(0, '/testbed')
++
++# Create a temporary directory structure
++test_dir = tempfile.mkdtemp(prefix="pylint_user_pattern_test_")
++print(f"Test directory: {test_dir}")
++
++# Change to the test directory to simulate the command being run from there
++original_cwd = os.getcwd()
++os.chdir(test_dir)
++
++try:
++    # Create the source directory structure
++    src_dir = os.path.join(test_dir, "src")
++    gen_dir = os.path.join(src_dir, "gen")
++    os.makedirs(gen_dir, exist_ok=True)
++
++    # Create a .pylintrc file with the exact pattern from the user
++    pylintrc_content = '''[MASTER]
++ignore-paths = ^src/gen/.*$
++'''
++
++    pylintrc_path = os.path.join(test_dir, ".pylintrc")
++    with open(pylintrc_path, "w") as f:
++        f.write(pylintrc_content)
++
++    # Create some test Python files
++    src_files = [
++        os.path.join(src_dir, "main.py"),
++        os.path.join(gen_dir, "about.py"),
++        os.path.join(gen_dir, "design.py"),
++    ]
++
++    # Create main.py
++    with open(src_files[0], "w") as f:
++        f.write("# Main file\nprint('Hello world')\n")
++
++    # Create auto-generated files
++    with open(src_files[1], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\nx = 1\n")
++
++    with open(src_files[2], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\ny = 2\n")
++
++    print("Created test files:")
++    for f in src_files:
++        print(f"  {f}")
++
++    # Test the _is_ignored_file function directly with the user's pattern
++    from pylint.lint.expand_modules import _is_ignored_file
++    import re
++
++    # Test with the user's exact pattern
++    ignore_paths_patterns = [re.compile("^src/gen/.*$")]
++    print(f"\nTesting with user pattern: {ignore_paths_patterns[0].pattern}")
++    
++    # Test with absolute paths (what _discover_files currently passes)
++    for f in src_files:
++        is_ignored = _is_ignored_file(
++            f,  # absolute path
++            [],  # ignore_list
++            [],  # ignore_list_re
++            ignore_paths_patterns  # ignore_list_paths_re
++        )
++        print(f"Absolute path {f}: ignored = {is_ignored}")
++
++    # Test with relative paths (what we want to pass)
++    for f in src_files:
++        rel_path = os.path.relpath(f, test_dir)
++        is_ignored = _is_ignored_file(
++            rel_path,  # relative path
++            [],  # ignore_list
++            [],  # ignore_list_re
++            ignore_paths_patterns  # ignore_list_paths_re
++        )
++        print(f"Relative path {rel_path}: ignored = {is_ignored}")
++
++    # Now let's test what happens when we run pylint
++    print("\n=== Running pylint with --recursive=y ===")
++    import subprocess
++
++    try:
++        result = subprocess.run([
++            sys.executable, "-m", "pylint", 
++            "--recursive=y", 
++            "--verbose",
++            src_dir
++        ], capture_output=True, text=True, timeout=30)
++        
++        print("Return code:", result.returncode)
++        print("STDOUT:")
++        print(result.stdout)
++        if result.stderr:
++            print("STDERR:")
++            print(result.stderr)
++            
++        # Check if gen files were checked
++        if "src/gen/about.py" in result.stdout or "src/gen/design.py" in result.stdout:
++            print("\nISSUE STILL EXISTS: gen files were checked despite ignore-paths configuration!")
++        else:
++            print("\nFIXED: gen files were properly ignored.")
++            
++    except subprocess.TimeoutExpired:
++        print("Command timed out")
++    except Exception as e:
++        print(f"Error running pylint: {e}")
++
++finally:
++    # Change back to original directory
++    os.chdir(original_cwd)
++    # Clean up
++    shutil.rmtree(test_dir)
++    print(f"\nCleaned up test directory: {test_dir}")
+\ No newline at end of file
+diff --git a/test_fix_direct.py b/test_fix_direct.py
+new file mode 100644
+index 00000000..caa0df5c
+--- /dev/null
++++ b/test_fix_direct.py
+@@ -0,0 +1,96 @@
++#!/usr/bin/env python3
++
++"""Test the fix directly by modifying the code and running it."""
++
++import os
++import tempfile
++import shutil
++import sys
++
++# Add the pylint directory to the path so we can import it
++sys.path.insert(0, '/testbed')
++
++# Create a temporary directory structure
++test_dir = tempfile.mkdtemp(prefix="pylint_fix_test_")
++print(f"Test directory: {test_dir}")
++
++# Change to the test directory to simulate the command being run from there
++original_cwd = os.getcwd()
++os.chdir(test_dir)
++
++try:
++    # Create the source directory structure
++    src_dir = os.path.join(test_dir, "src")
++    gen_dir = os.path.join(src_dir, "gen")
++    os.makedirs(gen_dir, exist_ok=True)
++
++    # Create a pyproject.toml file with ignore-paths configuration
++    pyproject_content = '''[tool.pylint.MASTER]
++ignore-paths = [
++  # Auto generated
++  "^src/gen/.*$",
++]
++'''
++
++    pyproject_path = os.path.join(test_dir, "pyproject.toml")
++    with open(pyproject_path, "w") as f:
++        f.write(pyproject_content)
++
++    # Create some test Python files
++    src_files = [
++        os.path.join(src_dir, "main.py"),
++        os.path.join(gen_dir, "about.py"),
++        os.path.join(gen_dir, "design.py"),
++    ]
++
++    # Create main.py
++    with open(src_files[0], "w") as f:
++        f.write("# Main file\nprint('Hello world')\n")
++
++    # Create auto-generated files
++    with open(src_files[1], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\nx = 1\n")
++
++    with open(src_files[2], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\ny = 2\n")
++
++    print("Created test files:")
++    for f in src_files:
++        print(f"  {f}")
++
++    # Now let's test the actual pylint behavior by running it directly
++    import subprocess
++
++    print("\n=== Running pylint with --recursive=y ===")
++    try:
++        result = subprocess.run([
++            sys.executable, "-m", "pylint", 
++            "--recursive=y", 
++            "--verbose",
++            src_dir
++        ], capture_output=True, text=True, timeout=30)
++        
++        print("Return code:", result.returncode)
++        print("STDOUT:")
++        print(result.stdout)
++        if result.stderr:
++            print("STDERR:")
++            print(result.stderr)
++            
++        # Check if gen files were checked
++        if "src/gen/about.py" in result.stdout or "src/gen/design.py" in result.stdout:
++            print("\nISSUE STILL EXISTS: gen files were checked despite ignore-paths configuration!")
++        else:
++            print("\nFIXED: gen files were properly ignored.")
++            
++    except subprocess.TimeoutExpired:
++        print("Command timed out")
++    except Exception as e:
++        print(f"Error running pylint: {e}")
++
++finally:
++    # Change back to original directory
++    os.chdir(original_cwd)
++    # Clean up
++    shutil.rmtree(test_dir)
++    print(f"\nCleaned up test directory: {test_dir}")
+\ No newline at end of file
+diff --git a/test_fix_validation.py b/test_fix_validation.py
+new file mode 100644
+index 00000000..6e73fdaf
+--- /dev/null
++++ b/test_fix_validation.py
+@@ -0,0 +1,139 @@
++#!/usr/bin/env python3
++
++"""Test that validates the fix works correctly."""
++
++import os
++import tempfile
++import shutil
++import sys
++
++# Add the pylint directory to the path so we can import it
++sys.path.insert(0, '/testbed')
++
++# Create a temporary directory structure
++test_dir = tempfile.mkdtemp(prefix="pylint_fix_validation_")
++print(f"Test directory: {test_dir}")
++
++# Change to the test directory to simulate the command being run from there
++original_cwd = os.getcwd()
++os.chdir(test_dir)
++
++try:
++    # Create the source directory structure
++    src_dir = os.path.join(test_dir, "src")
++    gen_dir = os.path.join(src_dir, "gen")
++    os.makedirs(gen_dir, exist_ok=True)
++
++    # Create a .pylintrc file with the exact pattern from the user
++    pylintrc_content = '''[MASTER]
++ignore-paths = ^src/gen/.*$
++'''
++
++    pylintrc_path = os.path.join(test_dir, ".pylintrc")
++    with open(pylintrc_path, "w") as f:
++        f.write(pylintrc_content)
++
++    # Create some test Python files
++    src_files = [
++        os.path.join(src_dir, "main.py"),
++        os.path.join(gen_dir, "about.py"),
++        os.path.join(gen_dir, "design.py"),
++    ]
++
++    # Create main.py
++    with open(src_files[0], "w") as f:
++        f.write("# Main file\nprint('Hello world')\n")
++
++    # Create auto-generated files
++    with open(src_files[1], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\nx = 1\n")
++
++    with open(src_files[2], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\ny = 2\n")
++
++    print("Created test files:")
++    for f in src_files:
++        print(f"  {f}")
++
++    # Test the _is_ignored_file function with the fix approach
++    from pylint.lint.expand_modules import _is_ignored_file
++    import re
++
++    # Simulate what happens in our fixed _discover_files method
++    print("\n=== Testing the fix approach ===")
++    
++    # Test with the user's pattern
++    ignore_paths_patterns = [re.compile("^src/gen/.*$")]
++    print(f"Using pattern: {ignore_paths_patterns[0].pattern}")
++    
++    # Simulate walking through the directory structure
++    for root, dirs, files in os.walk(src_dir):
++        print(f"\nWalking: {root}")
++        
++        # This is what our fix does - convert to relative path
++        try:
++            rel_root = os.path.relpath(root, os.getcwd())
++            print(f"  Relative path: {rel_root}")
++        except (ValueError, OSError) as e:
++            rel_root = root
++            print(f"  Relative path failed: {e}, using absolute: {rel_root}")
++        
++        # Check if this directory should be ignored
++        is_root_ignored = _is_ignored_file(
++            rel_root,
++            [],  # ignore_list
++            [],  # ignore_list_re
++            ignore_paths_patterns  # ignore_list_paths_re
++        )
++        print(f"  Root {rel_root} ignored: {is_root_ignored}")
++        
++        # Process files in this directory
++        for file in files:
++            if file.endswith('.py'):
++                full_path = os.path.join(root, file)
++                rel_file = os.path.relpath(full_path, os.getcwd())
++                print(f"  File: {rel_file}")
++                
++                # Check if this file should be ignored
++                is_file_ignored = _is_ignored_file(
++                    rel_file,
++                    [],  # ignore_list
++                    [],  # ignore_list_re
++                    ignore_paths_patterns  # ignore_list_paths_re
++                )
++                print(f"    File {rel_file} ignored: {is_file_ignored}")
++
++    # Now let's run a test that actually uses the fixed code path
++    # We'll create a simple test that directly calls _discover_files
++    print("\n=== Testing _discover_files directly ===")
++    from pylint.lint.pylinter import PyLinter
++    
++    # Create a linter instance and manually set up the config
++    linter = PyLinter()
++    
++    # Manually set the ignore paths (since config loading is broken in this test)
++    # This simulates what would happen with a working config
++    import re
++    linter.config.ignore_paths = [re.compile("^src/gen/.*$")]
++    linter.config.ignore = []
++    linter.config.ignore_patterns = []
++    
++    # Test _discover_files with our fix
++    discovered_files = list(linter._discover_files([src_dir]))
++    print(f"Discovered files: {discovered_files}")
++    
++    # Check if gen files are in the discovered files
++    gen_files_discovered = [f for f in discovered_files if 'gen' in f]
++    print(f"Gen files discovered: {gen_files_discovered}")
++    
++    if gen_files_discovered:
++        print("ISSUE: Gen files were discovered (should be ignored)")
++    else:
++        print("SUCCESS: No gen files were discovered (they were properly ignored)")
++
++finally:
++    # Change back to original directory
++    os.chdir(original_cwd)
++    # Clean up
++    shutil.rmtree(test_dir)
++    print(f"\nCleaned up test directory: {test_dir}")
+\ No newline at end of file
+diff --git a/test_with_config.py b/test_with_config.py
+new file mode 100644
+index 00000000..f6bde365
+--- /dev/null
++++ b/test_with_config.py
+@@ -0,0 +1,124 @@
++#!/usr/bin/env python3
++
++"""Test script to understand the issue with ignore-paths and recursive checking."""
++
++import os
++import tempfile
++import shutil
++import sys
++
++# Add the pylint directory to the path so we can import it
++sys.path.insert(0, '/testbed')
++
++# Create a temporary directory structure
++test_dir = tempfile.mkdtemp(prefix="pylint_config_test_")
++print(f"Test directory: {test_dir}")
++
++# Create the source directory structure
++src_dir = os.path.join(test_dir, "src")
++gen_dir = os.path.join(src_dir, "gen")
++os.makedirs(gen_dir, exist_ok=True)
++
++# Create a pyproject.toml file with ignore-paths configuration
++pyproject_content = '''[tool.pylint.MASTER]
++ignore-paths = [
++  # Auto generated
++  "^src/gen/.*$",
++]
++'''
++
++pyproject_path = os.path.join(test_dir, "pyproject.toml")
++with open(pyproject_path, "w") as f:
++    f.write(pyproject_content)
++
++# Create some test Python files
++src_files = [
++    os.path.join(src_dir, "main.py"),
++    os.path.join(gen_dir, "about.py"),
++    os.path.join(gen_dir, "design.py"),
++]
++
++# Create main.py
++with open(src_files[0], "w") as f:
++    f.write("# Main file\nprint('Hello world')\n")
++
++# Create auto-generated files
++with open(src_files[1], "w") as f:
++    f.write("# Auto-generated file\n# Empty comment\nx = 1\n")
++
++with open(src_files[2], "w") as f:
++    f.write("# Auto-generated file\n# Empty comment\ny = 2\n")
++
++print("Created test files:")
++for f in src_files:
++    print(f"  {f}")
++
++# Now let's test the actual pylint behavior by running it directly
++import subprocess
++
++print("\n=== Running pylint with --recursive=y ===")
++try:
++    result = subprocess.run([
++        sys.executable, "-m", "pylint", 
++        "--recursive=y", 
++        "--verbose",
++        src_dir
++    ], cwd=test_dir, capture_output=True, text=True, timeout=30)
++    
++    print("Return code:", result.returncode)
++    print("STDOUT:")
++    print(result.stdout)
++    if result.stderr:
++        print("STDERR:")
++        print(result.stderr)
++        
++    # Check if gen files were checked
++    if "src/gen/about.py" in result.stdout or "src/gen/design.py" in result.stdout:
++        print("\nISSUE CONFIRMED: gen files were checked despite ignore-paths configuration!")
++    else:
++        print("\nNo issue found: gen files were properly ignored.")
++        
++except subprocess.TimeoutExpired:
++    print("Command timed out")
++except Exception as e:
++    print(f"Error running pylint: {e}")
++
++# Let's also test with a .pylintrc file to see if that works
++print("\n=== Testing with .pylintrc file ===")
++pylintrc_content = '''[MASTER]
++ignore-paths = ^src/gen/.*$
++'''
++
++pylintrc_path = os.path.join(test_dir, ".pylintrc")
++with open(pylintrc_path, "w") as f:
++    f.write(pylintrc_content)
++
++try:
++    result = subprocess.run([
++        sys.executable, "-m", "pylint", 
++        "--recursive=y", 
++        "--verbose",
++        src_dir
++    ], cwd=test_dir, capture_output=True, text=True, timeout=30)
++    
++    print("Return code:", result.returncode)
++    print("STDOUT:")
++    print(result.stdout)
++    if result.stderr:
++        print("STDERR:")
++        print(result.stderr)
++        
++    # Check if gen files were checked
++    if "src/gen/about.py" in result.stdout or "src/gen/design.py" in result.stdout:
++        print("\nISSUE CONFIRMED with .pylintrc: gen files were checked despite ignore-paths configuration!")
++    else:
++        print("\nNo issue found with .pylintrc: gen files were properly ignored.")
++        
++except subprocess.TimeoutExpired:
++    print("Command timed out")
++except Exception as e:
++    print(f"Error running pylint with .pylintrc: {e}")
++
++# Clean up
++shutil.rmtree(test_dir)
++print(f"\nCleaned up test directory: {test_dir}")
+\ No newline at end of file
+diff --git a/test_with_simple_config.py b/test_with_simple_config.py
+new file mode 100644
+index 00000000..0ed98432
+--- /dev/null
++++ b/test_with_simple_config.py
+@@ -0,0 +1,94 @@
++#!/usr/bin/env python3
++
++"""Test with a simple working configuration."""
++
++import os
++import tempfile
++import shutil
++import sys
++
++# Add the pylint directory to the path so we can import it
++sys.path.insert(0, '/testbed')
++
++# Create a temporary directory structure
++test_dir = tempfile.mkdtemp(prefix="pylint_simple_test_")
++print(f"Test directory: {test_dir}")
++
++# Change to the test directory to simulate the command being run from there
++original_cwd = os.getcwd()
++os.chdir(test_dir)
++
++try:
++    # Create the source directory structure
++    src_dir = os.path.join(test_dir, "src")
++    gen_dir = os.path.join(src_dir, "gen")
++    os.makedirs(gen_dir, exist_ok=True)
++
++    # Create a .pylintrc file with a simple ignore pattern that should work
++    # We'll use a pattern that matches the full path structure
++    pylintrc_content = '''[MASTER]
++ignore-paths = .*gen/.*
++'''
++
++    pylintrc_path = os.path.join(test_dir, ".pylintrc")
++    with open(pylintrc_path, "w") as f:
++        f.write(pylintrc_content)
++
++    # Create some test Python files
++    src_files = [
++        os.path.join(src_dir, "main.py"),
++        os.path.join(gen_dir, "about.py"),
++        os.path.join(gen_dir, "design.py"),
++    ]
++
++    # Create main.py
++    with open(src_files[0], "w") as f:
++        f.write("# Main file\nprint('Hello world')\n")
++
++    # Create auto-generated files
++    with open(src_files[1], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\nx = 1\n")
++
++    with open(src_files[2], "w") as f:
++        f.write("# Auto-generated file\n# Empty comment\ny = 2\n")
++
++    print("Created test files:")
++    for f in src_files:
++        print(f"  {f}")
++
++    # Now let's test the actual pylint behavior by running it directly
++    import subprocess
++
++    print("\n=== Running pylint with --recursive=y ===")
++    try:
++        result = subprocess.run([
++            sys.executable, "-m", "pylint", 
++            "--recursive=y", 
++            "--verbose",
++            src_dir
++        ], capture_output=True, text=True, timeout=30)
++        
++        print("Return code:", result.returncode)
++        print("STDOUT:")
++        print(result.stdout)
++        if result.stderr:
++            print("STDERR:")
++            print(result.stderr)
++            
++        # Check if gen files were checked
++        if "src/gen/about.py" in result.stdout or "src/gen/design.py" in result.stdout:
++            print("\nISSUE STILL EXISTS: gen files were checked despite ignore-paths configuration!")
++        else:
++            print("\nFIXED: gen files were properly ignored.")
++            
++    except subprocess.TimeoutExpired:
++        print("Command timed out")
++    except Exception as e:
++        print(f"Error running pylint: {e}")
++
++finally:
++    # Change back to original directory
++    os.chdir(original_cwd)
++    # Clean up
++    shutil.rmtree(test_dir)
++    print(f"\nCleaned up test directory: {test_dir}")
+\ No newline at end of file

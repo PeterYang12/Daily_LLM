@@ -1,0 +1,221 @@
+{
+  "protocol": "16K identical warmed prefix, 256 forced output tokens; non-streaming with return_token_ids in both modes. Logprobs toggled only.",
+  "results": [
+    {
+      "backend": "eager",
+      "concurrency": 1,
+      "repeat": 0,
+      "logprobs": false,
+      "wall_s": 6.434652763884515,
+      "output_tokens_per_s": 39.78458658046626,
+      "mean_response_bytes": 75618
+    },
+    {
+      "backend": "eager",
+      "concurrency": 1,
+      "repeat": 0,
+      "logprobs": true,
+      "wall_s": 6.511630380060524,
+      "output_tokens_per_s": 39.31427078292189,
+      "mean_response_bytes": 91341
+    },
+    {
+      "backend": "aiter_graph",
+      "concurrency": 1,
+      "repeat": 0,
+      "logprobs": false,
+      "wall_s": 1.3999503669328988,
+      "output_tokens_per_s": 182.8636257732917,
+      "mean_response_bytes": 75571
+    },
+    {
+      "backend": "aiter_graph",
+      "concurrency": 1,
+      "repeat": 0,
+      "logprobs": true,
+      "wall_s": 1.46231988677755,
+      "output_tokens_per_s": 175.06429497046364,
+      "mean_response_bytes": 90776
+    },
+    {
+      "backend": "eager",
+      "concurrency": 4,
+      "repeat": 0,
+      "logprobs": false,
+      "wall_s": 6.825640223920345,
+      "output_tokens_per_s": 150.02255706525648,
+      "mean_response_bytes": 75626.5
+    },
+    {
+      "backend": "eager",
+      "concurrency": 4,
+      "repeat": 0,
+      "logprobs": true,
+      "wall_s": 6.824859065003693,
+      "output_tokens_per_s": 150.03972832945905,
+      "mean_response_bytes": 91148
+    },
+    {
+      "backend": "aiter_graph",
+      "concurrency": 4,
+      "repeat": 0,
+      "logprobs": false,
+      "wall_s": 1.8462592624127865,
+      "output_tokens_per_s": 554.6349967456814,
+      "mean_response_bytes": 75559.5
+    },
+    {
+      "backend": "aiter_graph",
+      "concurrency": 4,
+      "repeat": 0,
+      "logprobs": true,
+      "wall_s": 2.0916593349538743,
+      "output_tokens_per_s": 489.5634690065729,
+      "mean_response_bytes": 90691.75
+    },
+    {
+      "backend": "eager",
+      "concurrency": 1,
+      "repeat": 1,
+      "logprobs": true,
+      "wall_s": 6.509154326282442,
+      "output_tokens_per_s": 39.32922575922527,
+      "mean_response_bytes": 91252
+    },
+    {
+      "backend": "eager",
+      "concurrency": 1,
+      "repeat": 1,
+      "logprobs": false,
+      "wall_s": 6.443218715954572,
+      "output_tokens_per_s": 39.731694869537456,
+      "mean_response_bytes": 75585
+    },
+    {
+      "backend": "aiter_graph",
+      "concurrency": 1,
+      "repeat": 1,
+      "logprobs": true,
+      "wall_s": 1.464365877211094,
+      "output_tokens_per_s": 174.8196977162263,
+      "mean_response_bytes": 91637
+    },
+    {
+      "backend": "aiter_graph",
+      "concurrency": 1,
+      "repeat": 1,
+      "logprobs": false,
+      "wall_s": 1.4029602659866214,
+      "output_tokens_per_s": 182.47131170173938,
+      "mean_response_bytes": 75657
+    },
+    {
+      "backend": "eager",
+      "concurrency": 4,
+      "repeat": 1,
+      "logprobs": true,
+      "wall_s": 6.912413307931274,
+      "output_tokens_per_s": 148.13929005446863,
+      "mean_response_bytes": 91359
+    },
+    {
+      "backend": "eager",
+      "concurrency": 4,
+      "repeat": 1,
+      "logprobs": false,
+      "wall_s": 6.855148332659155,
+      "output_tokens_per_s": 149.37678228222728,
+      "mean_response_bytes": 75625
+    },
+    {
+      "backend": "aiter_graph",
+      "concurrency": 4,
+      "repeat": 1,
+      "logprobs": true,
+      "wall_s": 1.9370173709467053,
+      "output_tokens_per_s": 528.6478146035037,
+      "mean_response_bytes": 91280
+    },
+    {
+      "backend": "aiter_graph",
+      "concurrency": 4,
+      "repeat": 1,
+      "logprobs": false,
+      "wall_s": 1.9443552833981812,
+      "output_tokens_per_s": 526.6527206953343,
+      "mean_response_bytes": 75540.25
+    },
+    {
+      "backend": "eager",
+      "concurrency": 1,
+      "repeat": 2,
+      "logprobs": false,
+      "wall_s": 6.452389074955136,
+      "output_tokens_per_s": 39.67522680764257,
+      "mean_response_bytes": 75677
+    },
+    {
+      "backend": "eager",
+      "concurrency": 1,
+      "repeat": 2,
+      "logprobs": true,
+      "wall_s": 6.5277876611799,
+      "output_tokens_per_s": 39.216961900033354,
+      "mean_response_bytes": 91234
+    },
+    {
+      "backend": "aiter_graph",
+      "concurrency": 1,
+      "repeat": 2,
+      "logprobs": false,
+      "wall_s": 1.4002344971522689,
+      "output_tokens_per_s": 182.8265197869648,
+      "mean_response_bytes": 75599
+    },
+    {
+      "backend": "aiter_graph",
+      "concurrency": 1,
+      "repeat": 2,
+      "logprobs": true,
+      "wall_s": 1.4604821861721575,
+      "output_tokens_per_s": 175.28457548048686,
+      "mean_response_bytes": 91413
+    },
+    {
+      "backend": "eager",
+      "concurrency": 4,
+      "repeat": 2,
+      "logprobs": false,
+      "wall_s": 6.844256357755512,
+      "output_tokens_per_s": 149.61450104651075,
+      "mean_response_bytes": 75654.25
+    },
+    {
+      "backend": "eager",
+      "concurrency": 4,
+      "repeat": 2,
+      "logprobs": true,
+      "wall_s": 6.905788443982601,
+      "output_tokens_per_s": 148.28140310209884,
+      "mean_response_bytes": 91183.5
+    },
+    {
+      "backend": "aiter_graph",
+      "concurrency": 4,
+      "repeat": 2,
+      "logprobs": false,
+      "wall_s": 2.0037601366639137,
+      "output_tokens_per_s": 511.03921136232947,
+      "mean_response_bytes": 75630
+    },
+    {
+      "backend": "aiter_graph",
+      "concurrency": 4,
+      "repeat": 2,
+      "logprobs": true,
+      "wall_s": 1.9521108348853886,
+      "output_tokens_per_s": 524.5603793086475,
+      "mean_response_bytes": 90937
+    }
+  ]
+}

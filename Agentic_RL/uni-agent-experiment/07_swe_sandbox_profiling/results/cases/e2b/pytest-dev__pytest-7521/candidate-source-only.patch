@@ -1,0 +1,433 @@
+diff --git a/debug_capture.py b/debug_capture.py
+new file mode 100644
+index 000000000..8635f58c4
+--- /dev/null
++++ b/debug_capture.py
+@@ -0,0 +1,88 @@
++#!/usr/bin/env python3
++
++import sys
++import os
++from io import BytesIO
++from _pytest.capture import FDCapture, SysCapture, MultiCapture
++
++def test_with_sys_capture():
++    print("Testing SysCapture behavior...")
++    
++    # Create a SysCapture for stdout
++    cap = SysCapture(1)  # stdout
++    cap.start()
++    
++    # Print with carriage return
++    print('Greetings from DOS', end='\r')
++    sys.stdout.flush()
++    
++    # Read the output
++    captured = cap.snap()
++    print(f"Sys captured: {repr(captured)}")
++    print(f"Length: {len(captured)}")
++    
++    # Check if it ends with \r
++    if captured.endswith('\r'):
++        print("SUCCESS: Sys captured string ends with \\r")
++        return True
++    else:
++        print("FAILURE: Sys captured string does not end with \\r")
++        return False
++
++def test_with_fd_capture():
++    print("\nTesting FDCapture behavior...")
++    
++    # Create a FDCapture for stdout
++    cap = FDCapture(1)  # stdout
++    cap.start()
++    
++    # Print with carriage return
++    print('Greetings from DOS', end='\r')
++    sys.stdout.flush()
++    
++    # Read the output
++    captured = cap.snap()
++    print(f"FD captured: {repr(captured)}")
++    print(f"Length: {len(captured)}")
++    
++    # Check if it ends with \r
++    if captured.endswith('\r'):
++        print("SUCCESS: FD captured string ends with \\r")
++        return True
++    else:
++        print("FAILURE: FD captured string does not end with \\r")
++        return False
++
++def test_direct_fd_capture():
++    print("\nTesting direct FDCapture behavior with manual write...")
++    
++    # Create a FDCapture for stdout
++    cap = FDCapture(1)  # stdout
++    cap.start()
++    
++    # Write directly to the temporary file
++    cap.tmpfile.write('Greetings from DOS\r')
++    cap.tmpfile.flush()
++    
++    # Read the output
++    captured = cap.snap()
++    print(f"Direct FD captured: {repr(captured)}")
++    print(f"Length: {len(captured)}")
++    
++    # Check if it ends with \r
++    if captured.endswith('\r'):
++        print("SUCCESS: Direct FD captured string ends with \\r")
++        return True
++    else:
++        print("FAILURE: Direct FD captured string does not end with \\r")
++        return False
++
++if __name__ == "__main__":
++    result1 = test_with_sys_capture()
++    result2 = test_with_fd_capture()
++    result3 = test_direct_fd_capture()
++    
++    print(f"\nResults:")
++    print(f"SysCapture: {'PASS' if result1 else 'FAIL'}")
++    print(f"FDCapture: {'PASS' if result2 else 'FAIL'}")
++    print(f"Direct FD: {'PASS' if result3 else 'FAIL'}")
+\ No newline at end of file
+diff --git a/debug_direct.py b/debug_direct.py
+new file mode 100644
+index 000000000..31ab62761
+--- /dev/null
++++ b/debug_direct.py
+@@ -0,0 +1,47 @@
++#!/usr/bin/env python3
++
++import sys
++import os
++from io import BytesIO
++from _pytest.capture import FDCapture
++
++def debug_fd_capture():
++    print("Debugging FDCapture behavior...")
++    
++    # Create a FDCapture for stdout
++    cap = FDCapture(1)  # stdout
++    cap.start()
++    
++    # Let's see what's in the tmpfile before we write to it
++    print(f"tmpfile type: {type(cap.tmpfile)}")
++    print(f"tmpfile: {cap.tmpfile}")
++    
++    # Write directly to the temporary file
++    cap.tmpfile.write('Greetings from DOS\r')
++    cap.tmpfile.flush()
++    
++    # Check what's in the buffer
++    cap.tmpfile.seek(0)
++    content = cap.tmpfile.read()
++    print(f"Content from tmpfile.read(): {repr(content)}")
++    
++    # Reset and try snap
++    cap.tmpfile.seek(0)
++    cap.tmpfile.truncate()
++    
++    # Now let's try to write using the actual print
++    print('Greetings from DOS', end='\r')
++    sys.stdout.flush()
++    
++    # Check what's in the tmpfile now
++    cap.tmpfile.seek(0)
++    content2 = cap.tmpfile.read()
++    print(f"Content after print: {repr(content2)}")
++    
++    # Now try snap
++    cap.tmpfile.seek(0)
++    result = cap.snap()
++    print(f"Snap result: {repr(result)}")
++
++if __name__ == "__main__":
++    debug_fd_capture()
+\ No newline at end of file
+diff --git a/debug_with_print.py b/debug_with_print.py
+new file mode 100644
+index 000000000..29dcdddfc
+--- /dev/null
++++ b/debug_with_print.py
+@@ -0,0 +1,37 @@
++#!/usr/bin/env python3
++
++import sys
++import os
++from io import BytesIO
++from _pytest.capture import FDCapture, MultiCapture
++
++# Let's patch the snap method to see what's happening
++original_snap = FDCapture.snap
++
++def debug_snap(self):
++    print(f"DEBUG: About to snap from {type(self.tmpfile)}")
++    result = original_snap(self)
++    print(f"DEBUG: Snap result: {repr(result)}")
++    return result
++
++FDCapture.snap = debug_snap
++
++def test_with_debug():
++    print("Testing with debug...")
++    
++    # Create a MultiCapture with FDCapture for stdout
++    capture = MultiCapture(in_=None, out=FDCapture(1), err=FDCapture(2))
++    capture.start_capturing()
++    
++    # Print with carriage return
++    print('Greetings from DOS', end='\r')
++    sys.stdout.flush()
++    
++    # Read the output
++    print("About to call readouterr...")
++    out, err = capture.readouterr()
++    print(f"Final result - out: {repr(out)}")
++    print(f"Final result - err: {repr(err)}")
++
++if __name__ == "__main__":
++    test_with_debug()
+\ No newline at end of file
+diff --git a/edge_case_tests.py b/edge_case_tests.py
+new file mode 100644
+index 000000000..71301ae89
+--- /dev/null
++++ b/edge_case_tests.py
+@@ -0,0 +1,70 @@
++#!/usr/bin/env python3
++"""
++Edge case tests for the carriage return fix.
++"""
++
++import pytest
++
++def test_carriage_return_at_start(capfd):
++    """Test carriage return at the beginning of output"""
++    print('\rHello', end='')
++    out, err = capfd.readouterr()
++    assert out == '\rHello'
++
++def test_multiple_carriage_returns(capfd):
++    """Test multiple consecutive carriage returns"""
++    print('A\rB\rC\rD', end='')
++    out, err = capfd.readouterr()
++    assert out == 'A\rB\rC\rD'
++
++def test_carriage_return_with_newline(capfd):
++    """Test mixed carriage returns and newlines"""
++    print('Line1\r\nLine2\nLine3\rLine4', end='')
++    out, err = capfd.readouterr()
++    assert out == 'Line1\r\nLine2\nLine3\rLine4'
++
++def test_carriage_return_with_tabs(capfd):
++    """Test carriage returns mixed with tabs"""
++    print('A\t\rB\t\rC', end='')
++    out, err = capfd.readouterr()
++    assert out == 'A\t\rB\t\rC'
++
++def test_empty_string_with_carriage_return(capfd):
++    """Test empty string with carriage return"""
++    print('\r', end='')
++    out, err = capfd.readouterr()
++    assert out == '\r'
++
++def test_only_carriage_returns(capfd):
++    """Test only carriage returns"""
++    print('\r\r\r', end='')
++    out, err = capfd.readouterr()
++    assert out == '\r\r\r'
++
++def test_carriage_return_with_special_chars(capfd):
++    """Test carriage returns with special characters"""
++    print('Hello\r\x00World\r\x1fTest', end='')
++    out, err = capfd.readouterr()
++    assert out == 'Hello\r\x00World\r\x1fTest'
++
++def test_carriage_return_in_middle(capfd):
++    """Test carriage return in the middle of text"""
++    print('Hello\rWorld', end='')
++    out, err = capfd.readouterr()
++    assert out == 'Hello\rWorld'
++
++def test_carriage_return_with_unicode(capfd):
++    """Test carriage returns with unicode characters"""
++    print('Héllo\rMundö', end='')
++    out, err = capfd.readouterr()
++    assert out == 'Héllo\rMundö'
++
++def test_carriage_return_with_ansi_codes(capfd):
++    """Test carriage returns mixed with ANSI escape codes"""
++    print('\033[31mHello\r\033[0mWorld', end='')
++    out, err = capfd.readouterr()
++    assert out == '\033[31mHello\r\033[0mWorld'
++
++if __name__ == "__main__":
++    print("Edge case tests would be run by pytest")
++    print("All tests should pass with our fix")
+\ No newline at end of file
+diff --git a/final_verification.py b/final_verification.py
+new file mode 100644
+index 000000000..ca45dda54
+--- /dev/null
++++ b/final_verification.py
+@@ -0,0 +1,41 @@
++#!/usr/bin/env python3
++"""
++Final verification that our fix works for the exact issue described.
++"""
++
++import pytest
++
++def test_cafd_includes_carriage_return(capfd):
++    """This is the exact test case from the issue description"""
++    print('Greetings from DOS', end='\r')
++    out, err = capfd.readouterr()
++    assert out.endswith('\r')
++
++def test_progress_percentage_sameline(capfd):
++    """This is a simplified version of the test from borgbackup"""
++    # Mock the expected behavior - this would be the output to stdout
++    print('  0%\r', end='')
++    out, err = capfd.readouterr()
++    assert out == '  0%\r'
++
++if __name__ == "__main__":
++    # Run the tests manually to verify
++    print("Running final verification tests...")
++    
++    # Test 1
++    print("Test 1: Carriage return preservation")
++    try:
++        test_cafd_includes_carriage_return(None)  # We'll mock capfd
++        print("  PASSED")
++    except Exception as e:
++        print(f"  FAILED: {e}")
++    
++    # Test 2  
++    print("Test 2: Progress indicator test")
++    try:
++        test_progress_percentage_sameline(None)
++        print("  PASSED")
++    except Exception as e:
++        print(f"  FAILED: {e}")
++        
++    print("Verification complete.")
+\ No newline at end of file
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 000000000..6cad1e33c
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,58 @@
++#!/usr/bin/env python3
++
++import sys
++import io
++from _pytest.capture import FDCapture
++
++def test_cafd_includes_carriage_return():
++    """Reproduce the issue with capfd.readouterr() converting \r to \n"""
++    # Create a capture instance
++    cap = FDCapture(1)  # stdout
++    cap.start()
++    
++    # Print with carriage return
++    print('Greetings from DOS', end='\r')
++    
++    # Read the output
++    captured = cap.snap()
++    print(f"Captured: {repr(captured)}")
++    
++    # Check if it ends with \r
++    if captured.endswith('\r'):
++        print("SUCCESS: Captured string ends with \\r")
++        return True
++    else:
++        print("FAILURE: Captured string does not end with \\r")
++        return False
++
++def test_with_sys_capture():
++    """Test with sys capture for comparison"""
++    from _pytest.capture import SysCapture
++    
++    cap = SysCapture(1)  # stdout
++    cap.start()
++    
++    # Print with carriage return
++    print('Greetings from DOS', end='\r')
++    
++    # Read the output
++    captured = cap.snap()
++    print(f"Sys captured: {repr(captured)}")
++    
++    # Check if it ends with \r
++    if captured.endswith('\r'):
++        print("SUCCESS: Sys captured string ends with \\r")
++        return True
++    else:
++        print("FAILURE: Sys captured string does not end with \\r")
++        return False
++
++if __name__ == "__main__":
++    print("Testing FDCapture behavior:")
++    fd_result = test_cafd_includes_carriage_return()
++    
++    print("\nTesting SysCapture behavior:")
++    sys_result = test_with_sys_capture()
++    
++    print(f"\nFDCapture result: {'PASS' if fd_result else 'FAIL'}")
++    print(f"SysCapture result: {'PASS' if sys_result else 'FAIL'}")
+\ No newline at end of file
+diff --git a/simple_reproduce.py b/simple_reproduce.py
+new file mode 100644
+index 000000000..8a7de4c5c
+--- /dev/null
++++ b/simple_reproduce.py
+@@ -0,0 +1,31 @@
++#!/usr/bin/env python3
++
++import sys
++import io
++from _pytest.capture import FDCapture, SysCapture
++
++def test_simple():
++    print("Testing FDCapture with carriage return...")
++    
++    # Create a capture instance
++    cap = FDCapture(1)  # stdout
++    cap.start()
++    
++    # Print with carriage return
++    print('Greetings from DOS', end='\r')
++    sys.stdout.flush()
++    
++    # Read the output
++    captured = cap.snap()
++    print(f"Captured: {repr(captured)}")
++    
++    # Check if it ends with \r
++    if captured.endswith('\r'):
++        print("SUCCESS: Captured string ends with \\r")
++        return True
++    else:
++        print("FAILURE: Captured string does not end with \\r")
++        return False
++
++if __name__ == "__main__":
++    test_simple()
+\ No newline at end of file
+diff --git a/src/_pytest/capture.py b/src/_pytest/capture.py
+index 3f9c60fb9..9c51668fc 100644
+--- a/src/_pytest/capture.py
++++ b/src/_pytest/capture.py
+@@ -389,6 +389,7 @@ class FDCaptureBinary:
+                 encoding="utf-8",
+                 errors="replace",
+                 write_through=True,
++                newline="",
+             )
+             if targetfd in patchsysdict:
+                 self.syscapture = SysCapture(targetfd, self.tmpfile)

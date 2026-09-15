@@ -1,0 +1,127 @@
+{
+  "instance_id": "sympy__sympy-24213",
+  "trial_id": "sympy__sympy-24213",
+  "provider": "e2b",
+  "mode": "react",
+  "tag": "main-optimized",
+  "output": "/lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/sympy__sympy-24213",
+  "started_unix": 1789403004.072727,
+  "slot": 0,
+  "base_url": "http://172.30.90.9:8000/v1",
+  "finished": true,
+  "agent_info": {
+    "steps": 43,
+    "num_tool_calls": 43,
+    "timeouts": 0,
+    "errors": 0,
+    "total_tokens": 29595
+  },
+  "patch_bytes": 10286,
+  "source_patch_bytes": 6204,
+  "excluded_test_paths": [
+    "final_test.py",
+    "test_fix.py"
+  ],
+  "existing_tests_modified": [],
+  "eval_completed": true,
+  "eval_execution_time": 4.228032847866416,
+  "eval_report": {
+    "resolved": true,
+    "found_eval_status": true,
+    "test_status": {
+      "FAIL_TO_PASS": {
+        "success": [
+          "test_issue_24211"
+        ],
+        "failure": []
+      },
+      "PASS_TO_PASS": {
+        "success": [
+          "test_str_repr",
+          "test_eq",
+          "test_convert_to",
+          "test_Quantity_definition",
+          "test_abbrev",
+          "test_print",
+          "test_Quantity_eq",
+          "test_add_sub",
+          "test_quantity_abs",
+          "test_check_unit_consistency",
+          "test_mul_div",
+          "test_units",
+          "test_issue_quart",
+          "test_issue_5565",
+          "test_find_unit",
+          "test_Quantity_derivative",
+          "test_quantity_postprocessing",
+          "test_factor_and_dimension",
+          "test_dimensional_expr_of_derivative",
+          "test_get_dimensional_expr_with_function",
+          "test_binary_information",
+          "test_conversion_with_2_nonstandard_dimensions",
+          "test_eval_subs",
+          "test_issue_14932",
+          "test_issue_14547",
+          "test_deprecated_quantity_methods",
+          "test_issue_22164",
+          "test_issue_22819",
+          "test_issue_20288",
+          "test_issue_24062",
+          "test_prefixed_property"
+        ],
+        "failure": []
+      },
+      "FAIL_TO_FAIL": {
+        "success": [],
+        "failure": []
+      },
+      "PASS_TO_FAIL": {
+        "success": [],
+        "failure": []
+      }
+    }
+  },
+  "resolved": true,
+  "cleanup_completed": true,
+  "cleanup_steps": [
+    "agent",
+    "final"
+  ],
+  "reward": 1.0,
+  "trajectory_valid": true,
+  "wall_seconds": 150.23711910191923,
+  "ended_unix": 1789403154.3098478,
+  "timings_s": {
+    "session_setup": 1.185e-05,
+    "provision": 10.037804504,
+    "agent": 129.735200616,
+    "capture_patch": 1.176582238,
+    "agent_cleanup": 0.322589396,
+    "verifier_provision": 4.141630338,
+    "verify": 4.440030776,
+    "cleanup": 0.285188467,
+    "trajectory_export": 0.027951433
+  },
+  "agent_breakdown_s": {
+    "model_roundtrip": 55.137739651000004,
+    "model_api": 54.340053582,
+    "gateway_http": 55.025476775,
+    "codec": 0.50008869,
+    "tool_call": 72.564217144,
+    "tool_init": 1.336476572,
+    "tool_close": 0.643162482
+  },
+  "client_operations": {
+    "http_send": 94,
+    "docker_cli": 0,
+    "sandbox_exec": 226,
+    "file_read": 10,
+    "file_write": 37,
+    "tool_call": 44,
+    "model_api": 43
+  },
+  "model_tokens": {
+    "prompt": 821381,
+    "generated": 8583
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "time_unix": 1789406695.8132195,
+  "model_services": [
+    {
+      "name": "ua-lab-model-128k",
+      "id": "f3b42dd329101d8a53fc51c4f149c129834c7a1ccd7adf5d40d76061a50860bf",
+      "running": false,
+      "finished_at": "2026-09-14T17:24:51.988058043Z"
+    },
+    {
+      "name": "ua-profile-model-aiter-128k",
+      "id": "d4e8f276d691228e12bbd3638843649642c150861820158ffba737b8bcd9ab7c",
+      "running": false,
+      "finished_at": "2026-09-14T17:24:55.383738246Z"
+    }
+  ],
+  "monitors": "Stopped using marker files",
+  "kept": "CPU coordinator, dedicated Docker daemon, janitor, model weights, cached images, and E2B templates retained for replay."
+}

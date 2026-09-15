@@ -1,0 +1,122 @@
+{
+  "instance_id": "sphinx-doc__sphinx-9367",
+  "trial_id": "sphinx-doc__sphinx-9367",
+  "provider": "e2b",
+  "mode": "react",
+  "tag": "main-optimized",
+  "output": "/lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/sphinx-doc__sphinx-9367",
+  "started_unix": 1789402799.370968,
+  "slot": 0,
+  "base_url": "http://172.30.90.9:8000/v1",
+  "finished": true,
+  "agent_info": {
+    "steps": 25,
+    "num_tool_calls": 25,
+    "timeouts": 0,
+    "errors": 0,
+    "total_tokens": 20926
+  },
+  "patch_bytes": 11135,
+  "source_patch_bytes": 7293,
+  "excluded_test_paths": [
+    "final_test.py",
+    "test_edge_cases_more.py",
+    "test_source_segment.py"
+  ],
+  "existing_tests_modified": [],
+  "eval_completed": true,
+  "eval_execution_time": 1.9885553661733866,
+  "eval_report": {
+    "resolved": true,
+    "found_eval_status": true,
+    "test_status": {
+      "FAIL_TO_PASS": {
+        "success": [
+          "tests/test_pycode_ast.py::test_unparse[(1,)-(1,)]"
+        ],
+        "failure": []
+      },
+      "PASS_TO_PASS": {
+        "success": [
+          "tests/test_pycode_ast.py::test_unparse[a",
+          "tests/test_pycode_ast.py::test_unparse[os.path-os.path]",
+          "tests/test_pycode_ast.py::test_unparse[1",
+          "tests/test_pycode_ast.py::test_unparse[b'bytes'-b'bytes']",
+          "tests/test_pycode_ast.py::test_unparse[object()-object()]",
+          "tests/test_pycode_ast.py::test_unparse[1234-1234_0]",
+          "tests/test_pycode_ast.py::test_unparse[{'key1':",
+          "tests/test_pycode_ast.py::test_unparse[...-...]",
+          "tests/test_pycode_ast.py::test_unparse[Tuple[int,",
+          "tests/test_pycode_ast.py::test_unparse[~",
+          "tests/test_pycode_ast.py::test_unparse[lambda",
+          "tests/test_pycode_ast.py::test_unparse[[1,",
+          "tests/test_pycode_ast.py::test_unparse[sys-sys]",
+          "tests/test_pycode_ast.py::test_unparse[1234-1234_1]",
+          "tests/test_pycode_ast.py::test_unparse[not",
+          "tests/test_pycode_ast.py::test_unparse[{1,",
+          "tests/test_pycode_ast.py::test_unparse['str'-'str']",
+          "tests/test_pycode_ast.py::test_unparse[+",
+          "tests/test_pycode_ast.py::test_unparse[-",
+          "tests/test_pycode_ast.py::test_unparse[(1,",
+          "tests/test_pycode_ast.py::test_unparse[()-()]",
+          "tests/test_pycode_ast.py::test_unparse_None",
+          "tests/test_pycode_ast.py::test_unparse_py38[lambda",
+          "tests/test_pycode_ast.py::test_unparse_py38[0x1234-0x1234]",
+          "tests/test_pycode_ast.py::test_unparse_py38[1_000_000-1_000_000]"
+        ],
+        "failure": []
+      },
+      "FAIL_TO_FAIL": {
+        "success": [],
+        "failure": []
+      },
+      "PASS_TO_FAIL": {
+        "success": [],
+        "failure": []
+      }
+    }
+  },
+  "resolved": true,
+  "cleanup_completed": true,
+  "cleanup_steps": [
+    "agent",
+    "final"
+  ],
+  "reward": 1.0,
+  "trajectory_valid": true,
+  "wall_seconds": 81.21703908313066,
+  "ended_unix": 1789402880.5880084,
+  "timings_s": {
+    "session_setup": 1.296e-05,
+    "provision": 6.358958127,
+    "agent": 66.811539331,
+    "capture_patch": 1.189018299,
+    "agent_cleanup": 0.309567658,
+    "verifier_provision": 3.977580736,
+    "verify": 2.200990629,
+    "cleanup": 0.277657823,
+    "trajectory_export": 0.018455453
+  },
+  "agent_breakdown_s": {
+    "model_roundtrip": 31.488392293,
+    "model_api": 31.067822177,
+    "gateway_http": 31.428108594,
+    "codec": 0.297622422,
+    "tool_call": 33.323490952,
+    "tool_init": 1.311082161,
+    "tool_close": 0.656504709
+  },
+  "client_operations": {
+    "http_send": 56,
+    "docker_cli": 0,
+    "sandbox_exec": 118,
+    "file_read": 4,
+    "file_write": 23,
+    "tool_call": 26,
+    "model_api": 25
+  },
+  "model_tokens": {
+    "prompt": 303398,
+    "generated": 5138
+  }
+}

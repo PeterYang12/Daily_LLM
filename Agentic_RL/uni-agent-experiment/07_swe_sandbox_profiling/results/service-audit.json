@@ -1,0 +1,12 @@
+{
+  "time_unix": 1789406677.2230759,
+  "known_created_ids": 81,
+  "owned_running_before": [],
+  "deleted": [],
+  "owned_running_after": [],
+  "other_running_count": 0,
+  "templates": "Retained for replay; no template deletion was requested.",
+  "docker_owned_running_before": [],
+  "docker_deleted": [],
+  "docker_owned_running_after": []
+}

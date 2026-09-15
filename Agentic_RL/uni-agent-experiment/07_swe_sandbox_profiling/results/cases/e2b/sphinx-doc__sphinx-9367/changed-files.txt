@@ -1,0 +1,8 @@
+A	debug_ast.py
+A	edge_case_tests.py
+A	final_test.py
+A	reproduce_issue.py
+M	sphinx/pycode/ast.py
+A	test_edge_cases_more.py
+A	test_source_segment.py
+A	understand_approach.py

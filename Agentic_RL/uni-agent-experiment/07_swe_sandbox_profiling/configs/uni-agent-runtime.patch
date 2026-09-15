@@ -1,0 +1,82 @@
+diff --git a/uni_agent/logging/handlers.py b/uni_agent/logging/handlers.py
+index 584dd83..13654f7 100644
+--- a/uni_agent/logging/handlers.py
++++ b/uni_agent/logging/handlers.py
+@@ -53,6 +53,10 @@ class _LogFileDispatch(logging.Handler):
+         self.setFormatter(_formatter)
+         self._log_ids: set[str] = set()
+         self._lock = threading.Lock()
++        # Buffered file objects have internal locks that are not reset by fork.
++        # Serialize fork with writer I/O so child cleanup never inherits a lock
++        # held by the vanished writer thread.
++        self._io_lock = threading.RLock()
+         self._dropped = 0
+         self._dropped_reported = 0
+         self._start()
+@@ -65,6 +69,12 @@ class _LogFileDispatch(logging.Handler):
+         self._thread = threading.Thread(target=self._run, name="uni-agent-log-writer", daemon=True)
+         self._thread.start()
+ 
++    def _prepare_fork(self) -> None:
++        self._io_lock.acquire()
++
++    def _resume_parent_after_fork(self) -> None:
++        self._io_lock.release()
++
+     def _reinit_after_fork(self) -> None:
+         # The child inherited copies of the parent's buffered file objects. Closing them
+         # normally would flush the copied buffers and duplicate pre-fork log lines, so
+@@ -82,6 +92,7 @@ class _LogFileDispatch(logging.Handler):
+         # The child lost the writer thread; start with independent routing state.
+         self._log_ids = set()
+         self._lock = threading.Lock()
++        self._io_lock = threading.RLock()
+         self._dropped = 0
+         self._dropped_reported = 0
+         self._start()
+@@ -140,6 +151,10 @@ class _LogFileDispatch(logging.Handler):
+                 last_flush = time.monotonic()
+ 
+     def _apply(self, item: tuple) -> None:
++        with self._io_lock:
++            self._apply_locked(item)
++
++    def _apply_locked(self, item: tuple) -> None:
+         op, log_id, arg = item
+         if op == "write":
+             file_obj = self._files.get(log_id)
+@@ -177,6 +192,10 @@ class _LogFileDispatch(logging.Handler):
+                     pass
+ 
+     def _flush(self) -> None:
++        with self._io_lock:
++            self._flush_locked()
++
++    def _flush_locked(self) -> None:
+         for file_obj in list(self._dirty):
+             try:
+                 file_obj.flush()
+@@ -203,6 +222,10 @@ class _LogFileDispatch(logging.Handler):
+                 self._apply(item)
+ 
+     def _close_all(self) -> None:
++        with self._io_lock:
++            self._close_all_locked()
++
++    def _close_all_locked(self) -> None:
+         self._flush()
+         for file_obj in list(self._files.values()):
+             try:
+@@ -225,7 +248,11 @@ _dispatch = _LogFileDispatch()
+ 
+ # A forked child (some Ray/multiprocessing start methods) loses the writer thread; restart it.
+ if hasattr(os, "register_at_fork"):
+-    os.register_at_fork(after_in_child=_dispatch._reinit_after_fork)
++    os.register_at_fork(
++        before=_dispatch._prepare_fork,
++        after_in_parent=_dispatch._resume_parent_after_fork,
++        after_in_child=_dispatch._reinit_after_fork,
++    )
+ 
+ 
+ def _add_file_handler(file_path: Path | str, log_id: str) -> None:

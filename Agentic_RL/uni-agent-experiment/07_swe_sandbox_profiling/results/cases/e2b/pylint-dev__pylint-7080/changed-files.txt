@@ -1,0 +1,11 @@
+A	debug_ignore.py
+A	debug_logic.py
+A	debug_walk.py
+A	edge_case_tests.py
+A	final_test.py
+M	pylint/lint/pylinter.py
+A	reproduce_issue.py
+A	simple_test.py
+A	test_debug.py
+A	test_direct_logic.py
+A	test_fix.py

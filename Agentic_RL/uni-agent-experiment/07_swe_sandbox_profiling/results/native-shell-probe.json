@@ -1,0 +1,193 @@
+{
+  "scope": "Persistent stdin transport prototype only; not the provider used for primary SWE task scores.",
+  "sandbox_id": "01a0a0ed-37fb-7951-a9d7-f3fc12c26e20",
+  "cwd_env_persist": true,
+  "samples": [
+    {
+      "elapsed_s": 0.21051886770874262,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.2537017469294369,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.21035103779286146,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.2108722277916968,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.2105766381137073,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.2101444168947637,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.2103123371489346,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.2102490682154894,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.21026223804801702,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.2112625283189118,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.21037503704428673,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.21043121768161654,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.214668950997293,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.21065781731158495,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.21060194820165634,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.2103261067532003,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.21048412704840302,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.210007066372782,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.2101319869980216,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.21051447605714202,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.21047824574634433,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.21005437709391117,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.21164480783045292,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.2111022570170462,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.21022941637784243,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.21055383700877428,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.21089147683233023,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.21036482602357864,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.2105326158925891,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "elapsed_s": 0.21023790584877133,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "n": 30,
+  "median_s": 0.21048118639737368,
+  "mean_s": 0.2120846535700063,
+  "p95_s": 0.21164480783045292,
+  "success": true,
+  "kill_ack": true
+}

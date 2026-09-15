@@ -1,0 +1,118 @@
+{
+  "instance_id": "astropy__astropy-13033",
+  "trial_id": "astropy__astropy-13033",
+  "provider": "docker",
+  "mode": "react",
+  "tag": "main-optimized",
+  "output": "/lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/astropy__astropy-13033",
+  "started_unix": 1789399721.964207,
+  "slot": 0,
+  "base_url": "http://172.30.90.9:8000/v1",
+  "finished": true,
+  "agent_info": {
+    "steps": 51,
+    "num_tool_calls": 51,
+    "timeouts": 0,
+    "errors": 0,
+    "total_tokens": 46698
+  },
+  "patch_bytes": 22476,
+  "source_patch_bytes": 11606,
+  "excluded_test_paths": [
+    "debug_test.py",
+    "simple_test.py",
+    "test_fix_comprehensive.py",
+    "test_misleading_case.py"
+  ],
+  "existing_tests_modified": [],
+  "eval_completed": true,
+  "eval_execution_time": 41.57359838997945,
+  "eval_report": {
+    "resolved": false,
+    "found_eval_status": true,
+    "test_status": {
+      "FAIL_TO_PASS": {
+        "success": [],
+        "failure": [
+          "astropy/timeseries/tests/test_sampled.py::test_required_columns"
+        ]
+      },
+      "PASS_TO_PASS": {
+        "success": [
+          "astropy/timeseries/tests/test_sampled.py::test_empty_initialization",
+          "astropy/timeseries/tests/test_sampled.py::test_empty_initialization_invalid",
+          "astropy/timeseries/tests/test_sampled.py::test_initialize_only_time",
+          "astropy/timeseries/tests/test_sampled.py::test_initialization_with_data",
+          "astropy/timeseries/tests/test_sampled.py::test_initialize_only_data",
+          "astropy/timeseries/tests/test_sampled.py::test_initialization_with_table",
+          "astropy/timeseries/tests/test_sampled.py::test_initialization_missing_time_delta",
+          "astropy/timeseries/tests/test_sampled.py::test_initialization_invalid_time_and_time_start",
+          "astropy/timeseries/tests/test_sampled.py::test_initialization_invalid_time_delta",
+          "astropy/timeseries/tests/test_sampled.py::test_initialization_with_time_in_data",
+          "astropy/timeseries/tests/test_sampled.py::test_initialization_n_samples",
+          "astropy/timeseries/tests/test_sampled.py::test_initialization_length_mismatch",
+          "astropy/timeseries/tests/test_sampled.py::test_initialization_invalid_both_time_and_time_delta",
+          "astropy/timeseries/tests/test_sampled.py::test_fold",
+          "astropy/timeseries/tests/test_sampled.py::test_fold_invalid_options",
+          "astropy/timeseries/tests/test_sampled.py::test_read_time_missing",
+          "astropy/timeseries/tests/test_sampled.py::test_read_time_wrong",
+          "astropy/timeseries/tests/test_sampled.py::test_read",
+          "astropy/timeseries/tests/test_sampled.py::test_periodogram[BoxLeastSquares]",
+          "astropy/timeseries/tests/test_sampled.py::test_periodogram[LombScargle]"
+        ],
+        "failure": []
+      },
+      "FAIL_TO_FAIL": {
+        "success": [],
+        "failure": []
+      },
+      "PASS_TO_FAIL": {
+        "success": [],
+        "failure": []
+      }
+    }
+  },
+  "resolved": false,
+  "cleanup_completed": true,
+  "cleanup_steps": [
+    "agent",
+    "final"
+  ],
+  "reward": 0.0,
+  "trajectory_valid": true,
+  "wall_seconds": 169.39658383466303,
+  "ended_unix": 1789399891.3607936,
+  "timings_s": {
+    "session_setup": 2.145e-05,
+    "provision": 1.109797041,
+    "agent": 124.807262139,
+    "capture_patch": 0.145352386,
+    "agent_cleanup": 0.287076002,
+    "verifier_provision": 0.977338712,
+    "verify": 41.650814649,
+    "cleanup": 0.302177399,
+    "trajectory_export": 0.043189806
+  },
+  "agent_breakdown_s": {
+    "model_roundtrip": 103.501036462,
+    "model_api": 100.425730521,
+    "gateway_http": 103.397678451,
+    "codec": 2.82048817,
+    "tool_call": 20.976840906,
+    "tool_init": 0.176274237,
+    "tool_close": 0.097380927
+  },
+  "client_operations": {
+    "http_send": 51,
+    "docker_cli": 360,
+    "sandbox_exec": 0,
+    "file_read": 14,
+    "file_write": 45,
+    "tool_call": 52,
+    "model_api": 51
+  },
+  "model_tokens": {
+    "prompt": 1145369,
+    "generated": 16148
+  }
+}

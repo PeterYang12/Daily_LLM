@@ -1,0 +1,278 @@
+[
+  {
+    "instance_id": "astropy__astropy-13033",
+    "image_digest": "swebench/sweb.eval.x86_64.astropy_1776_astropy-13033@sha256:22f4f193fbf69d61c59e285494be18041934f8b528190dfe8c6c0d8051d8d6de",
+    "cpu_count": 4,
+    "memory_mb": 8192,
+    "alias": "ua-sweprof-20260914t144308z-0",
+    "build": {
+      "template_id": "01a0a068-97f6-73d2-b516-1fcb30b35412",
+      "build_id": "01a0a068-97f6-73d2-b516-1fcb30b35412",
+      "name": "ua-sweprof-20260914t144308z-0",
+      "alias": "ua-sweprof-20260914t144308z-0",
+      "tags": []
+    },
+    "status": "ready",
+    "last_status": {
+      "logs": [],
+      "logEntries": [],
+      "templateID": "01a0a068-97f6-73d2-b516-1fcb30b35412",
+      "buildID": "01a0a068-97f6-73d2-b516-1fcb30b35412",
+      "status": "ready"
+    },
+    "elapsed_s": 44.86394569184631
+  },
+  {
+    "instance_id": "django__django-14373",
+    "image_digest": "swebench/sweb.eval.x86_64.django_1776_django-14373@sha256:e1b9cfcbd4787f08c621a82fc43e495bc5c7a6dce31f987832cfe7745fe2b0cb",
+    "cpu_count": 4,
+    "memory_mb": 8192,
+    "alias": "ua-sweprof-20260914t144308z-1",
+    "build": {
+      "template_id": "01a0a069-4659-7131-8786-d6439eee7ee2",
+      "build_id": "01a0a069-4659-7131-8786-d6439eee7ee2",
+      "name": "ua-sweprof-20260914t144308z-1",
+      "alias": "ua-sweprof-20260914t144308z-1",
+      "tags": []
+    },
+    "status": "ready",
+    "last_status": {
+      "logs": [],
+      "logEntries": [],
+      "templateID": "01a0a069-4659-7131-8786-d6439eee7ee2",
+      "buildID": "01a0a069-4659-7131-8786-d6439eee7ee2",
+      "status": "ready"
+    },
+    "elapsed_s": 38.896177233662456
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-20488",
+    "image_digest": "swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-20488@sha256:be05d6f5074be17d15bec1c6436945b2f77c39e4fbebd89a334f65750f5934ff",
+    "cpu_count": 4,
+    "memory_mb": 8192,
+    "alias": "ua-sweprof-20260914t144308z-2",
+    "build": {
+      "template_id": "01a0a069-de49-7c92-bf2c-7d9b8d02abf6",
+      "build_id": "01a0a069-de49-7c92-bf2c-7d9b8d02abf6",
+      "name": "ua-sweprof-20260914t144308z-2",
+      "alias": "ua-sweprof-20260914t144308z-2",
+      "tags": []
+    },
+    "status": "ready",
+    "last_status": {
+      "logs": [],
+      "logEntries": [],
+      "templateID": "01a0a069-de49-7c92-bf2c-7d9b8d02abf6",
+      "buildID": "01a0a069-de49-7c92-bf2c-7d9b8d02abf6",
+      "status": "ready"
+    },
+    "elapsed_s": 66.13047475693747
+  },
+  {
+    "instance_id": "mwaskom__seaborn-3187",
+    "image_digest": "swebench/sweb.eval.x86_64.mwaskom_1776_seaborn-3187@sha256:aea7e43b20703256f5cb807b54cd78a12601f21086d3a62a41de18c254771f4e",
+    "cpu_count": 4,
+    "memory_mb": 8192,
+    "alias": "ua-sweprof-20260914t144308z-3",
+    "build": {
+      "template_id": "01a0a06a-e09c-79a3-88c9-ef7947d9b9c7",
+      "build_id": "01a0a06a-e09c-79a3-88c9-ef7947d9b9c7",
+      "name": "ua-sweprof-20260914t144308z-3",
+      "alias": "ua-sweprof-20260914t144308z-3",
+      "tags": []
+    },
+    "status": "ready",
+    "last_status": {
+      "logs": [],
+      "logEntries": [],
+      "templateID": "01a0a06a-e09c-79a3-88c9-ef7947d9b9c7",
+      "buildID": "01a0a06a-e09c-79a3-88c9-ef7947d9b9c7",
+      "status": "ready"
+    },
+    "elapsed_s": 39.00449680024758
+  },
+  {
+    "instance_id": "pallets__flask-5014",
+    "image_digest": "swebench/sweb.eval.x86_64.pallets_1776_flask-5014@sha256:bde4fbdafa36141d4396944da88ec37aabdef612ed36920090675bccd0ca5d72",
+    "cpu_count": 4,
+    "memory_mb": 8192,
+    "alias": "ua-sweprof-20260914t144308z-flask5014",
+    "build": {
+      "template_id": "01a0a060-e801-7a20-ac76-171c9259e26c",
+      "build_id": "01a0a060-e801-7a20-ac76-171c9259e26c",
+      "name": "ua-sweprof-20260914t144308z-flask5014",
+      "alias": "ua-sweprof-20260914t144308z-flask5014",
+      "tags": []
+    },
+    "status": "ready",
+    "last_status": {
+      "logs": [],
+      "logEntries": [],
+      "templateID": "01a0a060-e801-7a20-ac76-171c9259e26c",
+      "buildID": "01a0a060-e801-7a20-ac76-171c9259e26c",
+      "status": "ready"
+    },
+    "elapsed_s": 0.4377092309296131
+  },
+  {
+    "instance_id": "pydata__xarray-4075",
+    "image_digest": "swebench/sweb.eval.x86_64.pydata_1776_xarray-4075@sha256:3d56429d0a07d2b74c0342c12e19f4d7b1510023f87edb6a11cadbfd993de56d",
+    "cpu_count": 4,
+    "memory_mb": 8192,
+    "alias": "ua-sweprof-20260914t144308z-5",
+    "build": {
+      "template_id": "01a0a06b-7ab9-73a3-a0f0-b4a8fa94d7f4",
+      "build_id": "01a0a06b-7ab9-73a3-a0f0-b4a8fa94d7f4",
+      "name": "ua-sweprof-20260914t144308z-5",
+      "alias": "ua-sweprof-20260914t144308z-5",
+      "tags": []
+    },
+    "status": "ready",
+    "last_status": {
+      "logs": [],
+      "logEntries": [],
+      "templateID": "01a0a06b-7ab9-73a3-a0f0-b4a8fa94d7f4",
+      "buildID": "01a0a06b-7ab9-73a3-a0f0-b4a8fa94d7f4",
+      "status": "ready"
+    },
+    "elapsed_s": 76.98010915983468
+  },
+  {
+    "instance_id": "pylint-dev__pylint-7080",
+    "image_digest": "swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-7080@sha256:3389f0d1319ca611d04a209fc30990c131e0bae9acfeb2163938c75ad23479fe",
+    "cpu_count": 4,
+    "memory_mb": 8192,
+    "alias": "ua-sweprof-20260914t144308z-6",
+    "build": {
+      "template_id": "01a0a06c-a82a-7421-a6f0-4d0ac403a127",
+      "build_id": "01a0a06c-a82a-7421-a6f0-4d0ac403a127",
+      "name": "ua-sweprof-20260914t144308z-6",
+      "alias": "ua-sweprof-20260914t144308z-6",
+      "tags": []
+    },
+    "status": "ready",
+    "last_status": {
+      "logs": [],
+      "logEntries": [],
+      "templateID": "01a0a06c-a82a-7421-a6f0-4d0ac403a127",
+      "buildID": "01a0a06c-a82a-7421-a6f0-4d0ac403a127",
+      "status": "ready"
+    },
+    "elapsed_s": 39.35681253531948
+  },
+  {
+    "instance_id": "pytest-dev__pytest-7521",
+    "image_digest": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-7521@sha256:570a5872f1a0250ef52d735285f64dff43ce02ba79f7750e7c4dd9de9c7ebcb5",
+    "cpu_count": 4,
+    "memory_mb": 8192,
+    "alias": "ua-sweprof-20260914t144308z-7",
+    "build": {
+      "template_id": "01a0a06d-4123-7af3-9ca9-c6fd553c6ba5",
+      "build_id": "01a0a06d-4123-7af3-9ca9-c6fd553c6ba5",
+      "name": "ua-sweprof-20260914t144308z-7",
+      "alias": "ua-sweprof-20260914t144308z-7",
+      "tags": []
+    },
+    "status": "ready",
+    "last_status": {
+      "logs": [],
+      "logEntries": [],
+      "templateID": "01a0a06d-4123-7af3-9ca9-c6fd553c6ba5",
+      "buildID": "01a0a06d-4123-7af3-9ca9-c6fd553c6ba5",
+      "status": "ready"
+    },
+    "elapsed_s": 29.09630815126002
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-11310",
+    "image_digest": "swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-11310@sha256:9868186e3d37062a178faa15e5860641521c0193d6897aa0053b2d338fd566dd",
+    "cpu_count": 4,
+    "memory_mb": 8192,
+    "alias": "ua-sweprof-20260914t144308z-8",
+    "build": {
+      "template_id": "01a0a06d-b2ca-7c11-8fdc-84fe5c3e1dd9",
+      "build_id": "01a0a06d-b2ca-7c11-8fdc-84fe5c3e1dd9",
+      "name": "ua-sweprof-20260914t144308z-8",
+      "alias": "ua-sweprof-20260914t144308z-8",
+      "tags": []
+    },
+    "status": "ready",
+    "last_status": {
+      "logs": [],
+      "logEntries": [],
+      "templateID": "01a0a06d-b2ca-7c11-8fdc-84fe5c3e1dd9",
+      "buildID": "01a0a06d-b2ca-7c11-8fdc-84fe5c3e1dd9",
+      "status": "ready"
+    },
+    "elapsed_s": 54.99655451020226
+  },
+  {
+    "instance_id": "sphinx-doc__sphinx-9367",
+    "image_digest": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9367@sha256:ce3659548ac712a11d3c45a9c47fe8010de0e3a83efee229dcdd9646069dfec1",
+    "cpu_count": 4,
+    "memory_mb": 8192,
+    "alias": "ua-sweprof-20260914t144308z-9",
+    "build": {
+      "template_id": "01a0a06e-89a0-76c2-a6ac-b5d483cdbebe",
+      "build_id": "01a0a06e-89a0-76c2-a6ac-b5d483cdbebe",
+      "name": "ua-sweprof-20260914t144308z-9",
+      "alias": "ua-sweprof-20260914t144308z-9",
+      "tags": []
+    },
+    "status": "ready",
+    "last_status": {
+      "logs": [],
+      "logEntries": [],
+      "templateID": "01a0a06e-89a0-76c2-a6ac-b5d483cdbebe",
+      "buildID": "01a0a06e-89a0-76c2-a6ac-b5d483cdbebe",
+      "status": "ready"
+    },
+    "elapsed_s": 34.106712783221155
+  },
+  {
+    "instance_id": "sympy__sympy-24213",
+    "image_digest": "swebench/sweb.eval.x86_64.sympy_1776_sympy-24213@sha256:a458bae7d95f469fa8e438da0a39a2d168e93f70239155dbd833934948f2b296",
+    "cpu_count": 4,
+    "memory_mb": 8192,
+    "alias": "ua-sweprof-20260914t144308z-10",
+    "build": {
+      "template_id": "01a0a06f-0edc-7261-b4a0-ed6653ed213c",
+      "build_id": "01a0a06f-0edc-7261-b4a0-ed6653ed213c",
+      "name": "ua-sweprof-20260914t144308z-10",
+      "alias": "ua-sweprof-20260914t144308z-10",
+      "tags": []
+    },
+    "status": "ready",
+    "last_status": {
+      "logs": [],
+      "logEntries": [],
+      "templateID": "01a0a06f-0edc-7261-b4a0-ed6653ed213c",
+      "buildID": "01a0a06f-0edc-7261-b4a0-ed6653ed213c",
+      "status": "ready"
+    },
+    "elapsed_s": 39.05495690088719
+  },
+  {
+    "instance_id": "psf__requests-1921",
+    "image_digest": "swebench/sweb.eval.x86_64.psf_1776_requests-1921@sha256:2ee0a4c706f04d2926a1622ec51b53d4ce6010b80d3ee10d414ea2a276c26cc9",
+    "cpu_count": 4,
+    "memory_mb": 8192,
+    "alias": "ua-sweprof-20260914t144308z-11",
+    "build": {
+      "template_id": "01a0a06f-a76a-79c1-bad7-c9f8911783c8",
+      "build_id": "01a0a06f-a76a-79c1-bad7-c9f8911783c8",
+      "name": "ua-sweprof-20260914t144308z-11",
+      "alias": "ua-sweprof-20260914t144308z-11",
+      "tags": []
+    },
+    "status": "ready",
+    "last_status": {
+      "logs": [],
+      "logEntries": [],
+      "templateID": "01a0a06f-a76a-79c1-bad7-c9f8911783c8",
+      "buildID": "01a0a06f-a76a-79c1-bad7-c9f8911783c8",
+      "status": "ready"
+    },
+    "elapsed_s": 44.947001775726676
+  }
+]

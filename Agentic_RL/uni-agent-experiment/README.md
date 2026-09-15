@@ -14,6 +14,7 @@ A Docker-based experiment with **Qwen3-Coder-30B-A3B-Instruct** on an **8 × AMD
 | 4 | [Remote E2B sandbox](04_e2b_sandbox/README.md) | Lifecycle, official demo, and ReAct repair verified; the same small task passed **10/10** tests. |
 | 5 | [Inference performance](05_inference_performance/README.md) | At measured concurrency: AITER + graphs gave **4.41×** throughput; two replicas gave **1.80×**. |
 | 6 | [Trajectories and reproduction](06_trajectories_and_reproduction/README.md) | 84 main sessions passed token/mask checks; separate logprob checks and a clean CPU rebuild completed. |
+| 7 | [ReAct SWE-bench: Docker vs E2B](07_swe_sandbox_profiling/README.md) | **9/12 resolved on each provider**; matched task images, fresh verifiers, valid trajectories, and component-level rollout profiles. |
 
 ## How to read this repository
 
@@ -25,9 +26,9 @@ Each experiment keeps its own `README.md` (what and results), `STEPS.md` (how to
 
 - Claude Code is the real CLI using **local Qwen**, not an Anthropic model. ReAct runs in the CPU coordinator; Claude/Mini run inside task sandboxes.
 - The SWE result covers a preselected 30-task sample, with 28 passing environment controls. It is not a full 500-task SWE-bench score.
-- E2B (verdan in our discussion) was tested on a small repair task, not remote SWE-bench or remote Claude/Mini.
+- The initial E2B experiment used a small repair task. Experiment 7 adds real remote SWE-bench with ReAct and Gateway; remote Claude/Mini remain outside the measured scope.
 - Serving speedups measure HTTP inference throughput, not end-to-end agent speed or training gains.
 
-Experiments ran on **2026-09-12**. This English report reorganizes their existing evidence. Full runtime assets remain in `/home/yuhanya/uni-agent-lab`; this repository contains source snapshots and lightweight results, not weights, installed environments, or Docker layers. Replay steps use that lab layout. To collect the distributed snapshots into `scripts/` and `configs/`, use the [code export instructions](06_trajectories_and_reproduction/STEPS.md).
+Experiments 1–6 ran on **2026-09-12**; experiment 7 adds the **2026-09-14** sandbox and rollout profiling study. Full runtime assets remain in `/home/yuhanya/uni-agent-lab`; this repository contains source snapshots and lightweight results, not weights, installed environments, or Docker layers. Replay steps use that lab layout. To collect the distributed snapshots into `scripts/` and `configs/`, use the [code export instructions](06_trajectories_and_reproduction/STEPS.md).
 
 Raw evidence and original experiment code are retained verbatim. [Artifact provenance and checksums](06_trajectories_and_reproduction/results/provenance/source-manifest.json)

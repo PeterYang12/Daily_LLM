@@ -1,0 +1,145 @@
+{
+  "instance_id": "scikit-learn__scikit-learn-11310",
+  "trial_id": "scikit-learn__scikit-learn-11310",
+  "provider": "e2b",
+  "mode": "react",
+  "tag": "main-optimized",
+  "output": "/lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/scikit-learn__scikit-learn-11310",
+  "started_unix": 1789402695.9021251,
+  "slot": 0,
+  "base_url": "http://172.30.90.9:8000/v1",
+  "finished": true,
+  "agent_info": {
+    "steps": 34,
+    "num_tool_calls": 34,
+    "timeouts": 0,
+    "errors": 0,
+    "total_tokens": 29462
+  },
+  "patch_bytes": 7483,
+  "source_patch_bytes": 5682,
+  "excluded_test_paths": [
+    "final_test.py"
+  ],
+  "existing_tests_modified": [],
+  "eval_completed": true,
+  "eval_execution_time": 4.551619817968458,
+  "eval_report": {
+    "resolved": true,
+    "found_eval_status": true,
+    "test_status": {
+      "FAIL_TO_PASS": {
+        "success": [
+          "sklearn/model_selection/tests/test_search.py::test_search_cv_timing"
+        ],
+        "failure": []
+      },
+      "PASS_TO_PASS": {
+        "success": [
+          "sklearn/model_selection/tests/test_search.py::test_parameter_grid",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_with_fit_params",
+          "sklearn/model_selection/tests/test_search.py::test_random_search_with_fit_params",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_fit_params_deprecation",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_fit_params_two_places",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_no_score",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_score_method",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_groups",
+          "sklearn/model_selection/tests/test_search.py::test_return_train_score_warn",
+          "sklearn/model_selection/tests/test_search.py::test_classes__property",
+          "sklearn/model_selection/tests/test_search.py::test_trivial_cv_results_attr",
+          "sklearn/model_selection/tests/test_search.py::test_no_refit",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_error",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_one_grid_point",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_when_param_grid_includes_range",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_bad_param_grid",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_sparse",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_sparse_scoring",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_precomputed_kernel",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_precomputed_kernel_error_nonsquare",
+          "sklearn/model_selection/tests/test_search.py::test_refit",
+          "sklearn/model_selection/tests/test_search.py::test_gridsearch_nd",
+          "sklearn/model_selection/tests/test_search.py::test_X_as_list",
+          "sklearn/model_selection/tests/test_search.py::test_y_as_list",
+          "sklearn/model_selection/tests/test_search.py::test_pandas_input",
+          "sklearn/model_selection/tests/test_search.py::test_unsupervised_grid_search",
+          "sklearn/model_selection/tests/test_search.py::test_gridsearch_no_predict",
+          "sklearn/model_selection/tests/test_search.py::test_param_sampler",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_cv_results",
+          "sklearn/model_selection/tests/test_search.py::test_random_search_cv_results",
+          "sklearn/model_selection/tests/test_search.py::test_search_iid_param",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_cv_results_multimetric",
+          "sklearn/model_selection/tests/test_search.py::test_random_search_cv_results_multimetric",
+          "sklearn/model_selection/tests/test_search.py::test_search_cv_results_rank_tie_breaking",
+          "sklearn/model_selection/tests/test_search.py::test_search_cv_results_none_param",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_correct_score_results",
+          "sklearn/model_selection/tests/test_search.py::test_fit_grid_point",
+          "sklearn/model_selection/tests/test_search.py::test_pickle",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_with_multioutput_data",
+          "sklearn/model_selection/tests/test_search.py::test_predict_proba_disabled",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_allows_nans",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_failing_classifier",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_failing_classifier_raise",
+          "sklearn/model_selection/tests/test_search.py::test_parameters_sampler_replacement",
+          "sklearn/model_selection/tests/test_search.py::test_stochastic_gradient_loss_param",
+          "sklearn/model_selection/tests/test_search.py::test_search_train_scores_set_to_false",
+          "sklearn/model_selection/tests/test_search.py::test_grid_search_cv_splits_consistency",
+          "sklearn/model_selection/tests/test_search.py::test_transform_inverse_transform_round_trip",
+          "sklearn/model_selection/tests/test_search.py::test_deprecated_grid_search_iid"
+        ],
+        "failure": []
+      },
+      "FAIL_TO_FAIL": {
+        "success": [],
+        "failure": []
+      },
+      "PASS_TO_FAIL": {
+        "success": [],
+        "failure": []
+      }
+    }
+  },
+  "resolved": true,
+  "cleanup_completed": true,
+  "cleanup_steps": [
+    "agent",
+    "final"
+  ],
+  "reward": 1.0,
+  "trajectory_valid": true,
+  "wall_seconds": 103.46449403977022,
+  "ended_unix": 1789402799.3666208,
+  "timings_s": {
+    "session_setup": 1.274e-05,
+    "provision": 7.525276314,
+    "agent": 85.364978957,
+    "capture_patch": 0.987297924,
+    "agent_cleanup": 0.527164035,
+    "verifier_provision": 3.9263051,
+    "verify": 4.763231491,
+    "cleanup": 0.27380856,
+    "trajectory_export": 0.025091923
+  },
+  "agent_breakdown_s": {
+    "model_roundtrip": 33.421711633,
+    "model_api": 32.788413366,
+    "gateway_http": 33.333512037,
+    "codec": 0.402985753,
+    "tool_call": 50.314414598,
+    "tool_init": 1.056703019,
+    "tool_close": 0.526019724
+  },
+  "client_operations": {
+    "http_send": 76,
+    "docker_cli": 0,
+    "sandbox_exec": 173,
+    "file_read": 11,
+    "file_write": 27,
+    "tool_call": 35,
+    "model_api": 34
+  },
+  "model_tokens": {
+    "prompt": 648458,
+    "generated": 4923
+  }
+}

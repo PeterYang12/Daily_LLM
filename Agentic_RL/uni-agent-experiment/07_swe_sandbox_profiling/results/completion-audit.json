@@ -1,0 +1,27 @@
+{
+  "time_unix": 1789406676.1618755,
+  "status": "passed",
+  "primary": {
+    "docker": {
+      "n": 12,
+      "resolved": 9,
+      "finished": 11
+    },
+    "e2b": {
+      "n": 12,
+      "resolved": 9,
+      "finished": 11
+    }
+  },
+  "accepted_controls": 48,
+  "scheduling_runs": 16,
+  "rechecked_trajectories": 40,
+  "generated_mask_tokens": 384292,
+  "serving_batches": 54,
+  "logprob_batches": 24,
+  "fixed_operation_samples": 200,
+  "gold_verifier_resource_runs": 12,
+  "native_shell_success": true,
+  "frozen_primary_source_files": 7,
+  "scope": "Offline evidence audit; no new model or sandbox operations."
+}

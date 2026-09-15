@@ -1,0 +1,182 @@
+[
+  {
+    "repeat": 0,
+    "provider": "docker",
+    "instance_id": "django__django-14373",
+    "resolved": true,
+    "resources": [
+      {
+        "body_wall_s": 3.003,
+        "user_cpu_s": 2.421,
+        "system_cpu_s": 0.554,
+        "average_cpu_cores": 0.9906759906759905
+      }
+    ],
+    "verifier_wall_s": 3.118232706
+  },
+  {
+    "repeat": 0,
+    "provider": "e2b",
+    "instance_id": "django__django-14373",
+    "resolved": true,
+    "resources": [
+      {
+        "body_wall_s": 5.026,
+        "user_cpu_s": 3.588,
+        "system_cpu_s": 0.917,
+        "average_cpu_cores": 0.8963390370075607
+      }
+    ],
+    "verifier_wall_s": 5.694808333
+  },
+  {
+    "repeat": 0,
+    "provider": "docker",
+    "instance_id": "pylint-dev__pylint-7080",
+    "resolved": true,
+    "resources": [
+      {
+        "body_wall_s": 12.976,
+        "user_cpu_s": 12.044,
+        "system_cpu_s": 0.977,
+        "average_cpu_cores": 1.00346794081381
+      }
+    ],
+    "verifier_wall_s": 13.102526345
+  },
+  {
+    "repeat": 0,
+    "provider": "e2b",
+    "instance_id": "pylint-dev__pylint-7080",
+    "resolved": true,
+    "resources": [
+      {
+        "body_wall_s": 12.074,
+        "user_cpu_s": 10.278,
+        "system_cpu_s": 1.2,
+        "average_cpu_cores": 0.950637733973828
+      }
+    ],
+    "verifier_wall_s": 12.561392777
+  },
+  {
+    "repeat": 0,
+    "provider": "docker",
+    "instance_id": "psf__requests-1921",
+    "resolved": true,
+    "resources": [
+      {
+        "body_wall_s": 59.356,
+        "user_cpu_s": 1.36,
+        "system_cpu_s": 0.217,
+        "average_cpu_cores": 0.0265685019206146
+      }
+    ],
+    "verifier_wall_s": 59.480663262
+  },
+  {
+    "repeat": 0,
+    "provider": "e2b",
+    "instance_id": "psf__requests-1921",
+    "resolved": true,
+    "resources": [
+      {
+        "body_wall_s": 27.512,
+        "user_cpu_s": 1.078,
+        "system_cpu_s": 0.204,
+        "average_cpu_cores": 0.04659784821168945
+      }
+    ],
+    "verifier_wall_s": 28.159836464
+  },
+  {
+    "repeat": 1,
+    "provider": "e2b",
+    "instance_id": "django__django-14373",
+    "resolved": true,
+    "resources": [
+      {
+        "body_wall_s": 5.45,
+        "user_cpu_s": 3.789,
+        "system_cpu_s": 0.927,
+        "average_cpu_cores": 0.8653211009174312
+      }
+    ],
+    "verifier_wall_s": 6.330441646
+  },
+  {
+    "repeat": 1,
+    "provider": "docker",
+    "instance_id": "django__django-14373",
+    "resolved": true,
+    "resources": [
+      {
+        "body_wall_s": 3.017,
+        "user_cpu_s": 2.398,
+        "system_cpu_s": 0.574,
+        "average_cpu_cores": 0.9850845210473981
+      }
+    ],
+    "verifier_wall_s": 3.136337934
+  },
+  {
+    "repeat": 1,
+    "provider": "e2b",
+    "instance_id": "pylint-dev__pylint-7080",
+    "resolved": true,
+    "resources": [
+      {
+        "body_wall_s": 18.603,
+        "user_cpu_s": 16.266,
+        "system_cpu_s": 2.004,
+        "average_cpu_cores": 0.9820996613449443
+      }
+    ],
+    "verifier_wall_s": 19.152148785
+  },
+  {
+    "repeat": 1,
+    "provider": "docker",
+    "instance_id": "pylint-dev__pylint-7080",
+    "resolved": true,
+    "resources": [
+      {
+        "body_wall_s": 13.01,
+        "user_cpu_s": 11.974,
+        "system_cpu_s": 1.081,
+        "average_cpu_cores": 1.0034588777863183
+      }
+    ],
+    "verifier_wall_s": 13.131909448
+  },
+  {
+    "repeat": 1,
+    "provider": "e2b",
+    "instance_id": "psf__requests-1921",
+    "resolved": true,
+    "resources": [
+      {
+        "body_wall_s": 29.003,
+        "user_cpu_s": 0.967,
+        "system_cpu_s": 0.232,
+        "average_cpu_cores": 0.04134055097748509
+      }
+    ],
+    "verifier_wall_s": 29.853629507
+  },
+  {
+    "repeat": 1,
+    "provider": "docker",
+    "instance_id": "psf__requests-1921",
+    "resolved": true,
+    "resources": [
+      {
+        "body_wall_s": 58.688,
+        "user_cpu_s": 1.422,
+        "system_cpu_s": 0.165,
+        "average_cpu_cores": 0.027041303162486367
+      }
+    ],
+    "verifier_wall_s": 58.817282004
+  }
+]

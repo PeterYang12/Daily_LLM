@@ -1,0 +1,1275 @@
+{
+  "run_root": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z",
+  "copied_files": [
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/analysis/figures/architecture.svg",
+      "destination": "figures/architecture.svg",
+      "sha256": "36f7cb4c8e88fa2895ccf29dc07aa69b0e615d0e5cf4d852e9daf3d5c781a6ac"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/analysis/figures/scheduling.svg",
+      "destination": "figures/scheduling.svg",
+      "sha256": "314d05b58e63081d8b4657ec919e3d75da0285b25a0e39b066a5db594f5be021"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/analysis/figures/operation-latency.svg",
+      "destination": "figures/operation-latency.svg",
+      "sha256": "bfb889a78282b513c9ebf929211e207724e81b18e3929032352867862cd89428"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/analysis/figures/django-timeline.svg",
+      "destination": "figures/django-timeline.svg",
+      "sha256": "64e0a1bc020886b4d7d2880f09222e38ba818abef244596309dbced5a1e22bba"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/analysis/figures/gpu-and-tools.svg",
+      "destination": "figures/gpu-and-tools.svg",
+      "sha256": "3d87f3d1215cfbeb131548c8d75b7288ff111c8cfc9f066df2ac0ffe56132037"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/analysis/figures/serving-throughput.svg",
+      "destination": "figures/serving-throughput.svg",
+      "sha256": "7335cf0a03faa047df3cdd897aec7c6ae35608a9c6ea93bece57b76fdad0dc48"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/analysis/figures/architecture.mmd",
+      "destination": "figures/architecture.mmd",
+      "sha256": "a02a5f678b89dc6095a765093795dc8023990149e98692557d6fa4534df23814"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/analysis/figures/rollout-stages.svg",
+      "destination": "figures/rollout-stages.svg",
+      "sha256": "155401ab8b190b6b82e99d337a60a9d010aefc13e978f974307aaf2d2bab3dce"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/analysis/figures/serving-ttft.svg",
+      "destination": "figures/serving-ttft.svg",
+      "sha256": "033634a1453afe12259975cb82bbd55def93a2a9de61b2e5b84411ddfa7aaab6"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/analysis/summary.json",
+      "destination": "results/summary.json",
+      "sha256": "f968073984ca6d6665908361fe793d32028f6173f7c57af86fb3951b0f9eea8b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/analysis/cases.json",
+      "destination": "results/cases.json",
+      "sha256": "4186c27c76db48d5a67aefa1d82416527b880154185cbfaed5046bf671a60c56"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/analysis/cases.csv",
+      "destination": "results/cases.csv",
+      "sha256": "16f06b49c97831a4c66f1bd4fbfa9fb13f92565d70459a150d31b965e305ab34"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/analysis/tool-calls.csv",
+      "destination": "results/tool-calls.csv",
+      "sha256": "a424c3b19cfd10b70052997a1eb6df81f05e5135a99a53f8f55f1676049ac14d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/analysis/tool-stats.csv",
+      "destination": "results/tool-stats.csv",
+      "sha256": "06379d491584dd8a0e328692786a852556bf34a171edb2c31e975bd7cc4d4d90"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/analysis/scheduling.csv",
+      "destination": "results/scheduling.csv",
+      "sha256": "695a0e4305ac08a4871339cded83e316e22ef1fc8820b193876949061f949768"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/analysis/timeline.json",
+      "destination": "results/timeline.json",
+      "sha256": "7e377564684ef708f84562569903a7d8d5911026ca1e7beb692d3fb53fd28d56"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/microbench/docker/summary.json",
+      "destination": "results/microbench/docker.json",
+      "sha256": "d8a8ea3f41fadd814e44965fd93777eb6d5add36a56475f0f28473ac5ad477dc"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/microbench/e2b/summary.json",
+      "destination": "results/microbench/e2b.json",
+      "sha256": "a9f797a29dab810e3c99a6afb1a542e902252e16264e9efde8e8f174fe6b77a8"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/inference-benchmark/raw.json",
+      "destination": "results/inference/raw.json",
+      "sha256": "2aa3e92a12a4b9a497a0b070855c954468a5e35d9e6a781dc1f7a9503f2e53eb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/inference-benchmark/summary.json",
+      "destination": "results/inference/summary.json",
+      "sha256": "e31b9ba844ffdae419bddd2a5cf394a45d656f7d08ff021776297185d3ce6e98"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/inference-benchmark/protocol.json",
+      "destination": "results/inference/protocol.json",
+      "sha256": "99b1c2f5f3840a5414c2e5f5f1b2d07a4f4c727fe3eacd4b8379d0a3bfd66dc1"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/inference-benchmark/logprob-overhead.json",
+      "destination": "results/inference/logprob-overhead.json",
+      "sha256": "55ca3ec17901f8a881ab8b93f9501e91f1c2bb878b30ce5eb1d991f912e59731"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/native-shell-probe.json",
+      "destination": "results/native-shell-probe.json",
+      "sha256": "970ad3a4b5e8b36dc43bf93a8bfcd26c9b97019a1c1c4872f52d49184356fdc7"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/verifier-cpu-probe.json",
+      "destination": "results/verifier-cpu-probe.json",
+      "sha256": "06f4c2650ff684a15926b8ab2006faf5ad336defe1c26cbf939b4f699e5f9209"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/runtime-provenance.json",
+      "destination": "results/runtime-provenance.json",
+      "sha256": "c6c6301253cb84c880b0b4449a87da532084546615a69d72f40cde3934b061ac"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/runtime-details.json",
+      "destination": "results/runtime-details.json",
+      "sha256": "c4cb23ee2c850860535970826c46dc2e60afc6b36e599490fc82a80b5abd3594"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/final-service-provenance.json",
+      "destination": "results/final-service-provenance.json",
+      "sha256": "818d82496d1fc92050ce484ae3823f5a4d475c272e1a0871232f6b6ed3a20dfd"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/templates.json",
+      "destination": "results/templates.json",
+      "sha256": "8a5de828f2880b7e2cb86b0cffb745ae097f82453f5ba2cdf676553092b5a655"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/controls-final-index.json",
+      "destination": "results/controls-final-index.json",
+      "sha256": "f3235c44c1d68acd6ee24244bb857ac1416f11bc07e5ca96c569d545e7829825"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/service-audit.json",
+      "destination": "results/service-audit.json",
+      "sha256": "1cecc4889eb91d136927f1982ba0c7d7dacd66a5a8fe9913a7a306988e32fcfd"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/completion-audit.json",
+      "destination": "results/completion-audit.json",
+      "sha256": "15aabc23dac887c23753de6274148a997b8e0386cbad930e76e86c241aca4a27"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/resource-release.json",
+      "destination": "results/resource-release.json",
+      "sha256": "e05fc0e216cd29d2a24df1b3a82f6974852426e1ba10264187e5301041b5ae10"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/manifest.json",
+      "destination": "configs/manifest.json",
+      "sha256": "ae2f3656d71207517fb1149cacc72560f8b8b74bda3f71af34d488d4a92b62ee"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/assets/tmux.tar.gz",
+      "destination": "assets/tmux.tar.gz",
+      "sha256": "5c87ae6c81597661fd5d2255965b412e3fdfb9c705409c8d68a108864495bcc4"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/assets/tmux-provenance.json",
+      "destination": "assets/tmux-provenance.json",
+      "sha256": "06a49d690896ebef0acde20fa94058bdc9d0ea7050cea886e80bf25c4f43b874"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/uni-agent-runtime.patch",
+      "destination": "configs/uni-agent-runtime.patch",
+      "sha256": "05b4a7345c8335ab0cf8014b21e4179aad89a2d4526165e94d5d60da16ab71d4"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/configs/swe-react-128k.yaml",
+      "destination": "configs/swe-react-128k.yaml",
+      "sha256": "1c2cf2757220cc52a15d72e28dd9407e8ca2d1c1cb517242861f999546e8f911"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/swe_sandbox_profile/native_shell_probe.py",
+      "destination": "code/native_shell_probe.py",
+      "sha256": "4a10269de812d3db516d1ee965c36738844526f363b6cff9871c209fa70805c5"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/swe_sandbox_profile/providers.py",
+      "destination": "code/providers.py",
+      "sha256": "d7c7e7b31190e9b65d54b3086fd936b30abcae4e9ce4998722d2fff23d9713ec"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/swe_sandbox_profile/inference_bench.py",
+      "destination": "code/inference_bench.py",
+      "sha256": "a0065e8896aa999707c383669a2d4b96204d9b8e9d9b316ed22a5c17284ad16d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/swe_sandbox_profile/run.py",
+      "destination": "code/run.py",
+      "sha256": "399ab4b9425edfa42cfd7fad3970afac6fd8bdb744796604f53deee297059897"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/swe_sandbox_profile/profiling.py",
+      "destination": "code/profiling.py",
+      "sha256": "61cc4be9d61c383001fda9ccef525cb33f8a35d6202470757b5a40eb119aed37"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/swe_sandbox_profile/figures.py",
+      "destination": "code/figures.py",
+      "sha256": "db675738ea73a2c585834f2a4d3bde606eb64cb9095ca59756f66d75665c5fe7"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/swe_sandbox_profile/verifier_cpu_probe.py",
+      "destination": "code/verifier_cpu_probe.py",
+      "sha256": "8a343ae7744cb012ebb7f34abf58333071c13a62515d08b6963ea25e021088f0"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/swe_sandbox_profile/analyze.py",
+      "destination": "code/analyze.py",
+      "sha256": "37c6a52c556ef083b872de24c699ec80e91c4236d789e3a69a0bf3720012856d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/swe_sandbox_profile/monitor.py",
+      "destination": "code/monitor.py",
+      "sha256": "a5143f1baf646bd93443a55b959fb953ba078826685d5b63dc99f0b9ddc0bd39"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/swe_sandbox_profile/audit_results.py",
+      "destination": "code/audit_results.py",
+      "sha256": "22575079206eef15f94e9728e9943a0ab9c54ed2ddd1055653591040d37ee874"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/swe_sandbox_profile/microbench.py",
+      "destination": "code/microbench.py",
+      "sha256": "0dbebbb20ef2428b7d17cf850997dfe590904a267a7e22fb7fc0edebab9c474a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/swe_sandbox_profile/followup_pipeline.py",
+      "destination": "code/followup_pipeline.py",
+      "sha256": "05d57db3f2a08460c3d9b7bdcd0ffabf815f784a6d90e3aa6e443ce37d96810a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/swe_sandbox_profile/publish.py",
+      "destination": "code/publish.py",
+      "sha256": "784bfee8b602ddbfea28b9f3c80a46232dd56b1c94eab4720d1dc7d317fdd80e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/swe_sandbox_profile/prepare_templates.py",
+      "destination": "code/prepare_templates.py",
+      "sha256": "238ac219f6db8d4e2a83e810444a030c3b2a8582c10c50751c7a99b249128fa2"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/swe_sandbox_profile/serve_optimized_128k.sh",
+      "destination": "code/serve_optimized_128k.sh",
+      "sha256": "c4803eda638d1f57b85d3214b7e126f6aacfd8e1910d08f669cd91cfd574054c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/swe_sandbox_profile/start_models.py",
+      "destination": "code/start_models.py",
+      "sha256": "c621500a536f181a016c29e697111ca6485b216429b69dd63cd21610ea77175e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/swe_sandbox_profile/cleanup.py",
+      "destination": "code/cleanup.py",
+      "sha256": "a5cac672a9c3c840254ad60a7cbc9fa6ef29ba70bda38d81b62f5593be7166f8"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/code-snapshot/providers.py",
+      "destination": "code/executed/providers.py",
+      "sha256": "d7c7e7b31190e9b65d54b3086fd936b30abcae4e9ce4998722d2fff23d9713ec"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/code-snapshot/run.py",
+      "destination": "code/executed/run.py",
+      "sha256": "399ab4b9425edfa42cfd7fad3970afac6fd8bdb744796604f53deee297059897"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/code-snapshot/profiling.py",
+      "destination": "code/executed/profiling.py",
+      "sha256": "61cc4be9d61c383001fda9ccef525cb33f8a35d6202470757b5a40eb119aed37"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/code-snapshot/monitor.py",
+      "destination": "code/executed/monitor.py",
+      "sha256": "a5143f1baf646bd93443a55b959fb953ba078826685d5b63dc99f0b9ddc0bd39"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/code-snapshot/microbench.py",
+      "destination": "code/executed/microbench.py",
+      "sha256": "0dbebbb20ef2428b7d17cf850997dfe590904a267a7e22fb7fc0edebab9c474a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/code-snapshot/prepare_templates.py",
+      "destination": "code/executed/prepare_templates.py",
+      "sha256": "8a8c196fe2d1808df7af5584dc603081b8b0ee451ee1eba780941fd4d018c735"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/code-snapshot/serve_optimized_128k.sh",
+      "destination": "code/executed/serve_optimized_128k.sh",
+      "sha256": "c4803eda638d1f57b85d3214b7e126f6aacfd8e1910d08f669cd91cfd574054c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/report-drafts/STEPS.md",
+      "destination": "STEPS.md",
+      "sha256": "531e3adf22f349447fa4da4901bcad2a4d05a501bf11065b1641236203e9674e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/astropy__astropy-13033/result.json",
+      "destination": "results/cases/docker/astropy__astropy-13033/result.json",
+      "sha256": "8b725d51d5ebd863acee924867b9df288d2f68fe9c033b89dc64724d55bf3ada"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/astropy__astropy-13033/input-config.json",
+      "destination": "results/cases/docker/astropy__astropy-13033/input-config.json",
+      "sha256": "24fc2548aa88b949590ab38f1a32fa77bea5335b7994f46cb9b79e2f42671591"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/astropy__astropy-13033/verifier.json",
+      "destination": "results/cases/docker/astropy__astropy-13033/verifier.json",
+      "sha256": "c162b3acde2839d09d9e9ee18a86301aac2b22786bf9a0aed994d7fc44411a55"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/astropy__astropy-13033/verifier-raw.log",
+      "destination": "results/cases/docker/astropy__astropy-13033/verifier-raw.log",
+      "sha256": "11ae94387e33f8d88da5ff460011dc91c556575bc426783e747fe4a37bb01b54"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/astropy__astropy-13033/trajectory-audit.json",
+      "destination": "results/cases/docker/astropy__astropy-13033/trajectory-audit.json",
+      "sha256": "b2907a1990aa2423ab10212a26982a97fcbe56712f6f120b83adedc76d23fb74"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/astropy__astropy-13033/candidate-delta.patch",
+      "destination": "results/cases/docker/astropy__astropy-13033/candidate-delta.patch",
+      "sha256": "c10067ed9e69f2695fc50664544bff81bb207665e3446639835a18ab2d4528e8"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/astropy__astropy-13033/candidate-source-only.patch",
+      "destination": "results/cases/docker/astropy__astropy-13033/candidate-source-only.patch",
+      "sha256": "10be09198781a16451f6a8ff72b472c2c56627e5cdc5587c067dc4352f712eb6"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/astropy__astropy-13033/changed-files.txt",
+      "destination": "results/cases/docker/astropy__astropy-13033/changed-files.txt",
+      "sha256": "3f3d313e466fc687db81065ed8f2f71821f6df1a2fe7f98125fe369fd6102c56"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/django__django-14373/result.json",
+      "destination": "results/cases/docker/django__django-14373/result.json",
+      "sha256": "309c67fbf4db2ad05498a7d4d87957066351011265baa4dac720a80d8d9083e0"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/django__django-14373/input-config.json",
+      "destination": "results/cases/docker/django__django-14373/input-config.json",
+      "sha256": "110570c3e3a2d33556d6b7c07ff541c4b1ce7f02ab0c2781aa9a77b701a801d2"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/django__django-14373/verifier.json",
+      "destination": "results/cases/docker/django__django-14373/verifier.json",
+      "sha256": "910d10ccec20ea2f16487f218ca3afb6baf4b66e6f068e915ccfab03c3b240f1"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/django__django-14373/verifier-raw.log",
+      "destination": "results/cases/docker/django__django-14373/verifier-raw.log",
+      "sha256": "6fc889409614ae60f9f6ed7ceb13f51169d9b9a60c8e498d235e6868883badb4"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/django__django-14373/trajectory-audit.json",
+      "destination": "results/cases/docker/django__django-14373/trajectory-audit.json",
+      "sha256": "309a8fddab0980e229645dae2bdfa3a3c018102f3b58befe9b34bd72c96a407b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/django__django-14373/candidate-delta.patch",
+      "destination": "results/cases/docker/django__django-14373/candidate-delta.patch",
+      "sha256": "13bfedd964b8915fd0fab22ed1f58b2355f5f90527562c53413d80c1dac9f552"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/django__django-14373/candidate-source-only.patch",
+      "destination": "results/cases/docker/django__django-14373/candidate-source-only.patch",
+      "sha256": "13bfedd964b8915fd0fab22ed1f58b2355f5f90527562c53413d80c1dac9f552"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/django__django-14373/changed-files.txt",
+      "destination": "results/cases/docker/django__django-14373/changed-files.txt",
+      "sha256": "c3f2c860bcdb9b232dcc1be5037935ab16cd5247d77c16e048932f061f960d12"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/matplotlib__matplotlib-20488/result.json",
+      "destination": "results/cases/docker/matplotlib__matplotlib-20488/result.json",
+      "sha256": "cc09545d7acb560833746769354af827cf9db96e86d3f8e7bc0336a4290092a2"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/matplotlib__matplotlib-20488/input-config.json",
+      "destination": "results/cases/docker/matplotlib__matplotlib-20488/input-config.json",
+      "sha256": "e95d2676797aee8eaa72f38dbd0ff472ac231c35283f08cc417099c03771cb06"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/matplotlib__matplotlib-20488/verifier.json",
+      "destination": "results/cases/docker/matplotlib__matplotlib-20488/verifier.json",
+      "sha256": "e86efcd7dcbbd25445413f4689349c076d31124a06b06bd6bb0ff90d40136808"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/matplotlib__matplotlib-20488/verifier-raw.log",
+      "destination": "results/cases/docker/matplotlib__matplotlib-20488/verifier-raw.log",
+      "sha256": "29813d190e3e68f3546b2c6f6eba138799012343a2be3989c4e298291838f757"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/matplotlib__matplotlib-20488/trajectory-audit.json",
+      "destination": "results/cases/docker/matplotlib__matplotlib-20488/trajectory-audit.json",
+      "sha256": "95125244ef41afeaa9cd4b2bb5d1a5abf68ea8a7cb922c656d02504b6427c59d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/matplotlib__matplotlib-20488/candidate-delta.patch",
+      "destination": "results/cases/docker/matplotlib__matplotlib-20488/candidate-delta.patch",
+      "sha256": "977573b6493573ba23d6a723dbf35817d40f817f38e1719abab722159b64da8d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/matplotlib__matplotlib-20488/candidate-source-only.patch",
+      "destination": "results/cases/docker/matplotlib__matplotlib-20488/candidate-source-only.patch",
+      "sha256": "286cb73d3b67b4f8f030ff7d1d21f711219b34ed59c03a297a61864380b0bc6d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/matplotlib__matplotlib-20488/changed-files.txt",
+      "destination": "results/cases/docker/matplotlib__matplotlib-20488/changed-files.txt",
+      "sha256": "7a0074b69331475f4ea914c19f0b38321fd241c432cece8d11bac4f010cd2f8b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/mwaskom__seaborn-3187/result.json",
+      "destination": "results/cases/docker/mwaskom__seaborn-3187/result.json",
+      "sha256": "0b5f898549dd14e41391fc6a46f9279f4e6b5dc8310fba0a04865fe0627e7ffc"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/mwaskom__seaborn-3187/input-config.json",
+      "destination": "results/cases/docker/mwaskom__seaborn-3187/input-config.json",
+      "sha256": "b1f2d05977205c8321be6189abfb5c1bde3ac4709a4429a0eea94e343356bc4f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/mwaskom__seaborn-3187/verifier.json",
+      "destination": "results/cases/docker/mwaskom__seaborn-3187/verifier.json",
+      "sha256": "29f0d419e27c4a172790b6d8ab808113744421e9d829bd1b14417e09c77deb54"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/mwaskom__seaborn-3187/verifier-raw.log",
+      "destination": "results/cases/docker/mwaskom__seaborn-3187/verifier-raw.log",
+      "sha256": "9b9b90720f4bdef177a35a09b42984ed0b2b5d4edd9123fb9e3e2832f96a0887"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/mwaskom__seaborn-3187/trajectory-audit.json",
+      "destination": "results/cases/docker/mwaskom__seaborn-3187/trajectory-audit.json",
+      "sha256": "a1bd38ca13039463b6737e61cbfbc2c99f0bee9d0317e5c2db8de50e4f48a6ed"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/mwaskom__seaborn-3187/candidate-delta.patch",
+      "destination": "results/cases/docker/mwaskom__seaborn-3187/candidate-delta.patch",
+      "sha256": "1f7e01fd2679384fdc54fb6c0233b2d474c6df810c7437a3313316fc0eb4d905"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/mwaskom__seaborn-3187/candidate-source-only.patch",
+      "destination": "results/cases/docker/mwaskom__seaborn-3187/candidate-source-only.patch",
+      "sha256": "220fc9552a2f0285580f743a54ab6cb0cb0bd159b86dc3652e40cc9e4ce9f25e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/mwaskom__seaborn-3187/changed-files.txt",
+      "destination": "results/cases/docker/mwaskom__seaborn-3187/changed-files.txt",
+      "sha256": "ee836a3948b76fc0b5b4951f65281f936aba6676b9fd042aafd4e39e91f60c10"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pallets__flask-5014/result.json",
+      "destination": "results/cases/docker/pallets__flask-5014/result.json",
+      "sha256": "df7346778420d91c76c534e38e2de79154c6199479e14102abf2a29990ada5e8"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pallets__flask-5014/input-config.json",
+      "destination": "results/cases/docker/pallets__flask-5014/input-config.json",
+      "sha256": "28eb999edadaffc3df862da0870c26e19f2964121c8710573a70e8cd2d576c4d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pallets__flask-5014/verifier.json",
+      "destination": "results/cases/docker/pallets__flask-5014/verifier.json",
+      "sha256": "90f972cfd842e4402e1189a1ade02b42c7d2662cb0496944e0897d0be08c5131"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pallets__flask-5014/verifier-raw.log",
+      "destination": "results/cases/docker/pallets__flask-5014/verifier-raw.log",
+      "sha256": "353c0768f94b54e0b76a92a0e9b69ac6e61d1092cd48c535e2ab8e75e239e564"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pallets__flask-5014/trajectory-audit.json",
+      "destination": "results/cases/docker/pallets__flask-5014/trajectory-audit.json",
+      "sha256": "0457f8aeae17d17a188523e502dd797983d19096483350e66c49eccbd296040c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pallets__flask-5014/candidate-delta.patch",
+      "destination": "results/cases/docker/pallets__flask-5014/candidate-delta.patch",
+      "sha256": "f9094045873cb2f458b51a4423c6501d516613835cbfec84c384cbacbec8a9f8"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pallets__flask-5014/candidate-source-only.patch",
+      "destination": "results/cases/docker/pallets__flask-5014/candidate-source-only.patch",
+      "sha256": "f9094045873cb2f458b51a4423c6501d516613835cbfec84c384cbacbec8a9f8"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pallets__flask-5014/changed-files.txt",
+      "destination": "results/cases/docker/pallets__flask-5014/changed-files.txt",
+      "sha256": "3021dfca3d1071cac237e7b1243074cf8ca3e9c28aad3a9a5ae910b744574e20"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/psf__requests-1921/result.json",
+      "destination": "results/cases/docker/psf__requests-1921/result.json",
+      "sha256": "972db6565bc63bc426cd139462f9390b5b94911d574ad12ffeb525f3785b35c6"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/psf__requests-1921/input-config.json",
+      "destination": "results/cases/docker/psf__requests-1921/input-config.json",
+      "sha256": "7894f33758f7a932c0fb910c30ca32cb03f2a00c5b05d197183536d1b4ac3e6f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/psf__requests-1921/verifier.json",
+      "destination": "results/cases/docker/psf__requests-1921/verifier.json",
+      "sha256": "d0a98f0f741c69852022d9e9c6c50eacc32d4d52057a2b4a1fb9e67541315ead"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/psf__requests-1921/verifier-raw.log",
+      "destination": "results/cases/docker/psf__requests-1921/verifier-raw.log",
+      "sha256": "87bff7ef29de24fdaac89d63333251b2f199d569859b0586b19c7f3c3b8da907"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/psf__requests-1921/trajectory-audit.json",
+      "destination": "results/cases/docker/psf__requests-1921/trajectory-audit.json",
+      "sha256": "eac3c43bcdc3ec4ec512dfc033d53519e999c7cbcb6ac077631ba3a14ce54463"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/psf__requests-1921/candidate-delta.patch",
+      "destination": "results/cases/docker/psf__requests-1921/candidate-delta.patch",
+      "sha256": "cbc9c3836e2db8673e3f3de29598e80716fba9d886de5c3d61340d91fed8ca4d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/psf__requests-1921/candidate-source-only.patch",
+      "destination": "results/cases/docker/psf__requests-1921/candidate-source-only.patch",
+      "sha256": "f01a774e2d8a1b470216a7c43dbc015d3553af2768261d1940fe93581b47db2c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/psf__requests-1921/changed-files.txt",
+      "destination": "results/cases/docker/psf__requests-1921/changed-files.txt",
+      "sha256": "1abeeeb48d5134a3325810c76138350898c28037070bb1179f9929549bece94b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pydata__xarray-4075/result.json",
+      "destination": "results/cases/docker/pydata__xarray-4075/result.json",
+      "sha256": "1124e797b5689244ebbd4548eb08c77d504ae13ec4bad3e2e40f41bd1dfa8d11"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pydata__xarray-4075/input-config.json",
+      "destination": "results/cases/docker/pydata__xarray-4075/input-config.json",
+      "sha256": "21171117f500a13152b88d1b1b4dbaba59b94f8e11fdfff722c51bd063a26309"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pydata__xarray-4075/verifier.json",
+      "destination": "results/cases/docker/pydata__xarray-4075/verifier.json",
+      "sha256": "018ca51af2fd3ed4fc96f30c89f6514239fa5c827a25fd708576f68253900446"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pydata__xarray-4075/verifier-raw.log",
+      "destination": "results/cases/docker/pydata__xarray-4075/verifier-raw.log",
+      "sha256": "9c0c0627e879870b70a1d60634919b50acf473ebcd3716c073269faa7745fd58"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pydata__xarray-4075/trajectory-audit.json",
+      "destination": "results/cases/docker/pydata__xarray-4075/trajectory-audit.json",
+      "sha256": "95bd660dbd891a1604f17227e0ee911adb0b5d7b9b324c5a452a14b3271fcc37"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pydata__xarray-4075/candidate-delta.patch",
+      "destination": "results/cases/docker/pydata__xarray-4075/candidate-delta.patch",
+      "sha256": "ee3b07b5f6bb0d8b005ae479aa3493ee8c1f569ed204d063cb9759faea3beee3"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pydata__xarray-4075/candidate-source-only.patch",
+      "destination": "results/cases/docker/pydata__xarray-4075/candidate-source-only.patch",
+      "sha256": "ee3b07b5f6bb0d8b005ae479aa3493ee8c1f569ed204d063cb9759faea3beee3"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pydata__xarray-4075/changed-files.txt",
+      "destination": "results/cases/docker/pydata__xarray-4075/changed-files.txt",
+      "sha256": "3265b97850ec7db2f814b63643f9a26bc4198dc814d3046a0bc7edb836d923ae"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pylint-dev__pylint-7080/result.json",
+      "destination": "results/cases/docker/pylint-dev__pylint-7080/result.json",
+      "sha256": "913ead526903a40c760a2353f45e4b499e87929ac5b53199bd3432f32abb6f83"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pylint-dev__pylint-7080/input-config.json",
+      "destination": "results/cases/docker/pylint-dev__pylint-7080/input-config.json",
+      "sha256": "e999a85348f79da000763b6c77ffe9b960daba35e275bacf2b98ef0ce34b6ee3"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pylint-dev__pylint-7080/verifier.json",
+      "destination": "results/cases/docker/pylint-dev__pylint-7080/verifier.json",
+      "sha256": "7a9677178e0f11b86074de1293a5bf8594558230a83c79afbeef6c7501d4a081"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pylint-dev__pylint-7080/verifier-raw.log",
+      "destination": "results/cases/docker/pylint-dev__pylint-7080/verifier-raw.log",
+      "sha256": "d8f406737f6d06dd1a43b7477b32a6d2659fcd9ba78adc078f5d07ccddc906d5"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pylint-dev__pylint-7080/trajectory-audit.json",
+      "destination": "results/cases/docker/pylint-dev__pylint-7080/trajectory-audit.json",
+      "sha256": "414b2f3c088a216cea05f8b1a43c2aa6ca16b54523961eb80d46738ce758f42a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pylint-dev__pylint-7080/candidate-delta.patch",
+      "destination": "results/cases/docker/pylint-dev__pylint-7080/candidate-delta.patch",
+      "sha256": "4ed75cc2fda3b0981e7c68210f198c5b7baf3fd00223e14bda9c883e3e54d5ca"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pylint-dev__pylint-7080/candidate-source-only.patch",
+      "destination": "results/cases/docker/pylint-dev__pylint-7080/candidate-source-only.patch",
+      "sha256": "d01cc18ce9c4f51b63f975571dfefaaab6fc5a642f276ed2e5b06ecf442b62d1"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pylint-dev__pylint-7080/changed-files.txt",
+      "destination": "results/cases/docker/pylint-dev__pylint-7080/changed-files.txt",
+      "sha256": "cc95b51ed78df33bb81b2994c4794057bf59fe6cf484192e8af4b560148fd3ff"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pytest-dev__pytest-7521/result.json",
+      "destination": "results/cases/docker/pytest-dev__pytest-7521/result.json",
+      "sha256": "7772b61222884895d0e85b82b666b7e458442ab7978af889b2be75013ba182ac"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pytest-dev__pytest-7521/input-config.json",
+      "destination": "results/cases/docker/pytest-dev__pytest-7521/input-config.json",
+      "sha256": "4caf90f42b5a5e8a222daa59b1c3aa5da2c8acaedbd64869e81c54654f2be4e4"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pytest-dev__pytest-7521/verifier.json",
+      "destination": "results/cases/docker/pytest-dev__pytest-7521/verifier.json",
+      "sha256": "e0822f6485bbddff2f2557a8a87f2262fcd4912cc916ff6f9bf2ac5dbb4a8d1e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pytest-dev__pytest-7521/verifier-raw.log",
+      "destination": "results/cases/docker/pytest-dev__pytest-7521/verifier-raw.log",
+      "sha256": "b97507d2c281f0fa955b24f87bfd19cde1158c9a6698ee8f1d1747c192a10970"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pytest-dev__pytest-7521/trajectory-audit.json",
+      "destination": "results/cases/docker/pytest-dev__pytest-7521/trajectory-audit.json",
+      "sha256": "47ce29f4c797295771873c8b526749143ce9786d5546e2678c5a12eca52e6ea2"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pytest-dev__pytest-7521/candidate-delta.patch",
+      "destination": "results/cases/docker/pytest-dev__pytest-7521/candidate-delta.patch",
+      "sha256": "e067d107f9d0073d188c6472027e339b33c24044d464a862cc01eae00c1fc853"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pytest-dev__pytest-7521/candidate-source-only.patch",
+      "destination": "results/cases/docker/pytest-dev__pytest-7521/candidate-source-only.patch",
+      "sha256": "427dec658866a70a4dc32ef2da87ccf93589bacf65fab1a5daab5979f2f9946b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/pytest-dev__pytest-7521/changed-files.txt",
+      "destination": "results/cases/docker/pytest-dev__pytest-7521/changed-files.txt",
+      "sha256": "59b242f98137edbb9d176fae717cbb42adf5ba225dd5bfb608dfc1e1c8dd1712"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/scikit-learn__scikit-learn-11310/result.json",
+      "destination": "results/cases/docker/scikit-learn__scikit-learn-11310/result.json",
+      "sha256": "a4cb9c10c230188f13f9316cd32d2218ec19ea264807d82cfe618ca1eff9d32b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/scikit-learn__scikit-learn-11310/input-config.json",
+      "destination": "results/cases/docker/scikit-learn__scikit-learn-11310/input-config.json",
+      "sha256": "df835025e1a954b2b221617b3d65535a87f249148e5bb49cec4f271df7fcf91e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/scikit-learn__scikit-learn-11310/verifier.json",
+      "destination": "results/cases/docker/scikit-learn__scikit-learn-11310/verifier.json",
+      "sha256": "5b7cd572e36ab5d6c315301b29ce1f09cab9b237a3494b4830c08c0da4e657c0"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/scikit-learn__scikit-learn-11310/verifier-raw.log",
+      "destination": "results/cases/docker/scikit-learn__scikit-learn-11310/verifier-raw.log",
+      "sha256": "e03225a119bb4c1170f54fe8ec3df1b4fc2dced40942e9f203ac3b5af76e283b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/scikit-learn__scikit-learn-11310/trajectory-audit.json",
+      "destination": "results/cases/docker/scikit-learn__scikit-learn-11310/trajectory-audit.json",
+      "sha256": "6827fbd6fb2c81d3531b9f8bbba264c7d4806b53d0780d8a9cd0884ab000dc6b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/scikit-learn__scikit-learn-11310/candidate-delta.patch",
+      "destination": "results/cases/docker/scikit-learn__scikit-learn-11310/candidate-delta.patch",
+      "sha256": "5522b20ffd58278fdc2a7cfc1d6b61d0342bfb371f21b0d59bd9e7cf92cb0748"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/scikit-learn__scikit-learn-11310/candidate-source-only.patch",
+      "destination": "results/cases/docker/scikit-learn__scikit-learn-11310/candidate-source-only.patch",
+      "sha256": "5235298e27217cd05ac5fbad02b0c6821f31fe5699f70f9a8a619501abb820c1"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/scikit-learn__scikit-learn-11310/changed-files.txt",
+      "destination": "results/cases/docker/scikit-learn__scikit-learn-11310/changed-files.txt",
+      "sha256": "aba6c9d281f27a3bd18222f22edf1487bb72ec239bd8fd8d31f523c66d89f63c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/sphinx-doc__sphinx-9367/result.json",
+      "destination": "results/cases/docker/sphinx-doc__sphinx-9367/result.json",
+      "sha256": "0341b2c06875ff01ff78b38a03434c1f68fdb452e5946959a52ef8e3d2b02f61"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/sphinx-doc__sphinx-9367/input-config.json",
+      "destination": "results/cases/docker/sphinx-doc__sphinx-9367/input-config.json",
+      "sha256": "8a41b38d17370833b2a0e47f9002cb6f975c0504cf5af547540966b909aafacf"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/sphinx-doc__sphinx-9367/verifier.json",
+      "destination": "results/cases/docker/sphinx-doc__sphinx-9367/verifier.json",
+      "sha256": "371bcd77c2d98f48d8b347b3df8d07a2507451425b3e34b0c06cf960df30cad9"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/sphinx-doc__sphinx-9367/verifier-raw.log",
+      "destination": "results/cases/docker/sphinx-doc__sphinx-9367/verifier-raw.log",
+      "sha256": "3b2190fb4f97dc60809ab7d92c2133992d29659e13b5c49427c25c9d74631be9"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/sphinx-doc__sphinx-9367/trajectory-audit.json",
+      "destination": "results/cases/docker/sphinx-doc__sphinx-9367/trajectory-audit.json",
+      "sha256": "2c09087d2fa6d65d8d8fc03d6119ad2106d0ff8246a2247a57e247224e186b51"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/sphinx-doc__sphinx-9367/candidate-delta.patch",
+      "destination": "results/cases/docker/sphinx-doc__sphinx-9367/candidate-delta.patch",
+      "sha256": "ad5d2b839ac1899fd5716e8cf03551c1c5fc3e71f74ee82533a0f2257f9be561"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/sphinx-doc__sphinx-9367/candidate-source-only.patch",
+      "destination": "results/cases/docker/sphinx-doc__sphinx-9367/candidate-source-only.patch",
+      "sha256": "ad5d2b839ac1899fd5716e8cf03551c1c5fc3e71f74ee82533a0f2257f9be561"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/sphinx-doc__sphinx-9367/changed-files.txt",
+      "destination": "results/cases/docker/sphinx-doc__sphinx-9367/changed-files.txt",
+      "sha256": "140c856230b602bcdbaa971edc0cb439788cef07f71b2be0471ea9224e5804f3"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/sympy__sympy-24213/result.json",
+      "destination": "results/cases/docker/sympy__sympy-24213/result.json",
+      "sha256": "3ed3d0e838492d2d356703553f6eaf3b717f44e068ea5a2be4af8d7cf5d860ba"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/sympy__sympy-24213/input-config.json",
+      "destination": "results/cases/docker/sympy__sympy-24213/input-config.json",
+      "sha256": "747e6712e703263953ddd4c50a7b8c2783573bc41d35367a613d2f0ce3842525"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/sympy__sympy-24213/verifier.json",
+      "destination": "results/cases/docker/sympy__sympy-24213/verifier.json",
+      "sha256": "101d40815762b9007a1ee1e2fa082b9e83057b391004293239898e5eb753309d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/sympy__sympy-24213/verifier-raw.log",
+      "destination": "results/cases/docker/sympy__sympy-24213/verifier-raw.log",
+      "sha256": "6d6e3c2485222d31fd784ea995d79479ef6669b375e022809bc68fc57442b596"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/sympy__sympy-24213/trajectory-audit.json",
+      "destination": "results/cases/docker/sympy__sympy-24213/trajectory-audit.json",
+      "sha256": "9d19f3360383e2f2e0eaf722591c109960339fca34f1ea32f37a8909e9921edd"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/sympy__sympy-24213/candidate-delta.patch",
+      "destination": "results/cases/docker/sympy__sympy-24213/candidate-delta.patch",
+      "sha256": "046ecc2e88201301388a4b18c695dc483b20e4b1f602d20c77349ef8cfc7d2f3"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/sympy__sympy-24213/candidate-source-only.patch",
+      "destination": "results/cases/docker/sympy__sympy-24213/candidate-source-only.patch",
+      "sha256": "3150065e4bc17b06a667af62e8559d9cfe3dcc7e39f9f52bc4648b59a9df01b2"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/docker/sympy__sympy-24213/changed-files.txt",
+      "destination": "results/cases/docker/sympy__sympy-24213/changed-files.txt",
+      "sha256": "b27810372dcb204a4509b64eb24b033056fedd33a7abf4d3d8275d456fd01c88"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/astropy__astropy-13033/result.json",
+      "destination": "results/cases/e2b/astropy__astropy-13033/result.json",
+      "sha256": "c38593432559aab6a73ea08a0b4ae4ee7d9730cc7a930b147619373c7acb2d93"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/astropy__astropy-13033/input-config.json",
+      "destination": "results/cases/e2b/astropy__astropy-13033/input-config.json",
+      "sha256": "50ee050fe98a2a0a0fe5d5bdb228508a8149a8ab1daaf5a72f50105bd64efed6"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/astropy__astropy-13033/verifier.json",
+      "destination": "results/cases/e2b/astropy__astropy-13033/verifier.json",
+      "sha256": "ec72536887ec56db10303be8c3fd4b7a2ec373aa33bf61b45dd49577b151cc4b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/astropy__astropy-13033/verifier-raw.log",
+      "destination": "results/cases/e2b/astropy__astropy-13033/verifier-raw.log",
+      "sha256": "9c4876291559b3a36e48af3c7bca4e240844ae31bd708c99f667fba42e59b4e1"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/astropy__astropy-13033/trajectory-audit.json",
+      "destination": "results/cases/e2b/astropy__astropy-13033/trajectory-audit.json",
+      "sha256": "1a946021ac950a8e05088df2b54a099ee3f9508b4a6d28ede3a14a1b52618f49"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/astropy__astropy-13033/candidate-delta.patch",
+      "destination": "results/cases/e2b/astropy__astropy-13033/candidate-delta.patch",
+      "sha256": "edfcf2ace5e1e2c80725bf10a21743e40b119e54ccdd459b90a13a031a1867a8"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/astropy__astropy-13033/candidate-source-only.patch",
+      "destination": "results/cases/e2b/astropy__astropy-13033/candidate-source-only.patch",
+      "sha256": "cef00436fc33e315751220fc7f1d79809392065a5f774e797a244f5b16209651"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/astropy__astropy-13033/changed-files.txt",
+      "destination": "results/cases/e2b/astropy__astropy-13033/changed-files.txt",
+      "sha256": "780382196f33efbfe3f50ce6f1cab9e0d18191f51bf40d2305967b1cf9426658"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/django__django-14373/result.json",
+      "destination": "results/cases/e2b/django__django-14373/result.json",
+      "sha256": "b87beac2c7f1dc614eebd4f64ddb4813f3455d7f990694e290bbbf331e60b765"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/django__django-14373/input-config.json",
+      "destination": "results/cases/e2b/django__django-14373/input-config.json",
+      "sha256": "53504cd9592414e68abc65cb0ab3ef88d02db7c69863ab944b0db742abd492e9"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/django__django-14373/verifier.json",
+      "destination": "results/cases/e2b/django__django-14373/verifier.json",
+      "sha256": "d2b2c9a21472e045ebe392c2be55010a1698002bcb4339dadf60a5034d88abff"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/django__django-14373/verifier-raw.log",
+      "destination": "results/cases/e2b/django__django-14373/verifier-raw.log",
+      "sha256": "7e0d90387d00c21917db294b56d79454184e99c8798650846024ffc166ba5174"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/django__django-14373/trajectory-audit.json",
+      "destination": "results/cases/e2b/django__django-14373/trajectory-audit.json",
+      "sha256": "9f198e2db462ba5785c5d2f172f1d7baa8463323a212376369c093d3ded35acf"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/django__django-14373/candidate-delta.patch",
+      "destination": "results/cases/e2b/django__django-14373/candidate-delta.patch",
+      "sha256": "af755cdb6e7ebabee9dead75e2e969073620995ab8ed9a03c9310a035056bd2f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/django__django-14373/candidate-source-only.patch",
+      "destination": "results/cases/e2b/django__django-14373/candidate-source-only.patch",
+      "sha256": "af755cdb6e7ebabee9dead75e2e969073620995ab8ed9a03c9310a035056bd2f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/django__django-14373/changed-files.txt",
+      "destination": "results/cases/e2b/django__django-14373/changed-files.txt",
+      "sha256": "c3f2c860bcdb9b232dcc1be5037935ab16cd5247d77c16e048932f061f960d12"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/matplotlib__matplotlib-20488/result.json",
+      "destination": "results/cases/e2b/matplotlib__matplotlib-20488/result.json",
+      "sha256": "53f45c757cf8013e9e853cba33b2a60f93739b06910c067badecfbc463370100"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/matplotlib__matplotlib-20488/input-config.json",
+      "destination": "results/cases/e2b/matplotlib__matplotlib-20488/input-config.json",
+      "sha256": "c931fe3542a43c471ef5db24873f75f4bb9752f92c81ae7c371c7d906fc068f8"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/matplotlib__matplotlib-20488/verifier.json",
+      "destination": "results/cases/e2b/matplotlib__matplotlib-20488/verifier.json",
+      "sha256": "d82043f96c543dad8fbf4f659f39431964948bb363088a3eb90400c9649ff3cd"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/matplotlib__matplotlib-20488/verifier-raw.log",
+      "destination": "results/cases/e2b/matplotlib__matplotlib-20488/verifier-raw.log",
+      "sha256": "3ba6dfb17040eca43bed3a9f8e4a203fb4bbd3ecfa7f13c9ee1c04238fc8afd4"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/matplotlib__matplotlib-20488/trajectory-audit.json",
+      "destination": "results/cases/e2b/matplotlib__matplotlib-20488/trajectory-audit.json",
+      "sha256": "34bfed8b978da2ebc8f34d471c648f4c0e979e8cb74802bb8f3702c99909312a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/matplotlib__matplotlib-20488/candidate-delta.patch",
+      "destination": "results/cases/e2b/matplotlib__matplotlib-20488/candidate-delta.patch",
+      "sha256": "68d598b20f394c2006044d024f9dd150a7cc85bbc5872244f7d7a5821077625d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/matplotlib__matplotlib-20488/candidate-source-only.patch",
+      "destination": "results/cases/e2b/matplotlib__matplotlib-20488/candidate-source-only.patch",
+      "sha256": "68d598b20f394c2006044d024f9dd150a7cc85bbc5872244f7d7a5821077625d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/matplotlib__matplotlib-20488/changed-files.txt",
+      "destination": "results/cases/e2b/matplotlib__matplotlib-20488/changed-files.txt",
+      "sha256": "87b8a437379499f56894fd04966dc0d0a4c207965a12f98efec9cc2d506dd76a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/mwaskom__seaborn-3187/result.json",
+      "destination": "results/cases/e2b/mwaskom__seaborn-3187/result.json",
+      "sha256": "2dfcd6a0b42788fdb3e9b63172e13421ed83d30f106f61a747aa5c806c262c4f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/mwaskom__seaborn-3187/input-config.json",
+      "destination": "results/cases/e2b/mwaskom__seaborn-3187/input-config.json",
+      "sha256": "6566baa4a67d126aa2d707c846cbbb397fa2dd4a5b784a205f5fc8dd65f01ec8"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/mwaskom__seaborn-3187/verifier.json",
+      "destination": "results/cases/e2b/mwaskom__seaborn-3187/verifier.json",
+      "sha256": "657a5e8e0950980a84c88838487c8408945d08756cd7d6e98bac65b2f3f28129"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/mwaskom__seaborn-3187/verifier-raw.log",
+      "destination": "results/cases/e2b/mwaskom__seaborn-3187/verifier-raw.log",
+      "sha256": "f72b1f788a2ea5b0a96bc0003a58b77a8d02ffe138d9b1c117d857cb0769f0c1"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/mwaskom__seaborn-3187/trajectory-audit.json",
+      "destination": "results/cases/e2b/mwaskom__seaborn-3187/trajectory-audit.json",
+      "sha256": "cb1941853b2d17ff899f4f38765940b73b773a2ed9c81a288c711ca984bc6317"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/mwaskom__seaborn-3187/candidate-delta.patch",
+      "destination": "results/cases/e2b/mwaskom__seaborn-3187/candidate-delta.patch",
+      "sha256": "fa9328e9611177044fb8f19bebff266bdc9853feac631a351158158d9edf61b6"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/mwaskom__seaborn-3187/candidate-source-only.patch",
+      "destination": "results/cases/e2b/mwaskom__seaborn-3187/candidate-source-only.patch",
+      "sha256": "eaf1ced5712ba243dbead26c135bc5633667d52a5803c3cf41bbd62205c58204"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/mwaskom__seaborn-3187/changed-files.txt",
+      "destination": "results/cases/e2b/mwaskom__seaborn-3187/changed-files.txt",
+      "sha256": "2201e1200503c74225e6a03cc29a10010f69c872cc892cdf073f17210da82435"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pallets__flask-5014/result.json",
+      "destination": "results/cases/e2b/pallets__flask-5014/result.json",
+      "sha256": "ebe43d7aa78b5c23a2d45259e3a8224380ce1af453743c0ba9ad3c31ccd05bd5"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pallets__flask-5014/input-config.json",
+      "destination": "results/cases/e2b/pallets__flask-5014/input-config.json",
+      "sha256": "bbda26a24d8ec4be4eb0f54446ea9a024938a0c40e6166124eae4ed6e7ab05e0"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pallets__flask-5014/verifier.json",
+      "destination": "results/cases/e2b/pallets__flask-5014/verifier.json",
+      "sha256": "39290aaff2f9be6a434aaec4693ef7b30b7c099ba75256da4bff45829047f7cb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pallets__flask-5014/verifier-raw.log",
+      "destination": "results/cases/e2b/pallets__flask-5014/verifier-raw.log",
+      "sha256": "6a41aff3658b8aa3a7594f57f50131b3e83d0ec09b36f603feb9ab68ae9cd3a5"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pallets__flask-5014/trajectory-audit.json",
+      "destination": "results/cases/e2b/pallets__flask-5014/trajectory-audit.json",
+      "sha256": "6eeff18cafc08ea423efac83689a576969e514d45a11508104daf77492f9a573"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pallets__flask-5014/candidate-delta.patch",
+      "destination": "results/cases/e2b/pallets__flask-5014/candidate-delta.patch",
+      "sha256": "292316e7541589bf3046141a8c96e7cc1e0f6e0b577895ed8b8032dc70bd3c69"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pallets__flask-5014/candidate-source-only.patch",
+      "destination": "results/cases/e2b/pallets__flask-5014/candidate-source-only.patch",
+      "sha256": "292316e7541589bf3046141a8c96e7cc1e0f6e0b577895ed8b8032dc70bd3c69"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pallets__flask-5014/changed-files.txt",
+      "destination": "results/cases/e2b/pallets__flask-5014/changed-files.txt",
+      "sha256": "3021dfca3d1071cac237e7b1243074cf8ca3e9c28aad3a9a5ae910b744574e20"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/psf__requests-1921/result.json",
+      "destination": "results/cases/e2b/psf__requests-1921/result.json",
+      "sha256": "8a56696613c44dc3b52463fd46945ee48955e26fa34f52eb334ce76f1ccab057"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/psf__requests-1921/input-config.json",
+      "destination": "results/cases/e2b/psf__requests-1921/input-config.json",
+      "sha256": "d7d4da8f18dc22c139101b561b950d125928f03a9b317e84fd5ba5e15ad2855d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/psf__requests-1921/verifier.json",
+      "destination": "results/cases/e2b/psf__requests-1921/verifier.json",
+      "sha256": "a5f3aab139a1f48fd046978d00a56fadcc060c601e0741b01c5f6aa1c08a9c72"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/psf__requests-1921/verifier-raw.log",
+      "destination": "results/cases/e2b/psf__requests-1921/verifier-raw.log",
+      "sha256": "4d81c8fad735caac9842f89e73f4ef9c31b259823ddcf6007b2c5d66c1dcd614"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/psf__requests-1921/trajectory-audit.json",
+      "destination": "results/cases/e2b/psf__requests-1921/trajectory-audit.json",
+      "sha256": "5c25c59165aa5a4046a425d7b3a599e37ed4b96223f6268ff8c258ecb05efb88"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/psf__requests-1921/candidate-delta.patch",
+      "destination": "results/cases/e2b/psf__requests-1921/candidate-delta.patch",
+      "sha256": "47bdc0cf9dc6c307570092df7288ca00b4424bdc23303a9d9d822c0626d67db3"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/psf__requests-1921/candidate-source-only.patch",
+      "destination": "results/cases/e2b/psf__requests-1921/candidate-source-only.patch",
+      "sha256": "acaea6bb6d6a31e6f323c91da1e826cc129a5a7753b3039271791aa427e30c0e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/psf__requests-1921/changed-files.txt",
+      "destination": "results/cases/e2b/psf__requests-1921/changed-files.txt",
+      "sha256": "5c5a17d1d1be9389d987d2c86777009921e709f49aa0bb8a196557c2fa86ed81"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pydata__xarray-4075/result.json",
+      "destination": "results/cases/e2b/pydata__xarray-4075/result.json",
+      "sha256": "78b28a5097f9291c2e60dad7a394d1aead874eca6b3c637d482c597b7cfd028c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pydata__xarray-4075/input-config.json",
+      "destination": "results/cases/e2b/pydata__xarray-4075/input-config.json",
+      "sha256": "292c9bd83b7a59787e92f0f877c9eb7c6d089bdf16233a1f71f929c88cb7f1fe"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pydata__xarray-4075/verifier.json",
+      "destination": "results/cases/e2b/pydata__xarray-4075/verifier.json",
+      "sha256": "a1531eea3f0dac4c822b31d8fb466cb14121c49c5e3a9b36819739ead4ef4d33"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pydata__xarray-4075/verifier-raw.log",
+      "destination": "results/cases/e2b/pydata__xarray-4075/verifier-raw.log",
+      "sha256": "6fe433347f35a2e9d06f9c5c23422bbe53d893c46ba704edbae85a1dfb58996c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pydata__xarray-4075/trajectory-audit.json",
+      "destination": "results/cases/e2b/pydata__xarray-4075/trajectory-audit.json",
+      "sha256": "80f7c283013c4b92b2511286e7227eb0d3f29a8ae828c51a7f93a98f849dd13e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pydata__xarray-4075/candidate-delta.patch",
+      "destination": "results/cases/e2b/pydata__xarray-4075/candidate-delta.patch",
+      "sha256": "03dbd2251ba105a72843d02e98f16fd4278a8559f995522b39c64d5499e5d73a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pydata__xarray-4075/candidate-source-only.patch",
+      "destination": "results/cases/e2b/pydata__xarray-4075/candidate-source-only.patch",
+      "sha256": "03dbd2251ba105a72843d02e98f16fd4278a8559f995522b39c64d5499e5d73a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pydata__xarray-4075/changed-files.txt",
+      "destination": "results/cases/e2b/pydata__xarray-4075/changed-files.txt",
+      "sha256": "6816a17d82b160b2b501c089466f7998c30c99becd8be54f7a40fc65217c9b1f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pylint-dev__pylint-7080/result.json",
+      "destination": "results/cases/e2b/pylint-dev__pylint-7080/result.json",
+      "sha256": "32d8aa695be4e4ab2f7df09f6177b7989483db0e9d3e90d31af251abc860686a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pylint-dev__pylint-7080/input-config.json",
+      "destination": "results/cases/e2b/pylint-dev__pylint-7080/input-config.json",
+      "sha256": "42753c8647f226821543cb32d295000bcc509c5499947ceffa772097c1af87d4"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pylint-dev__pylint-7080/verifier.json",
+      "destination": "results/cases/e2b/pylint-dev__pylint-7080/verifier.json",
+      "sha256": "a9c0fc51cb3882cced1ad7a6490768dae153d20b1f0f8c4288727ba1eacf2642"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pylint-dev__pylint-7080/verifier-raw.log",
+      "destination": "results/cases/e2b/pylint-dev__pylint-7080/verifier-raw.log",
+      "sha256": "d21e4aa67d0020ce967bfc67eadeb11e46c4c47852b17dda45e05d9a8a44596c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pylint-dev__pylint-7080/trajectory-audit.json",
+      "destination": "results/cases/e2b/pylint-dev__pylint-7080/trajectory-audit.json",
+      "sha256": "e2f69f51d4816bcfb1cf0c167b918e4984ad4f445dfe0a1449ca5ee152378200"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pylint-dev__pylint-7080/candidate-delta.patch",
+      "destination": "results/cases/e2b/pylint-dev__pylint-7080/candidate-delta.patch",
+      "sha256": "5f5a642efed587687c047ff32374dc7e2478a5611f61db8469e5ae1ffcf4f9c9"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pylint-dev__pylint-7080/candidate-source-only.patch",
+      "destination": "results/cases/e2b/pylint-dev__pylint-7080/candidate-source-only.patch",
+      "sha256": "466b67e563fbdeac9afe6a05abcd52b7667f379633fa31478069b53de0b5d921"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pylint-dev__pylint-7080/changed-files.txt",
+      "destination": "results/cases/e2b/pylint-dev__pylint-7080/changed-files.txt",
+      "sha256": "278c3b8a938fe5c0befe3046e73a850379e828873dc5b5327a1f37b005bb36c2"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pytest-dev__pytest-7521/result.json",
+      "destination": "results/cases/e2b/pytest-dev__pytest-7521/result.json",
+      "sha256": "f457fc48825b5264e349287cc19a486c5d16b1f894e1d539977e7daf641c0010"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pytest-dev__pytest-7521/input-config.json",
+      "destination": "results/cases/e2b/pytest-dev__pytest-7521/input-config.json",
+      "sha256": "9021712003bd8ff979b5fde2a1441b005a8b7ca1fdcc6415c4d5e0ae30966b8f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pytest-dev__pytest-7521/verifier.json",
+      "destination": "results/cases/e2b/pytest-dev__pytest-7521/verifier.json",
+      "sha256": "377af5e48e29df918ce956d27ab2436468162842877ba922388b00eca29eac94"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pytest-dev__pytest-7521/verifier-raw.log",
+      "destination": "results/cases/e2b/pytest-dev__pytest-7521/verifier-raw.log",
+      "sha256": "0eaed8eec87aeb49ec83590eff0c5f904a5fe81dd343d0b593fdb33a59740d55"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pytest-dev__pytest-7521/trajectory-audit.json",
+      "destination": "results/cases/e2b/pytest-dev__pytest-7521/trajectory-audit.json",
+      "sha256": "3d492cbee0e0459c9e2c494af57fac7f971efe85b28ccce1163fbcb2f09686cb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pytest-dev__pytest-7521/candidate-delta.patch",
+      "destination": "results/cases/e2b/pytest-dev__pytest-7521/candidate-delta.patch",
+      "sha256": "c3317ae7da66be7f44585f15ca9fc1fb2d81b217fbdf792a7cfb134319166c2c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pytest-dev__pytest-7521/candidate-source-only.patch",
+      "destination": "results/cases/e2b/pytest-dev__pytest-7521/candidate-source-only.patch",
+      "sha256": "348c4dba956bfe89b787269b5c79e490ed8deaa37184a38deeafa2e946c2c94a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/pytest-dev__pytest-7521/changed-files.txt",
+      "destination": "results/cases/e2b/pytest-dev__pytest-7521/changed-files.txt",
+      "sha256": "e7ef16c02ecdef4e44d9af0390a7f404e6016dd2b012c299b0235bcd657837c7"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/scikit-learn__scikit-learn-11310/result.json",
+      "destination": "results/cases/e2b/scikit-learn__scikit-learn-11310/result.json",
+      "sha256": "d9c2072108b318f9a0f5cd6178b16fa4f511fe16763a2c78edb30248f817b73f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/scikit-learn__scikit-learn-11310/input-config.json",
+      "destination": "results/cases/e2b/scikit-learn__scikit-learn-11310/input-config.json",
+      "sha256": "e3bd15aeccb089014ccedff3d060ec1ca6625f92c073d1cd5eff0a4d74a0dcb5"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/scikit-learn__scikit-learn-11310/verifier.json",
+      "destination": "results/cases/e2b/scikit-learn__scikit-learn-11310/verifier.json",
+      "sha256": "148ae3ee756d24b3dc353afb1d5283b607e1fedeac79fd89584efa8f4e038f2c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/scikit-learn__scikit-learn-11310/verifier-raw.log",
+      "destination": "results/cases/e2b/scikit-learn__scikit-learn-11310/verifier-raw.log",
+      "sha256": "568ae158d981607438c8fe82115ebfd70189018315a6bdf8837e50563f7774c0"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/scikit-learn__scikit-learn-11310/trajectory-audit.json",
+      "destination": "results/cases/e2b/scikit-learn__scikit-learn-11310/trajectory-audit.json",
+      "sha256": "9f8899b5f060ed8d9355fa79f7ed9b52413abecee1cba12250b03d51f9578f04"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/scikit-learn__scikit-learn-11310/candidate-delta.patch",
+      "destination": "results/cases/e2b/scikit-learn__scikit-learn-11310/candidate-delta.patch",
+      "sha256": "a8ff9d23e0ae16887cacacf132c07a03b6fa436568fc116303c47464b62358b7"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/scikit-learn__scikit-learn-11310/candidate-source-only.patch",
+      "destination": "results/cases/e2b/scikit-learn__scikit-learn-11310/candidate-source-only.patch",
+      "sha256": "6278bb0b6ff55e395b0eacb0c1d438eadfc3d7eb1052d6f93e4eac895645fd71"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/scikit-learn__scikit-learn-11310/changed-files.txt",
+      "destination": "results/cases/e2b/scikit-learn__scikit-learn-11310/changed-files.txt",
+      "sha256": "ea22e36cde23d7750f5cfc2da1b651c72ccac3bb3e702e6f17d2c11bb9f60213"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/sphinx-doc__sphinx-9367/result.json",
+      "destination": "results/cases/e2b/sphinx-doc__sphinx-9367/result.json",
+      "sha256": "c89ebdc840825dcc367ca531aafae6e17bb9e75967df22814c33ba8ca0d3dcbe"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/sphinx-doc__sphinx-9367/input-config.json",
+      "destination": "results/cases/e2b/sphinx-doc__sphinx-9367/input-config.json",
+      "sha256": "05820fab79b299d3114a04fde3d1cd4d13818cdfcaa6f703a85a750e8bbc6e39"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/sphinx-doc__sphinx-9367/verifier.json",
+      "destination": "results/cases/e2b/sphinx-doc__sphinx-9367/verifier.json",
+      "sha256": "6331b61863cfefde3d100e39fc257e182b14f0f9ab93198d9e5132e5b25eea03"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/sphinx-doc__sphinx-9367/verifier-raw.log",
+      "destination": "results/cases/e2b/sphinx-doc__sphinx-9367/verifier-raw.log",
+      "sha256": "5978b5fc33404b6bfd0f91db9a2bbad9f7c9e1d387a172b3e5e10d3789677527"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/sphinx-doc__sphinx-9367/trajectory-audit.json",
+      "destination": "results/cases/e2b/sphinx-doc__sphinx-9367/trajectory-audit.json",
+      "sha256": "32f68a8a2cb85f0d6ceb5e2610435da1a1e0343e250cdab298885f192e8843b2"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/sphinx-doc__sphinx-9367/candidate-delta.patch",
+      "destination": "results/cases/e2b/sphinx-doc__sphinx-9367/candidate-delta.patch",
+      "sha256": "7b4ec8231724c3e9c642b00e6298c7543d52b97c397cb4acf6a2f16fd6c25661"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/sphinx-doc__sphinx-9367/candidate-source-only.patch",
+      "destination": "results/cases/e2b/sphinx-doc__sphinx-9367/candidate-source-only.patch",
+      "sha256": "284d484d781a937e6a693ee7b54613e44e04cc171a26a38bfce025c5719a6e01"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/sphinx-doc__sphinx-9367/changed-files.txt",
+      "destination": "results/cases/e2b/sphinx-doc__sphinx-9367/changed-files.txt",
+      "sha256": "978ddf43359384213e8b13f039f5146e36c6b26e22137fe98e8943e9e72f1438"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/sympy__sympy-24213/result.json",
+      "destination": "results/cases/e2b/sympy__sympy-24213/result.json",
+      "sha256": "8b29ac3a74a67b88d1192d6cd4250a977831ed182bef81c8841c709ade1cf808"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/sympy__sympy-24213/input-config.json",
+      "destination": "results/cases/e2b/sympy__sympy-24213/input-config.json",
+      "sha256": "efafb3feb678fc1781c0f323bef6cf34d387635368646e05078b7b16281c595b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/sympy__sympy-24213/verifier.json",
+      "destination": "results/cases/e2b/sympy__sympy-24213/verifier.json",
+      "sha256": "fe3a593aa9946bc9552512e8081b9c6a63749ad34f978dac24976a12eb219a6d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/sympy__sympy-24213/verifier-raw.log",
+      "destination": "results/cases/e2b/sympy__sympy-24213/verifier-raw.log",
+      "sha256": "05bcdd470494619d89af3b9fb4d8997fb684dba81542da764bc7a2d3a84e3253"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/sympy__sympy-24213/trajectory-audit.json",
+      "destination": "results/cases/e2b/sympy__sympy-24213/trajectory-audit.json",
+      "sha256": "859882b395f87cec58d4ccba62526a974d14a9b7eff25fd712b6c5636a34b99f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/sympy__sympy-24213/candidate-delta.patch",
+      "destination": "results/cases/e2b/sympy__sympy-24213/candidate-delta.patch",
+      "sha256": "19adc55861bca840fb97cbe084392c3b97a0e91721dc88d386b3976b63add547"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/sympy__sympy-24213/candidate-source-only.patch",
+      "destination": "results/cases/e2b/sympy__sympy-24213/candidate-source-only.patch",
+      "sha256": "b535643a41ad60110207dc7b5a5d165d25b939d6dfb7f19da5e2ed13b7edf496"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/swe-sandbox-profile-20260914T144308Z/main-optimized/e2b/sympy__sympy-24213/changed-files.txt",
+      "destination": "results/cases/e2b/sympy__sympy-24213/changed-files.txt",
+      "sha256": "6ee3b103f54111d77552d2349e33cbf629502867779786054acbec3a5d1ea643"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+A	comprehensive_test.py
+A	debug_capture.py
+A	debug_direct.py
+A	debug_with_print.py
+A	direct_test.py
+A	edge_case_tests.py
+A	final_verification.py
+A	reproduce_issue.py
+A	simple_reproduce.py
+M	src/_pytest/capture.py
+A	test_issue.py
+A	test_original_issue.py
+A	test_repro.py

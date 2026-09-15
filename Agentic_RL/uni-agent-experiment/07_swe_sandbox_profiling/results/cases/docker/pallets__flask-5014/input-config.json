@@ -1,0 +1,67 @@
+{
+  "name": "profile_swe_bench",
+  "sandbox": {
+    "provider": "profile_docker",
+    "image": "swebench/sweb.eval.x86_64.pallets_1776_flask-5014@sha256:bde4fbdafa36141d4396944da88ec37aabdef612ed36920090675bccd0ca5d72",
+    "runtime_timeout": 5400,
+    "sandbox_kwargs": {
+      "profile_key": "main-optimized:docker:pallets__flask-5014:react",
+      "instance_label": "swe-sandbox-profile-20260914T144308Z",
+      "slot": 0
+    }
+  },
+  "agent": {
+    "name": "react",
+    "max_steps": 100,
+    "tools": [
+      {
+        "name": "str_replace_editor"
+      },
+      {
+        "name": "stateful_shell",
+        "command_timeout": 120,
+        "env_vars": {
+          "PIP_PROGRESS_BAR": "off",
+          "PAGER": "cat",
+          "TQDM_DISABLE": "1",
+          "GIT_PAGER": "cat"
+        }
+      },
+      {
+        "name": "submit"
+      }
+    ],
+    "model": {
+      "temperature": 0.2,
+      "top_p": 0.9,
+      "max_total_tokens": 120000,
+      "max_tokens_per_turn": 4096
+    }
+  },
+  "prompt_template": [
+    {
+      "role": "system",
+      "content": "You are a helpful assistant that can interact with a computer to solve tasks."
+    },
+    {
+      "role": "user",
+      "content": "<uploaded_files>\n/testbed\n</uploaded_files>\nI have uploaded a python code repository in the /testbed directory. You can explore and modify files using the available tools. Consider the following issue description:\n\n<issue_description>\n{problem_statement}\n</issue_description>\n\nCan you help me implement the necessary changes to the repository to fix the <issue_description>?\nI have already taken care of all changes to any of the test files described in the <issue_description>. This means you DON'T have to modify the testing logic or any of the tests in any way!\nAlso the development Python environment is already set up for you (i.e., all dependencies already installed), so you don't need to install other packages.\nYour task is to make the minimal changes to non-test files in the /testbed directory to ensure the <issue_description> is satisfied.\n\nFollow these steps to resolve the issue:\n1. First, explore the codebase to locate and understand the code relevant to the <issue_description>.\n- Use efficient search commands to identify key files and functions.\n- You should err on the side of caution and look at various relevant files and build your understanding of\n    - how the code works\n    - what are the expected behaviors and edge cases\n    - what are the potential root causes for the given issue\n\n2. Assess whether you can reproduce the issue:\n- Create a script at '/testbed/reproduce_issue.py' that demonstrates the error.\n- Execute this script to confirm the error behavior.\n- You should reproduce the issue before fixing it.\n- Your reproduction script should also assert the expected behavior for the fixed code.\n\n3. Analyze the root cause:\n- Identify the underlying problem based on your code exploration and reproduction results.\n- Critically analyze different potential approaches to fix the issue.\n- You NEED to explicitly reason about multiple approaches to fix the issue. Next, find the most elegant and effective solution among them considering the tradeoffs (correctness, generality, side effects, etc.).\n- You would need to reason about execution paths, edge cases, and other potential issues. You should look at the unit tests to understand the expected behavior of the relevant code.\n\n4. Implement your solution:\n- Make targeted changes to the necessary files following idiomatic code patterns once you determine the root cause.\n- You should be thorough and methodical.\n\n5. Verify your solution:\n- Rerun your reproduction script to confirm the error is fixed.\n- If verification fails, iterate on your solution until successful. If you identify the reproduction script is buggy, adjust it as needed.\n\n6. Run unit tests:\n- Find and run the relevant unit tests relevant to the performed fix.\n- You should run the unit tests to ensure your solution is correct and does not cause any regressions.\n- In cases where the unit tests are do not pass, you should consider whether the unit tests does not reflect the *new* expected behavior of the code. If so, you can test it by writing additional edge test cases.\n- Use the existing test runner to run the unit tests you identify as relevant to the changes you made. For example:\n    - `python -m pytest -xvs sympy/physics/units/tests/test_dimensions_transcendental.py`\n    - `python -m pytest tests/test_domain_py.py::test_pymethod_options`\n    - `./tests/runtests.py constraints.tests.CheckConstraintTests -v 2`\n- RUN ALL relevant unit tests to ensure your solution is correct and does not cause any regressions.\n- DO NOT MODIFY any of the existing unit tests. You can add new edge test cases in a separate file if needed BUT DO NOT MODIFY THE EXISTING TESTS.\n\n7. Test edge cases:\n- Identify potential edge cases that might challenge your solution.\n- Create additional test cases in a separate file '/testbed/edge_case_tests.py'.\n- Execute these tests to verify your solution's robustness.\n- You should run multiple rounds of edge cases. When creating edge cases:\n    - Consider complex scenarios beyond the original issue description\n    - Test for regressions to ensure existing functionality remains intact\n    - At each round you should write multiple edge test cases in the same file to be efficient\n\n8. Refine if necessary:\n- If edge case testing reveals issues, refine your solution accordingly.\n- Ensure your final implementation handles all identified scenarios correctly.\n- Document any assumptions or limitations of your solution.\n\n9. Submit your solution:\n- Once you have verified your solution, submit your solution using the `submit` tool.\n\nA successful resolution means:\n- The specific error/issue described no longer occurs\n- Your changes maintain compatibility with existing functionality\n- Edge cases are properly handled"
+    }
+  ],
+  "eval_timeout": 600,
+  "metadata": {
+    "instance_id": "pallets__flask-5014",
+    "repo": "pallets/flask",
+    "version": "2.3",
+    "base_commit": "7ee9ceb71e868944a46e1ff00b506772a53a4f1d",
+    "patch": "diff --git a/src/flask/blueprints.py b/src/flask/blueprints.py\n--- a/src/flask/blueprints.py\n+++ b/src/flask/blueprints.py\n@@ -190,6 +190,9 @@ def __init__(\n             root_path=root_path,\n         )\n \n+        if not name:\n+            raise ValueError(\"'name' may not be empty.\")\n+\n         if \".\" in name:\n             raise ValueError(\"'name' may not contain a dot '.' character.\")\n \n",
+    "test_patch": "diff --git a/tests/test_blueprints.py b/tests/test_blueprints.py\n--- a/tests/test_blueprints.py\n+++ b/tests/test_blueprints.py\n@@ -256,6 +256,11 @@ def test_dotted_name_not_allowed(app, client):\n         flask.Blueprint(\"app.ui\", __name__)\n \n \n+def test_empty_name_not_allowed(app, client):\n+    with pytest.raises(ValueError):\n+        flask.Blueprint(\"\", __name__)\n+\n+\n def test_dotted_names_from_app(app, client):\n     test = flask.Blueprint(\"test\", __name__)\n \n",
+    "problem_statement": "Require a non-empty name for Blueprints\nThings do not work correctly if a Blueprint is given an empty name (e.g. #4944).\r\nIt would be helpful if a `ValueError` was raised when trying to do that.\n",
+    "FAIL_TO_PASS": "[\"tests/test_blueprints.py::test_empty_name_not_allowed\"]",
+    "PASS_TO_PASS": "[\"tests/test_blueprints.py::test_blueprint_specific_error_handling\", \"tests/test_blueprints.py::test_blueprint_specific_user_error_handling\", \"tests/test_blueprints.py::test_blueprint_app_error_handling\", \"tests/test_blueprints.py::test_blueprint_prefix_slash[-/-/]\", \"tests/test_blueprints.py::test_blueprint_prefix_slash[/--/]\", \"tests/test_blueprints.py::test_blueprint_prefix_slash[/-/-/]\", \"tests/test_blueprints.py::test_blueprint_prefix_slash[/foo--/foo]\", \"tests/test_blueprints.py::test_blueprint_prefix_slash[/foo/--/foo/]\", \"tests/test_blueprints.py::test_blueprint_prefix_slash[-/bar-/bar]\", \"tests/test_blueprints.py::test_blueprint_prefix_slash[/foo/-/bar-/foo/bar]\", \"tests/test_blueprints.py::test_blueprint_prefix_slash[/foo/-bar-/foo/bar]\", \"tests/test_blueprints.py::test_blueprint_prefix_slash[/foo-/bar-/foo/bar]\", \"tests/test_blueprints.py::test_blueprint_prefix_slash[/foo/-//bar-/foo/bar]\", \"tests/test_blueprints.py::test_blueprint_prefix_slash[/foo//-/bar-/foo/bar]\", \"tests/test_blueprints.py::test_blueprint_url_defaults\", \"tests/test_blueprints.py::test_blueprint_url_processors\", \"tests/test_blueprints.py::test_templates_and_static\", \"tests/test_blueprints.py::test_default_static_max_age\", \"tests/test_blueprints.py::test_templates_list\", \"tests/test_blueprints.py::test_dotted_name_not_allowed\", \"tests/test_blueprints.py::test_dotted_names_from_app\", \"tests/test_blueprints.py::test_empty_url_defaults\", \"tests/test_blueprints.py::test_route_decorator_custom_endpoint\", \"tests/test_blueprints.py::test_route_decorator_custom_endpoint_with_dots\", \"tests/test_blueprints.py::test_endpoint_decorator\", \"tests/test_blueprints.py::test_template_filter\", \"tests/test_blueprints.py::test_add_template_filter\", \"tests/test_blueprints.py::test_template_filter_with_name\", \"tests/test_blueprints.py::test_add_template_filter_with_name\", \"tests/test_blueprints.py::test_template_filter_with_template\", \"tests/test_blueprints.py::test_template_filter_after_route_with_template\", \"tests/test_blueprints.py::test_add_template_filter_with_template\", \"tests/test_blueprints.py::test_template_filter_with_name_and_template\", \"tests/test_blueprints.py::test_add_template_filter_with_name_and_template\", \"tests/test_blueprints.py::test_template_test\", \"tests/test_blueprints.py::test_add_template_test\", \"tests/test_blueprints.py::test_template_test_with_name\", \"tests/test_blueprints.py::test_add_template_test_with_name\", \"tests/test_blueprints.py::test_template_test_with_template\", \"tests/test_blueprints.py::test_template_test_after_route_with_template\", \"tests/test_blueprints.py::test_add_template_test_with_template\", \"tests/test_blueprints.py::test_template_test_with_name_and_template\", \"tests/test_blueprints.py::test_add_template_test_with_name_and_template\", \"tests/test_blueprints.py::test_context_processing\", \"tests/test_blueprints.py::test_template_global\", \"tests/test_blueprints.py::test_request_processing\", \"tests/test_blueprints.py::test_app_request_processing\", \"tests/test_blueprints.py::test_app_url_processors\", \"tests/test_blueprints.py::test_nested_blueprint\", \"tests/test_blueprints.py::test_nested_callback_order\", \"tests/test_blueprints.py::test_nesting_url_prefixes[/parent-/child-None-None]\", \"tests/test_blueprints.py::test_nesting_url_prefixes[/parent-None-None-/child]\", \"tests/test_blueprints.py::test_nesting_url_prefixes[None-None-/parent-/child]\", \"tests/test_blueprints.py::test_nesting_url_prefixes[/other-/something-/parent-/child]\", \"tests/test_blueprints.py::test_nesting_subdomains\", \"tests/test_blueprints.py::test_child_and_parent_subdomain\", \"tests/test_blueprints.py::test_unique_blueprint_names\", \"tests/test_blueprints.py::test_self_registration\", \"tests/test_blueprints.py::test_blueprint_renaming\"]",
+    "_profile_key": "main-optimized:docker:pallets__flask-5014:react",
+    "_mode": "react",
+    "_provider": "docker",
+    "_tmux_archive": "/lab/results/swe-sandbox-profile-20260914T144308Z/assets/tmux.tar.gz"
+  }
+}

@@ -16,7 +16,7 @@ Verdan refers to this E2B experiment.
 
 ReAct and model requests stayed local. Tools ran remotely through E2B SDK 2.49.1 and the experiment's `e2b_compat` provider. This path called local vLLM directly, without Uni-Agent Gateway.
 
-Remote SWE-bench, Claude Code, Mini, arbitrary SWE-image template builds, and full E2B API compatibility were not tested. Toy-task timings include different model trajectories and preparation; they are not a service latency benchmark.
+This initial experiment did not test remote SWE-bench, Claude Code, Mini, arbitrary SWE-image template builds, or full E2B API compatibility. [Experiment 7](../07_swe_sandbox_profiling/README.md) subsequently adds real SWE-bench images, ReAct through Gateway, fresh verification, and a Docker/E2B performance comparison. Toy-task timings here include different model trajectories and preparation; they are not a service latency benchmark.
 
 ## Contents
 

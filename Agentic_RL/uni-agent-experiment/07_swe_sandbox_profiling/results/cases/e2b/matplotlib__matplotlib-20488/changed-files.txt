@@ -1,0 +1,8 @@
+A	debug_detailed.py
+A	debug_issue.py
+A	debug_real_case.py
+A	debug_trace.py
+A	edge_case_tests.py
+M	lib/matplotlib/image.py
+A	reproduce_exact.py
+A	reproduce_issue.py

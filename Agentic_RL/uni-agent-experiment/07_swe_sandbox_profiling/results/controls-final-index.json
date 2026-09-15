@@ -1,0 +1,17 @@
+{
+  "sources": {
+    "astropy__astropy-13033": "controls-v2",
+    "django__django-14373": "controls-v2",
+    "matplotlib__matplotlib-20488": "controls-v3",
+    "mwaskom__seaborn-3187": "controls-v2",
+    "pallets__flask-5014": "controls-v2",
+    "pydata__xarray-4075": "controls-v2",
+    "pylint-dev__pylint-7080": "controls-v2",
+    "pytest-dev__pytest-7521": "controls-v2",
+    "scikit-learn__scikit-learn-11310": "controls-v2",
+    "sphinx-doc__sphinx-9367": "controls-v2",
+    "sympy__sympy-24213": "controls-v2",
+    "psf__requests-1921": "controls-v2"
+  },
+  "note": "Matplotlib controls repeated after restoring standard localhost resolution; task code/test semantics unchanged."
+}

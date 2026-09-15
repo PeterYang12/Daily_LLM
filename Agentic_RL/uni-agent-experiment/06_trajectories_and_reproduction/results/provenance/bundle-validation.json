@@ -1,14 +1,24 @@
 {
-  "experiments": 6,
-  "markdown_files": 20,
+  "experiments": 7,
+  "markdown_files": 23,
   "immutable_artifacts_verified": 223,
   "pinned_source_records_verified": 117,
   "agent_results": 84,
   "qualified_tasks": 28,
   "performance_batches_recomputed": 54,
-  "python_files_parsed": 28,
-  "shell_examples_checked": 21,
-  "english_diagrams": 5,
+  "python_files_parsed": 50,
+  "shell_examples_checked": 30,
+  "english_diagrams": 6,
   "missing_links": [],
+  "profiling_artifacts_verified": 254,
+  "profiling_experiments": {
+    "primary_rollouts": 24,
+    "accepted_controls": 48,
+    "fixed_operation_samples": 200,
+    "scheduling_attempts": 16,
+    "serving_batches": 54,
+    "logprob_batches": 24,
+    "verifier_cpu_runs": 12
+  },
   "scope": "Offline documentation checks; no model, training, or sandbox execution."
 }

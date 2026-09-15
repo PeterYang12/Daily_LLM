@@ -1,0 +1,168 @@
+diff --git a/edge_case_tests.py b/edge_case_tests.py
+new file mode 100644
+index 000000000..a960b0358
+--- /dev/null
++++ b/edge_case_tests.py
+@@ -0,0 +1,97 @@
++#!/usr/bin/env python
++
++import sklearn.datasets
++import sklearn.model_selection
++import sklearn.ensemble
++import numpy as np
++
++# Test edge cases for refit_time_ implementation
++
++print("Testing edge cases for refit_time_...")
++
++# Test 1: refit=False should not create refit_time_
++X, y = sklearn.datasets.load_iris(return_X_y=True)
++
++rs = sklearn.model_selection.GridSearchCV(
++    estimator=sklearn.ensemble.RandomForestClassifier(),
++    param_grid={'n_estimators': [2, 3]},
++    refit=False
++)
++rs.fit(X, y)
++print("Test 1 - refit=False:")
++print("  refit_time_ exists:", hasattr(rs, 'refit_time_'))
++print("  Expected: False")
++assert not hasattr(rs, 'refit_time_'), "refit_time_ should not exist when refit=False"
++
++# Test 2: refit=True should create refit_time_
++rs2 = sklearn.model_selection.GridSearchCV(
++    estimator=sklearn.ensemble.RandomForestClassifier(),
++    param_grid={'n_estimators': [2, 3]},
++    refit=True
++)
++rs2.fit(X, y)
++print("\nTest 2 - refit=True:")
++print("  refit_time_ exists:", hasattr(rs2, 'refit_time_'))
++print("  refit_time_ value:", rs2.refit_time_)
++assert hasattr(rs2, 'refit_time_'), "refit_time_ should exist when refit=True"
++assert isinstance(rs2.refit_time_, (int, float)), "refit_time_ should be numeric"
++
++# Test 3: RandomizedSearchCV should also work
++from sklearn.model_selection import RandomizedSearchCV
++
++rs3 = RandomizedSearchCV(
++    estimator=sklearn.ensemble.RandomForestClassifier(),
++    param_distributions={'n_estimators': [2, 3, 4]},
++    n_iter=2,
++    refit=True
++)
++rs3.fit(X, y)
++print("\nTest 3 - RandomizedSearchCV:")
++print("  refit_time_ exists:", hasattr(rs3, 'refit_time_'))
++print("  refit_time_ value:", rs3.refit_time_)
++assert hasattr(rs3, 'refit_time_'), "refit_time_ should exist for RandomizedSearchCV"
++
++# Test 4: Test with different estimators
++from sklearn.linear_model import LogisticRegression
++
++rs4 = sklearn.model_selection.GridSearchCV(
++    estimator=LogisticRegression(),
++    param_grid={'C': [0.1, 1.0]},
++    refit=True
++)
++rs4.fit(X, y)
++print("\nTest 4 - Different estimator (LogisticRegression):")
++print("  refit_time_ exists:", hasattr(rs4, 'refit_time_'))
++print("  refit_time_ value:", rs4.refit_time_)
++assert hasattr(rs4, 'refit_time_'), "refit_time_ should exist for LogisticRegression"
++
++# Test 5: Test with multiclass data
++X_multi, y_multi = sklearn.datasets.make_classification(
++    n_samples=100, n_features=20, n_classes=3, n_informative=10, random_state=42
++)
++
++rs5 = sklearn.model_selection.GridSearchCV(
++    estimator=sklearn.ensemble.RandomForestClassifier(),
++    param_grid={'n_estimators': [2, 3]},
++    refit=True
++)
++rs5.fit(X_multi, y_multi)
++print("\nTest 5 - Multiclass data:")
++print("  refit_time_ exists:", hasattr(rs5, 'refit_time_'))
++print("  refit_time_ value:", rs5.refit_time_)
++assert hasattr(rs5, 'refit_time_'), "refit_time_ should exist with multiclass data"
++
++# Test 6: Test with n_jobs != 1
++rs6 = sklearn.model_selection.GridSearchCV(
++    estimator=sklearn.ensemble.RandomForestClassifier(),
++    param_grid={'n_estimators': [2, 3, 4]},
++    refit=True,
++    n_jobs=2
++)
++rs6.fit(X, y)
++print("\nTest 6 - n_jobs != 1:")
++print("  refit_time_ exists:", hasattr(rs6, 'refit_time_'))
++print("  refit_time_ value:", rs6.refit_time_)
++assert hasattr(rs6, 'refit_time_'), "refit_time_ should exist with n_jobs != 1"
++
++print("\nAll edge case tests passed!")
+\ No newline at end of file
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 000000000..a898d2591
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,31 @@
++#!/usr/bin/env python
++
++import sklearn.datasets
++import sklearn.model_selection
++import sklearn.ensemble
++
++X, y = sklearn.datasets.load_iris(return_X_y=True)
++
++rs = sklearn.model_selection.GridSearchCV(
++    estimator=sklearn.ensemble.RandomForestClassifier(),
++    param_grid={'n_estimators': [2, 3, 4, 5]}
++)
++rs.fit(X, y)
++
++print("Available attributes:")
++print([attr for attr in dir(rs) if 'time' in attr.lower()])
++
++print("\nMean fit time:")
++print(rs.cv_results_['mean_fit_time'])
++
++print("\nMean score time:")
++print(rs.cv_results_['mean_score_time'])
++
++# Check if refit_time_ exists
++print("\nDoes refit_time_ exist?")
++print(hasattr(rs, 'refit_time_'))
++
++if hasattr(rs, 'refit_time_'):
++    print("Refit time:", rs.refit_time_)
++else:
++    print("refit_time_ attribute does not exist")
+\ No newline at end of file
+diff --git a/sklearn/model_selection/_search.py b/sklearn/model_selection/_search.py
+index 99d6096af..4409878e5 100644
+--- a/sklearn/model_selection/_search.py
++++ b/sklearn/model_selection/_search.py
+@@ -17,6 +17,7 @@ from collections import Mapping, namedtuple, defaultdict, Sequence, Iterable
+ from functools import partial, reduce
+ from itertools import product
+ import operator
++import time
+ import warnings
+ 
+ import numpy as np
+@@ -766,10 +767,13 @@ class BaseSearchCV(six.with_metaclass(ABCMeta, BaseEstimator,
+         if self.refit:
+             self.best_estimator_ = clone(base_estimator).set_params(
+                 **self.best_params_)
++            # Measure refit time
++            start_time = time.time()
+             if y is not None:
+                 self.best_estimator_.fit(X, y, **fit_params)
+             else:
+                 self.best_estimator_.fit(X, **fit_params)
++            self.refit_time_ = time.time() - start_time
+ 
+         # Store the only scorer not as a dict for single metric evaluation
+         self.scorer_ = scorers if self.multimetric_ else scorers['score']

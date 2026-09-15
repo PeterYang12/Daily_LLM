@@ -1,0 +1,171 @@
+diff --git a/django/utils/dateformat.py b/django/utils/dateformat.py
+index 38e89c47bb..7185c6921c 100644
+--- a/django/utils/dateformat.py
++++ b/django/utils/dateformat.py
+@@ -314,7 +314,7 @@ class DateFormat(TimeFormat):
+ 
+     def Y(self):
+         "Year, 4 digits; e.g. '1999'"
+-        return self.data.year
++        return '%04d' % self.data.year
+ 
+     def z(self):
+         """Day of the year, i.e. 1 to 366."""
+diff --git a/edge_case_tests.py b/edge_case_tests.py
+new file mode 100644
+index 0000000000..e5ce59f0f8
+--- /dev/null
++++ b/edge_case_tests.py
+@@ -0,0 +1,84 @@
++#!/usr/bin/env python
++"""
++Additional edge case tests for the DateFormat.Y() fix.
++"""
++import sys
++import os
++import django
++from django.conf import settings
++
++# Configure Django settings
++if not settings.configured:
++    settings.configure(
++        TIME_ZONE='UTC',
++        USE_TZ=True,
++    )
++    django.setup()
++
++sys.path.insert(0, '/testbed')
++
++from datetime import datetime
++from django.utils.dateformat import format
++
++def test_edge_cases():
++    """Test edge cases for year formatting."""
++    
++    # Test cases with expected behavior
++    test_cases = [
++        # Normal cases
++        (1979, '1979'),
++        (2000, '2000'),
++        (2023, '2023'),
++        
++        # Edge cases < 1000
++        (999, '0999'),
++        (100, '0100'),
++        (99, '0099'),
++        (10, '0010'),
++        (1, '0001'),
++        
++        # Years with 4+ digits (within datetime range)
++        (9999, '9999'),
++    ]
++    
++    print("Testing DateFormat.Y() edge cases:")
++    print("=" * 50)
++    
++    all_passed = True
++    for year, expected in test_cases:
++        dt = datetime(year, 9, 8, 5, 0)
++        actual = format(dt, 'Y')
++        status = "PASS" if actual == expected else "FAIL"
++        if actual != expected:
++            all_passed = False
++        print(f"Year {year:5d}: Expected '{expected}', Got '{actual}' [{status}]")
++    
++    # Test with different months/days to ensure consistency
++    print("\nTesting consistency with different dates:")
++    consistency_tests = [
++        (1979, 1, 1),
++        (1979, 12, 31),
++        (42, 6, 15),
++        (4, 2, 29),  # Leap year day
++    ]
++    
++    for year, month, day in consistency_tests:
++        dt = datetime(year, month, day, 5, 0)
++        actual = format(dt, 'Y')
++        expected = f'{year:04d}'
++        status = "PASS" if actual == expected else "FAIL"
++        if actual != expected:
++            all_passed = False
++        print(f"Year {year:4d}, {month:2d}-{day:2d}: Expected '{expected}', Got '{actual}' [{status}]")
++    
++    print("=" * 50)
++    if all_passed:
++        print("All edge case tests PASSED!")
++    else:
++        print("Some edge case tests FAILED!")
++    
++    return all_passed
++
++if __name__ == "__main__":
++    success = test_edge_cases()
++    sys.exit(0 if success else 1)
+\ No newline at end of file
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 0000000000..3e87035ae3
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,60 @@
++#!/usr/bin/env python
++"""
++Script to reproduce the DateFormat.Y() zero-padding issue.
++"""
++import sys
++import os
++import django
++from django.conf import settings
++
++# Configure Django settings
++if not settings.configured:
++    settings.configure(
++        TIME_ZONE='UTC',
++        USE_TZ=True,
++    )
++    django.setup()
++
++sys.path.insert(0, '/testbed')
++
++from datetime import datetime
++from django.utils.dateformat import format
++
++def test_year_formatting():
++    """Test year formatting for different years including those < 1000."""
++    
++    # Test cases with expected behavior
++    test_cases = [
++        (1979, '1979'),  # Normal case
++        (1000, '1000'),  # Year 1000
++        (999, '0999'),   # Year < 1000
++        (100, '0100'),   # Year < 1000
++        (476, '0476'),   # Year < 1000
++        (42, '0042'),    # Year < 1000
++        (4, '0004'),     # Year < 1000
++        (1, '0001'),     # Year < 1000
++    ]
++    
++    print("Testing DateFormat.Y() formatting:")
++    print("=" * 40)
++    
++    all_passed = True
++    for year, expected in test_cases:
++        dt = datetime(year, 9, 8, 5, 0)
++        actual = format(dt, 'Y')
++        status = "PASS" if actual == expected else "FAIL"
++        if actual != expected:
++            all_passed = False
++        print(f"Year {year:4d}: Expected '{expected}', Got '{actual}' [{status}]")
++    
++    print("=" * 40)
++    if all_passed:
++        print("All tests PASSED!")
++    else:
++        print("Some tests FAILED!")
++    
++    return all_passed
++
++if __name__ == "__main__":
++    success = test_year_formatting()
++    sys.exit(0 if success else 1)
+\ No newline at end of file
