@@ -1,0 +1,23 @@
+{
+  "vm_name": "ua-e2b-96c512g-20260916",
+  "vm_vcpus": 96,
+  "vm_memory_gib": 512,
+  "vm_disk_gib": 500,
+  "vm_mac": "52:54:00:eb:26:16",
+  "hostname": "ua-e2b-large",
+  "runtime_commit": "e7b22501988c826563bf1b3cf0d22a1183e7affe",
+  "k3s_version": "v1.36.4+k3s1",
+  "hugepages_gib": 384,
+  "nbd_devices": 256,
+  "nbd_pool_size": 64,
+  "old_vm_name": "ua-e2b-local-20260916",
+  "status": "ready",
+  "started_unix": 1789558269.7014937,
+  "vm_disk_directory": "/var/lib/libvirt/images/ua-e2b-96c512g-20260916",
+  "vm_ip": "192.168.122.239",
+  "completed_unix": 1789559600.2903454,
+  "api_url": "http://127.0.0.1:18090",
+  "sandbox_url": "http://127.0.0.1:18091",
+  "team_concurrency_limit": 64,
+  "verified_concurrency": 24
+}

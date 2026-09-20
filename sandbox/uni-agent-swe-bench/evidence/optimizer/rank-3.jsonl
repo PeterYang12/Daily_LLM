@@ -1,0 +1,1 @@
+{"time_unix": 1789896061.795122, "rank": 3, "optimizer_update": 1, "successful": true, "grad_norm": 0.08491922169923782, "sampled_parameters": 16384, "sampled_changed": 127, "sampled_max_delta": 1.9073486328125e-06, "hash_before": "15cb305045cdb5300b879569d45a0e3aad55666c2acfcda3a1bcc24c839ff3b9", "hash_after": "e49113b128aee39988c4c9f0a5469a9fe0c6ef6a1e5776411aa64575936725d0"}

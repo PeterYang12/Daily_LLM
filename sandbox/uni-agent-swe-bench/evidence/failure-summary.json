@@ -1,0 +1,279 @@
+{
+  "status": "stopped_gpu_fault",
+  "target_steps": 3,
+  "completed_steps": 1,
+  "interrupted_step": 2,
+  "step3_started": false,
+  "exit_code": 134,
+  "attempt": 3,
+  "launch_unix": 1789893792.5931609,
+  "exit_unix": 1789897977.4860296,
+  "rollout_batches": {
+    "1": {
+      "rollouts": 128,
+      "resolved": 26,
+      "finished": 128
+    },
+    "2": {
+      "rollouts": 128,
+      "resolved": 32,
+      "finished": 128
+    }
+  },
+  "audited_trajectories": 256,
+  "trajectory_errors": 0,
+  "step1_metrics": {
+    "global_seqlen/min": 1832072.0,
+    "global_seqlen/max": 2698313.0,
+    "global_seqlen/minmax_diff": 866241.0,
+    "global_seqlen/balanced_min": 2259751.0,
+    "global_seqlen/balanced_max": 2270634.0,
+    "global_seqlen/mean": 2265192.5,
+    "actor/entropy": 0.9419707655906677,
+    "training/rollout_probs_diff_valid": 1.0,
+    "training/rollout_probs_diff_max": 0.30468541383743286,
+    "training/rollout_probs_diff_mean": 0.002658694516867399,
+    "training/rollout_probs_diff_std": 0.006726585328578949,
+    "training/rollout_actor_probs_pearson_corr": 0.9998210668563843,
+    "rollout_corr/rollout_is_mean": 0.9999845623970032,
+    "rollout_corr/rollout_is_ratio_fraction_high": 0.0,
+    "rollout_corr/rollout_is_ratio_fraction_low": 3.9799147089070175e-06,
+    "rollout_corr/rollout_is_max": 1.8874160051345825,
+    "rollout_corr/rollout_is_min": 0.21758033335208893,
+    "rollout_corr/rollout_is_std": 0.029107050970196724,
+    "rollout_corr/rollout_is_eff_sample_size": 0.9991534967539989,
+    "rollout_corr/rollout_is_seq_mean": 0.9999904036521912,
+    "rollout_corr/rollout_is_seq_std": 0.0003160626220051199,
+    "rollout_corr/rollout_is_seq_max": 1.0009934902191162,
+    "rollout_corr/rollout_is_seq_min": 0.9991375803947449,
+    "rollout_corr/rollout_is_seq_max_deviation": 0.000993490219116211,
+    "rollout_corr/rollout_is_seq_fraction_high": 0.0,
+    "rollout_corr/rollout_is_seq_fraction_low": 0.0,
+    "rollout_corr/training_ppl": 2.495291233062744,
+    "rollout_corr/training_log_ppl": 0.7902872562408447,
+    "rollout_corr/kl": 0.0004382706538308412,
+    "rollout_corr/k3_kl": 0.00042289422708563507,
+    "rollout_corr/rollout_ppl": 2.494192123413086,
+    "rollout_corr/rollout_log_ppl": 0.7898638248443604,
+    "rollout_corr/log_ppl_diff": 0.00042340951040387154,
+    "rollout_corr/log_ppl_abs_diff": 0.00045342673547565937,
+    "rollout_corr/log_ppl_diff_max": 0.0012303590774536133,
+    "rollout_corr/log_ppl_diff_min": -0.0004659891128540039,
+    "rollout_corr/ppl_ratio": 1.000423550605774,
+    "rollout_corr/chi2_token": 0.00081634521484375,
+    "rollout_corr/chi2_seq": 9.345638275146484,
+    "actor/pg_clipfrac": 0.0607387920220693,
+    "actor/ppo_kl": -2.5635147519804177e-06,
+    "actor/pg_clipfrac_lower": 0.0,
+    "actor/pg_loss": 0.07513299980200827,
+    "actor/loss": 0.07513299584388733,
+    "actor/grad_norm": 0.08491922169923782,
+    "actor/lr": 1e-06,
+    "actor/perf/max_memory_allocated_gb": 90.15578413009644,
+    "actor/perf/max_memory_reserved_gb": 107.80859375,
+    "actor/perf/cpu_memory_used_gb": 823.9758834838867,
+    "perf/mfu/actor": 0.06857345724799882,
+    "training/global_step": 1,
+    "training/epoch": 0,
+    "critic/score/mean": 0.203125,
+    "critic/score/max": 1.0,
+    "critic/score/min": 0.0,
+    "critic/rewards/mean": 0.203125,
+    "critic/rewards/max": 1.0,
+    "critic/rewards/min": 0.0,
+    "critic/advantages/mean": -0.07508829981088638,
+    "critic/advantages/max": 2.4748666286468506,
+    "critic/advantages/min": -2.4748666286468506,
+    "critic/returns/mean": -0.07508829981088638,
+    "critic/returns/max": 2.4748666286468506,
+    "critic/returns/min": -2.4748666286468506,
+    "response_length/mean": 32678.6328125,
+    "response_length/max": 120564.0,
+    "response_length/min": 6958.0,
+    "response_length/clip_ratio": 0.0078125,
+    "response_length_non_aborted/mean": 32678.6328125,
+    "response_length_non_aborted/max": 120564.0,
+    "response_length_non_aborted/min": 6958.0,
+    "response_length_non_aborted/clip_ratio": 0.0078125,
+    "response/aborted_ratio": 0.0,
+    "prompt_length/mean": 2715.0,
+    "prompt_length/max": 5681.0,
+    "prompt_length/min": 2111.0,
+    "prompt_length/clip_ratio": 0.0625,
+    "timing_s/gen": 1774.943392464891,
+    "timing_s/old_log_prob": 72.966333610937,
+    "timing_s/adv": 1.7304453440010548,
+    "timing_s/update_actor": 264.62122565088794,
+    "timing_s/update_weights": 5.075125809758902,
+    "timing_s/step": 2119.431526546832,
+    "timing_per_token_ms/gen": 0.4243367625933161,
+    "timing_per_token_ms/update_actor": 0.058410317368366695,
+    "timing_per_token_ms/adv": 0.00038196430193042195,
+    "perf/total_num_tokens": 4530385,
+    "perf/time_per_step": 2119.431526546832,
+    "perf/throughput": 267.193404413807,
+    "training/num_turns/mean": 43.0234375,
+    "training/num_turns/max": 112,
+    "training/num_turns/min": 21,
+    "training/off_policy/trajectory_spans/mean": 1.0,
+    "training/off_policy/trajectory_spans/max": 1,
+    "training/off_policy/trajectory_spans/min": 1,
+    "training/off_policy/trajectory_staleness/mean": 0.0,
+    "training/off_policy/trajectory_staleness/max": 0,
+    "training/off_policy/trajectory_staleness/min": 0,
+    "training/off_policy/trajectory_staleness_worst/mean": 0.0,
+    "training/off_policy/trajectory_staleness_worst/max": 0,
+    "training/off_policy/trajectory_staleness_worst/min": 0
+  },
+  "optimizer": {
+    "rank-2": [
+      {
+        "time_unix": 1789896061.7951314,
+        "rank": 2,
+        "optimizer_update": 1,
+        "successful": true,
+        "grad_norm": 0.08491922169923782,
+        "sampled_parameters": 16384,
+        "sampled_changed": 162,
+        "sampled_max_delta": 1.9073486328125e-06,
+        "hash_before": "81932cd35dc1057bb30f944ce310e5a03878d3390fef7723d527bca94d22aa64",
+        "hash_after": "cc93f35df4a822570ce72755007da3f3b0ad736880ad6bdc9b71261e199b463e"
+      }
+    ],
+    "rank-3": [
+      {
+        "time_unix": 1789896061.795122,
+        "rank": 3,
+        "optimizer_update": 1,
+        "successful": true,
+        "grad_norm": 0.08491922169923782,
+        "sampled_parameters": 16384,
+        "sampled_changed": 127,
+        "sampled_max_delta": 1.9073486328125e-06,
+        "hash_before": "15cb305045cdb5300b879569d45a0e3aad55666c2acfcda3a1bcc24c839ff3b9",
+        "hash_after": "e49113b128aee39988c4c9f0a5469a9fe0c6ef6a1e5776411aa64575936725d0"
+      }
+    ],
+    "rank-0": [
+      {
+        "time_unix": 1789896061.79502,
+        "rank": 0,
+        "optimizer_update": 1,
+        "successful": true,
+        "grad_norm": 0.08491922169923782,
+        "sampled_parameters": 16384,
+        "sampled_changed": 147,
+        "sampled_max_delta": 1.9073486328125e-06,
+        "hash_before": "91d086aa70c678128bc4ebe1578400e649f45cc5c285f658c1d444c1aec3b0a0",
+        "hash_after": "7139c96f04bf884daa05fec3bb477db1ccd2e802324777f7c1a275cb3f37fa4e"
+      }
+    ],
+    "rank-1": [
+      {
+        "time_unix": 1789896061.7950191,
+        "rank": 1,
+        "optimizer_update": 1,
+        "successful": true,
+        "grad_norm": 0.08491922169923782,
+        "sampled_parameters": 16384,
+        "sampled_changed": 156,
+        "sampled_max_delta": 1.9073486328125e-06,
+        "hash_before": "ad92c218c98015b4f883b39569e46a1b306f7c86340dee963462e2667e5cb52d",
+        "hash_after": "8375e2d1a393cd3be264a5cf33d83bc6539e14b4b31b31b62916e6138f2ebb51"
+      }
+    ],
+    "rank-4": [
+      {
+        "time_unix": 1789896061.795045,
+        "rank": 4,
+        "optimizer_update": 1,
+        "successful": true,
+        "grad_norm": 0.08491922169923782,
+        "sampled_parameters": 16384,
+        "sampled_changed": 154,
+        "sampled_max_delta": 1.9073486328125e-06,
+        "hash_before": "9e268295a1b0210373088aeee4675315691e0710603985975c3ae0203aadc2fb",
+        "hash_after": "c3fe5300d53eaaf9d9dfbe95e51f50dabbd9586971c1bc7de039ed40331e7d31"
+      }
+    ],
+    "rank-7": [
+      {
+        "time_unix": 1789896061.7950487,
+        "rank": 7,
+        "optimizer_update": 1,
+        "successful": true,
+        "grad_norm": 0.08491922169923782,
+        "sampled_parameters": 16384,
+        "sampled_changed": 145,
+        "sampled_max_delta": 1.9073486328125e-06,
+        "hash_before": "d268ff8fb8b544c6b0ab49db35cc6681aed096c949588f0f039608c6b16feb99",
+        "hash_after": "47934b1722829b39e07f80644a0b20e3b53b13f0ebd546976431e2c5d104501d"
+      }
+    ],
+    "rank-6": [
+      {
+        "time_unix": 1789896061.7950022,
+        "rank": 6,
+        "optimizer_update": 1,
+        "successful": true,
+        "grad_norm": 0.08491922169923782,
+        "sampled_parameters": 16384,
+        "sampled_changed": 147,
+        "sampled_max_delta": 1.9073486328125e-06,
+        "hash_before": "53b718d0a341e595dee0ec8e137b8a15a58b94f281998baadd2f0fb7bfc406b3",
+        "hash_after": "820a92fcab9006a0636386635eb9ee44e0966f7cec1ee37330cb2f52dc99aca9"
+      }
+    ],
+    "rank-5": [
+      {
+        "time_unix": 1789896061.7950532,
+        "rank": 5,
+        "optimizer_update": 1,
+        "successful": true,
+        "grad_norm": 0.08491922169923782,
+        "sampled_parameters": 16384,
+        "sampled_changed": 111,
+        "sampled_max_delta": 1.9073486328125e-06,
+        "hash_before": "c5c9754067579feb13b4ebd86126616ed73551abfe62c701eb1d18b1e21f8a01",
+        "hash_after": "ee64fe5dfd3a5983737fb65abcde1f2b966570f329d7339962718714d74c812a"
+      }
+    ]
+  },
+  "sampled_changed": 1149,
+  "sampled_parameters": 131072,
+  "max_sampled_delta": 1.9073486328125e-06,
+  "max_observed_training_sandboxes": 125,
+  "sandbox_timings": {
+    "created": {
+      "count": 256,
+      "mean_s": 169.54432670811366,
+      "p95_s": 385.2552504162304
+    },
+    "tools_provisioned": {
+      "count": 256,
+      "mean_s": 2.6318465391323116,
+      "p95_s": 4.196960675064474
+    },
+    "exec": {
+      "count": 36988,
+      "mean_s": 0.5655180271335729,
+      "p95_s": 1.0159376398660243
+    },
+    "destroyed": {
+      "count": 256,
+      "mean_s": 0.011596066253332538,
+      "p95_s": 0.013440290000289679
+    }
+  },
+  "sandbox_error_events": [],
+  "remaining_sandboxes": [],
+  "checkpoint_files": [],
+  "failure": {
+    "uncorrectable_event": "ERREVENT_ATHUB_INTERRUPT",
+    "device": "0000:66:00.0",
+    "correctable_xgmi_device": "0000:96:00.0",
+    "driver_reset": "automatic, all eight GPUs",
+    "manual_reset_performed": false,
+    "root_cause_limit": "Driver-reported hardware events; component/firmware/driver root cause not established."
+  }
+}

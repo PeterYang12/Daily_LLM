@@ -1,0 +1,9 @@
+{
+  "before_boot_id": "5fd2e17f-e0d0-47eb-9186-74bcffbe98cb",
+  "after_boot_id": "a6dc1061-9814-421b-8252-ec5180d26d9a",
+  "recovered_s": 148.68654457805678,
+  "pod_ready": true,
+  "api_healthy": true,
+  "original_api_key_works": true,
+  "success": true
+}

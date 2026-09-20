@@ -1,0 +1,246 @@
+{
+  "runtime": "/home/yuhanya/uni-agent-lab/rl-swe-e2b-20260916",
+  "status": "paused",
+  "copied_files": [
+    {
+      "destination": "README.md",
+      "sha256": "e24a07a63701623d766eb7bedd7d82322e158a7e0a9a636eba9464d64191c881"
+    },
+    {
+      "destination": "STEPS.md",
+      "sha256": "7dc2c6c1477f4dcb007376bceea3d1b2739a382a6afc2df5807d109d7b2a2318"
+    },
+    {
+      "destination": "code/analyze_sandbox.py",
+      "sha256": "bfece64149e12abca581dc9916d9bfc44990443936cc3f6960b246e58aedc46f"
+    },
+    {
+      "destination": "code/audit_trajectories.py",
+      "sha256": "f6f2a5349544780206b0fd27cb8fea8618d2566ff7ae446974bf5acefb0aa4de"
+    },
+    {
+      "destination": "code/capacity_probe.py",
+      "sha256": "1fc4eb0006de360a8d0de73d33d9b274846780ca123015ec34d184ce5881a3ef"
+    },
+    {
+      "destination": "code/check_native_exec.py",
+      "sha256": "b038c86468b33953481d47cac87a408832b77a25c8fe894109f724cef61e8a71"
+    },
+    {
+      "destination": "code/cleanup_sessions.py",
+      "sha256": "2e74e0e1332ffa9a752c22760c9ab2a7b32779a72553fcae94acc9ce5e8b5278"
+    },
+    {
+      "destination": "code/collective_diagnostic.py",
+      "sha256": "527de37ebc02e18e0f681fa558519a2baedf12edfc7a21319dd6fc025889d909"
+    },
+    {
+      "destination": "code/finalize_data.py",
+      "sha256": "2f257eabefb53e9c59bb6e3ccbe86402aec7f52ce9c3eaacfe624e25c2be3f81"
+    },
+    {
+      "destination": "code/finalize_when_complete.py",
+      "sha256": "25c2d6427a50fc8e9b1fadbda052d81e34dde99b9cb15e30deaf7132dbf222db"
+    },
+    {
+      "destination": "code/gpu_health.py",
+      "sha256": "df864abbf6cbf85e16fcfd6e20b48ab656ff447563670149694358eda2522fa3"
+    },
+    {
+      "destination": "code/hardware_probe.py",
+      "sha256": "b410253c25e2556ad56856608023763ca54979f610a982a84943afa46ad1388a"
+    },
+    {
+      "destination": "code/launch_when_ready.py",
+      "sha256": "b297bded76cb39ab38113ef5271919a5a16fc58da6332929afd6e79d0e7f88ce"
+    },
+    {
+      "destination": "code/main_job.sh",
+      "sha256": "efef6e6a2a2e507a6dd2ba3c86fbb82a1bc907f5847f0cb3451c062901102a8d"
+    },
+    {
+      "destination": "code/monitor.py",
+      "sha256": "78cdab112fdde77e03342e8fa926b558527d527afb38d46c08a320f4322f4e93"
+    },
+    {
+      "destination": "code/pilot.sh",
+      "sha256": "8b318a8624a5f6644a8d3165778c010d75cc6db69495f3bb2aa8b3efe07abfd3"
+    },
+    {
+      "destination": "code/prepare_data.py",
+      "sha256": "2b0b62fec7f87317632652638e4e4a74285c9c97763d74ca4fcf6ce862d6f6dc"
+    },
+    {
+      "destination": "code/qualify_data.py",
+      "sha256": "d3100e58010cf4d03994c1e6a4fc76de474dcf8dbe7cea5df1602e6a9109d2d4"
+    },
+    {
+      "destination": "code/recovery_job.sh",
+      "sha256": "cc12e589e4cf65d6545a01cb4ac2903fce76572d915c02f241cd22dbd642a009"
+    },
+    {
+      "destination": "code/render_figures.py",
+      "sha256": "5c3ed0dcb88d27d65a43699e0f7fe267041ccbf02463122bf05d036a0a5cbcbb"
+    },
+    {
+      "destination": "code/sandbox_microbench.py",
+      "sha256": "d31f657b5809909a725a21b250c47351fa5a75d8395a0f8bbfc63b995f165616"
+    },
+    {
+      "destination": "code/status.py",
+      "sha256": "d7c9de75320a2a9e3155e0e6c36b52ce0c8fd0b5027eab7d79944b98d78086ac"
+    },
+    {
+      "destination": "code/summarize_run.py",
+      "sha256": "1e5f2d6222efa9261ded4f35af9c58355edd2846925ef986ffe4a995aba8fc12"
+    },
+    {
+      "destination": "code/supervise_recovery.py",
+      "sha256": "43db119781bdd17a452650c0a0884858dbceeb63741f11fc361bc9c1517f2bc2"
+    },
+    {
+      "destination": "code/train.sh",
+      "sha256": "cdd7c44fb2c8f9dc64a8b4e506ac85e2d1ae5d4653b55fc8d3cbee7cdb4c7a72"
+    },
+    {
+      "destination": "code/ua_rl/__init__.py",
+      "sha256": "9ca367e1acc785d6911b49dab243b702c7ff62bd61002da6e74a9c56338882a1"
+    },
+    {
+      "destination": "code/ua_rl/checkpoint.py",
+      "sha256": "95972cc825ed22f35c1f0f1cfd1e3c21085b9b73ab674cd12ff12692bcd5e180"
+    },
+    {
+      "destination": "code/ua_rl/common.py",
+      "sha256": "401e6c4a98abe05f49c5a30b3cdc24ae16c05583d5ab84a08de121f843752b44"
+    },
+    {
+      "destination": "code/ua_rl/instrument.py",
+      "sha256": "0dbb9b7ef6e030619fc108dd8f0d32328597aa25fe97414afff110356319d0ff"
+    },
+    {
+      "destination": "code/ua_rl/native_exec.py",
+      "sha256": "3ae17405c287d8c9568415fff19804268f10d8aa93dc50fab8aea86b1ebcbbd3"
+    },
+    {
+      "destination": "code/ua_rl/provider.py",
+      "sha256": "5c9026666e4ac605ea40a86edd2fd24564a75e7b1aef6780b0b463adf2d7d3a2"
+    },
+    {
+      "destination": "code/ua_rl/runner.py",
+      "sha256": "ee2523e336ed56c413ad6bd2e7c57cc6a3aa21418d2e9cedd922a1af0b042613"
+    },
+    {
+      "destination": "code/ua_rl/tasks.py",
+      "sha256": "dce6386c2f128632848fcf9cf5c08b20615d6c0175ef7d46df2708dd6822f22d"
+    },
+    {
+      "destination": "code/verify_saved_model.py",
+      "sha256": "01180393547f6dd785cc9e785fae06866dc1fb8b30f4cec084158d5faf59cf22"
+    },
+    {
+      "destination": "code/verify_wandb.py",
+      "sha256": "15cfa4d265567b86e1be8499d330801b3f151781d30c77f44c65be9463d4736f"
+    },
+    {
+      "destination": "code/write_report.py",
+      "sha256": "574ff769bf77e0a889216192a4efc7f720a14a04cc6cfbb26425f0f04ff3ebeb"
+    },
+    {
+      "destination": "configs/data/frozen-manifest.json",
+      "sha256": "d34869026385d093737901c8a9e9974b007d34334b9f540045a10e3f24a361da"
+    },
+    {
+      "destination": "configs/data/train.parquet",
+      "sha256": "05a69664d5387b22e15d8cf64ee421b54c371f519ec1f62d53558e970358a90f"
+    },
+    {
+      "destination": "configs/data/val.parquet",
+      "sha256": "e42d7f283dafb3ea637567380df95a13eaccb650b632d5dac572ddf0fd3f10cd"
+    },
+    {
+      "destination": "configs/final-resolved.yaml",
+      "sha256": "9c1c0da9d1451346e25fd2d595828e9e3b82ed0eafd2046c020582dfd56d53df"
+    },
+    {
+      "destination": "configs/tasks-main.yaml",
+      "sha256": "e69e1dbc771522d0cfd6a55cebfdba48e7ae07e93d40ebfabe4a4a694061e1bd"
+    },
+    {
+      "destination": "configs/tasks.yaml",
+      "sha256": "4020b13d7dca2f4901b61d57b489147c6afa261cc11c29eed1e42f3e60328a1b"
+    },
+    {
+      "destination": "configs/train.yaml",
+      "sha256": "68c6d4fbe059a42317f22c8f1c77a79db5b309aed62827f30bbe3ed68f8cff8a"
+    },
+    {
+      "destination": "figures/architecture.mmd",
+      "sha256": "857e9885044c3c134f264d9b50952b7ef13b6ed6159e35f64821f0fcd1598e78"
+    },
+    {
+      "destination": "figures/architecture.png",
+      "sha256": "f707289ae81ad1fcb350ee68c85d2941167320543e3b21003e8313cc50b0a608"
+    },
+    {
+      "destination": "figures/architecture.svg",
+      "sha256": "84f58772e12db8ba012e23dc81156f295bd5b4bfa73e31021b569db4b4b56dc4"
+    },
+    {
+      "destination": "results/checkpoint-retention-check.json",
+      "sha256": "ddd1bf3f25ed25b3130ea8cce5f4a3b3b1d4be11ffad4c0f6d5572f5339aae8d"
+    },
+    {
+      "destination": "results/dataset-provenance.json",
+      "sha256": "2506372d0fcede365f123d0655fa37d052e630af57ad57f9eb32e8795d42bed5"
+    },
+    {
+      "destination": "results/frozen-data.json",
+      "sha256": "d34869026385d093737901c8a9e9974b007d34334b9f540045a10e3f24a361da"
+    },
+    {
+      "destination": "results/main-launch.json",
+      "sha256": "240cbabfae205fab0dba38b2e5bedc70ca723a5157005e7da9bc958d5ee834e4"
+    },
+    {
+      "destination": "results/native-exec-comparison.json",
+      "sha256": "b8a1880106aa39e984e1011edd4e7662c6a5fc33f665dceb0c6993e8e0ff52b0"
+    },
+    {
+      "destination": "results/pause-cleanup.json",
+      "sha256": "9bd9e90a2728493d6ba18e3370e8a27562b7cf6244f75a4bd25395c79b41c827"
+    },
+    {
+      "destination": "results/pilot-proof.json",
+      "sha256": "9f9b91720b586e7cb9e327a95eb84a7e5b297b12bb44a9f05759524e4c45a4b3"
+    },
+    {
+      "destination": "results/python-environment.lock",
+      "sha256": "ebd5190abf84f8916154661eb5d55b3e194a3c8e74c702dbf7ba2d2df037ef25"
+    },
+    {
+      "destination": "results/recovery-proof.json",
+      "sha256": "92f4dcecc8762aa1b8b6a0d7ddfa7be5208324dc28c258bedb6fb78e4279877f"
+    },
+    {
+      "destination": "results/sandbox-capacity-16.json",
+      "sha256": "40a92a8a92927238dd22e03d7555c49f2b81756372d9bd6b2a2efb46fe3fa2b3"
+    },
+    {
+      "destination": "results/status.json",
+      "sha256": "2bf8768c1eeb71af995a39a73a81316d3781714da0201dcad1649aac62b46554"
+    },
+    {
+      "destination": "results/uni-agent-changes.patch",
+      "sha256": "fe8e27b540e3a9717c655336e7a082b44b51402b237e3db2e732ebd60e798318"
+    },
+    {
+      "destination": "results/verl-observability.patch",
+      "sha256": "49369c6423b8253fd818eeda015399804bfc8f9acf8969fa322596d4601798f4"
+    },
+    {
+      "destination": "results/versions.json",
+      "sha256": "3b6a41fcc5f6f82e779e5fdd81e900104dc935af58a5584dedc0cb3e0e324499"
+    }
+  ]
+}

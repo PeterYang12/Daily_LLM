@@ -1,0 +1,14 @@
+flowchart TB
+  subgraph host["AMD host: Ubuntu 22.04 / kernel 5.15"]
+    client["Host client or ua-lab-cpu<br/>Uni-Agent Task, ReAct, Gateway"]
+    tunnel["Managed SSH tunnels<br/>18090 API / 18091 execution"]
+    model["Temporary vLLM ROCm container<br/>Qwen3-Coder 30B acceptance test"]
+    client <-->|model requests| model
+    client <-->|E2B SDK| tunnel
+    subgraph vm["Dedicated KVM VM: Ubuntu 24.04 / kernel 6.8"]
+      k3s["Single-node Kubernetes<br/>E2B API, proxy, stores, orchestrator"]
+      sandboxes["Firecracker microVMs<br/>base or pinned SWE template"]
+      k3s <-->|lifecycle and execution| sandboxes
+    end
+    tunnel <-->|SSH to the VM| k3s
+  end

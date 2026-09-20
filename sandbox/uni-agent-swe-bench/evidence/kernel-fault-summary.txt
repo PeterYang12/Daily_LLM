@@ -1,0 +1,21 @@
+2026-09-20T04:52:24,884036-05:00 amdgpu 0000:96:00.0: socket: 4, die: 3, 24 new correctable hardware errors detected in xgmi_wafl block
+2026-09-20T04:52:52,898363-05:00 amdgpu 0000:66:00.0: {40}uncorrectable hardware error(ERREVENT_ATHUB_INTERRUPT) detected!
+2026-09-20T04:52:53,446886-05:00 amdgpu 0000:96:00.0: {40}socket: 4, die: 3, 22 new correctable hardware errors detected in xgmi_wafl block
+2026-09-20T04:52:53,446930-05:00 amdgpu 0000:66:00.0: amdgpu: GPU reset begin!. Source:  2
+2026-09-20T04:52:59,911159-05:00 amdgpu 0000:66:00.0: amdgpu: VRAM is lost due to GPU reset!
+2026-09-20T04:53:02,087852-05:00 amdgpu 0000:16:00.0: amdgpu: VRAM is lost due to GPU reset!
+2026-09-20T04:53:04,306029-05:00 amdgpu 0000:f6:00.0: amdgpu: VRAM is lost due to GPU reset!
+2026-09-20T04:53:06,481848-05:00 amdgpu 0000:86:00.0: amdgpu: VRAM is lost due to GPU reset!
+2026-09-20T04:53:08,676635-05:00 amdgpu 0000:e6:00.0: amdgpu: VRAM is lost due to GPU reset!
+2026-09-20T04:53:10,852418-05:00 amdgpu 0000:96:00.0: amdgpu: VRAM is lost due to GPU reset!
+2026-09-20T04:53:13,050164-05:00 amdgpu 0000:76:00.0: amdgpu: VRAM is lost due to GPU reset!
+2026-09-20T04:53:15,227986-05:00 amdgpu 0000:06:00.0: amdgpu: VRAM is lost due to GPU reset!
+2026-09-20T04:53:17,427454-05:00 amdgpu 0000:66:00.0: amdgpu: GPU reset(38) succeeded!
+2026-09-20T04:53:17,428510-05:00 amdgpu 0000:16:00.0: amdgpu: GPU reset(38) succeeded!
+2026-09-20T04:53:17,429606-05:00 amdgpu 0000:f6:00.0: amdgpu: GPU reset(38) succeeded!
+2026-09-20T04:53:17,430632-05:00 amdgpu 0000:86:00.0: amdgpu: GPU reset(38) succeeded!
+2026-09-20T04:53:17,431668-05:00 amdgpu 0000:e6:00.0: amdgpu: GPU reset(38) succeeded!
+2026-09-20T04:53:17,432673-05:00 amdgpu 0000:96:00.0: amdgpu: GPU reset(38) succeeded!
+2026-09-20T04:53:17,433920-05:00 amdgpu 0000:76:00.0: amdgpu: GPU reset(38) succeeded!
+2026-09-20T04:53:17,434925-05:00 amdgpu 0000:06:00.0: amdgpu: GPU reset(38) succeeded!
+2026-09-20T04:53:17,435628-05:00 amdgpu 0000:66:00.0: [drm] device wedged, but recovered through reset

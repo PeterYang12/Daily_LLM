@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: e2b
+resources:
+  - ../upstream
+patches:
+  - path: patches.json
+    target:
+      group: apps
+      version: v1
+      kind: StatefulSet
+      name: e2b
+configMapGenerator:
+  - name: ua-base-template-builder
+    files:
+      - build-base-template.mjs

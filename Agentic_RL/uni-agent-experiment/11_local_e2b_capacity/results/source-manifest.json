@@ -1,0 +1,1470 @@
+{
+  "runtime": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916",
+  "copied_files": [
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/report-drafts/README.md",
+      "destination": "README.md",
+      "sha256": "1b28998300f02b4e9dd1f8a8df25384c5d6f5fad5ae2fc1f6c11fed677058931"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/report-drafts/STEPS.md",
+      "destination": "STEPS.md",
+      "sha256": "f47737a480329eadcdc7c4f7f99dba3101e8b2c516a384f731d42719ffc87f54"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/code/build_overlay.py",
+      "destination": "code/build_overlay.py",
+      "sha256": "e480562726eb2cb3a806a437a3f2da10fdfc935ac52cf90b61b31abc347dbba9"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/code/smoke.py",
+      "destination": "code/smoke.py",
+      "sha256": "93902ffe5bb285904a93d567d26c388467726a9e9424bd43df8735588c022221"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/code/guest_metrics.py",
+      "destination": "code/guest_metrics.py",
+      "sha256": "7f032a08f8d5731498ac75d5dead14484f1f41a73646dbf750a27bdb65802281"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/code/reboot_check.py",
+      "destination": "code/reboot_check.py",
+      "sha256": "977f0b8798244a74a0705c11b861d2f4fd6a6395a07655c595925678367be89f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/code/status.sh",
+      "destination": "code/status.sh",
+      "sha256": "9d889ee48b0d6d655bcfade4fafee0eac30cb547cc7fc3ffd632415193019a9a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/code/audit.py",
+      "destination": "code/audit.py",
+      "sha256": "dcc862e662fb304d4f13195b777f439794ba3089be313994955fb4fd9a490654"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/code/bootstrap_guest.sh",
+      "destination": "code/bootstrap_guest.sh",
+      "sha256": "5a0d6b175a4560df1ee07aacd2381ea3c7ccc1ce0474a64a8fc8a9553817117c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/code/deploy_e2b.sh",
+      "destination": "code/deploy_e2b.sh",
+      "sha256": "f368b55a61bcf454f596d6b7cf40c8e50433f007054eb96832f43ac60f49f612"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/code/setup_access.py",
+      "destination": "code/setup_access.py",
+      "sha256": "673f153c0908ef331ef7b33c746895ac105f0e02bd7bc360fe0528706826caae"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/code/create_vm.py",
+      "destination": "code/create_vm.py",
+      "sha256": "e756834e6729891d549e1ba1b50802eda53ce0b4692d855bd5a93280c898da5d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/code/backup_and_stop_old.py",
+      "destination": "code/backup_and_stop_old.py",
+      "sha256": "e6ab3d06a22524c700459f515a3b12e50aeb031e5d3564df9e08a7d724b4632e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/code/concurrency.py",
+      "destination": "code/concurrency.py",
+      "sha256": "827fe887bfb2bcd3f391a0b79e7cc94ad6bb6dfb5006a5b002c8c2c991aea914"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/code/run_concurrency.py",
+      "destination": "code/run_concurrency.py",
+      "sha256": "7de50617eb347e9056cb8bb927a446ffc215d6397f0cc81726c367fdf8a8f673"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/code/restore_and_deploy.py",
+      "destination": "code/restore_and_deploy.py",
+      "sha256": "ef0c46a06cad2ddb0a1525a2db249e8e1c2069fe8f613b0cab1266ae14891459"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/code/publish.py",
+      "destination": "code/publish.py",
+      "sha256": "82e1fefca126413240188526c3f5045fc6c541e26171bcce11399084435ba1c5"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/code/configure_limits.py",
+      "destination": "code/configure_limits.py",
+      "sha256": "ae0ba201241f1e171f73cb79c1b1b33010cd4a7bcd3449b08845743bf354df76"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/code/vmctl.py",
+      "destination": "code/vmctl.py",
+      "sha256": "782719fea806a0e301fce769a8cc46c80d6f645128139eb6c23f833986771cbf"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/figures/architecture.svg",
+      "destination": "figures/architecture.svg",
+      "sha256": "cfb81df5690a1dab41246906e9f518d9734e10dc57494fbbdff571698b519880"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/figures/architecture.mmd",
+      "destination": "figures/architecture.mmd",
+      "sha256": "34b9c43db0255053523200f9462ebb978ac4cf0f128bdb8c2a1112f01fd4d5b1"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/configs/ssh_config",
+      "destination": "configs/ssh_config",
+      "sha256": "2702a9780ceddc010ca336add1c620f36aba3bd550333f5a6e1cded1dbca5ca3"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/configs/ua-e2b-local-tunnel.service",
+      "destination": "configs/ua-e2b-local-tunnel.service",
+      "sha256": "af0e7d47de64e87af2a07aa6977fe4f382b01f5ac7a09d8f12c87bef8860f244"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/configs/domain.xml",
+      "destination": "configs/domain.xml",
+      "sha256": "7c9ed4988de507bd224809421166007c4f8e6719f932c002ed1f586be93fe6e1"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/configs/project-limits.sql",
+      "destination": "configs/project-limits.sql",
+      "sha256": "5da7968020607e07c842974e92bc867b841d32deb3d1360ec7e242a46f8374c5"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/configs/previous/ssh_config",
+      "destination": "configs/previous/ssh_config",
+      "sha256": "6866ef4afeb6be72d10fbda11de1824aa8c1d67cd62d3a7d8478379198704107"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/configs/previous/ua-e2b-local-tunnel.service",
+      "destination": "configs/previous/ua-e2b-local-tunnel.service",
+      "sha256": "f3875e8a1cba7329a0f9cc594be1547ca4e33a25ee852e27d1aa657e653a0c37"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/configs/previous/state.json",
+      "destination": "configs/previous/state.json",
+      "sha256": "dfdea9e5fb5b19cbf5e66abfb34bd4873ef81fe73c905c646f145f2846ff9532"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/configs/previous/domain.xml",
+      "destination": "configs/previous/domain.xml",
+      "sha256": "6165ef49f6035ff2a3668c67eb458e5d93d21f63bd8bc98aa40c9856b86eb820"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/configs/deploy/upstream/statefulset.yaml",
+      "destination": "configs/deploy/upstream/statefulset.yaml",
+      "sha256": "05b27315c94fda7e71969d0ca573daf4751f4eb16377d8c79de4c41305c435f4"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/configs/deploy/upstream/kustomization.yaml",
+      "destination": "configs/deploy/upstream/kustomization.yaml",
+      "sha256": "0f9c9e991637b4beb3ce0fe26f4c4206c2be06e61dea3cea1c0292527442139f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/configs/deploy/upstream/namespace.yaml",
+      "destination": "configs/deploy/upstream/namespace.yaml",
+      "sha256": "efa7997250de3f14173e0013f372819569861d236e55799a169eb427e05b43fe"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/configs/deploy/upstream/service.yaml",
+      "destination": "configs/deploy/upstream/service.yaml",
+      "sha256": "527380b7ceae21539600721767eceb6352c0e395ea7a4163d3ee1f4d9e5b7f2c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/configs/deploy/upstream/config/clickhouse-config.xml",
+      "destination": "configs/deploy/upstream/config/clickhouse-config.xml",
+      "sha256": "2c8b125d76cf912e0117ae4282838e92a360e6b0dc337dc0ed0acfa8df012092"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/configs/deploy/upstream/config/clickhouse-docker-related-config.xml",
+      "destination": "configs/deploy/upstream/config/clickhouse-docker-related-config.xml",
+      "sha256": "f814513696f8facf5bcbcbb1d087160f548712bd11414a1ad9043f2c45ad42ef"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/configs/deploy/upstream/config/vector.toml",
+      "destination": "configs/deploy/upstream/config/vector.toml",
+      "sha256": "6d878eacef490a7e616d90e29826aa7cf21adcdbb1c831ea52b256aef112f999"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/configs/deploy/overlay/build-base-template.mjs",
+      "destination": "configs/deploy/overlay/build-base-template.mjs",
+      "sha256": "33ad13435cb2632479ba2c0a96ce5f1bed01430874c666b2c66d6384066ecf7c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/configs/deploy/overlay/kustomization.yaml",
+      "destination": "configs/deploy/overlay/kustomization.yaml",
+      "sha256": "34637a2e25e345a032f7f80fe3c3e8de4e04ef6eb64d1f9291aac86eb704deee"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/configs/deploy/overlay/patches.json",
+      "destination": "configs/deploy/overlay/patches.json",
+      "sha256": "da3a6a876544961c8de3acb2489210ab4cf563fb3ec29a86fc749f02f4ee2bd0"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/project-limits.json",
+      "destination": "results/project-limits.json",
+      "sha256": "e7409ddc7711d57388e322909d5f8a1f2d0e81ab091aac68273df26700ee3fd5"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/sdk-smoke-after-reboot.json",
+      "destination": "results/sdk-smoke-after-reboot.json",
+      "sha256": "1d20aad893edd5f5da79d2dc12f0a131e302bd8e38b8668097de8946881f9600"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/reboot-check.json",
+      "destination": "results/reboot-check.json",
+      "sha256": "c1fd9717929a42e82d7b5563ee11d8c4f14fcc521ae9c8475e849d86bb9593f1"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/migration-restore.json",
+      "destination": "results/migration-restore.json",
+      "sha256": "0ed0f768a2765188a029f82d8796b85d44b18a2c48afeba5da2463c33d5a9091"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/deployment-audit.json",
+      "destination": "results/deployment-audit.json",
+      "sha256": "3bc3dbf160c6a461372ee75d95f90382a771ca0c540731cb685cb56d205986ef"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2-barrier-guest.json",
+      "destination": "results/driver-replay-2-barrier-guest.json",
+      "sha256": "4147453da05b009c1e0e4ce0b45ee877cd17f74f6b661694fea72629acfc3b8f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/old-pods.json",
+      "destination": "results/old-pods.json",
+      "sha256": "134a14acc4bc20eaf4f85145813c8d7c0d91f28bf65230048e01ccfabe7c2a81"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/templates-migrated.json",
+      "destination": "results/templates-migrated.json",
+      "sha256": "570d42dbf21dd66f4c642f972c8891d08cfafc73e9aa46a47d422287822818bb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/source-defaults.json",
+      "destination": "results/source-defaults.json",
+      "sha256": "223f07b6edea37fcb18b489cb24e126ffd19f9ecc741bfaffa47890a95eaef92"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-barrier-guest.json",
+      "destination": "results/concurrency-barrier-guest.json",
+      "sha256": "5c65689fac404e005aad532c862e56c33bdc68ba9cde4d45026435b860ee6aa4"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/guest-metrics.jsonl",
+      "destination": "results/guest-metrics.jsonl",
+      "sha256": "16cb740a61e2192461e02f8f8695bb82305a22dbf265bda675a751cdec24486b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2-guest-metrics.jsonl",
+      "destination": "results/driver-replay-2-guest-metrics.jsonl",
+      "sha256": "1d95750433a81d57c8d4f3cf56985f587ab7092a4ab31ea822e19ebac5dc8833"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/sdk-smoke.json",
+      "destination": "results/sdk-smoke.json",
+      "sha256": "e96dce0648a2aecbe1c601d6d1c09d98aa160812541cd33086a0ac0a2813f177"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/migration-backup.json",
+      "destination": "results/migration-backup.json",
+      "sha256": "339ac5a489ed946f94f49743f6c1241e5e7050dad76bfef4c7b0f4a95415e02d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/barrier.json",
+      "destination": "results/driver-replay-2/barrier.json",
+      "sha256": "ac73730919b0eb3bf2673fe49976b564391f4ba088a7d97d7bd420fdf86a2a64"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/summary.json",
+      "destination": "results/driver-replay-2/summary.json",
+      "sha256": "d30d71e49ac0daa0eb6484946642085f2b97eb84228ac63b12831eef4e1f3dc6"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/case-00/verifier.json",
+      "destination": "results/driver-replay-2/case-00/verifier.json",
+      "sha256": "6fec9241c7ba18dcc82ec2c2965f744ce828d097628c2c387360d393b4ab5bce"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/case-00/sandbox-iqgdelar8lbntsexiiwpp.json",
+      "destination": "results/driver-replay-2/case-00/sandbox-iqgdelar8lbntsexiiwpp.json",
+      "sha256": "756068e525981d71135d49cc0634ceffbb704e578db3755a12162757c7183502"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/case-00/cleanup-iqgdelar8lbntsexiiwpp.json",
+      "destination": "results/driver-replay-2/case-00/cleanup-iqgdelar8lbntsexiiwpp.json",
+      "sha256": "aae926ebabcf52b12c6cc09a90252b24dd91e53fe71d25ae081eb53d57f09fd4"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/case-00/spans.json",
+      "destination": "results/driver-replay-2/case-00/spans.json",
+      "sha256": "69c4b1ae563227ec150a5e202fabb25c1628ce9cbe5197bfa26a9f4cb4d9a03c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/case-00/verifier-raw.log",
+      "destination": "results/driver-replay-2/case-00/verifier-raw.log",
+      "sha256": "f146f244a14628ed955e11fb0441fcd0cab2059ef0d3769b8fe98ecb554ee087"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/case-00/environment/loopback.txt",
+      "destination": "results/driver-replay-2/case-00/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/case-00/environment/image-baseline.patch",
+      "destination": "results/driver-replay-2/case-00/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/case-00/environment/initial-state.json",
+      "destination": "results/driver-replay-2/case-00/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/case-00/environment/environment.txt",
+      "destination": "results/driver-replay-2/case-00/environment/environment.txt",
+      "sha256": "37e5e080ed0a66669d8c53b7fc6f1ed2a65785bcbfb86c5d0f9c89b73f71048b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/case-01/cleanup-ipjyz3ps9lkis9z4sf575.json",
+      "destination": "results/driver-replay-2/case-01/cleanup-ipjyz3ps9lkis9z4sf575.json",
+      "sha256": "e4156fa3468bbd6d3362934e2de1b33bce8219bd7fa2df7779ab4c4b85148f0a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/case-01/verifier.json",
+      "destination": "results/driver-replay-2/case-01/verifier.json",
+      "sha256": "3f210fbc0651fcdbbe622ecaaf580352507762c01454538463e52f1cf827b676"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/case-01/spans.json",
+      "destination": "results/driver-replay-2/case-01/spans.json",
+      "sha256": "ba021c84505ec81d19b037426caff94e01236acc46ab329f8fbad2391b6b8930"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/case-01/sandbox-ipjyz3ps9lkis9z4sf575.json",
+      "destination": "results/driver-replay-2/case-01/sandbox-ipjyz3ps9lkis9z4sf575.json",
+      "sha256": "4e940b3bad9fa0f544da4e974bc8a82561c3a40894bd3a3bf8ecf59e44dc318f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/case-01/verifier-raw.log",
+      "destination": "results/driver-replay-2/case-01/verifier-raw.log",
+      "sha256": "3407221c7aaf8651ae4dbd803083e2a430742f291f556ec193facec96dcc894d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/case-01/environment/loopback.txt",
+      "destination": "results/driver-replay-2/case-01/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/case-01/environment/image-baseline.patch",
+      "destination": "results/driver-replay-2/case-01/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/case-01/environment/initial-state.json",
+      "destination": "results/driver-replay-2/case-01/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/driver-replay-2/case-01/environment/environment.txt",
+      "destination": "results/driver-replay-2/case-01/environment/environment.txt",
+      "sha256": "37e5e080ed0a66669d8c53b7fc6f1ed2a65785bcbfb86c5d0f9c89b73f71048b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/barrier.json",
+      "destination": "results/concurrency-24/barrier.json",
+      "sha256": "2713f28dad5ecef283526729cd43c2bef8c252353994bef702330ef24b8c2b26"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/summary.json",
+      "destination": "results/concurrency-24/summary.json",
+      "sha256": "f4ce5599d24dd0967bd5e04e4bcf0625e0ecbd1f1a5acaa336fc069c08c8c759"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-15/verifier.json",
+      "destination": "results/concurrency-24/case-15/verifier.json",
+      "sha256": "81a939b6015c2a96503354192c7b3196b9894daad95280ed1e6c73eeaa5b0357"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-15/sandbox-iit52tly74ac0dvvn8aez.json",
+      "destination": "results/concurrency-24/case-15/sandbox-iit52tly74ac0dvvn8aez.json",
+      "sha256": "ba3e85492d9cd5df09073d2c2dcf774503952362b1155f0a4a42b42226b9f3bf"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-15/spans.json",
+      "destination": "results/concurrency-24/case-15/spans.json",
+      "sha256": "5aa26eabd1eb5cd642f737774ea7369380516f0fd40feba528f3d0c8d5f6bf1f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-15/verifier-raw.log",
+      "destination": "results/concurrency-24/case-15/verifier-raw.log",
+      "sha256": "7eedd4d8e3b71d7b320446f8525c17902d966c703a3a19883f907fc7f8ea7023"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-15/cleanup-iit52tly74ac0dvvn8aez.json",
+      "destination": "results/concurrency-24/case-15/cleanup-iit52tly74ac0dvvn8aez.json",
+      "sha256": "1a3169c129bb1f123a6e22b177e743f236b65fc9fa4c9b2bea0c7f9b87e68d79"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-15/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-15/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-15/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-15/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-15/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-15/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-15/environment/environment.txt",
+      "destination": "results/concurrency-24/case-15/environment/environment.txt",
+      "sha256": "e8a52b2fc3f08e7b221f42230b66f54589b162517dcfe66a9da396d4d5407c95"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-20/verifier.json",
+      "destination": "results/concurrency-24/case-20/verifier.json",
+      "sha256": "8b7707340bbffae1164a2ca2f2cccade21a5632f76ffb30e7234eb62ca425f82"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-20/sandbox-i0t5vjwo1usk0p6lkgawd.json",
+      "destination": "results/concurrency-24/case-20/sandbox-i0t5vjwo1usk0p6lkgawd.json",
+      "sha256": "9be5401c824d297d8abf3f34fd3f073a5ccb3b90770bab0c7df72613352e6c95"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-20/cleanup-i0t5vjwo1usk0p6lkgawd.json",
+      "destination": "results/concurrency-24/case-20/cleanup-i0t5vjwo1usk0p6lkgawd.json",
+      "sha256": "87224826b57487410782a0a40080b4a4c4a797e9e074be207a73fcb47ef7f028"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-20/spans.json",
+      "destination": "results/concurrency-24/case-20/spans.json",
+      "sha256": "1ebda922c8c95d35f1ea043e13844367c76b0dee62f1fc461a221950750211fe"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-20/verifier-raw.log",
+      "destination": "results/concurrency-24/case-20/verifier-raw.log",
+      "sha256": "12936328eec536eed0792efbf17e7b79d577fbcc12dfe7f15608ea810e195570"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-20/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-20/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-20/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-20/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-20/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-20/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-20/environment/environment.txt",
+      "destination": "results/concurrency-24/case-20/environment/environment.txt",
+      "sha256": "579cf71bfaffb0eaadfafa8d6cea67b70320e301995daf05f0a1e6112829978d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-06/sandbox-ij53r8pgx18n4by6ncce7.json",
+      "destination": "results/concurrency-24/case-06/sandbox-ij53r8pgx18n4by6ncce7.json",
+      "sha256": "433336356c65d0dd34764ad0cf54762c106abf59ea2e83fe9a6565065aee5b79"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-06/cleanup-ij53r8pgx18n4by6ncce7.json",
+      "destination": "results/concurrency-24/case-06/cleanup-ij53r8pgx18n4by6ncce7.json",
+      "sha256": "96458c0ddde765e4cffab81e702d3e12c63a10f4a281f63c717afe87440ddcfa"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-06/verifier.json",
+      "destination": "results/concurrency-24/case-06/verifier.json",
+      "sha256": "f18344cc96b8fb7d903bc3156cd54f1a6fbbe7af15d8056229eaecbcc03c7e16"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-06/spans.json",
+      "destination": "results/concurrency-24/case-06/spans.json",
+      "sha256": "e94912d885be3dd6bc129ebaa40b4a7937ef9b5efa53c398b7af6e7877d51df7"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-06/verifier-raw.log",
+      "destination": "results/concurrency-24/case-06/verifier-raw.log",
+      "sha256": "93143baa354c5aed53ded21a7b6a184577e0075da61175ff023b45e1763eeb34"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-06/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-06/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-06/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-06/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-06/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-06/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-06/environment/environment.txt",
+      "destination": "results/concurrency-24/case-06/environment/environment.txt",
+      "sha256": "1afaa4c92cd2798aec55ca1fac285184f64bdcaacf917fdcf1733d00e3ce97b3"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-11/verifier.json",
+      "destination": "results/concurrency-24/case-11/verifier.json",
+      "sha256": "db4b9f3454f60cf325512cba45b72aa64c62c7a3c5c1856a8ff10bf9337dd4ff"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-11/cleanup-i4b58wva7zquxgsasvw8c.json",
+      "destination": "results/concurrency-24/case-11/cleanup-i4b58wva7zquxgsasvw8c.json",
+      "sha256": "b5eedba4cadee1e44bb522f9d2deb26ad5d885bfa310e364548473fbc2d219d2"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-11/sandbox-i4b58wva7zquxgsasvw8c.json",
+      "destination": "results/concurrency-24/case-11/sandbox-i4b58wva7zquxgsasvw8c.json",
+      "sha256": "e5bb4610fa72bc0ba038661cacd8432f8edccdbcb354863f484ef7bf8ba7b922"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-11/spans.json",
+      "destination": "results/concurrency-24/case-11/spans.json",
+      "sha256": "b4003a42b1b71c9041da80ce44775166251d602f0c0c6c5bf2013edd6792fff4"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-11/verifier-raw.log",
+      "destination": "results/concurrency-24/case-11/verifier-raw.log",
+      "sha256": "ff06ff26d33f805bc62671a7d5590c183b6cbb71efddbd951a8cc1690d2a28be"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-11/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-11/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-11/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-11/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-11/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-11/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-11/environment/environment.txt",
+      "destination": "results/concurrency-24/case-11/environment/environment.txt",
+      "sha256": "37e5e080ed0a66669d8c53b7fc6f1ed2a65785bcbfb86c5d0f9c89b73f71048b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-23/verifier.json",
+      "destination": "results/concurrency-24/case-23/verifier.json",
+      "sha256": "c072cd4c25239264289e799097a867a917189b205273038413b63a0a875d33e9"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-23/sandbox-if18ichrc3uxnd319jh5h.json",
+      "destination": "results/concurrency-24/case-23/sandbox-if18ichrc3uxnd319jh5h.json",
+      "sha256": "4e4b7a0fd517457a7509e4f20656e418ffa0b7eebfecc133664c62caf2966e30"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-23/spans.json",
+      "destination": "results/concurrency-24/case-23/spans.json",
+      "sha256": "1b90e51d17fae9aeb5fdf50d34d41155858f0b024d199ea909393a6185e2d664"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-23/cleanup-if18ichrc3uxnd319jh5h.json",
+      "destination": "results/concurrency-24/case-23/cleanup-if18ichrc3uxnd319jh5h.json",
+      "sha256": "6c4a407adcdfe47b0ec6b4bbee12393dae70b9750213a0c28df3f39faf0add0f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-23/verifier-raw.log",
+      "destination": "results/concurrency-24/case-23/verifier-raw.log",
+      "sha256": "8c2e9d2dc42791ee0abe1a4bc7150a5603bfe6f1b353089724cc772215679d61"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-23/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-23/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-23/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-23/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-23/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-23/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-23/environment/environment.txt",
+      "destination": "results/concurrency-24/case-23/environment/environment.txt",
+      "sha256": "579cf71bfaffb0eaadfafa8d6cea67b70320e301995daf05f0a1e6112829978d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-12/sandbox-is3w3as8sbqnpwq4nc5r0.json",
+      "destination": "results/concurrency-24/case-12/sandbox-is3w3as8sbqnpwq4nc5r0.json",
+      "sha256": "087d9c4465129ecdd37bc1872410cb9b0c43d096cdefdb12dee3043d2602e1df"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-12/cleanup-is3w3as8sbqnpwq4nc5r0.json",
+      "destination": "results/concurrency-24/case-12/cleanup-is3w3as8sbqnpwq4nc5r0.json",
+      "sha256": "f6d39edd06429b075aeee25be1d29b4ccf6794f09f6b71041a228aaa152dc19a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-12/verifier.json",
+      "destination": "results/concurrency-24/case-12/verifier.json",
+      "sha256": "516ef21615b4a1c9dc202cc067518d8799cf0848f909734d9b3e774213d23ca3"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-12/spans.json",
+      "destination": "results/concurrency-24/case-12/spans.json",
+      "sha256": "bf6ac886feed758d92c2796f34e8c7e571b53a4c26087cb44e96281b090f17b6"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-12/verifier-raw.log",
+      "destination": "results/concurrency-24/case-12/verifier-raw.log",
+      "sha256": "1e9e21b11b2ba7586c51fab564bb84c931acef027d12c25e1a4077d63594803b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-12/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-12/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-12/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-12/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-12/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-12/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-12/environment/environment.txt",
+      "destination": "results/concurrency-24/case-12/environment/environment.txt",
+      "sha256": "1afaa4c92cd2798aec55ca1fac285184f64bdcaacf917fdcf1733d00e3ce97b3"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-22/cleanup-izeetrww4uvf2dn4t1l26.json",
+      "destination": "results/concurrency-24/case-22/cleanup-izeetrww4uvf2dn4t1l26.json",
+      "sha256": "dcdbd0581ce35fdc6feb1848c76d7c8d35cb0a215aba06935c89af0f043a570c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-22/sandbox-izeetrww4uvf2dn4t1l26.json",
+      "destination": "results/concurrency-24/case-22/sandbox-izeetrww4uvf2dn4t1l26.json",
+      "sha256": "70c56384c46f9c26582bd59c6d4af39e6f3dde8b02ea1605786b4d50e9b7a7fa"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-22/verifier.json",
+      "destination": "results/concurrency-24/case-22/verifier.json",
+      "sha256": "a431ea050f0b88d793a58bba47593c4adf53521fb57ff263ef44f0718ac9a70f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-22/spans.json",
+      "destination": "results/concurrency-24/case-22/spans.json",
+      "sha256": "85e4649a89dada08dfe627d6d398df80ed8b8c154be125a5fe15173a20971755"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-22/verifier-raw.log",
+      "destination": "results/concurrency-24/case-22/verifier-raw.log",
+      "sha256": "47ae02d7647f1adf9d07245179d722c726c77e48ccd8e62e47137e923a0850cc"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-22/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-22/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-22/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-22/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-22/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-22/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-22/environment/environment.txt",
+      "destination": "results/concurrency-24/case-22/environment/environment.txt",
+      "sha256": "37e5e080ed0a66669d8c53b7fc6f1ed2a65785bcbfb86c5d0f9c89b73f71048b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-08/cleanup-io190zseimji98g6pggpa.json",
+      "destination": "results/concurrency-24/case-08/cleanup-io190zseimji98g6pggpa.json",
+      "sha256": "69ce254fe42ce480d64a8e1c5d5d951ea562e2084cdb03e0d879d9b02aeaa54b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-08/sandbox-io190zseimji98g6pggpa.json",
+      "destination": "results/concurrency-24/case-08/sandbox-io190zseimji98g6pggpa.json",
+      "sha256": "2de6a0075f156c4da25edf43f205c4ac35a5294c2f0ecd1ef5c168e03adf47ef"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-08/verifier.json",
+      "destination": "results/concurrency-24/case-08/verifier.json",
+      "sha256": "db73d2b6c94fde5ea112d43ee704c86ac1db2c287c9828f8cf1b8eca61e16048"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-08/spans.json",
+      "destination": "results/concurrency-24/case-08/spans.json",
+      "sha256": "3252043161aa9af41cb7bc8740246793eb104171d1985e3fb380678d8ccf591b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-08/verifier-raw.log",
+      "destination": "results/concurrency-24/case-08/verifier-raw.log",
+      "sha256": "27a5d592b39cfe2d8f32d37c570fdd63c0a644935b45d1c57353c7109d5c7bb1"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-08/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-08/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-08/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-08/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-08/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-08/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-08/environment/environment.txt",
+      "destination": "results/concurrency-24/case-08/environment/environment.txt",
+      "sha256": "37e5e080ed0a66669d8c53b7fc6f1ed2a65785bcbfb86c5d0f9c89b73f71048b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-19/verifier.json",
+      "destination": "results/concurrency-24/case-19/verifier.json",
+      "sha256": "9eb0d31c9f7711e653c9d0c1dc158e310c96a3d41cfb2e2424b67e26a1602394"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-19/cleanup-izz60tpxfre24llulr09x.json",
+      "destination": "results/concurrency-24/case-19/cleanup-izz60tpxfre24llulr09x.json",
+      "sha256": "745aede0b4806311fab16c98b336261837ce7ae34c268029d0ea040369db036b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-19/spans.json",
+      "destination": "results/concurrency-24/case-19/spans.json",
+      "sha256": "5c16458838c5e1664978aea5d3b5f8c452cc508e16a8d70f4c4fa1780eea88b2"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-19/verifier-raw.log",
+      "destination": "results/concurrency-24/case-19/verifier-raw.log",
+      "sha256": "e053ded20360761e0c38040412d8ca346e10e5b98b60dbae334ca27e2f3dfa93"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-19/sandbox-izz60tpxfre24llulr09x.json",
+      "destination": "results/concurrency-24/case-19/sandbox-izz60tpxfre24llulr09x.json",
+      "sha256": "c27229d9d95b91c5843c7a313f2fd031d08aecceca5ae083bb2657967a9bfb27"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-19/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-19/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-19/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-19/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-19/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-19/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-19/environment/environment.txt",
+      "destination": "results/concurrency-24/case-19/environment/environment.txt",
+      "sha256": "54848753b21a4f07d2e94e46c31099b9c9f5cfa187498e2b548fdba7a2f94df3"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-03/verifier.json",
+      "destination": "results/concurrency-24/case-03/verifier.json",
+      "sha256": "a4ff02029d8b8fbe2aef816be11e7aa3fd9d51d65d1fada81cd2c51f35e045b8"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-03/spans.json",
+      "destination": "results/concurrency-24/case-03/spans.json",
+      "sha256": "2fe735eaecfe7842c6bb94213e5c7790e9ef4107ecd3da23e22ae3d53e55a60e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-03/verifier-raw.log",
+      "destination": "results/concurrency-24/case-03/verifier-raw.log",
+      "sha256": "fb5008384606c4c80de4718924589d7091a98e502f54d7c4d4bc8c937d528257"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-03/cleanup-i50y9dkf32n2q7pb6bceg.json",
+      "destination": "results/concurrency-24/case-03/cleanup-i50y9dkf32n2q7pb6bceg.json",
+      "sha256": "cb9311a355791f172b8198007083b6a88fd4ee0797f8cf19a72911662613b851"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-03/sandbox-i50y9dkf32n2q7pb6bceg.json",
+      "destination": "results/concurrency-24/case-03/sandbox-i50y9dkf32n2q7pb6bceg.json",
+      "sha256": "df4d4d3bf10fe438154e63f05a866ff34b2fc1ec7bafba1e68162c0a2948131a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-03/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-03/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-03/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-03/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-03/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-03/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-03/environment/environment.txt",
+      "destination": "results/concurrency-24/case-03/environment/environment.txt",
+      "sha256": "1afaa4c92cd2798aec55ca1fac285184f64bdcaacf917fdcf1733d00e3ce97b3"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-17/cleanup-icei6kwsvxk81fubunpeq.json",
+      "destination": "results/concurrency-24/case-17/cleanup-icei6kwsvxk81fubunpeq.json",
+      "sha256": "3ed39488924c6277832ec06c2549b97575f09c2ff5373eb23696ab1c54341ea4"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-17/sandbox-icei6kwsvxk81fubunpeq.json",
+      "destination": "results/concurrency-24/case-17/sandbox-icei6kwsvxk81fubunpeq.json",
+      "sha256": "330dfd667fcdb980bc11fd52531e7b440fd20a386804e69977ffcf23205cbeea"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-17/verifier.json",
+      "destination": "results/concurrency-24/case-17/verifier.json",
+      "sha256": "4a2e21686bd9cec876adbbfdbcc825fdd8f08871cfe8c0a38f32d36a53b43cdb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-17/spans.json",
+      "destination": "results/concurrency-24/case-17/spans.json",
+      "sha256": "31d179e36426e465186ac2d1d4280ce1ef964574b937ecffac92f9f9b909fb58"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-17/verifier-raw.log",
+      "destination": "results/concurrency-24/case-17/verifier-raw.log",
+      "sha256": "a6b0f9f927901efcfda5d358b8088cc56838cd9966d73bc7e6cda1281cd8cc0a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-17/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-17/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-17/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-17/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-17/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-17/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-17/environment/environment.txt",
+      "destination": "results/concurrency-24/case-17/environment/environment.txt",
+      "sha256": "579cf71bfaffb0eaadfafa8d6cea67b70320e301995daf05f0a1e6112829978d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-21/verifier.json",
+      "destination": "results/concurrency-24/case-21/verifier.json",
+      "sha256": "e8c853d356e18e27e99360a884d19be1f4e4d2744f903190689bac0e1c0f9893"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-21/spans.json",
+      "destination": "results/concurrency-24/case-21/spans.json",
+      "sha256": "f31278a86ec316242742f9437fb9a9e4343675f5ed0a104bd3c40bf811a118a7"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-21/verifier-raw.log",
+      "destination": "results/concurrency-24/case-21/verifier-raw.log",
+      "sha256": "a2a9ed82f0b195d943de96a1a3581feab5981bc5ad1278d7e975efd07040d355"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-21/cleanup-iq65s7s7mvxtb38z5nzu5.json",
+      "destination": "results/concurrency-24/case-21/cleanup-iq65s7s7mvxtb38z5nzu5.json",
+      "sha256": "1d77c6e63296f5b3bfcd2c8ef58b019c9cbd5e068caceec6e119ab5493010761"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-21/sandbox-iq65s7s7mvxtb38z5nzu5.json",
+      "destination": "results/concurrency-24/case-21/sandbox-iq65s7s7mvxtb38z5nzu5.json",
+      "sha256": "c415afbec9411e12bc66192ad5847a9717850075c8e01da14dab345ec37dbfb7"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-21/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-21/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-21/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-21/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-21/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-21/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-21/environment/environment.txt",
+      "destination": "results/concurrency-24/case-21/environment/environment.txt",
+      "sha256": "579cf71bfaffb0eaadfafa8d6cea67b70320e301995daf05f0a1e6112829978d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-00/verifier.json",
+      "destination": "results/concurrency-24/case-00/verifier.json",
+      "sha256": "46156ef9d46c715cb177f77fcdfd3fb678fcde1b5824b7376477d1bf4acea083"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-00/cleanup-i3s7ercqgbcv9ejggawgu.json",
+      "destination": "results/concurrency-24/case-00/cleanup-i3s7ercqgbcv9ejggawgu.json",
+      "sha256": "bb7783291615309a1f80480ba54433b8412b907c87ee42bc3fe058f0e5131f16"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-00/spans.json",
+      "destination": "results/concurrency-24/case-00/spans.json",
+      "sha256": "64b16aa2a7b5edab6fb78e5d6ba3c2df6a847f300342ec63b4e9d66e6de023bd"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-00/verifier-raw.log",
+      "destination": "results/concurrency-24/case-00/verifier-raw.log",
+      "sha256": "9bf2c9eb5c0cec7bbb548e9dadef3a75e1feb9c533bdb03ff6a182a327d457f2"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-00/sandbox-i3s7ercqgbcv9ejggawgu.json",
+      "destination": "results/concurrency-24/case-00/sandbox-i3s7ercqgbcv9ejggawgu.json",
+      "sha256": "58d66554188e1414d74acf460926080e20d18f30d2cd27d6f27c07e5ac371ed6"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-00/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-00/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-00/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-00/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-00/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-00/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-00/environment/environment.txt",
+      "destination": "results/concurrency-24/case-00/environment/environment.txt",
+      "sha256": "37e5e080ed0a66669d8c53b7fc6f1ed2a65785bcbfb86c5d0f9c89b73f71048b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-13/cleanup-iztaugtr8dj8j18fr8iqp.json",
+      "destination": "results/concurrency-24/case-13/cleanup-iztaugtr8dj8j18fr8iqp.json",
+      "sha256": "bc24ab73bc914ca1b6e191e7723653b7b2d114bad67be325df32cb783a69105b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-13/verifier.json",
+      "destination": "results/concurrency-24/case-13/verifier.json",
+      "sha256": "29c29f3df626c26ed18cdd72cf0980ca9b4eef9e78f90ab3f478d3ee69c07533"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-13/spans.json",
+      "destination": "results/concurrency-24/case-13/spans.json",
+      "sha256": "dbdea3a970752361b84808e7462dec644f799ce4f266330e2e25c75e78c70c9c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-13/verifier-raw.log",
+      "destination": "results/concurrency-24/case-13/verifier-raw.log",
+      "sha256": "a9b3be0b0dad9f30d7d11b5197e5e077a40091b52d6f482f2bf7578bbf1857fa"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-13/sandbox-iztaugtr8dj8j18fr8iqp.json",
+      "destination": "results/concurrency-24/case-13/sandbox-iztaugtr8dj8j18fr8iqp.json",
+      "sha256": "786ccf8bffcc2c44c3919c92ea54729923f1e2acd38ee55c1b1055acc90c46e7"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-13/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-13/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-13/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-13/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-13/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-13/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-13/environment/environment.txt",
+      "destination": "results/concurrency-24/case-13/environment/environment.txt",
+      "sha256": "37e5e080ed0a66669d8c53b7fc6f1ed2a65785bcbfb86c5d0f9c89b73f71048b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-14/sandbox-ixkmiftnbv77dxsv5p2ca.json",
+      "destination": "results/concurrency-24/case-14/sandbox-ixkmiftnbv77dxsv5p2ca.json",
+      "sha256": "f5c02cacea8bab26828402c6eca22231a74e94ab40262c95d777c23970d327aa"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-14/verifier.json",
+      "destination": "results/concurrency-24/case-14/verifier.json",
+      "sha256": "bb4226387307c9e4beb5624f3f814eae06c929d377a05131a1aa9ae8f19129ac"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-14/spans.json",
+      "destination": "results/concurrency-24/case-14/spans.json",
+      "sha256": "09029aa01426d090b2a5b9c7cfd3426774c4af66ddc513c6a8614f767b5d08cb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-14/verifier-raw.log",
+      "destination": "results/concurrency-24/case-14/verifier-raw.log",
+      "sha256": "ef7df51313eaef933c723f418f1e0e2a348155a1b8afe47cd68c811662e70db9"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-14/cleanup-ixkmiftnbv77dxsv5p2ca.json",
+      "destination": "results/concurrency-24/case-14/cleanup-ixkmiftnbv77dxsv5p2ca.json",
+      "sha256": "376c3a03784410ee63bdc1bd09272a65c7f0d23eec5a8515071f13bf23104d43"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-14/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-14/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-14/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-14/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-14/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-14/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-14/environment/environment.txt",
+      "destination": "results/concurrency-24/case-14/environment/environment.txt",
+      "sha256": "37e5e080ed0a66669d8c53b7fc6f1ed2a65785bcbfb86c5d0f9c89b73f71048b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-16/cleanup-idz48w4qkftg9zx2zc057.json",
+      "destination": "results/concurrency-24/case-16/cleanup-idz48w4qkftg9zx2zc057.json",
+      "sha256": "61cb8b75b5b245d3e8fb5f69d7b12f6344bc9e2ac6365f4c1d6c2bcf10f5dc23"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-16/verifier.json",
+      "destination": "results/concurrency-24/case-16/verifier.json",
+      "sha256": "8d2c69e3969b0c6f85237163615782a89567b6c0eb506736ad8d007c1fba68fa"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-16/spans.json",
+      "destination": "results/concurrency-24/case-16/spans.json",
+      "sha256": "85efce110ea3470756e97ddc65a9c1f0d4ab0c99ddb4ccb7d990a78515207a42"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-16/verifier-raw.log",
+      "destination": "results/concurrency-24/case-16/verifier-raw.log",
+      "sha256": "06a1aaa2c938818dd8385d9f903d56c805637ce3b57b01ac2e5339fa00f0430f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-16/sandbox-idz48w4qkftg9zx2zc057.json",
+      "destination": "results/concurrency-24/case-16/sandbox-idz48w4qkftg9zx2zc057.json",
+      "sha256": "9d1cde8fa3dc3d05d2f9a66246414a37117288e7c02ef91102482d2249880481"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-16/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-16/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-16/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-16/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-16/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-16/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-16/environment/environment.txt",
+      "destination": "results/concurrency-24/case-16/environment/environment.txt",
+      "sha256": "a35f67bdf7d5259f51bfe364e1e5830f4e209835d3a8c6e1339d5b2ae7e01525"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-07/verifier.json",
+      "destination": "results/concurrency-24/case-07/verifier.json",
+      "sha256": "18ebf41eab8a17fa975985cc9fed8427f208124f2f7f01bfea0ed2f7809d44bc"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-07/sandbox-i9yv3hdnovp3qcrr1scby.json",
+      "destination": "results/concurrency-24/case-07/sandbox-i9yv3hdnovp3qcrr1scby.json",
+      "sha256": "ebe3d623aba5e7465d7cb3193780b948866f339c73699ab339067d1ea65948b3"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-07/spans.json",
+      "destination": "results/concurrency-24/case-07/spans.json",
+      "sha256": "a3d3b8ad950653633d880cf1b5a8de8fd0fbb6b752ab13e87c79671fbec4e2e4"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-07/verifier-raw.log",
+      "destination": "results/concurrency-24/case-07/verifier-raw.log",
+      "sha256": "723dfc050d4c5c3477ea30205ac62ef44cce7babbe169f8ab18d834fd5ee005a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-07/cleanup-i9yv3hdnovp3qcrr1scby.json",
+      "destination": "results/concurrency-24/case-07/cleanup-i9yv3hdnovp3qcrr1scby.json",
+      "sha256": "7e46660e541a7c82fa7a68f2e19b6eb4a80daaa7b7035df81c645f728cdf530c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-07/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-07/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-07/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-07/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-07/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-07/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-07/environment/environment.txt",
+      "destination": "results/concurrency-24/case-07/environment/environment.txt",
+      "sha256": "37e5e080ed0a66669d8c53b7fc6f1ed2a65785bcbfb86c5d0f9c89b73f71048b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-05/cleanup-iuad2tpunkl9d0nsbt41o.json",
+      "destination": "results/concurrency-24/case-05/cleanup-iuad2tpunkl9d0nsbt41o.json",
+      "sha256": "38d71c578a19258c826de7b2b43ce4f601a9b2a68210c0637ae1ebed4b6e9f8a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-05/verifier.json",
+      "destination": "results/concurrency-24/case-05/verifier.json",
+      "sha256": "075ed65b600c3ba27aa27aa61dcb8fcdba736062f45f9618e524544691f39c1a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-05/spans.json",
+      "destination": "results/concurrency-24/case-05/spans.json",
+      "sha256": "3c51072eff77fd6a36de3df8f111a0f0ec4b48b27806f14b7993367c0d072a64"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-05/sandbox-iuad2tpunkl9d0nsbt41o.json",
+      "destination": "results/concurrency-24/case-05/sandbox-iuad2tpunkl9d0nsbt41o.json",
+      "sha256": "8dd1f73e090b0d75798924c95a71222f61ffd134261a36ff472036f08703f9c7"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-05/verifier-raw.log",
+      "destination": "results/concurrency-24/case-05/verifier-raw.log",
+      "sha256": "84bc78d618ff08b06e79b4748632eec23d3562044878ba01b4f151a34efa3032"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-05/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-05/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-05/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-05/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-05/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-05/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-05/environment/environment.txt",
+      "destination": "results/concurrency-24/case-05/environment/environment.txt",
+      "sha256": "a7e5e4557bfc742e0c96cdd02fb0acb1c6b65502c954b7ce05a863315e5a6327"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-09/sandbox-in74hm9d5ajwysuo7hh0h.json",
+      "destination": "results/concurrency-24/case-09/sandbox-in74hm9d5ajwysuo7hh0h.json",
+      "sha256": "f89921361f8267aba61de064a8d32ddaf766f63ae0fb9bc6583bb121b0f65999"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-09/verifier.json",
+      "destination": "results/concurrency-24/case-09/verifier.json",
+      "sha256": "f372aa0c7fbf21e9c9a3b6fba56723e5d462aaf7d346637911264373576a311e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-09/cleanup-in74hm9d5ajwysuo7hh0h.json",
+      "destination": "results/concurrency-24/case-09/cleanup-in74hm9d5ajwysuo7hh0h.json",
+      "sha256": "1724c85b6697dad6b74efb036f64a126c67eb568f852fb2659d8e2ce72a3bc8e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-09/spans.json",
+      "destination": "results/concurrency-24/case-09/spans.json",
+      "sha256": "cc8dbedd4e751d2032c29cddde22f83b0284521e03bab8df17eb58d650c45093"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-09/verifier-raw.log",
+      "destination": "results/concurrency-24/case-09/verifier-raw.log",
+      "sha256": "f49c97a8a3ff884d32184d7c269ec8825dce446ab139825abbb4d02a0634df18"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-09/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-09/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-09/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-09/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-09/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-09/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-09/environment/environment.txt",
+      "destination": "results/concurrency-24/case-09/environment/environment.txt",
+      "sha256": "37e5e080ed0a66669d8c53b7fc6f1ed2a65785bcbfb86c5d0f9c89b73f71048b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-02/verifier.json",
+      "destination": "results/concurrency-24/case-02/verifier.json",
+      "sha256": "d9374651a923a335b6d4a5f3104d27f86513b0cc5cd18adb64b093572997eb08"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-02/spans.json",
+      "destination": "results/concurrency-24/case-02/spans.json",
+      "sha256": "205d6a40fc7e676910ccb1623b0ea3f1e8606de6ee3f7ef352f5edaf32f03a9d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-02/cleanup-i506f08jpzpy1yn83bdsp.json",
+      "destination": "results/concurrency-24/case-02/cleanup-i506f08jpzpy1yn83bdsp.json",
+      "sha256": "7fa63a37f9ff14a4146e7cdedc2a50cef109e71e7789bb42e8fac225a98239f5"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-02/verifier-raw.log",
+      "destination": "results/concurrency-24/case-02/verifier-raw.log",
+      "sha256": "67f4e37cfd4612939d2674565ee37188c1b2b7ad975ec61593d907748c257f1f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-02/sandbox-i506f08jpzpy1yn83bdsp.json",
+      "destination": "results/concurrency-24/case-02/sandbox-i506f08jpzpy1yn83bdsp.json",
+      "sha256": "95ea732f229f58ab4a584655dcc734ccecf176f31577d78d59aa6fe33efe6d47"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-02/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-02/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-02/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-02/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-02/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-02/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-02/environment/environment.txt",
+      "destination": "results/concurrency-24/case-02/environment/environment.txt",
+      "sha256": "1afaa4c92cd2798aec55ca1fac285184f64bdcaacf917fdcf1733d00e3ce97b3"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-01/cleanup-ikeokpkc84fez0ywbo19y.json",
+      "destination": "results/concurrency-24/case-01/cleanup-ikeokpkc84fez0ywbo19y.json",
+      "sha256": "7361057abad48ea1099f17afeae2068fec5fd99de4a1e8c7018cc0d12c4402a8"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-01/sandbox-ikeokpkc84fez0ywbo19y.json",
+      "destination": "results/concurrency-24/case-01/sandbox-ikeokpkc84fez0ywbo19y.json",
+      "sha256": "6a0d9035a50958aaa31b97f7af08a9ba4c4034b4a07c8e8d58d18f370efc86ab"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-01/verifier.json",
+      "destination": "results/concurrency-24/case-01/verifier.json",
+      "sha256": "d6487c706e4c137aa1a29577275e68ebeff7b8998b3dbcc1e236e604cc0a4f5e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-01/spans.json",
+      "destination": "results/concurrency-24/case-01/spans.json",
+      "sha256": "91ce116aa60cc3eea607993ac2c43f3dca3c16854cad73c9db3b5b7c374dbef9"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-01/verifier-raw.log",
+      "destination": "results/concurrency-24/case-01/verifier-raw.log",
+      "sha256": "1d85f4b67c30ad10a567bc7b5765f53a2d55189d205feeba870f3ca486280eb0"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-01/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-01/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-01/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-01/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-01/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-01/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-01/environment/environment.txt",
+      "destination": "results/concurrency-24/case-01/environment/environment.txt",
+      "sha256": "1afaa4c92cd2798aec55ca1fac285184f64bdcaacf917fdcf1733d00e3ce97b3"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-18/sandbox-iotpklb28wzvd84e8mxjd.json",
+      "destination": "results/concurrency-24/case-18/sandbox-iotpklb28wzvd84e8mxjd.json",
+      "sha256": "e2d8eb0fc4c224d2a2bba3f8b8e8fad220d984ed5d0c7b45af6bcba505ceed3b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-18/verifier.json",
+      "destination": "results/concurrency-24/case-18/verifier.json",
+      "sha256": "6ada8c4090858822645bd269eca21fc446caeaf4f5ae7e46576a2e8dff3841d9"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-18/spans.json",
+      "destination": "results/concurrency-24/case-18/spans.json",
+      "sha256": "8da3e745e9b39355115677715c3131dd7da0b34ea6bc02bd99ac9627f29cc8b3"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-18/verifier-raw.log",
+      "destination": "results/concurrency-24/case-18/verifier-raw.log",
+      "sha256": "f06a25727023ec3900cbdbd8309ea492f0191d0c08c5b93d6f2ef419941176a6"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-18/cleanup-iotpklb28wzvd84e8mxjd.json",
+      "destination": "results/concurrency-24/case-18/cleanup-iotpklb28wzvd84e8mxjd.json",
+      "sha256": "b2c19c0ee85d448a44ae424edb5b4cc0a15e02627bfc734de9beec3011b90d69"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-18/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-18/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-18/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-18/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-18/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-18/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-18/environment/environment.txt",
+      "destination": "results/concurrency-24/case-18/environment/environment.txt",
+      "sha256": "579cf71bfaffb0eaadfafa8d6cea67b70320e301995daf05f0a1e6112829978d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-10/sandbox-ismgsjnaeze5jgx10j2up.json",
+      "destination": "results/concurrency-24/case-10/sandbox-ismgsjnaeze5jgx10j2up.json",
+      "sha256": "8e5e46f2404f95147ae602f519ff4943aab8eddcf9eea0daea9520f1b727459c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-10/verifier.json",
+      "destination": "results/concurrency-24/case-10/verifier.json",
+      "sha256": "9f68152b571c5865301f20bd0a19563d7f075a11a73df39f066aee773c777dab"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-10/spans.json",
+      "destination": "results/concurrency-24/case-10/spans.json",
+      "sha256": "4a83194dd3ea8394aafe02eabadc6262e29780550876a8306931dd6292b8b840"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-10/verifier-raw.log",
+      "destination": "results/concurrency-24/case-10/verifier-raw.log",
+      "sha256": "d53f2d41e627e866ed39606ec34236feb662d1630452e7f72839e3f37b8d98c5"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-10/cleanup-ismgsjnaeze5jgx10j2up.json",
+      "destination": "results/concurrency-24/case-10/cleanup-ismgsjnaeze5jgx10j2up.json",
+      "sha256": "021ffa1677e2ff89a0adc13a562a811f4d14765207bb3c5654b4b0c6398bfaf1"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-10/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-10/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-10/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-10/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-10/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-10/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-10/environment/environment.txt",
+      "destination": "results/concurrency-24/case-10/environment/environment.txt",
+      "sha256": "90e0e4cb5d78e9dbca6d674b5f0132e2375068cc767cb72eaa166a143b69f16f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-04/cleanup-ihy8c2xqr6vkwlfqv0vhv.json",
+      "destination": "results/concurrency-24/case-04/cleanup-ihy8c2xqr6vkwlfqv0vhv.json",
+      "sha256": "045a97b1113bd1b956ae44b7a449fdf0dc9caad091deb9a61bc0626f355bc66f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-04/verifier.json",
+      "destination": "results/concurrency-24/case-04/verifier.json",
+      "sha256": "27c261dff8d7532814810a72e933e78f6e48f559281cff70bd75ea6e2b33f3f1"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-04/sandbox-ihy8c2xqr6vkwlfqv0vhv.json",
+      "destination": "results/concurrency-24/case-04/sandbox-ihy8c2xqr6vkwlfqv0vhv.json",
+      "sha256": "6a9cdf28886474165c74028dcc7de510bd38a6687b06e66dfc869c2a26a1ccd2"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-04/spans.json",
+      "destination": "results/concurrency-24/case-04/spans.json",
+      "sha256": "2a32082fbeecdc44f65d8a8000ac4fc30478aabebf97653f1de35a0e125eb850"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-04/verifier-raw.log",
+      "destination": "results/concurrency-24/case-04/verifier-raw.log",
+      "sha256": "a3b6d3b014096395c1d3f888ce8d35c019fa9c727bc93524a14ddc5459ccdd0e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-04/environment/loopback.txt",
+      "destination": "results/concurrency-24/case-04/environment/loopback.txt",
+      "sha256": "41d2a2e3228665acb112fe2eaddf5d3ccaa73fcc186dd293f1759774b93daebb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-04/environment/image-baseline.patch",
+      "destination": "results/concurrency-24/case-04/environment/image-baseline.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-04/environment/initial-state.json",
+      "destination": "results/concurrency-24/case-04/environment/initial-state.json",
+      "sha256": "d9e0153013a598d1287ce4c95591ce144bea398796fd7ca9bb84569ebdefe155"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/results/concurrency-24/case-04/environment/environment.txt",
+      "destination": "results/concurrency-24/case-04/environment/environment.txt",
+      "sha256": "1afaa4c92cd2798aec55ca1fac285184f64bdcaacf917fdcf1733d00e3ce97b3"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/state.json",
+      "destination": "results/runtime-state.json",
+      "sha256": "4f646aa5a25e578f0c81e37559d540cb685abea31aa990704225f29a1068fd82"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/downloads/cloud-image-provenance.json",
+      "destination": "results/cloud-image-provenance.json",
+      "sha256": "5dfa975b60672e8d3b5df930d0d589e9e6c5422085d54b954e1e196e2e5f1152"
+    }
+  ]
+}

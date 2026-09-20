@@ -1,0 +1,11 @@
+{
+  "rank": 1,
+  "device": "AMD Instinct MI350X",
+  "matmul": true,
+  "all_reduce": true,
+  "all_to_all": true,
+  "checks": 26,
+  "allocator_config": "expandable_segments:False",
+  "eager_init": true,
+  "time_unix": 1789890686.7980428
+}

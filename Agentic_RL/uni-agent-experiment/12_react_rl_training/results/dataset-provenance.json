@@ -1,0 +1,13 @@
+{
+  "training_dataset": "dyyyyyyyy/swe-rebench-filtered-1150",
+  "training_revision": "99114f8cc02053edb4f1e6c8f191663080ec5a89",
+  "validation_dataset": "princeton-nlp/SWE-bench_Verified",
+  "validation_revision": "c104f840cc67f8b6eec6f759ebc8b2693d585d4a",
+  "original_training_rows": 1150,
+  "eligible_training_rows": 1125,
+  "training_candidates": 160,
+  "validation_candidates": 22,
+  "training_repositories": 160,
+  "split_overlap": 0,
+  "selection": "Seeded repository-interleaved structural selection, then template and baseline/oracle qualification; no model-success filtering"
+}

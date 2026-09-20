@@ -1,0 +1,19 @@
+flowchart TB
+  subgraph host["AMD host / kernel 5.15"]
+    ua["ua-lab-cpu<br/>Uni-Agent Task, ReAct, Gateway"]
+    llm["vLLM ROCm<br/>Fixed Qwen3-Coder 30B"]
+    tunnel["SSH tunnel :18094<br/>Authenticated API and execution proxy"]
+    ua <-->|inference| llm
+    ua <-->|OpenSandbox provider / SDK| tunnel
+    subgraph vm["Dedicated Ubuntu 24.04 VM / K3s"]
+      api["OpenSandbox API server"]
+      operator["OpenSandbox Operator"]
+      cr["BatchSandbox resources"]
+      pods["Workload Pods<br/>SWE repository and execd<br/>Native Bash sessions"]
+      api -->|create / delete| cr
+      operator -->|reconcile| cr
+      cr --> pods
+      api <-->|commands and files| pods
+    end
+    tunnel <--> api
+  end

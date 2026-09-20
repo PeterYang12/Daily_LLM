@@ -1,0 +1,64 @@
+opensandbox-controller:
+  controller:
+    image:
+      repository: docker.io/opensandbox/controller
+      tag: v0.2.0
+    resources:
+      requests: {cpu: 100m, memory: 128Mi}
+      limits: {cpu: "1", memory: 512Mi}
+
+opensandbox-server:
+  server:
+    replicaCount: 1
+    image:
+      repository: docker.io/opensandbox/server
+      tag: v0.2.3
+    resources:
+      requests: {cpu: 500m, memory: 512Mi}
+      limits: {cpu: "2", memory: 4Gi}
+    env:
+      - name: OPENSANDBOX_SERVER_API_KEY
+        valueFrom:
+          secretKeyRef: {name: opensandbox-api-key, key: api-key}
+    volumeMounts:
+      - name: workload-template
+        mountPath: /etc/opensandbox/example.batchsandbox-template.yaml
+        subPath: batchsandbox-template.yaml
+        readOnly: true
+      - name: server-data
+        mountPath: /var/lib/opensandbox
+    volumes:
+      - name: workload-template
+        configMap: {name: ua-opensandbox-workload-template}
+      - name: server-data
+        hostPath: {path: /var/lib/ua-opensandbox, type: DirectoryOrCreate}
+  configToml: |
+    [server]
+    host = "0.0.0.0"
+    port = 80
+    api_key = ""
+
+    [log]
+    level = "INFO"
+
+    [runtime]
+    type = "kubernetes"
+    execd_image = "docker.io/opensandbox/execd:v1.1.0"
+
+    [proxy]
+    resolve_internal = true
+
+    [kubernetes]
+    kubeconfig_path = ""
+    namespace = "opensandbox"
+    informer_enabled = true
+    workload_provider = "batchsandbox"
+    batchsandbox_template_file = "/etc/opensandbox/example.batchsandbox-template.yaml"
+
+    [store]
+    type = "sqlite"
+    path = "/var/lib/opensandbox/metadata.db"
+
+    [egress]
+    image = "docker.io/opensandbox/egress:v1.1.7"
+    mode = "dns+nft"

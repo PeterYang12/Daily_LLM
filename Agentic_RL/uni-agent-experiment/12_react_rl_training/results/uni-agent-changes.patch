@@ -1,0 +1,18 @@
+diff --git a/uni_agent/framework/entry.py b/uni_agent/framework/entry.py
+index 029f7b5..9d81160 100644
+--- a/uni_agent/framework/entry.py
++++ b/uni_agent/framework/entry.py
+@@ -55,6 +55,7 @@ def build_gateway_manager(*, config, llm_client) -> GatewayManager:
+         prompt_length=rollout_config.prompt_length,
+         response_length=rollout_config.response_length,
+         enable_last_assistant_rollback=af_cfg.get("enable_last_assistant_rollback", True),
++        allowed_request_sampling_param_keys=af_cfg.get("allowed_request_sampling_param_keys", None),
+     )
+ 
+     return GatewayManager(
+diff --git a/verl b/verl
+--- a/verl
++++ b/verl
+@@ -1 +1 @@
+-Subproject commit a9f2985159536a607211dcac730d3f5d55028950
++Subproject commit a9f2985159536a607211dcac730d3f5d55028950-dirty

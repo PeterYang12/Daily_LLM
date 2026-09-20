@@ -1,0 +1,23 @@
+{
+  "launched_unix": 1789569425.65696,
+  "command": [
+    "docker",
+    "exec",
+    "-d",
+    "-e",
+    "UA_RL_PHASE=main",
+    "ua-rl-gpu",
+    "bash",
+    "/lab/rl-swe-e2b-20260916/code/main_job.sh"
+  ],
+  "monitor_pid": 1722178,
+  "wandb_url": "https://wandb.ai/yuhanya-amd/uni-agent-swe-rl-rocm/runs/ua-qwen30b-e2b-20260916",
+  "target_steps": 300,
+  "train_prompts_per_step": 4,
+  "responses_per_prompt": 4,
+  "rollout_concurrency": 16,
+  "train_tasks": 62,
+  "validation_tasks": 16,
+  "save_freq": 100,
+  "checkpoints_to_keep": 1
+}

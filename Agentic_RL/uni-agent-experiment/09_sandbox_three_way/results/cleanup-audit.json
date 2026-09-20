@@ -1,0 +1,18 @@
+{
+  "time_unix": 1789553103.6776183,
+  "deployments": {
+    "local_e2b": {
+      "owned_running_before": [],
+      "owned_running_after": [],
+      "other_running_count": 0
+    },
+    "remote_e2b": {
+      "owned_running_before": [],
+      "owned_running_after": [],
+      "other_running_count": 0
+    }
+  },
+  "trajectory_count": 9,
+  "controls": 6,
+  "success": true
+}

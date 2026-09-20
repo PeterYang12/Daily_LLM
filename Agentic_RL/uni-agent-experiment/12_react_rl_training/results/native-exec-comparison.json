@@ -1,0 +1,234 @@
+{
+  "checks": {
+    "output_and_exit": true,
+    "literal_argv": true,
+    "cwd_env": true,
+    "large_output": true,
+    "binary_file": true,
+    "persistent_shell": true,
+    "conda_environment": true,
+    "timeout_nonzero": true,
+    "cancellation_propagates": true,
+    "timeout_stops_process": true,
+    "cancel_stops_process": true,
+    "baseline": true,
+    "oracle": true
+  },
+  "latencies": [
+    {
+      "mode": "sdk",
+      "repeat": 0,
+      "wall_s": 0.2546991379931569
+    },
+    {
+      "mode": "native",
+      "repeat": 0,
+      "wall_s": 0.005464575253427029
+    },
+    {
+      "mode": "native",
+      "repeat": 1,
+      "wall_s": 0.006514995824545622
+    },
+    {
+      "mode": "sdk",
+      "repeat": 1,
+      "wall_s": 0.2708182609640062
+    },
+    {
+      "mode": "sdk",
+      "repeat": 2,
+      "wall_s": 0.27261405205354095
+    },
+    {
+      "mode": "native",
+      "repeat": 2,
+      "wall_s": 0.009629508014768362
+    },
+    {
+      "mode": "native",
+      "repeat": 3,
+      "wall_s": 0.0077101062051951885
+    },
+    {
+      "mode": "sdk",
+      "repeat": 3,
+      "wall_s": 0.2776616169139743
+    },
+    {
+      "mode": "sdk",
+      "repeat": 4,
+      "wall_s": 0.23506493214517832
+    },
+    {
+      "mode": "native",
+      "repeat": 4,
+      "wall_s": 0.005450654774904251
+    },
+    {
+      "mode": "native",
+      "repeat": 5,
+      "wall_s": 0.007616905961185694
+    },
+    {
+      "mode": "sdk",
+      "repeat": 5,
+      "wall_s": 0.2503433641977608
+    },
+    {
+      "mode": "sdk",
+      "repeat": 6,
+      "wall_s": 0.2472404520958662
+    },
+    {
+      "mode": "native",
+      "repeat": 6,
+      "wall_s": 0.005542383994907141
+    },
+    {
+      "mode": "native",
+      "repeat": 7,
+      "wall_s": 0.007813767064362764
+    },
+    {
+      "mode": "sdk",
+      "repeat": 7,
+      "wall_s": 0.27658402593806386
+    },
+    {
+      "mode": "sdk",
+      "repeat": 8,
+      "wall_s": 0.2548475982621312
+    },
+    {
+      "mode": "native",
+      "repeat": 8,
+      "wall_s": 0.008063595741987228
+    },
+    {
+      "mode": "native",
+      "repeat": 9,
+      "wall_s": 0.007484715897589922
+    },
+    {
+      "mode": "sdk",
+      "repeat": 9,
+      "wall_s": 0.22843379713594913
+    },
+    {
+      "mode": "sdk",
+      "repeat": 10,
+      "wall_s": 0.2868872140534222
+    },
+    {
+      "mode": "native",
+      "repeat": 10,
+      "wall_s": 0.01114105898886919
+    },
+    {
+      "mode": "native",
+      "repeat": 11,
+      "wall_s": 0.007455806713551283
+    },
+    {
+      "mode": "sdk",
+      "repeat": 11,
+      "wall_s": 0.22250790195539594
+    },
+    {
+      "mode": "sdk",
+      "repeat": 12,
+      "wall_s": 0.26423066621646285
+    },
+    {
+      "mode": "native",
+      "repeat": 12,
+      "wall_s": 0.008165306877344847
+    },
+    {
+      "mode": "native",
+      "repeat": 13,
+      "wall_s": 0.007501217070966959
+    },
+    {
+      "mode": "sdk",
+      "repeat": 13,
+      "wall_s": 0.21992500917986035
+    },
+    {
+      "mode": "sdk",
+      "repeat": 14,
+      "wall_s": 0.26294390484690666
+    },
+    {
+      "mode": "native",
+      "repeat": 14,
+      "wall_s": 0.0077289859764277935
+    },
+    {
+      "mode": "native",
+      "repeat": 15,
+      "wall_s": 0.007370836101472378
+    },
+    {
+      "mode": "sdk",
+      "repeat": 15,
+      "wall_s": 0.2007957841269672
+    },
+    {
+      "mode": "sdk",
+      "repeat": 16,
+      "wall_s": 0.22702934499830008
+    },
+    {
+      "mode": "native",
+      "repeat": 16,
+      "wall_s": 0.005840175319463015
+    },
+    {
+      "mode": "native",
+      "repeat": 17,
+      "wall_s": 0.0081682070158422
+    },
+    {
+      "mode": "sdk",
+      "repeat": 17,
+      "wall_s": 0.2523705358617008
+    },
+    {
+      "mode": "sdk",
+      "repeat": 18,
+      "wall_s": 0.2619378441013396
+    },
+    {
+      "mode": "native",
+      "repeat": 18,
+      "wall_s": 0.009472827892750502
+    },
+    {
+      "mode": "native",
+      "repeat": 19,
+      "wall_s": 0.008391135837882757
+    },
+    {
+      "mode": "sdk",
+      "repeat": 19,
+      "wall_s": 0.22758510615676641
+    }
+  ],
+  "latency_summary": {
+    "sdk": {
+      "mean_ms": 249.7260274598375,
+      "median_ms": 253.53483692742884,
+      "p95_ms": 277.6616169139743,
+      "n": 20
+    },
+    "native": {
+      "mean_ms": 7.626338326372206,
+      "median_ms": 7.663506083190441,
+      "p95_ms": 9.629508014768362,
+      "n": 20
+    }
+  },
+  "success": true
+}

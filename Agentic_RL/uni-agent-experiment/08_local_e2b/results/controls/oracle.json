@@ -1,0 +1,134 @@
+{
+  "instance_id": "pallets__flask-5014",
+  "trial_id": "pallets__flask-5014",
+  "provider": "e2b",
+  "mode": "oracle",
+  "tag": "controls-v2",
+  "output": "/lab/local-e2b-20260916/results/uni-agent-flask/controls-v2/e2b/pallets__flask-5014/oracle",
+  "started_unix": 1789549560.3983388,
+  "slot": 0,
+  "base_url": "http://172.30.90.10:8000/v1",
+  "finished": true,
+  "eval_completed": true,
+  "eval_execution_time": 3.6224597971886396,
+  "eval_report": {
+    "resolved": true,
+    "found_eval_status": true,
+    "test_status": {
+      "FAIL_TO_PASS": {
+        "success": [
+          "tests/test_blueprints.py::test_empty_name_not_allowed"
+        ],
+        "failure": []
+      },
+      "PASS_TO_PASS": {
+        "success": [
+          "tests/test_blueprints.py::test_blueprint_specific_error_handling",
+          "tests/test_blueprints.py::test_blueprint_specific_user_error_handling",
+          "tests/test_blueprints.py::test_blueprint_app_error_handling",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[-/-/]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[/--/]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[/-/-/]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo--/foo]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo/--/foo/]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[-/bar-/bar]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo/-/bar-/foo/bar]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo/-bar-/foo/bar]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo-/bar-/foo/bar]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo/-//bar-/foo/bar]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo//-/bar-/foo/bar]",
+          "tests/test_blueprints.py::test_blueprint_url_defaults",
+          "tests/test_blueprints.py::test_blueprint_url_processors",
+          "tests/test_blueprints.py::test_templates_and_static",
+          "tests/test_blueprints.py::test_default_static_max_age",
+          "tests/test_blueprints.py::test_templates_list",
+          "tests/test_blueprints.py::test_dotted_name_not_allowed",
+          "tests/test_blueprints.py::test_dotted_names_from_app",
+          "tests/test_blueprints.py::test_empty_url_defaults",
+          "tests/test_blueprints.py::test_route_decorator_custom_endpoint",
+          "tests/test_blueprints.py::test_route_decorator_custom_endpoint_with_dots",
+          "tests/test_blueprints.py::test_endpoint_decorator",
+          "tests/test_blueprints.py::test_template_filter",
+          "tests/test_blueprints.py::test_add_template_filter",
+          "tests/test_blueprints.py::test_template_filter_with_name",
+          "tests/test_blueprints.py::test_add_template_filter_with_name",
+          "tests/test_blueprints.py::test_template_filter_with_template",
+          "tests/test_blueprints.py::test_template_filter_after_route_with_template",
+          "tests/test_blueprints.py::test_add_template_filter_with_template",
+          "tests/test_blueprints.py::test_template_filter_with_name_and_template",
+          "tests/test_blueprints.py::test_add_template_filter_with_name_and_template",
+          "tests/test_blueprints.py::test_template_test",
+          "tests/test_blueprints.py::test_add_template_test",
+          "tests/test_blueprints.py::test_template_test_with_name",
+          "tests/test_blueprints.py::test_add_template_test_with_name",
+          "tests/test_blueprints.py::test_template_test_with_template",
+          "tests/test_blueprints.py::test_template_test_after_route_with_template",
+          "tests/test_blueprints.py::test_add_template_test_with_template",
+          "tests/test_blueprints.py::test_template_test_with_name_and_template",
+          "tests/test_blueprints.py::test_add_template_test_with_name_and_template",
+          "tests/test_blueprints.py::test_context_processing",
+          "tests/test_blueprints.py::test_template_global",
+          "tests/test_blueprints.py::test_request_processing",
+          "tests/test_blueprints.py::test_app_request_processing",
+          "tests/test_blueprints.py::test_app_url_processors",
+          "tests/test_blueprints.py::test_nested_blueprint",
+          "tests/test_blueprints.py::test_nested_callback_order",
+          "tests/test_blueprints.py::test_nesting_url_prefixes[/parent-/child-None-None]",
+          "tests/test_blueprints.py::test_nesting_url_prefixes[/parent-None-None-/child]",
+          "tests/test_blueprints.py::test_nesting_url_prefixes[None-None-/parent-/child]",
+          "tests/test_blueprints.py::test_nesting_url_prefixes[/other-/something-/parent-/child]",
+          "tests/test_blueprints.py::test_nesting_subdomains",
+          "tests/test_blueprints.py::test_child_and_parent_subdomain",
+          "tests/test_blueprints.py::test_unique_blueprint_names",
+          "tests/test_blueprints.py::test_self_registration",
+          "tests/test_blueprints.py::test_blueprint_renaming"
+        ],
+        "failure": []
+      },
+      "FAIL_TO_FAIL": {
+        "success": [],
+        "failure": []
+      },
+      "PASS_TO_FAIL": {
+        "success": [],
+        "failure": []
+      }
+    }
+  },
+  "resolved": true,
+  "cleanup_completed": true,
+  "cleanup_steps": [
+    "final"
+  ],
+  "reward": 1.0,
+  "wall_seconds": 6.818156281020492,
+  "ended_unix": 1789549567.2164967,
+  "timings_s": {
+    "provision": 2.817972953,
+    "oracle_patch": 0.288203829,
+    "verify": 3.628504205,
+    "cleanup": 0.009817192
+  },
+  "agent_breakdown_s": {
+    "model_roundtrip": 0,
+    "model_api": 0,
+    "gateway_http": 0,
+    "codec": 0,
+    "tool_call": 0,
+    "tool_init": 0,
+    "tool_close": 0
+  },
+  "client_operations": {
+    "http_send": 4,
+    "docker_cli": 0,
+    "sandbox_exec": 11,
+    "file_read": 0,
+    "file_write": 2,
+    "tool_call": 0,
+    "model_api": 0
+  },
+  "model_tokens": {
+    "prompt": 0,
+    "generated": 0
+  }
+}

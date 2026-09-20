@@ -1,0 +1,168 @@
+defaults:
+  - ppo_megatron_trainer
+  - _self_
+
+data:
+  train_files: /lab/rl-swe-e2b-20260916/data/train.parquet
+  val_files: /lab/rl-swe-e2b-20260916/data/val.parquet
+  train_batch_size: 4
+  seed: 20260916
+  prompt_key: prompt
+  max_prompt_length: 8192
+  max_response_length: 32768
+  return_raw_chat: true
+  filter_overlong_prompts: true
+  truncation: error
+
+algorithm:
+  adv_estimator: grpo
+  use_kl_in_reward: false
+  rollout_correction:
+    bypass_mode: false
+    rollout_is: token
+    rollout_is_threshold: 2.0
+
+actor_rollout_ref:
+  nccl_timeout: 3600
+  model:
+    path: /lab/models/Qwen3-Coder-30B-A3B-Instruct
+    lora_rank: 0
+    use_remove_padding: true
+    enable_gradient_checkpointing: true
+    use_fused_kernels: false
+  actor:
+    ppo_mini_batch_size: 4
+    ppo_micro_batch_size_per_gpu: 1
+    use_dynamic_bsz: true
+    ppo_max_token_len_per_gpu: 40960
+    ppo_epochs: 1
+    use_kl_loss: false
+    entropy_coeff: 0
+    loss_agg_mode: token-mean
+    clip_ratio_low: 0.0004
+    clip_ratio_high: 0.0004
+    clip_ratio_c: 10.0
+    policy_loss:
+      loss_mode: gspo
+    optim:
+      lr: 0.000001
+      lr_warmup_steps: 10
+      lr_decay_steps: 300
+      lr_decay_style: constant
+      weight_decay: 0.0
+      clip_grad: 1.0
+    checkpoint:
+      save_contents: [model, optimizer, extra]
+      async_save: false
+    megatron:
+      use_mbridge: true
+      vanilla_mbridge: true
+      use_dist_checkpointing: false
+      param_offload: true
+      optimizer_offload: true
+      tensor_model_parallel_size: 1
+      pipeline_model_parallel_size: 1
+      context_parallel_size: 1
+      expert_model_parallel_size: 8
+      expert_tensor_parallel_size: 1
+      sequence_parallel: false
+      router_replay:
+        mode: disabled
+      override_transformer_config:
+        recompute_method: uniform
+        recompute_granularity: full
+        recompute_num_layers: 1
+        attention_backend: flash
+        moe_grouped_gemm: true
+        moe_token_dispatcher_type: alltoall
+        moe_router_dtype: fp32
+        moe_permute_fusion: false
+        gradient_accumulation_fusion: true
+  rollout:
+    name: vllm
+    mode: async
+    n: 4
+    calculate_log_probs: true
+    tensor_model_parallel_size: 2
+    gpu_memory_utilization: 0.5
+    max_model_len: 40960
+    max_num_batched_tokens: 8192
+    max_num_seqs: 16
+    enforce_eager: false
+    cudagraph_capture_sizes: [1, 2, 4, 8, 16]
+    free_cache_engine: true
+    enable_chunked_prefill: true
+    engine_kwargs:
+      vllm:
+        disable_custom_all_reduce: true
+    temperature: 1.0
+    top_p: 1.0
+    log_prob_use_dynamic_bsz: true
+    log_prob_max_token_len_per_gpu: 40960
+    val_kwargs:
+      temperature: 0.0
+      top_p: 1.0
+      do_sample: false
+      n: 1
+    multi_turn:
+      enable: true
+      max_parallel_calls: 1
+      format: qwen3_coder
+    agent:
+      num_workers: 4
+      agent_loop_manager_class: uni_agent.framework.entry.AgentFrameworkRolloutAdapter
+    custom:
+      agent_framework:
+        gateway_count: 4
+        allowed_request_sampling_param_keys: [max_tokens, stop]
+        log_dir: /lab/rl-swe-e2b-20260916/results/trajectories
+        mask_unfinished_episode: true
+        agent_runners:
+          task:
+            runner_fqn: ua_rl.runner.run_task
+            dispatch_mode: ray_task
+            max_concurrent_sessions: 16
+            trajectory_selection: longest
+            runner_kwargs:
+              task_config_path: /lab/rl-swe-e2b-20260916/configs/tasks-main.yaml
+              model_name: Qwen3-Coder-30B-A3B-Instruct
+
+reward:
+  reward_manager:
+    name: dapo
+  custom_reward_function:
+    path: pkg://ua_rl.runner
+    name: score_from_runner_result
+
+transfer_queue:
+  enable: true
+
+trainer:
+  use_v1: true
+  v1:
+    trainer_mode: colocate_async
+    colocate_async:
+      num_warmup_batches: 1
+  nnodes: 1
+  n_gpus_per_node: 8
+  total_training_steps: 300
+  total_epochs: 100
+  save_freq: 100
+  max_actor_ckpt_to_keep: 1
+  max_critic_ckpt_to_keep: 1
+  checkpoint_callback_class: ua_rl.checkpoint.KeepLatest
+  resume_mode: auto
+  test_freq: 100
+  val_before_train: true
+  project_name: uni-agent-swe-rl-rocm
+  experiment_name: qwen3-coder-30b-react-e2b-300
+  logger: [console, wandb, file]
+  default_local_dir: /lab/rl-swe-e2b-20260916/checkpoints
+  validation_data_dir: /lab/rl-swe-e2b-20260916/results/validation
+  rollout_data_dir: /lab/rl-swe-e2b-20260916/results/rollouts
+
+ray_kwargs:
+  ray_init:
+    num_cpus: 96
+    runtime_env:
+      py_executable: /opt/venv/bin/python

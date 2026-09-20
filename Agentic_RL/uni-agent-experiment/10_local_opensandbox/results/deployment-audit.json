@@ -1,0 +1,79 @@
+{
+  "time_unix": 1789556408.603928,
+  "success": true,
+  "outer_kernel": "5.15.0-70-generic",
+  "node_info": {
+    "architecture": "amd64",
+    "bootID": "26583ed2-9efa-4145-91eb-b7453294e5eb",
+    "containerRuntimeVersion": "containerd://2.3.4-k3s1.36",
+    "kernelVersion": "6.8.0-139-generic",
+    "kubeProxyVersion": "",
+    "kubeletVersion": "v1.36.4+k3s1",
+    "machineID": "e81c4a5fbd6545fab6e12d26d0006ef5",
+    "operatingSystem": "linux",
+    "osImage": "Ubuntu 24.04.5 LTS",
+    "systemUUID": "e81c4a5f-bd65-45fa-b6e1-2d26d0006ef5"
+  },
+  "node_capacity": {
+    "cpu": "16",
+    "ephemeral-storage": "202051056Ki",
+    "hugepages-1Gi": "0",
+    "hugepages-2Mi": "0",
+    "memory": "65843248Ki",
+    "pods": "110"
+  },
+  "images": [
+    {
+      "pod": "opensandbox-controller-manager-577bf76766-7m29k",
+      "image": "docker.io/opensandbox/controller:v0.2.0",
+      "image_id": "docker.io/opensandbox/controller@sha256:a9a5f73c1785ebd955336ffa313973a35c1a1b662cb7afc4ea82d92021b3532a",
+      "ready": true
+    },
+    {
+      "pod": "opensandbox-server-6f74c79d84-bhb6q",
+      "image": "docker.io/opensandbox/server:v0.2.3",
+      "image_id": "docker.io/opensandbox/server@sha256:ae8dfbb277f40a39ff01ef35e5e1c10675acfe0fa9db15259b8f323e5efab778",
+      "ready": true
+    }
+  ],
+  "provider_smoke_checks": {
+    "exact_output_and_exit": true,
+    "large_output_and_blank_lines": true,
+    "cwd_env": true,
+    "text_file": true,
+    "binary_1MiB": true,
+    "persistent_shell": true,
+    "session_nonzero": true,
+    "cancel_propagated": true,
+    "timeout_stops_command": true,
+    "cancel_stops_command": true,
+    "shell_close_idempotent": true,
+    "stop_idempotent": true,
+    "concurrent_4": true
+  },
+  "restart_preserves_session": true,
+  "restart_preserves_file": true,
+  "active_sandbox_pods": 0,
+  "active_batchsandboxes": 0,
+  "unauthenticated_status": 401,
+  "controls": {
+    "baseline": false,
+    "oracle": true
+  },
+  "trajectories": [
+    {
+      "turns": 32,
+      "generated_tokens": 5489
+    }
+  ],
+  "e2e": {
+    "reward": 1.0,
+    "wall_seconds": 101.29932447802275,
+    "finished": true,
+    "resolved": true,
+    "eval_completed": true,
+    "trajectory_valid": true,
+    "cleanup_completed": true
+  },
+  "existing_e2b_health": true
+}

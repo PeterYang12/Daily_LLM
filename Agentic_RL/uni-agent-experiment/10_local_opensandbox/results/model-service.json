@@ -1,0 +1,10 @@
+{
+  "name": "ua-threeway-model",
+  "id": "9c2bcb2ed0a3a3e5263b39a395b7b98d1f7e6403b85532816c69631e8c1a75b1",
+  "already_running": false,
+  "image": "sha256:037450d42652d33826174ac1a6f9f8ef2ec47c51042aa4becee52d44be132862",
+  "configuration": "same as experiment09; BF16 TP1 AITER/graphs 128K, memory0.65",
+  "base_url": "http://172.30.90.9:8000/v1",
+  "stopped_after_test": true,
+  "finished_unix": 1789555977.0489085
+}

@@ -1,0 +1,30 @@
+{
+  "time_unix": 1789558954.1968567,
+  "method": "local administrator SQL override of public.project_limits; no billing service",
+  "before": {
+    "id": "0b8a3ded-4489-4722-afd1-1d82e64ec2d5",
+    "max_length_hours": 1,
+    "concurrent_sandboxes": 20,
+    "concurrent_template_builds": 20,
+    "max_vcpu": 8,
+    "max_ram_mb": 8192,
+    "disk_mb": 512,
+    "events_ttl_days": 7,
+    "default_free_disk_size_mb": 512,
+    "max_disk_size_mb": 25600,
+    "max_free_disk_size_mb": 25600
+  },
+  "after": {
+    "id": "0b8a3ded-4489-4722-afd1-1d82e64ec2d5",
+    "max_length_hours": 1,
+    "concurrent_sandboxes": 64,
+    "concurrent_template_builds": 20,
+    "max_vcpu": 8,
+    "max_ram_mb": 8192,
+    "disk_mb": 512,
+    "events_ttl_days": 7,
+    "default_free_disk_size_mb": 512,
+    "max_disk_size_mb": 25600,
+    "max_free_disk_size_mb": 25600
+  }
+}

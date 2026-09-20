@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "validated_utc": "2026-09-20T11:12:44.445941+00:00",
+  "checks": {
+    "256_unique_episodes": true,
+    "32_groups_of_eight": true,
+    "eight_distinct_sample_indices_per_group": true,
+    "128_episodes_per_batch": true,
+    "complete_parseable_verification": true,
+    "reported_result_counts": true,
+    "queries_counts_and_session_join": 9970,
+    "tools_counts_and_session_join": 9950,
+    "rpc_counts_and_session_join": 47742,
+    "llm_requests_reconciles": true,
+    "turns_reconciles": true,
+    "logical_tool_calls_reconciles": true,
+    "api_completion_tokens_sum_reconciles": true,
+    "generated_tokens_equal_training_masks": true,
+    "gateway_turns_definition": true,
+    "one_timeout_one_format_error": true,
+    "no_budget_termination": true,
+    "step1_wall_phases_reconcile": true,
+    "each_episode_phases_reconcile": true,
+    "cumulative_phases_reconcile": true,
+    "subsecond_boundary_residuals": true,
+    "batch1_tail_reconciles": true,
+    "batch2_tail_reconciles": true,
+    "original_files_hash_verified": 1033,
+    "copied_evidence_files_hash_verified": 31,
+    "offline_assets_only": true,
+    "document_links_checked": 153,
+    "11_png_svg_pairs": true,
+    "figure_pair:10_model_work_and_latency": true,
+    "figure_pair:01_step1_wall_phases": true,
+    "figure_pair:11_verifier_and_rpc_calls": true,
+    "figure_pair:07_anyio_eight_samples": true,
+    "figure_pair:08_hy_eight_samples": true,
+    "figure_pair:09_largest_sample_ratio": true,
+    "figure_pair:06_all_8_sample_groups": true,
+    "figure_pair:05_duration_and_completion_tail": true,
+    "figure_pair:03_startup_ramp_and_wait": true,
+    "figure_pair:02_attempt_timeline": true,
+    "figure_pair:04_runner_time_composition": true,
+    "analysis_python_syntax": "passed",
+    "explorer_functionality": {
+      "passed": true,
+      "groups": 32,
+      "metrics": 5,
+      "selections": 160,
+      "method": "JavaScript execution with minimal DOM; browser layout not exercised"
+    },
+    "no_credential_shaped_config_literals": {
+      "flagged_files": [],
+      "method": "heuristic scan of copied JSON/YAML; secret files are not copied"
+    }
+  },
+  "visual_review": [
+    "02_attempt_timeline",
+    "06_all_8_sample_groups",
+    "07_anyio_eight_samples"
+  ],
+  "browser_layout_validation": "Not performed; no browser installed. Figures reviewed as rendered PNGs."
+}

@@ -1,0 +1,245 @@
+{
+  "runtime": "/home/yuhanya/uni-agent-lab/local-e2b-20260916",
+  "copied_files": [
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/report-drafts/README.md",
+      "destination": "README.md",
+      "sha256": "abcbb881c15b7390012129720a63b3db39a7bf1d15940b65c5a2210f444b6d9e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/report-drafts/STEPS.md",
+      "destination": "STEPS.md",
+      "sha256": "8366209e5230b3469eae4cd62922ea2ed716c71626c178b5ba4c740492471e22"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/code/audit_deployment.py",
+      "destination": "code/audit_deployment.py",
+      "sha256": "ce44a78cb2cbbffd3ca844785fef2f8a643f0edcee9a6a1d504cc75be9da71eb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/code/build_overlay.py",
+      "destination": "code/build_overlay.py",
+      "sha256": "d31f41c161b30a27c3a02c582698610f33e1a482a482641e0e952b526ab81b3f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/code/smoke.py",
+      "destination": "code/smoke.py",
+      "sha256": "93902ffe5bb285904a93d567d26c388467726a9e9424bd43df8735588c022221"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/code/status.sh",
+      "destination": "code/status.sh",
+      "sha256": "1cabd7bdc6a4b7707d30c61cc0fbe149d25f5f9c848df92d5ba4b35dd4ed6824"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/code/bootstrap_guest.sh",
+      "destination": "code/bootstrap_guest.sh",
+      "sha256": "2b22e93fcb400ef41321e238ae751c6323bc4c9e6daa22d0dc0851e9c13f6f24"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/code/deploy_e2b.sh",
+      "destination": "code/deploy_e2b.sh",
+      "sha256": "f368b55a61bcf454f596d6b7cf40c8e50433f007054eb96832f43ac60f49f612"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/code/setup_access.py",
+      "destination": "code/setup_access.py",
+      "sha256": "459e2b799c5e42fac81e82d51689fffd7d52733a088bc5198f71f68901617f18"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/code/create_vm.py",
+      "destination": "code/create_vm.py",
+      "sha256": "1780ae53b380e6d1bc8888fa00afb0a9de75e236642698ff2fd75437d7a66d0c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/code/start_test_model.py",
+      "destination": "code/start_test_model.py",
+      "sha256": "8f6cb0dacba7b8e7be7f916585b58f85748a1828f99f502fcaacafbaf6f75df3"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/code/run_local_uni_agent.py",
+      "destination": "code/run_local_uni_agent.py",
+      "sha256": "bc4309c9d3014d587edcff5ed3ce5a5e7ec53c5f0f67e91bddd7bb9a4f6d4d9c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/code/fetch_credentials.py",
+      "destination": "code/fetch_credentials.py",
+      "sha256": "6d666ec3add819b992d5e51995591e2dca8d46b87c860c839f27ad28bec9cb2c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/code/publish.py",
+      "destination": "code/publish.py",
+      "sha256": "fb72f241b7ead978dfa0bb0077adaea71dee67e082686cd427e84974d65b5156"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/code/vmctl.py",
+      "destination": "code/vmctl.py",
+      "sha256": "9852e9b59cdcab248a6911cab6cc752c1c7d10c4d566db7ff2409f3bdb4cd150"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/figures/architecture.svg",
+      "destination": "figures/architecture.svg",
+      "sha256": "c288d09a79b772056c49a2582855cd7661d87f6778f69ef91ed6b749fe51dd64"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/figures/architecture.mmd",
+      "destination": "figures/architecture.mmd",
+      "sha256": "c11cbd8d9252cd9b4ca3901d18de1ffb90877bef701e3fb2092c62cdd69ff128"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/configs/deploy/upstream/statefulset.yaml",
+      "destination": "configs/deploy/upstream/statefulset.yaml",
+      "sha256": "05b27315c94fda7e71969d0ca573daf4751f4eb16377d8c79de4c41305c435f4"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/configs/deploy/upstream/kustomization.yaml",
+      "destination": "configs/deploy/upstream/kustomization.yaml",
+      "sha256": "0f9c9e991637b4beb3ce0fe26f4c4206c2be06e61dea3cea1c0292527442139f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/configs/deploy/upstream/namespace.yaml",
+      "destination": "configs/deploy/upstream/namespace.yaml",
+      "sha256": "efa7997250de3f14173e0013f372819569861d236e55799a169eb427e05b43fe"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/configs/deploy/upstream/service.yaml",
+      "destination": "configs/deploy/upstream/service.yaml",
+      "sha256": "527380b7ceae21539600721767eceb6352c0e395ea7a4163d3ee1f4d9e5b7f2c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/configs/deploy/upstream/config/clickhouse-config.xml",
+      "destination": "configs/deploy/upstream/config/clickhouse-config.xml",
+      "sha256": "2c8b125d76cf912e0117ae4282838e92a360e6b0dc337dc0ed0acfa8df012092"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/configs/deploy/upstream/config/clickhouse-docker-related-config.xml",
+      "destination": "configs/deploy/upstream/config/clickhouse-docker-related-config.xml",
+      "sha256": "f814513696f8facf5bcbcbb1d087160f548712bd11414a1ad9043f2c45ad42ef"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/configs/deploy/upstream/config/vector.toml",
+      "destination": "configs/deploy/upstream/config/vector.toml",
+      "sha256": "6d878eacef490a7e616d90e29826aa7cf21adcdbb1c831ea52b256aef112f999"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/configs/deploy/overlay/build-base-template.mjs",
+      "destination": "configs/deploy/overlay/build-base-template.mjs",
+      "sha256": "33ad13435cb2632479ba2c0a96ce5f1bed01430874c666b2c66d6384066ecf7c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/configs/deploy/overlay/kustomization.yaml",
+      "destination": "configs/deploy/overlay/kustomization.yaml",
+      "sha256": "34637a2e25e345a032f7f80fe3c3e8de4e04ef6eb64d1f9291aac86eb704deee"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/configs/deploy/overlay/patches.json",
+      "destination": "configs/deploy/overlay/patches.json",
+      "sha256": "e6d76d6be82e7e7bb0f01ff8f8c70bb7b98deea99fbc9025c684555f58e42e42"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/configs/domain.xml",
+      "destination": "configs/domain.xml",
+      "sha256": "6165ef49f6035ff2a3668c67eb458e5d93d21f63bd8bc98aa40c9856b86eb820"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/configs/ua-e2b-local-tunnel.service",
+      "destination": "configs/ua-e2b-local-tunnel.service",
+      "sha256": "f3875e8a1cba7329a0f9cc594be1547ca4e33a25ee852e27d1aa657e653a0c37"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/results/sdk-smoke-before-restart.json",
+      "destination": "results/sdk-smoke-before-restart.json",
+      "sha256": "89930f4b88ca2c3f882605e5984b36300a31616e881b3e6ad5c886b63fe8718a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/results/sdk-smoke-after-restart.json",
+      "destination": "results/sdk-smoke-after-restart.json",
+      "sha256": "56f10f458e3c3eefabb9c6e8ee5c7005e1cafd404d085e98fa5419ca7fd684d4"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/results/deployment-audit.json",
+      "destination": "results/deployment-audit.json",
+      "sha256": "cfbe0dab8a056bf6a61a23595561f4858899b8f5c022c2d97ca3881bc993f0fa"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/results/network-probe.json",
+      "destination": "results/network-probe.json",
+      "sha256": "90fa847c2259c15828e4a7dc07c730d820dca1c4ea04d747ab804447bad4a2f4"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/results/base-rebuild.json",
+      "destination": "results/base-rebuild.json",
+      "sha256": "c668093dc996cf8da9acaee7d6f5a3b69c69c1e786cd4b233af7539efb763e04"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/results/test-model.json",
+      "destination": "results/test-model.json",
+      "sha256": "f4219a141fc5aff926b6f37b4b5835163dc22a5b92d1f874fe0a5b0e3bb281d6"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/downloads/cloud-image-provenance.json",
+      "destination": "results/cloud-image-provenance.json",
+      "sha256": "5dfa975b60672e8d3b5df930d0d589e9e6c5422085d54b954e1e196e2e5f1152"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/state.json",
+      "destination": "results/runtime-state.json",
+      "sha256": "dfdea9e5fb5b19cbf5e66abfb34bd4873ef81fe73c905c646f145f2846ff9532"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/results/uni-agent-flask/manifest.json",
+      "destination": "configs/swe-manifest.json",
+      "sha256": "469d06cc9d292471f87c3afea1ffd11c9cc895d3feaa52cd2661e5a64c18b511"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/results/uni-agent-flask/templates.json",
+      "destination": "results/swe-templates.json",
+      "sha256": "441bf7dc36c2afc2cad3d38160655dfd222e53775da031f5b50e67c2f36c8390"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/results/uni-agent-flask/react-local/e2b/pallets__flask-5014/result.json",
+      "destination": "results/uni-agent/result.json",
+      "sha256": "23a4ac2afb7d76f6fe3c67390df7a4392d5f7137fdd60b293dee9f54e7e6a8ef"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/results/uni-agent-flask/react-local/e2b/pallets__flask-5014/input-config.json",
+      "destination": "results/uni-agent/input-config.json",
+      "sha256": "164db6bf61d9487dccff0e4121ddf6f8a9e8248727b75f394f7a093bbc150808"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/results/uni-agent-flask/react-local/e2b/pallets__flask-5014/verifier.json",
+      "destination": "results/uni-agent/verifier.json",
+      "sha256": "b1efb97527a272e9aa7be8a365a5e44f56dd9af65fd5844a179f6910179eb817"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/results/uni-agent-flask/react-local/e2b/pallets__flask-5014/trajectory-audit.json",
+      "destination": "results/uni-agent/trajectory-audit.json",
+      "sha256": "2e572a433c6186a118c354542b14368c2c1b9ee55250c1b2c251b9141b1a380d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/results/uni-agent-flask/react-local/e2b/pallets__flask-5014/candidate-source-only.patch",
+      "destination": "results/uni-agent/candidate-source-only.patch",
+      "sha256": "1a5d86931dcd5d9bc5d79dbf323e931e5c822148768b2a402400800e56bd8521"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/results/uni-agent-flask/react-local/e2b/pallets__flask-5014/verifier-raw.log",
+      "destination": "results/uni-agent/verifier-raw.log",
+      "sha256": "50f75c827d264c261b5ef053df509bec99c2073dcb99ce913c54b13aff4c1cb8"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/results/uni-agent-flask/react-local/e2b/pallets__flask-5014/sessions/profile-06aae2ae4fdb4196/trajectories.jsonl",
+      "destination": "results/uni-agent/trajectories.jsonl",
+      "sha256": "464ccedbe96b2531bb2d26da423dfee34d36e4438893aa5dc691e083b48eb2b8"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/results/uni-agent-flask/controls-v2/e2b/pallets__flask-5014/baseline/result.json",
+      "destination": "results/controls/baseline.json",
+      "sha256": "42d1e48b34517172c8f89589108f8125f5c587f5c24d4db2f2b97620a869f8b9"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/results/uni-agent-flask/controls-v2/e2b/pallets__flask-5014/oracle/result.json",
+      "destination": "results/controls/oracle.json",
+      "sha256": "c5eb259eff2b05e217daf6d701efee023bef6faf5af636809da037c4e49a75af"
+    }
+  ]
+}

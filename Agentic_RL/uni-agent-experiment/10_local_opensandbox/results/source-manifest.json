@@ -1,0 +1,230 @@
+{
+  "runtime": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916",
+  "copied_files": [
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/report-drafts/README.md",
+      "destination": "README.md",
+      "sha256": "311009ddaa21c52d5cb8b5671b6f6b199677a11c9321bf0b1c55ae3789341eda"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/report-drafts/STEPS.md",
+      "destination": "STEPS.md",
+      "sha256": "6c7f93a455f88930b537ccbe19fdd030b3f7a479982b3c9b29f4c302042d0987"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/code/smoke.py",
+      "destination": "code/smoke.py",
+      "sha256": "01f3d46b7e4041252f585b1444a4e1ff2ba5cad349b9122469743c655912ce1f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/code/provider.py",
+      "destination": "code/provider.py",
+      "sha256": "de0c0b275606b412ac0b5dec87407e377c84f4601538b0b3a316d493437d5df1"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/code/status.sh",
+      "destination": "code/status.sh",
+      "sha256": "172bc6c3bedf24184cc7a3f4e9e1984273005f9e24fe43db934d2f688e8ebf63"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/code/audit.py",
+      "destination": "code/audit.py",
+      "sha256": "d9512838aff7e14f85ed8b414f9fb0ab46024bc18750738755f1c5e2a3b73ff4"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/code/deploy.py",
+      "destination": "code/deploy.py",
+      "sha256": "57f9faa4b6565ad7aff4562190deae689aefa249fd0913d4a77717f5a86a52b5"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/code/bootstrap_guest.sh",
+      "destination": "code/bootstrap_guest.sh",
+      "sha256": "bbe7a73c052748de5161ad47f3c896602b4f9fd9abaa818f44578b76ac842a23"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/code/restart_probe.py",
+      "destination": "code/restart_probe.py",
+      "sha256": "d49ab91e3ff75c20b04e8d43c89982105b84722ed37c16ead396fadfaac373b4"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/code/setup_access.py",
+      "destination": "code/setup_access.py",
+      "sha256": "daa9ecdec4cfdf655216ab66002e0b408f45c6ae79b1a1761765fd84a2ce7e05"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/code/create_vm.py",
+      "destination": "code/create_vm.py",
+      "sha256": "081373103b0ebe03f9a9ae0858fee7ee49d246c0f0a78f73a76109975b8d3bad"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/code/publish.py",
+      "destination": "code/publish.py",
+      "sha256": "1c0d107adb4c2fdadf2812a5fbb32b345d86c9defa3e225e30e98d604f3fbf38"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/code/run_e2e.py",
+      "destination": "code/run_e2e.py",
+      "sha256": "1dc3a4a2488236e0a8d91391ba064d237b3202291452a1c63fa85732735b3178"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/code/vmctl.py",
+      "destination": "code/vmctl.py",
+      "sha256": "56eeedb6502da6387517cf411ec8249ae4bc358d167fe5b7ac545e07764cc6aa"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/executed-code/smoke.py",
+      "destination": "code/executed/smoke.py",
+      "sha256": "01f3d46b7e4041252f585b1444a4e1ff2ba5cad349b9122469743c655912ce1f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/executed-code/provider.py",
+      "destination": "code/executed/provider.py",
+      "sha256": "de0c0b275606b412ac0b5dec87407e377c84f4601538b0b3a316d493437d5df1"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/executed-code/run_e2e.py",
+      "destination": "code/executed/run_e2e.py",
+      "sha256": "1dc3a4a2488236e0a8d91391ba064d237b3202291452a1c63fa85732735b3178"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/configs/values.yaml",
+      "destination": "configs/values.yaml",
+      "sha256": "95df9eb08acefc57c890c7522f26149bd6b81ba43d953edcfa6bb17f71555bbb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/configs/api-service.yaml",
+      "destination": "configs/api-service.yaml",
+      "sha256": "69739db96f655b117f333e0830da5cb99269c49509f9926c2a4479639351c00d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/configs/batchsandbox-template.yaml",
+      "destination": "configs/batchsandbox-template.yaml",
+      "sha256": "68db602afb47defd14f82fa9e5bad20d7f39f27d43ed846e072a31bfda7de167"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/configs/domain.xml",
+      "destination": "configs/domain.xml",
+      "sha256": "12e3e086943f5da4920c1eb77c3b7410d3b59b7023f562daa72e111ac2073343"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/configs/ua-opensandbox-local-tunnel.service",
+      "destination": "configs/ua-opensandbox-local-tunnel.service",
+      "sha256": "8a533937b0a8aad381b3e4ccc53fc144703f9296072416c9c4c9404b608a0bd7"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/figures/architecture.svg",
+      "destination": "figures/architecture.svg",
+      "sha256": "bfc30f8cf0bbd7622dd1b226bf3d6e2300a631071b3fe8ecdd93a7fb9e228210"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/figures/architecture.mmd",
+      "destination": "figures/architecture.mmd",
+      "sha256": "090d10dfa4e1f161c316a25add2ec1264d2a72720728d2add10d0366700512d8"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/deployment-audit.json",
+      "destination": "results/deployment-audit.json",
+      "sha256": "a980a2dc963276a3aa0eb12939acb4d555df01fb8f115bb6bdc1aa9579395941"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/provider-smoke-final.json",
+      "destination": "results/provider-smoke-final.json",
+      "sha256": "1fabae1a402602b197f8accd86497105ec2479fbcd5ce43634713ccb9071353d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/restart-probe.json",
+      "destination": "results/restart-probe.json",
+      "sha256": "72fea86675e19af766d6548481532fd5bf4630a0b2aa4b929c00237ff0b39189"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/pods-before-api-restart.json",
+      "destination": "results/pods-before-api-restart.json",
+      "sha256": "e0415578f56c537e9f22e9dce0f0bebf60edb502b441512a19728cbdbdcd85c6"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/pods-after-api-restart.json",
+      "destination": "results/pods-after-api-restart.json",
+      "sha256": "b7f4dbf504b891449ac5c7932c962bc23f0e01044e884b0601ecb83a29d0ef0d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/model-service.json",
+      "destination": "results/model-service.json",
+      "sha256": "44b50ec3f5c4faa5760d9194ea23590868f909ade0ce3460e17fb135552eb0a7"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/executed-code-hashes.json",
+      "destination": "results/executed-code-hashes.json",
+      "sha256": "9210957d8199ca2170d8bd0f62060e3d5c439d58d66c06fc1281a21b8c38cac5"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/downloads/provenance.json",
+      "destination": "results/provenance.json",
+      "sha256": "86a409d6eb79cb139e6843eadaf3584451cf1084d5c519751e25b9eeaa1b7724"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/downloads/cloud-image-provenance.json",
+      "destination": "results/cloud-image-provenance.json",
+      "sha256": "5dfa975b60672e8d3b5df930d0d589e9e6c5422085d54b954e1e196e2e5f1152"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/downloads/k3s-provenance.json",
+      "destination": "results/k3s-provenance.json",
+      "sha256": "943547718d541e34bdd7f4cfa49fcdbdaa62bbefa996e7592fbbafe2b5158af7"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/state.json",
+      "destination": "results/runtime-state.json",
+      "sha256": "7016412bdb12fa04580f0e72e2551c4711b87fa0faabc320e0f9555c7493a634"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/uni-agent-flask/manifest.json",
+      "destination": "configs/swe-manifest.json",
+      "sha256": "469d06cc9d292471f87c3afea1ffd11c9cc895d3feaa52cd2661e5a64c18b511"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/uni-agent-flask/react/opensandbox/pallets__flask-5014/result.json",
+      "destination": "results/uni-agent/result.json",
+      "sha256": "92bea5be8ce21033521a90e6fa680c3243f00bedfdb3a82e8615701bdba004e0"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/uni-agent-flask/react/opensandbox/pallets__flask-5014/input-config.json",
+      "destination": "results/uni-agent/input-config.json",
+      "sha256": "318f1978336b3c99db469b2e0d1c9138bcd0ce719a5d7202cc6e2e06ede99faf"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/uni-agent-flask/react/opensandbox/pallets__flask-5014/verifier.json",
+      "destination": "results/uni-agent/verifier.json",
+      "sha256": "4b212477858fd27e62dd0f46c40bcc5bba46ec9c35d700655897d78c2274b308"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/uni-agent-flask/react/opensandbox/pallets__flask-5014/verifier-raw.log",
+      "destination": "results/uni-agent/verifier-raw.log",
+      "sha256": "5af9e626ef3a57068f451dec208cf5239f32e212ba420653dc1e7c7f4d2d022a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/uni-agent-flask/react/opensandbox/pallets__flask-5014/trajectory-audit.json",
+      "destination": "results/uni-agent/trajectory-audit.json",
+      "sha256": "1fe487cbf6ae0fbcfdffe09e60e8eeb6fd856451b1ba8dca2e2680065d2a5d74"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/uni-agent-flask/react/opensandbox/pallets__flask-5014/candidate-source-only.patch",
+      "destination": "results/uni-agent/candidate-source-only.patch",
+      "sha256": "6962c231e5be0c9c6a922d91bb3aeaf8d79c42c2baf9230185ced1958474c685"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/uni-agent-flask/react/opensandbox/pallets__flask-5014/sessions/profile-357350c082104f0d/trajectories.jsonl",
+      "destination": "results/uni-agent/trajectories.jsonl",
+      "sha256": "05f57dc13a949efebc85fb51d65ed9d546087c9d1f03b5d8699c4d1b61a3a5b0"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/uni-agent-flask/controls/opensandbox/pallets__flask-5014/baseline/result.json",
+      "destination": "results/controls/baseline.json",
+      "sha256": "922dd1aa128a8677de1f175dca9a727549addbc59a93b0b44cc2ad5b87cb9feb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/local-opensandbox-20260916/results/uni-agent-flask/controls/opensandbox/pallets__flask-5014/oracle/result.json",
+      "destination": "results/controls/oracle.json",
+      "sha256": "4cc3a90e953ab43ada63a083cebb90ef3312f827e2805e58e487187f1963e2b5"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "PYTHONPATH": "/work/experiments/colocate-e2b-3step-20260920/code:/work/experiments/colocate-e2b-3step-20260920/src/uni-agent:/work/experiments/colocate-e2b-3step-20260920/src/uni-agent/verl",
+  "PYTHONNOUSERSITE": "1",
+  "TOKENIZERS_PARALLELISM": "false",
+  "OMP_NUM_THREADS": "1",
+  "PYTORCH_ALLOC_CONF": "expandable_segments:False",
+  "TORCH_NCCL_AVOID_RECORD_STREAMS": "1",
+  "CUDA_DEVICE_MAX_CONNECTIONS": "1",
+  "VLLM_ROCM_USE_AITER": "1",
+  "VLLM_ROCM_USE_AITER_MOE": "0",
+  "USE_ROCM_AITER_ROPE_BACKEND": "0",
+  "TRANSFER_QUEUE_ENABLE": "1",
+  "UA_PHASE": "train",
+  "UA_OBSERVE": "1",
+  "HYDRA_FULL_ERROR": "1",
+  "UA_MAX_SUBMITTED_PROMPTS": "48",
+  "VERL_FILE_LOGGER_PATH": "/work/experiments/colocate-e2b-3step-20260920/results/train-metrics.jsonl"
+}

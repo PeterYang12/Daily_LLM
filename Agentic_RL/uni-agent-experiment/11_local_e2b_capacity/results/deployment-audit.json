@@ -1,0 +1,152 @@
+{
+  "time_unix": 1789559599.463679,
+  "vm_name": "ua-e2b-96c512g-20260916",
+  "vm_ip": "192.168.122.239",
+  "vm_vcpus": 96,
+  "vm_memory_gib": 512,
+  "vm_disk_gib": 500,
+  "node_info": {
+    "architecture": "amd64",
+    "bootID": "a6dc1061-9814-421b-8252-ec5180d26d9a",
+    "containerRuntimeVersion": "containerd://2.3.4-k3s1.36",
+    "kernelVersion": "6.8.0-139-generic",
+    "kubeProxyVersion": "",
+    "kubeletVersion": "v1.36.4+k3s1",
+    "machineID": "ad547eacfc9b4bdeb4328c4b906a5b23",
+    "operatingSystem": "linux",
+    "osImage": "Ubuntu 24.04.5 LTS",
+    "systemUUID": "ad547eac-fc9b-4bde-b432-8c4b906a5b23"
+  },
+  "node_capacity": {
+    "cpu": "96",
+    "ephemeral-storage": "506771172Ki",
+    "hugepages-1Gi": "0",
+    "hugepages-2Mi": "384Gi",
+    "memory": "528133924Ki",
+    "pods": "110"
+  },
+  "guest": {
+    "time_unix": 1789559597.0226142,
+    "cpu_count": 96,
+    "cpu_ticks": [
+      18703,
+      0,
+      11516,
+      4321739,
+      1746,
+      0,
+      145,
+      5,
+      1341,
+      0
+    ],
+    "clock_ticks": 100,
+    "meminfo": {
+      "MemTotal": 528133924,
+      "MemAvailable": 118967900,
+      "HugePages_Total": 196608,
+      "HugePages_Free": 196595,
+      "HugePages_Rsvd": 62,
+      "Hugepagesize": 2048
+    },
+    "firecracker_count": 0,
+    "firecracker_pids": [],
+    "nbd_devices": 256,
+    "disk_total_bytes": 518933680128,
+    "disk_available_bytes": 506407559168,
+    "pressure": {
+      "cpu": "some avg10=0.00 avg60=0.00 avg300=0.10 total=2743301\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+      "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=179\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=179",
+      "io": "some avg10=0.02 avg60=0.18 avg300=0.11 total=1153487\nfull avg10=0.01 avg60=0.17 avg300=0.10 total=1143112"
+    }
+  },
+  "old_vm_state": "shut off",
+  "new_vm_state": "running",
+  "opensandbox_vm_state": "running",
+  "opensandbox_tunnel": "active",
+  "opensandbox_health": {
+    "status": "healthy"
+  },
+  "api_secret_preserved": true,
+  "domain_xml_resources_verified": true,
+  "pod_ready": true,
+  "pod_uid": "312c89e3-ce04-41d2-9329-a2763016dabd",
+  "api_health": "Health check successful",
+  "templates": [
+    {
+      "templateID": "uckk5539uvrjduteyr5a",
+      "buildStatus": "ready",
+      "aliases": [
+        "base"
+      ],
+      "cpuCount": 2,
+      "memoryMB": 1024
+    },
+    {
+      "templateID": "6gz72hgrq9yqwt3l2vd1",
+      "buildStatus": "ready",
+      "aliases": [
+        "ua-sweprof-flask-0"
+      ],
+      "cpuCount": 4,
+      "memoryMB": 8192
+    }
+  ],
+  "active_sandboxes": 0,
+  "internal_ports": [
+    {
+      "port": 3003,
+      "reachable": false
+    },
+    {
+      "port": 5007,
+      "reachable": false
+    },
+    {
+      "port": 5008,
+      "reachable": false
+    },
+    {
+      "port": 5009,
+      "reachable": false
+    },
+    {
+      "port": 5010,
+      "reachable": false
+    },
+    {
+      "port": 5016,
+      "reachable": false
+    },
+    {
+      "port": 5017,
+      "reachable": false
+    },
+    {
+      "port": 5018,
+      "reachable": false
+    },
+    {
+      "port": 5109,
+      "reachable": false
+    }
+  ],
+  "original_api_key_works": true,
+  "sdk_smoke": true,
+  "sdk_smoke_after_reboot": true,
+  "reboot": {
+    "before_boot_id": "5fd2e17f-e0d0-47eb-9186-74bcffbe98cb",
+    "after_boot_id": "a6dc1061-9814-421b-8252-ec5180d26d9a",
+    "recovered_s": 148.68654457805678,
+    "pod_ready": true,
+    "api_healthy": true,
+    "original_api_key_works": true,
+    "success": true
+  },
+  "concurrency_success": true,
+  "simultaneously_live": 24,
+  "peak_overlapping_verifier_requests": 24,
+  "guest_cpu_busy_cores_peak_1s": 30.528076192851056,
+  "metrics_note": "Guest-wide /proc/stat sampled at ~1s, includes services. Samples include a gap at the host barrier. This is not a saturation benchmark.",
+  "success": true
+}

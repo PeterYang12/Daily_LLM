@@ -1,0 +1,323 @@
+{
+  "complete": true,
+  "task": "pallets__flask-5014",
+  "groups": {
+    "docker": {
+      "n": 3,
+      "resolved": 3,
+      "valid_trajectories": 3,
+      "means": {
+        "wall_seconds": 43.580559259591006,
+        "agent_s": 38.937420026,
+        "model_api_s": 27.757216115333332,
+        "gateway_client_s": 2.612598612666666,
+        "tools_s": 8.271379201999999,
+        "tool_setup_s": 0.268181664,
+        "provision_s": 1.6560473193333334,
+        "verifier_s": 2.169323909,
+        "cleanup_s": 0.5860647523333333,
+        "generated_tokens": 4380.333333333333,
+        "model_calls": 27.333333333333332,
+        "tool_calls": 28.333333333333332,
+        "gpu_busy_mean": 66.23315266485999
+      },
+      "wall_min_s": 40.154904533643275,
+      "wall_max_s": 45.66608052607626,
+      "wall_median_s": 44.92069271905348,
+      "model_seconds_per_1k_generated_tokens": 6.33678170200137,
+      "tool_seconds_per_call": 0.29193103065882353,
+      "server_boundaries_match": true
+    },
+    "local_e2b": {
+      "n": 3,
+      "resolved": 3,
+      "valid_trajectories": 3,
+      "means": {
+        "wall_seconds": 83.56169122209151,
+        "agent_s": 72.204686059,
+        "model_api_s": 33.87511162733334,
+        "gateway_client_s": 2.8355707439999946,
+        "tools_s": 33.65887875666666,
+        "tool_setup_s": 1.7935873616666667,
+        "provision_s": 6.536276257333333,
+        "verifier_s": 3.820810148,
+        "cleanup_s": 0.022763399333333333,
+        "generated_tokens": 5225,
+        "model_calls": 30.333333333333332,
+        "tool_calls": 31.333333333333332,
+        "gpu_busy_mean": 40.68247566451901
+      },
+      "wall_min_s": 68.99375301925465,
+      "wall_max_s": 96.22479049488902,
+      "wall_median_s": 85.46653015213087,
+      "model_seconds_per_1k_generated_tokens": 6.483274952599682,
+      "tool_seconds_per_call": 1.0742195347872336,
+      "server_boundaries_match": true
+    },
+    "remote_e2b": {
+      "n": 3,
+      "resolved": 3,
+      "valid_trajectories": 3,
+      "means": {
+        "wall_seconds": 95.25840695140262,
+        "agent_s": 76.351545802,
+        "model_api_s": 30.690409781666666,
+        "gateway_client_s": 2.8707590103333374,
+        "tools_s": 40.98800097866667,
+        "tool_setup_s": 1.7615335216666665,
+        "provision_s": 11.996749386333333,
+        "verifier_s": 4.7364482993333334,
+        "cleanup_s": 1.0177599486666666,
+        "generated_tokens": 4752.333333333333,
+        "model_calls": 31.333333333333332,
+        "tool_calls": 32.333333333333336,
+        "gpu_busy_mean": 36.972880348412616
+      },
+      "wall_min_s": 90.94341835519299,
+      "wall_max_s": 103.6836681063287,
+      "wall_median_s": 91.14813439268619,
+      "model_seconds_per_1k_generated_tokens": 6.457966566949569,
+      "tool_seconds_per_call": 1.2676701333608247,
+      "server_boundaries_match": true
+    }
+  },
+  "microbench": [
+    {
+      "variant": "docker",
+      "operation": "exec_true",
+      "n": 30,
+      "median_s": 0.04217531718313694,
+      "mean_s": 0.04263997858700653,
+      "p95_s": 0.04649169696494937,
+      "min_s": 0.0390036990866065,
+      "max_s": 0.0481396890245378
+    },
+    {
+      "variant": "docker",
+      "operation": "exec_python_sleep_100ms",
+      "n": 10,
+      "median_s": 0.1545125967822969,
+      "mean_s": 0.15624909987673163,
+      "p95_s": 0.165341354906559,
+      "min_s": 0.15007350593805313,
+      "max_s": 0.165341354906559
+    },
+    {
+      "variant": "docker",
+      "operation": "write_1024",
+      "n": 20,
+      "median_s": 0.07129546836949885,
+      "mean_s": 0.0704887893749401,
+      "p95_s": 0.07822781708091497,
+      "min_s": 0.06012558517977595,
+      "max_s": 0.07822781708091497
+    },
+    {
+      "variant": "docker",
+      "operation": "read_1024",
+      "n": 20,
+      "median_s": 0.04333240841515362,
+      "mean_s": 0.04261164444033057,
+      "p95_s": 0.0445570950396359,
+      "min_s": 0.03866268787533045,
+      "max_s": 0.0445570950396359
+    },
+    {
+      "variant": "docker",
+      "operation": "write_1048576",
+      "n": 5,
+      "median_s": 0.07154992781579494,
+      "mean_s": 0.07200666908174753,
+      "p95_s": 0.07507716305553913,
+      "min_s": 0.06969467597082257,
+      "max_s": 0.07507716305553913
+    },
+    {
+      "variant": "docker",
+      "operation": "read_1048576",
+      "n": 5,
+      "median_s": 0.046098077204078436,
+      "mean_s": 0.045426246151328085,
+      "p95_s": 0.04679345805197954,
+      "min_s": 0.042962032835930586,
+      "max_s": 0.04679345805197954
+    },
+    {
+      "variant": "docker",
+      "operation": "stateful_shell_true",
+      "n": 10,
+      "median_s": 0.24095984385348856,
+      "mean_s": 0.24005987704731524,
+      "p95_s": 0.24764648731797934,
+      "min_s": 0.23316315980628133,
+      "max_s": 0.24764648731797934
+    },
+    {
+      "variant": "local_e2b",
+      "operation": "exec_true",
+      "n": 30,
+      "median_s": 0.27754956018179655,
+      "mean_s": 0.27559629431925714,
+      "p95_s": 0.31749876495450735,
+      "min_s": 0.23038408579304814,
+      "max_s": 0.3429981963708997
+    },
+    {
+      "variant": "local_e2b",
+      "operation": "exec_python_sleep_100ms",
+      "n": 10,
+      "median_s": 0.42531286901794374,
+      "mean_s": 0.4236608833540231,
+      "p95_s": 0.4616183126345277,
+      "min_s": 0.3731231139972806,
+      "max_s": 0.4616183126345277
+    },
+    {
+      "variant": "local_e2b",
+      "operation": "write_1024",
+      "n": 20,
+      "median_s": 0.0036145944613963366,
+      "mean_s": 0.0036955424584448338,
+      "p95_s": 0.005444236099720001,
+      "min_s": 0.0029371739365160465,
+      "max_s": 0.005444236099720001
+    },
+    {
+      "variant": "local_e2b",
+      "operation": "read_1024",
+      "n": 20,
+      "median_s": 0.002959599019959569,
+      "mean_s": 0.003486667899414897,
+      "p95_s": 0.010710434056818485,
+      "min_s": 0.002485182136297226,
+      "max_s": 0.010710434056818485
+    },
+    {
+      "variant": "local_e2b",
+      "operation": "write_1048576",
+      "n": 5,
+      "median_s": 0.04798216000199318,
+      "mean_s": 0.04762913724407554,
+      "p95_s": 0.0480233789421618,
+      "min_s": 0.0461736973375082,
+      "max_s": 0.0480233789421618
+    },
+    {
+      "variant": "local_e2b",
+      "operation": "read_1048576",
+      "n": 5,
+      "median_s": 0.043538964819163084,
+      "mean_s": 0.043675856478512284,
+      "p95_s": 0.04537177598103881,
+      "min_s": 0.0421164920553565,
+      "max_s": 0.04537177598103881
+    },
+    {
+      "variant": "local_e2b",
+      "operation": "stateful_shell_true",
+      "n": 10,
+      "median_s": 1.122016134671867,
+      "mean_s": 1.1349091888405383,
+      "p95_s": 1.2391222608275712,
+      "min_s": 1.055364241823554,
+      "max_s": 1.2391222608275712
+    },
+    {
+      "variant": "remote_e2b",
+      "operation": "exec_true",
+      "n": 30,
+      "median_s": 0.26088451966643333,
+      "mean_s": 0.26139676763365666,
+      "p95_s": 0.2655576807446778,
+      "min_s": 0.2591838319785893,
+      "max_s": 0.26740441285073757
+    },
+    {
+      "variant": "remote_e2b",
+      "operation": "exec_python_sleep_100ms",
+      "n": 10,
+      "median_s": 0.3695529899559915,
+      "mean_s": 0.370648277271539,
+      "p95_s": 0.37836862122640014,
+      "min_s": 0.36807924835011363,
+      "max_s": 0.37836862122640014
+    },
+    {
+      "variant": "remote_e2b",
+      "operation": "write_1024",
+      "n": 20,
+      "median_s": 0.20913378056138754,
+      "mean_s": 0.21068338085897267,
+      "p95_s": 0.2378872772678733,
+      "min_s": 0.20874066883698106,
+      "max_s": 0.2378872772678733
+    },
+    {
+      "variant": "remote_e2b",
+      "operation": "read_1024",
+      "n": 20,
+      "median_s": 0.2090124855749309,
+      "mean_s": 0.20909337587654592,
+      "p95_s": 0.2110190219245851,
+      "min_s": 0.2084709401242435,
+      "max_s": 0.2110190219245851
+    },
+    {
+      "variant": "remote_e2b",
+      "operation": "write_1048576",
+      "n": 5,
+      "median_s": 0.21914904285222292,
+      "mean_s": 0.2599769954569638,
+      "p95_s": 0.41909322096034884,
+      "min_s": 0.21843815175816417,
+      "max_s": 0.41909322096034884
+    },
+    {
+      "variant": "remote_e2b",
+      "operation": "read_1048576",
+      "n": 5,
+      "median_s": 0.23832816584035754,
+      "mean_s": 0.23895636340603232,
+      "p95_s": 0.24080632021650672,
+      "min_s": 0.23804025584831834,
+      "max_s": 0.24080632021650672
+    },
+    {
+      "variant": "remote_e2b",
+      "operation": "stateful_shell_true",
+      "n": 10,
+      "median_s": 1.260460770688951,
+      "mean_s": 1.2605085935909301,
+      "p95_s": 1.2626868127845228,
+      "min_s": 1.2587821590714157,
+      "max_s": 1.2626868127845228
+    }
+  ],
+  "native_shell": [
+    {
+      "variant": "local_e2b",
+      "scope": "Persistent stdin transport prototype only; not the provider used for primary SWE task scores.",
+      "sandbox_id": "ipxthc5nprso6uoiuawrr",
+      "cwd_env_persist": true,
+      "n": 30,
+      "median_s": 0.04414728004485369,
+      "mean_s": 0.042107172481094794,
+      "p95_s": 0.04776210989803076,
+      "success": true,
+      "kill_ack": true
+    },
+    {
+      "variant": "remote_e2b",
+      "scope": "Persistent stdin transport prototype only; not the provider used for primary SWE task scores.",
+      "sandbox_id": "01a0a99f-fda3-71c2-b5d8-4d227d56a2c4",
+      "cwd_env_persist": true,
+      "n": 30,
+      "median_s": 0.20946855167858303,
+      "mean_s": 0.2119091803052773,
+      "p95_s": 0.21050254255533218,
+      "success": true,
+      "kill_ack": true
+    }
+  ],
+  "scope": "One issue, three independent samples per deployment; fixed weights, not an RL training or general SWE score."
+}

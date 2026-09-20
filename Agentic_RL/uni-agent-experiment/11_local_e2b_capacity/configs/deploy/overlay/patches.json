@@ -1,0 +1,103 @@
+[
+  {
+    "op": "test",
+    "path": "/spec/template/spec/initContainers/1/name",
+    "value": "host-setup"
+  },
+  {
+    "op": "replace",
+    "path": "/spec/template/spec/initContainers/1/env/0/value",
+    "value": "196608"
+  },
+  {
+    "op": "test",
+    "path": "/spec/template/spec/initContainers/1/name",
+    "value": "host-setup"
+  },
+  {
+    "op": "replace",
+    "path": "/spec/template/spec/initContainers/1/env/1/value",
+    "value": "256"
+  },
+  {
+    "op": "test",
+    "path": "/spec/template/spec/initContainers/10/name",
+    "value": "orchestrator"
+  },
+  {
+    "op": "replace",
+    "path": "/spec/template/spec/initContainers/10/env/21/value",
+    "value": "64"
+  },
+  {
+    "op": "test",
+    "path": "/spec/template/spec/initContainers/10/name",
+    "value": "orchestrator"
+  },
+  {
+    "op": "replace",
+    "path": "/spec/template/spec/initContainers/10/resources",
+    "value": {
+      "requests": {
+        "hugepages-2Mi": "384Gi",
+        "memory": "2Gi"
+      },
+      "limits": {
+        "hugepages-2Mi": "384Gi"
+      }
+    }
+  },
+  {
+    "op": "test",
+    "path": "/spec/template/spec/initContainers/5/name",
+    "value": "clickhouse"
+  },
+  {
+    "op": "add",
+    "path": "/spec/template/spec/initContainers/5/resources",
+    "value": {
+      "requests": {
+        "memory": "512Mi",
+        "cpu": "250m"
+      },
+      "limits": {
+        "memory": "4Gi",
+        "cpu": "2"
+      }
+    }
+  },
+  {
+    "op": "test",
+    "path": "/spec/template/spec/initContainers/13/name",
+    "value": "base-template"
+  },
+  {
+    "op": "add",
+    "path": "/spec/template/spec/initContainers/13/volumeMounts/-",
+    "value": {
+      "name": "ua-base-template-builder",
+      "mountPath": "/app/build-base-template.mjs",
+      "subPath": "build-base-template.mjs",
+      "readOnly": true
+    }
+  },
+  {
+    "op": "replace",
+    "path": "/spec/template/spec/containers/0/command",
+    "value": [
+      "/bin/sh",
+      "-c",
+      "umask 077\ntest -s /run/e2b/team-api-key || exit 1\nlast=\"\"\nwhile :; do\n  key=\"$(cat /run/e2b/team-api-key 2>/dev/null)\"\n  if [ -n \"$key\" ] && [ \"$key\" != \"$last\" ]; then\n    printf 'export E2B_API_KEY=%s\\nexport E2B_API_URL=http://%s:3000\\nexport E2B_SANDBOX_URL=http://%s:3002\\n' \"$key\" \"$NODE_IP\" \"$NODE_IP\" > /run/e2b/sdk.env\n    echo 'E2B SDK settings ready (credentials stored in seed-state; not logged)'\n    last=\"$key\"\n  fi\n  sleep 5\ndone\n"
+    ]
+  },
+  {
+    "op": "add",
+    "path": "/spec/template/spec/volumes/-",
+    "value": {
+      "name": "ua-base-template-builder",
+      "configMap": {
+        "name": "ua-base-template-builder"
+      }
+    }
+  }
+]

@@ -1,0 +1,8 @@
+flowchart LR
+  CPU["ua-lab-cpu Docker container<br/>E2B SDK / Uni-Agent sandbox adapter"] --> T["Host SSH tunnels<br/>API :18090 / execution :18091"]
+  subgraph VM["Ubuntu 24.04 VM — 96 vCPU / 512 GiB / 500 GiB disk"]
+    T --> API["K3s: E2B API + client proxy"]
+    API --> O["E2B orchestrator<br/>384 GiB hugepages / 256 NBD devices"]
+    O --> FC["Nested KVM / Firecracker microVMs<br/>24 SWE sandboxes verified"]
+    O --> D["Migrated templates and databases"]
+  end

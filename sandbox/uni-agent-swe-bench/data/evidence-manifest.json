@@ -1,0 +1,157 @@
+{
+  "capacity-128-attempt-1.json": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/capacity-128-attempt-1.json",
+    "bytes": 41836,
+    "sha256": "415a97c07ddfca567e9cdb23ae6a254cf4574216b277dd4b7c0093952cf83775"
+  },
+  "capacity-128.json": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/capacity-128.json",
+    "bytes": 41599,
+    "sha256": "2f423aa4c940880bd676e7abfbfd3aa40a5f22e798f8a23daca7caa37936cb21"
+  },
+  "cleanup.json": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/cleanup.json",
+    "bytes": 55,
+    "sha256": "ce9314157aec8ba86ed37aa2adccce0413fe891b056ab6e339ec2924cc359173"
+  },
+  "container-image.json": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/container-image.json",
+    "bytes": 284,
+    "sha256": "5918699f01c3d25e557ff5d4226afab26cd837ac4af92471875c3038d7ca2323"
+  },
+  "environment.json": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/environment.json",
+    "bytes": 808,
+    "sha256": "346f87b3b9d94fceab1fb778763e398fb74c118fd9872b699630b6a0ec5218cd"
+  },
+  "failure-summary.json": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/failure-summary.json",
+    "bytes": 10476,
+    "sha256": "b73bc8094197093faa36c34e88dbc43b7e4b6859e72e7e2c8b010b695859a59e"
+  },
+  "implementation-decisions.json": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/implementation-decisions.json",
+    "bytes": 519,
+    "sha256": "4aa9c6f5d27d193a0a03157085b186f4f8bf2533136cdf598666d75c7b620675"
+  },
+  "kernel-fault-summary.txt": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/kernel-fault-summary.txt",
+    "bytes": 2033,
+    "sha256": "e7634129eae6ecc0ae1016f8a10b1dcaa18bce79917dc13dc3308ebd86935b61"
+  },
+  "kernel-fault.log": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/kernel-fault.log",
+    "bytes": 163054,
+    "sha256": "086a5ee43488048c3dca0952af00111f8e4cbfaa7b5326c1de88512dfa9295c1"
+  },
+  "optimizer/rank-0.jsonl": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/optimizer/rank-0.jsonl",
+    "bytes": 380,
+    "sha256": "c24fa891491bbd80276102532c8d620e902bedf1096cc9a231e0fe4a8713f87e"
+  },
+  "optimizer/rank-1.jsonl": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/optimizer/rank-1.jsonl",
+    "bytes": 382,
+    "sha256": "0931ad69d2f4e05c07217708e62e90a458024b603f4a609f0c93a52f0544a4bd"
+  },
+  "optimizer/rank-2.jsonl": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/optimizer/rank-2.jsonl",
+    "bytes": 382,
+    "sha256": "bcca89deef1bb325678df9c08e872beb27d57299f13f5b7b0bb50f7cefd7f5b6"
+  },
+  "optimizer/rank-3.jsonl": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/optimizer/rank-3.jsonl",
+    "bytes": 381,
+    "sha256": "e51a95c1d08fab79bed13fff0f355e0c44e2eb4ba96e08e059671b557aaaf953"
+  },
+  "optimizer/rank-4.jsonl": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/optimizer/rank-4.jsonl",
+    "bytes": 381,
+    "sha256": "1ce7f8c60f08f34ea087927f91b16ab8e2f47c676dc74fb417295229b9717ec5"
+  },
+  "optimizer/rank-5.jsonl": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/optimizer/rank-5.jsonl",
+    "bytes": 382,
+    "sha256": "664fdd5743f64e24769c2cca10d3deeae7cfce2d6fd34078d372332a2eaf8790"
+  },
+  "optimizer/rank-6.jsonl": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/optimizer/rank-6.jsonl",
+    "bytes": 382,
+    "sha256": "a6979b46f1b2d6cf9e12adb3a29a90ef47f91e3844e485194d53aaeae79a37da"
+  },
+  "optimizer/rank-7.jsonl": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/optimizer/rank-7.jsonl",
+    "bytes": 382,
+    "sha256": "5124a45989bb49a5280426fe3d9f5e1ef025126706af799201a9b2e4f6d5cd1a"
+  },
+  "source/e2b_provider.py": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/code/e2b_provider.py",
+    "bytes": 6557,
+    "sha256": "6bd10e7155987c186599102695e9614b278925eb559e8a8cd0bebe1cc55c02d1"
+  },
+  "source/gateway_session.py": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/src/uni-agent/uni_agent/gateway/session/session.py",
+    "bytes": 40080,
+    "sha256": "878e2a0f2d1a89cfb1136c80a434550cdbaed5b1d3df8c9a2ec86e35cd6fab14"
+  },
+  "source/metric_utils.py": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/src/uni-agent/verl/verl/trainer/ppo/metric_utils.py",
+    "bytes": 44589,
+    "sha256": "29f84eba62a315575d62d64dc5514458cb7d30ea2b7fb3a6d36df64ba6c1205f"
+  },
+  "source/react_agent.py": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/src/uni-agent/uni_agent/agents/react/agent.py",
+    "bytes": 9160,
+    "sha256": "4be4f4ba58e5f53b5b176af81f2e78edcf4216eccb258008e9a90cd61c4fb7b8"
+  },
+  "source/react_model.py": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/src/uni-agent/uni_agent/agents/react/model.py",
+    "bytes": 7598,
+    "sha256": "15b9c1646b1a80f514e29cec4001f29f568f69a455381fc1237a990a39d35283"
+  },
+  "source/runtime_launch.py": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/code/runtime_launch.py",
+    "bytes": 3050,
+    "sha256": "b1a649e5b3c8f584a1bd2e90de836a2e2035eeebe92fb7257a8b26f76d53fcfe"
+  },
+  "source/shell.py": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/src/uni-agent/uni_agent/tools/shell.py",
+    "bytes": 17133,
+    "sha256": "0adec0ad53e71eaeb50d5612f6582ea336c1a2ce3d08bb8a5cf73bda9010d3cf"
+  },
+  "source/swe_rebench_reward.py": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/src/uni-agent/uni_agent/tasks/swe_rebench/reward.py",
+    "bytes": 7782,
+    "sha256": "9bf084b5b265da6bbab7233c2eb8155185d9094aa1e61d6902e7093bc5661571"
+  },
+  "source/trainer_base.py": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/src/uni-agent/verl/verl/trainer/ppo/v1/trainer_base.py",
+    "bytes": 95630,
+    "sha256": "ab40d681590c1ab6df865b0e10f58b74ad3fb54f33f1bfd9c2ea598aa382a1d3"
+  },
+  "task_config.yaml": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/configs/task_config.yaml",
+    "bytes": 13687,
+    "sha256": "c1ccc25eb219302163a022d0ba212ba57b90eea9822b08778d3b5932b5be46b2"
+  },
+  "telemetry.jsonl": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/telemetry.jsonl",
+    "bytes": 884365,
+    "sha256": "752bd8c61dfc2d35878377d940b22ab3762b6032188fdde6f2c33b2e27e3070b"
+  },
+  "train-metrics.jsonl": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/train-metrics.jsonl",
+    "bytes": 4282,
+    "sha256": "bf182e4fb15357ec1d779bfd29cd60ea5cb34d372af27d95826b1d799bad7de5"
+  },
+  "train.yaml": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/configs/train.yaml",
+    "bytes": 5535,
+    "sha256": "c5fa381439d9d4e8a48a882abdb96fe0046cb0d580f28e973cb93045bf9146ea"
+  },
+  "trajectory-audit.json": {
+    "source": "/home/yuhanya/yuhan-uniAgent/experiments/colocate-e2b-3step-20260920/results/trajectory-audit.json",
+    "bytes": 83419,
+    "sha256": "8973eff12d7b9f3bcd1a429c372a038ef00f3554b40fb94b64f198d3ceb4156e"
+  }
+}

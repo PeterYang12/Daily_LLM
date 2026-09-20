@@ -1,0 +1,17 @@
+{
+  "dataset_order": "Existing qualified environments first, retaining all 1150 official rows.",
+  "prefetch_warmup_batches": 0,
+  "reason": "Fresh E2B image imports fail server-side; bound the 3-step smoke workload to ready tasks.",
+  "rocm_changes": [
+    "actor TP1 PP1 CP4 EP8",
+    "rollout TP2",
+    "eager rollout",
+    "chunked prefill batch 16384",
+    "unsupported fused kernels disabled"
+  ],
+  "task_budget": {
+    "max_steps": 200,
+    "max_total_tokens": 131072
+  },
+  "scheduled_train_eval_overlap": 0
+}

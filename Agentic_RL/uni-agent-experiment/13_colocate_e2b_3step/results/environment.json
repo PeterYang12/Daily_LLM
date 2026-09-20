@@ -1,0 +1,21 @@
+{
+  "time": "2026-09-20T07:50:55.336260+00:00",
+  "packages": {
+    "torch": "2.12.0+rocm7.14.0a20260608",
+    "vllm": "0.26.1rc1.dev543+g11d76fc72.rocm714",
+    "ray": "2.56.1",
+    "verl": "0.9.0.dev0",
+    "transformer-engine": "2.14.0.dev0+e6ede467",
+    "megatron-core": "0.18.0",
+    "mbridge": "0.15.1",
+    "TransferQueue": "0.1.8",
+    "e2b": "2.50.0",
+    "swebench": "4.1.0",
+    "datasets": "5.0.0",
+    "pyarrow": "21.0.0",
+    "uni_agent_import": "/work/experiments/colocate-e2b-3step-20260920/src/uni-agent/uni_agent/__init__.py",
+    "verl_import": "/work/experiments/colocate-e2b-3step-20260920/src/uni-agent/verl/verl/__init__.py",
+    "vllm_import": "/workspace/vllm/vllm/__init__.py",
+    "transfer_queue_import": "/opt/venv/lib/python3.12/site-packages/transfer_queue/__init__.py"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "target": 16,
+  "cpu_per_sandbox": 4,
+  "memory_mib_per_sandbox": 8192,
+  "started_unix": 1789566298.6559472,
+  "creates": [
+    {
+      "id": "ikxcymvcc31w5fo66g6e1",
+      "create_s": 0.09194199973717332
+    },
+    {
+      "id": "iz6ol8okszo23ohyo0zew",
+      "create_s": 0.05920699518173933
+    },
+    {
+      "id": "ia2mmcmycau7kohkb7qfi",
+      "create_s": 0.06690242094919086
+    },
+    {
+      "id": "iaypyoaixamtm5jnohv9j",
+      "create_s": 0.05613951198756695
+    },
+    {
+      "id": "idpjthyffeh3uuvl6o66d",
+      "create_s": 0.05708600301295519
+    },
+    {
+      "id": "ic2fbstu3ubad23hvzgrw",
+      "create_s": 0.05618534190580249
+    },
+    {
+      "id": "ikmdazdv7jxfkw1zhmv1v",
+      "create_s": 0.07110200310125947
+    },
+    {
+      "id": "ir2wr7itmpxh0xzuhyg7y",
+      "create_s": 0.05470419069752097
+    },
+    {
+      "id": "icv5ax02p7uixj1go8bqu",
+      "create_s": 0.08169497083872557
+    },
+    {
+      "id": "ix85vrf30w14qekoufcg4",
+      "create_s": 0.05911153508350253
+    },
+    {
+      "id": "iyh3t20dlf7t4nb8waveh",
+      "create_s": 0.05553948134183884
+    },
+    {
+      "id": "ie52hdie3fyfq3eo5et9a",
+      "create_s": 0.14595224987715483
+    },
+    {
+      "id": "i7ga31yy1dutlkhkgysib",
+      "create_s": 0.055305130779743195
+    },
+    {
+      "id": "i65tihlmq4bf1tylz12al",
+      "create_s": 0.06379155814647675
+    },
+    {
+      "id": "itnafry177iuqlyo9yi10",
+      "create_s": 0.05779364425688982
+    },
+    {
+      "id": "ikksoo9uzyt97v1guglfv",
+      "create_s": 0.05932241398841143
+    }
+  ],
+  "running": 16,
+  "cleanup": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "all_stopped": true
+}

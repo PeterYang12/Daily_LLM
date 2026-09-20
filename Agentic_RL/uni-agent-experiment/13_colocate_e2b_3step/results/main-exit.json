@@ -1,0 +1,9 @@
+{
+  "status": "failed",
+  "exit_code": 134,
+  "started_unix": 1789893792.5931609,
+  "ended_unix": 1789897977.4860296,
+  "error_type": "ROCm GPU Hang / uncorrectable ATHUB event",
+  "completed_steps": 1,
+  "evidence": "kernel-fault.log and train-attempt-3.log"
+}

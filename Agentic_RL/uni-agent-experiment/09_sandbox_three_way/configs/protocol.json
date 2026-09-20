@@ -1,0 +1,42 @@
+{
+  "root": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z",
+  "container_root": "/lab/results/sandbox-three-way-20260916T094603Z",
+  "variants": {
+    "docker": "/lab/results/sandbox-three-way-20260916T094603Z/docker-sandbox-three-way-20260916T094603Z",
+    "local_e2b": "/lab/results/sandbox-three-way-20260916T094603Z/local_e2b-sandbox-three-way-20260916T094603Z",
+    "remote_e2b": "/lab/results/sandbox-three-way-20260916T094603Z/remote_e2b-sandbox-three-way-20260916T094603Z"
+  },
+  "task": "pallets__flask-5014",
+  "trials_per_variant": 3,
+  "order": [
+    [
+      "docker",
+      "local_e2b",
+      "remote_e2b"
+    ],
+    [
+      "local_e2b",
+      "remote_e2b",
+      "docker"
+    ],
+    [
+      "remote_e2b",
+      "docker",
+      "local_e2b"
+    ]
+  ],
+  "model_base_url": "http://172.30.90.9:8000/v1",
+  "model": "Qwen3-Coder-30B-A3B-Instruct",
+  "model_configuration": "pinned ROCm vLLM; BF16, TP1, AITER and graphs, 128K, max_num_seqs16, batched_tokens8192, GPU fraction0.65",
+  "sandbox_configured_resources": "4 CPU / 8 GiB",
+  "sampling": {
+    "temperature": 0.2,
+    "top_p": 0.9,
+    "max_tokens": 4096,
+    "explicit_seed": null
+  },
+  "max_agent_steps": 100,
+  "runtime_timeout_s": 3600,
+  "agent_deadline_s": 1800,
+  "evaluation_timeout_s": 600
+}

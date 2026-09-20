@@ -1,0 +1,10 @@
+{
+  "status": "paused",
+  "last_observed_step": 112,
+  "target_steps": 300,
+  "retained_checkpoint_step": 100,
+  "attempt": 4,
+  "updated_unix": 1789607726.181963,
+  "reason": "User requested pause after GPU hang",
+  "automatic_recovery_enabled": false
+}

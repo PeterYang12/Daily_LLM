@@ -1,0 +1,38 @@
+{
+  "time_unix": 1789559544.051011,
+  "cpu_count": 96,
+  "cpu_ticks": [
+    15502,
+    0,
+    10678,
+    3818079,
+    1571,
+    0,
+    123,
+    5,
+    55,
+    0
+  ],
+  "clock_ticks": 100,
+  "meminfo": {
+    "MemTotal": 528133924,
+    "MemAvailable": 118933320,
+    "HugePages_Total": 196608,
+    "HugePages_Free": 196380,
+    "HugePages_Rsvd": 8039,
+    "Hugepagesize": 2048
+  },
+  "firecracker_count": 2,
+  "firecracker_pids": [
+    11738,
+    11739
+  ],
+  "nbd_devices": 256,
+  "disk_total_bytes": 518933680128,
+  "disk_available_bytes": 506740162560,
+  "pressure": {
+    "cpu": "some avg10=0.00 avg60=0.00 avg300=0.13 total=2620690\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0",
+    "memory": "some avg10=0.00 avg60=0.00 avg300=0.00 total=179\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=179",
+    "io": "some avg10=1.08 avg60=0.19 avg300=0.09 total=1029489\nfull avg10=1.08 avg60=0.19 avg300=0.09 total=1024112"
+  }
+}

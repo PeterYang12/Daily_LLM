@@ -1,0 +1,255 @@
+diff --git a/edge_case_tests.py b/edge_case_tests.py
+new file mode 100644
+index 00000000..f1c661db
+--- /dev/null
++++ b/edge_case_tests.py
+@@ -0,0 +1,88 @@
++#!/usr/bin/env python3
++"""
++Additional edge case tests for Blueprint name validation.
++"""
++
++import flask
++
++def test_edge_cases():
++    """Test various edge cases for Blueprint names."""
++    
++    # Test cases that should work
++    valid_names = [
++        "simple",
++        "with_underscore",
++        "with-dash",
++        "with123number",
++        "Mixed_Case123",
++        "a",  # single character
++        "name_with_underscores_and_numbers_123",
++    ]
++    
++    print("Testing valid blueprint names...")
++    for name in valid_names:
++        try:
++            bp = flask.Blueprint(name, __name__)
++            print(f"  ✓ '{name}' - OK")
++        except Exception as e:
++            print(f"  ✗ '{name}' - ERROR: {e}")
++            return False
++    
++    # Test cases that should fail
++    invalid_names = [
++        "",           # empty string
++        "   ",        # whitespace only
++        "\t\n",       # whitespace characters
++        " \t \n ",    # mixed whitespace
++    ]
++    
++    print("\nTesting invalid blueprint names...")
++    for name in invalid_names:
++        try:
++            bp = flask.Blueprint(name, __name__)
++            print(f"  ✗ '{repr(name)}' - Should have failed but didn't!")
++            return False
++        except ValueError as e:
++            print(f"  ✓ '{repr(name)}' - Correctly rejected: {e}")
++        except Exception as e:
++            print(f"  ? '{repr(name)}' - Unexpected error: {e}")
++            return False
++    
++    # Test that existing functionality still works
++    print("\nTesting existing functionality...")
++    
++    # Test blueprint registration
++    app = flask.Flask(__name__)
++    bp = flask.Blueprint("test_bp", __name__)
++    
++    @bp.route('/')
++    def hello():
++        return "Hello World"
++    
++    app.register_blueprint(bp)
++    
++    with app.test_client() as client:
++        response = client.get('/')
++        if response.data == b'Hello World':
++            print("  ✓ Blueprint registration and routing works")
++        else:
++            print(f"  ✗ Blueprint routing failed: {response.data}")
++            return False
++    
++    # Test nested blueprints
++    parent_bp = flask.Blueprint("parent", __name__)
++    child_bp = flask.Blueprint("child", __name__)
++    
++    parent_bp.register_blueprint(child_bp)
++    print("  ✓ Nested blueprint registration works")
++    
++    return True
++
++if __name__ == "__main__":
++    print("Running edge case tests for Blueprint name validation...")
++    success = test_edge_cases()
++    if success:
++        print("\n✓ All edge case tests passed!")
++    else:
++        print("\n✗ Some edge case tests failed!")
++        exit(1)
+\ No newline at end of file
+diff --git a/final_verification.py b/final_verification.py
+new file mode 100644
+index 00000000..2893f4d2
+--- /dev/null
++++ b/final_verification.py
+@@ -0,0 +1,64 @@
++#!/usr/bin/env python3
++"""
++Final verification that the issue described is resolved.
++"""
++
++import flask
++
++def test_issue_resolution():
++    """Test that the specific issue mentioned is resolved."""
++    print("Testing the issue resolution...")
++    
++    # This is the kind of scenario that "does not work correctly" according to the issue
++    try:
++        # This should now raise a ValueError instead of silently creating a problematic blueprint
++        bp = flask.Blueprint("", __name__)
++        print("ERROR: Blueprint with empty name was created successfully!")
++        print("This means the issue is NOT resolved.")
++        return False
++    except ValueError as e:
++        print(f"SUCCESS: ValueError raised as expected: {e}")
++        print("The issue has been resolved.")
++        return True
++
++def test_normal_usage_still_works():
++    """Ensure normal blueprint usage still works."""
++    print("\nTesting that normal usage still works...")
++    
++    try:
++        # Normal blueprint creation should still work
++        app = flask.Flask(__name__)
++        bp = flask.Blueprint("my_blueprint", __name__)
++        
++        @bp.route('/')
++        def hello():
++            return "Hello, World!"
++        
++        app.register_blueprint(bp)
++        
++        with app.test_client() as client:
++            response = client.get('/')
++            if response.data == b'Hello, World!':
++                print("SUCCESS: Normal blueprint usage works correctly")
++                return True
++            else:
++                print(f"ERROR: Unexpected response: {response.data}")
++                return False
++                
++    except Exception as e:
++        print(f"ERROR: Normal usage failed: {e}")
++        return False
++
++if __name__ == "__main__":
++    print("Final verification of the Blueprint empty name fix")
++    print("=" * 50)
++    
++    result1 = test_issue_resolution()
++    result2 = test_normal_usage_still_works()
++    
++    print("\n" + "=" * 50)
++    if result1 and result2:
++        print("✓ ALL TESTS PASSED - Issue is resolved!")
++    else:
++        print("✗ SOME TESTS FAILED")
++        exit(1)
+\ No newline at end of file
+diff --git a/reproduce_issue.py b/reproduce_issue.py
+new file mode 100644
+index 00000000..64c538fb
+--- /dev/null
++++ b/reproduce_issue.py
+@@ -0,0 +1,69 @@
++#!/usr/bin/env python3
++"""
++Script to reproduce the issue with empty Blueprint names.
++"""
++
++import flask
++
++def test_empty_blueprint_name():
++    """Test that creating a Blueprint with an empty name should raise ValueError."""
++    print("Testing Blueprint creation with empty name...")
++    
++    try:
++        # This should raise a ValueError but currently doesn't
++        bp = flask.Blueprint("", __name__)
++        print("ERROR: Blueprint with empty name was created successfully!")
++        print(f"Blueprint name: '{bp.name}'")
++        return False
++    except ValueError as e:
++        print(f"SUCCESS: ValueError raised as expected: {e}")
++        return True
++    except Exception as e:
++        print(f"UNEXPECTED ERROR: {type(e).__name__}: {e}")
++        return False
++
++def test_whitespace_blueprint_name():
++    """Test that creating a Blueprint with whitespace-only name should raise ValueError."""
++    print("\nTesting Blueprint creation with whitespace-only name...")
++    
++    try:
++        # This should also raise a ValueError
++        bp = flask.Blueprint("   ", __name__)
++        print("ERROR: Blueprint with whitespace-only name was created successfully!")
++        print(f"Blueprint name: '{bp.name}'")
++        return False
++    except ValueError as e:
++        print(f"SUCCESS: ValueError raised as expected: {e}")
++        return True
++    except Exception as e:
++        print(f"UNEXPECTED ERROR: {type(e).__name__}: {e}")
++        return False
++
++def test_normal_blueprint_name():
++    """Test that creating a Blueprint with normal name works correctly."""
++    print("\nTesting Blueprint creation with normal name...")
++    
++    try:
++        bp = flask.Blueprint("normal_bp", __name__)
++        print(f"SUCCESS: Blueprint with normal name created: '{bp.name}'")
++        return True
++    except Exception as e:
++        print(f"ERROR: Normal blueprint creation failed: {type(e).__name__}: {e}")
++        return False
++
++if __name__ == "__main__":
++    print("Reproducing Blueprint empty name issue...")
++    
++    result1 = test_empty_blueprint_name()
++    result2 = test_whitespace_blueprint_name()
++    result3 = test_normal_blueprint_name()
++    
++    print(f"\nResults:")
++    print(f"Empty name test: {'PASS' if result1 else 'FAIL'}")
++    print(f"Whitespace name test: {'PASS' if result2 else 'FAIL'}")
++    print(f"Normal name test: {'PASS' if result3 else 'FAIL'}")
++    
++    if not result1 or not result2:
++        print("\nIssue confirmed: Empty/whitespace names are not properly validated.")
++    else:
++        print("\nIssue appears to be fixed.")
+\ No newline at end of file
+diff --git a/src/flask/blueprints.py b/src/flask/blueprints.py
+index eb50585d..55399d43 100644
+--- a/src/flask/blueprints.py
++++ b/src/flask/blueprints.py
+@@ -192,6 +192,8 @@ class Blueprint(Scaffold):
+ 
+         if "." in name:
+             raise ValueError("'name' may not contain a dot '.' character.")
++        if not name or not name.strip():
++            raise ValueError("'name' must be non-empty.")
+ 
+         self.name = name
+         self.url_prefix = url_prefix

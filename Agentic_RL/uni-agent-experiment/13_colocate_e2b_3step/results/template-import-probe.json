@@ -1,0 +1,11 @@
+{
+  "instance_id": "ettoreleandrotognoli__python-cdi-28",
+  "image_digest": "swerebench/sweb.eval.x86_64.ettoreleandrotognoli_1776_python-cdi-28@sha256:dce96472c6a7165ca4c8eae5fca4a2a9ed1de9643818cc424404a4ed0c724bbd",
+  "template_id": "nlh0aur60602eo7biv2l",
+  "build_id": "a437a62d-3dca-4614-accc-e700023ceb55",
+  "name": "ua-3step-import-probe",
+  "alias": "ua-3step-import-probe",
+  "tags": [
+    "default"
+  ]
+}

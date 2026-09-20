@@ -1,0 +1,415 @@
+{
+  "run_root": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z",
+  "copied_files": [
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/sandbox_three_way/prepare.py",
+      "destination": "code/prepare.py",
+      "sha256": "da9cebb3261a9ff85d7b5ea37b097db000f4556dbc8779e373372a3a12225009"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/sandbox_three_way/figures.py",
+      "destination": "code/figures.py",
+      "sha256": "af68c6a2ab1205357731aa840ffbca720dc06fd81ed18f29bd27161f676598f4"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/sandbox_three_way/pipeline.py",
+      "destination": "code/pipeline.py",
+      "sha256": "64592525f30e12eb4bd1dc8497ece9f1c35e3c17cbe5be47989a079e4898261a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/sandbox_three_way/login_probe.py",
+      "destination": "code/login_probe.py",
+      "sha256": "ec3cdead0aa53c4c0898cd4466b106312e5619a1b5d56b6cf873aec52a65c673"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/sandbox_three_way/analyze.py",
+      "destination": "code/analyze.py",
+      "sha256": "39134570fa8c5e03e0909e3023573e884d652368a627b91ec88dd003092bfb8f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/sandbox_three_way/publish.py",
+      "destination": "code/publish.py",
+      "sha256": "714563877c47a25089ff1b4db66d99008e61ab5e5eeb0373dfbaabcb60d0dbf1"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/sandbox_three_way/worker.py",
+      "destination": "code/worker.py",
+      "sha256": "f14459bbe4a3a31f69f7fd780f35ae4011be43bdbb8a6bcf2218b720b601a7d8"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/scripts/sandbox_three_way/cleanup_and_audit.py",
+      "destination": "code/cleanup_and_audit.py",
+      "sha256": "a492153e06f3dbf3fbda796509ed1658eb43ae2e6e968364e995172ee5c456d6"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/code-snapshot/sandbox_three_way/pipeline.py",
+      "destination": "code/executed/sandbox_three_way/pipeline.py",
+      "sha256": "64592525f30e12eb4bd1dc8497ece9f1c35e3c17cbe5be47989a079e4898261a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/code-snapshot/sandbox_three_way/worker.py",
+      "destination": "code/executed/sandbox_three_way/worker.py",
+      "sha256": "f14459bbe4a3a31f69f7fd780f35ae4011be43bdbb8a6bcf2218b720b601a7d8"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/code-snapshot/swe_sandbox_profile/native_shell_probe.py",
+      "destination": "code/executed/swe_sandbox_profile/native_shell_probe.py",
+      "sha256": "4a10269de812d3db516d1ee965c36738844526f363b6cff9871c209fa70805c5"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/code-snapshot/swe_sandbox_profile/providers.py",
+      "destination": "code/executed/swe_sandbox_profile/providers.py",
+      "sha256": "d7c7e7b31190e9b65d54b3086fd936b30abcae4e9ce4998722d2fff23d9713ec"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/code-snapshot/swe_sandbox_profile/inference_bench.py",
+      "destination": "code/executed/swe_sandbox_profile/inference_bench.py",
+      "sha256": "a0065e8896aa999707c383669a2d4b96204d9b8e9d9b316ed22a5c17284ad16d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/code-snapshot/swe_sandbox_profile/run.py",
+      "destination": "code/executed/swe_sandbox_profile/run.py",
+      "sha256": "399ab4b9425edfa42cfd7fad3970afac6fd8bdb744796604f53deee297059897"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/code-snapshot/swe_sandbox_profile/profiling.py",
+      "destination": "code/executed/swe_sandbox_profile/profiling.py",
+      "sha256": "61cc4be9d61c383001fda9ccef525cb33f8a35d6202470757b5a40eb119aed37"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/code-snapshot/swe_sandbox_profile/figures.py",
+      "destination": "code/executed/swe_sandbox_profile/figures.py",
+      "sha256": "db675738ea73a2c585834f2a4d3bde606eb64cb9095ca59756f66d75665c5fe7"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/code-snapshot/swe_sandbox_profile/verifier_cpu_probe.py",
+      "destination": "code/executed/swe_sandbox_profile/verifier_cpu_probe.py",
+      "sha256": "8a343ae7744cb012ebb7f34abf58333071c13a62515d08b6963ea25e021088f0"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/code-snapshot/swe_sandbox_profile/analyze.py",
+      "destination": "code/executed/swe_sandbox_profile/analyze.py",
+      "sha256": "37c6a52c556ef083b872de24c699ec80e91c4236d789e3a69a0bf3720012856d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/code-snapshot/swe_sandbox_profile/monitor.py",
+      "destination": "code/executed/swe_sandbox_profile/monitor.py",
+      "sha256": "a5143f1baf646bd93443a55b959fb953ba078826685d5b63dc99f0b9ddc0bd39"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/code-snapshot/swe_sandbox_profile/audit_results.py",
+      "destination": "code/executed/swe_sandbox_profile/audit_results.py",
+      "sha256": "22575079206eef15f94e9728e9943a0ab9c54ed2ddd1055653591040d37ee874"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/code-snapshot/swe_sandbox_profile/microbench.py",
+      "destination": "code/executed/swe_sandbox_profile/microbench.py",
+      "sha256": "0dbebbb20ef2428b7d17cf850997dfe590904a267a7e22fb7fc0edebab9c474a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/code-snapshot/swe_sandbox_profile/followup_pipeline.py",
+      "destination": "code/executed/swe_sandbox_profile/followup_pipeline.py",
+      "sha256": "05d57db3f2a08460c3d9b7bdcd0ffabf815f784a6d90e3aa6e443ce37d96810a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/code-snapshot/swe_sandbox_profile/publish.py",
+      "destination": "code/executed/swe_sandbox_profile/publish.py",
+      "sha256": "784bfee8b602ddbfea28b9f3c80a46232dd56b1c94eab4720d1dc7d317fdd80e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/code-snapshot/swe_sandbox_profile/prepare_templates.py",
+      "destination": "code/executed/swe_sandbox_profile/prepare_templates.py",
+      "sha256": "238ac219f6db8d4e2a83e810444a030c3b2a8582c10c50751c7a99b249128fa2"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/code-snapshot/swe_sandbox_profile/start_models.py",
+      "destination": "code/executed/swe_sandbox_profile/start_models.py",
+      "sha256": "c621500a536f181a016c29e697111ca6485b216429b69dd63cd21610ea77175e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/code-snapshot/swe_sandbox_profile/cleanup.py",
+      "destination": "code/executed/swe_sandbox_profile/cleanup.py",
+      "sha256": "a5cac672a9c3c840254ad60a7cbc9fa6ef29ba70bda38d81b62f5593be7166f8"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/analysis/summary.json",
+      "destination": "results/summary.json",
+      "sha256": "a1c6a406816f21a376b11251074c9018580f532e30c1d4d31c1aa225bc23384b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/analysis/cases.json",
+      "destination": "results/cases.json",
+      "sha256": "664e7bc23379f3f6240dd2638970014843283f02dcb0c6868e6e8940be57c9b4"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/analysis/cases.csv",
+      "destination": "results/cases.csv",
+      "sha256": "6c2c6172d526be7feab70523652ee10308219107ca5b40c69c3681dd09fd081f"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/analysis/microbench.csv",
+      "destination": "results/microbench.csv",
+      "sha256": "019b16affbe7ae6c34db53db9a97242fe70d9e28c2d7caeacf0bf072391abcc8"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/analysis/tool-calls.csv",
+      "destination": "results/tool-calls.csv",
+      "sha256": "9606f4ff92c678f0bf060e562c9059e4cf33cbf957d457af650c38a8560556cf"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/controls-audit.json",
+      "destination": "results/controls-audit.json",
+      "sha256": "d594246cb90aa5b71d42f8e150c74adcb0c3ed6f1b457a28cbe30848f965a1ed"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/cleanup-audit.json",
+      "destination": "results/cleanup-audit.json",
+      "sha256": "0fb044409aeac05c6bc56e725f51203327e8393308ab95962a52aa9043a5f4fc"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/login-probe.json",
+      "destination": "results/login-probe.json",
+      "sha256": "c5d9a8b4d5d48ea2d2292dd2f9da0b4eb8bd78ba87552a0319e9d7e496c484b6"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/model-service.json",
+      "destination": "results/model-service.json",
+      "sha256": "3e7ce15865f54004196355791c684223855c3014b657ab1ea545b0d83a312dae"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/source-hashes.json",
+      "destination": "results/source-hashes.json",
+      "sha256": "5314127325c55f4427f89fbc3bf1a9735afd837d5efd029b1db465ceb4466b57"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/stages.json",
+      "destination": "results/stages.json",
+      "sha256": "7055c2552bdbcdd3df3ab0110ccb14f254ef52ad98cd30eff9268bb01d5246e0"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/resource-release.json",
+      "destination": "results/resource-release.json",
+      "sha256": "ff5be603e525512cca3de91fd63aaf665ab9dd089baa80d1725fe6f133e8da65"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/protocol.json",
+      "destination": "configs/protocol.json",
+      "sha256": "fc2bcfe5c49be6ccc1571830518cfc8fb29fbafb344acab0794f93ada1dd6638"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/analysis/figures/operation-comparison.svg",
+      "destination": "figures/operation-comparison.svg",
+      "sha256": "92abfaa046d14eb53a1f8a2ae84ddf33e27e5b8b8a05915e59984b55c3f20a46"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/analysis/figures/rollout-comparison.svg",
+      "destination": "figures/rollout-comparison.svg",
+      "sha256": "a6abf565a3217517b22bdd00045bc2df638142529b69db9b22f071013c0bbfa7"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/docker-sandbox-three-way-20260916T094603Z/microbench/docker/summary.json",
+      "destination": "results/microbench/docker.json",
+      "sha256": "7a62a278218a50110114ff896429d2b185af99b1d4f671a71cca4276e4f8d554"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/docker-sandbox-three-way-20260916T094603Z/trial-1/docker/pallets__flask-5014/result.json",
+      "destination": "results/cases/docker/trial-1/result.json",
+      "sha256": "a9fa60a5bd50400074b5e6488c4a201e54a4b3c2b494d76dc15ab506b4ba4665"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/docker-sandbox-three-way-20260916T094603Z/trial-1/docker/pallets__flask-5014/verifier.json",
+      "destination": "results/cases/docker/trial-1/verifier.json",
+      "sha256": "45dfd89d393fccf234c1819e3c7bbea14b2a78c73262c5f039759a7d9b966f65"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/docker-sandbox-three-way-20260916T094603Z/trial-1/docker/pallets__flask-5014/trajectory-audit.json",
+      "destination": "results/cases/docker/trial-1/trajectory-audit.json",
+      "sha256": "5cbaa8d8d9b17b5d0b1b1231185111965eecd1ef7fb4fd5d6664475897d42475"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/docker-sandbox-three-way-20260916T094603Z/trial-1/docker/pallets__flask-5014/candidate-source-only.patch",
+      "destination": "results/cases/docker/trial-1/candidate-source-only.patch",
+      "sha256": "f023ba61eae691c8d06098253feb473e23ac41d62710dc805f160114932b3f65"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/docker-sandbox-three-way-20260916T094603Z/trial-3/docker/pallets__flask-5014/result.json",
+      "destination": "results/cases/docker/trial-3/result.json",
+      "sha256": "851692a405ad85eb580a81321e27db1d26eb2065e33137fd0bd83dc43aa569b0"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/docker-sandbox-three-way-20260916T094603Z/trial-3/docker/pallets__flask-5014/verifier.json",
+      "destination": "results/cases/docker/trial-3/verifier.json",
+      "sha256": "daaf7b33234c364620d5aee277338c2e22cc527ef9169d3876427f726d6939f0"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/docker-sandbox-three-way-20260916T094603Z/trial-3/docker/pallets__flask-5014/trajectory-audit.json",
+      "destination": "results/cases/docker/trial-3/trajectory-audit.json",
+      "sha256": "bf47961ca08fb2a287766bf2f13f45b275f4eb9b9daa22ef6747d04d0ffeb790"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/docker-sandbox-three-way-20260916T094603Z/trial-3/docker/pallets__flask-5014/candidate-source-only.patch",
+      "destination": "results/cases/docker/trial-3/candidate-source-only.patch",
+      "sha256": "06751575ab003c5c98a9ece8b928707ff61a9831868a1053520c0519f0d0c1ed"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/docker-sandbox-three-way-20260916T094603Z/trial-2/docker/pallets__flask-5014/result.json",
+      "destination": "results/cases/docker/trial-2/result.json",
+      "sha256": "bd893e939f37d8c63b749a3640b08da001f75ff7667fe43c2d8d1b3a10b6be09"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/docker-sandbox-three-way-20260916T094603Z/trial-2/docker/pallets__flask-5014/verifier.json",
+      "destination": "results/cases/docker/trial-2/verifier.json",
+      "sha256": "2fb66074c2cc7da53e4b1484ac1a6ac4c032fcb7899b97530e25d99e64b3c0f6"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/docker-sandbox-three-way-20260916T094603Z/trial-2/docker/pallets__flask-5014/trajectory-audit.json",
+      "destination": "results/cases/docker/trial-2/trajectory-audit.json",
+      "sha256": "6caf08b5621390e55651da13ed119ed19e3a9fd846e2de9f480669a7e9b78cc0"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/docker-sandbox-three-way-20260916T094603Z/trial-2/docker/pallets__flask-5014/candidate-source-only.patch",
+      "destination": "results/cases/docker/trial-2/candidate-source-only.patch",
+      "sha256": "d7c5e7ba907fe24082689141ed881bbd605b76148d4981dc9b379a977829cd42"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/local_e2b-sandbox-three-way-20260916T094603Z/microbench/e2b/summary.json",
+      "destination": "results/microbench/local_e2b.json",
+      "sha256": "13218807f3813a32fb9e85c1f4a7a85459e2c32c63057c6e393a528396b1572d"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/local_e2b-sandbox-three-way-20260916T094603Z/native-shell-probe.json",
+      "destination": "results/native/local_e2b.json",
+      "sha256": "2a01d7435dc0789196d674e1d6d024c2cbc94a6dc5b75cce90bc4421c2bbb2c8"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/local_e2b-sandbox-three-way-20260916T094603Z/trial-1/e2b/pallets__flask-5014/result.json",
+      "destination": "results/cases/local_e2b/trial-1/result.json",
+      "sha256": "44086b19a8fdb229312cef15a779b1c604f535801bfc7616bc0552d16927fb5e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/local_e2b-sandbox-three-way-20260916T094603Z/trial-1/e2b/pallets__flask-5014/verifier.json",
+      "destination": "results/cases/local_e2b/trial-1/verifier.json",
+      "sha256": "085d9afc7dfe719f7041bf961f099c674e84c78728ef3ebe8818675a5e75667a"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/local_e2b-sandbox-three-way-20260916T094603Z/trial-1/e2b/pallets__flask-5014/trajectory-audit.json",
+      "destination": "results/cases/local_e2b/trial-1/trajectory-audit.json",
+      "sha256": "4242e6727b76c77948386381e4314c36804658c4dc443b19b1aace80ddce96bd"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/local_e2b-sandbox-three-way-20260916T094603Z/trial-1/e2b/pallets__flask-5014/candidate-source-only.patch",
+      "destination": "results/cases/local_e2b/trial-1/candidate-source-only.patch",
+      "sha256": "f5349f855f01ee67f73da52a3a620de14164bb39ab22cbac6ac0f9cd5de52837"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/local_e2b-sandbox-three-way-20260916T094603Z/trial-3/e2b/pallets__flask-5014/result.json",
+      "destination": "results/cases/local_e2b/trial-3/result.json",
+      "sha256": "33e1dd338cc876c7707ce0fa3c296a70ccded6de5d374951355cb074d4b18228"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/local_e2b-sandbox-three-way-20260916T094603Z/trial-3/e2b/pallets__flask-5014/verifier.json",
+      "destination": "results/cases/local_e2b/trial-3/verifier.json",
+      "sha256": "68b6ff665a1382b060bdcb80d9462d841286fe811aad05894fce96288fe7081e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/local_e2b-sandbox-three-way-20260916T094603Z/trial-3/e2b/pallets__flask-5014/trajectory-audit.json",
+      "destination": "results/cases/local_e2b/trial-3/trajectory-audit.json",
+      "sha256": "16301740d0bf7e7c3b0e7bfcb4996e8d9eaca09200ca05e00b2ba8d399be9801"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/local_e2b-sandbox-three-way-20260916T094603Z/trial-3/e2b/pallets__flask-5014/candidate-source-only.patch",
+      "destination": "results/cases/local_e2b/trial-3/candidate-source-only.patch",
+      "sha256": "886c5481ce4165a60c98ebd8b33a8c65ea47efff3f481f13562d39b4dfed9ca3"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/local_e2b-sandbox-three-way-20260916T094603Z/trial-2/e2b/pallets__flask-5014/result.json",
+      "destination": "results/cases/local_e2b/trial-2/result.json",
+      "sha256": "1965cb7584d7201c34ab64003f28e02616ff2a5cfa0c8e9f479aeae41a09ed1b"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/local_e2b-sandbox-three-way-20260916T094603Z/trial-2/e2b/pallets__flask-5014/verifier.json",
+      "destination": "results/cases/local_e2b/trial-2/verifier.json",
+      "sha256": "24eec5d093c99085b9051cb9dec46d79d76be436d04a8532facf3b6e0f0d1509"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/local_e2b-sandbox-three-way-20260916T094603Z/trial-2/e2b/pallets__flask-5014/trajectory-audit.json",
+      "destination": "results/cases/local_e2b/trial-2/trajectory-audit.json",
+      "sha256": "8e2745fe380844d8c279731a197b589fb0cea1fb2d9f41273136bc2c24f942ec"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/local_e2b-sandbox-three-way-20260916T094603Z/trial-2/e2b/pallets__flask-5014/candidate-source-only.patch",
+      "destination": "results/cases/local_e2b/trial-2/candidate-source-only.patch",
+      "sha256": "fd9c627501f3b2d488dbe3540ffc4bf9d1ffc6aa5fdf83c012e3d53075aba704"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/remote_e2b-sandbox-three-way-20260916T094603Z/microbench/e2b/summary.json",
+      "destination": "results/microbench/remote_e2b.json",
+      "sha256": "99a5f284e24362f4bd864ae66cb3332bb79e9d49832d10902fc6e88ea7feae5c"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/remote_e2b-sandbox-three-way-20260916T094603Z/native-shell-probe.json",
+      "destination": "results/native/remote_e2b.json",
+      "sha256": "6f7a4be3dcb9ccd44a6b92866efe554bd2be2797f5ad4968dbbc7b882090dc7e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/remote_e2b-sandbox-three-way-20260916T094603Z/trial-1/e2b/pallets__flask-5014/result.json",
+      "destination": "results/cases/remote_e2b/trial-1/result.json",
+      "sha256": "53022b14f9ade2a3f16a60358521704461ef79e66dada7094858425ffe9bdb78"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/remote_e2b-sandbox-three-way-20260916T094603Z/trial-1/e2b/pallets__flask-5014/verifier.json",
+      "destination": "results/cases/remote_e2b/trial-1/verifier.json",
+      "sha256": "2bf4f08cc515f7d21a3abfca204d9d79e8d1df38f9ec6a0ff0551d7480d14ddb"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/remote_e2b-sandbox-three-way-20260916T094603Z/trial-1/e2b/pallets__flask-5014/trajectory-audit.json",
+      "destination": "results/cases/remote_e2b/trial-1/trajectory-audit.json",
+      "sha256": "a1b39ba8074ad159c54852c69f50e68a3b86a0e0747929741ef1374cec07c2bc"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/remote_e2b-sandbox-three-way-20260916T094603Z/trial-1/e2b/pallets__flask-5014/candidate-source-only.patch",
+      "destination": "results/cases/remote_e2b/trial-1/candidate-source-only.patch",
+      "sha256": "cf7cfc3222829f96c7871f63d4489ae5624d286bd0593679186513ceff17e1ce"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/remote_e2b-sandbox-three-way-20260916T094603Z/trial-3/e2b/pallets__flask-5014/result.json",
+      "destination": "results/cases/remote_e2b/trial-3/result.json",
+      "sha256": "d2859bb34c5e9084a52a6708159cdaed2380b1d03024f8f25b55c5e18960f7ea"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/remote_e2b-sandbox-three-way-20260916T094603Z/trial-3/e2b/pallets__flask-5014/verifier.json",
+      "destination": "results/cases/remote_e2b/trial-3/verifier.json",
+      "sha256": "d8c8059cfaf3a5bbcc0b992896b328dfb43e0c63056b13a0a253d3bcb1993bef"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/remote_e2b-sandbox-three-way-20260916T094603Z/trial-3/e2b/pallets__flask-5014/trajectory-audit.json",
+      "destination": "results/cases/remote_e2b/trial-3/trajectory-audit.json",
+      "sha256": "5847eb843b5a617aecb586c13ef7ab5032a7a2ff96ae1797a2375c1af33f9501"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/remote_e2b-sandbox-three-way-20260916T094603Z/trial-3/e2b/pallets__flask-5014/candidate-source-only.patch",
+      "destination": "results/cases/remote_e2b/trial-3/candidate-source-only.patch",
+      "sha256": "35d01947db36d3ab17e782de03b3473678e0a4605736af96161753a43d68b7fa"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/remote_e2b-sandbox-three-way-20260916T094603Z/trial-2/e2b/pallets__flask-5014/result.json",
+      "destination": "results/cases/remote_e2b/trial-2/result.json",
+      "sha256": "2ec54cd7772134ae77bc28a7d276ab05c34e59c18fd7e429188bd2063d253b20"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/remote_e2b-sandbox-three-way-20260916T094603Z/trial-2/e2b/pallets__flask-5014/verifier.json",
+      "destination": "results/cases/remote_e2b/trial-2/verifier.json",
+      "sha256": "72a9dea8c2ac52b49fc6b51be6de8d8ec44b4140c463ff5588381c7cbe3612c9"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/remote_e2b-sandbox-three-way-20260916T094603Z/trial-2/e2b/pallets__flask-5014/trajectory-audit.json",
+      "destination": "results/cases/remote_e2b/trial-2/trajectory-audit.json",
+      "sha256": "a06c73f0c898c89fd8e6537aeff1e73e62d670747d6598f8fa02ff48e7d1155e"
+    },
+    {
+      "source": "/home/yuhanya/uni-agent-lab/results/sandbox-three-way-20260916T094603Z/remote_e2b-sandbox-three-way-20260916T094603Z/trial-2/e2b/pallets__flask-5014/candidate-source-only.patch",
+      "destination": "results/cases/remote_e2b/trial-2/candidate-source-only.patch",
+      "sha256": "bcb06650a9af05b797cf159dc37bed41195ce1939b36e94d6caa5bd26391b4b1"
+    }
+  ]
+}

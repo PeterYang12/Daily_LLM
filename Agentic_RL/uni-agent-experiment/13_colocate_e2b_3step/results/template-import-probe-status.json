@@ -1,0 +1,135 @@
+{
+  "buildID": "a437a62d-3dca-4614-accc-e700023ceb55",
+  "logEntries": [
+    {
+      "level": "info",
+      "message": "Building template nlh0aur60602eo7biv2l/a437a62d-3dca-4614-accc-e700023ceb55",
+      "timestamp": "2026-09-20T08:03:36.819082883Z"
+    },
+    {
+      "level": "info",
+      "message": "[base] FROM swerebench/sweb.eval.x86_64.ettoreleandrotognoli_1776_python-cdi-28@sha256:dce96472c6a7165ca4c8eae5fca4a2a9ed1de9643818cc424404a4ed0c724bbd [748c4737f7adb6b2575c662b0f4526310e8e9a87f2aa41110be4dc496851c3d2]",
+      "step": "base",
+      "timestamp": "2026-09-20T08:03:36.853574591Z"
+    },
+    {
+      "level": "debug",
+      "message": "Requesting Docker Image",
+      "step": "base",
+      "timestamp": "2026-09-20T08:03:36.85387831Z"
+    },
+    {
+      "level": "info",
+      "message": "Base Docker image size: 1.3 GB",
+      "step": "base",
+      "timestamp": "2026-09-20T08:03:38.513570342Z"
+    },
+    {
+      "level": "debug",
+      "message": "Setting up system files",
+      "step": "base",
+      "timestamp": "2026-09-20T08:03:38.513608222Z"
+    },
+    {
+      "level": "info",
+      "message": "Creating file system and pulling Docker image",
+      "step": "base",
+      "timestamp": "2026-09-20T08:03:38.789724525Z"
+    },
+    {
+      "level": "info",
+      "message": "Uncompressing layer sha256:315909694129d232039cf6397d4835c45a9439e61bc7cadfeffed30c915251a2 30 MB",
+      "step": "base",
+      "timestamp": "2026-09-20T08:03:41.873932621Z"
+    },
+    {
+      "level": "info",
+      "message": "Uncompressing layer sha256:301022da91a1707632876252bd9abde53075a5db47e10475ba92945e39884704 64 MB",
+      "step": "base",
+      "timestamp": "2026-09-20T08:03:41.874255171Z"
+    },
+    {
+      "level": "info",
+      "message": "Uncompressing layer sha256:d6457669acfb59d7522b66b1a28ed0e0b70856f9b31f74bb313e129f633c1f57 160 MB",
+      "step": "base",
+      "timestamp": "2026-09-20T08:03:41.874361471Z"
+    },
+    {
+      "level": "info",
+      "message": "Uncompressing layer sha256:c30e2394e6060db73c6f7995dcd35c05e87e81df2ec70a7771dce69c03825092 483 MB",
+      "step": "base",
+      "timestamp": "2026-09-20T08:03:41.874463881Z"
+    },
+    {
+      "level": "info",
+      "message": "Uncompressing layer sha256:26b14a822d130a5b18da1535b50cbb695b30360bf2b10ea6c58cdaa69e0f9c06 67 MB",
+      "step": "base",
+      "timestamp": "2026-09-20T08:03:41.874555131Z"
+    },
+    {
+      "level": "info",
+      "message": "Uncompressing layer sha256:06b7810958e9e22f243a3e653320af3bc09e509c44fcda2d65a27e5e147bbd8e 303 MB",
+      "step": "base",
+      "timestamp": "2026-09-20T08:03:41.874650191Z"
+    },
+    {
+      "level": "info",
+      "message": "Uncompressing layer sha256:38e7a67a3092cd708f9ebad2cbd0dfc05edb411fdc6015a3f6ca24b6e3e194c1 1.9 kB",
+      "step": "base",
+      "timestamp": "2026-09-20T08:03:41.874734371Z"
+    },
+    {
+      "level": "info",
+      "message": "Uncompressing layer sha256:3d6692266e03c0722ec3c1653b1070caa493105b64fc29d839c31bcaea48d5b3 123 MB",
+      "step": "base",
+      "timestamp": "2026-09-20T08:03:41.874828971Z"
+    },
+    {
+      "level": "info",
+      "message": "Uncompressing layer sha256:717e05787c112868aef82d39b34c86561c9a156bf007f9b6e9c400fb85495a23 1.8 kB",
+      "step": "base",
+      "timestamp": "2026-09-20T08:03:41.874915611Z"
+    },
+    {
+      "level": "info",
+      "message": "Uncompressing layer sha256:b465d171926f6a1f4590858a23b8d1ae9376a6e157a53d60d21047c08c002bd3 86 MB",
+      "step": "base",
+      "timestamp": "2026-09-20T08:03:41.875022221Z"
+    },
+    {
+      "level": "info",
+      "message": "Uncompressing layer sha256:9eb5054211ccdec462d9fa9b7625e064c4bcd89d2173014b0b5ccdf60e8b9a01 6.5 MB",
+      "step": "base",
+      "timestamp": "2026-09-20T08:03:41.875040031Z"
+    },
+    {
+      "level": "info",
+      "message": "Uncompressing layer sha256:e216621d8a0a7a4486d6a228759b29bc378eff95e6ea9469854b8624b267dd13 137 B",
+      "step": "base",
+      "timestamp": "2026-09-20T08:03:41.875051621Z"
+    },
+    {
+      "level": "info",
+      "message": "Layers extracted",
+      "step": "base",
+      "timestamp": "2026-09-20T08:03:57.470508652Z"
+    },
+    {
+      "level": "info",
+      "message": "Root filesystem structure: bin, boot, dev, etc, home, issue.md, lib, lib64, media, mnt, opt, proc, root, run, sbin, srv, sys, testbed, tmp, usr, var",
+      "step": "base",
+      "timestamp": "2026-09-20T08:03:57.471388092Z"
+    },
+    {
+      "level": "error",
+      "message": "Build failed: An internal error occurred. Please try again or contact support with the build ID.",
+      "timestamp": "2026-09-20T08:04:09.314571796Z"
+    }
+  ],
+  "logs": [],
+  "reason": {
+    "message": "An internal error occurred. Please try again or contact support with the build ID."
+  },
+  "status": "error",
+  "templateID": "nlh0aur60602eo7biv2l"
+}

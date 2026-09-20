@@ -1,0 +1,11 @@
+Host ua-e2b-large
+  HostName 192.168.122.239
+  User e2b
+  IdentityFile /home/yuhanya/uni-agent-lab/secrets/local-e2b-large/id_ed25519
+  IdentitiesOnly yes
+  BatchMode yes
+  StrictHostKeyChecking accept-new
+  UserKnownHostsFile /home/yuhanya/uni-agent-lab/secrets/local-e2b-large/known_hosts
+  ConnectTimeout 10
+  ServerAliveInterval 15
+  ServerAliveCountMax 3

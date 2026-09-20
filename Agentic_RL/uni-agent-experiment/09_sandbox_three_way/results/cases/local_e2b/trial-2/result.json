@@ -1,0 +1,152 @@
+{
+  "instance_id": "pallets__flask-5014",
+  "trial_id": "pallets__flask-5014",
+  "provider": "e2b",
+  "mode": "react",
+  "tag": "trial-2",
+  "output": "/lab/results/sandbox-three-way-20260916T094603Z/local_e2b-sandbox-three-way-20260916T094603Z/trial-2/e2b/pallets__flask-5014",
+  "started_unix": 1789552570.1648543,
+  "slot": 0,
+  "base_url": "http://172.30.90.9:8000/v1",
+  "finished": true,
+  "agent_info": {
+    "steps": 25,
+    "num_tool_calls": 25,
+    "timeouts": 0,
+    "errors": 0,
+    "total_tokens": 26610
+  },
+  "patch_bytes": 7859,
+  "source_patch_bytes": 7859,
+  "excluded_test_paths": [],
+  "existing_tests_modified": [],
+  "eval_completed": true,
+  "eval_execution_time": 3.9960365872830153,
+  "eval_report": {
+    "resolved": true,
+    "found_eval_status": true,
+    "test_status": {
+      "FAIL_TO_PASS": {
+        "success": [
+          "tests/test_blueprints.py::test_empty_name_not_allowed"
+        ],
+        "failure": []
+      },
+      "PASS_TO_PASS": {
+        "success": [
+          "tests/test_blueprints.py::test_blueprint_specific_error_handling",
+          "tests/test_blueprints.py::test_blueprint_specific_user_error_handling",
+          "tests/test_blueprints.py::test_blueprint_app_error_handling",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[-/-/]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[/--/]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[/-/-/]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo--/foo]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo/--/foo/]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[-/bar-/bar]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo/-/bar-/foo/bar]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo/-bar-/foo/bar]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo-/bar-/foo/bar]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo/-//bar-/foo/bar]",
+          "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo//-/bar-/foo/bar]",
+          "tests/test_blueprints.py::test_blueprint_url_defaults",
+          "tests/test_blueprints.py::test_blueprint_url_processors",
+          "tests/test_blueprints.py::test_templates_and_static",
+          "tests/test_blueprints.py::test_default_static_max_age",
+          "tests/test_blueprints.py::test_templates_list",
+          "tests/test_blueprints.py::test_dotted_name_not_allowed",
+          "tests/test_blueprints.py::test_dotted_names_from_app",
+          "tests/test_blueprints.py::test_empty_url_defaults",
+          "tests/test_blueprints.py::test_route_decorator_custom_endpoint",
+          "tests/test_blueprints.py::test_route_decorator_custom_endpoint_with_dots",
+          "tests/test_blueprints.py::test_endpoint_decorator",
+          "tests/test_blueprints.py::test_template_filter",
+          "tests/test_blueprints.py::test_add_template_filter",
+          "tests/test_blueprints.py::test_template_filter_with_name",
+          "tests/test_blueprints.py::test_add_template_filter_with_name",
+          "tests/test_blueprints.py::test_template_filter_with_template",
+          "tests/test_blueprints.py::test_template_filter_after_route_with_template",
+          "tests/test_blueprints.py::test_add_template_filter_with_template",
+          "tests/test_blueprints.py::test_template_filter_with_name_and_template",
+          "tests/test_blueprints.py::test_add_template_filter_with_name_and_template",
+          "tests/test_blueprints.py::test_template_test",
+          "tests/test_blueprints.py::test_add_template_test",
+          "tests/test_blueprints.py::test_template_test_with_name",
+          "tests/test_blueprints.py::test_add_template_test_with_name",
+          "tests/test_blueprints.py::test_template_test_with_template",
+          "tests/test_blueprints.py::test_template_test_after_route_with_template",
+          "tests/test_blueprints.py::test_add_template_test_with_template",
+          "tests/test_blueprints.py::test_template_test_with_name_and_template",
+          "tests/test_blueprints.py::test_add_template_test_with_name_and_template",
+          "tests/test_blueprints.py::test_context_processing",
+          "tests/test_blueprints.py::test_template_global",
+          "tests/test_blueprints.py::test_request_processing",
+          "tests/test_blueprints.py::test_app_request_processing",
+          "tests/test_blueprints.py::test_app_url_processors",
+          "tests/test_blueprints.py::test_nested_blueprint",
+          "tests/test_blueprints.py::test_nested_callback_order",
+          "tests/test_blueprints.py::test_nesting_url_prefixes[/parent-/child-None-None]",
+          "tests/test_blueprints.py::test_nesting_url_prefixes[/parent-None-None-/child]",
+          "tests/test_blueprints.py::test_nesting_url_prefixes[None-None-/parent-/child]",
+          "tests/test_blueprints.py::test_nesting_url_prefixes[/other-/something-/parent-/child]",
+          "tests/test_blueprints.py::test_nesting_subdomains",
+          "tests/test_blueprints.py::test_child_and_parent_subdomain",
+          "tests/test_blueprints.py::test_unique_blueprint_names",
+          "tests/test_blueprints.py::test_self_registration",
+          "tests/test_blueprints.py::test_blueprint_renaming"
+        ],
+        "failure": []
+      },
+      "FAIL_TO_FAIL": {
+        "success": [],
+        "failure": []
+      },
+      "PASS_TO_FAIL": {
+        "success": [],
+        "failure": []
+      }
+    }
+  },
+  "resolved": true,
+  "cleanup_completed": true,
+  "cleanup_steps": [
+    "agent",
+    "final"
+  ],
+  "reward": 1.0,
+  "trajectory_valid": true,
+  "wall_seconds": 68.99375301925465,
+  "ended_unix": 1789552639.1586092,
+  "timings_s": {
+    "session_setup": 2.125e-05,
+    "provision": 3.47887898,
+    "agent": 57.24354021,
+    "capture_patch": 0.912578877,
+    "agent_cleanup": 0.013241067,
+    "verifier_provision": 3.232177448,
+    "verify": 4.001518024,
+    "cleanup": 0.010202173,
+    "trajectory_export": 0.022177258
+  },
+  "agent_breakdown_s": {
+    "model_roundtrip": 26.962205067,
+    "model_api": 24.273074446,
+    "gateway_http": 26.893174083,
+    "codec": 2.547845892,
+    "tool_call": 28.477036872,
+    "tool_init": 1.135318816,
+    "tool_close": 0.63099032
+  },
+  "client_operations": {
+    "http_send": 56,
+    "docker_cli": 0,
+    "sandbox_exec": 128,
+    "file_read": 4,
+    "file_write": 23,
+    "tool_call": 26,
+    "model_api": 25
+  },
+  "model_tokens": {
+    "prompt": 429796,
+    "generated": 3687
+  }
+}

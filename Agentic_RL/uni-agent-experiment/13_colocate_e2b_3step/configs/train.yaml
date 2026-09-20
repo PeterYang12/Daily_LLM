@@ -1,0 +1,190 @@
+defaults:
+- ppo_megatron_trainer
+- _self_
+data:
+  train_files: /work/experiments/colocate-e2b-3step-20260920/data/train.parquet
+  val_files: /work/experiments/colocate-e2b-3step-20260920/data/val.parquet
+  train_batch_size: 16
+  gen_batch_size: 1
+  shuffle: false
+  seed: 20260920
+  dataloader_num_workers: 0
+  prompt_key: prompt
+  max_prompt_length: 8192
+  max_response_length: 131072
+  filter_overlong_prompts: true
+  truncation: error
+  return_raw_chat: true
+algorithm:
+  adv_estimator: grpo
+  use_kl_in_reward: false
+  rollout_correction:
+    bypass_mode: false
+    rollout_is: token
+    rollout_is_threshold: 2.0
+    rollout_is_batch_normalize: false
+    rollout_rs: null
+actor_rollout_ref:
+  nccl_timeout: 9600
+  model:
+    path: /work/models/Qwen3-Coder-30B-A3B-Instruct
+    lora_rank: 0
+    use_remove_padding: true
+    enable_gradient_checkpointing: true
+    use_fused_kernels: false
+  actor:
+    ppo_mini_batch_size: 16
+    ppo_micro_batch_size_per_gpu: 1
+    ppo_epochs: 1
+    use_dynamic_bsz: true
+    ppo_max_token_len_per_gpu: 34816
+    use_kl_loss: false
+    entropy_coeff: 0.0
+    loss_agg_mode: token-mean
+    clip_ratio_low: 0.0004
+    clip_ratio_high: 0.0004
+    clip_ratio_c: 10.0
+    policy_loss:
+      loss_mode: gspo
+    optim:
+      lr: 1.0e-06
+      lr_warmup_steps: 0
+      lr_warmup_steps_ratio: 0.0
+      lr_decay_steps: 10000
+      lr_decay_style: constant
+      weight_decay: 0.1
+      clip_grad: 1.0
+    checkpoint:
+      save_contents:
+      - model
+      - optimizer
+      - extra
+      async_save: false
+    megatron:
+      use_mbridge: true
+      vanilla_mbridge: true
+      use_dist_checkpointing: false
+      param_offload: true
+      optimizer_offload: true
+      tensor_model_parallel_size: 1
+      pipeline_model_parallel_size: 1
+      context_parallel_size: 4
+      expert_model_parallel_size: 8
+      expert_tensor_parallel_size: 1
+      sequence_parallel: false
+      router_replay:
+        mode: R3
+      override_transformer_config:
+        recompute_method: uniform
+        recompute_granularity: full
+        recompute_num_layers: 1
+        attention_backend: flash
+        moe_grouped_gemm: true
+        moe_token_dispatcher_type: alltoall
+        moe_router_dtype: fp32
+        moe_permute_fusion: false
+        gradient_accumulation_fusion: true
+  rollout:
+    name: vllm
+    mode: async
+    n: 8
+    calculate_log_probs: true
+    logprobs_mode: processed_logprobs
+    tensor_model_parallel_size: 2
+    gpu_memory_utilization: 0.7
+    max_model_len: 139264
+    max_num_batched_tokens: 16384
+    max_num_seqs: 64
+    enforce_eager: true
+    free_cache_engine: true
+    enable_chunked_prefill: true
+    enable_rollout_routing_replay: true
+    engine_kwargs:
+      vllm:
+        disable_custom_all_reduce: true
+    temperature: 1.0
+    top_p: 1.0
+    top_k: -1
+    log_prob_use_dynamic_bsz: true
+    log_prob_max_token_len_per_gpu: 34816
+    val_kwargs:
+      temperature: 1.0
+      top_p: 0.95
+      do_sample: true
+      n: 1
+    multi_turn:
+      enable: true
+      max_parallel_calls: 1
+      format: qwen3_coder
+    agent:
+      num_workers: 8
+      agent_loop_manager_class: uni_agent.framework.entry.AgentFrameworkRolloutAdapter
+    custom:
+      agent_framework:
+        gateway_count: 4
+        log_dir: /work/experiments/colocate-e2b-3step-20260920/results/trajectories
+        mask_unfinished_episode: true
+        agent_runners:
+          task:
+            runner_fqn: run_runner.run_task
+            dispatch_mode: ray_task
+            max_concurrent_sessions: 128
+            trajectory_selection: all
+            runner_kwargs:
+              task_config_path: /work/experiments/colocate-e2b-3step-20260920/configs/task_config.yaml
+              model_name: Qwen3-Coder-30B-A3B-Instruct
+reward:
+  reward_manager:
+    name: dapo
+  custom_reward_function:
+    path: pkg://uni_agent.framework.task_runner
+    name: score_from_runner_result
+transfer_queue:
+  enable: true
+trainer:
+  use_v1: true
+  v1:
+    trainer_mode: colocate_async
+    colocate_async:
+      num_warmup_batches: 0
+  nnodes: 1
+  n_gpus_per_node: 8
+  total_training_steps: 3
+  total_epochs: 10
+  save_freq: 3
+  max_actor_ckpt_to_keep: 1
+  max_critic_ckpt_to_keep: 1
+  resume_mode: disable
+  test_freq: -1
+  val_before_train: false
+  project_name: uni-agent-swe-rl-rocm
+  experiment_name: ua-colocate-e2b-3step-20260920
+  logger:
+  - console
+  - file
+  default_local_dir: /work/experiments/colocate-e2b-3step-20260920/checkpoints
+  rollout_data_dir: /work/experiments/colocate-e2b-3step-20260920/results/consumed-rollouts
+ray_kwargs:
+  ray_init:
+    num_cpus: 160
+    namespace: ua-colocate-e2b-3step-20260920
+    include_dashboard: false
+    object_store_memory: 34359738368
+    runtime_env:
+      env_vars:
+        PYTHONPATH: /work/experiments/colocate-e2b-3step-20260920/code:/work/experiments/colocate-e2b-3step-20260920/src/uni-agent:/work/experiments/colocate-e2b-3step-20260920/src/uni-agent/verl
+        PYTHONNOUSERSITE: '1'
+        TOKENIZERS_PARALLELISM: 'false'
+        OMP_NUM_THREADS: '1'
+        PYTORCH_ALLOC_CONF: expandable_segments:False
+        TORCH_NCCL_AVOID_RECORD_STREAMS: '1'
+        CUDA_DEVICE_MAX_CONNECTIONS: '1'
+        VLLM_ROCM_USE_AITER: '1'
+        VLLM_ROCM_USE_AITER_MOE: '0'
+        USE_ROCM_AITER_ROPE_BACKEND: '0'
+        TRANSFER_QUEUE_ENABLE: '1'
+        UA_PHASE: train
+        UA_OBSERVE: '1'
+        HYDRA_FULL_ERROR: '1'
+        UA_MAX_SUBMITTED_PROMPTS: '48'
+        VERL_FILE_LOGGER_PATH: /work/experiments/colocate-e2b-3step-20260920/results/train-metrics.jsonl

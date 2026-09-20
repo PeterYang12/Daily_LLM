@@ -1,0 +1,12 @@
+Linux e2b.local 6.1.177+ #1 SMP PREEMPT_DYNAMIC Mon Aug 24 09:02:59 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+4
+PRETTY_NAME="Ubuntu 22.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="22.04"
+VERSION="22.04.5 LTS (Jammy Jellyfish)"
+Python 3.11.10
+               total        used        free      shared  buff/cache   available
+Mem:            7956          61        7800           1          95        7714
+Swap:              0           0           0
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root       4.5G  3.0G  1.3G  71% /

@@ -17,7 +17,7 @@ python3 06_trajectories_and_reproduction/code/export_code.py \
   --output /tmp/uni-agent-replay-code
 ```
 
-Use a destination that does not exist. The exporter collects all seven folders into the original `scripts/`, `configs/`, and `patches/` layout and verifies hashes. This resolves cross-experiment imports. It exports code only, without installing dependencies or starting containers. Experiment 7 replay helpers are under `scripts/swe_sandbox_profile/`; its manifest and tmux bundle remain in that experiment's `configs/` and `assets/` directories.
+Use a destination that does not exist. The exporter collects all ten folders into their runtime layouts and verifies hashes. This resolves cross-experiment imports. It exports code and configuration only, without installing dependencies or starting services. Experiment 7 replay helpers are under `scripts/swe_sandbox_profile/`; its manifest and tmux bundle remain in that experiment's `configs/` and `assets/` directories. Experiment 8 exports under `local-e2b-20260916/`, without credentials or VM disks. Experiment 9 helpers export under `scripts/sandbox_three_way/`. Experiment 10 exports under `local-opensandbox-20260916/`.
 
 Original main-run versions remain under `scripts/executed/`. The ordinary `scripts/run_swe.py` is the later version with explicit logprob capture.
 

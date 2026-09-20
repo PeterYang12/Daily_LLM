@@ -1,0 +1,33 @@
+{
+  "opensandbox-system": [
+    {
+      "name": "opensandbox-controller-manager-577bf76766-7m29k",
+      "uid": "60dff9f3-3a86-44c0-a870-a987a4d5cf44",
+      "images": [
+        "docker.io/opensandbox/controller:v0.2.0"
+      ],
+      "node": "ua-osb-node",
+      "phase": "Running"
+    },
+    {
+      "name": "opensandbox-server-78d545f49d-bljb6",
+      "uid": "c93de888-b222-460a-8f48-911b40cb3369",
+      "images": [
+        "docker.io/opensandbox/server:v0.2.3"
+      ],
+      "node": "ua-osb-node",
+      "phase": "Running"
+    }
+  ],
+  "opensandbox": [
+    {
+      "name": "34f69df6-a574-4bac-951e-3b3dbc60aacd-0",
+      "uid": "7a459fb3-5156-41c4-acc5-c5edba39ad93",
+      "images": [
+        "ubuntu:24.04"
+      ],
+      "node": "ua-osb-node",
+      "phase": "Running"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "image": "verlai/verl:rocm7.14_torch2.12_release_0724",
+  "image_digest": "sha256:8a40aef5d90d161767474e263da4bc579a5f395534a6e9754bd0110d367d2a2a",
+  "uni_agent_commit": "10743439dd0a19da44a94cccad069b135d957bf1",
+  "verl_commit": "a9f2985159536a607211dcac730d3f5d55028950",
+  "transferqueue_commit": "434f8c476b4be24bc087e6e95070e64efcc739f9",
+  "environment_lock": "python-environment.lock",
+  "recovery_allocator": "expandable_segments:False; UA_RL_DISABLE_EXPANDABLE=1"
+}

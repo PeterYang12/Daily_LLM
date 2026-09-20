@@ -1,0 +1,17 @@
+{
+  "started_unix": 1789559543.5875807,
+  "n": 2,
+  "max_creates_in_flight": 3,
+  "template_id": "6gz72hgrq9yqwt3l2vd1",
+  "instance_id": "pallets__flask-5014",
+  "cpu_per_sandbox": 4,
+  "memory_mib_per_sandbox": 8192,
+  "scope": "Concurrent sandbox and official verifier acceptance; no agent or model calls; no RL training",
+  "create_batch_s": 0.42126741213724017,
+  "simultaneously_live": 2,
+  "all_running": true,
+  "sandbox_ids": [
+    "ipjyz3ps9lkis9z4sf575",
+    "iqgdelar8lbntsexiiwpp"
+  ]
+}

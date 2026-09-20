@@ -1,0 +1,198 @@
+{
+  "success": true,
+  "n": 48,
+  "rows": [
+    {
+      "instance_id": "ARMmbed__mbed-tools-208",
+      "template_id": "tu466r82ovwe8ux65tf2"
+    },
+    {
+      "instance_id": "DavidVujic__python-polylith-232",
+      "template_id": "3lbecrytbrw783chqobu"
+    },
+    {
+      "instance_id": "JelleZijlstra__ast_decompiler-34",
+      "template_id": "zz7mvkdbqumwwm6mh6tk"
+    },
+    {
+      "instance_id": "Materials-Consortia__optimade-python-tools-2250",
+      "template_id": "du47c396p3x4dmjylksl"
+    },
+    {
+      "instance_id": "PennyLaneAI__pennylane-3057",
+      "template_id": "rugrapo8c9x7n739yd5u"
+    },
+    {
+      "instance_id": "Shopify__shopify_python_api-363",
+      "template_id": "yvvd3lec6se13dburz75"
+    },
+    {
+      "instance_id": "agronholm__anyio-639",
+      "template_id": "6ubvkdgwk7eolguy3elj"
+    },
+    {
+      "instance_id": "agronholm__sqlacodegen-371",
+      "template_id": "3y0f515hdqch9ihefym2"
+    },
+    {
+      "instance_id": "alecthomas__voluptuous-380",
+      "template_id": "kw3l1uft4j4zvbrmxfj6"
+    },
+    {
+      "instance_id": "altair-viz__altair-1587",
+      "template_id": "1a0zghrhd5z0o2v35n16"
+    },
+    {
+      "instance_id": "asottile__pyupgrade-146",
+      "template_id": "v14t4o9pp5mn25pqgjuz"
+    },
+    {
+      "instance_id": "asottile__yesqa-69",
+      "template_id": "0te8iemft8pz6u28i9ge"
+    },
+    {
+      "instance_id": "astamminger__zotero-bibtize-19",
+      "template_id": "j1di9ponojw21ob851ci"
+    },
+    {
+      "instance_id": "astropy__specutils-1158",
+      "template_id": "1btbpdeaphhntcixll6l"
+    },
+    {
+      "instance_id": "caronc__apprise-1128",
+      "template_id": "6uj8cyvc0sqmgsscqh1e"
+    },
+    {
+      "instance_id": "desihub__desiutil-173",
+      "template_id": "q226yf8cktx8ni3t8eqc"
+    },
+    {
+      "instance_id": "diogommartins__simple_json_logger-14",
+      "template_id": "p63vreg1pq3we3iwcuot"
+    },
+    {
+      "instance_id": "discos__simulators-307",
+      "template_id": "a70qtta5zo55cj332mgp"
+    },
+    {
+      "instance_id": "dpkp__kafka-python-2573",
+      "template_id": "8chqjtgokex6dk8melml"
+    },
+    {
+      "instance_id": "dwavesystems__dwave-cloud-client-417",
+      "template_id": "3ujexhqub5sm54s1g0ce"
+    },
+    {
+      "instance_id": "elastic__rally-557",
+      "template_id": "3zof8zh729nsmikvxxaf"
+    },
+    {
+      "instance_id": "encode__httpx-861",
+      "template_id": "evblsi2k906k54s4d6n0"
+    },
+    {
+      "instance_id": "eyeseast__python-frontmatter-31",
+      "template_id": "iuiu48dn8kqookl4c1yi"
+    },
+    {
+      "instance_id": "google__cloud-forensics-utils-335",
+      "template_id": "qr60p2qfi938u58asbf3"
+    },
+    {
+      "instance_id": "googleapis__python-bigquery-1930",
+      "template_id": "cwuwalarektfn7hxoz1w"
+    },
+    {
+      "instance_id": "gorakhargosh__watchdog-530",
+      "template_id": "1tba4utj7612zdudl9th"
+    },
+    {
+      "instance_id": "hgrecco__pint-1476",
+      "template_id": "6qs0h1bxnkqls5a2rqei"
+    },
+    {
+      "instance_id": "hylang__hy-2522",
+      "template_id": "st8z2uuiykq4a1ocwwdv"
+    },
+    {
+      "instance_id": "ianlini__flatten-dict-13",
+      "template_id": "0dkxxgieffekyvdumbdk"
+    },
+    {
+      "instance_id": "ipython__ipython-12144",
+      "template_id": "bji5eb61m6s6jbidx6d7"
+    },
+    {
+      "instance_id": "jackdewinter__pymarkdown-893",
+      "template_id": "vdkqqf81psww6y6vjxfv"
+    },
+    {
+      "instance_id": "jendrikseipp__vulture-340",
+      "template_id": "duxwhd7wtcwtm556vbgo"
+    },
+    {
+      "instance_id": "jpadilla__pyjwt-623",
+      "template_id": "n5bqkdf66o7jkwsbuv4e"
+    },
+    {
+      "instance_id": "just-work__fffw-122",
+      "template_id": "4qpwp0yihc3zfmloqs0h"
+    },
+    {
+      "instance_id": "lmfit__lmfit-py-554",
+      "template_id": "cq1t4u515roj9iqmje6g"
+    },
+    {
+      "instance_id": "lucianopaz__compress_pickle-28",
+      "template_id": "y33c3vsp2a2edi4wnnfp"
+    },
+    {
+      "instance_id": "markusressel__container-app-conf-19",
+      "template_id": "z5tqrzuh56yh2hkvkp61"
+    },
+    {
+      "instance_id": "maxfischer2781__asyncstdlib-49",
+      "template_id": "sfvpljhvsri2zw59rakm"
+    },
+    {
+      "instance_id": "miLibris__flask-rest-jsonapi-131",
+      "template_id": "w9pmp96sqvlg79ikogy7"
+    },
+    {
+      "instance_id": "microsoft__electionguard-python-379",
+      "template_id": "63949hd5svwoprro2zt7"
+    },
+    {
+      "instance_id": "monarch-initiative__koza-60",
+      "template_id": "w98s1f4mlsfr9bn6nke1"
+    },
+    {
+      "instance_id": "oemof__tespy-536",
+      "template_id": "rcboz3qsyfzxncr6eetf"
+    },
+    {
+      "instance_id": "omni-us__jsonargparse-518",
+      "template_id": "u75f6v2o4gr088i5kgty"
+    },
+    {
+      "instance_id": "openlawlibrary__pygls-247",
+      "template_id": "fiofiu6g57mq0idur4ec"
+    },
+    {
+      "instance_id": "pre-commit__pre-commit-hooks-944",
+      "template_id": "sjqjsj4nvnoenxv5b7k7"
+    },
+    {
+      "instance_id": "python-cmd2__cmd2-117",
+      "template_id": "jc7nk57n5vce7cixm29p"
+    },
+    {
+      "instance_id": "repobee__repobee-336",
+      "template_id": "xt4a41iscznam7jo20u6"
+    },
+    {
+      "instance_id": "scipp__plopp-422",
+      "template_id": "wsx5j39mwkzcd9641fd3"
+    }
+  ]
+}

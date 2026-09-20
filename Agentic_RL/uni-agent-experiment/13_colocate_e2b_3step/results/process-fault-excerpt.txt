@@ -1,0 +1,23 @@
+[36m(WorkerDict pid=122069)[0m Warning: Stream-K Data Parallel does not support GSU > 1, setting GSU to 1.[32m [repeated 6640x across cluster][0m
+[36m(WorkerDict pid=122069)[0m Warning: Stream-K Data Parallel does not support GSU > 1, setting GSU to 1.[32m [repeated 3969x across cluster][0m
+[36m(WorkerDict pid=122069)[0m Warning: Stream-K Data Parallel does not support GSU > 1, setting GSU to 1.[32m [repeated 6852x across cluster][0m
+[36m(WorkerDict pid=122069)[0m Warning: Stream-K Data Parallel does not support GSU > 1, setting GSU to 1.[32m [repeated 4043x across cluster][0m
+[36m(WorkerDict pid=122069)[0m Warning: Stream-K Data Parallel does not support GSU > 1, setting GSU to 1.[32m [repeated 6778x across cluster][0m
+HW Exception by GPU node-4 (Agent handle: 0xd30a540) reason :GPU Hang
+*** SIGABRT received at time=1789897976 on cpu 114 ***
+PC: @     0x7f39adb43b2c  (unknown)  pthread_kill
+[36m(_run_agent_runner_ray_task pid=130519)[0m HW Exception by GPU node-4 (Agent handle: 0xd6fcc40) reason :GPU Hang
+[36m(_run_agent_runner_ray_task pid=130519)[0m *** SIGABRT received at time=1789897976 on cpu 46 ***
+[36m(_run_agent_runner_ray_task pid=130519)[0m PC: @     0x7fd93ba1db2c  (unknown)  pthread_kill
+[36m(_run_agent_runner_ray_task pid=130659)[0m     @     0x7facf6399330       3104  (unknown)
+    @     0x7f39adaea330       3104  (unknown)
+[36m(_run_agent_runner_ray_task pid=133205)[0m     @     0x7fdd9b27127e         32  raise
+[36m(_run_agent_runner_ray_task pid=133205)[0m     @     0x7fdd9b2548ff        192  abort
+[36m(_run_agent_runner_ray_task pid=133205)[0m     @     0x7fdd8418350c  (unknown)  rocr::core::Runtime::HwExceptionHandler()
+[36m(_run_agent_runner_ray_task pid=133460)[0m [2026-09-20 09:52:56,933 E 133460 137319] logging.cc:474: *** SIGABRT received at time=1789897976 on cpu 115 ***
+[36m(_run_agent_runner_ray_task pid=133460)[0m [2026-09-20 09:52:56,933 E 133460 137319] logging.cc:474: PC: @     0x7f0b82d15b2c  (unknown)  pthread_kill
+[36m(_run_agent_runner_ray_task pid=133460)[0m [2026-09-20 09:52:56,950 E 133460 137319] logging.cc:474:     @     0x7f0b82cbc330       3104  (unknown)
+[36m(_run_agent_runner_ray_task pid=133460)[0m [2026-09-20 09:52:56,950 E 133460 137319] logging.cc:474:     @     0x7f0b82cbc27e         32  raise
+[36m(_run_agent_runner_ray_task pid=133460)[0m [2026-09-20 09:52:56,950 E 133460 137319] logging.cc:474:     @     0x7f0b82c9f8ff        192  abort
+[36m(_run_agent_runner_ray_task pid=133460)[0m [2026-09-20 09:52:56,951 E 133460 137319] logging.cc:474:     @     0x7f0b6c3c750c  (unknown)  rocr::core::Runtime::HwExceptionHandler()
+[36m(_run_agent_runner_ray_task pid=133460)[0m Fatal Python error: Aborted

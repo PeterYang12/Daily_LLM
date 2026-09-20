@@ -1,0 +1,47 @@
+{
+  "started_unix": 1789559043.9522169,
+  "endpoint": "http://172.30.90.1:18090",
+  "checks": {
+    "running": true,
+    "cwd_env": true,
+    "text_file": true,
+    "binary_1MiB": true,
+    "nonzero_exit": true,
+    "persistent_shell": true,
+    "kill_ack": true,
+    "destroyed": true,
+    "concurrent_4": true
+  },
+  "sandboxes": [
+    "if2n3q7m3oimm8hj3cpoi",
+    "ir1zfiiqgad0b1imj4p1l",
+    "iv8h8ql7rdllnjazl0efk",
+    "imosmif4qjwpvm8lpdgey",
+    "iv4q29n3g0r9n5de1o9rf"
+  ],
+  "create_s": 0.29372674226760864,
+  "concurrent": [
+    {
+      "index": 0,
+      "passed": true,
+      "wall_s": 0.09173555392771959
+    },
+    {
+      "index": 1,
+      "passed": true,
+      "wall_s": 0.14283966599032283
+    },
+    {
+      "index": 2,
+      "passed": true,
+      "wall_s": 0.14303318737074733
+    },
+    {
+      "index": 3,
+      "passed": true,
+      "wall_s": 0.19141975697129965
+    }
+  ],
+  "success": true,
+  "finished_unix": 1789559044.8419607
+}

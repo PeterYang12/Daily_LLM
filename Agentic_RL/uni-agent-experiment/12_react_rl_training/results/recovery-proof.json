@@ -1,0 +1,89 @@
+{
+  "attempt": 4,
+  "resume_from_step": 100,
+  "first_retained_resumed_step": 101,
+  "all_rank_restore_checks_passed": true,
+  "checks": [
+    {
+      "attempt": 4,
+      "rank": 7,
+      "checkpoint_step": 100,
+      "sampled_model_restored": true,
+      "scheduler_restored": true,
+      "scheduler_num_steps": 100,
+      "sample_hash_before": "06adf194ecbd579c76010aab1b6de64e3b9b8f3effe2eea75e5dc8451869b515",
+      "expected_hash": "06adf194ecbd579c76010aab1b6de64e3b9b8f3effe2eea75e5dc8451869b515"
+    },
+    {
+      "attempt": 4,
+      "rank": 6,
+      "checkpoint_step": 100,
+      "sampled_model_restored": true,
+      "scheduler_restored": true,
+      "scheduler_num_steps": 100,
+      "sample_hash_before": "23f33e548fd17bb3982b571e7284a536ba0b59d0bf1bf42b5b225b25ee427098",
+      "expected_hash": "23f33e548fd17bb3982b571e7284a536ba0b59d0bf1bf42b5b225b25ee427098"
+    },
+    {
+      "attempt": 4,
+      "rank": 0,
+      "checkpoint_step": 100,
+      "sampled_model_restored": true,
+      "scheduler_restored": true,
+      "scheduler_num_steps": 100,
+      "sample_hash_before": "3a57aecda58ae9a87a79215c4ec0c5fe59bb108beddca095b383705984cb187c",
+      "expected_hash": "3a57aecda58ae9a87a79215c4ec0c5fe59bb108beddca095b383705984cb187c"
+    },
+    {
+      "attempt": 4,
+      "rank": 1,
+      "checkpoint_step": 100,
+      "sampled_model_restored": true,
+      "scheduler_restored": true,
+      "scheduler_num_steps": 100,
+      "sample_hash_before": "d1e5b128fee71c828e0c3bcda5199f5b963975b4598442385abe634abefc0f25",
+      "expected_hash": "d1e5b128fee71c828e0c3bcda5199f5b963975b4598442385abe634abefc0f25"
+    },
+    {
+      "attempt": 4,
+      "rank": 2,
+      "checkpoint_step": 100,
+      "sampled_model_restored": true,
+      "scheduler_restored": true,
+      "scheduler_num_steps": 100,
+      "sample_hash_before": "e024f01fced6d8deca2baf833e89b79ca92d42cf82da4f7cd82e95979ca03175",
+      "expected_hash": "e024f01fced6d8deca2baf833e89b79ca92d42cf82da4f7cd82e95979ca03175"
+    },
+    {
+      "attempt": 4,
+      "rank": 4,
+      "checkpoint_step": 100,
+      "sampled_model_restored": true,
+      "scheduler_restored": true,
+      "scheduler_num_steps": 100,
+      "sample_hash_before": "eb23901cf0daf390e3930ff81cd618a6151022099bf68d2f468d6b2f91dda5d6",
+      "expected_hash": "eb23901cf0daf390e3930ff81cd618a6151022099bf68d2f468d6b2f91dda5d6"
+    },
+    {
+      "attempt": 4,
+      "rank": 5,
+      "checkpoint_step": 100,
+      "sampled_model_restored": true,
+      "scheduler_restored": true,
+      "scheduler_num_steps": 100,
+      "sample_hash_before": "a5eaa55a6e397d531572c12fe851a0e081c19557c31d11c1144fdb61689c6ec2",
+      "expected_hash": "a5eaa55a6e397d531572c12fe851a0e081c19557c31d11c1144fdb61689c6ec2"
+    },
+    {
+      "attempt": 4,
+      "rank": 3,
+      "checkpoint_step": 100,
+      "sampled_model_restored": true,
+      "scheduler_restored": true,
+      "scheduler_num_steps": 100,
+      "sample_hash_before": "db244f35f0f5607e7aadd8c8be001792e7631c5dba0b97914ac7e064a136cd6d",
+      "expected_hash": "db244f35f0f5607e7aadd8c8be001792e7631c5dba0b97914ac7e064a136cd6d"
+    }
+  ],
+  "time_unix": 1789605461.3936553
+}

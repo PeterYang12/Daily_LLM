@@ -1,0 +1,1793 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "creationTimestamp": "2026-09-16T09:22:44Z",
+                "generateName": "e2b-",
+                "generation": 1,
+                "labels": {
+                    "app": "e2b",
+                    "apps.kubernetes.io/pod-index": "0",
+                    "controller-revision-hash": "e2b-84c7885689",
+                    "statefulset.kubernetes.io/pod-name": "e2b-0"
+                },
+                "name": "e2b-0",
+                "namespace": "e2b",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "StatefulSet",
+                        "name": "e2b",
+                        "uid": "9832bd5f-9e45-43e5-9c82-7db4161c52fd"
+                    }
+                ],
+                "resourceVersion": "1917",
+                "uid": "70aac5a0-5b47-4ab9-b7ba-ac51417b6971"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "command": [
+                            "/bin/sh",
+                            "-c",
+                            "umask 077\ntest -s /run/e2b/team-api-key || exit 1\nlast=\"\"\nwhile :; do\n  key=\"$(cat /run/e2b/team-api-key 2\u003e/dev/null)\"\n  if [ -n \"$key\" ] \u0026\u0026 [ \"$key\" != \"$last\" ]; then\n    printf 'export E2B_API_KEY=%s\\nexport E2B_API_URL=http://%s:3000\\nexport E2B_SANDBOX_URL=http://%s:3002\\n' \"$key\" \"$NODE_IP\" \"$NODE_IP\" \u003e /run/e2b/sdk.env\n    echo 'E2B SDK settings ready (credentials stored in seed-state; not logged)'\n    last=\"$key\"\n  fi\n  sleep 5\ndone\n"
+                        ],
+                        "env": [
+                            {
+                                "name": "NODE_IP",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "status.hostIP"
+                                    }
+                                }
+                            }
+                        ],
+                        "image": "us-docker.pkg.dev/e2b-artifacts/embed/tools:v0.3.202609120109-ad1cddd091b",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "ready",
+                        "readinessProbe": {
+                            "exec": {
+                                "command": [
+                                    "test",
+                                    "-s",
+                                    "/run/e2b/sdk.env"
+                                ]
+                            },
+                            "failureThreshold": 3,
+                            "periodSeconds": 5,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 1
+                        },
+                        "resources": {},
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/run/e2b",
+                                "name": "seed-state"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirstWithHostNet",
+                "enableServiceLinks": true,
+                "hostNetwork": true,
+                "hostPID": true,
+                "hostname": "e2b-0",
+                "initContainers": [
+                    {
+                        "command": [
+                            "/bin/sh",
+                            "-c",
+                            "exec nsenter -t 1 -m -u -i -n -p -- /bin/bash -s \u003c /opt/e2b/scripts/preflight.sh"
+                        ],
+                        "env": [
+                            {
+                                "name": "PF_MIN_FREE_GIB",
+                                "value": "20"
+                            }
+                        ],
+                        "image": "us-docker.pkg.dev/e2b-artifacts/embed/tools:v0.3.202609120109-ad1cddd091b",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "preflight",
+                        "resources": {},
+                        "securityContext": {
+                            "privileged": true
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "command": [
+                            "/bin/sh",
+                            "-c",
+                            "exec nsenter -t 1 -m -u -i -n -p -- /bin/bash -s \u003c /opt/e2b/scripts/host-setup.sh"
+                        ],
+                        "env": [
+                            {
+                                "name": "HUGEPAGES",
+                                "value": "16384"
+                            },
+                            {
+                                "name": "NBDS_MAX",
+                                "value": "64"
+                            }
+                        ],
+                        "image": "us-docker.pkg.dev/e2b-artifacts/embed/tools:v0.3.202609120109-ad1cddd091b",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "host-setup",
+                        "resources": {},
+                        "securityContext": {
+                            "privileged": true
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "command": [
+                            "/bin/bash",
+                            "/opt/e2b/scripts/fetch-artifacts.sh"
+                        ],
+                        "env": [
+                            {
+                                "name": "HOST_ROOT",
+                                "value": "/host"
+                            }
+                        ],
+                        "envFrom": [
+                            {
+                                "configMapRef": {
+                                    "name": "e2b-versions-bmf7mkck29"
+                                }
+                            }
+                        ],
+                        "image": "us-docker.pkg.dev/e2b-artifacts/embed/tools:v0.3.202609120109-ad1cddd091b",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "fetch-artifacts",
+                        "resources": {},
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/host",
+                                "name": "host-root"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "args": [
+                            "-c",
+                            "listen_addresses=127.0.0.1"
+                        ],
+                        "env": [
+                            {
+                                "name": "POSTGRES_USER",
+                                "value": "postgres"
+                            },
+                            {
+                                "name": "POSTGRES_PASSWORD",
+                                "value": "postgres"
+                            },
+                            {
+                                "name": "POSTGRES_DB",
+                                "value": "postgres"
+                            },
+                            {
+                                "name": "PGDATA",
+                                "value": "/var/lib/postgresql/18/docker"
+                            }
+                        ],
+                        "image": "postgres:18.6-alpine",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "postgres",
+                        "resources": {},
+                        "restartPolicy": "Always",
+                        "startupProbe": {
+                            "exec": {
+                                "command": [
+                                    "pg_isready",
+                                    "-U",
+                                    "postgres",
+                                    "-d",
+                                    "postgres"
+                                ]
+                            },
+                            "failureThreshold": 20,
+                            "periodSeconds": 5,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 3
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/lib/postgresql",
+                                "name": "postgres"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "args": [
+                            "--bind",
+                            "127.0.0.1"
+                        ],
+                        "image": "redis:7.4.6",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "redis",
+                        "resources": {},
+                        "restartPolicy": "Always",
+                        "startupProbe": {
+                            "exec": {
+                                "command": [
+                                    "redis-cli",
+                                    "ping"
+                                ]
+                            },
+                            "failureThreshold": 20,
+                            "periodSeconds": 5,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 3
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "env": [
+                            {
+                                "name": "CLICKHOUSE_DB",
+                                "value": "default"
+                            },
+                            {
+                                "name": "CLICKHOUSE_USER",
+                                "value": "clickhouse"
+                            },
+                            {
+                                "name": "CLICKHOUSE_PASSWORD",
+                                "value": "clickhouse"
+                            },
+                            {
+                                "name": "CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT",
+                                "value": "1"
+                            }
+                        ],
+                        "image": "clickhouse/clickhouse-server:25.8.30.16",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "clickhouse",
+                        "resources": {
+                            "limits": {
+                                "cpu": "2",
+                                "memory": "4Gi"
+                            },
+                            "requests": {
+                                "cpu": "250m",
+                                "memory": "512Mi"
+                            }
+                        },
+                        "restartPolicy": "Always",
+                        "startupProbe": {
+                            "exec": {
+                                "command": [
+                                    "clickhouse-client",
+                                    "--user",
+                                    "clickhouse",
+                                    "--password",
+                                    "clickhouse",
+                                    "--query",
+                                    "SELECT 1"
+                                ]
+                            },
+                            "failureThreshold": 30,
+                            "periodSeconds": 5,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 3
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/lib/clickhouse",
+                                "name": "clickhouse"
+                            },
+                            {
+                                "mountPath": "/etc/clickhouse-server/config.d/config.xml",
+                                "name": "clickhouse-config",
+                                "subPath": "config.xml"
+                            },
+                            {
+                                "mountPath": "/etc/clickhouse-server/config.d/docker_related_config.xml",
+                                "name": "clickhouse-config",
+                                "subPath": "docker_related_config.xml"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "env": [
+                            {
+                                "name": "VECTOR_CONFIG",
+                                "value": "/etc/vector/vector.toml"
+                            },
+                            {
+                                "name": "VECTOR_LOG",
+                                "value": "warn"
+                            }
+                        ],
+                        "image": "timberio/vector:0.51.1-alpine",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "vector",
+                        "resources": {},
+                        "restartPolicy": "Always",
+                        "startupProbe": {
+                            "failureThreshold": 12,
+                            "httpGet": {
+                                "host": "127.0.0.1",
+                                "path": "/health",
+                                "port": 44313,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 2
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/etc/vector/vector.toml",
+                                "name": "vector-config",
+                                "subPath": "vector.toml"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "env": [
+                            {
+                                "name": "POSTGRES_CONNECTION_STRING",
+                                "value": "postgres://postgres:postgres@127.0.0.1:5432/postgres?sslmode=disable"
+                            }
+                        ],
+                        "image": "us-docker.pkg.dev/e2b-artifacts/api/db-migrator:v0.14.202609130627-59497eb9134",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "db-migrator",
+                        "resources": {},
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "env": [
+                            {
+                                "name": "GOOSE_DBSTRING",
+                                "value": "clickhouse://clickhouse:clickhouse@127.0.0.1:9000/default"
+                            }
+                        ],
+                        "image": "us-docker.pkg.dev/e2b-artifacts/clickhouse-migrator/clickhouse-migrator:v0.4.202609130627-59497eb9134",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "clickhouse-migrator",
+                        "resources": {},
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "env": [
+                            {
+                                "name": "POSTGRES_CONNECTION_STRING",
+                                "value": "postgres://postgres:postgres@127.0.0.1:5432/postgres?sslmode=disable"
+                            },
+                            {
+                                "name": "OIDC_ISSUER",
+                                "value": "http://localhost:4444/"
+                            },
+                            {
+                                "name": "OIDC_SUBJECT",
+                                "value": "local-dev-user"
+                            },
+                            {
+                                "name": "SEED_TEAM_API_KEY",
+                                "value": "random"
+                            },
+                            {
+                                "name": "SEED_TEAM_API_KEY_FILE",
+                                "value": "/run/e2b/team-api-key"
+                            }
+                        ],
+                        "image": "us-docker.pkg.dev/e2b-artifacts/embed/seed:v0.3.202609120109-ad1cddd091b",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "seed",
+                        "resources": {},
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/run/e2b",
+                                "name": "seed-state"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "command": [
+                            "/bin/bash",
+                            "/opt/e2b/scripts/orchestrator-launch.sh"
+                        ],
+                        "env": [
+                            {
+                                "name": "ORCHESTRATOR_SERVICES",
+                                "value": "orchestrator,template-manager"
+                            },
+                            {
+                                "name": "NODE_ID",
+                                "value": "orchestrator"
+                            },
+                            {
+                                "name": "NODE_IP",
+                                "value": "127.0.0.1"
+                            },
+                            {
+                                "name": "ENVIRONMENT",
+                                "value": "local"
+                            },
+                            {
+                                "name": "GRPC_PORT",
+                                "value": "5008"
+                            },
+                            {
+                                "name": "PROXY_PORT",
+                                "value": "5007"
+                            },
+                            {
+                                "name": "PPROF_PORT",
+                                "value": "6061"
+                            },
+                            {
+                                "name": "REDIS_URL",
+                                "value": "127.0.0.1:6379"
+                            },
+                            {
+                                "name": "CLICKHOUSE_CONNECTION_STRING",
+                                "value": "clickhouse://clickhouse:clickhouse@127.0.0.1:9000/default"
+                            },
+                            {
+                                "name": "LOGS_COLLECTOR_ADDRESS",
+                                "value": "http://127.0.0.1:20006"
+                            },
+                            {
+                                "name": "TEMPLATE_STORAGE_URL",
+                                "value": "file:///var/lib/e2b/storage/templates"
+                            },
+                            {
+                                "name": "BUILD_CACHE_STORAGE_URL",
+                                "value": "file:///var/lib/e2b/storage/build-cache"
+                            },
+                            {
+                                "name": "ARTIFACTS_REGISTRY_PROVIDER",
+                                "value": "Local"
+                            },
+                            {
+                                "name": "LOCAL_UPLOAD_BASE_URL",
+                                "value": "http://127.0.0.1:5008"
+                            },
+                            {
+                                "name": "FIRECRACKER_VERSIONS_DIR",
+                                "value": "/fc-versions"
+                            },
+                            {
+                                "name": "HOST_KERNELS_DIR",
+                                "value": "/fc-kernels"
+                            },
+                            {
+                                "name": "HOST_BUSYBOX_DIR",
+                                "value": "/fc-busybox"
+                            },
+                            {
+                                "name": "BUSYBOX_VERSION",
+                                "valueFrom": {
+                                    "configMapKeyRef": {
+                                        "key": "E2B_BUSYBOX_VERSION",
+                                        "name": "e2b-versions-bmf7mkck29"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "HOST_ENVD_PATH",
+                                "value": "/fc-envd/envd"
+                            },
+                            {
+                                "name": "ORCHESTRATOR_BASE_PATH",
+                                "value": "/orchestrator"
+                            },
+                            {
+                                "name": "SANDBOX_DIR",
+                                "value": "/fc-vm"
+                            },
+                            {
+                                "name": "NBD_POOL_SIZE",
+                                "value": "32"
+                            },
+                            {
+                                "name": "NETWORK_VERSION",
+                                "value": "1"
+                            },
+                            {
+                                "name": "DEFAULT_KERNEL_VERSION",
+                                "valueFrom": {
+                                    "configMapKeyRef": {
+                                        "key": "E2B_KERNEL_VERSION",
+                                        "name": "e2b-versions-bmf7mkck29"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "DEFAULT_FIRECRACKER_VERSION",
+                                "valueFrom": {
+                                    "configMapKeyRef": {
+                                        "key": "E2B_FIRECRACKER_VERSION",
+                                        "name": "e2b-versions-bmf7mkck29"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "OL_CGROUP_ROOT",
+                                "value": "/host-cgroup/e2b"
+                            }
+                        ],
+                        "image": "us-docker.pkg.dev/e2b-artifacts/embed/tools:v0.3.202609120109-ad1cddd091b",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "orchestrator",
+                        "resources": {
+                            "limits": {
+                                "hugepages-2Mi": "32Gi"
+                            },
+                            "requests": {
+                                "hugepages-2Mi": "32Gi",
+                                "memory": "2Gi"
+                            }
+                        },
+                        "restartPolicy": "Always",
+                        "securityContext": {
+                            "privileged": true
+                        },
+                        "startupProbe": {
+                            "failureThreshold": 60,
+                            "httpGet": {
+                                "host": "127.0.0.1",
+                                "path": "/health",
+                                "port": 5008,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 3
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/host-cgroup",
+                                "name": "host-cgroup"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "args": [
+                            "--port",
+                            "3000"
+                        ],
+                        "env": [
+                            {
+                                "name": "ADMIN_TOKEN",
+                                "valueFrom": {
+                                    "secretKeyRef": {
+                                        "key": "ADMIN_TOKEN",
+                                        "name": "e2b-api"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "SANDBOX_ACCESS_TOKEN_HASH_SEED",
+                                "valueFrom": {
+                                    "secretKeyRef": {
+                                        "key": "SANDBOX_ACCESS_TOKEN_HASH_SEED",
+                                        "name": "e2b-api"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "NODE_ID",
+                                "value": "api"
+                            },
+                            {
+                                "name": "ENVIRONMENT",
+                                "value": "local"
+                            },
+                            {
+                                "name": "SERVICE_DISCOVERY_PROVIDER",
+                                "value": "local"
+                            },
+                            {
+                                "name": "LOCAL_ORCHESTRATOR_ADDRESS",
+                                "value": "127.0.0.1:5008"
+                            },
+                            {
+                                "name": "POSTGRES_CONNECTION_STRING",
+                                "value": "postgres://postgres:postgres@127.0.0.1:5432/postgres?sslmode=disable"
+                            },
+                            {
+                                "name": "REDIS_URL",
+                                "value": "127.0.0.1:6379"
+                            },
+                            {
+                                "name": "CLICKHOUSE_CONNECTION_STRING",
+                                "value": "clickhouse://clickhouse:clickhouse@127.0.0.1:9000/default"
+                            },
+                            {
+                                "name": "LOGS_READ_CONFIG",
+                                "value": "true"
+                            },
+                            {
+                                "name": "LOGS_COLLECTOR_ADDRESS",
+                                "value": "http://127.0.0.1:20006"
+                            },
+                            {
+                                "name": "API_INTERNAL_GRPC_PORT",
+                                "value": "5009"
+                            },
+                            {
+                                "name": "API_EDGE_GRPC_PORT",
+                                "value": "5109"
+                            },
+                            {
+                                "name": "PPROF_PORT",
+                                "value": "6060"
+                            },
+                            {
+                                "name": "VOLUME_TOKEN_ENABLED",
+                                "value": "false"
+                            },
+                            {
+                                "name": "AUTH_PROVIDER_CONFIG",
+                                "value": "{\"jwt\":[]}"
+                            },
+                            {
+                                "name": "DEFAULT_KERNEL_VERSION",
+                                "valueFrom": {
+                                    "configMapKeyRef": {
+                                        "key": "E2B_KERNEL_VERSION",
+                                        "name": "e2b-versions-bmf7mkck29"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "DEFAULT_FIRECRACKER_VERSION",
+                                "valueFrom": {
+                                    "configMapKeyRef": {
+                                        "key": "E2B_FIRECRACKER_VERSION",
+                                        "name": "e2b-versions-bmf7mkck29"
+                                    }
+                                }
+                            }
+                        ],
+                        "image": "us-docker.pkg.dev/e2b-artifacts/api/api:v0.14.202609130627-59497eb9134",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "api",
+                        "resources": {},
+                        "restartPolicy": "Always",
+                        "startupProbe": {
+                            "failureThreshold": 30,
+                            "httpGet": {
+                                "host": "127.0.0.1",
+                                "path": "/health",
+                                "port": 3000,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 3
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "env": [
+                            {
+                                "name": "NODE_ID",
+                                "value": "client-proxy"
+                            },
+                            {
+                                "name": "ENVIRONMENT",
+                                "value": "local"
+                            },
+                            {
+                                "name": "REDIS_URL",
+                                "value": "127.0.0.1:6379"
+                            },
+                            {
+                                "name": "API_INTERNAL_GRPC_ADDRESS",
+                                "value": "127.0.0.1:5009"
+                            },
+                            {
+                                "name": "PROXY_PORT",
+                                "value": "3002"
+                            },
+                            {
+                                "name": "HEALTH_PORT",
+                                "value": "3003"
+                            }
+                        ],
+                        "image": "us-docker.pkg.dev/e2b-artifacts/client-proxy/client-proxy:v0.3.202609130627-59497eb9134",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "client-proxy",
+                        "resources": {},
+                        "restartPolicy": "Always",
+                        "startupProbe": {
+                            "failureThreshold": 12,
+                            "httpGet": {
+                                "host": "127.0.0.1",
+                                "path": "/",
+                                "port": 3003,
+                                "scheme": "HTTP"
+                            },
+                            "periodSeconds": 10,
+                            "successThreshold": 1,
+                            "timeoutSeconds": 3
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "command": [
+                            "/bin/sh",
+                            "-c",
+                            "test -s /run/e2b/team-api-key || {\n  echo \"build-base-template: the seed left no /run/e2b/team-api-key\" \u003e\u00262\n  echo \"FIX: E2B_SEED_IMAGE must be a release whose seed knows SEED_TEAM_API_KEY_FILE (the published seed images do); run kubectl -n e2b logs e2b-0 -c seed\" \u003e\u00262\n  exit 2\n}\nE2B_API_KEY=\"$(cat /run/e2b/team-api-key)\" exec node /app/build-base-template.mjs\n"
+                        ],
+                        "env": [
+                            {
+                                "name": "E2B_API_URL",
+                                "value": "http://127.0.0.1:3000"
+                            },
+                            {
+                                "name": "FORCE_REBUILD",
+                                "value": "0"
+                            }
+                        ],
+                        "image": "us-docker.pkg.dev/e2b-artifacts/embed/node-e2b:v0.3.202609120109-ad1cddd091b",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "base-template",
+                        "resources": {},
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/run/e2b",
+                                "name": "seed-state"
+                            },
+                            {
+                                "mountPath": "/app/build-base-template.mjs",
+                                "name": "ua-base-template-builder",
+                                "readOnly": true,
+                                "subPath": "build-base-template.mjs"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "nodeName": "ua-e2b-node",
+                "nodeSelector": {
+                    "e2b.dev/single-node": "true"
+                },
+                "preemptionPolicy": "PreemptLowerPriority",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "subdomain": "e2b",
+                "terminationGracePeriodSeconds": 180,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "hostPath": {
+                            "path": "/",
+                            "type": "Directory"
+                        },
+                        "name": "host-root"
+                    },
+                    {
+                        "hostPath": {
+                            "path": "/sys/fs/cgroup",
+                            "type": "Directory"
+                        },
+                        "name": "host-cgroup"
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "clickhouse-config-4ccgb85h72"
+                        },
+                        "name": "clickhouse-config"
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "vector-config-27hbdc45c8"
+                        },
+                        "name": "vector-config"
+                    },
+                    {
+                        "hostPath": {
+                            "path": "/var/lib/e2b/data/postgres",
+                            "type": "DirectoryOrCreate"
+                        },
+                        "name": "postgres"
+                    },
+                    {
+                        "hostPath": {
+                            "path": "/var/lib/e2b/data/clickhouse",
+                            "type": "DirectoryOrCreate"
+                        },
+                        "name": "clickhouse"
+                    },
+                    {
+                        "hostPath": {
+                            "path": "/var/lib/e2b/data/seed-state",
+                            "type": "DirectoryOrCreate"
+                        },
+                        "name": "seed-state"
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "ua-base-template-builder-66cgb99hfh"
+                        },
+                        "name": "ua-base-template-builder"
+                    },
+                    {
+                        "name": "kube-api-access-q6qp9",
+                        "projected": {
+                            "defaultMode": 420,
+                            "sources": [
+                                {
+                                    "serviceAccountToken": {
+                                        "expirationSeconds": 3607,
+                                        "path": "token"
+                                    }
+                                },
+                                {
+                                    "configMap": {
+                                        "items": [
+                                            {
+                                                "key": "ca.crt",
+                                                "path": "ca.crt"
+                                            }
+                                        ],
+                                        "name": "kube-root-ca.crt"
+                                    }
+                                },
+                                {
+                                    "downwardAPI": {
+                                        "items": [
+                                            {
+                                                "fieldRef": {
+                                                    "apiVersion": "v1",
+                                                    "fieldPath": "metadata.namespace"
+                                                },
+                                                "path": "namespace"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "allocatedResources": {
+                    "cpu": "250m",
+                    "hugepages-2Mi": "32Gi",
+                    "memory": "2560Mi"
+                },
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-16T09:22:44Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodReadyToStartContainers"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-16T09:23:55Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-16T09:23:56Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-16T09:23:56Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2026-09-16T09:22:44Z",
+                        "observedGeneration": 1,
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "containerd://2eec334ffd8f4295e894c4b684c24a247cf8120b18dfecc0bc090c2319f4aceb",
+                        "image": "us-docker.pkg.dev/e2b-artifacts/embed/tools:v0.3.202609120109-ad1cddd091b",
+                        "imageID": "us-docker.pkg.dev/e2b-artifacts/embed/tools@sha256:c565bc6b9562a54b656604f138e2cde507968a300339d822786431620a2e0fda",
+                        "lastState": {},
+                        "name": "ready",
+                        "ready": true,
+                        "resources": {},
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-16T09:23:56Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0,
+                                    1,
+                                    2,
+                                    3,
+                                    4,
+                                    6,
+                                    10,
+                                    11,
+                                    20,
+                                    26,
+                                    27
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/run/e2b",
+                                "name": "seed-state"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "hostIP": "192.168.122.196",
+                "hostIPs": [
+                    {
+                        "ip": "192.168.122.196"
+                    }
+                ],
+                "initContainerStatuses": [
+                    {
+                        "containerID": "containerd://4d7c295001ad44bf8e9969b53da7f8040870f441667f95e7309a11ef445cfcc0",
+                        "image": "us-docker.pkg.dev/e2b-artifacts/embed/tools:v0.3.202609120109-ad1cddd091b",
+                        "imageID": "us-docker.pkg.dev/e2b-artifacts/embed/tools@sha256:c565bc6b9562a54b656604f138e2cde507968a300339d822786431620a2e0fda",
+                        "lastState": {},
+                        "name": "preflight",
+                        "ready": true,
+                        "resources": {},
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://4d7c295001ad44bf8e9969b53da7f8040870f441667f95e7309a11ef445cfcc0",
+                                "exitCode": 0,
+                                "finishedAt": "2026-09-16T09:22:44Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-09-16T09:22:44Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0,
+                                    1,
+                                    2,
+                                    3,
+                                    4,
+                                    6,
+                                    10,
+                                    11,
+                                    20,
+                                    26,
+                                    27
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    },
+                    {
+                        "containerID": "containerd://bcb5d2c566a413116ba036812b9d965d2ef30da1252f6a9765c112d5fc63d48b",
+                        "image": "us-docker.pkg.dev/e2b-artifacts/embed/tools:v0.3.202609120109-ad1cddd091b",
+                        "imageID": "us-docker.pkg.dev/e2b-artifacts/embed/tools@sha256:c565bc6b9562a54b656604f138e2cde507968a300339d822786431620a2e0fda",
+                        "lastState": {},
+                        "name": "host-setup",
+                        "ready": true,
+                        "resources": {},
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://bcb5d2c566a413116ba036812b9d965d2ef30da1252f6a9765c112d5fc63d48b",
+                                "exitCode": 0,
+                                "finishedAt": "2026-09-16T09:22:45Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-09-16T09:22:44Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0,
+                                    1,
+                                    2,
+                                    3,
+                                    4,
+                                    6,
+                                    10,
+                                    11,
+                                    20,
+                                    26,
+                                    27
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    },
+                    {
+                        "containerID": "containerd://c45f964af706517711a00c629785567582c97ea637a8e13969ce09686c969a3b",
+                        "image": "us-docker.pkg.dev/e2b-artifacts/embed/tools:v0.3.202609120109-ad1cddd091b",
+                        "imageID": "us-docker.pkg.dev/e2b-artifacts/embed/tools@sha256:c565bc6b9562a54b656604f138e2cde507968a300339d822786431620a2e0fda",
+                        "lastState": {},
+                        "name": "fetch-artifacts",
+                        "ready": true,
+                        "resources": {},
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://c45f964af706517711a00c629785567582c97ea637a8e13969ce09686c969a3b",
+                                "exitCode": 0,
+                                "finishedAt": "2026-09-16T09:22:46Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-09-16T09:22:45Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0,
+                                    1,
+                                    2,
+                                    3,
+                                    4,
+                                    6,
+                                    10,
+                                    11,
+                                    20,
+                                    26,
+                                    27
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/host",
+                                "name": "host-root"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    },
+                    {
+                        "containerID": "containerd://d66015849fdaaf66b3ba8d9e0d0658b8011ab91c29902b2e0da6cc01ea82ba58",
+                        "image": "docker.io/library/postgres:18.6-alpine",
+                        "imageID": "docker.io/library/postgres@sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2",
+                        "lastState": {},
+                        "name": "postgres",
+                        "ready": true,
+                        "resources": {},
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-16T09:22:47Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0,
+                                    1,
+                                    2,
+                                    3,
+                                    4,
+                                    6,
+                                    10,
+                                    11,
+                                    20,
+                                    26,
+                                    27
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/lib/postgresql",
+                                "name": "postgres"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    },
+                    {
+                        "containerID": "containerd://f3d480638bdd0b70880d0bb5e540fe2762e32dafc1580e2cd5751a401066561a",
+                        "image": "docker.io/library/redis:7.4.6",
+                        "imageID": "docker.io/library/redis@sha256:a9cc41d6d01da2aa26c219e4f99ecbeead955a7b656c1c499cce8922311b2514",
+                        "lastState": {},
+                        "name": "redis",
+                        "ready": true,
+                        "resources": {},
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-16T09:22:49Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    },
+                    {
+                        "allocatedResources": {
+                            "cpu": "250m",
+                            "memory": "512Mi"
+                        },
+                        "containerID": "containerd://2219b928638b3daed646f682d29c757940dc683ac5bcf7145c1d9ca1846de6c6",
+                        "image": "docker.io/clickhouse/clickhouse-server:25.8.30.16",
+                        "imageID": "docker.io/clickhouse/clickhouse-server@sha256:f3f6c013eee7f922b130078afc77626e72d37b4071b85ba92a675aa002d59e34",
+                        "lastState": {},
+                        "name": "clickhouse",
+                        "ready": true,
+                        "resources": {
+                            "limits": {
+                                "cpu": "2",
+                                "memory": "4Gi"
+                            },
+                            "requests": {
+                                "cpu": "250m",
+                                "memory": "512Mi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-16T09:22:54Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/lib/clickhouse",
+                                "name": "clickhouse"
+                            },
+                            {
+                                "mountPath": "/etc/clickhouse-server/config.d/config.xml",
+                                "name": "clickhouse-config"
+                            },
+                            {
+                                "mountPath": "/etc/clickhouse-server/config.d/docker_related_config.xml",
+                                "name": "clickhouse-config"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    },
+                    {
+                        "containerID": "containerd://ae1901bc49136e584dc405eaeecb5589cc9f4f1b02c58ad7720743c1c8a46e03",
+                        "image": "docker.io/timberio/vector:0.51.1-alpine",
+                        "imageID": "docker.io/timberio/vector@sha256:2d16ae87ec395508366f3c064899d374fbe04de6e64c3a613ed64aedbee034b4",
+                        "lastState": {},
+                        "name": "vector",
+                        "ready": true,
+                        "resources": {},
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-16T09:22:59Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0,
+                                    1,
+                                    2,
+                                    3,
+                                    4,
+                                    6,
+                                    10,
+                                    11,
+                                    20,
+                                    26,
+                                    27
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/etc/vector/vector.toml",
+                                "name": "vector-config"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    },
+                    {
+                        "containerID": "containerd://ad6420709c9cff4d7a2a03af4919a0f61e068702e9bfcf931a063cfe26ea592a",
+                        "image": "us-docker.pkg.dev/e2b-artifacts/api/db-migrator:v0.14.202609130627-59497eb9134",
+                        "imageID": "us-docker.pkg.dev/e2b-artifacts/api/db-migrator@sha256:2e4e5e35988f6f35301103cfeb217f9d92a63fcf17d197500036a1673f3375a0",
+                        "lastState": {},
+                        "name": "db-migrator",
+                        "ready": true,
+                        "resources": {},
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://ad6420709c9cff4d7a2a03af4919a0f61e068702e9bfcf931a063cfe26ea592a",
+                                "exitCode": 0,
+                                "finishedAt": "2026-09-16T09:23:04Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-09-16T09:23:04Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0,
+                                    1,
+                                    2,
+                                    3,
+                                    4,
+                                    6,
+                                    10,
+                                    11,
+                                    20,
+                                    26,
+                                    27
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    },
+                    {
+                        "containerID": "containerd://b5a1ccc1963e74b6f234dde5007e346c32532fe613ebdec69f19aeb9723d4804",
+                        "image": "us-docker.pkg.dev/e2b-artifacts/clickhouse-migrator/clickhouse-migrator:v0.4.202609130627-59497eb9134",
+                        "imageID": "us-docker.pkg.dev/e2b-artifacts/clickhouse-migrator/clickhouse-migrator@sha256:3e1c9ea34f73069695b54e0cee479639f68dcce5d42f3e6da31f5f4c331f23ea",
+                        "lastState": {},
+                        "name": "clickhouse-migrator",
+                        "ready": true,
+                        "resources": {},
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://b5a1ccc1963e74b6f234dde5007e346c32532fe613ebdec69f19aeb9723d4804",
+                                "exitCode": 0,
+                                "finishedAt": "2026-09-16T09:23:04Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-09-16T09:23:04Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0,
+                                    1,
+                                    2,
+                                    3,
+                                    4,
+                                    6,
+                                    10,
+                                    11,
+                                    20,
+                                    26,
+                                    27
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    },
+                    {
+                        "containerID": "containerd://8e4adb1dc0c5b5384fc38473ac5ee73d5513062346e9e9e9748f6404c6153184",
+                        "image": "us-docker.pkg.dev/e2b-artifacts/embed/seed:v0.3.202609120109-ad1cddd091b",
+                        "imageID": "us-docker.pkg.dev/e2b-artifacts/embed/seed@sha256:866acff1fe1f288b403e6b2cfde5fe8cc731092818547bc9f0d85a574fc03f93",
+                        "lastState": {},
+                        "name": "seed",
+                        "ready": true,
+                        "resources": {},
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://8e4adb1dc0c5b5384fc38473ac5ee73d5513062346e9e9e9748f6404c6153184",
+                                "exitCode": 0,
+                                "finishedAt": "2026-09-16T09:23:05Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-09-16T09:23:05Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0,
+                                    1,
+                                    2,
+                                    3,
+                                    4,
+                                    6,
+                                    10,
+                                    11,
+                                    20,
+                                    26,
+                                    27
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/run/e2b",
+                                "name": "seed-state"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    },
+                    {
+                        "allocatedResources": {
+                            "hugepages-2Mi": "32Gi",
+                            "memory": "2Gi"
+                        },
+                        "containerID": "containerd://3d0b2c23ba560f5152675f7d8b4ea678ae7218f9e6b4b0608a043ed5f105366c",
+                        "image": "us-docker.pkg.dev/e2b-artifacts/embed/tools:v0.3.202609120109-ad1cddd091b",
+                        "imageID": "us-docker.pkg.dev/e2b-artifacts/embed/tools@sha256:c565bc6b9562a54b656604f138e2cde507968a300339d822786431620a2e0fda",
+                        "lastState": {},
+                        "name": "orchestrator",
+                        "ready": true,
+                        "resources": {
+                            "limits": {
+                                "hugepages-2Mi": "32Gi"
+                            },
+                            "requests": {
+                                "hugepages-2Mi": "32Gi",
+                                "memory": "2Gi"
+                            }
+                        },
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-16T09:23:06Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0,
+                                    1,
+                                    2,
+                                    3,
+                                    4,
+                                    6,
+                                    10,
+                                    11,
+                                    20,
+                                    26,
+                                    27
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/host-cgroup",
+                                "name": "host-cgroup"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    },
+                    {
+                        "containerID": "containerd://f3ce7fec770bd82453789f9a34daeddbcb379715379d7512876b13628ef24fc1",
+                        "image": "us-docker.pkg.dev/e2b-artifacts/api/api:v0.14.202609130627-59497eb9134",
+                        "imageID": "us-docker.pkg.dev/e2b-artifacts/api/api@sha256:9504142c4bd097c5033ca17344ef47aa02a0bb5d7390bb5ca425b9a5d31f544b",
+                        "lastState": {},
+                        "name": "api",
+                        "ready": true,
+                        "resources": {},
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-16T09:23:14Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0,
+                                    1,
+                                    2,
+                                    3,
+                                    4,
+                                    6,
+                                    10,
+                                    11,
+                                    20,
+                                    26,
+                                    27
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    },
+                    {
+                        "containerID": "containerd://4c437d7d9ac13d114aca004763778906b0954f655fb09b5836a2f38ccd5cbd95",
+                        "image": "us-docker.pkg.dev/e2b-artifacts/client-proxy/client-proxy:v0.3.202609130627-59497eb9134",
+                        "imageID": "us-docker.pkg.dev/e2b-artifacts/client-proxy/client-proxy@sha256:f9ca12355225126dc3903b909a3c6bcbb331acb9363c27ac576b164e3db5eefd",
+                        "lastState": {},
+                        "name": "client-proxy",
+                        "ready": true,
+                        "resources": {},
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2026-09-16T09:23:44Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0,
+                                    1,
+                                    2,
+                                    3,
+                                    4,
+                                    6,
+                                    10,
+                                    11,
+                                    20,
+                                    26,
+                                    27
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    },
+                    {
+                        "containerID": "containerd://098b876d379bf804f1810dada8d85f561ceda841f6fe93ed3ed553f5fe29fd57",
+                        "image": "us-docker.pkg.dev/e2b-artifacts/embed/node-e2b:v0.3.202609120109-ad1cddd091b",
+                        "imageID": "us-docker.pkg.dev/e2b-artifacts/embed/node-e2b@sha256:22d6271c8ea6fa2585054b403679bcfe9494148725837a53e173fb1c9587da41",
+                        "lastState": {},
+                        "name": "base-template",
+                        "ready": true,
+                        "resources": {},
+                        "restartCount": 0,
+                        "started": false,
+                        "state": {
+                            "terminated": {
+                                "containerID": "containerd://098b876d379bf804f1810dada8d85f561ceda841f6fe93ed3ed553f5fe29fd57",
+                                "exitCode": 0,
+                                "finishedAt": "2026-09-16T09:23:55Z",
+                                "reason": "Completed",
+                                "startedAt": "2026-09-16T09:23:55Z"
+                            }
+                        },
+                        "user": {
+                            "linux": {
+                                "gid": 0,
+                                "supplementalGroups": [
+                                    0,
+                                    1,
+                                    2,
+                                    3,
+                                    4,
+                                    6,
+                                    10,
+                                    11,
+                                    20,
+                                    26,
+                                    27
+                                ],
+                                "uid": 0
+                            }
+                        },
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/run/e2b",
+                                "name": "seed-state"
+                            },
+                            {
+                                "mountPath": "/app/build-base-template.mjs",
+                                "name": "ua-base-template-builder",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "kube-api-access-q6qp9",
+                                "readOnly": true,
+                                "recursiveReadOnly": "Disabled"
+                            }
+                        ]
+                    }
+                ],
+                "observedGeneration": 1,
+                "phase": "Running",
+                "podIP": "192.168.122.196",
+                "podIPs": [
+                    {
+                        "ip": "192.168.122.196"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "resources": {
+                    "limits": {
+                        "cpu": "2",
+                        "memory": "4Gi"
+                    },
+                    "requests": {
+                        "cpu": "232m",
+                        "memory": "2560Mi"
+                    }
+                },
+                "startTime": "2026-09-16T09:22:44Z"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}

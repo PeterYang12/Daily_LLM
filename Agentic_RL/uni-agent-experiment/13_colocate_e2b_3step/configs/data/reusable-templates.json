@@ -1,0 +1,541 @@
+{
+  "zopefoundation__zope.sendmail-47": {
+    "instance_id": "zopefoundation__zope.sendmail-47",
+    "template_id": "fvd91n408qcltvus87e8",
+    "image_digest": "swerebench/sweb.eval.x86_64.zopefoundation_1776_zope.sendmail-47@sha256:5e09a27c8f2f4207e22760cb3692025b5b1e123c1df2a36b1bc49fb73a075fc1",
+    "qualified": true,
+    "error": null
+  },
+  "zopefoundation__zope.mkzeoinstance-7": {
+    "instance_id": "zopefoundation__zope.mkzeoinstance-7",
+    "template_id": "ujptioynetftnid0a52v",
+    "image_digest": "swerebench/sweb.eval.x86_64.zopefoundation_1776_zope.mkzeoinstance-7@sha256:2cd0a24d8b23ef8a37970cf4686c07b4d27976dabcb01919ba28f9f8212aa085",
+    "qualified": true,
+    "error": null
+  },
+  "sympy__sympy-21847": {
+    "instance_id": "sympy__sympy-21847",
+    "template_id": "5ztnblgrq6g5ej6zkl59",
+    "image_digest": "swebench/sweb.eval.x86_64.sympy_1776_sympy-21847@sha256:dc63eae1d6089ed44748eca7a136b877beaf316ca0ed31d0c563909ff1e094c8",
+    "qualified": true,
+    "error": null
+  },
+  "zalando-stups__zign-14": {
+    "instance_id": "zalando-stups__zign-14",
+    "template_id": "9767rhbbxciz53m57uy5",
+    "image_digest": "swerebench/sweb.eval.x86_64.zalando-stups_1776_zign-14@sha256:c98051b18c82ce1d84f2070eafc18ae36db4fb1ba7ef57a44142a28b5e785ae0",
+    "qualified": true,
+    "error": null
+  },
+  "just-work__fffw-122": {
+    "instance_id": "just-work__fffw-122",
+    "template_id": "4qpwp0yihc3zfmloqs0h",
+    "image_digest": "swerebench/sweb.eval.x86_64.just-work_1776_fffw-122@sha256:6ab2393ab182f98dd9559e8b967cd2354e622701c078a8c7effe97e30a69a341",
+    "qualified": true,
+    "error": null
+  },
+  "omni-us__jsonargparse-518": {
+    "instance_id": "omni-us__jsonargparse-518",
+    "template_id": "u75f6v2o4gr088i5kgty",
+    "image_digest": "swerebench/sweb.eval.x86_64.omni-us_1776_jsonargparse-518@sha256:4b91a665137a2c214f236e5730a3ea0a32a4d7cd5a864155cb07fcc08dd21f4f",
+    "qualified": true,
+    "error": null
+  },
+  "asottile__yesqa-69": {
+    "instance_id": "asottile__yesqa-69",
+    "template_id": "0te8iemft8pz6u28i9ge",
+    "image_digest": "swerebench/sweb.eval.x86_64.asottile_1776_yesqa-69@sha256:f141d21d539373fd54f89d328e4d0e4cdabd221433169b34e5218939d6b05804",
+    "qualified": true,
+    "error": null
+  },
+  "jpadilla__pyjwt-623": {
+    "instance_id": "jpadilla__pyjwt-623",
+    "template_id": "n5bqkdf66o7jkwsbuv4e",
+    "image_digest": "swerebench/sweb.eval.x86_64.jpadilla_1776_pyjwt-623@sha256:b0222ad5ed4f3076851664e8d82ccec21d333f7cde564a87f4648acbeca17f20",
+    "qualified": true,
+    "error": null
+  },
+  "markusressel__container-app-conf-19": {
+    "instance_id": "markusressel__container-app-conf-19",
+    "template_id": "z5tqrzuh56yh2hkvkp61",
+    "image_digest": "swerebench/sweb.eval.x86_64.markusressel_1776_container-app-conf-19@sha256:42f84da227239ed2bebbe8f6d27a0b27433237f84be73a7f50643d5de7ffd8c3",
+    "qualified": true,
+    "error": null
+  },
+  "wyfo__apischema-342": {
+    "instance_id": "wyfo__apischema-342",
+    "template_id": "xuce0ruh99a7wf269ehp",
+    "image_digest": "swerebench/sweb.eval.x86_64.wyfo_1776_apischema-342@sha256:a2045e1ae4c58723b721ade007f032643b742ee89e7c517e68d76175c2031e79",
+    "qualified": true,
+    "error": null
+  },
+  "lucianopaz__compress_pickle-28": {
+    "instance_id": "lucianopaz__compress_pickle-28",
+    "template_id": "y33c3vsp2a2edi4wnnfp",
+    "image_digest": "swerebench/sweb.eval.x86_64.lucianopaz_1776_compress_pickle-28@sha256:8cbffab9ee74a5f265a3b84f9fa81efa7bfacbdc95711632e7c4af369783a683",
+    "qualified": true,
+    "error": null
+  },
+  "psf__requests-6028": {
+    "instance_id": "psf__requests-6028",
+    "template_id": "uw3cebibv1tjh9d7m7po",
+    "image_digest": "swebench/sweb.eval.x86_64.psf_1776_requests-6028@sha256:515bfc8e8e0ab4ab176c69960958abde78797ee9de59192d305f6de92bed9e30",
+    "qualified": true,
+    "error": null
+  },
+  "smok-serwis__coolamqp-25": {
+    "instance_id": "smok-serwis__coolamqp-25",
+    "template_id": "bhprm8vnr9w92cx1dabs",
+    "image_digest": "swerebench/sweb.eval.x86_64.smok-serwis_1776_coolamqp-25@sha256:07237188553a7fe1d6c28cef855ffedfe6ea647d8c73ad1a7e272bd716970dbe",
+    "qualified": true,
+    "error": null
+  },
+  "python-cmd2__cmd2-117": {
+    "instance_id": "python-cmd2__cmd2-117",
+    "template_id": "jc7nk57n5vce7cixm29p",
+    "image_digest": "swerebench/sweb.eval.x86_64.python-cmd2_1776_cmd2-117@sha256:95ffa3d0b7c0a8a9c1a069bfedfc281e2576f8097aa20297c082342e849a0933",
+    "qualified": true,
+    "error": null
+  },
+  "eyeseast__python-frontmatter-31": {
+    "instance_id": "eyeseast__python-frontmatter-31",
+    "template_id": "iuiu48dn8kqookl4c1yi",
+    "image_digest": "swerebench/sweb.eval.x86_64.eyeseast_1776_python-frontmatter-31@sha256:d9d35e0a61971a7f9915db8dfccb5e2fdfaea54779bc442ca1b52de665c06547",
+    "qualified": true,
+    "error": null
+  },
+  "googleapis__python-bigquery-1930": {
+    "instance_id": "googleapis__python-bigquery-1930",
+    "template_id": "cwuwalarektfn7hxoz1w",
+    "image_digest": "swerebench/sweb.eval.x86_64.googleapis_1776_python-bigquery-1930@sha256:267100e25d629713da58a14d4c513c41a6e282000ab1e4bc4bee48ef1ae9085d",
+    "qualified": true,
+    "error": null
+  },
+  "astamminger__zotero-bibtize-19": {
+    "instance_id": "astamminger__zotero-bibtize-19",
+    "template_id": "j1di9ponojw21ob851ci",
+    "image_digest": "swerebench/sweb.eval.x86_64.astamminger_1776_zotero-bibtize-19@sha256:a68e9d52f55d560ba0daab4d7f9500ce6896c516d5e6ef0b2b32afd8bc8e1e9a",
+    "qualified": true,
+    "error": null
+  },
+  "google__cloud-forensics-utils-335": {
+    "instance_id": "google__cloud-forensics-utils-335",
+    "template_id": "qr60p2qfi938u58asbf3",
+    "image_digest": "swerebench/sweb.eval.x86_64.google_1776_cloud-forensics-utils-335@sha256:fe7dc95c776d6c8c347769e88a3aa35dfcb1f75e7923325fe0385fd84058be9e",
+    "qualified": true,
+    "error": null
+  },
+  "diogommartins__simple_json_logger-14": {
+    "instance_id": "diogommartins__simple_json_logger-14",
+    "template_id": "p63vreg1pq3we3iwcuot",
+    "image_digest": "swerebench/sweb.eval.x86_64.diogommartins_1776_simple_json_logger-14@sha256:c257dab29a9386b3d47412ddbd0b4b8fbf45de968fd189e012c007136731711c",
+    "qualified": true,
+    "error": null
+  },
+  "zpieslak__mobilus-client-18": {
+    "instance_id": "zpieslak__mobilus-client-18",
+    "template_id": "lag188oxgz27r4y1b4yu",
+    "image_digest": "swerebench/sweb.eval.x86_64.zpieslak_1776_mobilus-client-18@sha256:f4a459a48f6d8b62b6a125458170a9d44f41821d66b43ce05915cdde717769e3",
+    "qualified": true,
+    "error": null
+  },
+  "srsudar__eg-88": {
+    "instance_id": "srsudar__eg-88",
+    "template_id": "c1i5ojr19jzzhtqyrxg7",
+    "image_digest": "swerebench/sweb.eval.x86_64.srsudar_1776_eg-88@sha256:c949d4cfea6c944141c75213c169385b994d296c7305b574faf77ba9b78a2cd8",
+    "qualified": true,
+    "error": null
+  },
+  "miLibris__flask-rest-jsonapi-131": {
+    "instance_id": "miLibris__flask-rest-jsonapi-131",
+    "template_id": "w9pmp96sqvlg79ikogy7",
+    "image_digest": "swerebench/sweb.eval.x86_64.milibris_1776_flask-rest-jsonapi-131@sha256:45628dd8a0b22995437f57bec032364c855af137f32ddd9e5808f4ea58751fc0",
+    "qualified": true,
+    "error": null
+  },
+  "astropy__specutils-1158": {
+    "instance_id": "astropy__specutils-1158",
+    "template_id": "1btbpdeaphhntcixll6l",
+    "image_digest": "swerebench/sweb.eval.x86_64.astropy_1776_specutils-1158@sha256:a34f72521e1c3b16952d9dafc60f85dafd5b36a5fbd781bc2de8684b19c9f7d1",
+    "qualified": true,
+    "error": null
+  },
+  "pydata__xarray-4695": {
+    "instance_id": "pydata__xarray-4695",
+    "template_id": "hulgvyp9az7o1w8dj2a3",
+    "image_digest": "swebench/sweb.eval.x86_64.pydata_1776_xarray-4695@sha256:93a1265e6fe32cda6fe8d5fb5f8eba4d689fedeaae1228abc7948f2403de98a5",
+    "qualified": true,
+    "error": null
+  },
+  "jackdewinter__pymarkdown-893": {
+    "instance_id": "jackdewinter__pymarkdown-893",
+    "template_id": "vdkqqf81psww6y6vjxfv",
+    "image_digest": "swerebench/sweb.eval.x86_64.jackdewinter_1776_pymarkdown-893@sha256:00f59267e86928ae69a083942d1e2fb749de3074f1e35925a903c6a07de2d625",
+    "qualified": true,
+    "error": null
+  },
+  "microsoft__electionguard-python-379": {
+    "instance_id": "microsoft__electionguard-python-379",
+    "template_id": "63949hd5svwoprro2zt7",
+    "image_digest": "swerebench/sweb.eval.x86_64.microsoft_1776_electionguard-python-379@sha256:49652ec001b52db8089e00df8788f68fef556f65920219bade5b04f4f1b014f1",
+    "qualified": true,
+    "error": null
+  },
+  "sqlfluff__sqlfluff-905": {
+    "instance_id": "sqlfluff__sqlfluff-905",
+    "template_id": "g3x86t399qk374dtonrf",
+    "image_digest": "swerebench/sweb.eval.x86_64.sqlfluff_1776_sqlfluff-905@sha256:b20df3365f3751942b369f7063b989cf6d67af0d58705f3e86d30bf008b40026",
+    "qualified": true,
+    "error": null
+  },
+  "django__django-12754": {
+    "instance_id": "django__django-12754",
+    "template_id": "9w2t6itt2gpmyoaq6k63",
+    "image_digest": "swebench/sweb.eval.x86_64.django_1776_django-12754@sha256:449c15ed1d3f73bb30a9665965f57de8ea72a3589c8c1194a8a8dd0da4f753e5",
+    "qualified": true,
+    "error": null
+  },
+  "ipython__ipython-12144": {
+    "instance_id": "ipython__ipython-12144",
+    "template_id": "bji5eb61m6s6jbidx6d7",
+    "image_digest": "swerebench/sweb.eval.x86_64.ipython_1776_ipython-12144@sha256:29d53866f6dbfacd08d55ccf11e1849436c95a27b7f83d3c70d7db52e375051f",
+    "qualified": true,
+    "error": null
+  },
+  "JelleZijlstra__ast_decompiler-34": {
+    "instance_id": "JelleZijlstra__ast_decompiler-34",
+    "template_id": "zz7mvkdbqumwwm6mh6tk",
+    "image_digest": "swerebench/sweb.eval.x86_64.jellezijlstra_1776_ast_decompiler-34@sha256:302da8ca54083a6ba6e5cf7d96a5bd5c46a59781fbed973f09a338072ef69435",
+    "qualified": true,
+    "error": null
+  },
+  "ARMmbed__mbed-tools-208": {
+    "instance_id": "ARMmbed__mbed-tools-208",
+    "template_id": "tu466r82ovwe8ux65tf2",
+    "image_digest": "swerebench/sweb.eval.x86_64.armmbed_1776_mbed-tools-208@sha256:7db13f9846028f1131535010f2b039086dcba62e1bc19aa10014a1f29d85f86b",
+    "qualified": true,
+    "error": null
+  },
+  "ianlini__flatten-dict-13": {
+    "instance_id": "ianlini__flatten-dict-13",
+    "template_id": "0dkxxgieffekyvdumbdk",
+    "image_digest": "swerebench/sweb.eval.x86_64.ianlini_1776_flatten-dict-13@sha256:5e84bdce22df13a3e4f046e8fab61cff63c79cd8b64fb2262369f076f2529d51",
+    "qualified": true,
+    "error": null
+  },
+  "jendrikseipp__vulture-340": {
+    "instance_id": "jendrikseipp__vulture-340",
+    "template_id": "duxwhd7wtcwtm556vbgo",
+    "image_digest": "swerebench/sweb.eval.x86_64.jendrikseipp_1776_vulture-340@sha256:6859174a789317c34767592ed33f9c9788c5f2dd8339a8c7fdf85f46c0d30617",
+    "qualified": true,
+    "error": null
+  },
+  "scikit-learn__scikit-learn-13496": {
+    "instance_id": "scikit-learn__scikit-learn-13496",
+    "template_id": "56vopf19ej8rtbbw5zr2",
+    "image_digest": "swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-13496@sha256:50a7f61f8c04f76a665865e6431306d64e741a9447fb9ee23edfac0fad72e00a",
+    "qualified": true,
+    "error": null
+  },
+  "repobee__repobee-336": {
+    "instance_id": "repobee__repobee-336",
+    "template_id": "xt4a41iscznam7jo20u6",
+    "image_digest": "swerebench/sweb.eval.x86_64.repobee_1776_repobee-336@sha256:ce9043ca253aa7e20bef2ba526c5515ec9828d896061f22384679c76f26adbe4",
+    "qualified": true,
+    "error": null
+  },
+  "pre-commit__pre-commit-hooks-944": {
+    "instance_id": "pre-commit__pre-commit-hooks-944",
+    "template_id": "sjqjsj4nvnoenxv5b7k7",
+    "image_digest": "swerebench/sweb.eval.x86_64.pre-commit_1776_pre-commit-hooks-944@sha256:b4c7599c7190cf4d659a29030514e4c8612f284832b94b40827ebe2083323a26",
+    "qualified": true,
+    "error": null
+  },
+  "scikit-learn__scikit-learn-10908": {
+    "instance_id": "scikit-learn__scikit-learn-10908",
+    "template_id": "x1dk193zmtkfxvsxqxo4",
+    "image_digest": "swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-10908@sha256:f3903e9da732f6d69540bd41a61e13b856d97dd54da060fee9fafab3a3c84116",
+    "qualified": true,
+    "error": null
+  },
+  "agronholm__sqlacodegen-371": {
+    "instance_id": "agronholm__sqlacodegen-371",
+    "template_id": "3y0f515hdqch9ihefym2",
+    "image_digest": "swerebench/sweb.eval.x86_64.agronholm_1776_sqlacodegen-371@sha256:64842912df032a12c4339b10aaef4897d1fc64b1e0ed7bbe90374ed0551961ab",
+    "qualified": true,
+    "error": null
+  },
+  "hylang__hy-2522": {
+    "instance_id": "hylang__hy-2522",
+    "template_id": "st8z2uuiykq4a1ocwwdv",
+    "image_digest": "swerebench/sweb.eval.x86_64.hylang_1776_hy-2522@sha256:26b6d7a631dac2f36829755d439057855e26dcfc3efeddef6153136cd8a473e4",
+    "qualified": true,
+    "error": null
+  },
+  "django__django-11734": {
+    "instance_id": "django__django-11734",
+    "template_id": "6kvj0lpbpm5lujwh82oz",
+    "image_digest": "swebench/sweb.eval.x86_64.django_1776_django-11734@sha256:5ddbc111ccc7ed091855034eacff1c58347df158d6acd0c015feab17587d36a2",
+    "qualified": true,
+    "error": null
+  },
+  "scipp__plopp-422": {
+    "instance_id": "scipp__plopp-422",
+    "template_id": "wsx5j39mwkzcd9641fd3",
+    "image_digest": "swerebench/sweb.eval.x86_64.scipp_1776_plopp-422@sha256:dba55d5dd747579a69d3f80e181e5648768fff136c2695d4d09f5253fd6103de",
+    "qualified": true,
+    "error": null
+  },
+  "caronc__apprise-1128": {
+    "instance_id": "caronc__apprise-1128",
+    "template_id": "6uj8cyvc0sqmgsscqh1e",
+    "image_digest": "swerebench/sweb.eval.x86_64.caronc_1776_apprise-1128@sha256:915be06e96f1faa0c9a7961809c5fb075d4f1188cef0f0fd5062fdfe433e4439",
+    "qualified": true,
+    "error": null
+  },
+  "DavidVujic__python-polylith-232": {
+    "instance_id": "DavidVujic__python-polylith-232",
+    "template_id": "3lbecrytbrw783chqobu",
+    "image_digest": "swerebench/sweb.eval.x86_64.davidvujic_1776_python-polylith-232@sha256:87ef58b3ad6a557fb7cf066bb8e36798d3e2b4e0b2617b08389f770a84dcda27",
+    "qualified": true,
+    "error": null
+  },
+  "discos__simulators-307": {
+    "instance_id": "discos__simulators-307",
+    "template_id": "a70qtta5zo55cj332mgp",
+    "image_digest": "swerebench/sweb.eval.x86_64.discos_1776_simulators-307@sha256:cc8899abb1444eb1e346d6f13a1a286f2bc3d045ab84ee8e6b0d43afb744d7f5",
+    "qualified": true,
+    "error": null
+  },
+  "tornadoweb__tornado-2589": {
+    "instance_id": "tornadoweb__tornado-2589",
+    "template_id": "wrhh4c77nm0sxpcysqsj",
+    "image_digest": "swerebench/sweb.eval.x86_64.tornadoweb_1776_tornado-2589@sha256:dccdb5a730b92aedf3ba038f309b81a8adaba82703255d9de9c7835f8fc5267d",
+    "qualified": true,
+    "error": null
+  },
+  "psf__requests-5414": {
+    "instance_id": "psf__requests-5414",
+    "template_id": "bwevb298h0j8c3awpurc",
+    "image_digest": "swebench/sweb.eval.x86_64.psf_1776_requests-5414@sha256:8fadbdc7cf0281a50f88fdb78e6ac7242b499f207ec2d940250aef0abc4b3f4f",
+    "qualified": true,
+    "error": null
+  },
+  "lmfit__lmfit-py-554": {
+    "instance_id": "lmfit__lmfit-py-554",
+    "template_id": "cq1t4u515roj9iqmje6g",
+    "image_digest": "swerebench/sweb.eval.x86_64.lmfit_1776_lmfit-py-554@sha256:ff3e65917f2a672971a0b9c5734c3c9f9610720dca1f58674a7014ad165ada6f",
+    "qualified": true,
+    "error": null
+  },
+  "asottile__pyupgrade-146": {
+    "instance_id": "asottile__pyupgrade-146",
+    "template_id": "v14t4o9pp5mn25pqgjuz",
+    "image_digest": "swerebench/sweb.eval.x86_64.asottile_1776_pyupgrade-146@sha256:958d3b8d6dd9590815d2a1fd8842460a9bdbf8684428aff5b37d2838c4077ff8",
+    "qualified": true,
+    "error": null
+  },
+  "pydata__xarray-6744": {
+    "instance_id": "pydata__xarray-6744",
+    "template_id": "d6lyz95t45mczwmbut0n",
+    "image_digest": "swebench/sweb.eval.x86_64.pydata_1776_xarray-6744@sha256:81611b35828f9d9f2c39e755d21d53ac74e23b5d24fe5b01516b39d8619d0c93",
+    "qualified": true,
+    "error": null
+  },
+  "hgrecco__pint-1476": {
+    "instance_id": "hgrecco__pint-1476",
+    "template_id": "6qs0h1bxnkqls5a2rqei",
+    "image_digest": "swerebench/sweb.eval.x86_64.hgrecco_1776_pint-1476@sha256:1af29b3b49b153048c4018e9298d43d6289cbeee726020c34373823ca7897b30",
+    "qualified": true,
+    "error": null
+  },
+  "Materials-Consortia__optimade-python-tools-2250": {
+    "instance_id": "Materials-Consortia__optimade-python-tools-2250",
+    "template_id": "du47c396p3x4dmjylksl",
+    "image_digest": "swerebench/sweb.eval.x86_64.materials-consortia_1776_optimade-python-tools-2250@sha256:c71a7d7407d1e43c95a74e0a55476dc80ac89d86c9f6b207cda4300491869051",
+    "qualified": true,
+    "error": null
+  },
+  "desihub__desiutil-173": {
+    "instance_id": "desihub__desiutil-173",
+    "template_id": "q226yf8cktx8ni3t8eqc",
+    "image_digest": "swerebench/sweb.eval.x86_64.desihub_1776_desiutil-173@sha256:f216a9305e31cbf59e2b7e3f02c6b1f0090509b9e675512d4300649b3edce80f",
+    "qualified": true,
+    "error": null
+  },
+  "psf__requests-2317": {
+    "instance_id": "psf__requests-2317",
+    "template_id": "w32g17urllxezll375sv",
+    "image_digest": "swebench/sweb.eval.x86_64.psf_1776_requests-2317@sha256:a0ce096d4dfa27ca8ea80ae4b38103e970d17b19066d886a550936394827c9fb",
+    "qualified": true,
+    "error": null
+  },
+  "dwavesystems__dwave-cloud-client-417": {
+    "instance_id": "dwavesystems__dwave-cloud-client-417",
+    "template_id": "3ujexhqub5sm54s1g0ce",
+    "image_digest": "swerebench/sweb.eval.x86_64.dwavesystems_1776_dwave-cloud-client-417@sha256:121569c9038b6dfced94c8b3ab9abcd661cede5b0ab8c673641d2e55cfc72939",
+    "qualified": true,
+    "error": null
+  },
+  "tox-dev__tox-1099": {
+    "instance_id": "tox-dev__tox-1099",
+    "template_id": "w92efpn5ujizajjnfk7l",
+    "image_digest": "swerebench/sweb.eval.x86_64.tox-dev_1776_tox-1099@sha256:00e71e6c8daf34d5a477694fff6a935f3ce8809e12de121f2b0f8dec31daf3df",
+    "qualified": true,
+    "error": null
+  },
+  "Shopify__shopify_python_api-363": {
+    "instance_id": "Shopify__shopify_python_api-363",
+    "template_id": "yvvd3lec6se13dburz75",
+    "image_digest": "swerebench/sweb.eval.x86_64.shopify_1776_shopify_python_api-363@sha256:f2019e4d21259f7569215272f46b6a5ef3570d9a9506d23c15165dfdcd4875fd",
+    "qualified": true,
+    "error": null
+  },
+  "zwicker-group__py-pde-683": {
+    "instance_id": "zwicker-group__py-pde-683",
+    "template_id": "9zmq1vofkcknr2h15nk2",
+    "image_digest": "swerebench/sweb.eval.x86_64.zwicker-group_1776_py-pde-683@sha256:11c22ff4c58a868af616891603b8bc100684b6db67631f2128ad84c5ecc5a750",
+    "qualified": true,
+    "error": null
+  },
+  "scikit-learn__scikit-learn-13142": {
+    "instance_id": "scikit-learn__scikit-learn-13142",
+    "template_id": "yyachowfk1a889vrbkg2",
+    "image_digest": "swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-13142@sha256:7c377ff6166931d3c231a0f8ee4db63a3e6581e85b9a5f0fd3be15125810c1f6",
+    "qualified": true,
+    "error": null
+  },
+  "oemof__tespy-536": {
+    "instance_id": "oemof__tespy-536",
+    "template_id": "rcboz3qsyfzxncr6eetf",
+    "image_digest": "swerebench/sweb.eval.x86_64.oemof_1776_tespy-536@sha256:321a4b40369ba025980c202c238ada6215eeb49666411424f58c5a5b588d01d8",
+    "qualified": true,
+    "error": null
+  },
+  "altair-viz__altair-1587": {
+    "instance_id": "altair-viz__altair-1587",
+    "template_id": "1a0zghrhd5z0o2v35n16",
+    "image_digest": "swerebench/sweb.eval.x86_64.altair-viz_1776_altair-1587@sha256:585bc5d5fca1c3adde884d60aa008715ab64f65cbcbc414b07c0cc0e51c1f045",
+    "qualified": true,
+    "error": null
+  },
+  "openlawlibrary__pygls-247": {
+    "instance_id": "openlawlibrary__pygls-247",
+    "template_id": "fiofiu6g57mq0idur4ec",
+    "image_digest": "swerebench/sweb.eval.x86_64.openlawlibrary_1776_pygls-247@sha256:b59efb59538c4387b84cfa9fa8108597ffeaf78fd746b8cad995617075a528f1",
+    "qualified": true,
+    "error": null
+  },
+  "tefra__xsdata-1025": {
+    "instance_id": "tefra__xsdata-1025",
+    "template_id": "han880x3j4c3ggz6grgz",
+    "image_digest": "swerebench/sweb.eval.x86_64.tefra_1776_xsdata-1025@sha256:3a100dd75c849a1afa0d3ec9e7bea30097af476a76f9dd1a9202fc65fb80110b",
+    "qualified": true,
+    "error": null
+  },
+  "gorakhargosh__watchdog-530": {
+    "instance_id": "gorakhargosh__watchdog-530",
+    "template_id": "1tba4utj7612zdudl9th",
+    "image_digest": "swerebench/sweb.eval.x86_64.gorakhargosh_1776_watchdog-530@sha256:0d9f4bda3f66a86d61154583e45b9f60b2a99404304971f72898a86d2c98ca1b",
+    "qualified": true,
+    "error": null
+  },
+  "encode__httpx-861": {
+    "instance_id": "encode__httpx-861",
+    "template_id": "evblsi2k906k54s4d6n0",
+    "image_digest": "swerebench/sweb.eval.x86_64.encode_1776_httpx-861@sha256:06f02996282e72087d93164f4b7ff74cf43af4be3dec1faa1b107d020b47d04c",
+    "qualified": true,
+    "error": null
+  },
+  "tobymao__sqlglot-4618": {
+    "instance_id": "tobymao__sqlglot-4618",
+    "template_id": "hw8ebhnt59f8bplzdsfs",
+    "image_digest": "swerebench/sweb.eval.x86_64.tobymao_1776_sqlglot-4618@sha256:81b801d64dc175ac0b5fbebe139af7b76134791a648f27356ff2e6af24172f59",
+    "qualified": true,
+    "error": null
+  },
+  "django__django-11555": {
+    "instance_id": "django__django-11555",
+    "template_id": "yr0jyrh2n1kscihtf7bd",
+    "image_digest": "swebench/sweb.eval.x86_64.django_1776_django-11555@sha256:36c28a4ff3d57102f43c3ea25d60357c48b24ceb013126e3588b707dddd1cd36",
+    "qualified": true,
+    "error": null
+  },
+  "PennyLaneAI__pennylane-3057": {
+    "instance_id": "PennyLaneAI__pennylane-3057",
+    "template_id": "rugrapo8c9x7n739yd5u",
+    "image_digest": "swerebench/sweb.eval.x86_64.pennylaneai_1776_pennylane-3057@sha256:12e86eaebff0c352dda3027dbd1c92a2a9ac893af59f4ef1187e5d1486a8ce74",
+    "qualified": true,
+    "error": null
+  },
+  "maxfischer2781__asyncstdlib-49": {
+    "instance_id": "maxfischer2781__asyncstdlib-49",
+    "template_id": "sfvpljhvsri2zw59rakm",
+    "image_digest": "swerebench/sweb.eval.x86_64.maxfischer2781_1776_asyncstdlib-49@sha256:9015454d64e11b0c7713cb4db605d1f546bdb85952ca92f55eb1981e7d78f824",
+    "qualified": true,
+    "error": null
+  },
+  "agronholm__anyio-639": {
+    "instance_id": "agronholm__anyio-639",
+    "template_id": "6ubvkdgwk7eolguy3elj",
+    "image_digest": "swerebench/sweb.eval.x86_64.agronholm_1776_anyio-639@sha256:02c7b82f0c69b3f63bd3ec49645e132a9bd1a81c9cc6b18c9e6ea79b1dda59f0",
+    "qualified": true,
+    "error": null
+  },
+  "sympy__sympy-13647": {
+    "instance_id": "sympy__sympy-13647",
+    "template_id": "o5bz28oge0ezyjlujem0",
+    "image_digest": "swebench/sweb.eval.x86_64.sympy_1776_sympy-13647@sha256:d27b2eed2f5d195f63c48acf32a64c562a0121d7ee28effd548702507b4ada8a",
+    "qualified": true,
+    "error": null
+  },
+  "elastic__rally-557": {
+    "instance_id": "elastic__rally-557",
+    "template_id": "3zof8zh729nsmikvxxaf",
+    "image_digest": "swerebench/sweb.eval.x86_64.elastic_1776_rally-557@sha256:2490c0b3a316f87aae30a3943d80f38051da662b5e41d1f27c24dfc4ffcb4070",
+    "qualified": true,
+    "error": null
+  },
+  "alecthomas__voluptuous-380": {
+    "instance_id": "alecthomas__voluptuous-380",
+    "template_id": "kw3l1uft4j4zvbrmxfj6",
+    "image_digest": "swerebench/sweb.eval.x86_64.alecthomas_1776_voluptuous-380@sha256:ae48e484db2bc4e6006249f4303710df3d01b3b4e26f6f22a9847f98d7c16266",
+    "qualified": true,
+    "error": null
+  },
+  "tophat__syrupy-607": {
+    "instance_id": "tophat__syrupy-607",
+    "template_id": "zm020f5bno9rc6n9qidq",
+    "image_digest": "swerebench/sweb.eval.x86_64.tophat_1776_syrupy-607@sha256:11edd73a356a5685a939ee79150d775ab61c6e728e8c8e854f3b5d305e4dbe28",
+    "qualified": true,
+    "error": null
+  },
+  "monarch-initiative__koza-60": {
+    "instance_id": "monarch-initiative__koza-60",
+    "template_id": "w98s1f4mlsfr9bn6nke1",
+    "image_digest": "swerebench/sweb.eval.x86_64.monarch-initiative_1776_koza-60@sha256:5fa04e9f0c61b77a837457322447c466c6096b5ff4d2e798ce8f2cc8f5676c44",
+    "qualified": true,
+    "error": null
+  },
+  "sympy__sympy-20438": {
+    "instance_id": "sympy__sympy-20438",
+    "template_id": "pqkc5c3dc5rao8m0ular",
+    "image_digest": "swebench/sweb.eval.x86_64.sympy_1776_sympy-20438@sha256:cb6d4d5d94b5ef2dbf611a8caf1a82b52b88564c286767cd460c33cad9965ae0",
+    "qualified": true,
+    "error": null
+  },
+  "pydata__xarray-3095": {
+    "instance_id": "pydata__xarray-3095",
+    "template_id": "ehn1tq015b5hh0zv8sc5",
+    "image_digest": "swebench/sweb.eval.x86_64.pydata_1776_xarray-3095@sha256:fb721923cba0d05faafdafb2fb76e6caa3adc22fd4fdcbf2de45741312f91c74",
+    "qualified": true,
+    "error": null
+  },
+  "dpkp__kafka-python-2573": {
+    "instance_id": "dpkp__kafka-python-2573",
+    "template_id": "8chqjtgokex6dk8melml",
+    "image_digest": "swerebench/sweb.eval.x86_64.dpkp_1776_kafka-python-2573@sha256:3cd861c63fa88ac16fff71f21a464e8d477db51d026347317e4614d10fe4fb99",
+    "qualified": true,
+    "error": null
+  }
+}

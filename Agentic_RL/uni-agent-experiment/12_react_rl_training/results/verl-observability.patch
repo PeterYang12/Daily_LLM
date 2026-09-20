@@ -1,0 +1,85 @@
+diff --git a/verl/trainer/ppo/v1/trainer_base.py b/verl/trainer/ppo/v1/trainer_base.py
+index 6e5b286..8d9dc1a 100644
+--- a/verl/trainer/ppo/v1/trainer_base.py
++++ b/verl/trainer/ppo/v1/trainer_base.py
+@@ -78,7 +78,7 @@ from verl.utils import tensordict_utils as tu
+ from verl.utils.checkpoint.checkpoint_manager import find_latest_ckpt_path
+ from verl.utils.config import omega_conf_to_dataclass
+ from verl.utils.dataset.rl_dataset import collate_fn
+-from verl.utils.debug import marked_timer
++from ua_rl.instrument import marked_timer
+ from verl.utils.debug.metrics import calculate_debug_metrics
+ from verl.utils.import_utils import load_extern_type
+ from verl.utils.metric import reduce_metrics
+diff --git a/verl/trainer/ppo/v1/trainer_colocate_async.py b/verl/trainer/ppo/v1/trainer_colocate_async.py
+index 400de9f..86b6b0e 100644
+--- a/verl/trainer/ppo/v1/trainer_colocate_async.py
++++ b/verl/trainer/ppo/v1/trainer_colocate_async.py
+@@ -12,7 +12,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ from verl.trainer.ppo.v1.trainer_base import PPOTrainer, register_trainer
+-from verl.utils.debug import marked_timer
++from ua_rl.instrument import marked_timer
+ from verl.workers.rollout.llm_server import FullyAsyncLLMServerClient
+ 
+ 
+diff --git a/verl/utils/device.py b/verl/utils/device.py
+index 1e9d2b9..76a478f 100644
+--- a/verl/utils/device.py
++++ b/verl/utils/device.py
+@@ -140,6 +140,10 @@ def set_expandable_segments(enable: bool) -> None:
+     Args:
+         enable: If True, enable expandable segments. If False, disable them.
+     """
++    # This lab's ROCm 7.14 runtime fails its first lazy RCCL reduction with
++    # expandable segments. Respect the validated opt-out during phase changes.
++    if os.environ.get('UA_RL_DISABLE_EXPANDABLE') == '1':
++        enable = False
+     get_platform().set_allocator_settings(f"expandable_segments:{enable}")
+ 
+ 
+diff --git a/verl/utils/tracking.py b/verl/utils/tracking.py
+index 3107f50..1a5fa21 100644
+--- a/verl/utils/tracking.py
++++ b/verl/utils/tracking.py
+@@ -189,6 +189,10 @@ class Tracking:
+             self.logger["rl_insight"] = RLInsightLogger(project_name, experiment_name, config)
+ 
+     def log(self, data, step, backend=None):
++        if os.environ.get("UA_RL_OBSERVE") == "1":
++            from ua_rl.instrument import enrich_metrics
++
++            data = enrich_metrics(data, step)
+         for default_backend, logger_instance in self.logger.items():
+             if backend is None or default_backend in backend:
+                 logger_instance.log(data=data, step=step)
+@@ -538,7 +542,8 @@ class FileLogger:
+             os.makedirs(directory, exist_ok=True)
+             self.filepath = os.path.join(directory, f"{self.experiment_name}.jsonl")
+         print(f"Creating file logger at {os.path.abspath(self.filepath)}")
+-        self.fp = open(self.filepath, "wb", buffering=0)
++        mode = "ab" if os.getenv("VERL_FILE_LOGGER_APPEND") == "1" else "wb"
++        self.fp = open(self.filepath, mode, buffering=0)
+ 
+     def log(self, data, step):
+         data = {"step": step, "data": data}
+diff --git a/verl/workers/engine/megatron/transformer_impl.py b/verl/workers/engine/megatron/transformer_impl.py
+index ae47338..75a7768 100644
+--- a/verl/workers/engine/megatron/transformer_impl.py
++++ b/verl/workers/engine/megatron/transformer_impl.py
+@@ -697,7 +697,14 @@ class MegatronEngine(BaseEngine):
+         # free cached blocks before grad-norm all_reduce to reduce OOM on tight VRAM.
+         if getattr(self, "_distillation_use_topk_active", False):
+             get_torch_device().empty_cache()
++        observe = os.environ.get("UA_RL_OBSERVE") == "1"
++        if observe:
++            from ua_rl.instrument import record_optimizer, snapshot
++
++            before_update = snapshot(self)
+         update_successful, grad_norm, num_zeros_in_grad = self.optimizer.step()
++        if observe:
++            record_optimizer(self, before_update, grad_norm, update_successful)
+ 
+         if update_successful:
+             # allgather already execute in optimizer.step in new megatron

@@ -1,0 +1,6 @@
+{
+  "version": "v1.36.4+k3s1",
+  "sha256": "835873f37245fc615f547a2fe2af9402a347875f13fa64a1f136de644955ea3f",
+  "verification_url": "https://github.com/k3s-io/k3s/releases/download/v1.36.4%2Bk3s1/sha256sum-amd64.txt",
+  "cache_source": "previous dedicated E2B VM"
+}

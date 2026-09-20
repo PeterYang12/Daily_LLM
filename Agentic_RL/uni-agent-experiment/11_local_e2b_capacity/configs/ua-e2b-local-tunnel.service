@@ -1,0 +1,12 @@
+[Unit]
+Description=Local E2B API and Kubernetes SSH tunnels
+Wants=network-online.target
+After=network-online.target libvirtd.service docker.service
+[Service]
+Type=simple
+User=yuhanya
+ExecStart=/usr/bin/ssh -NT -o ExitOnForwardFailure=yes -F /home/yuhanya/uni-agent-lab/local-e2b-96c512g-20260916/configs/ssh_config -L 127.0.0.1:18090:127.0.0.1:3000 -L 172.30.90.1:18090:127.0.0.1:3000 -L 127.0.0.1:18091:127.0.0.1:3002 -L 172.30.90.1:18091:127.0.0.1:3002 -L 127.0.0.1:18092:127.0.0.1:6443 ua-e2b-large
+Restart=always
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

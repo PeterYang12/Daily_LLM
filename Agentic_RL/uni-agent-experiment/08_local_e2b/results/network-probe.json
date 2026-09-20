@@ -1,0 +1,16 @@
+[
+  {
+    "url": "http://deb.debian.org/debian/dists/bookworm/InRelease",
+    "wall_s": 0.5037155258469284,
+    "code": 0,
+    "stdout": "200 151075 0.136230",
+    "stderr": ""
+  },
+  {
+    "url": "http://deb.debian.org/debian/dists/bookworm-updates/InRelease",
+    "wall_s": 0.3902178159914911,
+    "code": 0,
+    "stdout": "200 55446 0.050669",
+    "stderr": ""
+  }
+]

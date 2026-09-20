@@ -1,0 +1,22 @@
+[
+  {
+    "templateID": "uckk5539uvrjduteyr5a",
+    "buildID": "d91c3e4a-bb7f-4c24-8d90-779691814fd5",
+    "buildStatus": "ready",
+    "aliases": [
+      "base"
+    ],
+    "cpuCount": 2,
+    "memoryMB": 1024
+  },
+  {
+    "templateID": "6gz72hgrq9yqwt3l2vd1",
+    "buildID": "b6c5e3b7-cd31-4444-811a-00d1bd5052e0",
+    "buildStatus": "ready",
+    "aliases": [
+      "ua-sweprof-flask-0"
+    ],
+    "cpuCount": 4,
+    "memoryMB": 8192
+  }
+]

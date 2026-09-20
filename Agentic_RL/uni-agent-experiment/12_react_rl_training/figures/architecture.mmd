@@ -1,0 +1,17 @@
+flowchart LR
+  subgraph D["Docker: 8 AMD MI350X GPUs"]
+    Data["62 SWE-reBench train / 16 SWE-bench evaluation"] --> F["verl + Uni-Agent framework"]
+    F --> A["ReAct CPU workers: concurrency 16"]
+    A <--> G["Uni-Agent Gateway: 4 FastAPI actors"]
+    G <--> L["vLLM: 4 TP2 replicas"]
+    G --> T["Trajectory IDs, masks, logprobs"]
+    A -->|"candidate patch"| V
+    V["Official SWE verifier controller"] --> T
+    T --> O["Megatron GSPO: EP8, full parameters"]
+    O -->|"weight sync each step"| L
+  end
+  A -->|"create / exec / files"| E["User E2B API: 10.145.64.67:8088"]
+  E --> S["Agent sandbox: 4 CPU / 8 GiB"]
+  S -->|"destroy; create fresh verifier"| R["Verification sandbox"]
+  V <--> R
+  O --> W["W&B metrics and profiles"]

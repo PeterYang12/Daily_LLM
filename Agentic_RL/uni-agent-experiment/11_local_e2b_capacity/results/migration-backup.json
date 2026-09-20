@@ -1,0 +1,11 @@
+{
+  "time_unix": 1789558531.6137881,
+  "old_vm": "ua-e2b-local-20260916",
+  "old_application_stopped_before_backup": true,
+  "application_archive_bytes": 6485749760,
+  "application_archive_sha256": "9337b79b2e7fff72d76d27ee77be84173e7092b4c195a51c6c4670906ed23fa7",
+  "archive_location": "protected secrets/local-e2b-large/e2b-state.tar",
+  "templates_and_databases_preserved": true,
+  "old_vm_stopped": true,
+  "old_disk_retained": true
+}

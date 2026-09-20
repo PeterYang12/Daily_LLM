@@ -1,0 +1,36 @@
+{
+  "started_unix": 1789555421.305687,
+  "checks": {
+    "exact_output_and_exit": true,
+    "large_output_and_blank_lines": true,
+    "cwd_env": true,
+    "text_file": true,
+    "binary_1MiB": true,
+    "persistent_shell": true,
+    "session_nonzero": true,
+    "cancel_propagated": true,
+    "timeout_stops_command": true,
+    "cancel_stops_command": true,
+    "shell_close_idempotent": true,
+    "stop_idempotent": true,
+    "concurrent_4": true
+  },
+  "sandboxes": [
+    "90b629b0-88a9-426b-bbbc-febf3d42b3c0",
+    "c877bcc3-fd5d-4538-b4cc-52f35d5bc2ad",
+    "88e9b0a5-baf4-414f-90a1-2086a38970e4",
+    "fef3e3bf-af44-45b9-81e1-15ebb947d7c2",
+    "53155d8c-8c8b-4dc3-84ee-d33135e3cc37"
+  ],
+  "raw_output_check": {
+    "exit_code": 7,
+    "stdout": "first\nsecond\n",
+    "stderr": "err\n"
+  },
+  "timeout_result": {
+    "code": -1,
+    "stderr": "exec timed out after 0.3s: OpenSandbox command exceeded 0.3s"
+  },
+  "success": true,
+  "finished_unix": 1789555437.4417195
+}

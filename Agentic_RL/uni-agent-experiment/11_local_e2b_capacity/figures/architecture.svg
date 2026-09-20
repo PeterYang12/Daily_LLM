@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="470" viewBox="0 0 1180 470">
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#475569"/></marker></defs>
+<rect width="1180" height="470" fill="#f8fafc"/><g font-family="Arial, sans-serif" fill="#0f172a">
+<text x="30" y="38" font-size="23" font-weight="bold">Local E2B capacity upgrade</text>
+<rect x="480" y="65" width="670" height="370" rx="14" fill="#eff6ff" stroke="#93c5fd"/>
+<text x="505" y="98" font-size="18" font-weight="bold">Ubuntu 24.04 VM: 96 vCPU / 512 GiB / 500 GiB disk</text>
+<rect x="25" y="155" width="205" height="95" rx="10" fill="white" stroke="#94a3b8"/>
+<text x="42" y="182" font-size="17" font-weight="bold">ua-lab-cpu (Docker)</text><text x="42" y="209" font-size="14">E2B SDK / Uni-Agent</text><text x="42" y="231" font-size="14">sandbox adapter</text>
+<rect x="265" y="155" width="180" height="95" rx="10" fill="white" stroke="#94a3b8"/>
+<text x="282" y="182" font-size="17" font-weight="bold">Host SSH tunnels</text><text x="282" y="209" font-size="14">API :18090</text><text x="282" y="231" font-size="14">Execution :18091</text>
+<rect x="505" y="155" width="235" height="95" rx="10" fill="white" stroke="#60a5fa"/>
+<text x="525" y="182" font-size="17" font-weight="bold">K3s: E2B services</text><text x="525" y="209" font-size="14">API / client proxy</text><text x="525" y="231" font-size="14">Orchestrator / databases</text>
+<rect x="785" y="155" width="335" height="95" rx="10" fill="white" stroke="#60a5fa"/>
+<text x="805" y="182" font-size="17" font-weight="bold">Nested KVM / Firecracker</text><text x="805" y="209" font-size="14">24 simultaneous SWE microVMs verified</text><text x="805" y="231" font-size="14">Each configured with 4 vCPU / 8 GiB</text>
+<rect x="505" y="310" width="615" height="95" rx="10" fill="white" stroke="#60a5fa"/>
+<text x="525" y="340" font-size="17">384 GiB hugepage pool / 256 NBD devices / warm pool 64</text><text x="525" y="369" font-size="15">Existing templates, API key, and database state migrated</text><text x="525" y="391" font-size="14">Old 16 vCPU / 64 GiB VM stopped; disk retained for rollback</text>
+</g><g stroke="#475569" stroke-width="2" marker-end="url(#arrow)"><path d="M230,202 H265"/><path d="M445,202 H505"/><path d="M740,202 H785"/><path d="M622,250 V310"/></g></svg>

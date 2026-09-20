@@ -1,0 +1,1286 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Uni-Agent RL infrastructure analysis</title><style>
+    :root{--ink:#172332;--muted:#536273;--line:#dce3ea;--accent:#186499}
+    *{box-sizing:border-box}body{font-family:system-ui,-apple-system,"Noto Sans CJK SC","Microsoft YaHei",sans-serif;color:var(--ink);margin:0;line-height:1.68;background:#f7f9fb}
+    nav{position:fixed;width:255px;left:0;top:0;bottom:0;padding:25px 18px;background:#fff;border-right:1px solid var(--line);overflow:auto;font-size:12px}
+    nav ul{padding-left:16px}nav a{color:var(--muted);text-decoration:none}nav li{margin:5px 0}
+    main{margin-left:255px;padding:38px 46px 80px;max-width:1460px;background:#fff;min-height:100vh}
+    h1{font-size:30px;line-height:1.25}h2{font-size:23px;border-top:1px solid var(--line);padding-top:25px;margin-top:42px}h3{font-size:18px;margin-top:28px}
+    a{color:var(--accent)}p,li{max-width:1150px}code{font-family:ui-monospace,monospace;font-size:.9em;background:#f2f5f8;padding:1px 4px;border-radius:3px;overflow-wrap:anywhere}
+    pre{white-space:pre-wrap;background:#f2f5f8;padding:16px;overflow:auto}pre code{padding:0}table{border-collapse:collapse;font-size:12px;display:block;overflow:auto;margin:20px 0;width:100%}
+    th,td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#edf3f8;text-align:left;white-space:nowrap}tr:nth-child(even) td{background:#fafcfe}
+    img{display:block;width:100%;height:auto;margin:20px 0;border:1px solid #edf0f4}blockquote{border-left:4px solid #3a81b3;margin:22px 0;padding:8px 18px;background:#f2f7fb}
+    .toplinks{font-size:13px;color:var(--muted)}@media(max-width:1000px){nav{display:none}main{margin:0;padding:22px}}
+    @media print{nav,.toplinks{display:none}body,main{background:white}main{margin:0;padding:0;max-width:none}h2{break-before:auto}img,table{break-inside:avoid}a{color:inherit;text-decoration:none}@page{size:A4;margin:15mm}}
+    </style><nav><b>Uni-Agent RL infrastructure analysis</b><div class="toc">
+<ul>
+<li><a href="#uni-agent-swe-agent-rl-infrastructure-and-critical-path-analysis">Uni-Agent SWE-agent RL: infrastructure and critical-path analysis</a><ul>
+<li><a href="#1-findings-that-should-drive-the-next-run">1. Findings that should drive the next run</a></li>
+<li><a href="#2-experiment-scope-and-accounting-rules">2. Experiment scope and accounting rules</a></li>
+<li><a href="#3-where-the-completed-training-step-spent-its-wall-time">3. Where the completed training step spent its wall time</a></li>
+<li><a href="#4-the-actual-rollout-and-gpu-timeline">4. The actual rollout and GPU timeline</a></li>
+<li><a href="#5-why-sandbox-startup-was-slow">5. Why sandbox startup was slow</a></li>
+<li><a href="#6-per-runner-time-composition">6. Per-runner time composition</a></li>
+<li><a href="#7-long-tail-cost-at-n8">7. Long-tail cost at n=8</a><ul>
+<li><a href="#case-a-anyio-is-batch-1s-critical-group">Case A: AnyIO is batch 1's critical group</a></li>
+<li><a href="#case-b-hy-determines-the-end-of-batch-2">Case B: Hy determines the end of batch 2</a></li>
+<li><a href="#case-c-a-task-with-an-1172-sample-spread">Case C: a task with an 11.72× sample spread</a></li>
+</ul>
+</li>
+<li><a href="#8-sampling-cost-versus-reward-diversity">8. Sampling cost versus reward diversity</a></li>
+<li><a href="#9-verifier-tooling-and-timeout-behavior">9. Verifier, tooling and timeout behavior</a><ul>
+<li><a href="#verification-was-small-and-bounded-here">Verification was small and bounded here</a></li>
+<li><a href="#logical-tools-amplify-into-many-rpcs">Logical tools amplify into many RPCs</a></li>
+<li><a href="#only-one-logical-timeout-and-one-format-error">Only one logical timeout and one format error</a></li>
+</ul>
+</li>
+<li><a href="#10-model-service-time-and-metric-interpretation">10. Model service time and metric interpretation</a></li>
+<li><a href="#11-infrastructure-incidents-and-reliability-cost">11. Infrastructure incidents and reliability cost</a></li>
+<li><a href="#12-prioritized-next-experiments">12. Prioritized next experiments</a></li>
+<li><a href="#appendix-a-all-32-eight-sample-groups">Appendix A. All 32 eight-sample groups</a></li>
+<li><a href="#appendix-b-reproduction-and-evidence">Appendix B. Reproduction and evidence</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav><main><div class="toplinks"><a href="README.md">Directory guide</a> · <a href="REPORT.html">English</a> · <a href="REPORT.zh-CN.html">中文</a> · <a href="explorer.html">8-sample explorer</a></div><h1 id="uni-agent-swe-agent-rl-infrastructure-and-critical-path-analysis">Uni-Agent SWE-agent RL: infrastructure and critical-path analysis</h1>
+<p>This report analyzes the <strong>2026-09-20 three-step smoke run</strong>, which stopped during trainer step 2 after a driver-reported uncorrectable GPU event. <strong>One optimizer update completed; two batches of 128 rollouts completed; no trained checkpoint was saved.</strong> The training data was SWE-reBench, not the 500-task SWE-bench Verified evaluation set. No full benchmark evaluation was run.</p>
+<p>The questions are operational: where time went, why startup felt slow, what n=8 did to the completion barrier, whether verification or transport errors dominated, and which interventions have evidence behind them. Rollout timing statistics below come from the final runtime attempt's 256 completed episodes; the incident section separately covers earlier setup failures.</p>
+<h2 id="1-findings-that-should-drive-the-next-run">1. Findings that should drive the next run</h2>
+<ol>
+<li><strong>Rollout collection dominates the completed step:</strong> 29.58 of 35.32 minutes (83.7%). Actor update took 4.41 minutes. Faster gradient updates alone cannot remove the largest delay in this run.</li>
+<li><strong>The startup bottleneck is partly in our client-side gate, not a measured multi-minute E2B boot.</strong> The create timer includes queue waiting. Three create permits remain held through readiness checks and cached tmux installation. Measured post-create work alone occupied at least <strong>91.1% / 92.0%</strong> of the three-permit capacity during the two creation ramps.</li>
+<li><strong>Long tails leave useful capacity idle.</strong> After 90% of samples had finished, batch 1 still needed <strong>9.44 minutes</strong> and batch 2 <strong>13.08 minutes</strong>. These tails consumed <strong>32.2% / 45.1%</strong> of cohort wall time. Their mean GPU busy levels were only <strong>45.4% / 43.1%</strong>.</li>
+<li><strong>Verifier cost is small on the observed critical paths.</strong> Its mean was 11.88s, P95 26.88s and maximum 48.83s. The final sample's verifier took just <strong>15.73s / 6.35s</strong>, versus last-sample gaps of <strong>5.53 / 6.61 minutes</strong>.</li>
+<li><strong>Fine-grained tool transport is an optimization opportunity, but not the leading batch tail.</strong> There were 44,645 instrumented agent-side RPCs for 9,950 logical tool actions, about <strong>4.49 RPCs/action</strong>. Most exec calls were short control operations; direct file reads/writes were much cheaper.</li>
+<li><strong>Reliability is the first blocker.</strong> A real update was verified on all eight ranks, then an ATHUB event and automatic all-GPU reset destroyed unsaved state. The next sustained run needs a repaired/validated GPU environment and a checkpoint policy suitable for that risk.</li>
+</ol>
+<p>Use the <a href="explorer.html">offline eight-sample explorer</a> to select any of the 32 tasks and compare its eight durations, phase costs, tokens and rewards. The <a href="data/episodes.csv">256-row episode CSV</a> and <a href="data/groups.csv">32-group CSV</a> contain the underlying measurements.</p>
+<h2 id="2-experiment-scope-and-accounting-rules">2. Experiment scope and accounting rules</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Actual run</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Model</td>
+<td>Qwen/Qwen3-Coder-30B-A3B-Instruct; full-parameter RL</td>
+</tr>
+<tr>
+<td>Trainer</td>
+<td>Uni-Agent + bundled verl, colocate_async, GRPO advantages / GSPO loss, R3 Router Replay</td>
+</tr>
+<tr>
+<td>Hardware</td>
+<td>8 AMD MI350X; actor TP1/PP1/CP4/EP8; four TP2 vLLM replicas on the same GPUs</td>
+</tr>
+<tr>
+<td>Sampling</td>
+<td>16 prompts/batch × 8 independent attempts = 128 rollout sessions</td>
+</tr>
+<tr>
+<td>Budgets</td>
+<td>131,072 Agent tokens; 200 Agent steps; 3 requested trainer steps</td>
+</tr>
+<tr>
+<td>E2B</td>
+<td>User-hosted endpoint; reported 192 CPUs / 1 TB RAM / quota 512; 4 vCPU and 8 GiB configured per task sandbox</td>
+</tr>
+<tr>
+<td>Client gates</td>
+<td>128 session cap; 3 combined create/readiness/provision permits; 16 instrumented exec permits</td>
+</tr>
+<tr>
+<td>Dataset</td>
+<td>All 1,150 official prepared SWE-reBench rows retained; ready-template tasks ordered first; first 32 tasks actually used</td>
+</tr>
+<tr>
+<td>Scheduling deviation</td>
+<td>Warmup prefetch=0; fixed 48-prompt submission cap for the planned three batches</td>
+</tr>
+<tr>
+<td>Outcome</td>
+<td>1/3 updates completed, 256/384 planned rollouts completed, no step-3 checkpoint</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A rollout means one independent attempt. A prompt group means one task with eight rollouts.</strong> A task's eight attempts share the question, model version and recipe, but have independent writable sandboxes and different sampled action sequences.</p>
+<p><strong>Instance quota and compute capacity are different.</strong> At 128 live sandboxes, the configured envelopes sum to <strong>512 vCPU and 1,024 GiB (1 TiB)</strong>. The vCPU count is 2.67 times the reported 192 host CPUs; the memory envelope is approximately the reported entire host RAM, before host/services overhead, with TB versus TiB units unspecified. These are configured guest resources, not measured CPU demand or resident memory. The successful 128-instance check established that the platform admitted and exercised that many instances; it did not establish sustained full-load capacity. No server-side CPU, memory-pressure or disk measurements are available to decide whether actual contention occurred.</p>
+<p>There are three different denominators in this report:</p>
+<ul>
+<li><strong>Trainer wall time:</strong> the explicit non-overlapping timers for completed step 1. This is the correct view for “what percentage of a training step is rollout versus optimization?”</li>
+<li><strong>Cohort observation span:</strong> earliest framework session-open to the last observed completion. This is reconstructed from session timestamps and differs slightly from the trainer's generation timer. It is the basis for startup ramps, tails and GPU occupancy.</li>
+<li><strong>Summed runner/sandbox time:</strong> add durations across concurrent attempts. This measures accumulated occupancy or where individual attempts spend time. It can be many hours even when the batch finishes in half an hour; it must not be added to trainer wall time.</li>
+</ul>
+<p>Structured event durations and runner/verifier timers have subsecond resolution. Model and logical-tool intervals are reconstructed from log markers with <strong>one-second endpoint resolution</strong>; each interval can be off by under about one second. Their component shares are approximate. Rounded framework timestamps can also make a subsecond finalization interval appear negative; the dataset preserves interval bounds rather than interpreting that as negative work. No E2B server-side boot trace, pure inference queue/prefill/decode split, server CPU/RAM utilization or checkpoint-write benchmark was available.</p>
+<h2 id="3-where-the-completed-training-step-spent-its-wall-time">3. Where the completed training step spent its wall time</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Seconds</th>
+<th>Share of step 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rollout collection</td>
+<td>1,774.94</td>
+<td>83.746%</td>
+</tr>
+<tr>
+<td>Actor logprob recomputation</td>
+<td>72.97</td>
+<td>3.443%</td>
+</tr>
+<tr>
+<td>Actor update</td>
+<td>264.62</td>
+<td>12.485%</td>
+</tr>
+<tr>
+<td>Weight synchronization</td>
+<td>5.08</td>
+<td>0.239%</td>
+</tr>
+<tr>
+<td>Advantages</td>
+<td>1.73</td>
+<td>0.082%</td>
+</tr>
+<tr>
+<td>Unattributed timer remainder</td>
+<td>0.10</td>
+<td>0.004%</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Only completed trainer step 1 has a full authoritative phase breakdown." src="figures/01_step1_wall_phases.png" /></p>
+<p><em>Only completed trainer step 1 has a full authoritative phase breakdown.</em></p>
+<p>The small residual is only time outside these explicit timers; it does <strong>not</strong> mean orchestration overhead is negligible, because waiting, dispatch, RPCs and verification are included inside <code>gen</code>. Step 2's rollout completed, but its training-side computation was interrupted, so assigning a complete step-2 training percentage would be misleading.</p>
+<p>The actor's reported MFU was <strong>6.86%</strong>, despite long stretches of nearly 100% GPU busy. MFU is an estimator tied to the model/FLOP accounting; GPU busy is a hardware utilization sample. They answer different questions. The run showed generic AITER/Torch fallbacks, Stream-K/GSU warnings and shape-driven Dynamo recompilation warnings. Those are reasons to profile kernels later, not evidence that any one warning caused the hardware event or a quantified speed loss.</p>
+<h2 id="4-the-actual-rollout-and-gpu-timeline">4. The actual rollout and GPU timeline</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Batch 1</th>
+<th>Batch 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prompt groups × n</td>
+<td>16 × 8</td>
+<td>16 × 8</td>
+</tr>
+<tr>
+<td>Completed / resolved</td>
+<td>128 / 26</td>
+<td>128 / 32</td>
+</tr>
+<tr>
+<td>Observed cohort span, min</td>
+<td>29.35</td>
+<td>28.99</td>
+</tr>
+<tr>
+<td>Event-reconstructed peak live</td>
+<td>126</td>
+<td>122</td>
+</tr>
+<tr>
+<td>10-second API sampled peak live</td>
+<td>125</td>
+<td>122</td>
+</tr>
+<tr>
+<td>Mean live sandboxes</td>
+<td>43.43</td>
+<td>38.83</td>
+</tr>
+<tr>
+<td>Mean reported GPU busy</td>
+<td>77.37%</td>
+<td>71.93%</td>
+</tr>
+<tr>
+<td>Time with mean GPU busy &lt;50%, min</td>
+<td>7.14</td>
+<td>8.32</td>
+</tr>
+<tr>
+<td>Model-generated tokens</td>
+<td>1,507,570</td>
+<td>1,252,000</td>
+</tr>
+<tr>
+<td>Generated tokens / observed cohort second, all GPUs</td>
+<td>856.02</td>
+<td>719.85</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Rollout bands, GPU utilization, completed update 1 and the later GPU fault." src="figures/02_attempt_timeline.png" /></p>
+<p><em>Rollout bands, GPU utilization, completed update 1 and the later GPU fault.</em></p>
+<p>The 128-session setting did not mean 128 continuously live sandboxes. Client-event reconstruction found peaks of <strong>126 / 122</strong>, while ten-second API sampling saw <strong>125 / 122</strong>. The separate capacity check did hold and verify 128 live instances. Mean live counts of roughly <strong>43 / 39</strong> reflect creation ramp-up and completion tail-down, not a proof that the E2B service could only support that many.</p>
+<p>With warmup prefetch disabled, this run effectively waited for all 16 groups of a batch before updating. It demonstrates <strong>GPU colocation</strong>, but is not a measurement of the best fully asynchronous/partial-rollout throughput. Idle capacity released by completed samples could not be filled with the next batch under this bounded schedule. The framework reported zero staleness in step 1, consistent with this behavior.</p>
+<h2 id="5-why-sandbox-startup-was-slow">5. Why sandbox startup was slow</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Batch 1</th>
+<th>Batch 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>First-to-last successful create, s</td>
+<td>358.88</td>
+<td>440.51</td>
+</tr>
+<tr>
+<td>Last create after cohort session-open, s</td>
+<td>372.11</td>
+<td>441.12</td>
+</tr>
+<tr>
+<td>Observed creation slope, instances/s</td>
+<td>0.354</td>
+<td>0.288</td>
+</tr>
+<tr>
+<td>Creation wait + API P50, s</td>
+<td>133.79</td>
+<td>175.68</td>
+</tr>
+<tr>
+<td>Post-create work still inside create gate, mean s</td>
+<td>7.76</td>
+<td>9.54</td>
+</tr>
+<tr>
+<td>Of that: cached tmux provisioning, mean s</td>
+<td>2.35</td>
+<td>2.91</td>
+</tr>
+<tr>
+<td>Of that: readiness/probes/other, mean s</td>
+<td>5.41</td>
+<td>6.63</td>
+</tr>
+<tr>
+<td>Lower bound: gate capacity occupied AFTER create success</td>
+<td>91.1%</td>
+<td>92.0%</td>
+</tr>
+<tr>
+<td>Dispatch/import log upper-bound median, s</td>
+<td>35.45</td>
+<td>0.049</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="The measured create duration includes waiting before the SDK create call." src="figures/03_startup_ramp_and_wait.png" /></p>
+<p><em>The measured create duration includes waiting before the SDK create call.</em></p>
+<p>Across 256 runners, <code>created.seconds</code> had P50 <strong>149.12s</strong>, P95 <strong>385.81s</strong> and maximum <strong>434.11s</strong>. It would be wrong to report these as E2B cold-boot latency. The timer starts before acquiring the shared create semaphore; the SDK request begins only after a permit is obtained.</p>
+<p>The permit is then retained for:</p>
+<pre><code class="language-text">E2B create → /bin/true readiness probe → command -v tmux
+    → OS lookup → upload cached packages → dpkg install → tmux check
+    → release create permit
+</code></pre>
+<p>The first three creation measurements, which precede a backlog, were <strong>0.41–0.72s</strong> in batch 1 and <strong>0.58–0.63s</strong> in batch 2. These are useful observations, not a service-wide boot-latency distribution. The API may return before the execution channel is ready.</p>
+<p>After successful create returned, work still holding the gate averaged <strong>7.76s / 9.54s</strong>. Only <strong>2.35s / 2.91s</strong> of that was the explicitly timed cached-package upload/install; the remainder was readiness/probes/OS lookup and associated overhead. Summing the observed post-create hold intervals, clipped to the creation ramp, already occupies at least <strong>91.1% / 92.0%</strong> of the three-permit capacity. This is a direct lower-bound argument for a client-side bottleneck without guessing unknown API request-start times.</p>
+<p>There was also a first-use runner dispatch/import effect: the framework-to-runner log delta had median <strong>35.45s</strong> in batch 1, versus a subsecond upper-bound median around <strong>0.049s</strong> in batch 2. The first batch had one outlier near <strong>268s</strong>. This delta combines scheduling, process startup/import and local entry overhead; it is not a pure Ray scheduler metric. Batch 2's longer create ramp despite warm workers shows that worker warmup alone does not solve the gate bottleneck.</p>
+<p><strong>Intervention:</strong> fix template building, bake tools into templates, and separate a small create-API gate from a separately bounded readiness/provision pool. Do not simply launch unbounded startup requests: the initial capacity test observed connection resets, and the passing retry changed both readiness probing and execution burst concurrency.</p>
+<h2 id="6-per-runner-time-composition">6. Per-runner time composition</h2>
+<table>
+<thead>
+<tr>
+<th>Runner component</th>
+<th>Cumulative hours</th>
+<th>Share of summed runner lifetimes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Creation wait + API</td>
+<td>12.06</td>
+<td>23.15%</td>
+</tr>
+<tr>
+<td>Post-create prep</td>
+<td>1.49</td>
+<td>2.87%</td>
+</tr>
+<tr>
+<td>Model roundtrips</td>
+<td>30.12</td>
+<td>57.82%</td>
+</tr>
+<tr>
+<td>Logical tools</td>
+<td>7.43</td>
+<td>14.27%</td>
+</tr>
+<tr>
+<td>Verifier</td>
+<td>0.84</td>
+<td>1.62%</td>
+</tr>
+<tr>
+<td>Destroy</td>
+<td>0.00</td>
+<td>0.00%</td>
+</tr>
+<tr>
+<td>Agent local/resolution residue</td>
+<td>0.07</td>
+<td>0.14%</td>
+</tr>
+<tr>
+<td>Other runner/resolution residue</td>
+<td>0.07</td>
+<td>0.13%</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Parallel accumulated time: do not read this as a training-step pie chart." src="figures/04_runner_time_composition.png" /></p>
+<p><em>Parallel accumulated time: do not read this as a training-step pie chart.</em></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Mean s</th>
+<th>P50 s</th>
+<th>P95 s</th>
+<th>Max s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Runner total</td>
+<td>732.52</td>
+<td>693.57</td>
+<td>1,173.42</td>
+<td>1,739.18</td>
+</tr>
+<tr>
+<td>Creation wait + API</td>
+<td>169.54</td>
+<td>149.12</td>
+<td>385.81</td>
+<td>434.11</td>
+</tr>
+<tr>
+<td>Post-create preparation</td>
+<td>21.02</td>
+<td>17.61</td>
+<td>53.30</td>
+<td>80.88</td>
+</tr>
+<tr>
+<td>Model roundtrips per runner</td>
+<td>423.53</td>
+<td>374.00</td>
+<td>794.75</td>
+<td>1,472.00</td>
+</tr>
+<tr>
+<td>Logical tools per runner</td>
+<td>104.55</td>
+<td>104.50</td>
+<td>173.75</td>
+<td>264.00</td>
+</tr>
+<tr>
+<td>Verifier</td>
+<td>11.88</td>
+<td>8.72</td>
+<td>26.88</td>
+<td>48.83</td>
+</tr>
+<tr>
+<td>Destroy acknowledgement</td>
+<td>0.012</td>
+<td>0.011</td>
+<td>0.013</td>
+<td>0.047</td>
+</tr>
+</tbody>
+</table>
+<p>Total runner time was <strong>52.09 runner-hours</strong>, and acknowledged live sandbox time was <strong>40.01 sandbox-hours</strong>. Model-response waits overlapped <strong>75.3%</strong> of that live-sandbox residence and <strong>80.0%</strong> of Agent-loop time. This explains why many stateful environments can remain allocated while the model service controls progress. It does <strong>not</strong> measure sandbox CPU idleness; a background process may run while the Agent waits, and server CPU metrics were unavailable.</p>
+<p>Post-create preparation includes readiness, cached tools, repository-history cleanup and shell initialization. Tool provisioning is nested inside it and must not be added again. The very small destroy acknowledgements do not prove that every server-side resource is physically reclaimed in 12ms; they measure the client-visible API operation.</p>
+<h2 id="7-long-tail-cost-at-n8">7. Long-tail cost at n=8</h2>
+<table>
+<thead>
+<tr>
+<th>Tail measure</th>
+<th>Batch 1</th>
+<th>Batch 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>After 90% complete: remaining min</td>
+<td>9.44</td>
+<td>13.08</td>
+</tr>
+<tr>
+<td>After 90% complete: share of cohort time</td>
+<td>32.2%</td>
+<td>45.1%</td>
+</tr>
+<tr>
+<td>Mean GPU busy in that tail</td>
+<td>45.41%</td>
+<td>43.14%</td>
+</tr>
+<tr>
+<td>After 95% complete: remaining min</td>
+<td>7.43</td>
+<td>10.86</td>
+</tr>
+<tr>
+<td>Last one sample alone adds, min</td>
+<td>5.53</td>
+<td>6.61</td>
+</tr>
+<tr>
+<td>Critical task</td>
+<td>agronholm__anyio-639</td>
+<td>hylang__hy-2522</td>
+</tr>
+<tr>
+<td>Critical sample verifier, s</td>
+<td>15.73</td>
+<td>6.35</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Completion times use nearest-rank milestones: 90% means 116 of 128 samples completed." src="figures/05_duration_and_completion_tail.png" /></p>
+<p><em>Completion times use nearest-rank milestones: 90% means 116 of 128 samples completed.</em></p>
+<p>For a group, readiness waits for the slowest of eight attempts. For this no-prefetch batch, completion waits for the slowest of all 128 attempts. The median within-group slowest/fastest runner ratio was <strong>1.69×</strong>; the largest was <strong>11.72×</strong>. The median slowest/median ratio was <strong>1.31×</strong>.</p>
+<p>This does not establish that n=8 is intrinsically worse than n=4 at fixed total rollout count: changing n also changes the number of distinct tasks and the learning signal, and the workload has not been rerun under those alternatives. It does show why “most samples are done” is a poor ETA signal for a blocking batch.</p>
+<p><img alt="Every measured task and all eight samples. An asterisk marks reward 1." src="figures/06_all_8_sample_groups.png" /></p>
+<p><em>Every measured task and all eight samples. An asterisk marks reward 1.</em></p>
+<h3 id="case-a-anyio-is-batch-1s-critical-group">Case A: AnyIO is batch 1's critical group</h3>
+<p>The slowest attempt took <strong>28.84 minutes</strong>, versus <strong>8.75 minutes</strong> for the fastest. The slow attempt generated <strong>43,223 tokens</strong> across <strong>110 Agent steps</strong>, versus <strong>7,326 tokens / 41 steps</strong> for the fastest. Its <strong>1,472s of model roundtrips</strong> dominated its lifetime; the verifier took only <strong>15.73s</strong>. This is a workload/model-path tail, not an observed verifier bottleneck.</p>
+<table>
+<thead>
+<tr>
+<th>Sample</th>
+<th>Total min</th>
+<th>Create+wait s</th>
+<th>Model min</th>
+<th>Tools s</th>
+<th>Verifier s</th>
+<th>Turns</th>
+<th>Generated tokens</th>
+<th>R</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>9.98</td>
+<td>100.95</td>
+<td>6.05</td>
+<td>104</td>
+<td>18.96</td>
+<td>46</td>
+<td>8,997</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>18.47</td>
+<td>106.82</td>
+<td>13.85</td>
+<td>142</td>
+<td>15.77</td>
+<td>78</td>
+<td>20,819</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>28.84</td>
+<td>101.40</td>
+<td>24.53</td>
+<td>128</td>
+<td>15.73</td>
+<td>110</td>
+<td>43,223</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>11.69</td>
+<td>108.67</td>
+<td>8.15</td>
+<td>74</td>
+<td>17.56</td>
+<td>35</td>
+<td>12,447</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>11.55</td>
+<td>114.02</td>
+<td>7.58</td>
+<td>93</td>
+<td>17.96</td>
+<td>40</td>
+<td>11,422</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12.90</td>
+<td>121.16</td>
+<td>8.55</td>
+<td>107</td>
+<td>18.07</td>
+<td>42</td>
+<td>12,620</td>
+<td>0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>16.08</td>
+<td>111.18</td>
+<td>12.37</td>
+<td>81</td>
+<td>16.71</td>
+<td>47</td>
+<td>19,358</td>
+<td>0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>8.75</td>
+<td>114.55</td>
+<td>4.72</td>
+<td>95</td>
+<td>18.74</td>
+<td>41</td>
+<td>7,326</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Within-task timelines expose both staggered startup and different model/tool paths." src="figures/07_anyio_eight_samples.png" /></p>
+<p><em>Within-task timelines expose both staggered startup and different model/tool paths.</em></p>
+<h3 id="case-b-hy-determines-the-end-of-batch-2">Case B: Hy determines the end of batch 2</h3>
+<p>The slowest Hy sample took <strong>28.99 minutes</strong> and generated <strong>37,973 tokens</strong>, compared with <strong>15.90 minutes / 12,324 tokens</strong> for its fastest peer. Its creation wait+API cost was <strong>424.12s</strong>, its model roundtrips <strong>1,235s</strong>, and its verifier <strong>6.35s</strong>. Startup and behavior both mattered. The final sample ended <strong>6.61 minutes after the penultimate sample of the whole batch</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Sample</th>
+<th>Total min</th>
+<th>Create+wait s</th>
+<th>Model min</th>
+<th>Tools s</th>
+<th>Verifier s</th>
+<th>Turns</th>
+<th>Generated tokens</th>
+<th>R</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>15.98</td>
+<td>409.76</td>
+<td>7.90</td>
+<td>48</td>
+<td>6.92</td>
+<td>27</td>
+<td>12,402</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>18.33</td>
+<td>415.42</td>
+<td>9.73</td>
+<td>69</td>
+<td>6.22</td>
+<td>48</td>
+<td>15,986</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>15.90</td>
+<td>358.64</td>
+<td>7.97</td>
+<td>55</td>
+<td>6.81</td>
+<td>40</td>
+<td>12,324</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>15.96</td>
+<td>417.72</td>
+<td>7.92</td>
+<td>32</td>
+<td>7.11</td>
+<td>29</td>
+<td>11,545</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>28.99</td>
+<td>424.12</td>
+<td>20.58</td>
+<td>47</td>
+<td>6.35</td>
+<td>57</td>
+<td>37,973</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>18.66</td>
+<td>422.91</td>
+<td>10.03</td>
+<td>62</td>
+<td>4.22</td>
+<td>43</td>
+<td>15,535</td>
+<td>1</td>
+</tr>
+<tr>
+<td>6</td>
+<td>19.72</td>
+<td>335.40</td>
+<td>11.93</td>
+<td>93</td>
+<td>6.52</td>
+<td>41</td>
+<td>19,971</td>
+<td>0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>18.12</td>
+<td>424.26</td>
+<td>9.72</td>
+<td>46</td>
+<td>6.67</td>
+<td>40</td>
+<td>14,890</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="The final Hy sample remains expensive after separating creation waiting." src="figures/08_hy_eight_samples.png" /></p>
+<p><em>The final Hy sample remains expensive after separating creation waiting.</em></p>
+<h3 id="case-c-a-task-with-an-1172-sample-spread">Case C: a task with an 11.72× sample spread</h3>
+<p>For <code>diogommartins__simple_json_logger-14</code>, the fastest attempt took <strong>73.41s</strong> with <strong>8 steps / 601 generated tokens</strong>. The slowest took <strong>860.08s</strong> with <strong>44 steps / 16,864 tokens</strong>. This is the largest ratio in the dataset, but it was not the batch-2 critical path: a large within-task ratio and a large batch-level tail are different findings.</p>
+<p><img alt="An extreme sample ratio can coexist with a different task controlling batch completion." src="figures/09_largest_sample_ratio.png" /></p>
+<p><em>An extreme sample ratio can coexist with a different task controlling batch completion.</em></p>
+<p>The computed “completed-sample waiting equivalents” in <code>groups.csv</code> are diagnostic slot-seconds, <strong>not live sandbox time or GPU idle time</strong>: completed samples had already been destroyed. They indicate opportunities a different scheduler might fill.</p>
+<h2 id="8-sampling-cost-versus-reward-diversity">8. Sampling cost versus reward diversity</h2>
+<p><strong>9 of 32 groups (72 rollouts)</strong> had identical rewards across all eight attempts. They consumed <strong>25.7% of summed runner time</strong> and <strong>25.5% of generated tokens</strong>. There were 9 all-zero groups and 0 all-one groups.</p>
+<p>With group-normalized GRPO rewards, uniform-reward groups have zero reward-derived within-group advantage. This is useful cost/signal information, not a reason to retrospectively drop slow failures: their rewards were unknown beforehand, and changing group filtering changes data selection and refill demand. A later controlled study can compare n=4/B=32 and n=8/B=16 at 128 sessions, or evaluate supported group filtering, while tracking group reward variance, consumed data and refill cost.</p>
+<h2 id="9-verifier-tooling-and-timeout-behavior">9. Verifier, tooling and timeout behavior</h2>
+<h3 id="verification-was-small-and-bounded-here">Verification was small and bounded here</h3>
+<p>All <strong>256 evaluations completed with parseable test output</strong>. There was no recorded verifier timeout; maximum call time was <strong>48.83s</strong> against a <strong>600s</strong> evaluator limit. Cumulative verifier time was <strong>50.68 minutes</strong>, but this was parallel across samples and therefore cannot be added as 50.68 minutes to the batch wall clocks. It was only <strong>1.62% of summed runner lifetimes</strong>.</p>
+<p>The exact verifier timer includes any exec-admission waiting, SDK/transport and command execution. The inner instrumented exec timer begins after its gate; the difference is queue/wrapper overhead, not an independently measured server compute interval. An evaluation process completing normally is also distinct from tests passing: <strong>58/256</strong> rollouts resolved their tasks.</p>
+<h3 id="logical-tools-amplify-into-many-rpcs">Logical tools amplify into many RPCs</h3>
+<table>
+<thead>
+<tr>
+<th>Logical tool</th>
+<th>Calls</th>
+<th>Mean s</th>
+<th>P50 s</th>
+<th>P95 s</th>
+<th>P99 s</th>
+<th>Max s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shell</td>
+<td>4,791</td>
+<td>3.36</td>
+<td>2.00</td>
+<td>8.00</td>
+<td>28.00</td>
+<td>138.00</td>
+</tr>
+<tr>
+<td>str_replace_editor</td>
+<td>4,923</td>
+<td>2.16</td>
+<td>1.00</td>
+<td>6.00</td>
+<td>19.00</td>
+<td>31.00</td>
+</tr>
+<tr>
+<td>submit</td>
+<td>236</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Instrumented operation</th>
+<th>Calls</th>
+<th>Mean s</th>
+<th>P50 s</th>
+<th>P95 s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exec/agent</td>
+<td>34,403</td>
+<td>0.4556</td>
+<td>0.2897</td>
+<td>0.8298</td>
+</tr>
+<tr>
+<td>exec/setup_or_cleanup</td>
+<td>2,329</td>
+<td>0.9559</td>
+<td>0.4960</td>
+<td>2.0374</td>
+</tr>
+<tr>
+<td>exec/verifier</td>
+<td>256</td>
+<td>11.7872</td>
+<td>8.6475</td>
+<td>26.7475</td>
+</tr>
+<tr>
+<td>file_read/agent</td>
+<td>3,219</td>
+<td>0.0093</td>
+<td>0.0080</td>
+<td>0.0164</td>
+</tr>
+<tr>
+<td>file_write/agent</td>
+<td>7,023</td>
+<td>0.0166</td>
+<td>0.0059</td>
+<td>0.0124</td>
+</tr>
+<tr>
+<td>file_write/setup_or_cleanup</td>
+<td>512</td>
+<td>0.0065</td>
+<td>0.0058</td>
+<td>0.0098</td>
+</tr>
+</tbody>
+</table>
+<p>The Agent is configured with <code>stateful_shell</code>, exposed to the model as <code>shell</code>. This provider does not implement the native persistent-shell interface, so the framework uses <strong>tmux over one-shot exec</strong>. A logical command writes an input file, sends a tmux command, polls an exit-code file, may wait on a tmux signal, then reads stdout/stderr. File editing also issues existence/type checks.</p>
+<p>Of <strong>36,988 exec RPCs</strong>, <strong>16,052 were <code>cat</code></strong>, <strong>12,462 were <code>test</code></strong> and <strong>6,073 were <code>tmux</code></strong>. Among execs attributed to Agent operation, <strong>96.7% lasted under one second</strong>. Direct file APIs had mean times around <strong>9ms for reads</strong> and <strong>17ms for Agent writes</strong>, while the median Agent exec RPC was <strong>0.290s</strong>. This suggests batching/control-protocol or native-session work is more promising than optimizing file payload transfer in isolation.</p>
+<p>The instrumented exec gate reached 16 concurrent calls. It was fully occupied for <strong>291.8s / 349.3s</strong>, about <strong>16.6% / 20.1%</strong> of cohort spans. Average use of the 16-permit capacity was only <strong>37.1% / 37.6%</strong>. It can create burst queuing, but it was not continuously saturated. These intervals exclude direct readiness/provision operations and file APIs that bypass this gate.</p>
+<p><img alt="Verifier distribution and the low-level control operations behind Agent tools." src="figures/11_verifier_and_rpc_calls.png" /></p>
+<p><em>Verifier distribution and the low-level control operations behind Agent tools.</em></p>
+<h3 id="only-one-logical-timeout-and-one-format-error">Only one logical timeout and one format error</h3>
+<ul>
+<li><strong>Shell timeout:</strong> one Shopify sample issued <code>find /testbed -name "*.py" -exec grep -l "not all arguments converted" \;</code>, omitting the <code>{}</code> file placeholder. <code>grep</code> consequently reads standard input, consistent with the tool's interactive-wait timeout. The 120s command budget produced a <strong>138s observed logical call</strong>, including polling/interruption/output handling. The Agent continued and finished. This sample was not the batch critical path.</li>
+<li><strong>Format error:</strong> one watchdog sample passed an extra <code>shell</code> argument to a function that only accepts <code>command</code>. Validation rejected it before normal execution; the Agent corrected the call. The logged interval rounded to zero seconds.</li>
+<li><strong>Main-attempt transport:</strong> no recorded E2B create/readiness/destroy/exec-transport error events and no anchored model-client retry warnings. This does not include the earlier capacity-test resets or failed setup attempts.</li>
+<li><strong>Nonzero exec exits:</strong> 7,530 were observed, but these are not an infrastructure-failure count. For example, <code>test</code> and polling <code>cat</code> normally return nonzero while a path/result does not exist.</li>
+</ul>
+<p>None of the 256 episodes exhausted the configured Agent budget: all returned <code>finished=True</code>; observed Agent steps reached at most <strong>110</strong> and last-call context+completion at most <strong>122,743 tokens</strong>. The two long tails are therefore not evidence of hitting the 200-step or 128K limit.</p>
+<h2 id="10-model-service-time-and-metric-interpretation">10. Model service time and metric interpretation</h2>
+<p><img alt="Descriptive correlations; shared GPU load and different tasks prevent a causal latency claim." src="figures/10_model_work_and_latency.png" /></p>
+<p><em>Descriptive correlations; shared GPU load and different tasks prevent a causal latency claim.</em></p>
+<p>The logs contain <strong>9,970 completed Agent model-query calls</strong>, with <strong>2,759,570 generated tokens</strong>. These generated-token totals exactly match the exported trajectories' model-token masks for every episode. The API prompt-token sum is much larger—<strong>200,993,200</strong>—because multi-turn requests resend history. It is not a count of unique tokens physically recomputed on GPUs: prefix-cache hit data was not recorded.</p>
+<p>Model-query roundtrip latency averaged <strong>10.88s</strong>, with <strong>P50 3s, P95 45s, P99 76s, maximum 180s</strong>. Completion sizes ranged from 7 to 4,972 tokens (median 75). A slow roundtrip is not automatically an infrastructure timeout: these are completed calls with different output sizes and input histories, and the measured interval combines client work, service queueing, inference and transport. Instrumenting those subspans is necessary before choosing between more serving capacity, better cache reuse or lower RPC latency.</p>
+<p>Within task groups, demeaned Agent time and generated token count had Pearson correlation <strong>0.976</strong>. Across all episodes, the Spearman correlation between total runner duration and generated tokens was <strong>0.779</strong>. These support generated workload as an explanation for duration variation, while leaving queue, prefill, decode and transport contributions unresolved.</p>
+<p>Three metric traps matter for this analysis:</p>
+<ol>
+<li><code>perf/throughput=267.19</code> is computed as <strong>4,530,385 trajectory tokens / (2,119.43 step seconds × 8 GPUs)</strong>. It is not decode-only tokens/s. Likewise the reported generation ms/token uses trajectory response length, which includes tool observations and history tokens.</li>
+<li>In this version, V1 converts jagged data to batch-padded tensors before <code>compute_data_metrics</code>. <code>response_length/clip_ratio=1/128</code> and <code>prompt_length/clip_ratio=8/128</code> compare lengths with that padded batch maximum. They are <strong>not sufficient evidence of exhausting the configured token limits</strong>. Termination reasons and configured budgets are the appropriate checks.</li>
+<li>Gateway <code>num_turns</code> counts user/assistant messages plus one. Every observed trajectory's counter is <strong>Agent query count + 2</strong>; the trainer's maximum 112 therefore corresponds to the Agent's 110 steps, not 112 model calls.</li>
+</ol>
+<h2 id="11-infrastructure-incidents-and-reliability-cost">11. Infrastructure incidents and reliability cost</h2>
+<table>
+<thead>
+<tr>
+<th>Incident</th>
+<th>Evidence and consequence</th>
+<th>What the data supports</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fresh template builds failed</td>
+<td>Multiple images and a minimal import-only probe returned internal errors during E2B environment initialization</td>
+<td>Build path needs repair; reusing ready templates does not validate arbitrary new-image support</td>
+</tr>
+<tr>
+<td>Initial capacity command resets</td>
+<td>126/128 checks passed first; two connection resets; all cleaned</td>
+<td>Repeat passed 128/128 with readiness probes and reduced command burst concurrency; root cause was not isolated</td>
+</tr>
+<tr>
+<td>Missing tmux in ready task images</td>
+<td>Cached Debian tmux/libutempter packages installed at startup</td>
+<td>Correctness recovered, but provisioning was placed inside the three-permit create gate</td>
+</tr>
+<tr>
+<td>Lease mismatch</td>
+<td>Training requested 7,200s; API rejected durations above one hour</td>
+<td>Actual finalized Task YAML must be preflighted; capacity alone does not test all runtime settings</td>
+</tr>
+<tr>
+<td>Failure refill escaped prepared prefix</td>
+<td>Initial lease failures caused asynchronous refill into unmapped tasks</td>
+<td>A bounded failure path is needed; the run added a 48-prompt guard and disabled extra warmup prefetch</td>
+</tr>
+<tr>
+<td>Resource metrics unavailable</td>
+<td>Explicit range queries failed and default range returned no samples</td>
+<td>No CPU/RAM/disk utilization claim for the E2B server can be made</td>
+</tr>
+<tr>
+<td>GPU event interrupted step 2</td>
+<td>ATHUB uncorrectable event at PCI 0000:66:00.0; XGMI events at 0000:96:00.0; automatic reset of all eight GPUs</td>
+<td>Hardware/driver reliability is a blocker; exact component/firmware/software root cause remains undetermined</td>
+</tr>
+</tbody>
+</table>
+<p>The hardware event occurred around <strong>09:52:53 UTC</strong>. The kernel explicitly reported lost VRAM contents. The step-1 optimizer update was real (gradient norm <strong>0.084919</strong>, all eight ranks successful, <strong>1,149/131,072</strong> sampled parameter elements changed), and its new weights served batch 2. But saving was scheduled only at step 3, so <strong>no resumable trained checkpoint survived</strong>.</p>
+<p>The GPU failure happened after batch-2 sandboxes were already cleaned. Thus “zero leftovers after the fault” does <strong>not</strong> prove cleanup would work if SIGABRT occurred mid-rollout. Python <code>finally</code> blocks did not complete after the abort. An independent run-ID-based lease janitor and heartbeat/exit recorder would protect the control plane more reliably. Some CPU runner/coordinator processes also received ROCm hardware exceptions; keeping non-GPU orchestration independent of the accelerator runtime should be considered where the framework permits it.</p>
+<p>The complete attempt lasted approximately <strong>69.75 minutes</strong> before abort, including initialization and the partial second training computation. This is useful recovery-cost evidence. It is not a measured checkpoint overhead: no checkpoint write occurred, so that cost remains unknown.</p>
+<h2 id="12-prioritized-next-experiments">12. Prioritized next experiments</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Change / experiment</th>
+<th>Evidence motivating it</th>
+<th>Acceptance measurements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0</td>
+<td>Investigate GPU 0000:66:00.0 and XGMI-related events; validate sustained stability</td>
+<td>Actual uncorrectable event and lost VRAM after a successful short preflight</td>
+<td>Sustained representative workload, kernel/RAS evidence, no automatic resets; do not treat one short health pass as a repair</td>
+</tr>
+<tr>
+<td>P0</td>
+<td>Repair new-image template builds</td>
+<td>Ready-template workaround restricts deployability of the full recipe</td>
+<td>Build and base/reference checks for the intended task set; preserve image digests</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>Bake tools; split create from readiness/provision gates</td>
+<td>At least 91–92% of create-gate capacity was held after create success</td>
+<td>A/B current gate vs pre-baked tools vs separately bounded readiness; ramp, first model request, resets, live cap and cleanup</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>Restore supported prefetch/partial rollout in a controlled run</td>
+<td>32–45% of cohort time remained after 90% completed</td>
+<td>Prepare enough templates for lookahead; adjust the 48-prompt guard; compare consumed workload, wall time, GPU busy, staleness, reward and unused/cancelled sessions</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>Save each completed step during stability work; retain only the newest</td>
+<td>One completed update was lost with no checkpoint</td>
+<td>Measure actual save time/bytes and verify reload; balance overhead against observed recovery cost</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>Independent cleanup/heartbeat process</td>
+<td>SIGABRT bypassed Python teardown; this fault occurred when no sandbox was live</td>
+<td>Deliberate failure during active rollout in an isolated test; only run-owned cleanup; no orphaned leases</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>Native persistent shell or batched control operations</td>
+<td>4.49 instrumented RPCs per logical tool; cat/test/tmux dominate</td>
+<td>Preserve cwd/env/output/interrupt semantics; replay representative tool workloads and validate final grading</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>Kernel/compile profiling after stability</td>
+<td>Actor MFU 6.86%, eager inference and generic fallbacks</td>
+<td>Controlled kernel/graph variants with numerical checks and end-to-end timing; no claimed speedup from warning text alone</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>n=4/B=32 versus n=8/B=16, or supported group filtering</td>
+<td>Nine uniform-reward groups used about one quarter of cost</td>
+<td>Same session budget, multiple repeats, reward diversity, refill cost, policy staleness and training quality</td>
+</tr>
+</tbody>
+</table>
+<p>The first performance changes should target <strong>startup admission and rollout scheduling</strong>, while preserving the semantics of the Agent and verifier. Optimizing a 12-second verifier first would leave the measured multi-minute tails largely intact.</p>
+<h2 id="appendix-a-all-32-eight-sample-groups">Appendix A. All 32 eight-sample groups</h2>
+<p>Durations below are precise runner-entry-to-return timers and include creation queuing. They are not all measured from a common batch start. The heatmap and interactive explorer expose each individual sample.</p>
+<table>
+<thead>
+<tr>
+<th>Batch</th>
+<th>Task</th>
+<th>R=1 /8</th>
+<th>Fastest min</th>
+<th>Median min</th>
+<th>Slowest min</th>
+<th>Max/min</th>
+<th>Max/median</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>ARMmbed__mbed-tools-208</td>
+<td>1/8</td>
+<td>4.15</td>
+<td>7.55</td>
+<td>9.83</td>
+<td>2.37×</td>
+<td>1.30×</td>
+</tr>
+<tr>
+<td>1</td>
+<td>DavidVujic__python-polylith-232</td>
+<td>0/8</td>
+<td>7.76</td>
+<td>9.81</td>
+<td>12.93</td>
+<td>1.67×</td>
+<td>1.32×</td>
+</tr>
+<tr>
+<td>1</td>
+<td>JelleZijlstra__ast_decompiler-34</td>
+<td>0/8</td>
+<td>9.50</td>
+<td>14.29</td>
+<td>21.57</td>
+<td>2.27×</td>
+<td>1.51×</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Materials-Consortia__optimade-python-tools-2250</td>
+<td>0/8</td>
+<td>7.49</td>
+<td>10.63</td>
+<td>12.67</td>
+<td>1.69×</td>
+<td>1.19×</td>
+</tr>
+<tr>
+<td>1</td>
+<td>PennyLaneAI__pennylane-3057</td>
+<td>0/8</td>
+<td>4.55</td>
+<td>7.14</td>
+<td>13.60</td>
+<td>2.99×</td>
+<td>1.91×</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Shopify__shopify_python_api-363</td>
+<td>1/8</td>
+<td>5.70</td>
+<td>7.54</td>
+<td>10.30</td>
+<td>1.81×</td>
+<td>1.37×</td>
+</tr>
+<tr>
+<td>1</td>
+<td>agronholm__anyio-639</td>
+<td>1/8</td>
+<td>8.75</td>
+<td>12.29</td>
+<td>28.84</td>
+<td>3.29×</td>
+<td>2.35×</td>
+</tr>
+<tr>
+<td>1</td>
+<td>agronholm__sqlacodegen-371</td>
+<td>3/8</td>
+<td>7.07</td>
+<td>11.72</td>
+<td>15.20</td>
+<td>2.15×</td>
+<td>1.30×</td>
+</tr>
+<tr>
+<td>1</td>
+<td>alecthomas__voluptuous-380</td>
+<td>2/8</td>
+<td>11.21</td>
+<td>15.51</td>
+<td>22.40</td>
+<td>2.00×</td>
+<td>1.44×</td>
+</tr>
+<tr>
+<td>1</td>
+<td>altair-viz__altair-1587</td>
+<td>7/8</td>
+<td>10.10</td>
+<td>11.72</td>
+<td>18.02</td>
+<td>1.79×</td>
+<td>1.54×</td>
+</tr>
+<tr>
+<td>1</td>
+<td>asottile__pyupgrade-146</td>
+<td>2/8</td>
+<td>8.61</td>
+<td>10.83</td>
+<td>13.03</td>
+<td>1.51×</td>
+<td>1.20×</td>
+</tr>
+<tr>
+<td>1</td>
+<td>asottile__yesqa-69</td>
+<td>3/8</td>
+<td>11.49</td>
+<td>16.34</td>
+<td>23.12</td>
+<td>2.01×</td>
+<td>1.42×</td>
+</tr>
+<tr>
+<td>1</td>
+<td>astamminger__zotero-bibtize-19</td>
+<td>1/8</td>
+<td>13.77</td>
+<td>18.42</td>
+<td>22.47</td>
+<td>1.63×</td>
+<td>1.22×</td>
+</tr>
+<tr>
+<td>1</td>
+<td>astropy__specutils-1158</td>
+<td>3/8</td>
+<td>10.12</td>
+<td>11.43</td>
+<td>13.16</td>
+<td>1.30×</td>
+<td>1.15×</td>
+</tr>
+<tr>
+<td>1</td>
+<td>caronc__apprise-1128</td>
+<td>0/8</td>
+<td>11.18</td>
+<td>12.34</td>
+<td>13.41</td>
+<td>1.20×</td>
+<td>1.09×</td>
+</tr>
+<tr>
+<td>1</td>
+<td>desihub__desiutil-173</td>
+<td>2/8</td>
+<td>13.37</td>
+<td>15.39</td>
+<td>20.13</td>
+<td>1.50×</td>
+<td>1.31×</td>
+</tr>
+<tr>
+<td>2</td>
+<td>diogommartins__simple_json_logger-14</td>
+<td>2/8</td>
+<td>1.22</td>
+<td>8.70</td>
+<td>14.33</td>
+<td>11.72×</td>
+<td>1.65×</td>
+</tr>
+<tr>
+<td>2</td>
+<td>discos__simulators-307</td>
+<td>3/8</td>
+<td>7.46</td>
+<td>11.18</td>
+<td>14.28</td>
+<td>1.91×</td>
+<td>1.28×</td>
+</tr>
+<tr>
+<td>2</td>
+<td>dpkp__kafka-python-2573</td>
+<td>2/8</td>
+<td>7.35</td>
+<td>9.33</td>
+<td>13.47</td>
+<td>1.83×</td>
+<td>1.44×</td>
+</tr>
+<tr>
+<td>2</td>
+<td>dwavesystems__dwave-cloud-client-417</td>
+<td>1/8</td>
+<td>10.53</td>
+<td>11.45</td>
+<td>15.00</td>
+<td>1.42×</td>
+<td>1.31×</td>
+</tr>
+<tr>
+<td>2</td>
+<td>elastic__rally-557</td>
+<td>0/8</td>
+<td>5.88</td>
+<td>7.15</td>
+<td>9.92</td>
+<td>1.69×</td>
+<td>1.39×</td>
+</tr>
+<tr>
+<td>2</td>
+<td>encode__httpx-861</td>
+<td>1/8</td>
+<td>7.50</td>
+<td>10.86</td>
+<td>16.57</td>
+<td>2.21×</td>
+<td>1.53×</td>
+</tr>
+<tr>
+<td>2</td>
+<td>eyeseast__python-frontmatter-31</td>
+<td>0/8</td>
+<td>9.18</td>
+<td>10.72</td>
+<td>11.30</td>
+<td>1.23×</td>
+<td>1.05×</td>
+</tr>
+<tr>
+<td>2</td>
+<td>google__cloud-forensics-utils-335</td>
+<td>2/8</td>
+<td>9.48</td>
+<td>10.60</td>
+<td>13.02</td>
+<td>1.37×</td>
+<td>1.23×</td>
+</tr>
+<tr>
+<td>2</td>
+<td>googleapis__python-bigquery-1930</td>
+<td>0/8</td>
+<td>8.54</td>
+<td>11.00</td>
+<td>13.51</td>
+<td>1.58×</td>
+<td>1.23×</td>
+</tr>
+<tr>
+<td>2</td>
+<td>gorakhargosh__watchdog-530</td>
+<td>4/8</td>
+<td>8.36</td>
+<td>10.58</td>
+<td>11.84</td>
+<td>1.42×</td>
+<td>1.12×</td>
+</tr>
+<tr>
+<td>2</td>
+<td>hgrecco__pint-1476</td>
+<td>0/8</td>
+<td>14.36</td>
+<td>15.62</td>
+<td>21.16</td>
+<td>1.47×</td>
+<td>1.35×</td>
+</tr>
+<tr>
+<td>2</td>
+<td>hylang__hy-2522</td>
+<td>2/8</td>
+<td>15.90</td>
+<td>18.23</td>
+<td>28.99</td>
+<td>1.82×</td>
+<td>1.59×</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ianlini__flatten-dict-13</td>
+<td>6/8</td>
+<td>11.80</td>
+<td>13.77</td>
+<td>14.31</td>
+<td>1.21×</td>
+<td>1.04×</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ipython__ipython-12144</td>
+<td>2/8</td>
+<td>11.43</td>
+<td>12.56</td>
+<td>14.38</td>
+<td>1.26×</td>
+<td>1.14×</td>
+</tr>
+<tr>
+<td>2</td>
+<td>jackdewinter__pymarkdown-893</td>
+<td>3/8</td>
+<td>11.41</td>
+<td>13.09</td>
+<td>20.07</td>
+<td>1.76×</td>
+<td>1.53×</td>
+</tr>
+<tr>
+<td>2</td>
+<td>jendrikseipp__vulture-340</td>
+<td>4/8</td>
+<td>12.00</td>
+<td>12.96</td>
+<td>17.83</td>
+<td>1.49×</td>
+<td>1.37×</td>
+</tr>
+</tbody>
+</table>
+<h2 id="appendix-b-reproduction-and-evidence">Appendix B. Reproduction and evidence</h2>
+<ul>
+<li><a href="METHODS.md">Measurement methodology and limitations</a></li>
+<li><a href="data/episodes.csv">256 episodes</a>, <a href="data/groups.csv">32 groups</a>, <a href="data/model_requests.csv.gz">model-query intervals</a>, <a href="data/tool_actions.csv.gz">logical-tool intervals</a>, <a href="data/sandbox_rpc.csv.gz">RPC intervals</a></li>
+<li><a href="data/summary.json">Derived summary</a>, <a href="data/additional-facts.json">additional facts</a>, <a href="data/source-manifest.json">source SHA-256 inventory</a></li>
+<li><a href="evidence/train-metrics.jsonl">Raw completed-step metrics</a>, <a href="evidence/kernel-fault-summary.txt">fault summary</a>, <a href="evidence/train.yaml">actual configuration</a>, <a href="evidence/source/e2b_provider.py">provider implementation</a></li>
+<li>CPU-only reproduction: <code>python3 analysis/extract.py</code>, then <code>python3 analysis/render.py</code>, then <code>python3 analysis/write_report.py</code>. Extraction reads the original stopped runtime; figures can be regenerated using the included tables and copied evidence. Report generation also refreshes evidence copies from the original runtime. No model or sandbox is launched.</li>
+</ul></main></html>

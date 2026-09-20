@@ -1,0 +1,8 @@
+{
+  "incomplete_save_preserves_old": true,
+  "completed_save_prunes_old": true,
+  "latest_retained": true,
+  "unrelated_retained": true,
+  "symlink_not_followed": true,
+  "scope": "Metadata fixtures only; no model checkpoint created"
+}

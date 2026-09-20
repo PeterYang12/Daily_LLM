@@ -1,0 +1,33 @@
+{
+  "steps": [
+    {
+      "step": 1,
+      "grad_norm": 0.1719631403684616,
+      "parameter_sample_change_fraction": 0.00992584228515625,
+      "timing_s": {
+        "gen": 651.0449634208344,
+        "old_log_prob": 22.657193506136537,
+        "adv": 0.1374053000472486,
+        "update_actor": 73.36944140167907,
+        "update_weights": 4.988812003750354,
+        "step": 752.448091944214
+      }
+    },
+    {
+      "step": 2,
+      "grad_norm": 0.1319080889225006,
+      "parameter_sample_change_fraction": 0.01025390625,
+      "timing_s": {
+        "gen": 637.0803518597968,
+        "old_log_prob": 11.533659862820059,
+        "adv": 0.14495901111513376,
+        "update_actor": 41.11720194481313,
+        "update_weights": 5.079611643683165,
+        "step": 695.2379008689895
+      }
+    }
+  ],
+  "success": true,
+  "checkpoint_saved": false,
+  "scope": "Integration pilot, not part of the main 300 steps; no W&B main-run metrics yet."
+}

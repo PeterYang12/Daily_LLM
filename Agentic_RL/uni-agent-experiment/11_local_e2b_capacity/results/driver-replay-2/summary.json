@@ -1,0 +1,46 @@
+{
+  "started_unix": 1789559543.5875807,
+  "n": 2,
+  "max_creates_in_flight": 3,
+  "template_id": "6gz72hgrq9yqwt3l2vd1",
+  "instance_id": "pallets__flask-5014",
+  "cpu_per_sandbox": 4,
+  "memory_mib_per_sandbox": 8192,
+  "scope": "Concurrent sandbox and official verifier acceptance; no agent or model calls; no RL training",
+  "create_batch_s": 0.42126741213724017,
+  "simultaneously_live": 2,
+  "all_running": true,
+  "workload_batch_s": 7.710922555997968,
+  "rows": [
+    {
+      "index": 0,
+      "mode": "baseline",
+      "create_s": 0.4211180112324655,
+      "sandbox_id": "iqgdelar8lbntsexiiwpp",
+      "verify_started_unix": 1789559547.9556327,
+      "verify_finished_unix": 1789559552.7743628,
+      "resolved": false,
+      "eval_completed": true,
+      "passed": true,
+      "workload_s": 7.710825336165726,
+      "cleanup_verified": true
+    },
+    {
+      "index": 1,
+      "mode": "oracle",
+      "create_s": 0.3602247969247401,
+      "sandbox_id": "ipjyz3ps9lkis9z4sf575",
+      "verify_started_unix": 1789559548.243469,
+      "verify_finished_unix": 1789559552.3297324,
+      "resolved": true,
+      "eval_completed": true,
+      "passed": true,
+      "workload_s": 7.265549460891634,
+      "cleanup_verified": true
+    }
+  ],
+  "passed": 2,
+  "all_cleaned": true,
+  "total_s": 9.247047325130552,
+  "success": true
+}

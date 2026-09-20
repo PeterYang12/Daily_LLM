@@ -1,0 +1,9 @@
+{
+  "source": "/home/yuhanya/uni-agent-lab/local-e2b-20260916/upstream/runtime-e7b22501988c826563bf1b3cf0d22a1183e7affe/packages/shared/pkg/featureflags/flags.go",
+  "source_sha256": "a38b66c09283ba39ee84539e78a07b516afe5e4c0ec4bb727e6353b11026603d",
+  "defaults": {
+    "max-sandboxes-per-node": 200,
+    "max-starting-instances-per-node": 3
+  },
+  "note": "Source defaults; no runtime binary rebuilt; saturation and burst limits not benchmarked."
+}

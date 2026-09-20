@@ -1,0 +1,6 @@
+{
+  "container": "yuhan-uniagent",
+  "tag": "verlai/verl:rocm7.14_torch2.12_release_0724",
+  "image_id": "sha256:1da23791184cb601e0e661dbcae6d689c3949cf041f9c3888f2574a56372ef52",
+  "repo_digest": "verlai/verl@sha256:8a40aef5d90d161767474e263da4bc579a5f395534a6e9754bd0110d367d2a2a"
+}

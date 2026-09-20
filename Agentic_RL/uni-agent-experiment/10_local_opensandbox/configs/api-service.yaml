@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ua-opensandbox-api
+  namespace: opensandbox-system
+spec:
+  type: NodePort
+  selector:
+    app.kubernetes.io/instance: opensandbox
+    app.kubernetes.io/name: opensandbox-server
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      nodePort: 30808

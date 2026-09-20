@@ -1,0 +1,105 @@
+{
+  "time_unix": 1789550724.3697386,
+  "vm_name": "ua-e2b-local-20260916",
+  "vm_ip": "192.168.122.196",
+  "vm_vcpus": 16,
+  "vm_memory_gib": 64,
+  "vm_disk_gib": 200,
+  "outer_kernel": "5.15.0-70-generic",
+  "node_info": {
+    "architecture": "amd64",
+    "bootID": "8f35196b-2a0d-468b-bead-7acb69557be6",
+    "containerRuntimeVersion": "containerd://2.3.4-k3s1.36",
+    "kernelVersion": "6.8.0-139-generic",
+    "kubeProxyVersion": "",
+    "kubeletVersion": "v1.36.4+k3s1",
+    "machineID": "2e3aa182c1ad45a48a33a2707620b5f5",
+    "operatingSystem": "linux",
+    "osImage": "Ubuntu 24.04.5 LTS",
+    "systemUUID": "2e3aa182-c1ad-45a4-8a33-a2707620b5f5"
+  },
+  "node_capacity": {
+    "cpu": "16",
+    "ephemeral-storage": "202051056Ki",
+    "hugepages-1Gi": "0",
+    "hugepages-2Mi": "32Gi",
+    "memory": "65843248Ki",
+    "pods": "110"
+  },
+  "pod_ready": true,
+  "pod_uid": "70aac5a0-5b47-4ab9-b7ba-ac51417b6971",
+  "api_health": "Health check successful",
+  "templates": [
+    {
+      "templateID": "uckk5539uvrjduteyr5a",
+      "buildID": "d91c3e4a-bb7f-4c24-8d90-779691814fd5",
+      "buildStatus": "ready",
+      "aliases": [
+        "base"
+      ],
+      "cpuCount": 2,
+      "memoryMB": 1024
+    },
+    {
+      "templateID": "6gz72hgrq9yqwt3l2vd1",
+      "buildID": "b6c5e3b7-cd31-4444-811a-00d1bd5052e0",
+      "buildStatus": "ready",
+      "aliases": [
+        "ua-sweprof-flask-0"
+      ],
+      "cpuCount": 4,
+      "memoryMB": 8192
+    }
+  ],
+  "active_sandboxes": 0,
+  "internal_port_reachability": [
+    {
+      "port": 3003,
+      "reachable": false
+    },
+    {
+      "port": 5007,
+      "reachable": false
+    },
+    {
+      "port": 5008,
+      "reachable": false
+    },
+    {
+      "port": 5009,
+      "reachable": false
+    },
+    {
+      "port": 5010,
+      "reachable": false
+    },
+    {
+      "port": 5016,
+      "reachable": false
+    },
+    {
+      "port": 5017,
+      "reachable": false
+    },
+    {
+      "port": 5018,
+      "reachable": false
+    },
+    {
+      "port": 5109,
+      "reachable": false
+    }
+  ],
+  "tunnel_service": "active",
+  "uni_agent": {
+    "resolved": true,
+    "finished": true,
+    "eval_completed": true,
+    "trajectory_valid": true,
+    "wall_seconds": 77.28832028573379,
+    "cleanup_completed": true
+  },
+  "sdk-smoke-before-restart": true,
+  "sdk-smoke-after-restart": true,
+  "success": true
+}

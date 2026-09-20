@@ -1,14 +1,14 @@
 {
-  "experiments": 7,
-  "markdown_files": 23,
+  "experiments": 12,
+  "markdown_files": 33,
   "immutable_artifacts_verified": 223,
   "pinned_source_records_verified": 117,
   "agent_results": 84,
   "qualified_tasks": 28,
   "performance_batches_recomputed": 54,
-  "python_files_parsed": 50,
-  "shell_examples_checked": 30,
-  "english_diagrams": 6,
+  "python_files_parsed": 143,
+  "shell_examples_checked": 60,
+  "english_diagrams": 10,
   "missing_links": [],
   "profiling_artifacts_verified": 254,
   "profiling_experiments": {
@@ -20,5 +20,16 @@
     "logprob_batches": 24,
     "verifier_cpu_runs": 12
   },
+  "local_e2b_artifacts_verified": 48,
+  "local_e2b_acceptance": true,
+  "three_way_artifacts_verified": 82,
+  "three_way_rollouts": 9,
+  "opensandbox_artifacts_verified": 45,
+  "opensandbox_e2e": true,
+  "large_e2b_artifacts_verified": 293,
+  "large_e2b_capacity_verified": 24,
+  "rl_artifacts_verified": 60,
+  "rl_status": "paused",
+  "rl_last_observed_step": 112,
   "scope": "Offline documentation checks; no model, training, or sandbox execution."
 }
