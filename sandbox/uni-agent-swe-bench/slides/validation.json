@@ -1,0 +1,31 @@
+{
+  "pptx_package_xml_and_relationships": "passed",
+  "slides": 2,
+  "editable_native_shapes": [
+    59,
+    264
+  ],
+  "scene_bounds": "passed",
+  "e2e_sum": "passed",
+  "pptx_renderer": "native OOXML",
+  "preview_renderer": "same scene via Matplotlib; not a PowerPoint screenshot",
+  "preview_visual_review": "both pages checked",
+  "artifacts": {
+    "slide-1.png": {
+      "bytes": 201680,
+      "sha256": "85e24e9545e0e708d13106f15a5d07aef0b1288bf8e3ad3ac4aad78c350b91bb"
+    },
+    "slide-2.png": {
+      "bytes": 220185,
+      "sha256": "f4cab65346e64acad4da723fb813a6ab50a25ae74570e27dd1d67109f10476a0"
+    },
+    "Uni-Agent_实验总结_2页.pdf": {
+      "bytes": 55123,
+      "sha256": "4ae286decc12356dcdeb974ace1674521cb7544ba8621535526467d1b8a0b24c"
+    },
+    "Uni-Agent_实验总结_2页.pptx": {
+      "bytes": 14107,
+      "sha256": "e0812f3d6d8cdcb17db3601de6c68ab4e3e82040be4ef3149c14017ec67370c7"
+    }
+  }
+}

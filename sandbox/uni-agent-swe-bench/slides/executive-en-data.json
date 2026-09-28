@@ -1,0 +1,19 @@
+{
+  "scope": "Completed step 1 and batch 1",
+  "step_s": 2119.431526546832,
+  "rollout_including_verification_s": 1774.943392464891,
+  "training_sync_s": 344.4881340819411,
+  "final_verifier_s": 15.73278703307733,
+  "accounting": "84% rollout includes verification. <1% is the final non-overlapped verifier tail, not an additional percentage. Earlier verification overlaps continuing agent attempts.",
+  "after90_remaining_s": 566.5795390605927,
+  "example": {
+    "task": "agronholm__anyio-639",
+    "fastest_s": 525.2760846614838,
+    "slowest_s": 1730.1617894172668,
+    "startup_s": 112.02228903770447,
+    "agent_loop_s": 1602.0,
+    "verifier_s": 15.73278703307733
+  },
+  "creation_ramp_s": 358.8779950141907,
+  "rendering": "Editable native PPTX shapes; PDF and PNG use the same scene. No PowerPoint renderer is installed."
+}

@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "slides": 3,
+  "language": "English",
+  "first_two_slides_preserved_except_page_count": true,
+  "eight_sample_groups": 2,
+  "sample_counts_and_final_test_results": "matched source",
+  "tool_timeout_duration_s": 138,
+  "tool_vs_verifier_failure_distinguished": true,
+  "common_time_axis_minutes": 30,
+  "pptx_package_relationships": "passed",
+  "scene_bounds": "passed",
+  "visual_review": "Third slide checked as PNG; previews share the native PPTX scene coordinates, not a PowerPoint renderer.",
+  "files": {
+    "Uni-Agent_Time_Breakdown_EN.pptx": {
+      "bytes": 39711,
+      "sha256": "513085ece890e9a1eb50f1a67b8938cd316c6ce98dabdc440ff8a5b527e211ee"
+    },
+    "Uni-Agent_Time_Breakdown_EN.pdf": {
+      "bytes": 65603,
+      "sha256": "ad44417a059f77638e698e3e079abc91fa9191de41c109c0250e09c4515b9114"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "slides": 2,
+  "words_per_slide": [
+    83,
+    83
+  ],
+  "language": "English",
+  "pptx_relationships": "passed",
+  "native_editable_shapes": true,
+  "e2e_accounting": "passed",
+  "scene_bounds": "passed",
+  "visual_review": "Both page previews checked; no PowerPoint renderer available",
+  "files": {
+    "Uni-Agent_Executive_Summary_EN.pptx": {
+      "bytes": 8641,
+      "sha256": "853e30b8f394c4bea66adea7cf1575e5d330105391412db3dad62a3cc32ac568"
+    },
+    "Uni-Agent_Executive_Summary_EN.pdf": {
+      "bytes": 32810,
+      "sha256": "8ec2589f731074678b259cdce9ee493c38aefdcd507f93886b4b1ae3d09390a4"
+    }
+  }
+}

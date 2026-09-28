@@ -1,0 +1,304 @@
+{
+  "scope": "Detailed phase/case charts use completed step 1 and batch 1; the third slide also reports batch-2 tail duration and tool-error totals across both completed batches.",
+  "step_total_s": 2119.431526546832,
+  "step_phases": [
+    {
+      "phase": "Rollout collection",
+      "seconds": 1774.943392464891,
+      "pct": 83.74620129185244
+    },
+    {
+      "phase": "Actor update",
+      "seconds": 264.62122565088794,
+      "pct": 12.485481240435853
+    },
+    {
+      "phase": "Log-prob recompute",
+      "seconds": 72.966333610937,
+      "pct": 3.4427313502229673
+    },
+    {
+      "phase": "Weight sync",
+      "seconds": 5.075125809758902,
+      "pct": 0.23945693673943558
+    },
+    {
+      "phase": "Advantage compute",
+      "seconds": 1.7304453440010548,
+      "pct": 0.08164667375786618
+    },
+    {
+      "phase": "Other",
+      "seconds": 0.09500366635620594,
+      "pct": 0.004482506991438144
+    }
+  ],
+  "attempt_mean_s": 745.0046980530024,
+  "attempt_phases": [
+    {
+      "phase": "LLM calls*",
+      "mean_seconds": 468.7265625,
+      "pct": 62.91592035929055
+    },
+    {
+      "phase": "Create queue + API",
+      "mean_seconds": 146.72274869470493,
+      "pct": 19.694204490005315
+    },
+    {
+      "phase": "Tool actions",
+      "mean_seconds": 96.4921875,
+      "pct": 12.951889800449981
+    },
+    {
+      "phase": "Sandbox setup",
+      "mean_seconds": 17.727819867432117,
+      "pct": 2.379558130809384
+    },
+    {
+      "phase": "Verifier",
+      "mean_seconds": 13.013632758986205,
+      "pct": 1.7467853280651886
+    },
+    {
+      "phase": "Local / other",
+      "mean_seconds": 2.3099739249737468,
+      "pct": 0.3100616588070706
+    },
+    {
+      "phase": "Delete API ack",
+      "mean_seconds": 0.01177280690535549,
+      "pct": 0.0015802325725089495
+    }
+  ],
+  "typical_case": {
+    "session_id": "session-sample-6-rollout-4-d75df6a469054b3ea6d2f6cc3541fa10",
+    "instance_id": "agronholm__anyio-639",
+    "sample": 4,
+    "selection": "Near batch runtime median and exactly the median Agent call count of 40",
+    "episode_s": 693.1939420700073,
+    "batch_median_s": 693.5743149518967,
+    "startup_s": 126.13851189613342,
+    "llm_calls": 40,
+    "llm_s": 455.0,
+    "generated_tokens": 11422,
+    "tool_actions": 39,
+    "tool_s": 93.0,
+    "verifier_s": 17.960731568280607,
+    "recorded_exec_file_calls": 187,
+    "api_counts": {
+      "Execute": 144,
+      "File write": 29,
+      "File read": 14
+    },
+    "api_scope": "Includes instrumented exec/file APIs across setup, agent and verifier. Excludes create/delete (shown separately) and uninstrumented readiness/provision calls."
+  },
+  "tails": {
+    "after90_s": 566.5795390605927,
+    "batch_span_s": 1761.1395003795624,
+    "creation_ramp_s": 358.8779950141907
+  },
+  "two_cases": [
+    {
+      "session_id": "session-sample-6-rollout-4-d75df6a469054b3ea6d2f6cc3541fa10",
+      "sample": 4,
+      "runtime_s": 693.1939420700073,
+      "startup_s": 126.13851189613342,
+      "llm_s": 455.0,
+      "llm_calls": 40,
+      "tool_s": 93.0,
+      "tool_actions": 39,
+      "verifier_s": 17.960731568280607,
+      "sandbox_logged_api_calls": 187,
+      "api_counts": {
+        "exec": 144,
+        "file_write": 29,
+        "file_read": 14
+      },
+      "generated_tokens": 11422,
+      "tool_timeouts": 0
+    },
+    {
+      "session_id": "session-sample-6-rollout-2-23e41958fa71405bbc9edb896c524fb0",
+      "sample": 2,
+      "runtime_s": 1730.1617894172668,
+      "startup_s": 112.02228903770447,
+      "llm_s": 1472.0,
+      "llm_calls": 110,
+      "tool_s": 128.0,
+      "tool_actions": 109,
+      "verifier_s": 15.73278703307733,
+      "sandbox_logged_api_calls": 487,
+      "api_counts": {
+        "exec": 356,
+        "file_write": 81,
+        "file_read": 50
+      },
+      "generated_tokens": 43223,
+      "tool_timeouts": 0
+    }
+  ],
+  "case_comparison": {
+    "timeline_axis_max_s": 1800,
+    "runtime_gap_s": 1036.9678473472595,
+    "llm_gap_s": 1017.0,
+    "llm_fraction_of_runtime_gap": 0.9807440053244267,
+    "last_sample_penalty_s": 331.90952587127686
+  },
+  "eight_sample_comparison": [
+    {
+      "instance_id": "agronholm__anyio-639",
+      "axis_max_s": 1800,
+      "samples": [
+        {
+          "session_id": "session-sample-6-rollout-0-ce5d91ed94c944d083cc50bb45222a94",
+          "sample": 0,
+          "duration_s": 598.5046045780182,
+          "test_passed": true,
+          "tool_timeouts": 0,
+          "tool_errors": 0
+        },
+        {
+          "session_id": "session-sample-6-rollout-1-68297892e43e4a41b60aa1f1633fe410",
+          "sample": 1,
+          "duration_s": 1107.9622976779938,
+          "test_passed": false,
+          "tool_timeouts": 0,
+          "tool_errors": 0
+        },
+        {
+          "session_id": "session-sample-6-rollout-2-23e41958fa71405bbc9edb896c524fb0",
+          "sample": 2,
+          "duration_s": 1730.1617894172668,
+          "test_passed": false,
+          "tool_timeouts": 0,
+          "tool_errors": 0
+        },
+        {
+          "session_id": "session-sample-6-rollout-3-52ca889742dd4d1382efeb57381cb46f",
+          "sample": 3,
+          "duration_s": 701.4555053710938,
+          "test_passed": false,
+          "tool_timeouts": 0,
+          "tool_errors": 0
+        },
+        {
+          "session_id": "session-sample-6-rollout-4-d75df6a469054b3ea6d2f6cc3541fa10",
+          "sample": 4,
+          "duration_s": 693.1939420700073,
+          "test_passed": false,
+          "tool_timeouts": 0,
+          "tool_errors": 0
+        },
+        {
+          "session_id": "session-sample-6-rollout-5-576338da09b04d9aa026778addd7d637",
+          "sample": 5,
+          "duration_s": 773.891211271286,
+          "test_passed": false,
+          "tool_timeouts": 0,
+          "tool_errors": 0
+        },
+        {
+          "session_id": "session-sample-6-rollout-6-a0d93f1272eb45afb1c1fc416ff8a2ca",
+          "sample": 6,
+          "duration_s": 964.5732114315032,
+          "test_passed": false,
+          "tool_timeouts": 0,
+          "tool_errors": 0
+        },
+        {
+          "session_id": "session-sample-6-rollout-7-75d741da6f244e3bb77ca33c9e25c24d",
+          "sample": 7,
+          "duration_s": 525.2760846614838,
+          "test_passed": false,
+          "tool_timeouts": 0,
+          "tool_errors": 0
+        }
+      ]
+    },
+    {
+      "instance_id": "Shopify__shopify_python_api-363",
+      "axis_max_s": 1800,
+      "samples": [
+        {
+          "session_id": "session-sample-5-rollout-0-248b52c7bbc04ca4b18172a812efe835",
+          "sample": 0,
+          "duration_s": 408.9492211341858,
+          "test_passed": false,
+          "tool_timeouts": 0,
+          "tool_errors": 0
+        },
+        {
+          "session_id": "session-sample-5-rollout-1-2ca76a6345684121a7aa4ab5fbef1ced",
+          "sample": 1,
+          "duration_s": 618.2843925952911,
+          "test_passed": false,
+          "tool_timeouts": 1,
+          "tool_errors": 0
+        },
+        {
+          "session_id": "session-sample-5-rollout-2-e98e5dca388e4908a4955ef3dea18400",
+          "sample": 2,
+          "duration_s": 397.8142602443695,
+          "test_passed": false,
+          "tool_timeouts": 0,
+          "tool_errors": 0
+        },
+        {
+          "session_id": "session-sample-5-rollout-3-97999f96aaef4767b40ef67e2f2f305b",
+          "sample": 3,
+          "duration_s": 342.0892641544342,
+          "test_passed": false,
+          "tool_timeouts": 0,
+          "tool_errors": 0
+        },
+        {
+          "session_id": "session-sample-5-rollout-4-8aeb8be159874d8dbccc6efdd614d8da",
+          "sample": 4,
+          "duration_s": 594.6993651390076,
+          "test_passed": false,
+          "tool_timeouts": 0,
+          "tool_errors": 0
+        },
+        {
+          "session_id": "session-sample-5-rollout-5-f0fa9a97bf494bc89ee593cf11db0611",
+          "sample": 5,
+          "duration_s": 470.01670932769775,
+          "test_passed": false,
+          "tool_timeouts": 0,
+          "tool_errors": 0
+        },
+        {
+          "session_id": "session-sample-5-rollout-6-6b9d5a3bf00c495abe9bbfc06a6cac10",
+          "sample": 6,
+          "duration_s": 434.4683678150177,
+          "test_passed": false,
+          "tool_timeouts": 0,
+          "tool_errors": 0
+        },
+        {
+          "session_id": "session-sample-5-rollout-7-7cee7b31c07d4c0ea0910269ad38d842",
+          "sample": 7,
+          "duration_s": 512.5052666664124,
+          "test_passed": true,
+          "tool_timeouts": 0,
+          "tool_errors": 0
+        }
+      ]
+    }
+  ],
+  "tool_failure_example": {
+    "session_id": "session-sample-5-rollout-1-2ca76a6345684121a7aa4ab5fbef1ced",
+    "duration_s": 138.0,
+    "sample_duration_s": 618.2843925952911,
+    "fraction_of_sample_time": 0.22319825900947546,
+    "recovered": true,
+    "finished_before_critical_sample": true
+  },
+  "all_attempt_tool_events": {
+    "episodes": 256,
+    "timeouts": 1,
+    "argument_errors": 1
+  },
+  "accounting": "Step wall time is not the sum of parallel attempt durations. Rollout internals use batch-1 cumulative component time / cumulative attempt lifetime, equivalent to mean component seconds / mean attempt seconds. LLM roundtrip includes serving queue + inference + network."
+}
