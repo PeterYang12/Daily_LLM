@@ -1,0 +1,15 @@
+{
+  "stopped_utc": "2026-09-16T23:52:45.145918+00:00",
+  "monitoring_enabled": false,
+  "capture_stopped": true,
+  "auto_start_disabled": true,
+  "data_preserved": true,
+  "last_vm_sample": "2026-09-16T23:51:53.593039+00:00",
+  "last_event_collection": "2026-09-16T23:51:41.830561+00:00",
+  "last_health_check": "2026-09-16T23:51:26.216787+00:00",
+  "recorded_file_count": 40,
+  "recorded_bytes": 154022328,
+  "guest_sampler_processes_remaining": 0,
+  "e2b_api_health_http_after_stop": 200,
+  "vm_active_after_stop": true
+}

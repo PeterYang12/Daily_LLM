@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "frozen_utc": "2026-09-20T12:32:27.552499+00:00",
+  "measurement_input_count": 9,
+  "selection": "Exactly three official SDK runs and three lifecycle runs per adapter; no phase0/preflight/smoke measurement inputs",
+  "measurement_inputs": [
+    {
+      "family": "official",
+      "adapter": "sdk",
+      "original_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/official-code-interpreter-r1.jsonl",
+      "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/official-code-interpreter-r1.jsonl",
+      "sha256": "8bba6d6f003ede8d140a7a9c57b30c10892083fd59cf82bbeea34197e1ee2d52",
+      "size_bytes": 122335,
+      "execution_manifest": {
+        "original_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/official-code-interpreter-r1.manifest.json",
+        "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/official-code-interpreter-r1.manifest.json",
+        "sha256": "7b9a7cc1858b139b689d2f60d534db6a059bdf893c3e8b7bffc519ea4c445512",
+        "size_bytes": 939
+      }
+    },
+    {
+      "family": "official",
+      "adapter": "sdk",
+      "original_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/official-code-interpreter-r2.jsonl",
+      "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/official-code-interpreter-r2.jsonl",
+      "sha256": "0ff9915231f36a5d425d943506d171c34d31b181202bdcc0c8404e71d2efd3a0",
+      "size_bytes": 122349,
+      "execution_manifest": {
+        "original_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/official-code-interpreter-r2.manifest.json",
+        "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/official-code-interpreter-r2.manifest.json",
+        "sha256": "6e5475bb0e58b13f69b9d6820c261c423afc56afeec6d3a8eefa974d7c959748",
+        "size_bytes": 939
+      }
+    },
+    {
+      "family": "official",
+      "adapter": "sdk",
+      "original_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/official-code-interpreter-r3.jsonl",
+      "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/official-code-interpreter-r3.jsonl",
+      "sha256": "755ce776f8c60761839991e0e87aa2fc2b4db9e96c0d78ddc6abd5113179f9ee",
+      "size_bytes": 122331,
+      "execution_manifest": {
+        "original_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/official-code-interpreter-r3.manifest.json",
+        "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/official-code-interpreter-r3.manifest.json",
+        "sha256": "7ee3084f36ddf044984f052920b42a951ad368b3b2d66e3a1fe725bef65b756f",
+        "size_bytes": 939
+      }
+    },
+    {
+      "family": "lifecycle",
+      "adapter": "service",
+      "original_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/lifecycle-service-r1.jsonl",
+      "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/lifecycle-service-r1.jsonl",
+      "sha256": "3ed6cfb98696a398262f37ffc1970c4e8dbfe2e012a69e3845b280d0a45f8e50",
+      "size_bytes": 89078,
+      "execution_manifest": {
+        "original_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/lifecycle-service-r1.manifest.json",
+        "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/lifecycle-service-r1.manifest.json",
+        "sha256": "64c473c0ccdd9ad262186f23f7b9ebd6ea03d8d2c54421b19c7b7ef71f929b49",
+        "size_bytes": 959
+      }
+    },
+    {
+      "family": "lifecycle",
+      "adapter": "service",
+      "original_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/lifecycle-service-r2.jsonl",
+      "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/lifecycle-service-r2.jsonl",
+      "sha256": "886015eadfd9bacbf54f56493ae258dfeb33ef679f536c0414143d204e956e4d",
+      "size_bytes": 89077,
+      "execution_manifest": {
+        "original_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/lifecycle-service-r2.manifest.json",
+        "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/lifecycle-service-r2.manifest.json",
+        "sha256": "ff0fa4b799d17ef859c31401dcba85b46338bbebc85b846e78f18d22ae2a2c64",
+        "size_bytes": 959
+      }
+    },
+    {
+      "family": "lifecycle",
+      "adapter": "service",
+      "original_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/lifecycle-service-r3.jsonl",
+      "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/lifecycle-service-r3.jsonl",
+      "sha256": "a55bce4371d3954a506d0637b6818798121c1929908c07e75aa8bc72edfeaf0e",
+      "size_bytes": 89051,
+      "execution_manifest": {
+        "original_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/lifecycle-service-r3.manifest.json",
+        "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/lifecycle-service-r3.manifest.json",
+        "sha256": "3d0fa472fe401ef39a8373575f75782b810d91b0656a946cec7554eb784be487",
+        "size_bytes": 959
+      }
+    },
+    {
+      "family": "lifecycle",
+      "adapter": "sdk",
+      "original_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/lifecycle-sdk-r1.jsonl",
+      "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/lifecycle-sdk-r1.jsonl",
+      "sha256": "b3c4701d0bf18e225c47368a964b21a3d2bdac653eea70fe6ed430e162db8086",
+      "size_bytes": 87420,
+      "execution_manifest": {
+        "original_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/lifecycle-sdk-r1.manifest.json",
+        "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/lifecycle-sdk-r1.manifest.json",
+        "sha256": "eb25798dc8669a8dcb15953193c75027b3d63735db25a9cff6177c8c4ffe3d01",
+        "size_bytes": 927
+      }
+    },
+    {
+      "family": "lifecycle",
+      "adapter": "sdk",
+      "original_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/lifecycle-sdk-r2.jsonl",
+      "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/lifecycle-sdk-r2.jsonl",
+      "sha256": "854ada4a18b78180741c99fce1b6208f342524840bb8c057a50b39d4502880f0",
+      "size_bytes": 87423,
+      "execution_manifest": {
+        "original_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/lifecycle-sdk-r2.manifest.json",
+        "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/lifecycle-sdk-r2.manifest.json",
+        "sha256": "84b9535d3a066bcec2ba1c5225df81c295d664fb75bd89018b00fa7a08b8c3b2",
+        "size_bytes": 927
+      }
+    },
+    {
+      "family": "lifecycle",
+      "adapter": "sdk",
+      "original_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/lifecycle-sdk-r3.jsonl",
+      "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/lifecycle-sdk-r3.jsonl",
+      "sha256": "7c3770bbdd6355f97a1d6d26778e6ee2e0edce28c323188a1a477cb056ce6812",
+      "size_bytes": 87406,
+      "execution_manifest": {
+        "original_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/lifecycle-sdk-r3.manifest.json",
+        "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/lifecycle-sdk-r3.manifest.json",
+        "sha256": "c990ba34206039606ea3128c214142e8e5d011ace7d38190e18c733ec3252a6c",
+        "size_bytes": 927
+      }
+    }
+  ],
+  "executed_code": [
+    {
+      "original_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/code/official_sdk_baseline.py",
+      "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen-code/official_sdk_baseline.py",
+      "sha256": "42f5ad977780b2fcbc9ef181549f1a01b4900f22a9f0361f286a9351fe11f998",
+      "size_bytes": 12821
+    },
+    {
+      "original_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/code/lifecycle_roundtrip.py",
+      "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen-code/lifecycle_roundtrip.py",
+      "sha256": "a3591da5966bc88dfc49a8b57846094913cdd9966fd46b9f63edf2d871804a11",
+      "size_bytes": 19510
+    }
+  ],
+  "supporting_fixture_provenance": [
+    {
+      "original_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/template-build.json",
+      "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen-support/template-build.json",
+      "sha256": "3ebf2b27447da3c376c706c8d6d2e21173cc39b9f4dc6ec954faa4b2984ff3a6",
+      "size_bytes": 929
+    },
+    {
+      "original_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/template-smoke.json",
+      "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen-support/template-smoke.json",
+      "sha256": "e4f61b68add20ec6968e53f25f2bb2c946e097922cc5bd329fccf886c9bab5e4",
+      "size_bytes": 6682
+    },
+    {
+      "original_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/configs/upstream-sources.json",
+      "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen-support/upstream-sources.json",
+      "sha256": "b30c65b00e546105401757fcd200b77ec359e546d3ca2147de5eb2b76285af3d",
+      "size_bytes": 13270
+    },
+    {
+      "original_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/configs/client-requirements.lock",
+      "frozen_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen-support/client-requirements.lock",
+      "sha256": "99f804a61625a1ef9684c027f8de4cc3048062e958090225ac62f3210b6a1591",
+      "size_bytes": 619
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "pptx_slides": 2,
+  "editable_native_charts": 1,
+  "embedded_chart_workbooks": 1,
+  "pdf_pages": {
+    "E2B_Benchmark_Briefing.pdf": 2,
+    "E2B_Benchmark_Executive_Report.pdf": 1
+  },
+  "text_out_of_page": []
+}

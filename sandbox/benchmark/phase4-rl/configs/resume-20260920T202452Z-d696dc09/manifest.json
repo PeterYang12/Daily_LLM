@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "run_id": "ua-e2b-pathfinding-20260920-r2",
+  "supervisor_session_id": "20260920T202452Z-d696dc09",
+  "supervisor_attempt_id": "20260920T202452Z-d696dc09-attempt-01",
+  "source_snapshot": "/data2/yuhanya/e2b-rl-pathfinding-20260920-r2/results/supervision/20260920T202452Z-d696dc09/attempt-01/source-and-config.json",
+  "source_snapshot_sha256": "ac81f5b4ee65826674c4597f7e7ebedf158dec45385838800020cfd2c610d32d",
+  "files": [
+    {
+      "file": "train.yaml",
+      "source": "/data2/yuhanya/e2b-rl-pathfinding-20260920-r2/results/supervision/20260920T202452Z-d696dc09/attempt-01/train.yaml",
+      "sha256": "e503542f6cbab6ef2ce76b01d818cbb2978f1eb0ad0142c0bbe59d83d5be19a6",
+      "bytes": 6598,
+      "mode": "0644"
+    },
+    {
+      "file": "task_config.yaml",
+      "source": "/data2/yuhanya/e2b-rl-pathfinding-20260920-r2/results/supervision/20260920T202452Z-d696dc09/attempt-01/task_config.yaml",
+      "sha256": "f65f59ce819665a36ed58979caf2be13bf9b2ba0301a0d1d680064ed08cb3531",
+      "bytes": 19787,
+      "mode": "0644"
+    },
+    {
+      "file": "training-plan.json",
+      "source": "/data2/yuhanya/e2b-rl-pathfinding-20260920-r2/results/supervision/20260920T202452Z-d696dc09/attempt-01/training-plan.json",
+      "sha256": "3a58e3a223167753a5a7e48396731c20532b5cb8f78c5e07ab7b3df93bffa9f7",
+      "bytes": 1800,
+      "mode": "0644"
+    },
+    {
+      "file": "source-provenance.json",
+      "source": "/data2/yuhanya/e2b-rl-pathfinding-20260920-r2/results/supervision/20260920T202452Z-d696dc09/attempt-01/source-provenance.json",
+      "sha256": "053ec62b89909fe2a8b3c57abddef50f085c96c82c2cd7b167f341cc1e24540a",
+      "bytes": 6122,
+      "mode": "0644"
+    }
+  ],
+  "credential_scan": {
+    "passed": true,
+    "scoped_credential_files_checked": 2,
+    "credential_values_copied": false,
+    "method": "Exact and JSON-escaped active API-key values checked privately against every selected file; no values retained."
+  },
+  "scope": "Archived configuration used for the active owned resume; no datasets, transcripts, private env files or checkpoint payloads included."
+}

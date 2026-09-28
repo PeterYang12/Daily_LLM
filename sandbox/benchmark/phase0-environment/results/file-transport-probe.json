@@ -1,0 +1,301 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "run_id": "transport-020b5da0801242489eb0356e3e6be31e",
+  "purpose": "e2b-benchmark-20260920",
+  "template": "base-4k-4g",
+  "started_utc": "2026-09-20T12:08:06.177715+00:00",
+  "endpoint": "http://10.145.64.67:8088",
+  "observations": [
+    {
+      "request_accept_encoding": "gzip, deflate",
+      "response_headers": {
+        "content-encoding": "gzip",
+        "content-length": "1055"
+      },
+      "status_code": 200,
+      "num_bytes_downloaded": 1055,
+      "decoded_bytes": 1048576,
+      "decoded_sha256": "8f990ba0b577b51cf009ea049368c16bbda1b21e1b93be07a824758bb253c39b",
+      "expected_bytes": 1048576,
+      "expected_sha256": "8f990ba0b577b51cf009ea049368c16bbda1b21e1b93be07a824758bb253c39b",
+      "content_matches": true,
+      "raw_http_entity_bytes": 1055,
+      "raw_http_entity_sha256": "e7b4d5ecfbf4b3b953fb8ffa17112d34f600381d11d7064f5c95b555800c8bd7",
+      "raw_to_logical_ratio": 0.0010061264038085938,
+      "payload": "repeated_x",
+      "transport": "native_httpx_raw",
+      "accept_encoding_mode": "inherited_default"
+    },
+    {
+      "request_accept_encoding": "gzip, deflate",
+      "response_headers": {
+        "content-encoding": null,
+        "content-length": null
+      },
+      "status_code": 200,
+      "num_bytes_downloaded": 1048576,
+      "decoded_bytes": 1048576,
+      "decoded_sha256": "8f990ba0b577b51cf009ea049368c16bbda1b21e1b93be07a824758bb253c39b",
+      "expected_bytes": 1048576,
+      "expected_sha256": "8f990ba0b577b51cf009ea049368c16bbda1b21e1b93be07a824758bb253c39b",
+      "content_matches": true,
+      "payload": "repeated_x",
+      "transport": "sdk_envd_http",
+      "accept_encoding_mode": "inherited_default",
+      "raw_http_entity_bytes": null
+    },
+    {
+      "request_accept_encoding": "identity",
+      "response_headers": {
+        "content-encoding": null,
+        "content-length": "1048576"
+      },
+      "status_code": 200,
+      "num_bytes_downloaded": 1048576,
+      "decoded_bytes": 1048576,
+      "decoded_sha256": "8f990ba0b577b51cf009ea049368c16bbda1b21e1b93be07a824758bb253c39b",
+      "expected_bytes": 1048576,
+      "expected_sha256": "8f990ba0b577b51cf009ea049368c16bbda1b21e1b93be07a824758bb253c39b",
+      "content_matches": true,
+      "raw_http_entity_bytes": 1048576,
+      "raw_http_entity_sha256": "8f990ba0b577b51cf009ea049368c16bbda1b21e1b93be07a824758bb253c39b",
+      "raw_to_logical_ratio": 1.0,
+      "payload": "repeated_x",
+      "transport": "native_httpx_raw",
+      "accept_encoding_mode": "identity"
+    },
+    {
+      "request_accept_encoding": "identity",
+      "response_headers": {
+        "content-encoding": null,
+        "content-length": "1048576"
+      },
+      "status_code": 200,
+      "num_bytes_downloaded": 1048576,
+      "decoded_bytes": 1048576,
+      "decoded_sha256": "8f990ba0b577b51cf009ea049368c16bbda1b21e1b93be07a824758bb253c39b",
+      "expected_bytes": 1048576,
+      "expected_sha256": "8f990ba0b577b51cf009ea049368c16bbda1b21e1b93be07a824758bb253c39b",
+      "content_matches": true,
+      "payload": "repeated_x",
+      "transport": "sdk_envd_http",
+      "accept_encoding_mode": "identity",
+      "raw_http_entity_bytes": null
+    },
+    {
+      "request_accept_encoding": "gzip",
+      "response_headers": {
+        "content-encoding": "gzip",
+        "content-length": "1055"
+      },
+      "status_code": 200,
+      "num_bytes_downloaded": 1055,
+      "decoded_bytes": 1048576,
+      "decoded_sha256": "8f990ba0b577b51cf009ea049368c16bbda1b21e1b93be07a824758bb253c39b",
+      "expected_bytes": 1048576,
+      "expected_sha256": "8f990ba0b577b51cf009ea049368c16bbda1b21e1b93be07a824758bb253c39b",
+      "content_matches": true,
+      "raw_http_entity_bytes": 1055,
+      "raw_http_entity_sha256": "e7b4d5ecfbf4b3b953fb8ffa17112d34f600381d11d7064f5c95b555800c8bd7",
+      "raw_to_logical_ratio": 0.0010061264038085938,
+      "payload": "repeated_x",
+      "transport": "native_httpx_raw",
+      "accept_encoding_mode": "gzip"
+    },
+    {
+      "request_accept_encoding": "gzip",
+      "response_headers": {
+        "content-encoding": null,
+        "content-length": null
+      },
+      "status_code": 200,
+      "num_bytes_downloaded": 1048576,
+      "decoded_bytes": 1048576,
+      "decoded_sha256": "8f990ba0b577b51cf009ea049368c16bbda1b21e1b93be07a824758bb253c39b",
+      "expected_bytes": 1048576,
+      "expected_sha256": "8f990ba0b577b51cf009ea049368c16bbda1b21e1b93be07a824758bb253c39b",
+      "content_matches": true,
+      "payload": "repeated_x",
+      "transport": "sdk_envd_http",
+      "accept_encoding_mode": "gzip",
+      "raw_http_entity_bytes": null
+    },
+    {
+      "request_accept_encoding": "gzip, deflate",
+      "response_headers": {
+        "content-encoding": null,
+        "content-length": null
+      },
+      "status_code": 200,
+      "num_bytes_downloaded": 1048576,
+      "decoded_bytes": 1048576,
+      "decoded_sha256": "8f990ba0b577b51cf009ea049368c16bbda1b21e1b93be07a824758bb253c39b",
+      "expected_bytes": 1048576,
+      "expected_sha256": "8f990ba0b577b51cf009ea049368c16bbda1b21e1b93be07a824758bb253c39b",
+      "content_matches": true,
+      "payload": "repeated_x",
+      "transport": "public_sdk_files_read",
+      "accept_encoding_mode": "public_default_gzip_false",
+      "raw_http_entity_bytes": null
+    },
+    {
+      "request_accept_encoding": "gzip, deflate",
+      "response_headers": {
+        "content-encoding": "gzip",
+        "content-length": null
+      },
+      "status_code": 200,
+      "num_bytes_downloaded": 1048919,
+      "decoded_bytes": 1048576,
+      "decoded_sha256": "ab22a3a6515e8ecf074988f09c97ce05e9d107bb0d54a95ccfec9052951c9110",
+      "expected_bytes": 1048576,
+      "expected_sha256": "ab22a3a6515e8ecf074988f09c97ce05e9d107bb0d54a95ccfec9052951c9110",
+      "content_matches": true,
+      "raw_http_entity_bytes": 1048919,
+      "raw_http_entity_sha256": "8c2df44567e8965dbfb55ede30564208f2aafc8fa8db2f6198135baf49992ebc",
+      "raw_to_logical_ratio": 1.0003271102905273,
+      "payload": "sha256_counter",
+      "transport": "native_httpx_raw",
+      "accept_encoding_mode": "inherited_default"
+    },
+    {
+      "request_accept_encoding": "gzip, deflate",
+      "response_headers": {
+        "content-encoding": null,
+        "content-length": null
+      },
+      "status_code": 200,
+      "num_bytes_downloaded": 1048576,
+      "decoded_bytes": 1048576,
+      "decoded_sha256": "ab22a3a6515e8ecf074988f09c97ce05e9d107bb0d54a95ccfec9052951c9110",
+      "expected_bytes": 1048576,
+      "expected_sha256": "ab22a3a6515e8ecf074988f09c97ce05e9d107bb0d54a95ccfec9052951c9110",
+      "content_matches": true,
+      "payload": "sha256_counter",
+      "transport": "sdk_envd_http",
+      "accept_encoding_mode": "inherited_default",
+      "raw_http_entity_bytes": null
+    },
+    {
+      "request_accept_encoding": "identity",
+      "response_headers": {
+        "content-encoding": null,
+        "content-length": "1048576"
+      },
+      "status_code": 200,
+      "num_bytes_downloaded": 1048576,
+      "decoded_bytes": 1048576,
+      "decoded_sha256": "ab22a3a6515e8ecf074988f09c97ce05e9d107bb0d54a95ccfec9052951c9110",
+      "expected_bytes": 1048576,
+      "expected_sha256": "ab22a3a6515e8ecf074988f09c97ce05e9d107bb0d54a95ccfec9052951c9110",
+      "content_matches": true,
+      "raw_http_entity_bytes": 1048576,
+      "raw_http_entity_sha256": "ab22a3a6515e8ecf074988f09c97ce05e9d107bb0d54a95ccfec9052951c9110",
+      "raw_to_logical_ratio": 1.0,
+      "payload": "sha256_counter",
+      "transport": "native_httpx_raw",
+      "accept_encoding_mode": "identity"
+    },
+    {
+      "request_accept_encoding": "identity",
+      "response_headers": {
+        "content-encoding": null,
+        "content-length": "1048576"
+      },
+      "status_code": 200,
+      "num_bytes_downloaded": 1048576,
+      "decoded_bytes": 1048576,
+      "decoded_sha256": "ab22a3a6515e8ecf074988f09c97ce05e9d107bb0d54a95ccfec9052951c9110",
+      "expected_bytes": 1048576,
+      "expected_sha256": "ab22a3a6515e8ecf074988f09c97ce05e9d107bb0d54a95ccfec9052951c9110",
+      "content_matches": true,
+      "payload": "sha256_counter",
+      "transport": "sdk_envd_http",
+      "accept_encoding_mode": "identity",
+      "raw_http_entity_bytes": null
+    },
+    {
+      "request_accept_encoding": "gzip",
+      "response_headers": {
+        "content-encoding": "gzip",
+        "content-length": null
+      },
+      "status_code": 200,
+      "num_bytes_downloaded": 1048919,
+      "decoded_bytes": 1048576,
+      "decoded_sha256": "ab22a3a6515e8ecf074988f09c97ce05e9d107bb0d54a95ccfec9052951c9110",
+      "expected_bytes": 1048576,
+      "expected_sha256": "ab22a3a6515e8ecf074988f09c97ce05e9d107bb0d54a95ccfec9052951c9110",
+      "content_matches": true,
+      "raw_http_entity_bytes": 1048919,
+      "raw_http_entity_sha256": "8c2df44567e8965dbfb55ede30564208f2aafc8fa8db2f6198135baf49992ebc",
+      "raw_to_logical_ratio": 1.0003271102905273,
+      "payload": "sha256_counter",
+      "transport": "native_httpx_raw",
+      "accept_encoding_mode": "gzip"
+    },
+    {
+      "request_accept_encoding": "gzip",
+      "response_headers": {
+        "content-encoding": null,
+        "content-length": null
+      },
+      "status_code": 200,
+      "num_bytes_downloaded": 1048576,
+      "decoded_bytes": 1048576,
+      "decoded_sha256": "ab22a3a6515e8ecf074988f09c97ce05e9d107bb0d54a95ccfec9052951c9110",
+      "expected_bytes": 1048576,
+      "expected_sha256": "ab22a3a6515e8ecf074988f09c97ce05e9d107bb0d54a95ccfec9052951c9110",
+      "content_matches": true,
+      "payload": "sha256_counter",
+      "transport": "sdk_envd_http",
+      "accept_encoding_mode": "gzip",
+      "raw_http_entity_bytes": null
+    },
+    {
+      "request_accept_encoding": "gzip, deflate",
+      "response_headers": {
+        "content-encoding": null,
+        "content-length": null
+      },
+      "status_code": 200,
+      "num_bytes_downloaded": 1048576,
+      "decoded_bytes": 1048576,
+      "decoded_sha256": "ab22a3a6515e8ecf074988f09c97ce05e9d107bb0d54a95ccfec9052951c9110",
+      "expected_bytes": 1048576,
+      "expected_sha256": "ab22a3a6515e8ecf074988f09c97ce05e9d107bb0d54a95ccfec9052951c9110",
+      "content_matches": true,
+      "payload": "sha256_counter",
+      "transport": "public_sdk_files_read",
+      "accept_encoding_mode": "public_default_gzip_false",
+      "raw_http_entity_bytes": null
+    }
+  ],
+  "versions": {
+    "e2b": "2.49.1",
+    "httpx": "0.28.1",
+    "pyqwest": "0.10.0"
+  },
+  "script_sha256": "282f441bbf9594254afc909e6d3d48b56d35da8e6a1b99c8918a46038ff72cb3",
+  "payload_generator": "SHA256(seed || big-endian uint64 counter), concatenated then truncated",
+  "payload_seed": "e2b-benchmark-file-transport-sha256-counter-v1",
+  "scope": "Correctness and HTTP compression diagnosis only; no throughput or latency claim",
+  "counter_semantics": {
+    "native_httpx_raw": "iter_raw and num_bytes_downloaded count the HTTP response entity before HTTPX content decoding; excludes HTTP headers/transfer framing and TCP/TLS overhead",
+    "sdk_envd_http": "num_bytes_downloaded counts bytes delivered to HTTPX by pyqwest; lower transport may already decompress and strip content headers",
+    "public_sdk": "files.read returns logical decoded content; gzip=False does not by itself prove Accept-Encoding identity",
+    "request_header_scope": "Accept-Encoding visible on the HTTPX request; lower-layer implicit header changes are not packet-captured"
+  },
+  "sandbox_id": "io4f1gxbs2caq6rby43hi",
+  "fixture": {
+    "template_id": "ophk83vnfor4e9749bwv",
+    "memory_mib": 4096,
+    "cpu_count": 2,
+    "envd_version": "0.9.202609130627+59497eb9134"
+  },
+  "sdk_http_transport": "pyqwest.httpx._transport.PyqwestTransport",
+  "cleanup_ok": true,
+  "owned_remaining": 0,
+  "finished_utc": "2026-09-20T12:08:08.384407+00:00"
+}

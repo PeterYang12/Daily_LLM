@@ -1,0 +1,40 @@
+{
+  "generated_utc": "2026-09-20T13:03:14.782348+00:00",
+  "controls": [
+    {
+      "source_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase0/lifecycle-smoke-service.jsonl",
+      "source_sha256": "67d702a1316afac6980d87752b3e036e5a2fee7ebd71fee93c3bd3c338e78696",
+      "cleanup_ok": true,
+      "stop_reason": "error: SandboxException",
+      "completed_count": 0,
+      "roundtrips_completed": 0,
+      "operations": []
+    },
+    {
+      "source_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase0/lifecycle-smoke-service-fixed.jsonl",
+      "source_sha256": "b6b34ca4621e3e135c6cfe587810fb10dc2c933b46181fc95fa5be6c18318183",
+      "cleanup_ok": true,
+      "stop_reason": "completed",
+      "completed_count": 3,
+      "roundtrips_completed": 1,
+      "operations": [
+        {
+          "operation": "pause",
+          "status": "success",
+          "state_check": true
+        },
+        {
+          "operation": "resume_connect",
+          "status": "success",
+          "state_check": true
+        },
+        {
+          "operation": "ready_state_probe",
+          "status": "success",
+          "state_check": true
+        }
+      ]
+    }
+  ],
+  "scope": "one state roundtrip; functional validation only"
+}

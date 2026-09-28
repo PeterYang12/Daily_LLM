@@ -1,0 +1,90 @@
+[
+  {
+    "kind": "coupled-population-concurrency",
+    "configuration": {
+      "phase": "phase2-sdk",
+      "scenario": "exec_true",
+      "operation": "exec_true",
+      "template": "base-4k-4g",
+      "memory_mib": 4096,
+      "mode": "closed_loop",
+      "instrumentation": "minimal",
+      "measurement_kind": "steady_state",
+      "comparison_key": "exec_true-v1",
+      "arrival_rate_ops_s": null,
+      "payload_bytes": 1024,
+      "page_mode": "4KiB",
+      "throughput_scope": "standalone operation"
+    },
+    "observed_points": 4,
+    "png": "plots/coupled-population-concurrency-phase2-sdk-exec-true-exec-true-4c9c25ec3c.png",
+    "svg": "plots/coupled-population-concurrency-phase2-sdk-exec-true-exec-true-4c9c25ec3c.svg",
+    "caption": "Both C and N change; effects cannot be attributed to C alone. Runs/point: 3; minimum successes/run: 2257.\nPoints: median of per-run metrics; shading: observed run min–max, not a confidence interval.\nHTTPX and pyqwest include different client costs. Short characterization runs do not establish sustainable capacity."
+  },
+  {
+    "kind": "coupled-population-concurrency",
+    "configuration": {
+      "phase": "phase2-sdk",
+      "scenario": "file_read_1k",
+      "operation": "file_read_1k",
+      "template": "base-4k-4g",
+      "memory_mib": 4096,
+      "mode": "closed_loop",
+      "instrumentation": "minimal",
+      "measurement_kind": "steady_state",
+      "comparison_key": "file_read_1k-v1",
+      "arrival_rate_ops_s": null,
+      "payload_bytes": 1024,
+      "page_mode": "4KiB",
+      "throughput_scope": "standalone operation"
+    },
+    "observed_points": 3,
+    "png": "plots/coupled-population-concurrency-phase2-sdk-file-read-1k-file-read-1k-5967de7e9f.png",
+    "svg": "plots/coupled-population-concurrency-phase2-sdk-file-read-1k-file-read-1k-5967de7e9f.svg",
+    "caption": "Both C and N change; effects cannot be attributed to C alone. Runs/point: 3; minimum successes/run: 7086.\nPoints: median of per-run metrics; shading: observed run min–max, not a confidence interval.\nHTTPX and pyqwest include different client costs. Short characterization runs do not establish sustainable capacity."
+  },
+  {
+    "kind": "coupled-population-concurrency",
+    "configuration": {
+      "phase": "phase2-sdk",
+      "scenario": "file_read_1m",
+      "operation": "file_read_1m",
+      "template": "base-4k-4g",
+      "memory_mib": 4096,
+      "mode": "closed_loop",
+      "instrumentation": "minimal",
+      "measurement_kind": "steady_state",
+      "comparison_key": "file_read_1m-v1",
+      "arrival_rate_ops_s": null,
+      "payload_bytes": 1048576,
+      "page_mode": "4KiB",
+      "throughput_scope": "standalone operation"
+    },
+    "observed_points": 3,
+    "png": "plots/coupled-population-concurrency-phase2-sdk-file-read-1m-file-read-1m-6caef05686.png",
+    "svg": "plots/coupled-population-concurrency-phase2-sdk-file-read-1m-file-read-1m-6caef05686.svg",
+    "caption": "Both C and N change; effects cannot be attributed to C alone. Runs/point: 3; minimum successes/run: 783.\nPoints: median of per-run metrics; shading: observed run min–max, not a confidence interval.\nHTTPX and pyqwest include different client costs. Short characterization runs do not establish sustainable capacity."
+  },
+  {
+    "kind": "coupled-population-concurrency",
+    "configuration": {
+      "phase": "phase2-sdk",
+      "scenario": "file_write_1k",
+      "operation": "file_write_1k",
+      "template": "base-4k-4g",
+      "memory_mib": 4096,
+      "mode": "closed_loop",
+      "instrumentation": "minimal",
+      "measurement_kind": "steady_state",
+      "comparison_key": "file_write_1k-v1",
+      "arrival_rate_ops_s": null,
+      "payload_bytes": 1024,
+      "page_mode": "4KiB",
+      "throughput_scope": "standalone operation"
+    },
+    "observed_points": 3,
+    "png": "plots/coupled-population-concurrency-phase2-sdk-file-write-1k-file-write-1k-cc61232991.png",
+    "svg": "plots/coupled-population-concurrency-phase2-sdk-file-write-1k-file-write-1k-cc61232991.svg",
+    "caption": "Both C and N change; effects cannot be attributed to C alone. Runs/point: 3; minimum successes/run: 7058.\nPoints: median of per-run metrics; shading: observed run min–max, not a confidence interval.\nHTTPX and pyqwest include different client costs. Short characterization runs do not establish sustainable capacity."
+  }
+]

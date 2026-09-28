@@ -1,0 +1,96 @@
+{
+  "files": [
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase0/overhead-buffered-service-c32-r1.resources.jsonl",
+      "capture_id": "5ce4e53d44347fda",
+      "sha256": "5ce4e53d44347fdac55294481da3d80fe8204ffbcac9058a2acdcbc5a4508020"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase0/overhead-buffered-service-c32-r2.resources.jsonl",
+      "capture_id": "1f202d03e89da461",
+      "sha256": "1f202d03e89da461d5678fd767c50d9130fc8a88dce17cfe45da77b0ff56510c"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase0/overhead-buffered-service-c32-r3.resources.jsonl",
+      "capture_id": "9eba7ecda10fc7f1",
+      "sha256": "9eba7ecda10fc7f1179f111a316447817b55cf0b39a2a2d546f9c07a6bad0a4a"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-cap64-rate20-r1.resources.jsonl",
+      "capture_id": "efaba93c408ac356",
+      "sha256": "efaba93c408ac356ca5b23800584b86b348453f30b27197b66c22b291458da53"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-cap64-rate20-r2.resources.jsonl",
+      "capture_id": "0ac2493e8d870211",
+      "sha256": "0ac2493e8d8702113d2d8da97c4629d5335b4026f68021c8ca0f6989aa40c22b"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-cap64-rate20-r3.resources.jsonl",
+      "capture_id": "c3a33ca6eec6932c",
+      "sha256": "c3a33ca6eec6932c62c996cb8f589eac25e878cc24bf980858ba340bf29ddd9c"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-cap64-rate8-r1.resources.jsonl",
+      "capture_id": "be980b0d2ba823b8",
+      "sha256": "be980b0d2ba823b85a49a200993cfe3f77a7c4d7b2513c09cb57ac5cbe40e3d2"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-cap64-rate8-r2.resources.jsonl",
+      "capture_id": "14cbf8c224f8645c",
+      "sha256": "14cbf8c224f8645cadc3e926bc7976b001abb809e110e80a46be622d9ba386a2"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-cap64-rate8-r3.resources.jsonl",
+      "capture_id": "9e0a68f022f8b0fd",
+      "sha256": "9e0a68f022f8b0fdcb79e5a8b07bda92cf84227f072bacaf2173c556e9f24c9f"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file-identity-random-c8-r1-service.resources.jsonl",
+      "capture_id": "0dddbfa08e694890",
+      "sha256": "0dddbfa08e69489071c184ab5d495d3a473e5df545c831ab5fbba8de693fcac1"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file-identity-random-c8-r2-service.resources.jsonl",
+      "capture_id": "25cc41c12f6c0050",
+      "sha256": "25cc41c12f6c0050fe223d048d70f93c2507dbe14861af0e12afd632985a99e0"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file-identity-random-c8-r3-service.resources.jsonl",
+      "capture_id": "9349b496c5292ee0",
+      "sha256": "9349b496c5292ee0c2cd27a597192ad78c4dde5d8e68c96b66d8e62a59f37ac0"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/lifecycle-service-r1.resources.jsonl",
+      "capture_id": "3f9b60d4641f0048",
+      "sha256": "3f9b60d4641f0048f749bd1ef170419d2aa0b2612bcc2b1c809980ae58a40ed4"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/lifecycle-service-r2.resources.jsonl",
+      "capture_id": "fe07d35b4553f9bd",
+      "sha256": "fe07d35b4553f9bd2ded378726f42d7ee85c431d281468b5e13f318fed50c9d8"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/lifecycle-service-r3.resources.jsonl",
+      "capture_id": "5e661e4dd157e83b",
+      "sha256": "5e661e4dd157e83b1786fb5a2f50dd5286a683f3f8aa6d3a3afaa807ae0affcb"
+    }
+  ],
+  "window_files": [
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/lifecycle-service-r1.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase0/overhead-buffered-service-c32-r1.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/lifecycle-service-r2.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase0/overhead-buffered-service-c32-r2.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/lifecycle-service-r3.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase0/overhead-buffered-service-c32-r3.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file-identity-random-c8-r1-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file-identity-random-c8-r2-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file-identity-random-c8-r3-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-cap64-rate8-r1.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-cap64-rate20-r1.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-cap64-rate8-r2.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-cap64-rate20-r2.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-cap64-rate8-r3.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-cap64-rate20-r3.jsonl"
+  ]
+}

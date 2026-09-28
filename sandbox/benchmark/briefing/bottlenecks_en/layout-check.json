@@ -1,0 +1,527 @@
+{
+  "slides": 2,
+  "text_blocks": [
+    {
+      "text": "SANDBOX BOTTLENECKS  /  AGENTIC RL",
+      "size": 10.8,
+      "lines": 1,
+      "width_pt": 241.42851562500002,
+      "box_width_pt": 784.8000000000001,
+      "required_height_pt": 12.744,
+      "box_height_pt": 18.0
+    },
+    {
+      "text": "Why short sandbox tasks feel slow",
+      "size": 29,
+      "lines": 1,
+      "width_pt": 568.68603515625,
+      "box_width_pt": 880.5600000000001,
+      "required_height_pt": 34.22,
+      "box_height_pt": 41.76
+    },
+    {
+      "text": "Pure CPU computation is not always the main cost of an agent workload.",
+      "size": 15.5,
+      "lines": 1,
+      "width_pt": 565.666748046875,
+      "box_width_pt": 866.8799999999999,
+      "required_height_pt": 18.29,
+      "box_height_pt": 25.919999999999998
+    },
+    {
+      "text": "E2B / Firecracker context \u00b7 Mechanisms, examples and profiling targets",
+      "size": 8.8,
+      "lines": 1,
+      "width_pt": 315.03828125,
+      "box_width_pt": 799.1999999999999,
+      "required_height_pt": 10.384,
+      "box_height_pt": 12.959999999999999
+    },
+    {
+      "text": "1/2",
+      "size": 10,
+      "lines": 1,
+      "width_pt": 16.09375,
+      "box_width_pt": 46.08,
+      "required_height_pt": 11.799999999999999,
+      "box_height_pt": 15.84
+    },
+    {
+      "text": "Reset / restore",
+      "size": 11.5,
+      "lines": 1,
+      "width_pt": 96.18896484375,
+      "box_width_pt": 149.04,
+      "required_height_pt": 13.569999999999999,
+      "box_height_pt": 16.560000000000002
+    },
+    {
+      "text": "\u2192",
+      "size": 13,
+      "lines": 1,
+      "width_pt": 10.892578125000002,
+      "box_width_pt": 12.959999999999999,
+      "required_height_pt": 15.34,
+      "box_height_pt": 18.0
+    },
+    {
+      "text": "Launch processes",
+      "size": 11.5,
+      "lines": 1,
+      "width_pt": 115.224609375,
+      "box_width_pt": 149.04,
+      "required_height_pt": 13.569999999999999,
+      "box_height_pt": 16.560000000000002
+    },
+    {
+      "text": "\u2192",
+      "size": 13,
+      "lines": 1,
+      "width_pt": 10.892578125000002,
+      "box_width_pt": 12.959999999999999,
+      "required_height_pt": 15.34,
+      "box_height_pt": 18.0
+    },
+    {
+      "text": "Read / edit files",
+      "size": 11.5,
+      "lines": 1,
+      "width_pt": 101.8603515625,
+      "box_width_pt": 149.04,
+      "required_height_pt": 13.569999999999999,
+      "box_height_pt": 16.560000000000002
+    },
+    {
+      "text": "\u2192",
+      "size": 13,
+      "lines": 1,
+      "width_pt": 10.892578125000002,
+      "box_width_pt": 12.959999999999999,
+      "required_height_pt": 15.34,
+      "box_height_pt": 18.0
+    },
+    {
+      "text": "Useful computation",
+      "size": 11.5,
+      "lines": 1,
+      "width_pt": 127.022216796875,
+      "box_width_pt": 149.04,
+      "required_height_pt": 13.569999999999999,
+      "box_height_pt": 16.560000000000002
+    },
+    {
+      "text": "\u2192",
+      "size": 13,
+      "lines": 1,
+      "width_pt": 10.892578125000002,
+      "box_width_pt": 12.959999999999999,
+      "required_height_pt": 15.34,
+      "box_height_pt": 18.0
+    },
+    {
+      "text": "Return results",
+      "size": 11.5,
+      "lines": 1,
+      "width_pt": 92.98828125,
+      "box_width_pt": 149.04,
+      "required_height_pt": 13.569999999999999,
+      "box_height_pt": 16.560000000000002
+    },
+    {
+      "text": "Cold Start & Reset",
+      "size": 18.5,
+      "lines": 1,
+      "width_pt": 193.138916015625,
+      "box_width_pt": 236.16000000000003,
+      "required_height_pt": 21.83,
+      "box_height_pt": 49.67999999999999
+    },
+    {
+      "text": "Provisioning, runtime warmup\nand clean-state restoration may\noutlast the useful task.",
+      "size": 14.8,
+      "lines": 3,
+      "width_pt": 238.10078125,
+      "box_width_pt": 248.4,
+      "required_height_pt": 52.392,
+      "box_height_pt": 71.28
+    },
+    {
+      "text": "EXAMPLE",
+      "size": 10.3,
+      "lines": 1,
+      "width_pt": 54.34658203125,
+      "box_width_pt": 248.4,
+      "required_height_pt": 12.154,
+      "box_height_pt": 14.4
+    },
+    {
+      "text": "Recreate a sandbox for every\none-line Python action: setup is\npaid every time.",
+      "size": 14.0,
+      "lines": 3,
+      "width_pt": 220.8486328125,
+      "box_width_pt": 248.4,
+      "required_height_pt": 49.559999999999995,
+      "box_height_pt": 67.67999999999999
+    },
+    {
+      "text": "Inspect: readiness, first-use and reset time.",
+      "size": 9.8,
+      "lines": 1,
+      "width_pt": 213.90126953125002,
+      "box_width_pt": 248.4,
+      "required_height_pt": 11.564,
+      "box_height_pt": 14.4
+    },
+    {
+      "text": "Process Creation\n& System Calls",
+      "size": 18.5,
+      "lines": 2,
+      "width_pt": 176.16552734375,
+      "box_width_pt": 236.16000000000003,
+      "required_height_pt": 43.66,
+      "box_height_pt": 49.67999999999999
+    },
+    {
+      "text": "Process launches, pipes and\nscheduling add work; virtualized\nI/O can add latency.",
+      "size": 14.8,
+      "lines": 3,
+      "width_pt": 240.57949218750002,
+      "box_width_pt": 248.4,
+      "required_height_pt": 52.392,
+      "box_height_pt": 71.28
+    },
+    {
+      "text": "EXAMPLE",
+      "size": 10.3,
+      "lines": 1,
+      "width_pt": 54.34658203125,
+      "box_width_pt": 248.4,
+      "required_height_pt": 12.154,
+      "box_height_pt": 14.4
+    },
+    {
+      "text": "An agent runs hundreds of tiny\nshell commands; launching them\ncosts more than the useful work.",
+      "size": 14.0,
+      "lines": 3,
+      "width_pt": 232.845703125,
+      "box_width_pt": 248.4,
+      "required_height_pt": 49.559999999999995,
+      "box_height_pt": 67.67999999999999
+    },
+    {
+      "text": "Inspect: fork/exec, syscalls, context switches.",
+      "size": 9.8,
+      "lines": 1,
+      "width_pt": 223.97880859375005,
+      "box_width_pt": 248.4,
+      "required_height_pt": 11.564,
+      "box_height_pt": 14.4
+    },
+    {
+      "text": "Filesystem I/O",
+      "size": 18.5,
+      "lines": 1,
+      "width_pt": 148.424560546875,
+      "box_width_pt": 236.16000000000003,
+      "required_height_pt": 21.83,
+      "box_height_pt": 49.67999999999999
+    },
+    {
+      "text": "Many small files increase\nmetadata work; uncached reads\nand copy-on-write updates can\nadd latency.",
+      "size": 14.8,
+      "lines": 4,
+      "width_pt": 239.994140625,
+      "box_width_pt": 248.4,
+      "required_height_pt": 69.856,
+      "box_height_pt": 71.28
+    },
+    {
+      "text": "EXAMPLE",
+      "size": 10.3,
+      "lines": 1,
+      "width_pt": 54.34658203125,
+      "box_width_pt": 248.4,
+      "required_height_pt": 12.154,
+      "box_height_pt": 14.4
+    },
+    {
+      "text": "Installing packages and scanning a\nrepository touch thousands of\nsmall files.",
+      "size": 14.0,
+      "lines": 3,
+      "width_pt": 246.12109375,
+      "box_width_pt": 248.4,
+      "required_height_pt": 49.559999999999995,
+      "box_height_pt": 67.67999999999999
+    },
+    {
+      "text": "Inspect: IOPS, metadata latency, cache state.",
+      "size": 9.8,
+      "lines": 1,
+      "width_pt": 223.98837890625003,
+      "box_width_pt": 248.4,
+      "required_height_pt": 11.564,
+      "box_height_pt": 14.4
+    },
+    {
+      "text": "Observed in our local Code Interpreter test: first call 1,027 ms vs second 68 ms (P50; 60 pairs).",
+      "size": 11.5,
+      "lines": 1,
+      "width_pt": 620.8203125,
+      "box_width_pt": 871.1999999999999,
+      "required_height_pt": 13.569999999999999,
+      "box_height_pt": 20.88
+    },
+    {
+      "text": "Firecracker runs normal Linux syscalls in the guest kernel; not every syscall is intercepted by the host.",
+      "size": 8.8,
+      "lines": 1,
+      "width_pt": 453.47929687500005,
+      "box_width_pt": 869.04,
+      "required_height_pt": 10.384,
+      "box_height_pt": 12.959999999999999
+    },
+    {
+      "text": "SANDBOX BOTTLENECKS  /  AGENTIC RL",
+      "size": 10.8,
+      "lines": 1,
+      "width_pt": 241.42851562500002,
+      "box_width_pt": 784.8000000000001,
+      "required_height_pt": 12.744,
+      "box_height_pt": 18.0
+    },
+    {
+      "text": "Scaling and platform limits",
+      "size": 29,
+      "lines": 1,
+      "width_pt": 442.54736328125,
+      "box_width_pt": 880.5600000000001,
+      "required_height_pt": 34.22,
+      "box_height_pt": 41.76
+    },
+    {
+      "text": "Shared resources can add long tails; missing capabilities can block a task entirely.",
+      "size": 15.5,
+      "lines": 1,
+      "width_pt": 640.578369140625,
+      "box_width_pt": 866.8799999999999,
+      "required_height_pt": 18.29,
+      "box_height_pt": 25.919999999999998
+    },
+    {
+      "text": "E2B / Firecracker context \u00b7 Mechanisms, examples and profiling targets",
+      "size": 8.8,
+      "lines": 1,
+      "width_pt": 315.03828125,
+      "box_width_pt": 799.1999999999999,
+      "required_height_pt": 10.384,
+      "box_height_pt": 12.959999999999999
+    },
+    {
+      "text": "2/2",
+      "size": 10,
+      "lines": 1,
+      "width_pt": 16.09375,
+      "box_width_pt": 46.08,
+      "required_height_pt": 11.799999999999999,
+      "box_height_pt": 15.84
+    },
+    {
+      "text": "CPU Quotas & Throttling",
+      "size": 18.3,
+      "lines": 1,
+      "width_pt": 253.19765625,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 21.594,
+      "box_height_pt": 25.2
+    },
+    {
+      "text": "With a CPU-time quota, a busy sandbox can exhaust its\nbudget and wait until the next period.",
+      "size": 14.0,
+      "lines": 2,
+      "width_pt": 389.8330078125,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 33.04,
+      "box_height_pt": 38.88
+    },
+    {
+      "text": "EXAMPLE",
+      "size": 10.0,
+      "lines": 1,
+      "width_pt": 52.763671875,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 11.799999999999999,
+      "box_height_pt": 12.959999999999999
+    },
+    {
+      "text": "A build stalls despite spare host cores because its own CPU\nbudget is exhausted.",
+      "size": 13.2,
+      "lines": 2,
+      "width_pt": 392.67421875,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 31.151999999999997,
+      "box_height_pt": 36.0
+    },
+    {
+      "text": "Check: cpu.max, throttled_usec, nr_throttled.",
+      "size": 10.0,
+      "lines": 1,
+      "width_pt": 227.216796875,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 11.799999999999999,
+      "box_height_pt": 13.68
+    },
+    {
+      "text": "Memory Pressure",
+      "size": 18.3,
+      "lines": 1,
+      "width_pt": 180.685693359375,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 21.594,
+      "box_height_pt": 25.2
+    },
+    {
+      "text": "Runtime state and caches grow with sandbox count.\nReclaim, allocation stalls and OOM can disrupt work.",
+      "size": 14.0,
+      "lines": 2,
+      "width_pt": 369.099609375,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 33.04,
+      "box_height_pt": 38.88
+    },
+    {
+      "text": "EXAMPLE",
+      "size": 10.0,
+      "lines": 1,
+      "width_pt": 52.763671875,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 11.799999999999999,
+      "box_height_pt": 12.959999999999999
+    },
+    {
+      "text": "Parallel test workers exceed available RAM and are stalled\nor killed by the kernel.",
+      "size": 13.2,
+      "lines": 2,
+      "width_pt": 387.401953125,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 31.151999999999997,
+      "box_height_pt": 36.0
+    },
+    {
+      "text": "Check: working set, memory PSI, memory.events.",
+      "size": 10.0,
+      "lines": 1,
+      "width_pt": 250.2685546875,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 11.799999999999999,
+      "box_height_pt": 13.68
+    },
+    {
+      "text": "Resource Contention",
+      "size": 18.3,
+      "lines": 1,
+      "width_pt": 215.4896484375,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 21.594,
+      "box_height_pt": 25.2
+    },
+    {
+      "text": "Sandboxes share cores, caches, memory bandwidth and\nstorage; bursts can increase queueing and tail latency.",
+      "size": 14.0,
+      "lines": 2,
+      "width_pt": 396.9150390625,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 33.04,
+      "box_height_pt": 38.88
+    },
+    {
+      "text": "EXAMPLE",
+      "size": 10.0,
+      "lines": 1,
+      "width_pt": 52.763671875,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 11.799999999999999,
+      "box_height_pt": 12.959999999999999
+    },
+    {
+      "text": "Simultaneous test runs delay other commands and can\npush new sandboxes past readiness timeouts.",
+      "size": 13.2,
+      "lines": 2,
+      "width_pt": 366.3064453125,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 31.151999999999997,
+      "box_height_pt": 36.0
+    },
+    {
+      "text": "Check: p95/p99, queues, per-core CPU, I/O pressure.",
+      "size": 10.0,
+      "lines": 1,
+      "width_pt": 264.2236328125,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 11.799999999999999,
+      "box_height_pt": 13.68
+    },
+    {
+      "text": "Compatibility Limitations",
+      "size": 18.3,
+      "lines": 1,
+      "width_pt": 260.390771484375,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 21.594,
+      "box_height_pt": 25.2
+    },
+    {
+      "text": "Restricted permissions, missing packages or kernel\nfeatures can prevent a tool from working.",
+      "size": 14.0,
+      "lines": 2,
+      "width_pt": 360.732421875,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 33.04,
+      "box_height_pt": 38.88
+    },
+    {
+      "text": "EXAMPLE",
+      "size": 10.0,
+      "lines": 1,
+      "width_pt": 52.763671875,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 11.799999999999999,
+      "box_height_pt": 12.959999999999999
+    },
+    {
+      "text": "A debugger needs ptrace; Docker or nested KVM may\nrequire privileges or /dev/kvm.",
+      "size": 13.2,
+      "lines": 2,
+      "width_pt": 355.974609375,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 31.151999999999997,
+      "box_height_pt": 36.0
+    },
+    {
+      "text": "Check: required syscalls, capabilities, devices, kernels.",
+      "size": 10.0,
+      "lines": 1,
+      "width_pt": 275.244140625,
+      "box_width_pt": 397.44000000000005,
+      "required_height_pt": 11.799999999999999,
+      "box_height_pt": 13.68
+    },
+    {
+      "text": "Observed correlation: readiness timeouts coincided with CPU bursts; the causal path remains unresolved.",
+      "size": 11.0,
+      "lines": 1,
+      "width_pt": 659.6240234375,
+      "box_width_pt": 871.1999999999999,
+      "required_height_pt": 12.979999999999999,
+      "box_height_pt": 18.0
+    },
+    {
+      "text": "CPU throttling and OOM were not established in this run. Swap was disabled in the tested VM.",
+      "size": 8.8,
+      "lines": 1,
+      "width_pt": 414.566796875,
+      "box_width_pt": 867.6,
+      "required_height_pt": 10.384,
+      "box_height_pt": 12.959999999999999
+    }
+  ]
+}

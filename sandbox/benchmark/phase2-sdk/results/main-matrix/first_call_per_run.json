@@ -1,0 +1,132 @@
+[
+  {
+    "phase": "phase2-sdk",
+    "scenario": "exec_true",
+    "template": "base-4k-4g",
+    "concurrency": 64,
+    "resident_count": 64,
+    "repeat": 2,
+    "instrumentation": "minimal",
+    "comparison_key": "exec_true-v1",
+    "run_id": "7ebbf07471e944209303c986f0ac3c86",
+    "operation": "exec_true",
+    "cohort": "first_measured_per_worker",
+    "calls": 64,
+    "failures": 4,
+    "failure_rate_pct": 6.25,
+    "error_classes": {
+      "ConnectError": 4
+    },
+    "rpc_codes": {
+      "unavailable": 4
+    },
+    "first_definition": "earliest measurement start_offset_s per worker; setup operations can precede it"
+  },
+  {
+    "phase": "phase2-sdk",
+    "scenario": "exec_true",
+    "template": "base-4k-4g",
+    "concurrency": 64,
+    "resident_count": 64,
+    "repeat": 2,
+    "instrumentation": "minimal",
+    "comparison_key": "exec_true-v1",
+    "run_id": "7ebbf07471e944209303c986f0ac3c86",
+    "operation": "exec_true",
+    "cohort": "later_measured_calls",
+    "calls": 58703,
+    "failures": 1,
+    "failure_rate_pct": 0.0017034904519360168,
+    "error_classes": {
+      "TimeoutException": 1
+    },
+    "rpc_codes": {
+      "unspecified": 1
+    },
+    "first_definition": "earliest measurement start_offset_s per worker; setup operations can precede it"
+  },
+  {
+    "phase": "phase2-sdk",
+    "scenario": "exec_true",
+    "template": "base-4k-4g",
+    "concurrency": 64,
+    "resident_count": 64,
+    "repeat": 3,
+    "instrumentation": "minimal",
+    "comparison_key": "exec_true-v1",
+    "run_id": "a58321d296d249d2845be13827ec81c2",
+    "operation": "exec_true",
+    "cohort": "first_measured_per_worker",
+    "calls": 64,
+    "failures": 12,
+    "failure_rate_pct": 18.75,
+    "error_classes": {
+      "ConnectError": 12
+    },
+    "rpc_codes": {
+      "unavailable": 12
+    },
+    "first_definition": "earliest measurement start_offset_s per worker; setup operations can precede it"
+  },
+  {
+    "phase": "phase2-sdk",
+    "scenario": "exec_true",
+    "template": "base-4k-4g",
+    "concurrency": 64,
+    "resident_count": 64,
+    "repeat": 3,
+    "instrumentation": "minimal",
+    "comparison_key": "exec_true-v1",
+    "run_id": "a58321d296d249d2845be13827ec81c2",
+    "operation": "exec_true",
+    "cohort": "later_measured_calls",
+    "calls": 58771,
+    "failures": 0,
+    "failure_rate_pct": 0.0,
+    "error_classes": {},
+    "rpc_codes": {},
+    "first_definition": "earliest measurement start_offset_s per worker; setup operations can precede it"
+  },
+  {
+    "phase": "phase2-sdk",
+    "scenario": "exec_true",
+    "template": "base-4k-4g",
+    "concurrency": 64,
+    "resident_count": 64,
+    "repeat": 1,
+    "instrumentation": "minimal",
+    "comparison_key": "exec_true-v1",
+    "run_id": "e45e2548be2c451f8b5a349a4743d707",
+    "operation": "exec_true",
+    "cohort": "first_measured_per_worker",
+    "calls": 64,
+    "failures": 2,
+    "failure_rate_pct": 3.125,
+    "error_classes": {
+      "ConnectError": 2
+    },
+    "rpc_codes": {
+      "unspecified": 2
+    },
+    "first_definition": "earliest measurement start_offset_s per worker; setup operations can precede it"
+  },
+  {
+    "phase": "phase2-sdk",
+    "scenario": "exec_true",
+    "template": "base-4k-4g",
+    "concurrency": 64,
+    "resident_count": 64,
+    "repeat": 1,
+    "instrumentation": "minimal",
+    "comparison_key": "exec_true-v1",
+    "run_id": "e45e2548be2c451f8b5a349a4743d707",
+    "operation": "exec_true",
+    "cohort": "later_measured_calls",
+    "calls": 53844,
+    "failures": 0,
+    "failure_rate_pct": 0.0,
+    "error_classes": {},
+    "rpc_codes": {},
+    "first_definition": "earliest measurement start_offset_s per worker; setup operations can precede it"
+  }
+]

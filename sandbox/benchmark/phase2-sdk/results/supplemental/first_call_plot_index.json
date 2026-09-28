@@ -1,0 +1,9 @@
+[
+  {
+    "phase": "phase2-sdk",
+    "scenario": "exec_true_all_connections_warm",
+    "concurrency": 64,
+    "png": "plots/first-call-cohorts-b8cc0bff3bac.png",
+    "svg": "plots/first-call-cohorts-b8cc0bff3bac.svg"
+  }
+]

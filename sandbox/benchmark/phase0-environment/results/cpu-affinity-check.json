@@ -1,0 +1,16 @@
+{
+  "CPU(s)": "384",
+  "Model name": "AMD EPYC 9965 192-Core Processor",
+  "Thread(s) per core": "1",
+  "Core(s) per socket": "192",
+  "Socket(s)": "2",
+  "NUMA node(s)": "2",
+  "checked_utc": "2026-09-20T11:49:24.444803+00:00",
+  "generator_cpu_affinity": "0-15",
+  "analysis_cpu_affinity": "16-31",
+  "qemu_cpu_affinity": "192-383",
+  "cpu0_thread_siblings": "0",
+  "cpu192_thread_siblings": "192",
+  "observed_cpu0_socket": 0,
+  "observed_cpu192_socket": 1
+}

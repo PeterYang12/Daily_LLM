@@ -1,0 +1,408 @@
+{
+  "schema_version": 1,
+  "frozen_utc": "2026-09-20T12:51:38.844957+00:00",
+  "freeze_mode": "exact finalized paths plus SHA-256; raw JSONL remains in /data2 and is hash-verified while reading",
+  "multi_cohorts": 6,
+  "single_generator_comparison_runs": 6,
+  "selection": "Only multigen-{service|sdk}-r1..3 and main exec_true-c64-r1..3-{service|sdk}; excludes later idle-pool and other diagnostics",
+  "datasets": [
+    {
+      "adapter": "service",
+      "repeat": 1,
+      "generator_count": 4,
+      "dataset_id": "multigen-service-r1",
+      "cohort": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/multigen-service-r1/cohort.json",
+        "sha256": "48dc3135b8b1ea60e39b98b91bb2e38ad5133c2cda4ec9c458e9267aceb8cf97",
+        "size_bytes": 5794
+      },
+      "workers": [
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/multigen-service-r1/worker-0.jsonl",
+          "sha256": "7214984631d0b6dc0a4fcaf7564b2a3c1e4b9621dbf1224b99e8027a67a97cf8",
+          "size_bytes": 22182392
+        },
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/multigen-service-r1/worker-1.jsonl",
+          "sha256": "766ee0758e61b88a3877e13d11a9a4d0f42a6be3f87704601a1a58b8cec023a2",
+          "size_bytes": 22234604
+        },
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/multigen-service-r1/worker-2.jsonl",
+          "sha256": "b14c14bf6e4e7d5c9dfd97cd332fa5505c8a63353afae46300227ba6914f45ec",
+          "size_bytes": 22126375
+        },
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/multigen-service-r1/worker-3.jsonl",
+          "sha256": "c2b1c0a2597b24f54c50ba53b721f9ee1b868997db227179b327e2d32b9b5d77",
+          "size_bytes": 21924029
+        }
+      ],
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/multigen-service-r1/resources.jsonl",
+        "sha256": "e8dd8147f9aa5c544f20b303519fb50850607f608d7805166689f898f9d4df69",
+        "size_bytes": 122037
+      }
+    },
+    {
+      "adapter": "service",
+      "repeat": 2,
+      "generator_count": 4,
+      "dataset_id": "multigen-service-r2",
+      "cohort": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/multigen-service-r2/cohort.json",
+        "sha256": "e7384e701f8174eae7c86f18442a7bf1a28fc21e8d7a4ba51690d7fdb2a15add",
+        "size_bytes": 5808
+      },
+      "workers": [
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/multigen-service-r2/worker-0.jsonl",
+          "sha256": "ff1d8d52866b3ad92c27a9cc61f03674f1cb99362b670989b0577ee9015fdf42",
+          "size_bytes": 20001335
+        },
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/multigen-service-r2/worker-1.jsonl",
+          "sha256": "e14761df9cbbb763a77333751faa78a5b7f55747b2a1b1a3cf2805676870270c",
+          "size_bytes": 21097729
+        },
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/multigen-service-r2/worker-2.jsonl",
+          "sha256": "1414b1882e5e2bad4bf4f7c2b465e53acced12025eb44b2437187c436d9264f4",
+          "size_bytes": 20213474
+        },
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/multigen-service-r2/worker-3.jsonl",
+          "sha256": "95257bee07fe3cbe1a554ed8aa2720d6c374b666b3549db9b85d47e944b24c9f",
+          "size_bytes": 19803246
+        }
+      ],
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/multigen-service-r2/resources.jsonl",
+        "sha256": "22e364a4827b8df71c0377673ad49d3569eb37fe49495dea75225774e8839e0e",
+        "size_bytes": 121800
+      }
+    },
+    {
+      "adapter": "service",
+      "repeat": 3,
+      "generator_count": 4,
+      "dataset_id": "multigen-service-r3",
+      "cohort": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/multigen-service-r3/cohort.json",
+        "sha256": "443008b546b7cb8424536ce03c24d0d13100991f2b89d0268e35fa4794e287a9",
+        "size_bytes": 5799
+      },
+      "workers": [
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/multigen-service-r3/worker-0.jsonl",
+          "sha256": "31f47ae5f58620035c2192bc33b60a76c18c2f502a8e8e0a2d693f004e6f5bfe",
+          "size_bytes": 13217589
+        },
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/multigen-service-r3/worker-1.jsonl",
+          "sha256": "46d3750eba7f3e785ec0821cc7de2ad9df28f6d4a7ad23149b90d61689466539",
+          "size_bytes": 13037321
+        },
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/multigen-service-r3/worker-2.jsonl",
+          "sha256": "d176021f8f754283589d6833cc40105cddedbc3a074fb83fed33595ca24dd211",
+          "size_bytes": 13615764
+        },
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/multigen-service-r3/worker-3.jsonl",
+          "sha256": "dd2fc7edf7c3982ec875eb718b8a13aed0193c3779f8f117300942d73c0efd43",
+          "size_bytes": 13422772
+        }
+      ],
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/multigen-service-r3/resources.jsonl",
+        "sha256": "78dd9b53b036b5d58074ceb09681da29470497e00ef21c637cf26c4d934d3e90",
+        "size_bytes": 112720
+      }
+    },
+    {
+      "adapter": "sdk",
+      "repeat": 1,
+      "generator_count": 4,
+      "dataset_id": "multigen-sdk-r1",
+      "cohort": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/multigen-sdk-r1/cohort.json",
+        "sha256": "cffbbc33b3422fc1616caeb1486f016fbfd2c1a57c7ce5445ca1b922c989a221",
+        "size_bytes": 5797
+      },
+      "workers": [
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/multigen-sdk-r1/worker-0.jsonl",
+          "sha256": "e004ee216ad30360a98069599809d4f0866e1d9091b6a0858583a27887f7756b",
+          "size_bytes": 25106619
+        },
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/multigen-sdk-r1/worker-1.jsonl",
+          "sha256": "8cb04e146387084f66b05812c5f07afa76135b3b3c9ebfbd0c778a66f28c8b7d",
+          "size_bytes": 25649978
+        },
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/multigen-sdk-r1/worker-2.jsonl",
+          "sha256": "42293d3d7ddc439e5a60b7b0db369773e65f474be23a75c83002248b1675bced",
+          "size_bytes": 26511131
+        },
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/multigen-sdk-r1/worker-3.jsonl",
+          "sha256": "c684df76bbebc2bd17ce96c33d441116fc4b809fe17c43a11aecf9bd0bf34fde",
+          "size_bytes": 25540993
+        }
+      ],
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/multigen-sdk-r1/resources.jsonl",
+        "sha256": "49cf1a9a0ed477557ad1d8288f27cda77f7df8c2b9928a07857750c4a5135a9b",
+        "size_bytes": 121439
+      }
+    },
+    {
+      "adapter": "sdk",
+      "repeat": 2,
+      "generator_count": 4,
+      "dataset_id": "multigen-sdk-r2",
+      "cohort": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/multigen-sdk-r2/cohort.json",
+        "sha256": "d0e9d4edfe53294cf877b169638f2bbdad28c1f3c11acabfcfc1ed72a9e8e5a0",
+        "size_bytes": 5796
+      },
+      "workers": [
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/multigen-sdk-r2/worker-0.jsonl",
+          "sha256": "ac7b582889990f961232ecbcdb1010b442473767f94cd84bedf35ccc96b0ebeb",
+          "size_bytes": 26511096
+        },
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/multigen-sdk-r2/worker-1.jsonl",
+          "sha256": "3cbc0604b2fa99004802845e84b6b06504e4333f1a9595492af2a9dddd6fd2ba",
+          "size_bytes": 27931930
+        },
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/multigen-sdk-r2/worker-2.jsonl",
+          "sha256": "8e2f2031a6702378e5a1b47c95bd84e7901ab83c18e59869fccbad7d97fe6782",
+          "size_bytes": 26850183
+        },
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/multigen-sdk-r2/worker-3.jsonl",
+          "sha256": "c7d245e990eefb87020b2169086b2851d8098fa9372792f5798c3dfd8cb95188",
+          "size_bytes": 27247043
+        }
+      ],
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/multigen-sdk-r2/resources.jsonl",
+        "sha256": "4d6457662f7a4cd3df8175223faaef24f97216c439380d0fef70bd4c0a2ce3d8",
+        "size_bytes": 121926
+      }
+    },
+    {
+      "adapter": "sdk",
+      "repeat": 3,
+      "generator_count": 4,
+      "dataset_id": "multigen-sdk-r3",
+      "cohort": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/multigen-sdk-r3/cohort.json",
+        "sha256": "4cd4b117ef88d1f7830c9f486b3bc9acf888c580897085e9b97c2b59666574ca",
+        "size_bytes": 5790
+      },
+      "workers": [
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/multigen-sdk-r3/worker-0.jsonl",
+          "sha256": "ff6ea7c23f5d75f085d63fa047b3fcadc8e591e57342e59d76c604f845350065",
+          "size_bytes": 21673911
+        },
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/multigen-sdk-r3/worker-1.jsonl",
+          "sha256": "ed17f9bc97b7b3da14fc9aab117280f248c4bf7d57bfa6b41cdc393d0e8d51fe",
+          "size_bytes": 21174350
+        },
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/multigen-sdk-r3/worker-2.jsonl",
+          "sha256": "7f86c4291be5b933ae4626311aeb8b7bdb3c1501c9d8c8b187aec88a0b0d3d6a",
+          "size_bytes": 21182717
+        },
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/multigen-sdk-r3/worker-3.jsonl",
+          "sha256": "4e0ae9eb3a27aa3fab236d6aa927ce8e23ffcf4b943f7ceb80b3c776752474b8",
+          "size_bytes": 21182724
+        }
+      ],
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/multigen-sdk-r3/resources.jsonl",
+        "sha256": "2b60a80d88555ce4a32d2f486f01afa12b1361a17ed628f1d162c43b99bad944",
+        "size_bytes": 126818
+      }
+    },
+    {
+      "adapter": "service",
+      "repeat": 1,
+      "generator_count": 1,
+      "dataset_id": "single-service-r1",
+      "workers": [
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c64-r1-service.jsonl",
+          "sha256": "52ded27f35fa629591abe38050a3a55aa8d05011fc224d6fdc331870d98f1a34",
+          "size_bytes": 8723828
+        }
+      ],
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c64-r1-service.resources.jsonl",
+        "sha256": "9bd15adcaeb82d2211152d804152c07680fdbc0c764ffec2227eda462214b19d",
+        "size_bytes": 197029
+      },
+      "execution_manifest": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c64-r1-service.manifest.json",
+        "sha256": "00d6e33736825c63d5a2e0b1cfbb9f66abc1b850a3d0a3cf1aeed1fe7d433c88",
+        "size_bytes": 1064
+      }
+    },
+    {
+      "adapter": "service",
+      "repeat": 2,
+      "generator_count": 1,
+      "dataset_id": "single-service-r2",
+      "workers": [
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c64-r2-service.jsonl",
+          "sha256": "05676a767cf38ec74040b000d27fcf9da2103dc0052b241692b348342f79a930",
+          "size_bytes": 9425256
+        }
+      ],
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c64-r2-service.resources.jsonl",
+        "sha256": "e9718f00c5c220a7a0d7cffe33b326d63998da3192115a4dbfe30b7a900d12cc",
+        "size_bytes": 200934
+      },
+      "execution_manifest": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c64-r2-service.manifest.json",
+        "sha256": "4f9dc0ea405aef3186b383397c683c221b9575745619b42ed227ad6c75ecb0c6",
+        "size_bytes": 1064
+      }
+    },
+    {
+      "adapter": "service",
+      "repeat": 3,
+      "generator_count": 1,
+      "dataset_id": "single-service-r3",
+      "workers": [
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c64-r3-service.jsonl",
+          "sha256": "ec7cf793398845eaab8a9704566c12c7fea8b57b5f427c3451c3e9eb332b4791",
+          "size_bytes": 8541737
+        }
+      ],
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c64-r3-service.resources.jsonl",
+        "sha256": "0fa2ce9f9f91a54e9aaa5326170e0879f065dbc709e8ac2a970b5afa712a5a5e",
+        "size_bytes": 210604
+      },
+      "execution_manifest": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c64-r3-service.manifest.json",
+        "sha256": "c7abe8138009fe4b1ebe2b3ce03140b6723b17b3f4b3a99836b24fe8f36f903c",
+        "size_bytes": 1064
+      }
+    },
+    {
+      "adapter": "sdk",
+      "repeat": 1,
+      "generator_count": 1,
+      "dataset_id": "single-sdk-r1",
+      "workers": [
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c64-r1-sdk.jsonl",
+          "sha256": "e03269b477608dc7d43e27fceb9b46f4a1972867a42317ac9f2202df7aae3341",
+          "size_bytes": 49579712
+        }
+      ],
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c64-r1-sdk.resources.jsonl",
+        "sha256": "95e15be230891b56bd20d17d8772bedd67c42233d0dabebe325ff860c5afe425",
+        "size_bytes": 196344
+      },
+      "execution_manifest": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c64-r1-sdk.manifest.json",
+        "sha256": "0acd68e38711fdae3f5dac5878422d513d488f16975a7fd65dad9ef215689e2f",
+        "size_bytes": 1032
+      }
+    },
+    {
+      "adapter": "sdk",
+      "repeat": 2,
+      "generator_count": 1,
+      "dataset_id": "single-sdk-r2",
+      "workers": [
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c64-r2-sdk.jsonl",
+          "sha256": "604a567bbf7308d1c57fd449755f4df7ccdcc4f1bcfb5468aca150550e38108c",
+          "size_bytes": 54051659
+        }
+      ],
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c64-r2-sdk.resources.jsonl",
+        "sha256": "941474cd946db3833e502ba593171456d9d35114376d96231916591e89849e0c",
+        "size_bytes": 192962
+      },
+      "execution_manifest": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c64-r2-sdk.manifest.json",
+        "sha256": "b674be5ae6392070516b08accfc29903a81b30a7e48972b9c71dba7a7b8063f4",
+        "size_bytes": 1032
+      }
+    },
+    {
+      "adapter": "sdk",
+      "repeat": 3,
+      "generator_count": 1,
+      "dataset_id": "single-sdk-r3",
+      "workers": [
+        {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c64-r3-sdk.jsonl",
+          "sha256": "86e26f5461a12890c0fc2bd3ab9db8ea69b71219d221d24712930f3cab5c5ef0",
+          "size_bytes": 54115091
+        }
+      ],
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c64-r3-sdk.resources.jsonl",
+        "sha256": "681e373a7db0698cc7f2e9baeaf909c345ca4b41cd118e97d964378b908e5609",
+        "size_bytes": 197113
+      },
+      "execution_manifest": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c64-r3-sdk.manifest.json",
+        "sha256": "0ad81adec6de2f0b837b65abb1f8ba521538195f993d934bc71986fe3f9a252b",
+        "size_bytes": 1032
+      }
+    }
+  ],
+  "source_files": [
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/code/multigenerator.py",
+      "sha256": "01153aca81a5ff129f5a15c12ed17a66bffbeb7a7e0f56d31a665d1b5375c5a9",
+      "size_bytes": 25653
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/code/runner.py",
+      "sha256": "48bbeab5401c2a9146ea31f455b65877ba01486703f7c6817d66667e941172fc",
+      "size_bytes": 24420
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/code/executed/runner-20260920-v1.py",
+      "sha256": "0eafff00e0fc46902832061b8c5a50f8d052b71f6d1b1e641091c75f73c95075",
+      "size_bytes": 23063
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/analysis/resources.py",
+      "sha256": "a766f46d0ab15082c4465499a4c20f5e4cb73963921ff53b1e0a93b280906e26",
+      "size_bytes": 25467
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/analysis/summarize.py",
+      "sha256": "1a5c17a4df79da8fd8093fed4f5d5a6a17c336e09ab872449250bb43be295891",
+      "size_bytes": 47858
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase0-environment/sample_resources.py",
+      "sha256": "8e001338cbaafcd6e5c30485705067eb5f41ba7f14ec70defd2a5f2737edf248",
+      "size_bytes": 15859
+    }
+  ]
+}

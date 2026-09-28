@@ -1,0 +1,20 @@
+[
+  {
+    "run_id": "130c6a483cd2469caead04760d1fa6c5",
+    "phase": "phase1-service",
+    "scenario": "exec_true",
+    "operation": "exec_true",
+    "operation_id": "130c6a483cd2469caead04760d1fa6c5:1388",
+    "window": "measurement",
+    "worker_id": 20,
+    "status": "invalid",
+    "error_class": "InvalidResult",
+    "rpc_code": null,
+    "http_status": null,
+    "duration_ms": 5.218680016696453,
+    "start_offset_s": 18.807285518967547,
+    "end_offset_s": 18.812504198984243,
+    "state_check": false,
+    "error_message": "Connect error: unavailable"
+  }
+]

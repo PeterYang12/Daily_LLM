@@ -1,0 +1,95 @@
+{
+  "run_id": "starting1024-smoke-022787b57d51",
+  "started_utc": "2026-09-21T15:35:12.020201+00:00",
+  "requested": 8,
+  "template": "base",
+  "scope": "8 concurrent SDK creates; no 1024-instance capacity claim",
+  "ended_utc": "2026-09-21T15:35:14.201762+00:00",
+  "peak_inflight_sdk_creates": 8,
+  "records": [
+    {
+      "slot": 0,
+      "sandbox_id": "i4ksvjifdp5cglqbt0g86",
+      "create_seconds": 1.3770687580108643,
+      "status": "passed"
+    },
+    {
+      "slot": 1,
+      "sandbox_id": "izah1drd4ez78s0xn6akx",
+      "create_seconds": 1.2408387960167602,
+      "status": "passed"
+    },
+    {
+      "slot": 2,
+      "sandbox_id": "i05oxvvf1qdv0far2j280",
+      "create_seconds": 1.4015740959439427,
+      "status": "passed"
+    },
+    {
+      "slot": 3,
+      "sandbox_id": "i4ppvqpjpa5ryus271jyn",
+      "create_seconds": 1.388363067060709,
+      "status": "passed"
+    },
+    {
+      "slot": 4,
+      "sandbox_id": "ie0d1lsfwvsglwq0gxo72",
+      "create_seconds": 1.3167516409885138,
+      "status": "passed"
+    },
+    {
+      "slot": 5,
+      "sandbox_id": "ihzym9tpiaf36dpn4v8q7",
+      "create_seconds": 1.4619217220460996,
+      "status": "passed"
+    },
+    {
+      "slot": 6,
+      "sandbox_id": "iuwrasvwjxshazzyf6x02",
+      "create_seconds": 1.367814707919024,
+      "status": "passed"
+    },
+    {
+      "slot": 7,
+      "sandbox_id": "i7k8mh9osrcy3kd1hc5rx",
+      "create_seconds": 1.3614096189849079,
+      "status": "passed"
+    }
+  ],
+  "cleanup": [
+    {
+      "sandbox_id": "ihzym9tpiaf36dpn4v8q7",
+      "status": "deleted"
+    },
+    {
+      "sandbox_id": "i05oxvvf1qdv0far2j280",
+      "status": "deleted"
+    },
+    {
+      "sandbox_id": "i4ppvqpjpa5ryus271jyn",
+      "status": "deleted"
+    },
+    {
+      "sandbox_id": "i4ksvjifdp5cglqbt0g86",
+      "status": "deleted"
+    },
+    {
+      "sandbox_id": "iuwrasvwjxshazzyf6x02",
+      "status": "deleted"
+    },
+    {
+      "sandbox_id": "i7k8mh9osrcy3kd1hc5rx",
+      "status": "deleted"
+    },
+    {
+      "sandbox_id": "ie0d1lsfwvsglwq0gxo72",
+      "status": "deleted"
+    },
+    {
+      "sandbox_id": "izah1drd4ez78s0xn6akx",
+      "status": "deleted"
+    }
+  ],
+  "remaining": [],
+  "passed": true
+}

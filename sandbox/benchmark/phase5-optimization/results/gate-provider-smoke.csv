@@ -1,0 +1,9 @@
+index,instance_id,success,startup_s,elapsed_s,exec_ok,file_roundtrip_ok,persistent_shell_ok
+0,jpadilla__pyjwt-623,True,6.737452658009715,12.767326688976027,True,True,True
+1,pallets__flask-5014,True,4.275753674970474,10.349173102993518,True,True,True
+2,jpadilla__pyjwt-623,True,7.2192655490362085,13.019201944000088,True,True,True
+3,pallets__flask-5014,True,8.591913537005894,14.022437194013037,True,True,True
+4,jpadilla__pyjwt-623,True,13.688107035006396,19.013291117036715,True,True,True
+5,pallets__flask-5014,True,11.705789762025233,16.79269968799781,True,True,True
+6,jpadilla__pyjwt-623,True,16.158865086035803,20.617251740011852,True,True,True
+7,pallets__flask-5014,True,15.031121993029956,20.530187176016625,True,True,True

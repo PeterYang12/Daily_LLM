@@ -1,0 +1,29 @@
+{
+  "analysis_script": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/code/analyze_application.py",
+  "analysis_sha256": "1eb4d53fc7a9436bd70533731fbc235816a732ba2ed95d5f91e29fd909f55636",
+  "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+  "matplotlib": "3.10.8",
+  "cpu_affinity": [
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "input_manifest_sha256": "08cc735fae70cdf57aa78d3dbbb3543a2b9d85b57e6787034b83d9f1de56b8e0",
+  "quantile_method": "linear interpolation at (n-1)*p; pooled samples, never averaged quantiles",
+  "service_requests": 0,
+  "input_runs": 9,
+  "operation_count": 600
+}

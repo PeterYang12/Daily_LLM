@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "scope": "Original Uni-Agent tools and E2B adapter; no inference or RL",
+  "endpoint": "http://10.145.64.67:8088",
+  "sandbox_id": "i5t1tujj1gjwva2ttpoza",
+  "checks": [
+    "literal argv preserved",
+    "root, cwd, and env",
+    "binary file roundtrip",
+    "nonzero exit and streams preserved",
+    "native tmux shell preserves cwd and env",
+    "native editor create and replacement",
+    "native submit",
+    "liveness",
+    "cleanup"
+  ],
+  "wall_seconds": 5.852740811009426
+}

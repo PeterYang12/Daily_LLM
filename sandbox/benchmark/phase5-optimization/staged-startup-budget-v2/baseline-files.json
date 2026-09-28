@@ -1,0 +1,10 @@
+{
+  "code/configure.py": {
+    "before_sha256": "f91cc75c4cd603d143a1d6f62d3c44e782877be45a65f3719e0011ad4131e2aa",
+    "before_mode": "0o664"
+  },
+  "code/supervise_run.py": {
+    "before_sha256": "216d87cb4da23f4f15245af02cd96e08ad8f99c4d936d4e2388b977b03df70b6",
+    "before_mode": "0o775"
+  }
+}

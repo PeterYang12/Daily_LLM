@@ -7,6 +7,7 @@
 - **第一次了解 Agentic RL**：[背景与架构](00-overview/README.md) → [基础组件实验](01-cpu-sandbox-gateway/README.md) → [8B 训练实验](04-memagent-8b-rl/README.md)。
 - **准备汇报**：[整体结果](00-overview/RESULTS.md) → [32B](03-memagent-32b-rl/README.md) 与 [8B](04-memagent-8b-rl/README.md)；图片跟随各实验存放。
 - **想先运行一个小例子**：[Verdal Sandbox](08-verdal-sandbox/README.md)，只需兼容服务与 Python / CPU Docker。
+- **想自建 Sandbox 服务**：[本地 E2B / VM / K8s](10-local-e2b-vm-k8s/README.md) → [普通 4 KiB 页与 512 并发配置](10-local-e2b-vm-k8s/4k-512.md)。
 
 ## 实验目录
 
@@ -21,6 +22,7 @@
 | [06-terminal-bench](06-terminal-bench/README.md) | Coder30B 完成数据处理、语言迁移、虚拟机任务 | 三题 resolved 1/3，finished 2/3 |
 | [07-miles](07-miles/README.md) | Miles 的数学 RL、恢复与 Python 工具流程 | 0.6B 真实更新；4B 工具适配后独立 rollout 16/16 |
 | [08-verdal-sandbox](08-verdal-sandbox/README.md) | E2B SDK 调用 Verdal 的命令、文件与生命周期 | 完整烟测 11 项通过；保留基础示例代码 |
+| [10-local-e2b-vm-k8s](10-local-e2b-vm-k8s/README.md) | 自建 E2B；普通页迁移与容量验证 | 91 个模板迁移及运行验证；512 个轻量实例同时存活与隔离检查通过 |
 
 两组 RL 的分数来自固定 64 题、各一次训练，不能外推到通用能力。代码/Terminal-Bench 是诊断子集；Miles 的 4B 适配结果没有经过 RL 更新。各实验 README 都说明了这些边界。
 

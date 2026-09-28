@@ -1,0 +1,24 @@
+{
+  "generated_utc": "2026-09-20T13:12:22.707235+00:00",
+  "analysis_script": "/home/yuhanya/Daily_LLM/sandbox/benchmark/analysis/clock_sensitivity.py",
+  "analysis_sha256": "8edc6a3cf7190910121e9d383023627ec87c2e2e184ff1d8920cd44b73491edc",
+  "resource_reader_sha256": "a766f46d0ab15082c4465499a4c20f5e4cb73963921ff53b1e0a93b280906e26",
+  "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+  "cpu_affinity": "16-31",
+  "raw_files_modified": false,
+  "counter_rates_modified": false,
+  "clocks_adjusted": false,
+  "service_requests": 0,
+  "resource_reader_source_snapshot": {
+    "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase0-environment/results/clock-sensitivity/source/resources-used.py",
+    "bytes": 25467,
+    "sha256": "a766f46d0ab15082c4465499a4c20f5e4cb73963921ff53b1e0a93b280906e26"
+  },
+  "analysis_source_snapshot": {
+    "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase0-environment/results/clock-sensitivity/source/clock_sensitivity.py",
+    "bytes": 12814,
+    "sha256": "8edc6a3cf7190910121e9d383023627ec87c2e2e184ff1d8920cd44b73491edc"
+  },
+  "resource_reader_current_sha256": "ee2f583bc470a726d04d5ad9c2879baf45401d0fb1867e6d8fb22f6b5fa8b3ad",
+  "resource_reader_later_change": "Report prose only: clock caveat; counter parsing and rates unchanged"
+}

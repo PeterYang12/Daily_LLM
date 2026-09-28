@@ -1,0 +1,26 @@
+{
+  "created_utc": "2026-09-20T14:38:34.353817+00:00",
+  "scope": "Mechanism-first English rewrite; illustrative examples distinguished from measured observations.",
+  "sources": [
+    {
+      "path": "../../REPORT.md",
+      "sha256": "ad3dd42b12a1ac7ee52565f6b6e65f82ccb6104c0ddd99f75061f421423ab047"
+    },
+    {
+      "path": "../../phase2-sdk/APPLICATION-RESULTS.md",
+      "sha256": "6ccd8e3ee9b4276018c58b4ccc87fd8e5e39461525e6f235d3778f79c87d6070"
+    },
+    {
+      "path": "../../phase1-service/LIFECYCLE-RESULTS.md",
+      "sha256": "d2bdd244b13d73d81794b799a3b78984b0f6fc406c3167d2b605128fb33137e8"
+    },
+    {
+      "path": "../../phase1-service/results/setup-failure-log-20260920.md",
+      "sha256": "f1be1779494cb985d0e67ba724cc3b2f72606c55912f26f182d0488122711bb8"
+    },
+    {
+      "path": "../../phase0-environment/results/inventory.json",
+      "sha256": "2e81c5c8abe0cf1843e643ac31d0ad141a799e63d44b6515467001282e96302e"
+    }
+  ]
+}

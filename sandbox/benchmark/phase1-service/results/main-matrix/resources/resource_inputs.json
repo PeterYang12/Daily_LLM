@@ -1,0 +1,414 @@
+{
+  "files": [
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c1-r1.resources.jsonl",
+      "capture_id": "f7691c90a326ca35",
+      "sha256": "f7691c90a326ca3535bf07cc1cdd172106e370197f410533dcd6fdc126cd4763"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c1-r2.resources.jsonl",
+      "capture_id": "187ca8cf5964a813",
+      "sha256": "187ca8cf5964a813f8eb3da6da90eadb2e0ad312596b9aa7581371ea3d1a3037"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c1-r3.resources.jsonl",
+      "capture_id": "46b8ba2a30c6e7cf",
+      "sha256": "46b8ba2a30c6e7cfc6d00334ee19d5a231c5f87b7c9c62eebb8ceefcfce59e55"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c2-r1.resources.jsonl",
+      "capture_id": "cf516b2498817137",
+      "sha256": "cf516b24988171372e7ecf9e1265eca0f6474d681b655470354126baa1d960c4"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c2-r2.resources.jsonl",
+      "capture_id": "a5d6dd247c5d2353",
+      "sha256": "a5d6dd247c5d23530513043bb519a22f3d02061d2f059a4d56f7e028e66a2ebf"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c2-r3.resources.jsonl",
+      "capture_id": "2a5f45a1f57b246d",
+      "sha256": "2a5f45a1f57b246d3ecb4a4edbd74221233339ef00275090997d95986038c43b"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c3-r1.resources.jsonl",
+      "capture_id": "d2e35cc2f370e600",
+      "sha256": "d2e35cc2f370e6006f65749f0b13b1821636841f46c70bbaafb08205bee86d16"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c3-r2.resources.jsonl",
+      "capture_id": "67484e710508423b",
+      "sha256": "67484e710508423bee350b6dd1f62073bafd22ca1657b9a82a1c844b71a96dbc"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c3-r3.resources.jsonl",
+      "capture_id": "aa1792dffdd21846",
+      "sha256": "aa1792dffdd2184678b99c2cc1f365fcaede428d8337e6ecea01a0636fed1a96"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c8-r1.resources.jsonl",
+      "capture_id": "8d30ccfcce44823d",
+      "sha256": "8d30ccfcce44823d01f4ae02fc38f25f3ade1ebe492e0af186212c9d54fe3cc2"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c8-r2.resources.jsonl",
+      "capture_id": "b385dcdef3051563",
+      "sha256": "b385dcdef3051563de939cbca321ef5a2176cec48e6d63fccf3d2430dd01ec67"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c8-r3.resources.jsonl",
+      "capture_id": "0a3ed5f2ab251b8c",
+      "sha256": "0a3ed5f2ab251b8c8e435b59191c03f0d7f37dcbb78ee9fe571e02e6cb734273"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate2-r1.resources.jsonl",
+      "capture_id": "01be9758bc3b482f",
+      "sha256": "01be9758bc3b482fa88c6bcd7b5a3b8bec0b2e99245bc36f76b07550200441ce"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate2-r2.resources.jsonl",
+      "capture_id": "d98dd6d0693b97a2",
+      "sha256": "d98dd6d0693b97a2722103556adb9f212f8ab3703201576a00305ab2e20fed90"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate2-r3.resources.jsonl",
+      "capture_id": "d5db27700d95f0d4",
+      "sha256": "d5db27700d95f0d485cfcab30dd559659b1f580901ca95f7bd765cdaf98fa229"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate20-r1.resources.jsonl",
+      "capture_id": "b105b8260d4dc27d",
+      "sha256": "b105b8260d4dc27d5e5f3e4274af8a2a5630822f54b6552d48f8f7948f43ce34"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate20-r2.resources.jsonl",
+      "capture_id": "6856b2c5f0802e30",
+      "sha256": "6856b2c5f0802e3099d13aba63b76bcf908174e573b0d8151681f1aeef04a5f5"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate20-r3.resources.jsonl",
+      "capture_id": "a4efdeca3465367e",
+      "sha256": "a4efdeca3465367ea972ae4d2e94cd7b2da80cc3be735a176af336911b8e1a16"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate8-r1.resources.jsonl",
+      "capture_id": "6f4157b851c0047c",
+      "sha256": "6f4157b851c0047c8b3179b28c9e90c31b8ac3a8b3f43030c94d4ae823b40069"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate8-r2.resources.jsonl",
+      "capture_id": "f98e0f39d4e261d4",
+      "sha256": "f98e0f39d4e261d48e972f3d04cc7b7acd313f170e547eeb265656116d16fbad"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate8-r3.resources.jsonl",
+      "capture_id": "80e73f43e4d858c7",
+      "sha256": "80e73f43e4d858c74744472f5ee2ccec3db72ac47eeb386deef4f6b40958dc13"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r1-retry2.resources.jsonl",
+      "capture_id": "23934355ceb9a0b6",
+      "sha256": "23934355ceb9a0b6bfa58c288af38adb79ba76c56b15bdc34ccf3f8062e913c3"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r1.resources.jsonl",
+      "capture_id": "e144c537dbc3e4f4",
+      "sha256": "e144c537dbc3e4f4d0f9330d2e7d46338ec361e0a8e26d9b0a668c19f0dea967"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r2.resources.jsonl",
+      "capture_id": "73fa33a5ec473d28",
+      "sha256": "73fa33a5ec473d28b8b453b7a7d50afb59d5bc59c254a280a41455d0393c683e"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r3-retry2.resources.jsonl",
+      "capture_id": "b2ab1667296ffbd0",
+      "sha256": "b2ab1667296ffbd0ade7d1f4f335b7ddb14218b4e8d9289efdfee489b5a0e73e"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r3.resources.jsonl",
+      "capture_id": "9a163bf7687a6d0d",
+      "sha256": "9a163bf7687a6d0da2123904a7f48bccb38e42261474029d29ef1a29ab9bf1a6"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident64-c8-r1.resources.jsonl",
+      "capture_id": "a4cadc8af0d6fa9f",
+      "sha256": "a4cadc8af0d6fa9f7d48c48841b6e79f8c8d15a61a82d12a4998ace236f0268e"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident64-c8-r2.resources.jsonl",
+      "capture_id": "4d4842136cc22c37",
+      "sha256": "4d4842136cc22c37dc89fab2d9728d81f7c81daa9b60cf378c0e9d5df5643eb0"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident64-c8-r3.resources.jsonl",
+      "capture_id": "ce29ce79d9a14ff0",
+      "sha256": "ce29ce79d9a14ff01d2a0716d51edb458ce5716880310c528631f891759a17cf"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c1-r1-service.resources.jsonl",
+      "capture_id": "0654df6010d1b5da",
+      "sha256": "0654df6010d1b5da9880dbb961e15de172660d773ec46cf42b65ee7bf1b2519d"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c1-r2-service.resources.jsonl",
+      "capture_id": "77b18a6dda79611e",
+      "sha256": "77b18a6dda79611e9b81e697cd97f3af609817897dbe68fffb8ec60fe23beaf7"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c1-r3-service.resources.jsonl",
+      "capture_id": "07f895152ea3d2a3",
+      "sha256": "07f895152ea3d2a3e6f677e207b407ee09b1e33e268ae58587fb959fb5b89fcf"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c32-r1-service.resources.jsonl",
+      "capture_id": "f7983826f5fb3bb0",
+      "sha256": "f7983826f5fb3bb05c6bec3799635c6e085e6b01734276dfb0ef0a01800909e8"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c32-r2-service.resources.jsonl",
+      "capture_id": "8dce7fbfd93e7c5e",
+      "sha256": "8dce7fbfd93e7c5e8bc6793b9cfc8e06f384cab756713f5ff18634e6e61660f2"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c32-r3-service.resources.jsonl",
+      "capture_id": "0aced7c5ca016745",
+      "sha256": "0aced7c5ca016745f5d7905c4348badc08968f5eadcf5ea4e847e189afbd2e54"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c64-r1-service.resources.jsonl",
+      "capture_id": "9bd15adcaeb82d22",
+      "sha256": "9bd15adcaeb82d2211152d804152c07680fdbc0c764ffec2227eda462214b19d"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c64-r2-service.resources.jsonl",
+      "capture_id": "e9718f00c5c220a7",
+      "sha256": "e9718f00c5c220a7a0d7cffe33b326d63998da3192115a4dbfe30b7a900d12cc"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c64-r3-service.resources.jsonl",
+      "capture_id": "0fa2ce9f9f91a54e",
+      "sha256": "0fa2ce9f9f91a54e9aaa5326170e0879f065dbc709e8ac2a970b5afa712a5a5e"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c8-r1-service.resources.jsonl",
+      "capture_id": "2a3dc12c7d55210a",
+      "sha256": "2a3dc12c7d55210a5b97efc9633f87e43992f2e65c098762cf7ca1d8dd415341"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c8-r2-service.resources.jsonl",
+      "capture_id": "530bd3e8be8ff1da",
+      "sha256": "530bd3e8be8ff1da0ee6042f9c2d391fa6f2296259b101faaeebb285d4611ef3"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c8-r3-service.resources.jsonl",
+      "capture_id": "851b368876991fb7",
+      "sha256": "851b368876991fb7ba99aee1fcd5d2f11f6e232a750ec78e63e92ff2234b041f"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1k-c1-r1-service.resources.jsonl",
+      "capture_id": "fcfb55a3b43d3a09",
+      "sha256": "fcfb55a3b43d3a09aac1f7d444bea88249e90075f93b7404ec83f2ae77173210"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1k-c1-r2-service.resources.jsonl",
+      "capture_id": "b6a520835f6afc34",
+      "sha256": "b6a520835f6afc346046618b8468261288ae7c739355340cb4ce953d4b0f6cd2"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1k-c1-r3-service.resources.jsonl",
+      "capture_id": "b49c5ed23c4e13e5",
+      "sha256": "b49c5ed23c4e13e57473ec69fcb1f87b610896aea5d28370be2314268494140d"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1k-c32-r1-service.resources.jsonl",
+      "capture_id": "284032fa5faa8f07",
+      "sha256": "284032fa5faa8f079c518904083e88fb3ef2931304acdfab8d05e53325bff195"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1k-c32-r2-service.resources.jsonl",
+      "capture_id": "724618bd8991b1f2",
+      "sha256": "724618bd8991b1f22345ddd2f4c56b64bca39fbae143f7ef5ef8f0af9bf3acb4"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1k-c32-r3-service.resources.jsonl",
+      "capture_id": "27bc121f6de10e4b",
+      "sha256": "27bc121f6de10e4b22cc71dba5ff707af05219ce1883636971de4c222565e95a"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1k-c8-r1-service.resources.jsonl",
+      "capture_id": "c6047eb6e26ace48",
+      "sha256": "c6047eb6e26ace48387b426a2ea29b55da86c8f953147e2a1cdc984497e8ce22"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1k-c8-r2-service.resources.jsonl",
+      "capture_id": "4fe04263f31b28cc",
+      "sha256": "4fe04263f31b28cc43fd5ced8bf6974e170464a3364ea722f206e75fa416ace1"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1k-c8-r3-service.resources.jsonl",
+      "capture_id": "7581c36735870ddb",
+      "sha256": "7581c36735870ddb5e11d4b6c0d66cda9d024e1b92f7b167dee02caa3486a193"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c1-r1-service.resources.jsonl",
+      "capture_id": "f763cec425051b84",
+      "sha256": "f763cec425051b848e68a0ce3d1b2bcbe6daa7202e8d73e5fe5b178dfc332d3e"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c1-r2-service.resources.jsonl",
+      "capture_id": "8b55829714e45124",
+      "sha256": "8b55829714e451240af0f645bc1817227dcd3ac3488a162f8e385ff801e6d5d6"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c1-r3-service.resources.jsonl",
+      "capture_id": "04eed89112be4d66",
+      "sha256": "04eed89112be4d6620b7afad043e0641a37667418e45c4dbdf9a7fc70bbab42c"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c32-r1-service.resources.jsonl",
+      "capture_id": "43c65f6c6a3fa94c",
+      "sha256": "43c65f6c6a3fa94ce9ca708a0f4332808ce81f9cac0ea4eaced256b1885dee53"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c32-r2-service.resources.jsonl",
+      "capture_id": "7a8d12e3ea7eaf56",
+      "sha256": "7a8d12e3ea7eaf5698f603fac30a0496fe7fb33a98519123d6afed2d4db2cfc2"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c32-r3-service.resources.jsonl",
+      "capture_id": "7f9af69c7407591f",
+      "sha256": "7f9af69c7407591f71ad839673ed3ac8c861f07e07410f9160be428907e02415"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c8-r1-service.resources.jsonl",
+      "capture_id": "57bf330fbd8c6f39",
+      "sha256": "57bf330fbd8c6f39c395b835c3f3559fba304b60b957557b7d3a45b1bed15078"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c8-r2-service.resources.jsonl",
+      "capture_id": "be2aa1be227326f3",
+      "sha256": "be2aa1be227326f38649279ad3a6b5c550065a2bdcaab14100e60bf8ed5045e8"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c8-r3-service.resources.jsonl",
+      "capture_id": "47404aa62db1ff94",
+      "sha256": "47404aa62db1ff94b687bf32645ba1dc54b73dca9b18dae4323c5b985725e6dc"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_write_1k-c1-r1-service.resources.jsonl",
+      "capture_id": "1869aa8f654f8c3f",
+      "sha256": "1869aa8f654f8c3fe5f2794b7380f703cd60f3664cb0da03698605f9b26862cd"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_write_1k-c1-r2-service.resources.jsonl",
+      "capture_id": "2494e3dfa3e70dbe",
+      "sha256": "2494e3dfa3e70dbe0e9165b77feb90e9c4043a472de877ab4abf4b730c306573"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_write_1k-c1-r3-service.resources.jsonl",
+      "capture_id": "67e40c9fbf56e03c",
+      "sha256": "67e40c9fbf56e03c9377b339350a4dea9eb1f5d512a983cbeae418d599352e0a"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_write_1k-c32-r1-service.resources.jsonl",
+      "capture_id": "c2d718db13d627f1",
+      "sha256": "c2d718db13d627f1a15b92933b8a994f7ed374c4b15a1a9347f1e747d5aaf8ed"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_write_1k-c32-r2-service.resources.jsonl",
+      "capture_id": "90ee6b799340c1bc",
+      "sha256": "90ee6b799340c1bca01807fde37ea7a6de13c28dceffba525f666042bb5d85be"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_write_1k-c32-r3-service.resources.jsonl",
+      "capture_id": "d742c83858c17bb6",
+      "sha256": "d742c83858c17bb60ea452815b3315de438f93025795723ed2b12d5ef3d40305"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_write_1k-c8-r1-service.resources.jsonl",
+      "capture_id": "3237c5410033aea5",
+      "sha256": "3237c5410033aea51c6de2e5b22ee7025fc84e06fc8e8220dc754a7408d66c95"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_write_1k-c8-r2-service.resources.jsonl",
+      "capture_id": "d4c5d92d3089812a",
+      "sha256": "d4c5d92d3089812a43a7b3baef1b6a9428fb17c3a105459ee191b3c544bc2b8f"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_write_1k-c8-r3-service.resources.jsonl",
+      "capture_id": "98a0cb06c452e6f3",
+      "sha256": "98a0cb06c452e6f36e7f54dff51ae10b738f3e96e439a4935d99532c6627edc3"
+    }
+  ],
+  "window_files": [
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c1-r1.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c1-r2.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c1-r3.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c2-r1.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c2-r2.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c2-r3.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c3-r1.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c3-r2.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c3-r3.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c8-r1.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c8-r2.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c8-r3.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate2-r1.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate2-r2.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate2-r3.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate20-r1.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate20-r2.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate20-r3.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate8-r1.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate8-r2.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate8-r3.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r1-retry2.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r1.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r2.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r3-retry2.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r3.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident64-c8-r1.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident64-c8-r2.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident64-c8-r3.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c1-r1-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c1-r2-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c1-r3-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c32-r1-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c32-r2-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c32-r3-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c64-r1-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c64-r2-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c64-r3-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c8-r1-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c8-r2-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec_true-c8-r3-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1k-c1-r1-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1k-c1-r2-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1k-c1-r3-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1k-c32-r1-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1k-c32-r2-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1k-c32-r3-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1k-c8-r1-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1k-c8-r2-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1k-c8-r3-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c1-r1-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c1-r2-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c1-r3-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c32-r1-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c32-r2-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c32-r3-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c8-r1-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c8-r2-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c8-r3-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_write_1k-c1-r1-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_write_1k-c1-r2-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_write_1k-c1-r3-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_write_1k-c32-r1-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_write_1k-c32-r2-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_write_1k-c32-r3-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_write_1k-c8-r1-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_write_1k-c8-r2-service.jsonl",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_write_1k-c8-r3-service.jsonl"
+  ]
+}

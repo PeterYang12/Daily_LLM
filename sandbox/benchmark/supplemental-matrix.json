@@ -1,0 +1,533 @@
+{
+  "schema_version": 1,
+  "cells": [
+    {
+      "id": "official-code-interpreter-r1",
+      "phase": "phase2-sdk",
+      "script": "phase2-sdk/code/official_sdk_baseline.py",
+      "args": {
+        "template": "benchmark-ci-minimal-20260920",
+        "iterations": 20,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "lifecycle-service-r1",
+      "phase": "phase1-service",
+      "script": "phase1-service/code/lifecycle_roundtrip.py",
+      "args": {
+        "adapter": "service",
+        "phase": "phase1-service",
+        "iterations": 20,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "overhead-buffered-service-c32-r1",
+      "phase": "phase0",
+      "script": "phase0-environment/overhead_probe.py",
+      "args": {
+        "adapter": "service",
+        "phase": "phase1-service",
+        "scenario": "exec_true",
+        "concurrency": 32,
+        "residents": 32,
+        "duration": 20,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "lifecycle-sdk-r1",
+      "phase": "phase2-sdk",
+      "script": "phase1-service/code/lifecycle_roundtrip.py",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "iterations": 20,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "overhead-buffered-sdk-c32-r1",
+      "phase": "phase0",
+      "script": "phase0-environment/overhead_probe.py",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "scenario": "exec_true",
+        "concurrency": 32,
+        "residents": 32,
+        "duration": 20,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "official-code-interpreter-r2",
+      "phase": "phase2-sdk",
+      "script": "phase2-sdk/code/official_sdk_baseline.py",
+      "args": {
+        "template": "benchmark-ci-minimal-20260920",
+        "iterations": 20,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "lifecycle-service-r2",
+      "phase": "phase1-service",
+      "script": "phase1-service/code/lifecycle_roundtrip.py",
+      "args": {
+        "adapter": "service",
+        "phase": "phase1-service",
+        "iterations": 20,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "overhead-buffered-service-c32-r2",
+      "phase": "phase0",
+      "script": "phase0-environment/overhead_probe.py",
+      "args": {
+        "adapter": "service",
+        "phase": "phase1-service",
+        "scenario": "exec_true",
+        "concurrency": 32,
+        "residents": 32,
+        "duration": 20,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "lifecycle-sdk-r2",
+      "phase": "phase2-sdk",
+      "script": "phase1-service/code/lifecycle_roundtrip.py",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "iterations": 20,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "overhead-buffered-sdk-c32-r2",
+      "phase": "phase0",
+      "script": "phase0-environment/overhead_probe.py",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "scenario": "exec_true",
+        "concurrency": 32,
+        "residents": 32,
+        "duration": 20,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "official-code-interpreter-r3",
+      "phase": "phase2-sdk",
+      "script": "phase2-sdk/code/official_sdk_baseline.py",
+      "args": {
+        "template": "benchmark-ci-minimal-20260920",
+        "iterations": 20,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "lifecycle-service-r3",
+      "phase": "phase1-service",
+      "script": "phase1-service/code/lifecycle_roundtrip.py",
+      "args": {
+        "adapter": "service",
+        "phase": "phase1-service",
+        "iterations": 20,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "overhead-buffered-service-c32-r3",
+      "phase": "phase0",
+      "script": "phase0-environment/overhead_probe.py",
+      "args": {
+        "adapter": "service",
+        "phase": "phase1-service",
+        "scenario": "exec_true",
+        "concurrency": 32,
+        "residents": 32,
+        "duration": 20,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "lifecycle-sdk-r3",
+      "phase": "phase2-sdk",
+      "script": "phase1-service/code/lifecycle_roundtrip.py",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "iterations": 20,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "overhead-buffered-sdk-c32-r3",
+      "phase": "phase0",
+      "script": "phase0-environment/overhead_probe.py",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "scenario": "exec_true",
+        "concurrency": 32,
+        "residents": 32,
+        "duration": 20,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "file-identity-random-c8-r1-service",
+      "phase": "phase1-service",
+      "script": "phase1-service/code/file_identity_probe.py",
+      "args": {
+        "adapter": "service",
+        "phase": "phase1-service",
+        "concurrency": 8,
+        "residents": 8,
+        "duration": 20,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "file-identity-random-c8-r1-sdk",
+      "phase": "phase2-sdk",
+      "script": "phase1-service/code/file_identity_probe.py",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "concurrency": 8,
+        "residents": 8,
+        "duration": 20,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "file-identity-random-c8-r2-service",
+      "phase": "phase1-service",
+      "script": "phase1-service/code/file_identity_probe.py",
+      "args": {
+        "adapter": "service",
+        "phase": "phase1-service",
+        "concurrency": 8,
+        "residents": 8,
+        "duration": 20,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "file-identity-random-c8-r2-sdk",
+      "phase": "phase2-sdk",
+      "script": "phase1-service/code/file_identity_probe.py",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "concurrency": 8,
+        "residents": 8,
+        "duration": 20,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "file-identity-random-c8-r3-service",
+      "phase": "phase1-service",
+      "script": "phase1-service/code/file_identity_probe.py",
+      "args": {
+        "adapter": "service",
+        "phase": "phase1-service",
+        "concurrency": 8,
+        "residents": 8,
+        "duration": 20,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "file-identity-random-c8-r3-sdk",
+      "phase": "phase2-sdk",
+      "script": "phase1-service/code/file_identity_probe.py",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "concurrency": 8,
+        "residents": 8,
+        "duration": 20,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "create-churn-c1-r1-sdk",
+      "phase": "phase2-sdk",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "scenario": "create",
+        "concurrency": 1,
+        "count": 100,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "create-churn-c2-r1-sdk",
+      "phase": "phase2-sdk",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "scenario": "create",
+        "concurrency": 2,
+        "count": 100,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "create-churn-c3-r1-sdk",
+      "phase": "phase2-sdk",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "scenario": "create",
+        "concurrency": 3,
+        "count": 100,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "create-churn-c8-r1-sdk",
+      "phase": "phase2-sdk",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "scenario": "create",
+        "concurrency": 8,
+        "count": 100,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "create-churn-c1-r2-sdk",
+      "phase": "phase2-sdk",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "scenario": "create",
+        "concurrency": 1,
+        "count": 100,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "create-churn-c2-r2-sdk",
+      "phase": "phase2-sdk",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "scenario": "create",
+        "concurrency": 2,
+        "count": 100,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "create-churn-c3-r2-sdk",
+      "phase": "phase2-sdk",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "scenario": "create",
+        "concurrency": 3,
+        "count": 100,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "create-churn-c8-r2-sdk",
+      "phase": "phase2-sdk",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "scenario": "create",
+        "concurrency": 8,
+        "count": 100,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "create-churn-c1-r3-sdk",
+      "phase": "phase2-sdk",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "scenario": "create",
+        "concurrency": 1,
+        "count": 100,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "create-churn-c2-r3-sdk",
+      "phase": "phase2-sdk",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "scenario": "create",
+        "concurrency": 2,
+        "count": 100,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "create-churn-c3-r3-sdk",
+      "phase": "phase2-sdk",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "scenario": "create",
+        "concurrency": 3,
+        "count": 100,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "create-churn-c8-r3-sdk",
+      "phase": "phase2-sdk",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "scenario": "create",
+        "concurrency": 8,
+        "count": 100,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "create-open-cap64-rate8-r1",
+      "phase": "phase1-service",
+      "args": {
+        "adapter": "service",
+        "phase": "phase1-service",
+        "scenario": "create",
+        "concurrency": 64,
+        "count": 100,
+        "repeat": 1,
+        "mode": "open_loop",
+        "rate": 8
+      }
+    },
+    {
+      "id": "create-open-cap64-rate20-r1",
+      "phase": "phase1-service",
+      "args": {
+        "adapter": "service",
+        "phase": "phase1-service",
+        "scenario": "create",
+        "concurrency": 64,
+        "count": 100,
+        "repeat": 1,
+        "mode": "open_loop",
+        "rate": 20
+      }
+    },
+    {
+      "id": "create-open-cap64-rate8-r2",
+      "phase": "phase1-service",
+      "args": {
+        "adapter": "service",
+        "phase": "phase1-service",
+        "scenario": "create",
+        "concurrency": 64,
+        "count": 100,
+        "repeat": 2,
+        "mode": "open_loop",
+        "rate": 8
+      }
+    },
+    {
+      "id": "create-open-cap64-rate20-r2",
+      "phase": "phase1-service",
+      "args": {
+        "adapter": "service",
+        "phase": "phase1-service",
+        "scenario": "create",
+        "concurrency": 64,
+        "count": 100,
+        "repeat": 2,
+        "mode": "open_loop",
+        "rate": 20
+      }
+    },
+    {
+      "id": "create-open-cap64-rate8-r3",
+      "phase": "phase1-service",
+      "args": {
+        "adapter": "service",
+        "phase": "phase1-service",
+        "scenario": "create",
+        "concurrency": 64,
+        "count": 100,
+        "repeat": 3,
+        "mode": "open_loop",
+        "rate": 8
+      }
+    },
+    {
+      "id": "create-open-cap64-rate20-r3",
+      "phase": "phase1-service",
+      "args": {
+        "adapter": "service",
+        "phase": "phase1-service",
+        "scenario": "create",
+        "concurrency": 64,
+        "count": 100,
+        "repeat": 3,
+        "mode": "open_loop",
+        "rate": 20
+      }
+    },
+    {
+      "id": "exec-sdk-allwarm-c64-r1",
+      "phase": "phase2-sdk",
+      "script": "phase2-sdk/code/warmed_sdk_probe.py",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "scenario": "exec_true",
+        "concurrency": 64,
+        "residents": 64,
+        "duration": 30,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "exec-sdk-allwarm-c64-r2",
+      "phase": "phase2-sdk",
+      "script": "phase2-sdk/code/warmed_sdk_probe.py",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "scenario": "exec_true",
+        "concurrency": 64,
+        "residents": 64,
+        "duration": 30,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "exec-sdk-allwarm-c64-r3",
+      "phase": "phase2-sdk",
+      "script": "phase2-sdk/code/warmed_sdk_probe.py",
+      "args": {
+        "adapter": "sdk",
+        "phase": "phase2-sdk",
+        "scenario": "exec_true",
+        "concurrency": 64,
+        "residents": 64,
+        "duration": 30,
+        "repeat": 3
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "configure_after_sha256": "165729ecbd8814ccd340fd97ee7c5e97aa8c704d1f2649c60c500f217ed49cd7",
+  "cases": [
+    {
+      "resume": false,
+      "config_changes": [
+        {
+          "path": ".actor_rollout_ref.actor.optim.use_checkpoint_opt_param_scheduler",
+          "before": null,
+          "after": true
+        },
+        {
+          "path": ".hydra",
+          "before": null,
+          "after": {
+            "run": {
+              "dir": "/experiment/results/hydra/review-fixture"
+            },
+            "job": {
+              "chdir": false
+            }
+          }
+        }
+      ],
+      "task_config_unchanged": true
+    },
+    {
+      "resume": true,
+      "config_changes": [
+        {
+          "path": ".actor_rollout_ref.actor.optim.use_checkpoint_opt_param_scheduler",
+          "before": null,
+          "after": true
+        },
+        {
+          "path": ".hydra",
+          "before": null,
+          "after": {
+            "run": {
+              "dir": "/experiment/results/hydra/review-fixture"
+            },
+            "job": {
+              "chdir": false
+            }
+          }
+        }
+      ],
+      "task_config_unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "pid": 2199016,
+  "machine_config": {
+    "vcpu_count": 2,
+    "mem_size_mib": 512,
+    "smt": true,
+    "track_dirty_pages": false,
+    "huge_pages": "None"
+  },
+  "guest_mappings": [
+    {
+      "base_host_virt_addr": 128741539827712,
+      "size": 536870912,
+      "offset": 0,
+      "page_size": 4096,
+      "page_size_kib": 4096
+    }
+  ],
+  "guest_smaps": [
+    {
+      "KernelPageSize": "4 kB",
+      "MMUPageSize": "4 kB",
+      "Rss": "24952 kB",
+      "AnonHugePages": "0 kB",
+      "ShmemPmdMapped": "0 kB",
+      "FilePmdMapped": "0 kB",
+      "Private_Hugetlb": "0 kB",
+      "Shared_Hugetlb": "0 kB",
+      "VmFlags": "rd wr sh mr mw me ms um uw nr sd",
+      "mapping": "7516f9bfd000-751719bfd000 rw-s 00000000 00:01 163880                     /memfd:guest_mem (deleted)"
+    }
+  ],
+  "four_kib_verified": true,
+  "problems": []
+}

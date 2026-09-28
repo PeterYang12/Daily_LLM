@@ -1,0 +1,15 @@
+{
+  "validated_utc": "2026-09-20T15:03:09.277059+00:00",
+  "status": "passed",
+  "presentation_pages": 6,
+  "report_pages": 2,
+  "native_editable_charts": 4,
+  "all_slides_have_source_notes": true,
+  "pptx_shapes_within_page": true,
+  "pdf_text_within_page": true,
+  "english_text_checked": true,
+  "selected_values_checked": true,
+  "source_hashes_checked": 19,
+  "render_engine": "Portable LibreOffice 24.2.7.2; local Aptos to DejaVu Sans mapping",
+  "scope": "Presentation/report artifact checks; no benchmark reruns and no service configuration changes."
+}

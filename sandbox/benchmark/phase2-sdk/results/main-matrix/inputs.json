@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "files": [
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c1-r1-sdk.jsonl",
+      "sha256": "2c51975db716ff9d643f394d3722177c2e53afb9b93c70ae68c83232b6885616"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c1-r2-sdk.jsonl",
+      "sha256": "3ac802aa7eb3f5fbad96a96417ed442db7bf4c612c42e64cf724425faa05440d"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c1-r3-sdk.jsonl",
+      "sha256": "0e1071b8fa6295ac59e65893d74333c2e5e4053828b7b57849b1d359c895d96c"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c32-r1-sdk.jsonl",
+      "sha256": "02957ffb1e0af29961960a3b65073a99585c98a7249a1c4cf4ab97425c7ca26e"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c32-r2-sdk.jsonl",
+      "sha256": "be555101c7b1f7a9ebbc2b253ffa5dfd91de60f05779a1f81d0f25ed2965b00d"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c32-r3-sdk.jsonl",
+      "sha256": "9d5cb8899fd5f9e870425d3fa6d819cd6357ba156aa18d804aba47283f77fefe"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c64-r1-sdk.jsonl",
+      "sha256": "e03269b477608dc7d43e27fceb9b46f4a1972867a42317ac9f2202df7aae3341"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c64-r2-sdk.jsonl",
+      "sha256": "604a567bbf7308d1c57fd449755f4df7ccdcc4f1bcfb5468aca150550e38108c"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c64-r3-sdk.jsonl",
+      "sha256": "86e26f5461a12890c0fc2bd3ab9db8ea69b71219d221d24712930f3cab5c5ef0"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c8-r1-sdk.jsonl",
+      "sha256": "e4452b754d2bc6be3329c104a44a2913561f8ab452c005f9e8dc7eb2c122b643"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c8-r2-sdk.jsonl",
+      "sha256": "51de1b085ac14e9a9d3cbbb58d6caf3c057ed93d5e0b7c6cdffe53ce5a49eea5"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c8-r3-sdk.jsonl",
+      "sha256": "91a47c21e2bece7e2904a3eb37b7d21c67b50b12f7cde3ac3a4bba7d9499e111"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1k-c1-r1-sdk.jsonl",
+      "sha256": "70e23efce83a10f16dc498c4a0eac00cacfec5785fa1a4e4662da592de300c43"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1k-c1-r2-sdk.jsonl",
+      "sha256": "22ce81e3f19375c2fcf0442d9cd281390a4cde5ace82bec5af24e5120092dc06"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1k-c1-r3-sdk.jsonl",
+      "sha256": "0bb570ab1665319dfbe09808d4f4b29e832f2a1ebed88c8fd8c5e7c27c2290d2"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1k-c32-r1-sdk.jsonl",
+      "sha256": "3136ed6522200279cbdf30da3a5dd2bde0b60139a4f25ee979dff21bea68d024"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1k-c32-r2-sdk.jsonl",
+      "sha256": "f69064c760ea52c4c8ae6fe3fe6ed42f940ca8cc7c375bb14b47bb0f9c6eba84"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1k-c32-r3-sdk.jsonl",
+      "sha256": "51604f31c3278f04749e704cf145ab09c25af247508410871752756cf131eef4"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1k-c8-r1-sdk.jsonl",
+      "sha256": "cc798a7d47ebe5c3e821ea74e7779fb5f24d9b6faa830c453f9a31522782df22"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1k-c8-r2-sdk.jsonl",
+      "sha256": "c4da0a9e9cc12364d6a0ee30fe0a37b8219aaa366bf4c043b96129cee71ab56e"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1k-c8-r3-sdk.jsonl",
+      "sha256": "6ed25b4f771a3323dcdba77ac5b1743e3cab7b80af13b12d6a526a85456bcf14"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1m-c1-r1-sdk.jsonl",
+      "sha256": "9bbbcb938134efe5327fd67c9856e471531141eabe785de9c9487d9f2dd40499"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1m-c1-r2-sdk.jsonl",
+      "sha256": "886fab1191bbdc9a7ef4eba4f1c48cf8a3a44c940a57f3eb6a98945f7477d720"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1m-c1-r3-sdk.jsonl",
+      "sha256": "c4271600e8e6f8bca7c3ea0845531c641e326e157da94f6a8923054f55d7e878"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1m-c32-r1-sdk.jsonl",
+      "sha256": "179359c8e30db590e51466954d9c40b48a2ac180eef11d41478d4b9bf64c4696"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1m-c32-r2-sdk.jsonl",
+      "sha256": "36a4c406560ebb0a3b0362030b463dd220197cf1a0e54077a09d12b3d24d36c3"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1m-c32-r3-sdk.jsonl",
+      "sha256": "2ef50ee31a07cf43e80638f3fcad9581e95d7a91800153d7cb38b2c6aa802126"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1m-c8-r1-sdk.jsonl",
+      "sha256": "1a6bb72094d4d5d608f2215857d93bef1aeb1fe30bc9427abb923dcb263acf72"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1m-c8-r2-sdk.jsonl",
+      "sha256": "7e0c86f1d0b1be4be363efec58f691a32b2a037a93c405e3b3565d711d143fee"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1m-c8-r3-sdk.jsonl",
+      "sha256": "ce11ec88759ebe24fed7dd710bb8d72edc09445e82b36794f4ad5e64ef0d33a0"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_write_1k-c1-r1-sdk.jsonl",
+      "sha256": "c5624f6272d554ef47179c464670d2b9e8ce4fc2b6f07d4b0274c920e4a8689a"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_write_1k-c1-r2-sdk.jsonl",
+      "sha256": "bfb224bcb7f4ad78d6a8fbc42ee437bcec8fbf54c27084e99fd5994735b117c0"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_write_1k-c1-r3-sdk.jsonl",
+      "sha256": "71dadd8259fbdb8bea1bf80d0fa90d886d2cec37642282c8348075830996d0f0"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_write_1k-c32-r1-sdk.jsonl",
+      "sha256": "09bbd0dbc21c2f953c9e6f8dc0953f8c753ce4331c7af3b82667d4334c3ab54f"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_write_1k-c32-r2-sdk.jsonl",
+      "sha256": "3c6cc35ff876b0ac5033332bd44f7e960ab26983a57c7b1d8c770cf936e744d0"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_write_1k-c32-r3-sdk.jsonl",
+      "sha256": "b1a1cfaf3580d47263d912320dbb351adaa84fa3d55d1f34d5fe55cbdc049f13"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_write_1k-c8-r1-sdk.jsonl",
+      "sha256": "7f13828e0011b7fdd230b0d8106dc49884b3c8027acb880fc89f91364d26e6d6"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_write_1k-c8-r2-sdk.jsonl",
+      "sha256": "c00cf404047b060658a771f768a1198b2fa74b8ed35162cc4787397f5f54111f"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_write_1k-c8-r3-sdk.jsonl",
+      "sha256": "91fbc8ecd50fb74cea1e061f5e4c456d6d50e18d505cb45d4f4ae7890857711b"
+    }
+  ],
+  "phases": null
+}

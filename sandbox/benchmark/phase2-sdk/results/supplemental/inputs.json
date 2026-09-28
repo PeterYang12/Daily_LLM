@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "files": [
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase0/overhead-buffered-sdk-c32-r1.jsonl",
+      "sha256": "1512e3852ccaf372d5965908b29689c456e0bee07165fd5fe4e273f364fe4cf0"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase0/overhead-buffered-sdk-c32-r2.jsonl",
+      "sha256": "009d8bdf351577569662156db1cbded3069ddb678d3567c7121b935e8d20ac6d"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase0/overhead-buffered-sdk-c32-r3.jsonl",
+      "sha256": "ae7ad8ab95aed12a956c47c71cfb50b337df2271a6a1bda75015519ec4f6d8a6"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/create-churn-c1-r1-sdk.jsonl",
+      "sha256": "6fe00877fb5945eeaee715b5f22852748aab6b7867dc0e00b2d8da3946fc1ed7"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/create-churn-c1-r2-sdk.jsonl",
+      "sha256": "6b38dc7201d2abb44270def277b3e797cb2b36292df78179811fe21f53a4a80d"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/create-churn-c1-r3-sdk.jsonl",
+      "sha256": "2ce1aa701a5720fc7f7986dab180147b960572de88b038174e6f5ef974ac6f7c"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/create-churn-c2-r1-sdk.jsonl",
+      "sha256": "6511a54554fa3a8ffc7a09ef97a4666362504e08041a46438e9196e023b8359d"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/create-churn-c2-r2-sdk.jsonl",
+      "sha256": "12176098339bac88b2e94340f8bb57faac1743ba159349d1e1c0251314fb0faa"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/create-churn-c2-r3-sdk.jsonl",
+      "sha256": "ec4ee91d1ae60edcbfa905e1050c91fb12ca14b1e2a9a0d92949eb4e0e82aee2"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/create-churn-c3-r1-sdk.jsonl",
+      "sha256": "c9fdff280392ad19cb20c5e34f4b08eb100d6f3cb98b596253c072d9f1b9c12f"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/create-churn-c3-r2-sdk.jsonl",
+      "sha256": "ae084ca12884e7cf2931b54abb2638b21884615c0df485e12aa3e2afefbbcb24"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/create-churn-c3-r3-sdk.jsonl",
+      "sha256": "333c866bb3642d8c48cfd713e094532d87b4cc78ab29397319ed753663a53992"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/create-churn-c8-r1-sdk.jsonl",
+      "sha256": "f83474f41b80d56bb9f605ba0594b8ce5180cf7e138460f89d478ace8362e90c"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/create-churn-c8-r2-sdk.jsonl",
+      "sha256": "c9df8ad0efd15bf50924cf3a2c0ba68a83aecae3ec09614d10665ce3059fcb3c"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/create-churn-c8-r3-sdk.jsonl",
+      "sha256": "a08febbfc7b2ed318ebe283826830d46c5ff646b928d40edeaaf381ceacbe408"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec-sdk-allwarm-c64-r1.jsonl",
+      "sha256": "9765fb530cc4dbb3f62d5ce64864fbda40405682de505e6fd309ef9e38bd8886"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec-sdk-allwarm-c64-r2.jsonl",
+      "sha256": "e099e4fc600589c8cae6435fc66b1584bbebff7ea8397e55b72b2acb67812af7"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec-sdk-allwarm-c64-r3.jsonl",
+      "sha256": "12fc1d7f72de2df674380d858af1baeea6ef32f9581bacc688bf7114f190db25"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file-identity-random-c8-r1-sdk.jsonl",
+      "sha256": "1cf4c45b4b3fd1501b87b37b676c25e9db2d78b6a3a8cb626116ad575546f8f6"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file-identity-random-c8-r2-sdk.jsonl",
+      "sha256": "77b5e9791225a64faaa38704641537e6f6a78fee6be0260f9975eda13cf49c3c"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file-identity-random-c8-r3-sdk.jsonl",
+      "sha256": "e06b38c899f07a3910206c0c4e41335e78ba4222dcb312dd8e944bde176b989a"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/lifecycle-sdk-r1.jsonl",
+      "sha256": "b3c4701d0bf18e225c47368a964b21a3d2bdac653eea70fe6ed430e162db8086"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/lifecycle-sdk-r2.jsonl",
+      "sha256": "854ada4a18b78180741c99fce1b6208f342524840bb8c057a50b39d4502880f0"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/lifecycle-sdk-r3.jsonl",
+      "sha256": "7c3770bbdd6355f97a1d6d26778e6ee2e0edce28c323188a1a477cb056ce6812"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/official-code-interpreter-r1.jsonl",
+      "sha256": "8bba6d6f003ede8d140a7a9c57b30c10892083fd59cf82bbeea34197e1ee2d52"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/official-code-interpreter-r2.jsonl",
+      "sha256": "0ff9915231f36a5d425d943506d171c34d31b181202bdcc0c8404e71d2efd3a0"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/official-code-interpreter-r3.jsonl",
+      "sha256": "755ce776f8c60761839991e0e87aa2fc2b4db9e96c0d78ddc6abd5113179f9ee"
+    }
+  ],
+  "phases": null
+}

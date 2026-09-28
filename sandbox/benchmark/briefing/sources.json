@@ -1,0 +1,30 @@
+{
+  "generated_utc": "2026-09-20T14:18:35.164023+00:00",
+  "scope": "Selected executive highlights; no new experiments.",
+  "sources": [
+    {
+      "path": "../REPORT.md",
+      "sha256": "ad3dd42b12a1ac7ee52565f6b6e65f82ccb6104c0ddd99f75061f421423ab047"
+    },
+    {
+      "path": "../phase1-service/MULTIGENERATOR-RESULTS.md",
+      "sha256": "ee2e8ed7fa925da391450b1177a42ba4ebab4663324ebaf5fb38a1153d4f07c2"
+    },
+    {
+      "path": "../phase1-service/MAIN-RESULTS.md",
+      "sha256": "fb970b5fef7bce6131cacad86fe57429bc49e65ff1e8506ad6aabf26fd64e0b0"
+    },
+    {
+      "path": "../phase2-sdk/MAIN-RESULTS.md",
+      "sha256": "0165b0c71475b4677a74d2c24fa1d6dcad2fc20c41a9a437b76ba918f010ed4e"
+    },
+    {
+      "path": "../phase2-sdk/APPLICATION-RESULTS.md",
+      "sha256": "6ccd8e3ee9b4276018c58b4ccc87fd8e5e39461525e6f235d3778f79c87d6070"
+    },
+    {
+      "path": "../phase1-service/IDLE-POOL-RESULTS.md",
+      "sha256": "ef9f75c306426ed1106b51eec12bce85b0d43a7f756d8fabe141e9b070ca6d24"
+    }
+  ]
+}

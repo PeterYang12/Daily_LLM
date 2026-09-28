@@ -1,0 +1,16 @@
+{
+  "episodes": 8,
+  "actions": 143,
+  "task_count": 4,
+  "manifest_sha256": "e02af08919fbda7cb718fe1cf7464290df3060f381b3df607339c1b60d36611b",
+  "execute": true,
+  "concurrency": 2,
+  "schedule": "asap",
+  "sdk_version": "2.50.0",
+  "statuses": {
+    "observation_divergence": 3,
+    "replayed": 5
+  },
+  "elapsed_including_cleanup_s": 104.19861721992493,
+  "remaining_ids": []
+}

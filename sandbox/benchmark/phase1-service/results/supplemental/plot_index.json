@@ -1,0 +1,25 @@
+[
+  {
+    "kind": "arrival-rate",
+    "configuration": {
+      "phase": "phase1-service",
+      "scenario": "create_delete_churn",
+      "operation": "create",
+      "template": "base-4k-4g",
+      "memory_mib": 4096,
+      "resident_count": null,
+      "concurrency": 64,
+      "mode": "open_loop",
+      "instrumentation": "minimal",
+      "measurement_kind": "finite_batch",
+      "comparison_key": "create-v1",
+      "payload_bytes": 1024,
+      "page_mode": "4KiB",
+      "throughput_scope": "create-delete churn"
+    },
+    "observed_points": 2,
+    "png": "plots/arrival-rate-phase1-service-create-delete-churn-create-0740db2cab.png",
+    "svg": "plots/arrival-rate-phase1-service-create-delete-churn-create-0740db2cab.svg",
+    "caption": "Points: median of per-run statistics; shading: run min–max, not a confidence interval. Runs/point: 3–3; minimum successes/run: 88.\nP99 needs more evidence below 1,000 successes/run. Failure rate includes recorded errors, timeouts, rejections, cancellations and invalid results.\nFailure rate denominator: dispatched operations. Undispatched rate denominator: scheduled arrivals.\nThroughput scope: create-delete churn; latency is the named operation's duration."
+  }
+]

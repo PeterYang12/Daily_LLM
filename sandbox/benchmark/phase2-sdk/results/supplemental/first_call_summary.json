@@ -1,0 +1,44 @@
+[
+  {
+    "phase": "phase2-sdk",
+    "scenario": "exec_true_all_connections_warm",
+    "operation": "exec_true",
+    "template": "base-4k-4g",
+    "concurrency": 64,
+    "resident_count": 64,
+    "instrumentation": "diagnostic-warmed",
+    "comparison_key": "exec_true_all_connections_warm-batch8-v2",
+    "cohort": "first_measured_per_worker",
+    "calls": 192,
+    "failures": 9,
+    "failure_rate_pct": 4.6875,
+    "run_count": 3,
+    "run_ids": [
+      "2e03188960a243fa901d8e30abe1b596",
+      "3d2cd6c411724b698ec0b0d6b7b5c667",
+      "57887b814eac4405af47fbdd20e635ab"
+    ],
+    "statistic": "pooled failure counts; per-run results provided separately"
+  },
+  {
+    "phase": "phase2-sdk",
+    "scenario": "exec_true_all_connections_warm",
+    "operation": "exec_true",
+    "template": "base-4k-4g",
+    "concurrency": 64,
+    "resident_count": 64,
+    "instrumentation": "diagnostic-warmed",
+    "comparison_key": "exec_true_all_connections_warm-batch8-v2",
+    "cohort": "later_measured_calls",
+    "calls": 187717,
+    "failures": 0,
+    "failure_rate_pct": 0.0,
+    "run_count": 3,
+    "run_ids": [
+      "2e03188960a243fa901d8e30abe1b596",
+      "3d2cd6c411724b698ec0b0d6b7b5c667",
+      "57887b814eac4405af47fbdd20e635ab"
+    ],
+    "statistic": "pooled failure counts; per-run results provided separately"
+  }
+]

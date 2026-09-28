@@ -1,0 +1,691 @@
+{
+  "schema_version": 1,
+  "scope": "explicit frozen main baselines for supplemental comparisons; not merged into supplemental run counts",
+  "created_utc": "2026-09-20T12:49:14.787571+00:00",
+  "main_baseline_count": 27,
+  "main_baselines": [
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c1-r1.jsonl",
+        "size_bytes": 159169,
+        "sha256": "6d70eefc1156ff105a8df1250638541331f32bff48b988ccee377080094d31f2"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c1-r1.resources.jsonl",
+        "size_bytes": 78907,
+        "sha256": "f7691c90a326ca3535bf07cc1cdd172106e370197f410533dcd6fdc126cd4763"
+      },
+      "run_id": "d4c4688148af44269f8d3d3b82310e0f",
+      "scenario": "create_delete_churn",
+      "repeat": 1,
+      "dispatched_count": 100,
+      "successful_count": 100,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "raw_create_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c1-r2.jsonl",
+        "size_bytes": 159201,
+        "sha256": "0d6b8a7cec4777da228ba081d63d98df69301d1b894c6749d60494ff55992200"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c1-r2.resources.jsonl",
+        "size_bytes": 75229,
+        "sha256": "187ca8cf5964a813f8eb3da6da90eadb2e0ad312596b9aa7581371ea3d1a3037"
+      },
+      "run_id": "f742396bea8b4ed3bec039b1af2313b4",
+      "scenario": "create_delete_churn",
+      "repeat": 2,
+      "dispatched_count": 100,
+      "successful_count": 100,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "raw_create_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c1-r3.jsonl",
+        "size_bytes": 159225,
+        "sha256": "11dd8d2d610b61b500a938e25171a2a3894a4f63844ec5024619a0e779c056a3"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c1-r3.resources.jsonl",
+        "size_bytes": 78576,
+        "sha256": "46b8ba2a30c6e7cfc6d00334ee19d5a231c5f87b7c9c62eebb8ceefcfce59e55"
+      },
+      "run_id": "2248f245ac5345c9b30c663979e0f5e1",
+      "scenario": "create_delete_churn",
+      "repeat": 3,
+      "dispatched_count": 100,
+      "successful_count": 100,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "raw_create_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c2-r1.jsonl",
+        "size_bytes": 159138,
+        "sha256": "e6ae1133fe785ff8f4d2e5f482d1d284a9ab3922a645ab008642b35628ae1bbc"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c2-r1.resources.jsonl",
+        "size_bytes": 60600,
+        "sha256": "cf516b24988171372e7ecf9e1265eca0f6474d681b655470354126baa1d960c4"
+      },
+      "run_id": "5c47e074243c49f6922b3e5cf486e7cf",
+      "scenario": "create_delete_churn",
+      "repeat": 1,
+      "dispatched_count": 100,
+      "successful_count": 100,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "raw_create_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c2-r2.jsonl",
+        "size_bytes": 159200,
+        "sha256": "b806d4f8e239b1b4bf403662896d105f42b29500155169946e7865913e1deecd"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c2-r2.resources.jsonl",
+        "size_bytes": 60504,
+        "sha256": "a5d6dd247c5d23530513043bb519a22f3d02061d2f059a4d56f7e028e66a2ebf"
+      },
+      "run_id": "afddc3326c334477b4bf8c26092f1b6a",
+      "scenario": "create_delete_churn",
+      "repeat": 2,
+      "dispatched_count": 100,
+      "successful_count": 100,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "raw_create_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c2-r3.jsonl",
+        "size_bytes": 159196,
+        "sha256": "42899bbff2cfc7e3c24751f88a422ae80aad1b3a3ffda1099249c8f8b83adca2"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c2-r3.resources.jsonl",
+        "size_bytes": 60514,
+        "sha256": "2a5f45a1f57b246d3ecb4a4edbd74221233339ef00275090997d95986038c43b"
+      },
+      "run_id": "a8582fd28df24f0ab75a515c2fdb1648",
+      "scenario": "create_delete_churn",
+      "repeat": 3,
+      "dispatched_count": 100,
+      "successful_count": 100,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "raw_create_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c3-r1.jsonl",
+        "size_bytes": 159182,
+        "sha256": "ffa8f9e6ce8874b42f7a66ccb5f1c95205573df30a5e81c56966369eaf4b1705"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c3-r1.resources.jsonl",
+        "size_bytes": 69257,
+        "sha256": "d2e35cc2f370e6006f65749f0b13b1821636841f46c70bbaafb08205bee86d16"
+      },
+      "run_id": "a23281a6b6374ffd9cc30addcd350fdd",
+      "scenario": "create_delete_churn",
+      "repeat": 1,
+      "dispatched_count": 100,
+      "successful_count": 100,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "raw_create_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c3-r2.jsonl",
+        "size_bytes": 159195,
+        "sha256": "49bd2d77a70c02fca3ecf5423ee27dd7a49c85419056476ef7089d5aa5577709"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c3-r2.resources.jsonl",
+        "size_bytes": 62352,
+        "sha256": "67484e710508423bee350b6dd1f62073bafd22ca1657b9a82a1c844b71a96dbc"
+      },
+      "run_id": "537cb5d9ac5649eaada8620faa5a9449",
+      "scenario": "create_delete_churn",
+      "repeat": 2,
+      "dispatched_count": 100,
+      "successful_count": 100,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "raw_create_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c3-r3.jsonl",
+        "size_bytes": 159174,
+        "sha256": "f2271d1424b3573575b14d293b13c7d8be4c72bf912dadc12a903c4d81cce702"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c3-r3.resources.jsonl",
+        "size_bytes": 58021,
+        "sha256": "aa1792dffdd2184678b99c2cc1f365fcaede428d8337e6ecea01a0636fed1a96"
+      },
+      "run_id": "ea2260529e6e40af9803a87983d29f33",
+      "scenario": "create_delete_churn",
+      "repeat": 3,
+      "dispatched_count": 100,
+      "successful_count": 100,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "raw_create_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c8-r1.jsonl",
+        "size_bytes": 159203,
+        "sha256": "8fa468addc414ae471f6727ce78be330f27edf93584c130b20c5162984a7814e"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c8-r1.resources.jsonl",
+        "size_bytes": 62546,
+        "sha256": "8d30ccfcce44823d01f4ae02fc38f25f3ade1ebe492e0af186212c9d54fe3cc2"
+      },
+      "run_id": "aff6c3586389456895a6b58bc636756e",
+      "scenario": "create_delete_churn",
+      "repeat": 1,
+      "dispatched_count": 100,
+      "successful_count": 100,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "raw_create_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c8-r2.jsonl",
+        "size_bytes": 159209,
+        "sha256": "9c5a3a1543d59d64ce8fc8bd070329bad6f8f863dfe9bfbe9eaf0e307aeea6c3"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c8-r2.resources.jsonl",
+        "size_bytes": 62544,
+        "sha256": "b385dcdef3051563de939cbca321ef5a2176cec48e6d63fccf3d2430dd01ec67"
+      },
+      "run_id": "64c7affa1f9e43db88ef806b70c957cf",
+      "scenario": "create_delete_churn",
+      "repeat": 2,
+      "dispatched_count": 100,
+      "successful_count": 100,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "raw_create_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c8-r3.jsonl",
+        "size_bytes": 159234,
+        "sha256": "c09426aca7f6837126b922467050b799e411f704653284715f4043ff7a0cb357"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-churn-c8-r3.resources.jsonl",
+        "size_bytes": 70997,
+        "sha256": "0a3ed5f2ab251b8c8e435b59191c03f0d7f37dcbb78ee9fe571e02e6cb734273"
+      },
+      "run_id": "60e9b468a341410e819266406f9fa5a0",
+      "scenario": "create_delete_churn",
+      "repeat": 3,
+      "dispatched_count": 100,
+      "successful_count": 100,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "raw_create_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate20-r1.jsonl",
+        "size_bytes": 106003,
+        "sha256": "e2e39c2d5892b901572c0cf8627c3bcc18a987ed8ca67e09d1c4becf933c12e5"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate20-r1.resources.jsonl",
+        "size_bytes": 29524,
+        "sha256": "b105b8260d4dc27d5e5f3e4274af8a2a5630822f54b6552d48f8f7948f43ce34"
+      },
+      "run_id": "2bac2f1ed18640329e53f8d573080f5d",
+      "scenario": "create_delete_churn",
+      "repeat": 1,
+      "dispatched_count": 41,
+      "successful_count": 41,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "client_cap16_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate20-r2.jsonl",
+        "size_bytes": 106980,
+        "sha256": "33af31c9068a825d5a194e9ded2310708d43cc639b3b947d778c291579b199d5"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate20-r2.resources.jsonl",
+        "size_bytes": 24723,
+        "sha256": "6856b2c5f0802e3099d13aba63b76bcf908174e573b0d8151681f1aeef04a5f5"
+      },
+      "run_id": "02d5131a2f2b40caa7e16227459c5d83",
+      "scenario": "create_delete_churn",
+      "repeat": 2,
+      "dispatched_count": 42,
+      "successful_count": 42,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "client_cap16_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate20-r3.jsonl",
+        "size_bytes": 105063,
+        "sha256": "0b44142878bbe66f403208ead20b7d6914105086be64e5b4704dc8bdcf69ac99"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate20-r3.resources.jsonl",
+        "size_bytes": 29308,
+        "sha256": "a4efdeca3465367ea972ae4d2e94cd7b2da80cc3be735a176af336911b8e1a16"
+      },
+      "run_id": "f26c3c7657d14b2da158f9e862802231",
+      "scenario": "create_delete_churn",
+      "repeat": 3,
+      "dispatched_count": 40,
+      "successful_count": 40,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "client_cap16_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate8-r1.jsonl",
+        "size_bytes": 138533,
+        "sha256": "f619f3f640cf6b37bb506da3f9708ca057c477aa9b90427a176df29be5955130"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate8-r1.resources.jsonl",
+        "size_bytes": 49195,
+        "sha256": "6f4157b851c0047c8b3179b28c9e90c31b8ac3a8b3f43030c94d4ae823b40069"
+      },
+      "run_id": "cbf464d8c5544262bece576ccab961a0",
+      "scenario": "create_delete_churn",
+      "repeat": 1,
+      "dispatched_count": 75,
+      "successful_count": 75,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "client_cap16_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate8-r2.jsonl",
+        "size_bytes": 147334,
+        "sha256": "4674c9615b47a184b161a9989034a7cb1765586c0f2d3ed407cf5d6f21c55fe9"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate8-r2.resources.jsonl",
+        "size_bytes": 54524,
+        "sha256": "f98e0f39d4e261d48e972f3d04cc7b7acd313f170e547eeb265656116d16fbad"
+      },
+      "run_id": "3eaf590830ab4ecf8570ad6aedd32c34",
+      "scenario": "create_delete_churn",
+      "repeat": 2,
+      "dispatched_count": 84,
+      "successful_count": 84,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "client_cap16_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate8-r3.jsonl",
+        "size_bytes": 140568,
+        "sha256": "01e41794c316596ec4cdcb0bbb188718b033841cba67189246ace87e5b99256c"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/create-open-rate8-r3.resources.jsonl",
+        "size_bytes": 53437,
+        "sha256": "80e73f43e4d858c74744472f5ee2ccec3db72ac47eeb386deef4f6b40958dc13"
+      },
+      "run_id": "9448ea122b2a4e57b046f5868db7982f",
+      "scenario": "create_delete_churn",
+      "repeat": 3,
+      "dispatched_count": 77,
+      "successful_count": 77,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "client_cap16_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c8-r1-service.jsonl",
+        "size_bytes": 5547714,
+        "sha256": "bbea150c5cd4ed6611c14aa8dc4735a6653e19bc1b028d983c464a1a6d13049d"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c8-r1-service.resources.jsonl",
+        "size_bytes": 57612,
+        "sha256": "57bf330fbd8c6f39c395b835c3f3559fba304b60b957557b7d3a45b1bed15078"
+      },
+      "run_id": "8c3104b12e574c5a8b5d7ba390e59761",
+      "scenario": "file_read_1m",
+      "repeat": 1,
+      "dispatched_count": 6070,
+      "successful_count": 6070,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "repeated_payload_default_gzip_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c8-r2-service.jsonl",
+        "size_bytes": 5525810,
+        "sha256": "c28ab3af3fcf09505ffd0f211102e2a11ffc586cb71d2762f3020009d155fd1c"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c8-r2-service.resources.jsonl",
+        "size_bytes": 58725,
+        "sha256": "be2aa1be227326f38649279ad3a6b5c550065a2bdcaab14100e60bf8ed5045e8"
+      },
+      "run_id": "82a49f38f3944484a7e12af496cd92d8",
+      "scenario": "file_read_1m",
+      "repeat": 2,
+      "dispatched_count": 6046,
+      "successful_count": 6046,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "repeated_payload_default_gzip_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c8-r3-service.jsonl",
+        "size_bytes": 5522171,
+        "sha256": "508384162c5782c57532fcac119d36d453601544a558ef36ce5880f8e971658b"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/file_read_1m-c8-r3-service.resources.jsonl",
+        "size_bytes": 58962,
+        "sha256": "47404aa62db1ff94b687bf32645ba1dc54b73dca9b18dae4323c5b985725e6dc"
+      },
+      "run_id": "6f6e5c28f3f549a48d5d746725173024",
+      "scenario": "file_read_1m",
+      "repeat": 3,
+      "dispatched_count": 6042,
+      "successful_count": 6042,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase1-service",
+      "roles": [
+        "repeated_payload_default_gzip_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c64-r1-sdk.jsonl",
+        "size_bytes": 49579712,
+        "sha256": "e03269b477608dc7d43e27fceb9b46f4a1972867a42317ac9f2202df7aae3341"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c64-r1-sdk.resources.jsonl",
+        "size_bytes": 196344,
+        "sha256": "95e15be230891b56bd20d17d8772bedd67c42233d0dabebe325ff860c5afe425"
+      },
+      "run_id": "e45e2548be2c451f8b5a349a4743d707",
+      "scenario": "exec_true",
+      "repeat": 1,
+      "dispatched_count": 53908,
+      "successful_count": 53906,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase2-sdk",
+      "roles": [
+        "slot0_warmup_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "31e97bb2ced36d8c79481a3744171afdc47edba7237ca21b1ecb5b119016f0d3"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c64-r2-sdk.jsonl",
+        "size_bytes": 54051659,
+        "sha256": "604a567bbf7308d1c57fd449755f4df7ccdcc4f1bcfb5468aca150550e38108c"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c64-r2-sdk.resources.jsonl",
+        "size_bytes": 192962,
+        "sha256": "941474cd946db3833e502ba593171456d9d35114376d96231916591e89849e0c"
+      },
+      "run_id": "7ebbf07471e944209303c986f0ac3c86",
+      "scenario": "exec_true",
+      "repeat": 2,
+      "dispatched_count": 58767,
+      "successful_count": 58762,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase2-sdk",
+      "roles": [
+        "slot0_warmup_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "31e97bb2ced36d8c79481a3744171afdc47edba7237ca21b1ecb5b119016f0d3"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c64-r3-sdk.jsonl",
+        "size_bytes": 54115091,
+        "sha256": "86e26f5461a12890c0fc2bd3ab9db8ea69b71219d221d24712930f3cab5c5ef0"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/exec_true-c64-r3-sdk.resources.jsonl",
+        "size_bytes": 197113,
+        "sha256": "681e373a7db0698cc7f2e9baeaf909c345ca4b41cd118e97d964378b908e5609"
+      },
+      "run_id": "a58321d296d249d2845be13827ec81c2",
+      "scenario": "exec_true",
+      "repeat": 3,
+      "dispatched_count": 58835,
+      "successful_count": 58823,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase2-sdk",
+      "roles": [
+        "slot0_warmup_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "31e97bb2ced36d8c79481a3744171afdc47edba7237ca21b1ecb5b119016f0d3"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1m-c8-r1-sdk.jsonl",
+        "size_bytes": 2247003,
+        "sha256": "1a6bb72094d4d5d608f2215857d93bef1aeb1fe30bc9427abb923dcb263acf72"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1m-c8-r1-sdk.resources.jsonl",
+        "size_bytes": 57877,
+        "sha256": "4b6cb033444ff28509d6c8d7c8a11254a2496c5cb2881a281d8d7c998ed281c4"
+      },
+      "run_id": "609959a5263f42cda23b2605476dccc2",
+      "scenario": "file_read_1m",
+      "repeat": 1,
+      "dispatched_count": 2469,
+      "successful_count": 2469,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase2-sdk",
+      "roles": [
+        "repeated_payload_default_gzip_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "31e97bb2ced36d8c79481a3744171afdc47edba7237ca21b1ecb5b119016f0d3"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1m-c8-r2-sdk.jsonl",
+        "size_bytes": 2348067,
+        "sha256": "7e0c86f1d0b1be4be363efec58f691a32b2a037a93c405e3b3565d711d143fee"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1m-c8-r2-sdk.resources.jsonl",
+        "size_bytes": 58325,
+        "sha256": "3a137123f517e75712e6e8032e1d70b5c499f2db2b72faa5488c773c1bced163"
+      },
+      "run_id": "e53623cbfa0a43b8b14e09325b632235",
+      "scenario": "file_read_1m",
+      "repeat": 2,
+      "dispatched_count": 2580,
+      "successful_count": 2580,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase2-sdk",
+      "roles": [
+        "repeated_payload_default_gzip_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "31e97bb2ced36d8c79481a3744171afdc47edba7237ca21b1ecb5b119016f0d3"
+    },
+    {
+      "operations": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1m-c8-r3-sdk.jsonl",
+        "size_bytes": 2381769,
+        "sha256": "ce11ec88759ebe24fed7dd710bb8d72edc09445e82b36794f4ad5e64ef0d33a0"
+      },
+      "resources": {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/file_read_1m-c8-r3-sdk.resources.jsonl",
+        "size_bytes": 58062,
+        "sha256": "9fe85ea35a2f449bbc6a7e4bec98c981e55780eac4a4d8be8f8e1800b93d5a1b"
+      },
+      "run_id": "87011581fd524eb9a1443ca55144fed9",
+      "scenario": "file_read_1m",
+      "repeat": 3,
+      "dispatched_count": 2617,
+      "successful_count": 2617,
+      "stop_reason": "completed",
+      "cleanup_ok": true,
+      "phase": "phase2-sdk",
+      "roles": [
+        "repeated_payload_default_gzip_reference"
+      ],
+      "main_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/main-matrix/INPUTS-FROZEN.json",
+      "main_manifest_sha256": "31e97bb2ced36d8c79481a3744171afdc47edba7237ca21b1ecb5b119016f0d3"
+    }
+  ],
+  "supplemental_manifest_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/analysis/SUPPLEMENTAL-INPUTS-FROZEN.json",
+  "supplemental_manifest_sha256": "6ab89f35793bbbd88451feeb479fda2a7ae5c73906757859a1dd491892ea8055",
+  "comparison_rules": [
+    "client cap16 versus64 at fixed configured lambda; server start admission unchanged",
+    "public SDK create versus thin HTTP create; both cycles use common raw HTTPX delete",
+    "repeated-payload/default-gzip versus random-payload/identity changes two workload factors",
+    "64 slots exercised at warmup concurrency8 before measurement64; connection-pool pre-establishment is not proven"
+  ]
+}

@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: e2b
+spec:
+  template:
+    spec:
+      $setElementOrder/initContainers:
+        - { name: preflight }
+        - { name: host-setup }
+        - { name: fetch-artifacts }
+        - { name: postgres }
+        - { name: redis }
+        - { name: clickhouse }
+        - { name: vector }
+        - { name: db-migrator }
+        - { name: clickhouse-migrator }
+        - { name: seed }
+        - { name: orchestrator }
+        - { name: api }
+        - { name: client-proxy }
+        - { name: base-template }
+      initContainers:
+        - name: host-setup
+          env:
+            - name: HUGEPAGES
+              value: "0"
+            - name: NBDS_MAX
+              value: "1024"
+        - name: postgres
+          resources:
+            requests: { cpu: "1", memory: 1Gi }
+            limits: { cpu: "8", memory: 8Gi }
+        - name: redis
+          resources:
+            requests: { cpu: 500m, memory: 512Mi }
+            limits: { cpu: "4", memory: 4Gi }
+        - name: clickhouse
+          resources:
+            requests: { cpu: "2", memory: 4Gi }
+            limits: { cpu: "16", memory: 16Gi }
+        - name: vector
+          resources:
+            requests: { cpu: 500m, memory: 512Mi }
+            limits: { cpu: "4", memory: 2Gi }
+        - name: orchestrator
+          resources:
+            requests: { hugepages-2Mi: null, cpu: "4", memory: 8Gi }
+            limits: { hugepages-2Mi: null }
+        - name: api
+          resources:
+            requests: { cpu: "1", memory: 1Gi }
+            limits: { cpu: "16", memory: 8Gi }
+        - name: client-proxy
+          resources:
+            requests: { cpu: 500m, memory: 512Mi }
+            limits: { cpu: "8", memory: 4Gi }

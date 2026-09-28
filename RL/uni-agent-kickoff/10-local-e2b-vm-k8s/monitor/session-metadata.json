@@ -1,0 +1,33 @@
+{
+  "recorded_utc": "2026-09-16T15:21:57.756649+00:00",
+  "mode": "passive formal-training observation",
+  "endpoint": "http://10.145.64.67:8088",
+  "host_service": "e2b-sandbox-vm.service",
+  "vm_sample_interval_seconds": 5,
+  "api_event_interval_seconds": 60,
+  "summary_interval_minutes": 15,
+  "client_tcp_interval_seconds": 30,
+  "remote_agent_instrumented": false,
+  "synthetic_probes_enabled": false,
+  "e2b_core_restarted_for_monitoring": false,
+  "automatic_service_remediation": false,
+  "external_notifications_configured": false,
+  "known_gaps": [
+    "OTEL_COLLECTOR_GRPC_ENDPOINT is unset; native metrics export remains unconfigured during active training",
+    "GET sandbox metrics returned HTTP-success but zero points in the availability test; metrics_gauge had zero rows",
+    "Native sandbox_host_stats is populated and supplies cgroup CPU/current memory",
+    "Kernel rejects writes resetting memory.peak; interval peak metrics are not reliable",
+    "Initial gateway log backfill reached its byte limit; it caught up on following collections, but already rotated past logs cannot be recovered",
+    "CPU sampling begins at 2026-09-16T14:55:58Z; setup has a roughly 68-second gap between trial and background sampling"
+  ],
+  "source_sha256": {
+    "monitor_service.py": "4a92ad9657b6d3517fa1f172358794c13a5a51e78cdb3d090b894607c2da601b",
+    "guest_perf_sampler.py": "e5563aa42d83b99280e5781d340dbc51160717264d05a1c67712c3c03b825511",
+    "collect_vm_performance.py": "00fb5a3a0ebb51e142d7bbe3c12e40c4a357f915eb808e3c83dca89667b4ffea",
+    "collect_e2b_events.py": "8839bba7b49c04193af96490dda0dc747b3c61d30e67f3a92aa53c6401062ef9",
+    "summarize_performance.py": "f2120f478f27eb942d5e489fb068947b0e5f4d4f7210808bedd9d3ffe2ea8982"
+  },
+  "updated_utc": "2026-09-16T15:24:31.233871+00:00",
+  "monitoring_enabled": false,
+  "stopped_utc": "2026-09-16T23:52:45.145918+00:00"
+}

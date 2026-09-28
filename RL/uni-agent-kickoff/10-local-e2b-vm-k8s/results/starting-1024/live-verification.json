@@ -1,0 +1,36 @@
+{
+  "verified_utc": "2026-09-21T15:35:12.159433+00:00",
+  "statefulset_env": {
+    "E2B_MAX_STARTING_INSTANCES_PER_NODE": "1024",
+    "E2B_SANDBOX_HUGE_PAGES": "false",
+    "E2B_MAX_SANDBOXES_PER_NODE": "512"
+  },
+  "processes": [
+    {
+      "pid": 1011060,
+      "sha256": "590d0173ff9df2654c67978ac82fc503264ff97890e5b5cdf0e102a0953a238a",
+      "environment": {
+        "E2B_MAX_STARTING_INSTANCES_PER_NODE": "1024",
+        "E2B_MAX_SANDBOXES_PER_NODE": "512",
+        "E2B_SANDBOX_HUGE_PAGES": "false"
+      },
+      "launchdarkly_configured": false
+    }
+  ],
+  "status": {
+    "availableReplicas": 1,
+    "collisionCount": 0,
+    "currentReplicas": 1,
+    "currentRevision": "e2b-5bbc8bdb67",
+    "observedGeneration": 8,
+    "readyReplicas": 1,
+    "replicas": 1,
+    "updateRevision": "e2b-5bbc8bdb67",
+    "updatedReplicas": 1
+  },
+  "annotations": {
+    "local.e2b/api-sha256": "053ccf0e58f6c958417d30d26dcd1965a325ff23fa45e2c34f98df4565dd4c54",
+    "local.e2b/orchestrator-sha256": "590d0173ff9df2654c67978ac82fc503264ff97890e5b5cdf0e102a0953a238a",
+    "local.e2b/runtime-version": "local-4k-512-start1024-20260921"
+  }
+}

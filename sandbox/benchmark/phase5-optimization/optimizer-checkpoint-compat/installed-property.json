@@ -1,0 +1,6 @@
+{
+  "path": "/opt/venv/lib/python3.12/site-packages/megatron/core/optimizer/optimizer.py",
+  "file_sha256": "bc70856659b0485d78c7876cd0a1393354a40691f5a459fe551efc20d6b9672a",
+  "property_source": "@property\ndef optimizer(self):\n    \"\"\"\n        Access underlying optimizer when only one optimizer included for backward compatibility.\n        \"\"\"\n    assert len(self.chained_optimizers) == 1, 'ChainedOptimizer has more than one optimizer when accessing self.optimizer'\n    return self.chained_optimizers[0].optimizer",
+  "line": 1136
+}

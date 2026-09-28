@@ -1,0 +1,420 @@
+{
+  "status": "passed",
+  "completed_utc": "2026-09-20T06:02:18.900019+00:00",
+  "endpoint": "http://10.145.64.67:8088",
+  "original_client_credentials_still_accepted": true,
+  "source_commit": "e7b22501988c826563bf1b3cf0d22a1183e7affe",
+  "custom_runtime_version": "local-4k-512-20260920",
+  "go_version": "1.26.8",
+  "binary_sha256": {
+    "api": "053ccf0e58f6c958417d30d26dcd1965a325ff23fa45e2c34f98df4565dd4c54",
+    "orchestrator": "bff879e1e132546115a5b9b6f67e53af31655f05acc42abe215b4a591ebaaf02",
+    "migrator": "01e1094744594f155c9c0db9e54b215b70a2b6fdd87b254918b313daae6fa8ab"
+  },
+  "guest_memory_page_bytes": 4096,
+  "hugetlb_reserved_gib": 0,
+  "team_concurrent_sandboxes": 512,
+  "node_max_sandboxes": 512,
+  "node_max_starting_instances": 3,
+  "nbd_devices": 1024,
+  "nbd_warm_pool": 32,
+  "neighbor_thresholds": {
+    "ipv4": {
+      "gc_thresh1": 4096,
+      "gc_thresh2": 8192,
+      "gc_thresh3": 16384
+    },
+    "ipv6": {
+      "gc_thresh1": 4096,
+      "gc_thresh2": 8192,
+      "gc_thresh3": 16384
+    }
+  },
+  "qemu_nofile": {
+    "pid": 184366,
+    "soft": 1048576,
+    "hard": 1048576
+  },
+  "nginx_worker_nofile": 65536,
+  "vm_memory_gib": 1486.8380889892578,
+  "vm_vcpus": 192,
+  "vm_reboot_verified": true,
+  "node_hugepages_allocatable": "0",
+  "postgres_huge_pages": "off",
+  "migrated_templates": 91,
+  "runtime_verified_templates": 91,
+  "template_resources_and_names_preserved": true,
+  "pause_resume_4k_verified": true,
+  "sdk_functional_checks": 9,
+  "capacity_test": {
+    "run_id": "ac23106f199a4e698a9f024ce9c1da6d",
+    "template": {
+      "alias": "base-4k-4g",
+      "template_id": "ophk83vnfor4e9749bwv",
+      "build_id": "d45cb363-ceed-4f19-8c49-a12a82f074ab",
+      "memory_mb": 4096,
+      "cpu_count": 2,
+      "wall_seconds": 13.456076487957034,
+      "status": "ready"
+    },
+    "simultaneously_running": 512,
+    "create_inflight": 2,
+    "seconds_to_512_running": 253.957,
+    "wall_seconds_including_checks_and_cleanup": 330.552,
+    "milestones": [
+      {
+        "target": 32,
+        "running": 32,
+        "owned_total": 32,
+        "elapsed_seconds": 13.091,
+        "checked_utc": "2026-09-20T05:53:04.255405+00:00",
+        "label": "milestone"
+      },
+      {
+        "target": 64,
+        "running": 64,
+        "owned_total": 64,
+        "elapsed_seconds": 26.641,
+        "checked_utc": "2026-09-20T05:53:17.805760+00:00",
+        "label": "milestone"
+      },
+      {
+        "target": 128,
+        "running": 128,
+        "owned_total": 128,
+        "elapsed_seconds": 55.266,
+        "checked_utc": "2026-09-20T05:53:46.430333+00:00",
+        "label": "milestone"
+      },
+      {
+        "target": 256,
+        "running": 256,
+        "owned_total": 256,
+        "elapsed_seconds": 118.397,
+        "checked_utc": "2026-09-20T05:54:49.561056+00:00",
+        "label": "milestone"
+      },
+      {
+        "target": 512,
+        "running": 512,
+        "owned_total": 512,
+        "elapsed_seconds": 253.957,
+        "checked_utc": "2026-09-20T05:57:05.120825+00:00",
+        "label": "milestone"
+      },
+      {
+        "target": 512,
+        "running": 512,
+        "owned_total": 512,
+        "elapsed_seconds": 260.011,
+        "checked_utc": "2026-09-20T05:57:11.174862+00:00",
+        "label": "all_tools_verified"
+      },
+      {
+        "target": 512,
+        "running": 512,
+        "owned_total": 512,
+        "elapsed_seconds": 270.189,
+        "checked_utc": "2026-09-20T05:57:21.353632+00:00",
+        "label": "hold_liveness"
+      },
+      {
+        "target": 512,
+        "running": 512,
+        "owned_total": 512,
+        "elapsed_seconds": 280.198,
+        "checked_utc": "2026-09-20T05:57:31.362314+00:00",
+        "label": "hold_liveness"
+      },
+      {
+        "target": 512,
+        "running": 512,
+        "owned_total": 512,
+        "elapsed_seconds": 290.182,
+        "checked_utc": "2026-09-20T05:57:41.345906+00:00",
+        "label": "hold_liveness"
+      },
+      {
+        "target": 512,
+        "running": 512,
+        "owned_total": 512,
+        "elapsed_seconds": 300.19,
+        "checked_utc": "2026-09-20T05:57:51.353991+00:00",
+        "label": "hold_liveness"
+      },
+      {
+        "target": 512,
+        "running": 512,
+        "owned_total": 512,
+        "elapsed_seconds": 310.189,
+        "checked_utc": "2026-09-20T05:58:01.353770+00:00",
+        "label": "hold_liveness"
+      },
+      {
+        "target": 512,
+        "running": 512,
+        "owned_total": 512,
+        "elapsed_seconds": 320.212,
+        "checked_utc": "2026-09-20T05:58:11.375955+00:00",
+        "label": "hold_liveness"
+      },
+      {
+        "target": 512,
+        "running": 512,
+        "owned_total": 512,
+        "elapsed_seconds": 323.753,
+        "checked_utc": "2026-09-20T05:58:14.916966+00:00",
+        "label": "post_hold_tools_verified"
+      },
+      {
+        "target": 512,
+        "running": 512,
+        "owned_total": 512,
+        "elapsed_seconds": 324.242,
+        "checked_utc": "2026-09-20T05:58:15.406507+00:00",
+        "label": "quota_rejected_512_still_running"
+      }
+    ],
+    "memory_checks": [
+      {
+        "created": 0,
+        "available_gib": 1472.924,
+        "minimum_gib": 64,
+        "checked_utc": "2026-09-20T05:52:51.811475+00:00"
+      },
+      {
+        "created": 64,
+        "available_gib": 1469.774,
+        "minimum_gib": 64,
+        "checked_utc": "2026-09-20T05:53:17.789842+00:00"
+      },
+      {
+        "created": 128,
+        "available_gib": 1466.456,
+        "minimum_gib": 64,
+        "checked_utc": "2026-09-20T05:53:46.399713+00:00"
+      },
+      {
+        "created": 192,
+        "available_gib": 1462.87,
+        "minimum_gib": 64,
+        "checked_utc": "2026-09-20T05:54:15.861277+00:00"
+      },
+      {
+        "created": 256,
+        "available_gib": 1459.091,
+        "minimum_gib": 64,
+        "checked_utc": "2026-09-20T05:54:49.501689+00:00"
+      },
+      {
+        "created": 320,
+        "available_gib": 1455.238,
+        "minimum_gib": 64,
+        "checked_utc": "2026-09-20T05:55:21.648667+00:00"
+      },
+      {
+        "created": 384,
+        "available_gib": 1451.271,
+        "minimum_gib": 64,
+        "checked_utc": "2026-09-20T05:55:56.434240+00:00"
+      },
+      {
+        "created": 448,
+        "available_gib": 1447.31,
+        "minimum_gib": 64,
+        "checked_utc": "2026-09-20T05:56:29.222306+00:00"
+      },
+      {
+        "created": 512,
+        "available_gib": 1443.214,
+        "minimum_gib": 64,
+        "checked_utc": "2026-09-20T05:57:04.940002+00:00"
+      },
+      {
+        "created": 512,
+        "available_gib": 1442.431,
+        "minimum_gib": 64,
+        "checked_utc": "2026-09-20T05:57:21.651837+00:00"
+      },
+      {
+        "created": 512,
+        "available_gib": 1441.728,
+        "minimum_gib": 64,
+        "checked_utc": "2026-09-20T05:57:32.521490+00:00"
+      },
+      {
+        "created": 512,
+        "available_gib": 1441.66,
+        "minimum_gib": 64,
+        "checked_utc": "2026-09-20T05:57:41.641388+00:00"
+      },
+      {
+        "created": 512,
+        "available_gib": 1441.633,
+        "minimum_gib": 64,
+        "checked_utc": "2026-09-20T05:57:51.653677+00:00"
+      },
+      {
+        "created": 512,
+        "available_gib": 1441.504,
+        "minimum_gib": 64,
+        "checked_utc": "2026-09-20T05:58:01.652233+00:00"
+      },
+      {
+        "created": 512,
+        "available_gib": 1440.612,
+        "minimum_gib": 64,
+        "checked_utc": "2026-09-20T05:58:11.732217+00:00"
+      },
+      {
+        "created": 512,
+        "available_gib": 1440.439,
+        "minimum_gib": 64,
+        "checked_utc": "2026-09-20T05:58:15.222138+00:00"
+      }
+    ],
+    "quota_probe": {
+      "status": "expected_team_quota",
+      "error": {
+        "type": "RateLimitException",
+        "status_code": 429,
+        "message": "429: Rate limit exceeded, please try again later. - you have reached the maximum number of concurrent E2B sandboxes (512). If you need more, please visit 'https://e2b.dev/docs/billing'"
+      }
+    },
+    "cleanup": {
+      "status": "verified_zero",
+      "started_utc": "2026-09-20T05:58:15.438563+00:00",
+      "errors": [],
+      "remaining_known_ids": [],
+      "last_owned_count": 0,
+      "consecutive_empty_lists": 2,
+      "finished_utc": "2026-09-20T05:58:21.715924+00:00"
+    },
+    "hold": {
+      "status": "passed",
+      "started_utc": "2026-09-20T05:57:11.191929+00:00",
+      "requested_seconds": 60.0,
+      "check_interval_seconds": 10,
+      "checks": [
+        {
+          "target": 512,
+          "running": 512,
+          "owned_total": 512,
+          "elapsed_seconds": 270.189,
+          "checked_utc": "2026-09-20T05:57:21.353632+00:00",
+          "label": "hold_liveness"
+        },
+        {
+          "target": 512,
+          "running": 512,
+          "owned_total": 512,
+          "elapsed_seconds": 280.198,
+          "checked_utc": "2026-09-20T05:57:31.362314+00:00",
+          "label": "hold_liveness"
+        },
+        {
+          "target": 512,
+          "running": 512,
+          "owned_total": 512,
+          "elapsed_seconds": 290.182,
+          "checked_utc": "2026-09-20T05:57:41.345906+00:00",
+          "label": "hold_liveness"
+        },
+        {
+          "target": 512,
+          "running": 512,
+          "owned_total": 512,
+          "elapsed_seconds": 300.19,
+          "checked_utc": "2026-09-20T05:57:51.353991+00:00",
+          "label": "hold_liveness"
+        },
+        {
+          "target": 512,
+          "running": 512,
+          "owned_total": 512,
+          "elapsed_seconds": 310.189,
+          "checked_utc": "2026-09-20T05:58:01.353770+00:00",
+          "label": "hold_liveness"
+        },
+        {
+          "target": 512,
+          "running": 512,
+          "owned_total": 512,
+          "elapsed_seconds": 320.212,
+          "checked_utc": "2026-09-20T05:58:11.375955+00:00",
+          "label": "hold_liveness"
+        }
+      ],
+      "finished_utc": "2026-09-20T05:58:11.749185+00:00",
+      "elapsed_seconds": 60.557
+    },
+    "post_hold_tools": {
+      "checked_count": 512,
+      "completed_utc": "2026-09-20T05:58:14.771586+00:00"
+    },
+    "retry_events": [],
+    "scope": "Lightweight simultaneous liveness and isolated file/echo checks; does not allocate or verify count * advertised guest RAM."
+  },
+  "limits": [
+    "512 is the configured running-instance quota and a verified lightweight test count, not a full-workload performance guarantee.",
+    "512 instances each fully using 4 GiB would require 2 TiB guest RAM, above this VM physical memory.",
+    "Historical build UUIDs keep their old snapshots; current template tags were migrated.",
+    "Creation/restoration is still limited to three in-flight instances per node; use bounded client concurrency and retry."
+  ],
+  "evidence_directory": "/data2/yuhanya/e2b-local-20260916/migrations/20260920-4k-512",
+  "first_capacity_attempt": {
+    "status": "failed",
+    "created_instances": 348,
+    "test_error": {
+      "type": "ServiceBusyException",
+      "status_code": 503,
+      "message": "503: Service temporarily unavailable, please retry. - Failed to place sandbox: no compatible node for this template's requirements"
+    },
+    "cleanup": "verified_zero",
+    "finding": "Kernel logs show ARP neighbor table overflow starting before the RPC timeouts; the original gc_thresh3 was 1024.",
+    "response": "Raised bounded IPv4/IPv6 neighbor table thresholds to 4096/8192/16384; retained health gates and added bounded client retries and a 60-second hold."
+  },
+  "earlier_capacity_attempts": [
+    {
+      "attempt": "first",
+      "status": "failed",
+      "created_instances": 348,
+      "test_error": {
+        "type": "ServiceBusyException",
+        "status_code": 503,
+        "message": "503: Service temporarily unavailable, please retry. - Failed to place sandbox: no compatible node for this template's requirements"
+      },
+      "cleanup": "verified_zero"
+    },
+    {
+      "attempt": "second",
+      "status": "failed",
+      "created_instances": 346,
+      "test_error": {
+        "type": "ReadTimeout",
+        "status_code": null,
+        "message": "timed out"
+      },
+      "cleanup": "verified_zero"
+    },
+    {
+      "attempt": "third",
+      "status": "failed",
+      "created_instances": 350,
+      "test_error": {
+        "type": "SandboxException",
+        "status_code": 500,
+        "message": "500: Failed to place sandbox: sandbox creation failed on 1 node(s), please retry; if the problem persists, contact us"
+      },
+      "cleanup": "verified_zero"
+    }
+  ],
+  "neighbor_capacity_test": {
+    "old_gc_thresh3": 1024,
+    "configured_gc_thresh3": 16384,
+    "sample_count": 213,
+    "peak_entries": 1546,
+    "table_fulls_before": 4255,
+    "table_fulls_after": 4255
+  }
+}

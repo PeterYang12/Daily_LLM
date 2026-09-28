@@ -1,0 +1,147 @@
+--- a/packages/shared/pkg/featureflags/flags.go
++++ b/packages/shared/pkg/featureflags/flags.go
+@@ -603,7 +603,7 @@
+ 
+ 	// MaxStartingInstancesPerNode limits concurrent sandbox start/resume operations on a single orchestrator node.
+ 	// Must be > 0.
+-	MaxStartingInstancesPerNode = NewIntFlag("max-starting-instances-per-node", 3)
++	MaxStartingInstancesPerNode = NewIntFlag("max-starting-instances-per-node", maxStartingInstancesPerNodeFallback())
+ 
+ 	// MaxConcurrentEvictions caps the number of sandbox evictions that can run
+ 	// in parallel per API instance. Excess items remain expired in the store
+--- a/packages/shared/pkg/featureflags/local_capacity.go
++++ b/packages/shared/pkg/featureflags/local_capacity.go
+@@ -21,3 +21,19 @@
+ 
+ 	return limit
+ }
++
++// maxStartingInstancesPerNodeFallback provides a local start/resume concurrency
++// setting. A configured LaunchDarkly flag still takes precedence.
++func maxStartingInstancesPerNodeFallback() int {
++	raw, set := os.LookupEnv("E2B_MAX_STARTING_INSTANCES_PER_NODE")
++	if !set {
++		return 3
++	}
++
++	limit, err := strconv.Atoi(raw)
++	if err != nil || limit <= 0 {
++		panic(fmt.Sprintf("E2B_MAX_STARTING_INSTANCES_PER_NODE must be a positive integer, got %q", raw))
++	}
++
++	return limit
++}
+--- a/packages/shared/pkg/featureflags/local_capacity_test.go
++++ b/packages/shared/pkg/featureflags/local_capacity_test.go
+@@ -1,9 +1,14 @@
+ package featureflags
+ 
+ import (
++	"context"
++	"fmt"
+ 	"os"
++	"strconv"
+ 	"testing"
+ 
++	"github.com/launchdarkly/go-sdk-common/v3/ldvalue"
++	"github.com/launchdarkly/go-server-sdk/v7/testhelpers/ldtestdata"
+ 	"github.com/stretchr/testify/require"
+ )
+ 
+@@ -26,3 +31,54 @@
+ 		})
+ 	}
+ }
++
++//nolint:paralleltest // t.Setenv
++func TestLocalStartingCapacityDefault(t *testing.T) {
++	t.Setenv("E2B_MAX_STARTING_INSTANCES_PER_NODE", "temporary")
++	require.NoError(t, os.Unsetenv("E2B_MAX_STARTING_INSTANCES_PER_NODE"))
++	require.Equal(t, 3, maxStartingInstancesPerNodeFallback())
++}
++
++//nolint:paralleltest,tparallel // t.Setenv
++func TestLocalStartingCapacityOverride(t *testing.T) {
++	for _, limit := range []int{1, 1024, int(^uint(0) >> 1)} {
++		t.Run(strconv.Itoa(limit), func(t *testing.T) {
++			t.Setenv("E2B_MAX_STARTING_INSTANCES_PER_NODE", strconv.Itoa(limit))
++			require.Equal(t, limit, maxStartingInstancesPerNodeFallback())
++		})
++	}
++}
++
++//nolint:paralleltest,tparallel // t.Setenv
++func TestLocalStartingCapacityRejectsInvalid(t *testing.T) {
++	for _, value := range []string{"", "0", "-1", "invalid", "1024.5", " 1024", "1024 ", "1_024", "9999999999999999999999999"} {
++		t.Run(value, func(t *testing.T) {
++			t.Setenv("E2B_MAX_STARTING_INSTANCES_PER_NODE", value)
++			require.PanicsWithValue(t,
++				fmt.Sprintf("E2B_MAX_STARTING_INSTANCES_PER_NODE must be a positive integer, got %q", value),
++				func() { maxStartingInstancesPerNodeFallback() },
++			)
++		})
++	}
++}
++
++func TestLocalStartingCapacityFlag(t *testing.T) {
++	t.Parallel()
++
++	want := maxStartingInstancesPerNodeFallback()
++	require.Equal(t, want, MaxStartingInstancesPerNode.Fallback())
++
++	offlineClient, err := NewClientWithDatasource(launchDarklyOfflineStore)
++	require.NoError(t, err)
++	t.Cleanup(func() { require.NoError(t, offlineClient.Close(context.WithoutCancel(t.Context()))) })
++	require.Equal(t, want, offlineClient.IntFlag(t.Context(), MaxStartingInstancesPerNode))
++
++	source := ldtestdata.DataSource()
++	client, err := NewClientWithDatasource(source)
++	require.NoError(t, err)
++	t.Cleanup(func() { require.NoError(t, client.Close(context.WithoutCancel(t.Context()))) })
++	require.Equal(t, want, client.IntFlag(t.Context(), MaxStartingInstancesPerNode))
++
++	source.Update(source.Flag(MaxStartingInstancesPerNode.Key()).ValueForAll(ldvalue.Int(7)))
++	require.Equal(t, 7, client.IntFlag(t.Context(), MaxStartingInstancesPerNode))
++}
+--- a/packages/orchestrator/pkg/server/sandbox_limit_metric_test.go
++++ b/packages/orchestrator/pkg/server/sandbox_limit_metric_test.go
+@@ -84,6 +84,24 @@
+ 	assertSandboxLimitMetric(t, t.Context(), reader, 200)
+ }
+ 
++func TestSandboxStartingLimit1024(t *testing.T) {
++	t.Parallel()
++
++	synctest.Test(t, func(t *testing.T) {
++		source := ldtestdata.DataSource()
++		server, _ := newSandboxLimitTestServer(t, t.Context(), source)
++		synctest.Wait()
++
++		source.Update(source.Flag(featureflags.MaxStartingInstancesPerNode.Key()).ValueForAll(ldvalue.Int(1024)))
++		time.Sleep(startingSandboxesLimitRefreshInterval)
++		synctest.Wait()
++
++		require.True(t, server.startingSandboxes.TryAcquire(1024))
++		defer server.startingSandboxes.Release(1024)
++		require.False(t, server.startingSandboxes.TryAcquire(1))
++	})
++}
++
+ func TestSandboxLimitRefreshStops(t *testing.T) {
+ 	t.Parallel()
+ 
+--- a/docs/ARCHITECTURE.md
++++ b/docs/ARCHITECTURE.md
+@@ -203,6 +203,12 @@
+ when configured, still takes precedence. The setting is a running-instance quota,
+ not a reservation or guarantee of enough CPU and physical memory for those instances.
+ 
++`E2B_MAX_STARTING_INSTANCES_PER_NODE` supplies the positive-integer fallback for
++`max-starting-instances-per-node` (upstream default 3). It controls concurrent
++start/resume operations independently of the running-instance quota. The environment
++value is read when the process starts; a configured LaunchDarkly value still wins,
++and the orchestrator refreshes the resulting semaphore limit every 30 seconds.
++
+ gRPC services on :5008 (`pkg/server/`, `pkg/service/`, `pkg/template/server/`, `pkg/volumes/`):
+ 
+ - **SandboxService** — `Create`, `Update`, `List`, `Delete`, `Pause`, `Checkpoint`.

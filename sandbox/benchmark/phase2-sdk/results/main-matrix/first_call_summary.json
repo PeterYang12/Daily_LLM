@@ -1,0 +1,44 @@
+[
+  {
+    "phase": "phase2-sdk",
+    "scenario": "exec_true",
+    "operation": "exec_true",
+    "template": "base-4k-4g",
+    "concurrency": 64,
+    "resident_count": 64,
+    "instrumentation": "minimal",
+    "comparison_key": "exec_true-v1",
+    "cohort": "first_measured_per_worker",
+    "calls": 192,
+    "failures": 18,
+    "failure_rate_pct": 9.375,
+    "run_count": 3,
+    "run_ids": [
+      "7ebbf07471e944209303c986f0ac3c86",
+      "a58321d296d249d2845be13827ec81c2",
+      "e45e2548be2c451f8b5a349a4743d707"
+    ],
+    "statistic": "pooled failure counts; per-run results provided separately"
+  },
+  {
+    "phase": "phase2-sdk",
+    "scenario": "exec_true",
+    "operation": "exec_true",
+    "template": "base-4k-4g",
+    "concurrency": 64,
+    "resident_count": 64,
+    "instrumentation": "minimal",
+    "comparison_key": "exec_true-v1",
+    "cohort": "later_measured_calls",
+    "calls": 171318,
+    "failures": 1,
+    "failure_rate_pct": 0.0005837098261712138,
+    "run_count": 3,
+    "run_ids": [
+      "7ebbf07471e944209303c986f0ac3c86",
+      "a58321d296d249d2845be13827ec81c2",
+      "e45e2548be2c451f8b5a349a4743d707"
+    ],
+    "statistic": "pooled failure counts; per-run results provided separately"
+  }
+]

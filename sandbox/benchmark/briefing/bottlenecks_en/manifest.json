@@ -1,0 +1,67 @@
+{
+  "created_utc": "2026-09-20T14:39:38.476174+00:00",
+  "scope": "Revised English bottleneck examples deck/report",
+  "renderer": "LibreOffice24.2.7.2",
+  "files": [
+    {
+      "path": "Agentic_RL_Sandbox_Bottlenecks_EN.pdf",
+      "bytes": 60966,
+      "sha256": "02e9feee3673de681df5289e89d9575b11ee28f0f5bdef4719e8891eb29fc384"
+    },
+    {
+      "path": "Agentic_RL_Sandbox_Bottlenecks_EN.pptx",
+      "bytes": 40824,
+      "sha256": "8c0b92c6a82d96643c186c3ec1503c2b2c107e0c3f47162f08d3344bc124c32d"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1683,
+      "sha256": "c67ddb39046e8436e72bdb114de47a7e651a8df1804d1b325b50c50e36646b8a"
+    },
+    {
+      "path": "Sandbox_Bottlenecks_Report_EN.md",
+      "bytes": 3248,
+      "sha256": "b1feec798ed7ab37460fd070f9d8cf9d865c3fb3f1ad59db3da89a35df20d822"
+    },
+    {
+      "path": "Sandbox_Bottlenecks_Report_EN.pdf",
+      "bytes": 46322,
+      "sha256": "62b34d5e1133479d7f9951d84a3e7a7c4860aaa00e052a4e3b986b308ccdf0b3"
+    },
+    {
+      "path": "generate_bottlenecks.py",
+      "bytes": 21272,
+      "sha256": "8f47ec34966080380a0d528d589d4daa7cadfb511104ed5f812444ae051250c5"
+    },
+    {
+      "path": "layout-check.json",
+      "bytes": 15189,
+      "sha256": "45a95fc35751b7484ca72fdc859b1cdfd8c9e8c11dbb0a3953f6aca9ffbce551"
+    },
+    {
+      "path": "report-1.png",
+      "bytes": 164189,
+      "sha256": "abbcd8d00796952673e785eebd39cfb8b89f15cff31e28868ac91eebe65e57df"
+    },
+    {
+      "path": "slide-1.png",
+      "bytes": 137307,
+      "sha256": "b4760a534ea95a8961c71394e51d805f59d613ba0d7a8ba5740b0ace161c72e4"
+    },
+    {
+      "path": "slide-2.png",
+      "bytes": 147435,
+      "sha256": "aeca1c8f72e5b10203d2929d5d0f674cc5a4d56ff1b35016663f0e6ed6bfc85e"
+    },
+    {
+      "path": "sources.json",
+      "bytes": 956,
+      "sha256": "73fd5c0b88095c6074f22f41e5b95fb6e4a2845d5553d69331fe8940400ce70c"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 275,
+      "sha256": "389dc660acd1b2d37518f31a5cac87ace8d74dcd89424910de7e766bbc517cba"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "capture_id": "23934355ceb9a0b6",
+    "layer": "guest",
+    "png": "plots/resources-guest-23934355ceb9a0b6.png",
+    "svg": "plots/resources-guest-23934355ceb9a0b6.svg"
+  },
+  {
+    "capture_id": "23934355ceb9a0b6",
+    "layer": "host",
+    "png": "plots/resources-host-23934355ceb9a0b6.png",
+    "svg": "plots/resources-host-23934355ceb9a0b6.svg"
+  },
+  {
+    "capture_id": "530bd3e8be8ff1da",
+    "layer": "guest",
+    "png": "plots/resources-guest-530bd3e8be8ff1da.png",
+    "svg": "plots/resources-guest-530bd3e8be8ff1da.svg"
+  },
+  {
+    "capture_id": "530bd3e8be8ff1da",
+    "layer": "host",
+    "png": "plots/resources-host-530bd3e8be8ff1da.png",
+    "svg": "plots/resources-host-530bd3e8be8ff1da.svg"
+  },
+  {
+    "capture_id": "b2ab1667296ffbd0",
+    "layer": "guest",
+    "png": "plots/resources-guest-b2ab1667296ffbd0.png",
+    "svg": "plots/resources-guest-b2ab1667296ffbd0.svg"
+  },
+  {
+    "capture_id": "b2ab1667296ffbd0",
+    "layer": "host",
+    "png": "plots/resources-host-b2ab1667296ffbd0.png",
+    "svg": "plots/resources-host-b2ab1667296ffbd0.svg"
+  },
+  {
+    "capture_id": "e9718f00c5c220a7",
+    "layer": "guest",
+    "png": "plots/resources-guest-e9718f00c5c220a7.png",
+    "svg": "plots/resources-guest-e9718f00c5c220a7.svg"
+  },
+  {
+    "capture_id": "e9718f00c5c220a7",
+    "layer": "host",
+    "png": "plots/resources-host-e9718f00c5c220a7.png",
+    "svg": "plots/resources-host-e9718f00c5c220a7.svg"
+  }
+]

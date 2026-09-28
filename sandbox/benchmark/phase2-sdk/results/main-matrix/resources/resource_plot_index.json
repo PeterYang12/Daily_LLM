@@ -1,0 +1,38 @@
+[
+  {
+    "capture_id": "0db3435482b507c6",
+    "layer": "guest",
+    "png": "plots/resources-guest-0db3435482b507c6.png",
+    "svg": "plots/resources-guest-0db3435482b507c6.svg"
+  },
+  {
+    "capture_id": "0db3435482b507c6",
+    "layer": "host",
+    "png": "plots/resources-host-0db3435482b507c6.png",
+    "svg": "plots/resources-host-0db3435482b507c6.svg"
+  },
+  {
+    "capture_id": "258f8c5c18b2ec5d",
+    "layer": "guest",
+    "png": "plots/resources-guest-258f8c5c18b2ec5d.png",
+    "svg": "plots/resources-guest-258f8c5c18b2ec5d.svg"
+  },
+  {
+    "capture_id": "258f8c5c18b2ec5d",
+    "layer": "host",
+    "png": "plots/resources-host-258f8c5c18b2ec5d.png",
+    "svg": "plots/resources-host-258f8c5c18b2ec5d.svg"
+  },
+  {
+    "capture_id": "941474cd946db383",
+    "layer": "guest",
+    "png": "plots/resources-guest-941474cd946db383.png",
+    "svg": "plots/resources-guest-941474cd946db383.svg"
+  },
+  {
+    "capture_id": "941474cd946db383",
+    "layer": "host",
+    "png": "plots/resources-host-941474cd946db383.png",
+    "svg": "plots/resources-host-941474cd946db383.svg"
+  }
+]

@@ -1,0 +1,334 @@
+diff --git a/docs/ARCHITECTURE.md b/docs/ARCHITECTURE.md
+index e0d1f53..e9bbda4 100644
+--- a/docs/ARCHITECTURE.md
++++ b/docs/ARCHITECTURE.md
+@@ -198,6 +198,11 @@ A single Go binary running on every sandbox node (as root). `ORCHESTRATOR_SERVIC
+ roles: `orchestrator` (run sandboxes) and/or `template-manager` (build templates). Code lives
+ under `pkg/`, almost all Linux-only.
+ 
++In this local deployment, `E2B_MAX_SANDBOXES_PER_NODE` supplies the positive-integer
++fallback for `max-sandboxes-per-node` (upstream default 200). A LaunchDarkly value,
++when configured, still takes precedence. The setting is a running-instance quota,
++not a reservation or guarantee of enough CPU and physical memory for those instances.
++
+ gRPC services on :5008 (`pkg/server/`, `pkg/service/`, `pkg/template/server/`, `pkg/volumes/`):
+ 
+ - **SandboxService** — `Create`, `Update`, `List`, `Delete`, `Pause`, `Checkpoint`.
+@@ -228,6 +233,12 @@ Key mechanisms (all under `pkg/sandbox/`):
+ - **Firecracker** (`fc/`): each sandbox is one Firecracker process in its own cgroup and network
+   namespace. The FC HTTP API (unix socket) configures machine, drives, network, and snapshots.
+   Guest metadata (sandbox ID, envd access token hash) is passed via MMDS.
++  `E2B_SANDBOX_HUGE_PAGES=false`, set consistently on the API, orchestrator, and template
++  manager, selects ordinary 4 KiB pages for new boots and template builds. Unset preserves
++  the default of using HugeTLB when the Firecracker version supports it; invalid values reject
++  creation. Memory restores keep the page type stored in the snapshot. Existing HugeTLB
++  templates must therefore be rebuilt before removing the reserved pool; building from an
++  existing template reuses its rootfs and cold-boots the final layer with the new page policy.
+ - **Lazy memory / UFFD** (`uffd/`): on resume, Firecracker restores the VM without loading
+   memory; a userfaultfd handler serves page faults directly from the template's memfile, so only
+   touched pages are read. An optional prefetcher warms known-hot pages.
+@@ -668,7 +679,8 @@ flowchart TB
+   `packages/shared/pkg/servicediscovery` (Kubernetes, DNS, a static list, or the legacy Nomad
+   backend the code still carries).
+ - **Sandbox nodes** run the orchestrator directly on the host (it needs root for Firecracker,
+-  namespaces, NBD, cgroups), configured with hugepages and local template caches. Autoscaled.
++  namespaces, NBD, cgroups), with local template caches and a hugepage pool when the configured
++  guest-memory policy uses HugeTLB. Autoscaled.
+ - **Build nodes** run the same binary in template-manager mode.
+ - PostgreSQL is external (connection string via secrets); Redis is a managed service or a
+   single in-cluster instance; ClickHouse runs on its own nodes.
+diff --git a/embed/compose/scripts/host-setup.sh b/embed/compose/scripts/host-setup.sh
+index 7a192a3..c2fc080 100755
+--- a/embed/compose/scripts/host-setup.sh
++++ b/embed/compose/scripts/host-setup.sh
+@@ -73,7 +73,11 @@ if [ -n "${HS_NO_MAIN:-}" ]; then return 0 2>/dev/null || exit 0; fi
+ ETC_FIX="check that /etc is writable on the host: an immutable or read-only root filesystem cannot run this stack, so use a host you can mutate, then start the stack again"
+ 
+ positive_int NBDS_MAX "$NBDS_MAX"
+-positive_int HUGEPAGES "$HUGEPAGES"
++if [ "$HUGEPAGES" = "0" ] && [ "${E2B_SANDBOX_HUGE_PAGES:-true}" = "false" ]; then
++  : # Ordinary-page deployments do not reserve a HugeTLB pool.
++else
++  positive_int HUGEPAGES "$HUGEPAGES"
++fi
+ 
+ # 1. Modules, persisted for reboots and loaded now.
+ printf 'nbd\ntun\nkvm\n' > /etc/modules-load.d/e2b.conf ||
+@@ -104,6 +108,11 @@ net.ipv4.tcp_max_syn_backlog=65535
+ vm.max_map_count=1048576
+ EOF
+   die "cannot write /etc/sysctl.d/90-e2b.conf" "$ETC_FIX"
++# Keep this installation's original cloud-init override consistent across reboot.
++if [ -f /etc/sysctl.d/90-e2b-capacity.conf ]; then
++  printf 'vm.nr_hugepages=%s\n' "$HUGEPAGES" > /etc/sysctl.d/90-e2b-capacity.conf ||
++    die "cannot update the cloud-init hugepage override" "$ETC_FIX"
++fi
+ sysctl -q -p /etc/sysctl.d/90-e2b.conf ||
+   die "sysctl -p /etc/sysctl.d/90-e2b.conf failed" "apply the file by hand and check dmesg on the host"
+ have_hp="$(cat /proc/sys/vm/nr_hugepages)" ||
+diff --git a/packages/api/internal/orchestrator/create_instance.go b/packages/api/internal/orchestrator/create_instance.go
+index fdd4ee1..a9b6c24 100644
+--- a/packages/api/internal/orchestrator/create_instance.go
++++ b/packages/api/internal/orchestrator/create_instance.go
+@@ -281,7 +281,14 @@ func (o *Orchestrator) CreateSandbox(
+ 		}
+ 	}
+ 
+-	hasHugePages := fcSemver.HasHugePages()
++	hasHugePages, err := fcSemver.UseHugePages()
++	if err != nil {
++		return sandbox.Sandbox{}, &api.APIError{
++			Code:      http.StatusInternalServerError,
++			ClientMsg: "Failed to configure sandbox memory",
++			Err:       err,
++		}
++	}
+ 	telemetry.ReportEvent(ctx, "Got FC info")
+ 
+ 	var sbxDomain *string
+diff --git a/packages/api/internal/template-manager/create_template.go b/packages/api/internal/template-manager/create_template.go
+index 66e3830..fbf720f 100644
+--- a/packages/api/internal/template-manager/create_template.go
++++ b/packages/api/internal/template-manager/create_template.go
+@@ -88,6 +88,10 @@ func (tm *TemplateManager) CreateTemplate(
+ 	if err != nil {
+ 		return fmt.Errorf("failed to get features for firecracker version '%s': %w", firecrackerVersion, err)
+ 	}
++	hugePages, err := features.UseHugePages()
++	if err != nil {
++		return fmt.Errorf("failed to configure template memory: %w", err)
++	}
+ 
+ 	client, err := tm.GetClusterBuildClient(clusterID, nodeID)
+ 	if err != nil {
+@@ -122,7 +126,7 @@ func (tm *TemplateManager) CreateTemplate(
+ 		FreeDiskSizeMB:     new(int32(freeDiskSizeMB)),
+ 		KernelVersion:      kernelVersion,
+ 		FirecrackerVersion: firecrackerVersion,
+-		HugePages:          features.HasHugePages(),
++		HugePages:          hugePages,
+ 		StartCommand:       startCmd,
+ 		ReadyCommand:       readyCmd,
+ 		Force:              force,
+diff --git a/packages/orchestrator/pkg/template/server/create_template.go b/packages/orchestrator/pkg/template/server/create_template.go
+index f26106f..5bfdb8c 100644
+--- a/packages/orchestrator/pkg/template/server/create_template.go
++++ b/packages/orchestrator/pkg/template/server/create_template.go
+@@ -110,7 +110,10 @@ func (s *ServerStore) TemplateCreate(ctx context.Context, templateRequest *templ
+ 	if err != nil {
+ 		return nil, fmt.Errorf("invalid resolved firecracker version %q: %w", firecrackerVersion, err)
+ 	}
+-	hugePages := fcInfo.HasHugePages()
++	hugePages, err := fcInfo.UseHugePages()
++	if err != nil {
++		return nil, fmt.Errorf("failed to configure template memory: %w", err)
++	}
+ 	freePageReporting := fcInfo.HasFreePageReporting() && s.featureFlags.BoolFlag(ctx, featureflags.FreePageReportingFlag)
+ 	freePageHinting := fcInfo.HasFreePageHinting() && featureflags.IsFreePageHintingEnabled(ctx, s.featureFlags)
+ 
+diff --git a/packages/shared/pkg/fcversion/host_policy.go b/packages/shared/pkg/fcversion/host_policy.go
+new file mode 100644
+index 0000000..cbf0971
+--- /dev/null
++++ b/packages/shared/pkg/fcversion/host_policy.go
+@@ -0,0 +1,41 @@
++package fcversion
++
++import (
++	"fmt"
++	"os"
++	"strconv"
++)
++
++// SandboxHugePagesEnv selects the deployment's guest-memory policy. Set it
++// consistently on the API, orchestrator, and template-manager processes.
++const SandboxHugePagesEnv = "E2B_SANDBOX_HUGE_PAGES"
++
++// SandboxHugePagesEnabled defaults to the upstream hugepage policy when the
++// variable is absent. An explicitly empty or malformed value is an error, so a
++// typo cannot silently enable HugeTLB on a host without a reserved pool.
++func SandboxHugePagesEnabled() (bool, error) {
++	value, set := os.LookupEnv(SandboxHugePagesEnv)
++	if !set {
++		return true, nil
++	}
++
++	enabled, err := strconv.ParseBool(value)
++	if err != nil {
++		return false, fmt.Errorf("invalid %s %q: %w", SandboxHugePagesEnv, value, err)
++	}
++
++	return enabled, nil
++}
++
++// UseHugePages combines the deployment's policy with the binary's capability.
++// It configures newly booted VMs; restoring a memory snapshot retains the page
++// type recorded by Firecracker, so existing HugeTLB templates must be rebuilt
++// before removing the host's hugepage pool.
++func (v *Info) UseHugePages() (bool, error) {
++	enabled, err := SandboxHugePagesEnabled()
++	if err != nil {
++		return false, err
++	}
++
++	return enabled && v.HasHugePages(), nil
++}
+diff --git a/packages/shared/pkg/fcversion/host_policy_test.go b/packages/shared/pkg/fcversion/host_policy_test.go
+new file mode 100644
+index 0000000..2935c5b
+--- /dev/null
++++ b/packages/shared/pkg/fcversion/host_policy_test.go
+@@ -0,0 +1,77 @@
++package fcversion
++
++import (
++	"os"
++	"testing"
++
++	"github.com/stretchr/testify/assert"
++	"github.com/stretchr/testify/require"
++)
++
++func TestSandboxHugePagesPolicy(t *testing.T) {
++	cases := []struct {
++		name    string
++		value   string
++		unset   bool
++		enabled bool
++		invalid bool
++	}{
++		{name: "default", unset: true, enabled: true},
++		{name: "enabled", value: "true", enabled: true},
++		{name: "disabled", value: "false"},
++		{name: "one", value: "1", enabled: true},
++		{name: "zero", value: "0"},
++		{name: "uppercase", value: "FALSE"},
++		{name: "empty", value: "", invalid: true},
++		{name: "invalid", value: "disabled", invalid: true},
++		{name: "whitespace", value: " false ", invalid: true},
++	}
++
++	for _, tc := range cases {
++		t.Run(tc.name, func(t *testing.T) {
++			t.Setenv(SandboxHugePagesEnv, tc.value)
++			if tc.unset {
++				require.NoError(t, os.Unsetenv(SandboxHugePagesEnv))
++			}
++
++			enabled, err := SandboxHugePagesEnabled()
++			if tc.invalid {
++				require.ErrorContains(t, err, SandboxHugePagesEnv)
++				assert.False(t, enabled)
++			} else {
++				require.NoError(t, err)
++				assert.Equal(t, tc.enabled, enabled)
++			}
++
++			for _, version := range []string{"v1.6.0", "v1.7.0", "v1.14.1_431f1fc", "v1.14-0.2.0"} {
++				info, err := New(version)
++				require.NoError(t, err)
++				capability := info.HasHugePages()
++				useHugePages, err := info.UseHugePages()
++				if tc.invalid {
++					require.ErrorContains(t, err, SandboxHugePagesEnv, version)
++					assert.False(t, useHugePages, version)
++				} else {
++					require.NoError(t, err, version)
++					assert.Equal(t, tc.enabled && capability, useHugePages, version)
++				}
++				assert.Equal(t, capability, info.HasHugePages(), "policy must not alter capability")
++			}
++		})
++	}
++}
++
++func TestOrdinaryPagesKeepOtherFirecrackerCapabilities(t *testing.T) {
++	t.Setenv(SandboxHugePagesEnv, "false")
++	info, err := New("v1.14-0.2.0")
++	require.NoError(t, err)
++
++	useHugePages, err := info.UseHugePages()
++	require.NoError(t, err)
++	assert.False(t, useHugePages)
++	assert.True(t, info.HasHugePages())
++	assert.True(t, info.HasMemfd())
++	assert.True(t, info.HasFreePageReporting())
++	assert.True(t, info.HasFreePageHinting())
++	assert.True(t, info.HasInPlaceCheckpoint())
++}
+diff --git a/packages/shared/pkg/featureflags/flags.go b/packages/shared/pkg/featureflags/flags.go
+index 1f5e66a..1100fb3 100644
+--- a/packages/shared/pkg/featureflags/flags.go
++++ b/packages/shared/pkg/featureflags/flags.go
+@@ -441,7 +441,7 @@ func NewIntFlag(name string, fallback int) IntFlag {
+ }
+ 
+ var (
+-	MaxSandboxesPerNode = NewIntFlag("max-sandboxes-per-node", 200)
++	MaxSandboxesPerNode = NewIntFlag("max-sandboxes-per-node", maxSandboxesPerNodeFallback())
+ 	// The LD keys keep the legacy "gcloud-" prefix, but the limits apply to uploads on all storage providers.
+ 	StorageConcurrentUploadLimit  = NewIntFlag("gcloud-concurrent-upload-limit", 8)
+ 	StorageMaxUploadTasks         = NewIntFlag("gcloud-max-tasks", 16)
+diff --git a/packages/shared/pkg/featureflags/local_capacity.go b/packages/shared/pkg/featureflags/local_capacity.go
+new file mode 100644
+index 0000000..fc510fd
+--- /dev/null
++++ b/packages/shared/pkg/featureflags/local_capacity.go
+@@ -0,0 +1,23 @@
++package featureflags
++
++import (
++	"fmt"
++	"os"
++	"strconv"
++)
++
++// maxSandboxesPerNodeFallback provides a local setting for deployments that
++// do not use LaunchDarkly. A configured remote flag still takes precedence.
++func maxSandboxesPerNodeFallback() int {
++	raw, set := os.LookupEnv("E2B_MAX_SANDBOXES_PER_NODE")
++	if !set {
++		return 200
++	}
++
++	limit, err := strconv.Atoi(raw)
++	if err != nil || limit <= 0 {
++		panic(fmt.Sprintf("E2B_MAX_SANDBOXES_PER_NODE must be a positive integer, got %q", raw))
++	}
++
++	return limit
++}
+diff --git a/packages/shared/pkg/featureflags/local_capacity_test.go b/packages/shared/pkg/featureflags/local_capacity_test.go
+new file mode 100644
+index 0000000..067c217
+--- /dev/null
++++ b/packages/shared/pkg/featureflags/local_capacity_test.go
+@@ -0,0 +1,28 @@
++package featureflags
++
++import (
++	"os"
++	"testing"
++
++	"github.com/stretchr/testify/require"
++)
++
++func TestLocalSandboxCapacityDefault(t *testing.T) {
++	t.Setenv("E2B_MAX_SANDBOXES_PER_NODE", "temporary")
++	require.NoError(t, os.Unsetenv("E2B_MAX_SANDBOXES_PER_NODE"))
++	require.Equal(t, 200, maxSandboxesPerNodeFallback())
++}
++
++func TestLocalSandboxCapacityOverride(t *testing.T) {
++	t.Setenv("E2B_MAX_SANDBOXES_PER_NODE", "512")
++	require.Equal(t, 512, maxSandboxesPerNodeFallback())
++}
++
++func TestLocalSandboxCapacityRejectsInvalid(t *testing.T) {
++	for _, value := range []string{"", "0", "-1", "invalid", "512.5", "9999999999999999999999999"} {
++		t.Run(value, func(t *testing.T) {
++			t.Setenv("E2B_MAX_SANDBOXES_PER_NODE", value)
++			require.Panics(t, func() { maxSandboxesPerNodeFallback() })
++		})
++	}
++}

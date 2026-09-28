@@ -1,0 +1,297 @@
+{
+  "real_ray_success": true,
+  "real_ray_case_count": 11,
+  "torch_imported": false,
+  "source_hashes": {
+    "admission.py": "7fc1a43d9b6462b84b14aee3848e2cefc4096c6ef8801986ee1d7bf80a55d0b6",
+    "e2b_provider.py": "2d68ad04cabb8a8c18141a12d8bd1b4c3859034057d92b36771f3cb4b1791ac8",
+    "real_ray_probe.py": "c0c64c9dcfc4691ec16b5859a5425142e650511ceb204f8a439be46d4577cc87"
+  },
+  "legacy_reproduction": {
+    "case": "legacy_cancelled_waiter_loses_permit",
+    "passed": true,
+    "fresh_waiter_timed_out": true,
+    "snapshot": {
+      "available": 0,
+      "grants": 2,
+      "releases": 1,
+      "waiters": 1
+    }
+  },
+  "storms": [
+    {
+      "case": "create_mixed256_waiter_cancellation_storm",
+      "passed": true,
+      "logical_waiters": 256,
+      "cancelled_callers": 190,
+      "completed_callers": 66,
+      "create_snapshot": {
+        "capacity": 3,
+        "active": 0,
+        "available": 3,
+        "queued": 0,
+        "records": 0,
+        "states": {
+          "queued": 0,
+          "granted": 0,
+          "cancelled": 0,
+          "released": 0
+        },
+        "counters": {
+          "acquire_calls": 260,
+          "grants": 74,
+          "released_grants": 72,
+          "cancelled_grants": 2,
+          "cancel_calls": 188,
+          "release_calls": 72,
+          "retired": 260,
+          "unknown_releases": 0
+        },
+        "consistent": true,
+        "capacity_progress_counter": 148,
+        "capacity_progress_age_s": 0.0030353600159287453,
+        "min_active_age_s": null,
+        "max_active_age_s": null
+      },
+      "exec_snapshot": {
+        "capacity": 16,
+        "active": 0,
+        "available": 16,
+        "queued": 0,
+        "records": 0,
+        "states": {
+          "queued": 0,
+          "granted": 0,
+          "cancelled": 0,
+          "released": 0
+        },
+        "counters": {
+          "acquire_calls": 0,
+          "grants": 0,
+          "released_grants": 0,
+          "cancelled_grants": 0,
+          "cancel_calls": 0,
+          "release_calls": 0,
+          "retired": 0,
+          "unknown_releases": 0
+        },
+        "consistent": true,
+        "capacity_progress_counter": 0,
+        "capacity_progress_age_s": 0.5544537869864143,
+        "min_active_age_s": null,
+        "max_active_age_s": null
+      }
+    },
+    {
+      "case": "exec_mixed256_waiter_cancellation_storm",
+      "passed": true,
+      "logical_waiters": 256,
+      "cancelled_callers": 163,
+      "completed_callers": 93,
+      "create_snapshot": {
+        "capacity": 3,
+        "active": 0,
+        "available": 3,
+        "queued": 0,
+        "records": 0,
+        "states": {
+          "queued": 0,
+          "granted": 0,
+          "cancelled": 0,
+          "released": 0
+        },
+        "counters": {
+          "acquire_calls": 0,
+          "grants": 0,
+          "released_grants": 0,
+          "cancelled_grants": 0,
+          "cancel_calls": 0,
+          "release_calls": 0,
+          "retired": 0,
+          "unknown_releases": 0
+        },
+        "consistent": true,
+        "capacity_progress_counter": 0,
+        "capacity_progress_age_s": 0.35084935900522396,
+        "min_active_age_s": null,
+        "max_active_age_s": null
+      },
+      "exec_snapshot": {
+        "capacity": 16,
+        "active": 0,
+        "available": 16,
+        "queued": 0,
+        "records": 0,
+        "states": {
+          "queued": 0,
+          "granted": 0,
+          "cancelled": 0,
+          "released": 0
+        },
+        "counters": {
+          "acquire_calls": 273,
+          "grants": 129,
+          "released_grants": 120,
+          "cancelled_grants": 9,
+          "cancel_calls": 153,
+          "release_calls": 120,
+          "retired": 273,
+          "unknown_releases": 0
+        },
+        "consistent": true,
+        "capacity_progress_counter": 258,
+        "capacity_progress_age_s": 0.0025256500230170786,
+        "min_active_age_s": null,
+        "max_active_age_s": null
+      }
+    }
+  ],
+  "observation_smoke": {
+    "case": "observation_owner_freshness_lease_age_and_stop",
+    "passed": true,
+    "observed_active_age_s": 1.0039881400298327,
+    "writes_stopped": true,
+    "create_snapshot": {
+      "capacity": 3,
+      "active": 0,
+      "available": 3,
+      "queued": 0,
+      "records": 0,
+      "states": {
+        "queued": 0,
+        "granted": 0,
+        "cancelled": 0,
+        "released": 0
+      },
+      "counters": {
+        "acquire_calls": 0,
+        "grants": 0,
+        "released_grants": 0,
+        "cancelled_grants": 0,
+        "cancel_calls": 0,
+        "release_calls": 0,
+        "retired": 0,
+        "unknown_releases": 0
+      },
+      "consistent": true,
+      "capacity_progress_counter": 0,
+      "capacity_progress_age_s": 2.227787506999448,
+      "min_active_age_s": null,
+      "max_active_age_s": null
+    },
+    "exec_snapshot": {
+      "capacity": 16,
+      "active": 0,
+      "available": 16,
+      "queued": 0,
+      "records": 0,
+      "states": {
+        "queued": 0,
+        "granted": 0,
+        "cancelled": 0,
+        "released": 0
+      },
+      "counters": {
+        "acquire_calls": 1,
+        "grants": 1,
+        "released_grants": 1,
+        "cancelled_grants": 0,
+        "cancel_calls": 0,
+        "release_calls": 1,
+        "retired": 1,
+        "unknown_releases": 0
+      },
+      "consistent": true,
+      "capacity_progress_counter": 2,
+      "capacity_progress_age_s": 0.004347170004621148,
+      "min_active_age_s": null,
+      "max_active_age_s": null
+    }
+  },
+  "provider_smoke": {
+    "success": true,
+    "cases": 8,
+    "passed": 8,
+    "sdk_version": "2.50.0",
+    "torch_imported": false,
+    "admission_after": {
+      "create": {
+        "capacity": 3,
+        "active": 0,
+        "available": 3,
+        "queued": 0,
+        "records": 0,
+        "states": {
+          "queued": 0,
+          "granted": 0,
+          "cancelled": 0,
+          "released": 0
+        },
+        "counters": {
+          "acquire_calls": 8,
+          "grants": 8,
+          "released_grants": 8,
+          "cancelled_grants": 0,
+          "cancel_calls": 0,
+          "release_calls": 8,
+          "retired": 8,
+          "unknown_releases": 0
+        },
+        "consistent": true,
+        "capacity_progress_counter": 16,
+        "capacity_progress_age_s": 4.481076972966548,
+        "min_active_age_s": null,
+        "max_active_age_s": null
+      },
+      "exec": {
+        "capacity": 16,
+        "active": 0,
+        "available": 16,
+        "queued": 0,
+        "records": 0,
+        "states": {
+          "queued": 0,
+          "granted": 0,
+          "cancelled": 0,
+          "released": 0
+        },
+        "counters": {
+          "acquire_calls": 120,
+          "grants": 120,
+          "released_grants": 120,
+          "cancelled_grants": 0,
+          "cancel_calls": 0,
+          "release_calls": 120,
+          "retired": 120,
+          "unknown_releases": 0
+        },
+        "consistent": true,
+        "capacity_progress_counter": 240,
+        "capacity_progress_age_s": 0.03241455799434334,
+        "min_active_age_s": null,
+        "max_active_age_s": null
+      }
+    },
+    "ticket_audit": {
+      "tickets": 128,
+      "requested": 128,
+      "retired": 128,
+      "unretired_tickets": []
+    },
+    "remaining_run_ids": []
+  },
+  "inputs": [
+    {
+      "path": "/data2/yuhanya/e2b-rl-pathfinding-20260920-r2/results/admission-cancellation-validation/real-ray-final-summary.json",
+      "sha256": "cea2ed3e4de4236cb41b5323cc6102610b43153bd8caf542b4b309cd1d3d8615"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-rl-pathfinding-20260920-r2/results/provider-smoke.json",
+      "sha256": "31198efdc55baf5bf3df3cc324d2a9b5585545320e69b9836ed9abeef84958db"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-rl-pathfinding-20260920-r2/results/admission-cancellation-validation/r1-evidence-summary.json",
+      "sha256": "dd526f8e1cd1c0dbc9dff99e6d6d37c365da234e3d69baf6e3aae498872b7117"
+    }
+  ]
+}

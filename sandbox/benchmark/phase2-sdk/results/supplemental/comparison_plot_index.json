@@ -1,0 +1,16 @@
+[
+  {
+    "phase": "phase2-sdk",
+    "name": "create-sdk-vs-raw",
+    "png": "plots/create-sdk-vs-raw.png",
+    "svg": "plots/create-sdk-vs-raw.svg",
+    "caption": "Both adapters use the same raw HTTPX delete for cleanup. Cycle throughput is not full SDK create+kill throughput.\nPoints: per-run median; bands: run min–max; 3 runs per point. Sequential execution does not isolate SDK overhead."
+  },
+  {
+    "phase": "phase2-sdk",
+    "name": "warmup-c8-to-c64",
+    "png": "plots/warmup-c8-to-c64.png",
+    "svg": "plots/warmup-c8-to-c64.svg",
+    "caption": "Left: median throughput and run min–max. Right: per-run rates (dots) and pooled first-call counts (horizontal lines).\nEvery slot running once at C8 does not prove that all connections needed at C64 are pre-established. The conditions were not randomized."
+  }
+]

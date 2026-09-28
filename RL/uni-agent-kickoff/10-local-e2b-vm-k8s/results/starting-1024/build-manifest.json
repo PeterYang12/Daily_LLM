@@ -1,0 +1,28 @@
+{
+  "created_utc": "2026-09-21T15:33:37.725100+00:00",
+  "source_commit": "e7b22501988c826563bf1b3cf0d22a1183e7affe",
+  "service_version": "local-4k-512-start1024-20260921",
+  "starting_limit": 1024,
+  "resident_quota": 512,
+  "go_version": "1.26.8",
+  "files": {
+    "bin/orchestrator": {
+      "sha256": "590d0173ff9df2654c67978ac82fc503264ff97890e5b5cdf0e102a0953a238a",
+      "bytes": 136002136
+    },
+    "runtime-starting-concurrency.patch": {
+      "sha256": "5e19850902a179f30bc162ebfa191e3602fdbc772738ee9cdd08bae2a4c67f95",
+      "bytes": 5536
+    },
+    "code/deploy_guest.py": {
+      "sha256": "38b03f639058caa6b3c5b2a5d82e5f6ed82929b280513b3a571ad00b211a461f",
+      "bytes": 5358
+    }
+  },
+  "code_checks": [
+    "featureflags package -race, default environment: passed",
+    "featureflags package -race, startup override 1024: passed",
+    "server TestSandbox(Limit|StartingLimit) -race: passed",
+    "incremental patch reverse-application check: passed"
+  ]
+}

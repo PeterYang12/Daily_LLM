@@ -1,0 +1,17 @@
+{
+  "checked_utc": "2026-09-17T06:15:02.900803+00:00",
+  "scope": "Read-only configuration audit; no quota changes or capacity stress test",
+  "team_tier": "base_v1",
+  "effective_team_concurrent_sandboxes": 20,
+  "effective_team_concurrent_template_builds": 20,
+  "max_vcpus_per_sandbox": 8,
+  "max_memory_mb_per_sandbox": 8192,
+  "embed_documented_node_running_sandbox_cap": 200,
+  "embed_documented_concurrent_start_cap": 3,
+  "vm_vcpus": 192,
+  "vm_memory_gib": 1511,
+  "orchestrator_hugepage_pool_gib": 256,
+  "nbd_devices": 256,
+  "observed_training_peak_concurrent_sandboxes": 16,
+  "note": "Team quota applies across keys in the same team. Configured caps are not a proven sustainable workload maximum; resource usage, template builds and creation bursts impose additional constraints."
+}

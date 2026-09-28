@@ -1,0 +1,94 @@
+{
+  "generated_utc": "2026-09-20T15:22:31.515300+00:00",
+  "source_root": "/home/yuhanya/Daily_LLM/sandbox/benchmark",
+  "source_files": [
+    {
+      "path": "REPORT.md",
+      "sha256": "ad3dd42b12a1ac7ee52565f6b6e65f82ccb6104c0ddd99f75061f421423ab047"
+    },
+    {
+      "path": "README.md",
+      "sha256": "336cb8b6cef6a0d69e09123e3787bfd7bb3b2766437b6eea2183382657595bba"
+    },
+    {
+      "path": "../../RL/uni-agent-kickoff/10-local-e2b-vm-k8s/README.md",
+      "sha256": "855323032e435e3b454c75da0c15c2e85289bba01f19d4b61c97933e860cce62"
+    },
+    {
+      "path": "phase0-environment/REPORT.md",
+      "sha256": "e4da414e47cb63338804af55a04a2704c92413d5930d69c52ff620a9449a311a"
+    },
+    {
+      "path": "phase0-environment/CLOCK-ALIGNMENT.md",
+      "sha256": "44b84f83200237af26908c7e82457cb369595dd811ad4d7d74d08681f21f1e47"
+    },
+    {
+      "path": "phase0-environment/results/inventory.json",
+      "sha256": "2e81c5c8abe0cf1843e643ac31d0ad141a799e63d44b6515467001282e96302e"
+    },
+    {
+      "path": "phase0-environment/results/file-transport-probe.json",
+      "sha256": "e731b1afb2b38d42525b31f88acb0e024f93ccf86afa749ae7c88197926e4a5d"
+    },
+    {
+      "path": "phase1-service/MAIN-RESULTS.md",
+      "sha256": "fb970b5fef7bce6131cacad86fe57429bc49e65ff1e8506ad6aabf26fd64e0b0"
+    },
+    {
+      "path": "phase1-service/MULTIGENERATOR-RESULTS.md",
+      "sha256": "ee2e8ed7fa925da391450b1177a42ba4ebab4663324ebaf5fb38a1153d4f07c2"
+    },
+    {
+      "path": "phase1-service/IDLE-POOL-RESULTS.md",
+      "sha256": "ef9f75c306426ed1106b51eec12bce85b0d43a7f756d8fabe141e9b070ca6d24"
+    },
+    {
+      "path": "phase1-service/LIFECYCLE-RESULTS.md",
+      "sha256": "d2bdd244b13d73d81794b799a3b78984b0f6fc406c3167d2b605128fb33137e8"
+    },
+    {
+      "path": "phase1-service/results/main-matrix/summary.json",
+      "sha256": "188be0fdd80ba2ca18be6e5c27bc6ae2809d21164c5eab273163a6e01dfed197"
+    },
+    {
+      "path": "phase1-service/results/multigenerator/summary.json",
+      "sha256": "94aa3335de6d676d3dd021dbeb0434a97d5aaf32707837fb0b12b1da65fd9ee0"
+    },
+    {
+      "path": "phase1-service/results/idle-pool-summary.json",
+      "sha256": "151f7e947ae3736e420ab7e1d6c0c627ba45d60a17adaa87f771b43458c16ff0"
+    },
+    {
+      "path": "phase1-service/results/setup-failure-log-20260920.json",
+      "sha256": "53ec7ba53791a0236e089967130b5be02412a128aaddb42ce6d0c491d44c6d51"
+    },
+    {
+      "path": "phase2-sdk/MAIN-RESULTS.md",
+      "sha256": "0165b0c71475b4677a74d2c24fa1d6dcad2fc20c41a9a437b76ba918f010ed4e"
+    },
+    {
+      "path": "phase2-sdk/SUPPLEMENTAL-RESULTS.md",
+      "sha256": "afc6dcf1e114fc50f451baae45b55c16771039e0076a309c1d479918c5de4356"
+    },
+    {
+      "path": "phase2-sdk/APPLICATION-RESULTS.md",
+      "sha256": "6ccd8e3ee9b4276018c58b4ccc87fd8e5e39461525e6f235d3778f79c87d6070"
+    },
+    {
+      "path": "phase2-sdk/results/application/summary.json",
+      "sha256": "dd9d327f09e2d452d948f6255205431ec610849f2c749df95caa5f7462843e17"
+    },
+    {
+      "path": "phase2-sdk/code/official_sdk_baseline.py",
+      "sha256": "42f5ad977780b2fcbc9ef181549f1a01b4900f22a9f0361f286a9351fe11f998"
+    },
+    {
+      "path": "phase2-sdk/results/application/frozen-support/template-smoke.json",
+      "sha256": "e4f61b68add20ec6968e53f25f2bb2c946e097922cc5bd329fccf886c9bab5e4"
+    },
+    {
+      "path": "phase1-service/code/runner.py",
+      "sha256": "48bbeab5401c2a9146ea31f455b65877ba01486703f7c6817d66667e941172fc"
+    }
+  ]
+}

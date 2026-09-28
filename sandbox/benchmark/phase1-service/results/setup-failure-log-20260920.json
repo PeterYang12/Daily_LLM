@@ -1,0 +1,794 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-09-20T11:38:50.192716+00:00",
+  "scope": "Sanitized read-only incident investigation; no daemon restart/configuration change or sandbox creation by this investigation",
+  "run_id": "4d06b8cef8014b10bdeaac71d18e9e0a",
+  "cell": "exec-resident256-c8-r1",
+  "failed_sandbox_id": "irt46sdttlkwfkbl2gfqa",
+  "template_id": "ophk83vnfor4e9749bwv",
+  "build_id": "d45cb363-ceed-4f19-8c49-a12a82f074ab",
+  "direct_failure": {
+    "stage": "setup resident creation, before measurement",
+    "http_status": 500,
+    "api_handler_latency_ms": 89.670485,
+    "error": "failed to start FC: error setting fc metrics: error setting fc metrics: Put \"http://localhost/metrics\": dial unix /tmp/fc-irt46sdttlkwfkbl2gfqa-yxnwla89wnyocfiwjbmk.sock: connect: connection refused",
+    "api_code": "Internal",
+    "measurement_operations": 0
+  },
+  "create_counts": {
+    "201": 166,
+    "500": 1,
+    "includes_template_check_creates": 1,
+    "resident_creates_succeeded": 165,
+    "scope_start_utc": "2026-09-20T11:24:04.717701Z",
+    "scope_end_utc": "2026-09-20T11:25:02.814Z"
+  },
+  "timeline": [
+    {
+      "utc": "2026-09-20T11:24:04.717701+00:00",
+      "component": "benchmark",
+      "event": "run_started",
+      "source": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r1.jsonl"
+    },
+    {
+      "utc": "2026-09-20T11:25:02.719021567Z",
+      "component": "api",
+      "event": "last_successful_create_before_failure",
+      "http_status": 201
+    },
+    {
+      "utc": "2026-09-20T11:25:02.741331186Z",
+      "component": "orchestrator",
+      "event": "sandbox_network_map_entry_added"
+    },
+    {
+      "utc": "2026-09-20T11:25:02.749350815Z",
+      "component": "orchestrator",
+      "event": "child_shell_warning",
+      "message": "shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory",
+      "causal_status": "not established; same warning appeared on other starts"
+    },
+    {
+      "utc": "2026-09-20T11:25:02.771273314Z",
+      "component": "firecracker",
+      "event": "process_start_logged",
+      "message": "Running Firecracker v1.14.4"
+    },
+    {
+      "utc": "2026-09-20T11:25:02.786400953Z",
+      "component": "firecracker",
+      "event": "api_socket_listening_logged"
+    },
+    {
+      "utc": "2026-09-20T11:25:02.789734213Z",
+      "component": "orchestrator",
+      "event": "fc_process_already_exited",
+      "scope": "Stop cleanup path; does not establish independent crash before first API call"
+    },
+    {
+      "utc": "2026-09-20T11:25:02.809Z",
+      "component": "orchestrator",
+      "event": "create_failed",
+      "message": "failed to start FC: error setting fc metrics: error setting fc metrics: Put \"http://localhost/metrics\": dial unix /tmp/fc-irt46sdttlkwfkbl2gfqa-yxnwla89wnyocfiwjbmk.sock: connect: connection refused"
+    },
+    {
+      "utc": "2026-09-20T11:25:02.811Z",
+      "component": "api",
+      "event": "create_failed",
+      "message": "failed to start FC: error setting fc metrics: error setting fc metrics: Put \"http://localhost/metrics\": dial unix /tmp/fc-irt46sdttlkwfkbl2gfqa-yxnwla89wnyocfiwjbmk.sock: connect: connection refused"
+    },
+    {
+      "utc": "2026-09-20T11:25:02.813Z",
+      "component": "api",
+      "event": "POST /sandboxes completed",
+      "http_status": 500,
+      "handler_latency_ms": 89.670485
+    },
+    {
+      "utc": "2026-09-20T11:25:05.810985372Z",
+      "component": "orchestrator",
+      "event": "failed_sandbox_network_map_entry_removed"
+    },
+    {
+      "utc": "2026-09-20T11:25:05.850023+00:00",
+      "component": "resource_sampler",
+      "event": "firecracker_and_nbd_zero",
+      "firecracker": 0,
+      "nbd_attached": 0
+    }
+  ],
+  "raw_log_sources": {
+    "scope": "paths inside e2b-vm; log rotation may rename current files; whole-log hashes intentionally omitted for mutable/log-volume reasons",
+    "api": "/var/log/pods/e2b_e2b-0_54303174-0d59-4fa2-ab94-3c67087e0e62/api/0.log",
+    "orchestrator": "/var/log/pods/e2b_e2b-0_54303174-0d59-4fa2-ab94-3c67087e0e62/orchestrator/0.log.20260920-112505"
+  },
+  "source_refs": {
+    "fc_process": {
+      "path": "/data2/yuhanya/e2b-local-20260916/build/runtime-4k-20260920/packages/orchestrator/pkg/sandbox/fc/process.go",
+      "lines": [
+        329,
+        597,
+        695
+      ],
+      "sha256": "6fdd437e292e5b0a8b79804c1047d28156d2553340c85f05fcd20d5a3bc8093b"
+    },
+    "socket_readiness": {
+      "path": "/data2/yuhanya/e2b-local-20260916/build/runtime-4k-20260920/packages/orchestrator/pkg/sandbox/socket/socket.go",
+      "lines": [
+        12
+      ],
+      "sha256": "f159e3336cc26964b72fde8cf3c6cc61693adb08fdd793bedc8e2557857b6897"
+    },
+    "fc_metrics_call": {
+      "path": "/data2/yuhanya/e2b-local-20260916/build/runtime-4k-20260920/packages/orchestrator/pkg/sandbox/fc/client.go",
+      "lines": [
+        191
+      ],
+      "sha256": "3e1c868c2ced0bf345e781ef7418aff3b91d35db987a34a3ff29ec74b7383f2c"
+    },
+    "main_telemetry_gate": {
+      "path": "/data2/yuhanya/e2b-local-20260916/build/runtime-4k-20260920/packages/shared/pkg/telemetry/main.go",
+      "lines": [
+        55,
+        58
+      ],
+      "sha256": "1b16a3e94c3ffe48eb8d5b9c7a22e0b3162d11d10d6c458a5982480d85017526"
+    },
+    "metric_exporter_constructor": {
+      "path": "/data2/yuhanya/e2b-local-20260916/build/runtime-4k-20260920/packages/shared/pkg/telemetry/metrics.go",
+      "lines": [
+        40,
+        43,
+        92
+      ],
+      "sha256": "511b90538bd03ff6ddb956621218296a23025e2ed387ec4e99164806e33fd81e"
+    },
+    "api_team_observer": {
+      "path": "/data2/yuhanya/e2b-local-20260916/build/runtime-4k-20260920/packages/api/internal/metrics/team.go",
+      "lines": [
+        20,
+        31,
+        36,
+        41
+      ],
+      "sha256": "7da99ef650fc7bbc918e326229099241d2a0a4cf25de10464eea6acaf2d62c62"
+    },
+    "api_observer_start": {
+      "path": "/data2/yuhanya/e2b-local-20260916/build/runtime-4k-20260920/packages/api/internal/orchestrator/orchestrator.go",
+      "lines": [
+        224
+      ],
+      "sha256": "2b0834eae5db627f5f7ba19642a6fab58d81d82873691952ff522f1a95b25ca7"
+    },
+    "orchestrator_sandbox_observer": {
+      "path": "/data2/yuhanya/e2b-local-20260916/build/runtime-4k-20260920/packages/orchestrator/pkg/metrics/sandboxes.go",
+      "lines": [
+        41,
+        67,
+        78,
+        88
+      ],
+      "sha256": "0f8eb46df13be98757e91ea30b8ebb4997359df9bb203c65076a0b0db63b1197"
+    },
+    "orchestrator_observer_start": {
+      "path": "/data2/yuhanya/e2b-local-20260916/build/runtime-4k-20260920/packages/orchestrator/pkg/factories/run.go",
+      "lines": [
+        712
+      ],
+      "sha256": "e8a398196a38784e35d5bc10422e663c8f2674287d2973360586dcb59845784c"
+    },
+    "metric_export_error": {
+      "path": "/data2/yuhanya/e2b-local-20260916/build/go-mod-cache/go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc@v1.46.0/exporter.go",
+      "lines": [
+        110
+      ],
+      "sha256": "ea5533323d86f8985fb6ae24293eea9355c76828da1e4f18e38be93d4db721a6"
+    },
+    "periodic_reader_error_handler": {
+      "path": "/data2/yuhanya/e2b-local-20260916/build/go-mod-cache/go.opentelemetry.io/otel/sdk/metric@v1.46.0/periodic_reader.go",
+      "lines": [
+        203
+      ],
+      "sha256": "4eb8242ef5f2399d60c2e343f7cef34da648a74c7592acaa2f5c413ad2ba0f4e"
+    },
+    "envd_wait_and_deadline": {
+      "path": "/data2/yuhanya/e2b-local-20260916/build/runtime-4k-20260920/packages/orchestrator/pkg/sandbox/sandbox.go",
+      "lines": [
+        99,
+        1683,
+        4065,
+        4125
+      ],
+      "sha256": "0d6d130e99898eee35e5f46db92253ad28ebd196545623a125dcae2145bfd0ce"
+    },
+    "envd_init_retries": {
+      "path": "/data2/yuhanya/e2b-local-20260916/build/runtime-4k-20260920/packages/orchestrator/pkg/sandbox/envd.go",
+      "lines": [
+        517,
+        519,
+        534
+      ],
+      "sha256": "8e08a90156c2b4cca9aa947fb29470477ff9bee485354103f44decc8c4e31aea"
+    },
+    "envd_timeout_defaults": {
+      "path": "/data2/yuhanya/e2b-local-20260916/build/runtime-4k-20260920/packages/shared/pkg/featureflags/flags.go",
+      "lines": [
+        402,
+        458,
+        459
+      ],
+      "sha256": "5d4a411da0a4d1ffbc9cc75f905e24b330dde75fce0486f069ce619da2fc78c3"
+    }
+  },
+  "input_artifacts": {
+    "run": {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r1.jsonl",
+      "sha256": "85fd6fb8319929cb8657144d40b47da76c0960e4e194b28f97a0f0d955207e0a"
+    },
+    "resources": {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r1.resources.jsonl",
+      "sha256": "e144c537dbc3e4f4d0f9330d2e7d46338ec361e0a8e26d9b0a668c19f0dea967"
+    },
+    "related_resource_report": {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/setup-failure-20260920.json",
+      "note": "Independently maintained derived analysis; underlying immutable sampler input is hashed separately above."
+    }
+  },
+  "resource_summary": {
+    "samples": 31,
+    "interval_seconds": 2,
+    "fc_peak": 163,
+    "nbd_attached_peak": 163,
+    "mem_available_min_gib": 1463.1295013427734,
+    "vm_cpu_peak_pct": 9.093287291372365,
+    "arp_entries_peak": 499,
+    "arp_table_fulls_delta": 0,
+    "orchestrator_fd_peak": 3064
+  },
+  "post_incident_checks": {
+    "timing": "after failed cell cleanup; not the later retry",
+    "pod_status": "8/8 Running, no incident-time restart",
+    "orchestrator_health": "healthy",
+    "nbd_attached": 0,
+    "sandbox_cgroups": 0,
+    "node_running_limit": 512,
+    "nbd_devices": 1024,
+    "hugepages_total": 0,
+    "neighbor_gc_thresholds": [
+      4096,
+      8192,
+      16384
+    ],
+    "nofile_same_process_post_incident": {
+      "api_pid": 15761,
+      "orchestrator_pid": 15070,
+      "soft": 1048576,
+      "hard": 1048576,
+      "limitation": "not continuously sampled during the incident"
+    }
+  },
+  "interpretation": {
+    "confirmed": "Firecracker management socket connection was refused at initial metrics configuration; this was neither a quota rejection nor a 20-second client timeout.",
+    "leading_hypothesis": "FC API readiness race: socket.Wait only waits for os.Stat success; file existence can precede accept/listen readiness. First PUT /metrics has no bounded pre-connect retry.",
+    "confidence": "hypothesis, not uniquely proven; available logs cannot rule out an early process exit. Cleanup may itself terminate the process after the refused connection.",
+    "other_findings": [
+      "No FC panic/abnormal-exit diagnostic identified for this sandbox.",
+      "No OOM indication in the narrow kernel window.",
+      "NBD disconnect messages occur during cleanup, after the API failure.",
+      "Memory.peak reset and deleted-cwd shell warnings recur on other starts; their causal role in this failure is not established."
+    ]
+  },
+  "next_steps": [
+    "Preserve the failed cell as zero-measurement setup failure.",
+    "Reconcile exact run metadata and check empty service before a separately labeled retry; never blindly resend an ambiguous create POST.",
+    "Record future setup HTTP status, error text and partial create count.",
+    "Future runtime fix candidate: FC-specific API-ready check or bounded retry only for connection-not-established errors before first configuration call. Do not blindly change generic socket.Wait, also used for UFFD."
+  ],
+  "otel_correction": {
+    "previous_claim_retracted": "The earlier statement that all empty-endpoint export errors belonged only to the old deployment was too broad and incorrect.",
+    "primary_telemetry": "telemetry.New returns a Noop client when OTEL_COLLECTOR_GRPC_ENDPOINT is unset.",
+    "independent_exporters": [
+      {
+        "component": "api",
+        "observer": "metrics.NewTeamObserver",
+        "constructor_ref": "api_team_observer",
+        "startup_ref": "api_observer_start",
+        "configured_period_seconds": 5
+      },
+      {
+        "component": "orchestrator",
+        "observer": "metrics.NewSandboxObserver",
+        "constructor_ref": "orchestrator_sandbox_observer",
+        "startup_ref": "orchestrator_observer_start",
+        "configured_period_seconds": 5
+      }
+    ],
+    "mechanism": "These observers independently call NewMeterExporter, which explicitly passes the empty endpoint to OTLP/gRPC, then create their own periodic reader. They bypass the telemetry.New Noop guard. The exporter formats failed to upload metrics; PeriodicReader reports the error through otel.Handle to standard stderr.",
+    "currently_observed_samples": [
+      {
+        "component": "api",
+        "utc": "2026-09-20T11:35:54.359880436Z",
+        "stream": "stderr",
+        "message": "failed to upload metrics: exporter export timeout: rpc error: code = Unavailable desc = delegating_resolver: invalid target address \"\": missing address"
+      },
+      {
+        "component": "orchestrator",
+        "utc": "2026-09-20T11:36:01.67651826Z",
+        "stream": "stderr",
+        "message": "failed to upload metrics: exporter export timeout: rpc error: code = Unavailable desc = delegating_resolver: invalid target address \"\": missing address"
+      }
+    ],
+    "running_binary_identity": [
+      {
+        "component": "api",
+        "pid": 15761,
+        "sha256": "053ccf0e58f6c958417d30d26dcd1965a325ff23fa45e2c34f98df4565dd4c54",
+        "otel_endpoint_present": false
+      },
+      {
+        "component": "orchestrator",
+        "pid": 15070,
+        "sha256": "bff879e1e132546115a5b9b6f67e53af31655f05acc42abe215b4a591ebaaf02",
+        "otel_endpoint_present": false
+      }
+    ],
+    "recommended_documentation": "The main OTel client is disabled without an endpoint, but independent API team and orchestrator sandbox observers still initialize OTLP metric exporters and currently emit empty-endpoint failures. These are ongoing telemetry errors, distinct from the Firecracker local PUT /metrics startup failure.",
+    "daemon_changed": false
+  },
+  "additional_cases": [
+    {
+      "case_number": 2,
+      "run_id": "077071962a184787bea0869efeaae70c",
+      "cell": "exec-resident256-c8-r3",
+      "runner_revision": "v2-error-diagnostics",
+      "failed_sandbox_id": "im7vhbk8ii0r0v2u3t83i",
+      "template_id": "ophk83vnfor4e9749bwv",
+      "build_id": "d45cb363-ceed-4f19-8c49-a12a82f074ab",
+      "direct_failure": {
+        "stage": "setup, waiting for envd initialization after successful Firecracker snapshot load",
+        "http_status": 500,
+        "api_handler_latency_ms": 11686.493153,
+        "error": "failed to wait for sandbox start: failed to init new envd: failed to init envd: context canceled with cause: syncing took too long",
+        "envd_init_attempts": 138,
+        "source_default_total_envd_timeout_seconds": 10,
+        "source_default_single_init_request_timeout_ms": 50,
+        "measurement_operations": 0,
+        "same_as_case1": false
+      },
+      "client_observation": {
+        "run_started_utc": "2026-09-20T11:50:26.387238+00:00",
+        "created_handles": 161,
+        "error_observed_offset_s": 73.28441872203257,
+        "http_status": 500,
+        "cleanup_ok": true,
+        "note": "Client timing and server timestamp are recorded separately; their difference is not labeled SDK overhead."
+      },
+      "timeline": [
+        {
+          "utc": "2026-09-20T11:51:26.891181523Z",
+          "event": "sandbox_network_map_entry_added"
+        },
+        {
+          "utc": "2026-09-20T11:51:26.923970271Z",
+          "event": "firecracker_v1.14.4_start_logged"
+        },
+        {
+          "utc": "2026-09-20T11:51:26.929898410Z",
+          "event": "fc_api_socket_listening"
+        },
+        {
+          "utc": "2026-09-20T11:51:26.930834590Z",
+          "event": "fc_api_server_started"
+        },
+        {
+          "utc": "2026-09-20T11:51:26.939365560Z",
+          "event": "snapshot_file_loaded",
+          "duration_us": 276
+        },
+        {
+          "utc": "2026-09-20T11:51:26.963851508Z",
+          "event": "load_snapshot_api_completed",
+          "duration_us": 24852
+        },
+        {
+          "utc": "2026-09-20T11:51:36.965Z",
+          "event": "envd_init_failed_after_retries",
+          "attempts": 138,
+          "error": "context canceled with cause: syncing took too long"
+        },
+        {
+          "utc": "2026-09-20T11:51:38.562Z",
+          "event": "orchestrator_create_failed"
+        },
+        {
+          "utc": "2026-09-20T11:51:38.564Z",
+          "event": "POST /sandboxes completed",
+          "http_status": 500,
+          "handler_latency_ms": 11686.493153
+        },
+        {
+          "utc": "2026-09-20T11:51:41.511611+00:00",
+          "event": "sampled_fc_and_nbd_zero",
+          "firecracker": 0,
+          "nbd_attached": 0
+        },
+        {
+          "utc": "2026-09-20T11:51:41.562756728Z",
+          "event": "target_network_map_entry_removed"
+        },
+        {
+          "utc": "2026-09-20T11:52:39.509528+00:00",
+          "event": "last_post_cleanup_sample",
+          "firecracker": 0,
+          "nbd_attached": 0
+        }
+      ],
+      "resource_summary": {
+        "samples": 67,
+        "fc_peak": 162,
+        "nbd_attached_peak": 162,
+        "mem_available_min_gib": 1462.4422416687012,
+        "vm_cpu_peak_pct": 74.79940677643837,
+        "cpu_psi_some_avg10_peak": 13.71,
+        "arp_entries_peak": 496,
+        "arp_table_fulls_delta": 0,
+        "orchestrator_fd_peak": 3116
+      },
+      "envd_wait_resource_samples": [
+        {
+          "utc": "2026-09-20T11:51:29.213146+00:00",
+          "vm_cpu_pct": 9.428986599214252,
+          "busy_core_equivalents": 18.10365427049136,
+          "cpu_psi_some_avg10": 6.76,
+          "firecracker": 162,
+          "nbd_attached": 162
+        },
+        {
+          "utc": "2026-09-20T11:51:31.204194+00:00",
+          "vm_cpu_pct": 63.12239883668455,
+          "busy_core_equivalents": 121.19500576643433,
+          "cpu_psi_some_avg10": 9.89,
+          "firecracker": 162,
+          "nbd_attached": 162
+        },
+        {
+          "utc": "2026-09-20T11:51:31.700320+00:00",
+          "vm_cpu_pct": 62.87334593572779,
+          "busy_core_equivalents": 120.71682419659736,
+          "cpu_psi_some_avg10": 9.89,
+          "firecracker": 162,
+          "nbd_attached": 162
+        },
+        {
+          "utc": "2026-09-20T11:51:34.031447+00:00",
+          "vm_cpu_pct": 74.79940677643837,
+          "busy_core_equivalents": 143.61486101076167,
+          "cpu_psi_some_avg10": 13.71,
+          "firecracker": 162,
+          "nbd_attached": 162
+        },
+        {
+          "utc": "2026-09-20T11:51:35.518710+00:00",
+          "vm_cpu_pct": 61.35455374044731,
+          "busy_core_equivalents": 117.80074318165883,
+          "cpu_psi_some_avg10": 13.04,
+          "firecracker": 162,
+          "nbd_attached": 162
+        },
+        {
+          "utc": "2026-09-20T11:51:37.512659+00:00",
+          "vm_cpu_pct": 55.75067070833769,
+          "busy_core_equivalents": 107.04128776000836,
+          "cpu_psi_some_avg10": 10.86,
+          "firecracker": 161,
+          "nbd_attached": 162
+        }
+      ],
+      "input_artifacts": {
+        "run": {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r3.jsonl",
+          "sha256": "22fedccd92bed2b618c4047e1c982ae10054f630943dcabff869522aa0938c9d"
+        },
+        "resources": {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r3.resources.jsonl",
+          "sha256": "9a163bf7687a6d0da2123904a7f48bccb38e42261474029d29ef1a29ab9bf1a6"
+        }
+      },
+      "log_access": {
+        "pod": "e2b-0",
+        "namespace": "e2b",
+        "containers": [
+          "api",
+          "orchestrator"
+        ],
+        "method": "kubectl logs --timestamps=true --since-time with targeted sandbox/window filtering",
+        "window": "2026-09-20T11:51:25Z .. 2026-09-20T11:51:43Z",
+        "note": "Sanitized selected fields only; no credential/request-body/command dump."
+      },
+      "interpretation": {
+        "confirmed": "Firecracker API and snapshot load completed; envd initialization exhausted its wait budget after 138 attempts. Different failure stage from case1 connection-refused-before-snapshot-load.",
+        "correlation": "During this envd wait, VM CPU spiked repeatedly to about 61-75 percent and CPU PSI increased. This differs from case1 and must not be described as absence of CPU pressure.",
+        "not_proven": "The specific in-guest/Firecracker/KVM activity causing the large sandbox-cgroup CPU burst and its causal role in envd timeout remain unknown. No per-attempt network detail or UFFD phase trace was retained.",
+        "negative_evidence": "No OOM/overflow/panic concern in the narrow kernel window; large memory headroom and zero ARP overflow delta persist."
+      },
+      "next_steps": [
+        "Preserve as a second setup failure, not zero-throughput measurement or repetition of the first root cause.",
+        "Only an independently labeled retry after exact ownership cleanup/empty checks; keep daemon and timeouts unchanged for baseline.",
+        "Future focused diagnostics should capture CPU ownership and envd per-attempt/init/UFFD timing before proposing a timeout or capacity change."
+      ],
+      "cpu_attribution": {
+        "samples": [
+          {
+            "utc": "2026-09-20T11:51:29.213146+00:00",
+            "interval_seconds": 3.6932410999979766,
+            "vm_busy_core_equivalents": 18.10365427049136,
+            "sandbox_cgroup_cpu_cores_continuous_only": 62.63248857490694,
+            "new_cgroups": 4,
+            "exited_cgroups": 0,
+            "cgroup_count": 162,
+            "cgroup_throttled_seconds": 0,
+            "generator_cpu_cores": 0.006562780838638661
+          },
+          {
+            "utc": "2026-09-20T11:51:31.204194+00:00",
+            "interval_seconds": 1.991049632000795,
+            "vm_busy_core_equivalents": 121.19500576643433,
+            "sandbox_cgroup_cpu_cores_continuous_only": 100.53106652035486,
+            "new_cgroups": 0,
+            "exited_cgroups": 0,
+            "cgroup_count": 162,
+            "cgroup_throttled_seconds": 0,
+            "generator_cpu_cores": 0.0
+          },
+          {
+            "utc": "2026-09-20T11:51:31.700320+00:00",
+            "interval_seconds": 0.4961235900009342,
+            "vm_busy_core_equivalents": 120.71682419659736,
+            "sandbox_cgroup_cpu_cores_continuous_only": 113.9228191102414,
+            "new_cgroups": 0,
+            "exited_cgroups": 0,
+            "cgroup_count": 162,
+            "cgroup_throttled_seconds": 0,
+            "generator_cpu_cores": 0.0
+          },
+          {
+            "utc": "2026-09-20T11:51:34.031447+00:00",
+            "interval_seconds": 2.331125920998602,
+            "vm_busy_core_equivalents": 143.61486101076167,
+            "sandbox_cgroup_cpu_cores_continuous_only": 107.95708748851878,
+            "new_cgroups": 0,
+            "exited_cgroups": 0,
+            "cgroup_count": 162,
+            "cgroup_throttled_seconds": 0,
+            "generator_cpu_cores": 0.0
+          },
+          {
+            "utc": "2026-09-20T11:51:35.518710+00:00",
+            "interval_seconds": 1.4872637010012113,
+            "vm_busy_core_equivalents": 117.80074318165883,
+            "sandbox_cgroup_cpu_cores_continuous_only": 117.26515471506015,
+            "new_cgroups": 0,
+            "exited_cgroups": 0,
+            "cgroup_count": 162,
+            "cgroup_throttled_seconds": 0,
+            "generator_cpu_cores": 0.0
+          },
+          {
+            "utc": "2026-09-20T11:51:37.512659+00:00",
+            "interval_seconds": 1.9939587819972076,
+            "vm_busy_core_equivalents": 107.04128776000836,
+            "sandbox_cgroup_cpu_cores_continuous_only": 119.59575752169884,
+            "new_cgroups": 0,
+            "exited_cgroups": 0,
+            "cgroup_count": 162,
+            "cgroup_throttled_seconds": 0,
+            "generator_cpu_cores": 0.005119759722122543
+          }
+        ],
+        "stable_continuous_cgroup_window_seconds": 8.29952162599875,
+        "stable_window_weighted_vm_cores": 123.45491610131496,
+        "stable_window_weighted_sandbox_cgroup_cores": 110.9963882875168,
+        "interpretation": "The sandbox/Firecracker cgroups account for a large share of the burst; the Python generator is almost idle. This does not identify which in-guest activity or Firecracker/KVM work consumed CPU.",
+        "alignment_caution": "/proc/stat and cgroup counters are read sequentially, not atomically. Snapshot delays and catch-up intervals are visible; individual cgroup/VM ratios or subtraction are not exact causal decomposition."
+      },
+      "later_readonly_process_probe": {
+        "utc_start": "2026-09-20T11:58:44.345927+00:00",
+        "utc_end": "2026-09-20T11:58:54.116664+00:00",
+        "samples": 10,
+        "nominal_interval_seconds": 1,
+        "actual_interval_seconds_range": [
+          1.063,
+          1.088
+        ],
+        "scope": "Read-only /proc PID/name/CPU-tick sampling; no SDK request or sandbox command; bounded diagnostic requested during later retry but observation arrived after its busy period.",
+        "dominant_group_peak_cpu_cores": {
+          "k3s-server": 4.77,
+          "clickhouse-serv": 0.203,
+          "orchestrator": 0.046,
+          "api": 0.019,
+          "python3_sampler": 0.083
+        },
+        "result": "The original CPU burst did not recur in this observed interval; no Firecracker group above the 0.01-core reporting threshold. This late sample cannot identify the original burst source."
+      }
+    },
+    {
+      "case_number": 3,
+      "run_id": "21eb50b68d0140709301fe988c5d18a5",
+      "cell": "exec-resident256-c8-r3-retry2",
+      "runner_revision": "v2-error-diagnostics",
+      "failed_sandbox_id": "i5cyyl4vgxbvflg7ciaiy",
+      "template_id": "ophk83vnfor4e9749bwv",
+      "build_id": "d45cb363-ceed-4f19-8c49-a12a82f074ab",
+      "direct_failure": {
+        "stage": "setup, envd initialization after successful Firecracker snapshot load",
+        "same_direct_failure_as_case": 2,
+        "same_as_case1": false,
+        "http_status": 500,
+        "api_handler_latency_ms": 12469.755067,
+        "error": "failed to wait for sandbox start: failed to init new envd: failed to init envd: context canceled with cause: syncing took too long",
+        "envd_init_attempts": 151,
+        "observed_single_init_request_timeout_ms": 50,
+        "source_default_total_envd_timeout_seconds": 10,
+        "measurement_operations": 0
+      },
+      "client_observation": {
+        "run_started_utc": "2026-09-20T11:56:04.519797+00:00",
+        "created_handles": 216,
+        "error_observed_offset_s": 96.14921760902507,
+        "http_status": 500,
+        "cleanup_ok": true
+      },
+      "timeline": [
+        {
+          "utc": "2026-09-20T11:57:27.095301273Z",
+          "event": "sandbox_network_map_entry_added"
+        },
+        {
+          "utc": "2026-09-20T11:57:27.134307191Z",
+          "event": "firecracker_v1.14.4_start_logged"
+        },
+        {
+          "utc": "2026-09-20T11:57:27.137484400Z",
+          "event": "fc_api_server_started"
+        },
+        {
+          "utc": "2026-09-20T11:57:27.140586320Z",
+          "event": "snapshot_file_loaded",
+          "duration_us": 320
+        },
+        {
+          "utc": "2026-09-20T11:57:27.156440419Z",
+          "event": "load_snapshot_api_completed",
+          "duration_us": 16268
+        },
+        {
+          "utc": "2026-09-20T11:57:37.282Z",
+          "event": "envd_init_failed_after_retries",
+          "attempts": 151,
+          "timeout_ms": 50
+        },
+        {
+          "utc": "2026-09-20T11:57:39.552Z",
+          "event": "api_create_failed"
+        },
+        {
+          "utc": "2026-09-20T11:57:39.553Z",
+          "event": "POST /sandboxes completed",
+          "http_status": 500,
+          "handler_latency_ms": 12469.755067
+        },
+        {
+          "utc": "2026-09-20T11:57:42.521388843Z",
+          "event": "sandbox_network_map_entry_removed"
+        },
+        {
+          "utc": "2026-09-20T11:58:39.665558+00:00",
+          "event": "last_post_cleanup_sample",
+          "firecracker": 0,
+          "nbd_attached": 0
+        }
+      ],
+      "resource_summary": {
+        "samples": 78,
+        "vm_cpu_peak_pct": 71.46219715108965,
+        "vm_cpu_peak_core_equivalents": 137.20741853009216,
+        "cpu_peak_utc": "2026-09-20T11:57:37.667034+00:00",
+        "cgroup_summary_at_vm_peak": {
+          "count": 217,
+          "populated": 217,
+          "memory_bytes": 9792434176,
+          "cpu_cores_continuous_only": 124.39481241233753,
+          "new_cgroups": 0,
+          "exited_cgroups": 0,
+          "throttled_seconds_continuous_only": 0
+        },
+        "generator_cpu_cores_at_vm_peak": 0.0068859795467458755,
+        "cpu_psi_some_avg10_peak": 22.49,
+        "fc_peak": 217,
+        "nbd_peak": 217,
+        "arp_entries_peak": 661,
+        "arp_overflow_delta": 0,
+        "mem_available_min_gib": 1459.608901977539
+      },
+      "input_artifacts": {
+        "run": {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r3-retry2.jsonl",
+          "sha256": "70c3562c98d67c426ac317cb7898f44bf4d7224d9ea91fa2f972d1aaeb0c3ed0"
+        },
+        "resources": {
+          "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r3-retry2.resources.jsonl",
+          "sha256": "b2ab1667296ffbd0ade7d1f4f335b7ddb14218b4e8d9289efdfee489b5a0e73e"
+        }
+      },
+      "raw_log_sources": {
+        "api": "e2b-vm:/var/log/pods/e2b_e2b-0_54303174-0d59-4fa2-ab94-3c67087e0e62/api/0.log",
+        "orchestrator": "e2b-vm:/var/log/pods/e2b_e2b-0_54303174-0d59-4fa2-ab94-3c67087e0e62/orchestrator/0.log.20260920-115745"
+      },
+      "interpretation": {
+        "confirmed": "Repeated envd-init timeout stage, distinct from case1. FC API and snapshot loading succeeded before the timeout.",
+        "correlation": "Another large VM and sandbox-cgroup CPU burst during the wait; generator remains nearly idle. Specific in-guest/Firecracker/KVM source and causal chain are not established.",
+        "measurement_treatment": "Setup failure; no measurement operations. Preserve as failure evidence, never insert a zero-throughput capacity point.",
+        "next_step": "No further rapid retry proposed; complete other measurements and a separately controlled slow-ramp idle-pool diagnostic."
+      }
+    }
+  ],
+  "case_count": 3,
+  "last_updated_utc": "2026-09-20T12:04:41.930975+00:00",
+  "n256_disclosure": {
+    "valid_measurement_repetitions": 2,
+    "failed_setup_attempts": 3,
+    "valid_runs": [
+      {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r1-retry2.jsonl",
+        "run_id": "dc431ad253e04480929436403983d379",
+        "repeat": 1,
+        "completed_count": 21948,
+        "cleanup_ok": true,
+        "stop_reason": "completed"
+      },
+      {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r2.jsonl",
+        "run_id": "9ad06141c0b54aa98da7824872f5bbd4",
+        "repeat": 2,
+        "completed_count": 25469,
+        "cleanup_ok": true,
+        "stop_reason": "completed"
+      }
+    ],
+    "failed_runs": [
+      {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r1.jsonl",
+        "run_id": "4d06b8cef8014b10bdeaac71d18e9e0a",
+        "repeat": 1,
+        "completed_count": 0,
+        "cleanup_ok": true,
+        "stop_reason": "SandboxException"
+      },
+      {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r3-retry2.jsonl",
+        "run_id": "21eb50b68d0140709301fe988c5d18a5",
+        "repeat": 3,
+        "completed_count": 0,
+        "cleanup_ok": true,
+        "stop_reason": "SandboxException"
+      },
+      {
+        "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/exec-resident256-c8-r3.jsonl",
+        "run_id": "077071962a184787bea0869efeaae70c",
+        "repeat": 3,
+        "completed_count": 0,
+        "cleanup_ok": true,
+        "stop_reason": "SandboxException"
+      }
+    ],
+    "interpretation": "Report both successful repetitions and setup failures; failed setup is not a zero-throughput measurement."
+  },
+  "separate_diagnostic_cases": [
+    {
+      "label": "diagnostic-case4",
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/idle-pool-case4-log-20260920.json",
+      "run_id": "115e158aaf514244be692e2d56f3d384",
+      "counted_in_formal_matrix_failures": false
+    }
+  ]
+}

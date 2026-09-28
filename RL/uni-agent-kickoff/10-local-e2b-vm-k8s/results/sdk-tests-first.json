@@ -1,0 +1,69 @@
+{
+  "sdk_version": "2.49.1",
+  "endpoint": "http://10.145.64.67:8088",
+  "scope": "real sandbox service; no LLM inference or RL training",
+  "status": "passed",
+  "basic": {
+    "checks": [
+      "invalid API key rejected",
+      "real Linux command execution",
+      "UTF-8 file roundtrip",
+      "binary file roundtrip",
+      "exit 7 and separate stdout/stderr preserved",
+      "cwd and environment",
+      "timeout renewal and liveness",
+      "sandbox HTTP port through the same public endpoint",
+      "sandbox deleted and confirmed absent"
+    ],
+    "sandbox_id": "i5sv52otpm5m2rqyk7adl",
+    "wall_seconds": 0.4438073929923121
+  },
+  "concurrency": {
+    "concurrent_running_sandboxes": 8,
+    "create_parallelism": 2,
+    "isolated_results": [
+      {
+        "sandbox_id": "i3ndskikj9wiq96ilqxr7",
+        "index": 0,
+        "isolated": true
+      },
+      {
+        "sandbox_id": "izpujxpshj99m64ptlw84",
+        "index": 1,
+        "isolated": true
+      },
+      {
+        "sandbox_id": "i2z8e0jrbgf5w2ie60dyx",
+        "index": 2,
+        "isolated": true
+      },
+      {
+        "sandbox_id": "i65m74ddjy3tqio46zh96",
+        "index": 3,
+        "isolated": true
+      },
+      {
+        "sandbox_id": "i66ghl5vm5kzv4lvjh46m",
+        "index": 4,
+        "isolated": true
+      },
+      {
+        "sandbox_id": "ifh2qzseyhzrqqm2pczar",
+        "index": 5,
+        "isolated": true
+      },
+      {
+        "sandbox_id": "i011hi8ojlz5vysrxpx8k",
+        "index": 6,
+        "isolated": true
+      },
+      {
+        "sandbox_id": "iqp3kcgbu1nb4sjapp6g7",
+        "index": 7,
+        "isolated": true
+      }
+    ],
+    "all_cleaned": true,
+    "wall_seconds": 2.318075910996413
+  }
+}

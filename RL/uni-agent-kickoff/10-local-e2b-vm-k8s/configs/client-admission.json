@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "create_permits": 512,
+  "startup_concurrency": 512,
+  "exec_permits": 16
+}

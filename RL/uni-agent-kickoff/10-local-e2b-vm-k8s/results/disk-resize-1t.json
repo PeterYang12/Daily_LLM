@@ -1,0 +1,19 @@
+{
+  "started_utc": "2026-09-16T11:53:04.892282+00:00",
+  "target_bytes": 1099511627776,
+  "image_path": "/data2/yuhanya/e2b-local-20260916/vm/root.qcow2",
+  "status": "passed",
+  "old_bytes": 274877906944,
+  "sandbox_id": "i1yx7qiax2p526k8qzak7",
+  "guest_boot_id_before": "c009103a-f873-403f-8c75-bc0d9c51d2c5",
+  "growpart": "CHANGED: partition=1 start=2099200 old: size=534771679 end=536870878 new: size=2145384415 end=2147483614\n",
+  "resize2fs": "Filesystem at /dev/vda1 is mounted on /; on-line resizing required\nold_desc_blocks = 32, new_desc_blocks = 128\nThe filesystem on /dev/vda1 is now 268173051 (4k) blocks long.\n\n",
+  "filesystem": "Filesystem         1B-blocks        Used         Avail Mounted on\n/dev/vda1      1063956480000 21120294912 1042819407872 /\n",
+  "guest_boot_id_after": "c009103a-f873-403f-8c75-bc0d9c51d2c5",
+  "existing_sandbox_preserved": true,
+  "health_http": 200,
+  "authenticated_api_http": 200,
+  "api_url": "http://10.145.64.67:8088",
+  "api_key_unchanged": true,
+  "completed_utc": "2026-09-16T11:53:10.329717+00:00"
+}

@@ -1,0 +1,54 @@
+{
+  "pid": 29094,
+  "machine_config": {
+    "vcpu_count": 2,
+    "mem_size_mib": 4096,
+    "smt": true,
+    "track_dirty_pages": false,
+    "huge_pages": "None"
+  },
+  "guest_mappings": [
+    {
+      "base_host_virt_addr": 133644494557184,
+      "size": 3221225472,
+      "offset": 0,
+      "page_size": 4096,
+      "page_size_kib": 4096
+    },
+    {
+      "base_host_virt_addr": 133643420815360,
+      "size": 1073741824,
+      "offset": 3221225472,
+      "page_size": 4096,
+      "page_size_kib": 4096
+    }
+  ],
+  "guest_smaps": [
+    {
+      "KernelPageSize": "4 kB",
+      "MMUPageSize": "4 kB",
+      "Rss": "5356 kB",
+      "AnonHugePages": "0 kB",
+      "ShmemPmdMapped": "0 kB",
+      "FilePmdMapped": "0 kB",
+      "Private_Hugetlb": "0 kB",
+      "Shared_Hugetlb": "0 kB",
+      "VmFlags": "rd wr sh mr mw me ms um uw nr sd",
+      "mapping": "798c889fd000-798d489fd000 rw-s 00000000 00:01 133120                     /memfd:guest_mem (deleted)"
+    },
+    {
+      "KernelPageSize": "4 kB",
+      "MMUPageSize": "4 kB",
+      "Rss": "30888 kB",
+      "AnonHugePages": "0 kB",
+      "ShmemPmdMapped": "0 kB",
+      "FilePmdMapped": "0 kB",
+      "Private_Hugetlb": "0 kB",
+      "Shared_Hugetlb": "0 kB",
+      "VmFlags": "rd wr sh mr mw me ms um uw nr sd",
+      "mapping": "798c489fd000-798c889fd000 rw-s c0000000 00:01 133120                     /memfd:guest_mem (deleted)"
+    }
+  ],
+  "four_kib_verified": true,
+  "problems": []
+}

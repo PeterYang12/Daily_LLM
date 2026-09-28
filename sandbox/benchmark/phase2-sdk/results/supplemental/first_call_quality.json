@@ -1,0 +1,26 @@
+[
+  {
+    "severity": "warning",
+    "code": "non_operation_records_skipped",
+    "run_id": null,
+    "message": "{\"all_connections_warmup\": 3, \"metadata\": 3, \"operation_error_detail\": 9, \"template_check\": 3}"
+  },
+  {
+    "severity": "warning",
+    "code": "operation_id_reused_across_windows",
+    "run_id": "2e03188960a243fa901d8e30abe1b596",
+    "message": "1 operation IDs reused across explicit windows; parser identity is (run_id, window, operation_id), raw IDs preserved"
+  },
+  {
+    "severity": "warning",
+    "code": "operation_id_reused_across_windows",
+    "run_id": "57887b814eac4405af47fbdd20e635ab",
+    "message": "1 operation IDs reused across explicit windows; parser identity is (run_id, window, operation_id), raw IDs preserved"
+  },
+  {
+    "severity": "warning",
+    "code": "operation_id_reused_across_windows",
+    "run_id": "3d2cd6c411724b698ec0b0d6b7b5c667",
+    "message": "1 operation IDs reused across explicit windows; parser identity is (run_id, window, operation_id), raw IDs preserved"
+  }
+]

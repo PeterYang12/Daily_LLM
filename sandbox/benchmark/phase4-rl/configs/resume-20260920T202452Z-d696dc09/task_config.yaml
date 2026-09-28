@@ -1,0 +1,338 @@
+- name: swe_rebench
+  sandbox:
+    provider: e2b
+    runtime_timeout: 3600
+    image_map: &id001
+    - from: swebench/sweb.eval.x86_64.django_1776_django-11555
+      to: yr0jyrh2n1kscihtf7bd
+    - from: swebench/sweb.eval.x86_64.django_1776_django-11734
+      to: 6kvj0lpbpm5lujwh82oz
+    - from: swebench/sweb.eval.x86_64.django_1776_django-12754
+      to: 9w2t6itt2gpmyoaq6k63
+    - from: swebench/sweb.eval.x86_64.pallets_1776_flask-5014
+      to: 6g5ge4qlc9og21tzdwfz
+    - from: swebench/sweb.eval.x86_64.psf_1776_requests-2317
+      to: w32g17urllxezll375sv
+    - from: swebench/sweb.eval.x86_64.psf_1776_requests-5414
+      to: bwevb298h0j8c3awpurc
+    - from: swebench/sweb.eval.x86_64.psf_1776_requests-6028
+      to: uw3cebibv1tjh9d7m7po
+    - from: swebench/sweb.eval.x86_64.pydata_1776_xarray-3095
+      to: ehn1tq015b5hh0zv8sc5
+    - from: swebench/sweb.eval.x86_64.pydata_1776_xarray-4695
+      to: hulgvyp9az7o1w8dj2a3
+    - from: swebench/sweb.eval.x86_64.pydata_1776_xarray-6744
+      to: d6lyz95t45mczwmbut0n
+    - from: swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-10908
+      to: x1dk193zmtkfxvsxqxo4
+    - from: swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-13142
+      to: yyachowfk1a889vrbkg2
+    - from: swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-13496
+      to: 56vopf19ej8rtbbw5zr2
+    - from: swebench/sweb.eval.x86_64.sympy_1776_sympy-13647
+      to: o5bz28oge0ezyjlujem0
+    - from: swebench/sweb.eval.x86_64.sympy_1776_sympy-20438
+      to: pqkc5c3dc5rao8m0ular
+    - from: swebench/sweb.eval.x86_64.sympy_1776_sympy-21847
+      to: 5ztnblgrq6g5ej6zkl59
+    - from: swerebench/sweb.eval.x86_64.agronholm_1776_anyio-639
+      to: 6ubvkdgwk7eolguy3elj
+    - from: swerebench/sweb.eval.x86_64.agronholm_1776_sqlacodegen-371
+      to: 3y0f515hdqch9ihefym2
+    - from: swerebench/sweb.eval.x86_64.alecthomas_1776_voluptuous-380
+      to: kw3l1uft4j4zvbrmxfj6
+    - from: swerebench/sweb.eval.x86_64.altair-viz_1776_altair-1587
+      to: 1a0zghrhd5z0o2v35n16
+    - from: swerebench/sweb.eval.x86_64.armmbed_1776_mbed-tools-208
+      to: tu466r82ovwe8ux65tf2
+    - from: swerebench/sweb.eval.x86_64.asottile_1776_pyupgrade-146
+      to: v14t4o9pp5mn25pqgjuz
+    - from: swerebench/sweb.eval.x86_64.asottile_1776_yesqa-69
+      to: 0te8iemft8pz6u28i9ge
+    - from: swerebench/sweb.eval.x86_64.astamminger_1776_zotero-bibtize-19
+      to: j1di9ponojw21ob851ci
+    - from: swerebench/sweb.eval.x86_64.astropy_1776_specutils-1158
+      to: 1btbpdeaphhntcixll6l
+    - from: swerebench/sweb.eval.x86_64.caronc_1776_apprise-1128
+      to: 6uj8cyvc0sqmgsscqh1e
+    - from: swerebench/sweb.eval.x86_64.davidvujic_1776_python-polylith-232
+      to: 3lbecrytbrw783chqobu
+    - from: swerebench/sweb.eval.x86_64.desihub_1776_desiutil-173
+      to: q226yf8cktx8ni3t8eqc
+    - from: swerebench/sweb.eval.x86_64.diogommartins_1776_simple_json_logger-14
+      to: p63vreg1pq3we3iwcuot
+    - from: swerebench/sweb.eval.x86_64.discos_1776_simulators-307
+      to: a70qtta5zo55cj332mgp
+    - from: swerebench/sweb.eval.x86_64.dpkp_1776_kafka-python-2573
+      to: 8chqjtgokex6dk8melml
+    - from: swerebench/sweb.eval.x86_64.dwavesystems_1776_dwave-cloud-client-417
+      to: 3ujexhqub5sm54s1g0ce
+    - from: swerebench/sweb.eval.x86_64.elastic_1776_rally-557
+      to: 3zof8zh729nsmikvxxaf
+    - from: swerebench/sweb.eval.x86_64.encode_1776_httpx-861
+      to: evblsi2k906k54s4d6n0
+    - from: swerebench/sweb.eval.x86_64.eyeseast_1776_python-frontmatter-31
+      to: iuiu48dn8kqookl4c1yi
+    - from: swerebench/sweb.eval.x86_64.google_1776_cloud-forensics-utils-335
+      to: qr60p2qfi938u58asbf3
+    - from: swerebench/sweb.eval.x86_64.googleapis_1776_python-bigquery-1930
+      to: cwuwalarektfn7hxoz1w
+    - from: swerebench/sweb.eval.x86_64.gorakhargosh_1776_watchdog-530
+      to: 1tba4utj7612zdudl9th
+    - from: swerebench/sweb.eval.x86_64.hgrecco_1776_pint-1476
+      to: 6qs0h1bxnkqls5a2rqei
+    - from: swerebench/sweb.eval.x86_64.hylang_1776_hy-2522
+      to: st8z2uuiykq4a1ocwwdv
+    - from: swerebench/sweb.eval.x86_64.ianlini_1776_flatten-dict-13
+      to: 0dkxxgieffekyvdumbdk
+    - from: swerebench/sweb.eval.x86_64.ipython_1776_ipython-12144
+      to: bji5eb61m6s6jbidx6d7
+    - from: swerebench/sweb.eval.x86_64.jackdewinter_1776_pymarkdown-893
+      to: vdkqqf81psww6y6vjxfv
+    - from: swerebench/sweb.eval.x86_64.jellezijlstra_1776_ast_decompiler-34
+      to: zz7mvkdbqumwwm6mh6tk
+    - from: swerebench/sweb.eval.x86_64.jendrikseipp_1776_vulture-340
+      to: duxwhd7wtcwtm556vbgo
+    - from: swerebench/sweb.eval.x86_64.jpadilla_1776_pyjwt-623
+      to: n5bqkdf66o7jkwsbuv4e
+    - from: swerebench/sweb.eval.x86_64.just-work_1776_fffw-122
+      to: 4qpwp0yihc3zfmloqs0h
+    - from: swerebench/sweb.eval.x86_64.lmfit_1776_lmfit-py-554
+      to: cq1t4u515roj9iqmje6g
+    - from: swerebench/sweb.eval.x86_64.lucianopaz_1776_compress_pickle-28
+      to: y33c3vsp2a2edi4wnnfp
+    - from: swerebench/sweb.eval.x86_64.markusressel_1776_container-app-conf-19
+      to: z5tqrzuh56yh2hkvkp61
+    - from: swerebench/sweb.eval.x86_64.materials-consortia_1776_optimade-python-tools-2250
+      to: du47c396p3x4dmjylksl
+    - from: swerebench/sweb.eval.x86_64.maxfischer2781_1776_asyncstdlib-49
+      to: sfvpljhvsri2zw59rakm
+    - from: swerebench/sweb.eval.x86_64.microsoft_1776_electionguard-python-379
+      to: 63949hd5svwoprro2zt7
+    - from: swerebench/sweb.eval.x86_64.milibris_1776_flask-rest-jsonapi-131
+      to: w9pmp96sqvlg79ikogy7
+    - from: swerebench/sweb.eval.x86_64.monarch-initiative_1776_koza-60
+      to: w98s1f4mlsfr9bn6nke1
+    - from: swerebench/sweb.eval.x86_64.oemof_1776_tespy-536
+      to: rcboz3qsyfzxncr6eetf
+    - from: swerebench/sweb.eval.x86_64.omni-us_1776_jsonargparse-518
+      to: u75f6v2o4gr088i5kgty
+    - from: swerebench/sweb.eval.x86_64.openlawlibrary_1776_pygls-247
+      to: fiofiu6g57mq0idur4ec
+    - from: swerebench/sweb.eval.x86_64.pennylaneai_1776_pennylane-3057
+      to: rugrapo8c9x7n739yd5u
+    - from: swerebench/sweb.eval.x86_64.pre-commit_1776_pre-commit-hooks-944
+      to: sjqjsj4nvnoenxv5b7k7
+    - from: swerebench/sweb.eval.x86_64.python-cmd2_1776_cmd2-117
+      to: jc7nk57n5vce7cixm29p
+    - from: swerebench/sweb.eval.x86_64.repobee_1776_repobee-336
+      to: xt4a41iscznam7jo20u6
+    - from: swerebench/sweb.eval.x86_64.scipp_1776_plopp-422
+      to: wsx5j39mwkzcd9641fd3
+    - from: swerebench/sweb.eval.x86_64.shopify_1776_shopify_python_api-363
+      to: yvvd3lec6se13dburz75
+    - from: swerebench/sweb.eval.x86_64.smok-serwis_1776_coolamqp-25
+      to: bhprm8vnr9w92cx1dabs
+    - from: swerebench/sweb.eval.x86_64.sqlfluff_1776_sqlfluff-905
+      to: g3x86t399qk374dtonrf
+    - from: swerebench/sweb.eval.x86_64.srsudar_1776_eg-88
+      to: c1i5ojr19jzzhtqyrxg7
+    - from: swerebench/sweb.eval.x86_64.tefra_1776_xsdata-1025
+      to: han880x3j4c3ggz6grgz
+    - from: swerebench/sweb.eval.x86_64.tobymao_1776_sqlglot-4618
+      to: hw8ebhnt59f8bplzdsfs
+    - from: swerebench/sweb.eval.x86_64.tophat_1776_syrupy-607
+      to: zm020f5bno9rc6n9qidq
+    - from: swerebench/sweb.eval.x86_64.tornadoweb_1776_tornado-2589
+      to: wrhh4c77nm0sxpcysqsj
+    - from: swerebench/sweb.eval.x86_64.tox-dev_1776_tox-1099
+      to: w92efpn5ujizajjnfk7l
+    - from: swerebench/sweb.eval.x86_64.wyfo_1776_apischema-342
+      to: xuce0ruh99a7wf269ehp
+    - from: swerebench/sweb.eval.x86_64.zalando-stups_1776_zign-14
+      to: 9767rhbbxciz53m57uy5
+    - from: swerebench/sweb.eval.x86_64.zopefoundation_1776_zope.mkzeoinstance-7
+      to: ujptioynetftnid0a52v
+    - from: swerebench/sweb.eval.x86_64.zopefoundation_1776_zope.sendmail-47
+      to: fvd91n408qcltvus87e8
+    - from: swerebench/sweb.eval.x86_64.zpieslak_1776_mobilus-client-18
+      to: lag188oxgz27r4y1b4yu
+    - from: swerebench/sweb.eval.x86_64.zwicker-group_1776_py-pde-683
+      to: 9zmq1vofkcknr2h15nk2
+  agent:
+    name: react
+    max_steps: 200
+    tools:
+    - name: str_replace_editor
+    - name: stateful_shell
+      command_timeout: 120
+      env_vars:
+        PAGER: cat
+        GIT_PAGER: cat
+        MANPAGER: cat
+        TQDM_DISABLE: '1'
+        PIP_PROGRESS_BAR: 'off'
+    - name: submit
+    model:
+      temperature: 1.0
+      top_p: 1.0
+      max_total_tokens: 131072
+  prompt_template:
+  - role: system
+    content: You are a helpful assistant that can interact with a computer to solve
+      tasks.
+  - role: user
+    content: "<uploaded_files>\n/testbed\n</uploaded_files>\nI have uploaded a python\
+      \ code repository in the /testbed directory. You can explore and modify files\
+      \ using the available tools. Consider the following issue description:\n\n<issue_description>\n\
+      {problem_statement}\n</issue_description>\n\nCan you help me implement the necessary\
+      \ changes to the repository to fix the <issue_description>?\nI have already\
+      \ taken care of all changes to any of the test files described in the <issue_description>.\
+      \ This means you DON'T have to modify the testing logic or any of the tests\
+      \ in any way!\nAlso the development Python environment is already set up for\
+      \ you (i.e., all dependencies already installed), so you don't need to install\
+      \ other packages.\nYour task is to make the minimal changes to non-test files\
+      \ in the /testbed directory to ensure the <issue_description> is satisfied.\n\
+      \nFollow these steps to resolve the issue:\n1. First, explore the codebase to\
+      \ locate and understand the code relevant to the <issue_description>.\n- Use\
+      \ efficient search commands to identify key files and functions.\n- You should\
+      \ err on the side of caution and look at various relevant files and build your\
+      \ understanding of\n    - how the code works\n    - what are the expected behaviors\
+      \ and edge cases\n    - what are the potential root causes for the given issue\n\
+      \n2. Assess whether you can reproduce the issue:\n- Create a script at '/testbed/reproduce_issue.py'\
+      \ that demonstrates the error.\n- Execute this script to confirm the error behavior.\n\
+      - You should reproduce the issue before fixing it.\n- Your reproduction script\
+      \ should also assert the expected behavior for the fixed code.\n\n3. Analyze\
+      \ the root cause:\n- Identify the underlying problem based on your code exploration\
+      \ and reproduction results.\n- Critically analyze different potential approaches\
+      \ to fix the issue.\n- You NEED to explicitly reason about multiple approaches\
+      \ to fix the issue. Next, find the most elegant and effective solution among\
+      \ them considering the tradeoffs (correctness, generality, side effects, etc.).\n\
+      - You would need to reason about execution paths, edge cases, and other potential\
+      \ issues. You should look at the unit tests to understand the expected behavior\
+      \ of the relevant code.\n\n4. Implement your solution:\n- Make targeted changes\
+      \ to the necessary files following idiomatic code patterns once you determine\
+      \ the root cause.\n- You should be thorough and methodical.\n\n5. Verify your\
+      \ solution:\n- Rerun your reproduction script to confirm the error is fixed.\n\
+      - If verification fails, iterate on your solution until successful. If you identify\
+      \ the reproduction script is buggy, adjust it as needed.\n\n6. Run unit tests:\n\
+      - Find and run the relevant unit tests relevant to the performed fix.\n- You\
+      \ should run the unit tests to ensure your solution is correct and does not\
+      \ cause any regressions.\n- In cases where the unit tests are do not pass, you\
+      \ should consider whether the unit tests does not reflect the *new* expected\
+      \ behavior of the code. If so, you can test it by writing additional edge test\
+      \ cases.\n- Use the existing test runner to run the unit tests you identify\
+      \ as relevant to the changes you made. For example:\n    - `python -m pytest\
+      \ -xvs sympy/physics/units/tests/test_dimensions_transcendental.py`\n    - `python\
+      \ -m pytest tests/test_domain_py.py::test_pymethod_options`\n    - `./tests/runtests.py\
+      \ constraints.tests.CheckConstraintTests -v 2`\n- RUN ALL relevant unit tests\
+      \ to ensure your solution is correct and does not cause any regressions.\n-\
+      \ DO NOT MODIFY any of the existing unit tests. You can add new edge test cases\
+      \ in a separate file if needed BUT DO NOT MODIFY THE EXISTING TESTS.\n\n7. Test\
+      \ edge cases:\n- Identify potential edge cases that might challenge your solution.\n\
+      - Create additional test cases in a separate file '/testbed/edge_case_tests.py'.\n\
+      - Execute these tests to verify your solution's robustness.\n- You should run\
+      \ multiple rounds of edge cases. When creating edge cases:\n    - Consider complex\
+      \ scenarios beyond the original issue description\n    - Test for regressions\
+      \ to ensure existing functionality remains intact\n    - At each round you should\
+      \ write multiple edge test cases in the same file to be efficient\n\n8. Refine\
+      \ if necessary:\n- If edge case testing reveals issues, refine your solution\
+      \ accordingly.\n- Ensure your final implementation handles all identified scenarios\
+      \ correctly.\n- Document any assumptions or limitations of your solution.\n\n\
+      9. Submit your solution:\n- Once you have verified your solution, submit your\
+      \ solution using the `submit` tool.\n\nA successful resolution means:\n- The\
+      \ specific error/issue described no longer occurs\n- Your changes maintain compatibility\
+      \ with existing functionality\n- Edge cases are properly handled"
+  eval_timeout: 600
+  run_oracle_solution: false
+- name: swe_bench
+  sandbox:
+    provider: e2b
+    runtime_timeout: 3600
+    image_map: *id001
+  agent:
+    name: react
+    max_steps: 200
+    tools:
+    - name: str_replace_editor
+    - name: stateful_shell
+      command_timeout: 120
+      env_vars:
+        PAGER: cat
+        GIT_PAGER: cat
+        MANPAGER: cat
+        TQDM_DISABLE: '1'
+        PIP_PROGRESS_BAR: 'off'
+    - name: submit
+    model:
+      temperature: 1.0
+      top_p: 1.0
+      max_total_tokens: 131072
+  prompt_template:
+  - role: system
+    content: You are a helpful assistant that can interact with a computer to solve
+      tasks.
+  - role: user
+    content: "<uploaded_files>\n/testbed\n</uploaded_files>\nI have uploaded a python\
+      \ code repository in the /testbed directory. You can explore and modify files\
+      \ using the available tools. Consider the following issue description:\n\n<issue_description>\n\
+      {problem_statement}\n</issue_description>\n\nCan you help me implement the necessary\
+      \ changes to the repository to fix the <issue_description>?\nI have already\
+      \ taken care of all changes to any of the test files described in the <issue_description>.\
+      \ This means you DON'T have to modify the testing logic or any of the tests\
+      \ in any way!\nAlso the development Python environment is already set up for\
+      \ you (i.e., all dependencies already installed), so you don't need to install\
+      \ other packages.\nYour task is to make the minimal changes to non-test files\
+      \ in the /testbed directory to ensure the <issue_description> is satisfied.\n\
+      \nFollow these steps to resolve the issue:\n1. First, explore the codebase to\
+      \ locate and understand the code relevant to the <issue_description>.\n- Use\
+      \ efficient search commands to identify key files and functions.\n- You should\
+      \ err on the side of caution and look at various relevant files and build your\
+      \ understanding of\n    - how the code works\n    - what are the expected behaviors\
+      \ and edge cases\n    - what are the potential root causes for the given issue\n\
+      \n2. Assess whether you can reproduce the issue:\n- Create a script at '/testbed/reproduce_issue.py'\
+      \ that demonstrates the error.\n- Execute this script to confirm the error behavior.\n\
+      - You should reproduce the issue before fixing it.\n- Your reproduction script\
+      \ should also assert the expected behavior for the fixed code.\n\n3. Analyze\
+      \ the root cause:\n- Identify the underlying problem based on your code exploration\
+      \ and reproduction results.\n- Critically analyze different potential approaches\
+      \ to fix the issue.\n- You NEED to explicitly reason about multiple approaches\
+      \ to fix the issue. Next, find the most elegant and effective solution among\
+      \ them considering the tradeoffs (correctness, generality, side effects, etc.).\n\
+      - You would need to reason about execution paths, edge cases, and other potential\
+      \ issues. You should look at the unit tests to understand the expected behavior\
+      \ of the relevant code.\n\n4. Implement your solution:\n- Make targeted changes\
+      \ to the necessary files following idiomatic code patterns once you determine\
+      \ the root cause.\n- You should be thorough and methodical.\n\n5. Verify your\
+      \ solution:\n- Rerun your reproduction script to confirm the error is fixed.\n\
+      - If verification fails, iterate on your solution until successful. If you identify\
+      \ the reproduction script is buggy, adjust it as needed.\n\n6. Run unit tests:\n\
+      - Find and run the relevant unit tests relevant to the performed fix.\n- You\
+      \ should run the unit tests to ensure your solution is correct and does not\
+      \ cause any regressions.\n- In cases where the unit tests are do not pass, you\
+      \ should consider whether the unit tests does not reflect the *new* expected\
+      \ behavior of the code. If so, you can test it by writing additional edge test\
+      \ cases.\n- Use the existing test runner to run the unit tests you identify\
+      \ as relevant to the changes you made. For example:\n    - `python -m pytest\
+      \ -xvs sympy/physics/units/tests/test_dimensions_transcendental.py`\n    - `python\
+      \ -m pytest tests/test_domain_py.py::test_pymethod_options`\n    - `./tests/runtests.py\
+      \ constraints.tests.CheckConstraintTests -v 2`\n- RUN ALL relevant unit tests\
+      \ to ensure your solution is correct and does not cause any regressions.\n-\
+      \ DO NOT MODIFY any of the existing unit tests. You can add new edge test cases\
+      \ in a separate file if needed BUT DO NOT MODIFY THE EXISTING TESTS.\n\n7. Test\
+      \ edge cases:\n- Identify potential edge cases that might challenge your solution.\n\
+      - Create additional test cases in a separate file '/testbed/edge_case_tests.py'.\n\
+      - Execute these tests to verify your solution's robustness.\n- You should run\
+      \ multiple rounds of edge cases. When creating edge cases:\n    - Consider complex\
+      \ scenarios beyond the original issue description\n    - Test for regressions\
+      \ to ensure existing functionality remains intact\n    - At each round you should\
+      \ write multiple edge test cases in the same file to be efficient\n\n8. Refine\
+      \ if necessary:\n- If edge case testing reveals issues, refine your solution\
+      \ accordingly.\n- Ensure your final implementation handles all identified scenarios\
+      \ correctly.\n- Document any assumptions or limitations of your solution.\n\n\
+      9. Submit your solution:\n- Once you have verified your solution, submit your\
+      \ solution using the `submit` tool.\n\nA successful resolution means:\n- The\
+      \ specific error/issue described no longer occurs\n- Your changes maintain compatibility\
+      \ with existing functionality\n- Edge cases are properly handled"
+  eval_timeout: 600
+  run_oracle_solution: false

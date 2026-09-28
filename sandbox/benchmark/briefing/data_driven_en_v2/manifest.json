@@ -1,0 +1,91 @@
+{
+  "generated_utc": "2026-09-20T15:23:12.613822+00:00",
+  "revision": "data_driven_en_v2",
+  "files": [
+    {
+      "name": "CPU_Sandbox_Benchmark_Focused_EN.pdf",
+      "bytes": 109811,
+      "sha256": "211511af23fd669ecc72db6de27c89f3e707f8dcb4d2b4594f0ee5fa6ddcb820"
+    },
+    {
+      "name": "CPU_Sandbox_Benchmark_Focused_EN.pptx",
+      "bytes": 85492,
+      "sha256": "13ab68e6ebb8d1205485005319c12f7a6940ea8c465c8873d1e53fc4ed981e46"
+    },
+    {
+      "name": "README.md",
+      "bytes": 2866,
+      "sha256": "1134122583b8a64ebeac13825fc365dccd392d6cd44eb076ebdf7f369d223282"
+    },
+    {
+      "name": "chart_data.json",
+      "bytes": 22092,
+      "sha256": "a9c15586aa964f62adc695babb39da9a5c6d3298ba4ce878d9e6848d5c37ed5a"
+    },
+    {
+      "name": "finalize.py",
+      "bytes": 3410,
+      "sha256": "f108128b90a1f037e63f9956a1c370981f90a2186dd6beb4df4b1ad8e5505b39"
+    },
+    {
+      "name": "generate_deck.py",
+      "bytes": 29677,
+      "sha256": "f20a358df6255a7448e776de11f6d3898214342341a0dffbeae604631d4f817a"
+    },
+    {
+      "name": "layout-check.json",
+      "bytes": 26099,
+      "sha256": "b4dd4755ce986ca6975107d2d9b0a609d96202b55f963434a4e30356b5c11a52"
+    },
+    {
+      "name": "overview.png",
+      "bytes": 654252,
+      "sha256": "c65c262f567922df08819dbd5a79f16ecb6ffded62d958984dbc47ddee9b35a7"
+    },
+    {
+      "name": "slide-1.png",
+      "bytes": 102722,
+      "sha256": "139f2f067b773357d923833c7b7e27f87a53d185754513462082bb941844992c"
+    },
+    {
+      "name": "slide-2.png",
+      "bytes": 96988,
+      "sha256": "18ccbdae96abaaf11f4ae632952bef1dc7030fd594f07fd8368f5e82cbc19af9"
+    },
+    {
+      "name": "slide-3.png",
+      "bytes": 104603,
+      "sha256": "5d0f211f4ee3de97da5b6c172b80d43c1f676e68719043d497ff00f06818a307"
+    },
+    {
+      "name": "slide-4.png",
+      "bytes": 101500,
+      "sha256": "24aaa467d9b1c4e098f5ec6b7f5b67c2b8ed8c7e3c302c702f21e647d29b5460"
+    },
+    {
+      "name": "slide-5.png",
+      "bytes": 99631,
+      "sha256": "558c9afd295a0b7e4f61de5ef44ad088de6fd81dcf8b4015c46b83ee959b4363"
+    },
+    {
+      "name": "slide-6.png",
+      "bytes": 133420,
+      "sha256": "92e48309872e12e5cd55675325b88d89552940ddb08ef4c4efb477dd478015c8"
+    },
+    {
+      "name": "slides_text.txt",
+      "bytes": 4335,
+      "sha256": "25163281598583cefd1bff73990ae05d97c3db69627b29f1d13d5ef1d066e6eb"
+    },
+    {
+      "name": "sources.json",
+      "bytes": 3490,
+      "sha256": "61e63df7283d982324564686da747bdac1fef5f7899076e51c27644468bfbc90"
+    },
+    {
+      "name": "validation.json",
+      "bytes": 533,
+      "sha256": "b81b689efa4ed37cf73b39a1f1c0de8200aad602fa02b542c41ec75987eab3c6"
+    }
+  ]
+}

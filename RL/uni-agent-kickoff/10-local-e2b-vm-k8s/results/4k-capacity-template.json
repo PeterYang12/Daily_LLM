@@ -1,0 +1,9 @@
+{
+  "alias": "base-4k-4g",
+  "template_id": "ophk83vnfor4e9749bwv",
+  "build_id": "d45cb363-ceed-4f19-8c49-a12a82f074ab",
+  "memory_mb": 4096,
+  "cpu_count": 2,
+  "wall_seconds": 13.456076487957034,
+  "status": "ready"
+}

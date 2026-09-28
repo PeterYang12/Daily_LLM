@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "case_label": "diagnostic-case4",
+  "suite_scope": "separate slow-ramp idle-pool diagnostic; NOT a fourth formal-matrix setup failure",
+  "generated_utc": "2026-09-20T13:01:36.836354+00:00",
+  "run_id": "115e158aaf514244be692e2d56f3d384",
+  "source_diagnostic": {
+    "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/idle-pool-slow-ramp.json",
+    "sha256": "047dcae78e810e6a4314891444b84e93d372eb2e5d5b31db9a273501d280c478"
+  },
+  "created_residents_before_failure": 116,
+  "failed_attempt": 117,
+  "failed_sandbox_id": "iqg9absq4klnsbwvsz7wn",
+  "direct_failure": {
+    "same_stage_as_formal_cases": [
+      2,
+      3
+    ],
+    "different_from_formal_case1": true,
+    "http_status": 500,
+    "handler_duration_ms": 12559.882841,
+    "error": "failed to wait for sandbox start: failed to init new envd: failed to init envd: context canceled with cause: syncing took too long",
+    "envd_init_attempts": 58,
+    "single_request_timeout_ms": 50,
+    "default_overall_envd_wait_seconds": 10
+  },
+  "server_vm_timeline": [
+    {
+      "utc": "2026-09-20T12:50:27.036871414Z",
+      "event": "sandbox_network_map_entry_added"
+    },
+    {
+      "utc": "2026-09-20T12:50:27.121392429Z",
+      "event": "fc_api_server_started"
+    },
+    {
+      "utc": "2026-09-20T12:50:27.163089786Z",
+      "event": "load_snapshot_api_completed",
+      "duration_us": 31517
+    },
+    {
+      "utc": "2026-09-20T12:50:37.165Z",
+      "event": "envd_init_failed_after_retries",
+      "attempts": 58,
+      "timeout_ms": 50
+    },
+    {
+      "utc": "2026-09-20T12:50:39.576Z",
+      "event": "orchestrator_and_api_create_failed"
+    },
+    {
+      "utc": "2026-09-20T12:50:39.578Z",
+      "event": "POST /sandboxes completed",
+      "http_status": 500,
+      "handler_duration_ms": 12559.882841
+    }
+  ],
+  "client_host_observation": {
+    "attempt": 117,
+    "existing_handles": 116,
+    "utc": "2026-09-20T12:50:40.691422+00:00",
+    "duration_seconds": 12.569857180991676,
+    "error_class": "SandboxException",
+    "rpc_code": null,
+    "redacted_message": "500: Failed to place sandbox: sandbox creation failed on 1 node(s), please retry; if the problem persists, contact us"
+  },
+  "clock_domain_caution": {
+    "client_error_utc": "2026-09-20T12:50:40.691422+00:00",
+    "server_response_log_utc": "2026-09-20T12:50:39.578Z",
+    "apparent_timestamp_gap_seconds": 1.113422,
+    "client_request_duration_seconds": 12.569857180991676,
+    "server_handler_duration_seconds": 12.559882841,
+    "duration_difference_seconds": 0.009974339991675407,
+    "interpretation": "Separate host/VM clock domains; apparent 1.1-second timestamp gap is not measured network or SDK overhead. Compare in-domain durations and causal order; inspect sampler clock offsets before fine-grained alignment."
+  },
+  "log_sources": {
+    "orchestrator_pre_failure": "e2b-vm:/var/log/pods/e2b_e2b-0_54303174-0d59-4fa2-ab94-3c67087e0e62/orchestrator/0.log.20260920-125038",
+    "orchestrator_failure": "same pod orchestrator/0.log",
+    "api_failure": "same pod api/0.log",
+    "requested_window": "2026-09-20 12:50:25–12:50:42 UTC"
+  },
+  "interpretation": "FC API and snapshot load succeeded, followed by envd initialization timeout. Reproduction at a slower creation schedule is evidence beyond the earlier rapid-ramp failures, but the responsible guest/runtime activity and causal chain require the independently recorded resource/guest observations.",
+  "actions": "Only targeted log reads and local report writes; no /proc sampling, benchmark calls or daemon changes."
+}

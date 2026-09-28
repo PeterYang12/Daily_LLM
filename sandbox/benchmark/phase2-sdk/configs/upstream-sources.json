@@ -1,0 +1,211 @@
+{
+  "code_interpreter_server_commit": "f56a1edf750e20a96f847df57e0063eeeb5e13c3",
+  "sdk_repository_commit": "ccaf9fc0ffe6ac39c7ec786af7608ab1de19467b",
+  "files": [
+    {
+      "path": "vendor/code-interpreter/LICENSE",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "vendor/code-interpreter/template/README.md",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/README.md",
+      "sha256": "a22b73aa69aa848d7b0da07fff23fc95507cab085c3c1a314ab50e71940cb81a"
+    },
+    {
+      "path": "vendor/code-interpreter/template/build_ci.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/build_ci.py",
+      "sha256": "e4a1b1fc7da5864cf9f02a296ee7f8f3e9bd99293fff2477ac9486bdd2b4adad"
+    },
+    {
+      "path": "vendor/code-interpreter/template/build_debug.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/build_debug.py",
+      "sha256": "5a8be4a5f2c8e4cef74b3063bca718fea6b3bc77ef22d7ae51335968b650e23e"
+    },
+    {
+      "path": "vendor/code-interpreter/template/build_docker.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/build_docker.py",
+      "sha256": "5e8acbdd035d77bcc5a079b77fb154bceb557383df0a226e77fea6d7801da522"
+    },
+    {
+      "path": "vendor/code-interpreter/template/build_prod.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/build_prod.py",
+      "sha256": "5ff7a06c5e5b5889f2e9acd9eff892ed20affe1b8bddaba3020ef5bbd4664d79"
+    },
+    {
+      "path": "vendor/code-interpreter/template/build_test.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/build_test.py",
+      "sha256": "619b39bf0f650b96cc1da36811de52891858623e0be63889cee97a149dc0884f"
+    },
+    {
+      "path": "vendor/code-interpreter/template/debug_logs.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/debug_logs.py",
+      "sha256": "b56e79b04ec1107f90ec8528ff8810373705d587575fcf19fe4f75150119044b"
+    },
+    {
+      "path": "vendor/code-interpreter/template/ipython_kernel_config.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/ipython_kernel_config.py",
+      "sha256": "bd2e0d3873e3e5b28778c32336ef20e5f9eaa9f53d57cf6f6e66b1704422b296"
+    },
+    {
+      "path": "vendor/code-interpreter/template/jupyter-healthcheck.sh",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/jupyter-healthcheck.sh",
+      "sha256": "280ea397da0d1efd261c63ff585027f687b30394b6156249d865fe16b5bf5a2e"
+    },
+    {
+      "path": "vendor/code-interpreter/template/jupyter_server_config.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/jupyter_server_config.py",
+      "sha256": "ed6aa1813ec9d1f2e4ad19a92d8756025014533ae40ac570d18febf9730040d4"
+    },
+    {
+      "path": "vendor/code-interpreter/template/matplotlibrc",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/matplotlibrc",
+      "sha256": "7af09238c750cfdd42fa3ffb9a169f8b30537e579f56151f2b214cfe74327f13"
+    },
+    {
+      "path": "vendor/code-interpreter/template/package.json",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/package.json",
+      "sha256": "bf3cb9f6e98c8ea2c4a45c747721f03cad64979198ef375bb7f270cc298776fc"
+    },
+    {
+      "path": "vendor/code-interpreter/template/requirements-dev.txt",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/requirements-dev.txt",
+      "sha256": "c4de3c23c9dd8e433d7f88923420992b2a4911408a60d3d953241d0de913101a"
+    },
+    {
+      "path": "vendor/code-interpreter/template/requirements.txt",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/requirements.txt",
+      "sha256": "484d5a5db8e2ac6c17854686a39d8bb952e9495e758db83ae0190754fa6dfbed"
+    },
+    {
+      "path": "vendor/code-interpreter/template/server/api/models/__init__.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/server/api/models/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "vendor/code-interpreter/template/server/api/models/context.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/server/api/models/context.py",
+      "sha256": "55028e7178d8b1b93bc35f78c3c198b849e8af62993b5276bd453a4591b48a90"
+    },
+    {
+      "path": "vendor/code-interpreter/template/server/api/models/create_context.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/server/api/models/create_context.py",
+      "sha256": "208112704a36613163f3abfb2cde8e6482009f8a06df289ae0d3799382bd9979"
+    },
+    {
+      "path": "vendor/code-interpreter/template/server/api/models/env_vars.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/server/api/models/env_vars.py",
+      "sha256": "6f877455c915980503d2e3983662179b14eb86eb655edb2ccb7b87c0c11e51c1"
+    },
+    {
+      "path": "vendor/code-interpreter/template/server/api/models/error.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/server/api/models/error.py",
+      "sha256": "1d0da60ffac37e7a11106a99250f64b5aadd9acca8b5f7c46d0f42739195cc68"
+    },
+    {
+      "path": "vendor/code-interpreter/template/server/api/models/execution_request.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/server/api/models/execution_request.py",
+      "sha256": "5d54db01f41f6227925f0dd546ad04ab9ec6da0ca49129e7de919af3626af95d"
+    },
+    {
+      "path": "vendor/code-interpreter/template/server/api/models/logs.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/server/api/models/logs.py",
+      "sha256": "06172e2a1ca0e026823b66b283846d73adab0e414d2649975a51e65f18cac0d3"
+    },
+    {
+      "path": "vendor/code-interpreter/template/server/api/models/output.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/server/api/models/output.py",
+      "sha256": "65c5dbb96b6a5597cef7970ca2c89d44811d983b79c424ad0f08946ab7e956da"
+    },
+    {
+      "path": "vendor/code-interpreter/template/server/api/models/result.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/server/api/models/result.py",
+      "sha256": "ea7d317066c29b196d6dfda24037433b9da6fb3d10754ab645eab72c698e28c6"
+    },
+    {
+      "path": "vendor/code-interpreter/template/server/consts.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/server/consts.py",
+      "sha256": "3ddebb604c41d009c0d6e0653813559fd6354c7854128e37aede81a0aebf7ed1"
+    },
+    {
+      "path": "vendor/code-interpreter/template/server/contexts.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/server/contexts.py",
+      "sha256": "0d9a3e82cb6593c4d191006544e85f3537e7ee9f2e3762f969ef0a97593f88dc"
+    },
+    {
+      "path": "vendor/code-interpreter/template/server/envs.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/server/envs.py",
+      "sha256": "3caa5031d5dd0a1247b308f5b9ba994ab791b5d1cfcfbca2abcb096cfecafa1b"
+    },
+    {
+      "path": "vendor/code-interpreter/template/server/errors.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/server/errors.py",
+      "sha256": "38d2d26b04cea4eedbdce2c1a4137573da65488c852187f3b996d781146212f8"
+    },
+    {
+      "path": "vendor/code-interpreter/template/server/main.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/server/main.py",
+      "sha256": "484bdbe4a2f2f28ee0543da079d00d5297caa12880df33ef2cf00de2043b24d7"
+    },
+    {
+      "path": "vendor/code-interpreter/template/server/messaging.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/server/messaging.py",
+      "sha256": "5021afbc5aaaa4c7c9540eac0e26951e7e53a15c87535384aa278251c1acead4"
+    },
+    {
+      "path": "vendor/code-interpreter/template/server/requirements.txt",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/server/requirements.txt",
+      "sha256": "00400eb6aba8f77b1ec1b7cee3fe0ad1c16b959dc46a8a8bf247ff97de084f0c"
+    },
+    {
+      "path": "vendor/code-interpreter/template/server/stream.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/server/stream.py",
+      "sha256": "002ce047fddaa16d9228a7e2fd0523107a7a5e289fa3fd3cd616325e8fac3cb5"
+    },
+    {
+      "path": "vendor/code-interpreter/template/server/utils/locks.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/server/utils/locks.py",
+      "sha256": "4fc9844cac0c178144f40f384b71bf78ca455e56b87f74f0fe7f36a6a0506aec"
+    },
+    {
+      "path": "vendor/code-interpreter/template/start-up.sh",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/start-up.sh",
+      "sha256": "29ed387c44befd87d19d63e0bfbfd6c548ed2fbe9857a270d917b257f250c8fd"
+    },
+    {
+      "path": "vendor/code-interpreter/template/startup_scripts/0002_data.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/startup_scripts/0002_data.py",
+      "sha256": "66fde04f38286066d206a2334173e4984d78c01ebc8b1a22eefa0f0c01c03ebd"
+    },
+    {
+      "path": "vendor/code-interpreter/template/startup_scripts/0003_images.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/startup_scripts/0003_images.py",
+      "sha256": "890faa89ae480df30f7d50518555a7a2fd0ab0d333b13e57cd35d747d114f365"
+    },
+    {
+      "path": "vendor/code-interpreter/template/systemd/code-interpreter.service",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/systemd/code-interpreter.service",
+      "sha256": "c18968ecc8e465017e3874d0aa5fdeac0ffb4575fbf6ed26f83205c340261749"
+    },
+    {
+      "path": "vendor/code-interpreter/template/systemd/jupyter-debug.conf",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/systemd/jupyter-debug.conf",
+      "sha256": "78729cf8b87a2ad06a117d2ef80c5d15b1cd8a745e593f5459b8b361536e68b9"
+    },
+    {
+      "path": "vendor/code-interpreter/template/systemd/jupyter.service",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/systemd/jupyter.service",
+      "sha256": "e4399f31cb6114f8830f08e0c9e16dd06ca5834227fe663ab77a3aa389d902d1"
+    },
+    {
+      "path": "vendor/code-interpreter/template/template.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/code-interpreter/f56a1edf750e20a96f847df57e0063eeeb5e13c3/template/template.py",
+      "sha256": "d269ce19c25f26416e28ff1a44d0d7ce9e203ec2ea986fbb7802d40eb614c7f4"
+    },
+    {
+      "path": "vendor/sdk/performance.py",
+      "source_url": "https://raw.githubusercontent.com/e2b-dev/E2B/ccaf9fc0ffe6ac39c7ec786af7608ab1de19467b/packages/code-interpreter-python/tests/performance.py",
+      "sha256": "a807b5a875f1e02fce78516bfc50ae737208ee2297c06e1e801e876ab26e5747"
+    }
+  ]
+}

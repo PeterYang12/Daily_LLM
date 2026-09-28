@@ -1,0 +1,11 @@
+[Unit]
+Description=Collect passive E2B performance events every minute
+
+[Timer]
+OnBootSec=2min
+OnUnitInactiveSec=60s
+AccuracySec=5s
+Unit=e2b-events.service
+
+[Install]
+WantedBy=timers.target

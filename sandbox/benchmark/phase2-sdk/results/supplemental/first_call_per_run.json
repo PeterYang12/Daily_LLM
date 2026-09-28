@@ -1,0 +1,128 @@
+[
+  {
+    "phase": "phase2-sdk",
+    "scenario": "exec_true_all_connections_warm",
+    "template": "base-4k-4g",
+    "concurrency": 64,
+    "resident_count": 64,
+    "repeat": 1,
+    "instrumentation": "diagnostic-warmed",
+    "comparison_key": "exec_true_all_connections_warm-batch8-v2",
+    "run_id": "2e03188960a243fa901d8e30abe1b596",
+    "operation": "exec_true",
+    "cohort": "first_measured_per_worker",
+    "calls": 64,
+    "failures": 4,
+    "failure_rate_pct": 6.25,
+    "error_classes": {
+      "ConnectError": 4
+    },
+    "rpc_codes": {
+      "unavailable": 4
+    },
+    "first_definition": "earliest measurement start_offset_s per worker; setup operations can precede it"
+  },
+  {
+    "phase": "phase2-sdk",
+    "scenario": "exec_true_all_connections_warm",
+    "template": "base-4k-4g",
+    "concurrency": 64,
+    "resident_count": 64,
+    "repeat": 1,
+    "instrumentation": "diagnostic-warmed",
+    "comparison_key": "exec_true_all_connections_warm-batch8-v2",
+    "run_id": "2e03188960a243fa901d8e30abe1b596",
+    "operation": "exec_true",
+    "cohort": "later_measured_calls",
+    "calls": 68498,
+    "failures": 0,
+    "failure_rate_pct": 0.0,
+    "error_classes": {},
+    "rpc_codes": {},
+    "first_definition": "earliest measurement start_offset_s per worker; setup operations can precede it"
+  },
+  {
+    "phase": "phase2-sdk",
+    "scenario": "exec_true_all_connections_warm",
+    "template": "base-4k-4g",
+    "concurrency": 64,
+    "resident_count": 64,
+    "repeat": 3,
+    "instrumentation": "diagnostic-warmed",
+    "comparison_key": "exec_true_all_connections_warm-batch8-v2",
+    "run_id": "3d2cd6c411724b698ec0b0d6b7b5c667",
+    "operation": "exec_true",
+    "cohort": "first_measured_per_worker",
+    "calls": 64,
+    "failures": 2,
+    "failure_rate_pct": 3.125,
+    "error_classes": {
+      "ConnectError": 2
+    },
+    "rpc_codes": {
+      "unavailable": 2
+    },
+    "first_definition": "earliest measurement start_offset_s per worker; setup operations can precede it"
+  },
+  {
+    "phase": "phase2-sdk",
+    "scenario": "exec_true_all_connections_warm",
+    "template": "base-4k-4g",
+    "concurrency": 64,
+    "resident_count": 64,
+    "repeat": 3,
+    "instrumentation": "diagnostic-warmed",
+    "comparison_key": "exec_true_all_connections_warm-batch8-v2",
+    "run_id": "3d2cd6c411724b698ec0b0d6b7b5c667",
+    "operation": "exec_true",
+    "cohort": "later_measured_calls",
+    "calls": 52448,
+    "failures": 0,
+    "failure_rate_pct": 0.0,
+    "error_classes": {},
+    "rpc_codes": {},
+    "first_definition": "earliest measurement start_offset_s per worker; setup operations can precede it"
+  },
+  {
+    "phase": "phase2-sdk",
+    "scenario": "exec_true_all_connections_warm",
+    "template": "base-4k-4g",
+    "concurrency": 64,
+    "resident_count": 64,
+    "repeat": 2,
+    "instrumentation": "diagnostic-warmed",
+    "comparison_key": "exec_true_all_connections_warm-batch8-v2",
+    "run_id": "57887b814eac4405af47fbdd20e635ab",
+    "operation": "exec_true",
+    "cohort": "first_measured_per_worker",
+    "calls": 64,
+    "failures": 3,
+    "failure_rate_pct": 4.6875,
+    "error_classes": {
+      "ConnectError": 3
+    },
+    "rpc_codes": {
+      "unavailable": 3
+    },
+    "first_definition": "earliest measurement start_offset_s per worker; setup operations can precede it"
+  },
+  {
+    "phase": "phase2-sdk",
+    "scenario": "exec_true_all_connections_warm",
+    "template": "base-4k-4g",
+    "concurrency": 64,
+    "resident_count": 64,
+    "repeat": 2,
+    "instrumentation": "diagnostic-warmed",
+    "comparison_key": "exec_true_all_connections_warm-batch8-v2",
+    "run_id": "57887b814eac4405af47fbdd20e635ab",
+    "operation": "exec_true",
+    "cohort": "later_measured_calls",
+    "calls": 66771,
+    "failures": 0,
+    "failure_rate_pct": 0.0,
+    "error_classes": {},
+    "rpc_codes": {},
+    "first_definition": "earliest measurement start_offset_s per worker; setup operations can precede it"
+  }
+]

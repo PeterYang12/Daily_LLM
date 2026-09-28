@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "stage_summary": [
+    {
+      "family": "official",
+      "adapter": "sdk",
+      "operation": "create",
+      "n": 60,
+      "mean_ms": 283.8421694022448,
+      "p50_ms": 269.59800350596197,
+      "p95_ms": 425.3152374119963,
+      "p99_ms": 471.65561359259283,
+      "min_ms": 222.40841703023762,
+      "max_ms": 500.082980026491,
+      "failures": 0,
+      "state_checks_true": 60,
+      "repeat_count": 3
+    },
+    {
+      "family": "official",
+      "adapter": "sdk",
+      "operation": "health_check",
+      "n": 60,
+      "mean_ms": 839.0394561633002,
+      "p50_ms": 835.736960027134,
+      "p95_ms": 925.3833129740087,
+      "p99_ms": 958.810713753919,
+      "min_ms": 707.66368805198,
+      "max_ms": 979.3419810011983,
+      "failures": 0,
+      "state_checks_true": 60,
+      "repeat_count": 3
+    },
+    {
+      "family": "official",
+      "adapter": "sdk",
+      "operation": "run_code_first",
+      "n": 60,
+      "mean_ms": 1034.5373932184884,
+      "p50_ms": 1026.7360084981192,
+      "p95_ms": 1108.42344048433,
+      "p99_ms": 1117.6140104833758,
+      "min_ms": 959.2829819885083,
+      "max_ms": 1121.5688329539262,
+      "failures": 0,
+      "state_checks_true": 60,
+      "repeat_count": 3
+    },
+    {
+      "family": "official",
+      "adapter": "sdk",
+      "operation": "run_code_second",
+      "n": 60,
+      "mean_ms": 68.3376707379163,
+      "p50_ms": 68.39266599854454,
+      "p95_ms": 77.83332652761601,
+      "p99_ms": 82.62179501820353,
+      "min_ms": 53.714236011728644,
+      "max_ms": 86.8839550530538,
+      "failures": 0,
+      "state_checks_true": 60,
+      "repeat_count": 3
+    }
+  ],
+  "per_run": [
+    {
+      "family": "official",
+      "adapter": "sdk",
+      "repeat": 1,
+      "run_id": "session-20260920-ci-975c5bdd133b",
+      "started_utc": "2026-09-20T12:11:09.434608+00:00",
+      "iterations": 20,
+      "stage_count": 4,
+      "measurement_window_ms": 44949.45385999745,
+      "stage_sum_ms": 44744.4639778696,
+      "non_stage_window_ms": 204.98988212784752,
+      "cycle_elapsed_p50_ms": 2229.2706574953627,
+      "successful_operations": 80,
+      "cleanup_ok": true,
+      "runner_sha256": "42f5ad977780b2fcbc9ef181549f1a01b4900f22a9f0361f286a9351fe11f998"
+    },
+    {
+      "family": "official",
+      "adapter": "sdk",
+      "repeat": 2,
+      "run_id": "session-20260920-ci-a2dd7bfce0c1",
+      "started_utc": "2026-09-20T12:14:37.184844+00:00",
+      "iterations": 20,
+      "stage_count": 4,
+      "measurement_window_ms": 44370.81555504119,
+      "stage_sum_ms": 44159.344989282545,
+      "non_stage_window_ms": 211.47056575864553,
+      "cycle_elapsed_p50_ms": 2216.5565979958046,
+      "successful_operations": 80,
+      "cleanup_ok": true,
+      "runner_sha256": "42f5ad977780b2fcbc9ef181549f1a01b4900f22a9f0361f286a9351fe11f998"
+    },
+    {
+      "family": "official",
+      "adapter": "sdk",
+      "repeat": 3,
+      "run_id": "session-20260920-ci-7d179e6588d3",
+      "started_utc": "2026-09-20T12:18:05.537366+00:00",
+      "iterations": 20,
+      "stage_count": 4,
+      "measurement_window_ms": 44841.826487041544,
+      "stage_sum_ms": 44641.59240416484,
+      "non_stage_window_ms": 200.23408287670463,
+      "cycle_elapsed_p50_ms": 2221.232913027052,
+      "successful_operations": 80,
+      "cleanup_ok": true,
+      "runner_sha256": "42f5ad977780b2fcbc9ef181549f1a01b4900f22a9f0361f286a9351fe11f998"
+    }
+  ],
+  "first_vs_second_paired": {
+    "pairs": 60,
+    "first_to_second_ratio_p50": 15.060656095575915,
+    "all_second_calls_faster": true
+  },
+  "create_to_first_code_end": {
+    "n": 60,
+    "mean_ms": 2157.586215737198,
+    "p50_ms": 2155.132746498566,
+    "p95_ms": 2335.7328159501776,
+    "p99_ms": 2385.113459388376,
+    "min_ms": 1996.3349010213278,
+    "max_ms": 2386.780196975451
+  },
+  "cycle_elapsed": {
+    "n": 60,
+    "mean_ms": 2226.0173473225827,
+    "p50_ms": 2222.924582514679,
+    "p95_ms": 2410.1886844844557,
+    "p99_ms": 2456.0075499064988,
+    "min_ms": 2055.0299070309848,
+    "max_ms": 2457.2615529759787
+  },
+  "correctness": {
+    "operations": 240,
+    "validated_operations": 240,
+    "fresh_sandboxes": 60,
+    "cleanup_events": 60,
+    "failures": 0
+  },
+  "template_scope": "Local minimal Python/JavaScript template; not full hosted code-interpreter-v1",
+  "notes": [
+    "All selected inputs passed count/order/duration/state/cleanup audits.",
+    "Quantiles use linear interpolation at (n-1)*p. P99 with n=60 is descriptive, not a stable tail estimate.",
+    "No stage-count/window throughput is reported; windows include validation and inter-iteration cleanup gaps.",
+    "Sequential run-pair differences do not isolate SDK overhead or establish causality."
+  ]
+}

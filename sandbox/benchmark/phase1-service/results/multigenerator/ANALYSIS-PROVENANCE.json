@@ -1,0 +1,28 @@
+{
+  "analysis_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/code/analyze_multigenerator.py",
+  "analysis_sha256": "0dfb83fa42e2896f8c1483c708ee775f417c0432386474e69a780de2aaebe1a7",
+  "input_manifest_sha256": "fbe854dc08d06752cce0114d7371e09967bb02fa321f8de74f4a841e020bf56a",
+  "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+  "matplotlib": "3.10.8",
+  "cpu_affinity": [
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "quantile_method": "linear at (n-1)*p; config medians over three run metrics",
+  "live_service_requests": 0,
+  "dataset_count": 12
+}

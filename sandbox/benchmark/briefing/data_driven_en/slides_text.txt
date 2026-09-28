@@ -1,0 +1,217 @@
+SLIDE 1
+
+BENCHMARK EVIDENCE / PHASE 0 CONTROLS + PHASE 1/2 CROSS-CHECK
+The client changed the measured throughput
+Same service, same total load: 64 concurrent commands across 64 sandboxes.
+
+Sources: Phase 0 REPORT; Phase 1/2 MULTIGENERATOR-RESULTS · 20 Sep 2026
+1 / 6
+
+Successful commands / second
+6.22× with 4 processes
+1.26× with 4 processes
+
+PHASE 0 · FILE CHECK
+1 MiB
+logical file size
+1,055 bytes
+HTTP entity with repeated-x /
+gzip
+Identity encoding: 1,048,576 bytes.
+Count logical and transferred bytes
+separately.
+3-run medians. Processes, connection pools and warmup coverage changed together; service configuration was unchanged.
+
+Before estimating service capacity, validate the client load generator and the payload.
+
+SLIDE 2
+
+BENCHMARK EVIDENCE / PHASE 1 SERVICE
+More parallel creates increased waiting
+Create → delete loop; concurrency is the number of loop workers. Service startup admission stayed at 3.
+
+Sources: Phase 1 MAIN-RESULTS; setup failure log · Medians of 3 runs per concurrency
+2 / 6
+
+Successful create-delete cycles / s
+Concurrent loop workers
+
+Create latency P95 / seconds
+Concurrent loop workers
+
+Target pool: 256 sandboxes
+2 of 5 preparation attempts reached measurement; 3 failed.
+
+C3 → C8: create P95 rose 5.4×; throughput changed from 5.88 to 5.47 cycles/s.
+
+SLIDE 3
+
+BENCHMARK EVIDENCE / PHASE 2 PUBLIC SDK
+The first useful code result took 2.16 seconds
+60 fresh sandboxes, 3 runs, one at a time; local minimal Python / JavaScript Code Interpreter template.
+
+Sources: Phase 2 APPLICATION-RESULTS and MAIN-RESULTS · Application: pooled P50 of 60 observations
+3 / 6
+
+SDK call duration · P50, milliseconds
+
+MEASURED END TO END
+2.16 s
+Create → health command
+→ first code result
+Second code call was faster in
+60/60 pairs; median paired
+ratio: 15.06×.
+
+Separate C64 command test:
+first measured call 18/192 failed (9.38%); later calls 1/171,318 failed.
+
+Prioritize first-use latency and connection readiness in short agent tasks.
+
+SLIDE 4
+
+BOTTLENECK ANALYSIS / CASES 2, 6 AND 1
+First-use cost and startup reliability come first
+Observed latency and failures set the priority; the underlying mechanism still needs a controlled test.
+
+Sources: Phase 2 APPLICATION-RESULTS; Phase 1 MAIN-RESULTS and IDLE-POOL-RESULTS
+4 / 6
+CASE / EVIDENCE STATUS
+WHAT THE DATA SHOW
+NEXT EXPERIMENT
+
+
+2
+Cold start / reset
+First-use cost observed
+1,027 → 68 ms for code calls.
+Clean reset was not isolated.
+Compare ready-pool reuse with
+fresh reset. Trace envd and
+first-process readiness.
+
+
+6
+Resource
+contention
+Correlation observed
+Slow ramp: envd startup timed out.
+CPU peak: 133/192 cores.
+CPU waiting (10 s avg): 22.4% peak.
+Trace startup threads under steady
+and burst arrivals, with client
+headroom fixed.
+
+
+1
+CPU throttling
+Not established
+0 recorded cgroup throttle increments
+in the slow ramp.
+Check CPU-time quotas and throttle
+counters while reproducing latency
+spikes.
+
+RL implication: repeated setup and launch bursts can delay an entire rollout batch.
+
+SLIDE 5
+
+BOTTLENECK ANALYSIS / CASES 3, 4, 5 AND 7
+The other four cases need targeted measurements
+Use the current observations to design the next tests; avoid assigning causes from end-to-end latency alone.
+
+Sources: Phase 0 REPORT; Phase 1 IDLE-POOL / LIFECYCLE results; Phase 2 APPLICATION-RESULTS
+5 / 6
+CASE
+CURRENT EVIDENCE
+TEST THAT WOULD ISOLATE IT
+
+
+3
+System calls /
+process creation
+Full command/code calls were timed;
+syscall and launch costs remain
+unisolated.
+Compare many tiny commands with
+one batch; trace fork/exec and syscalls.
+
+
+4
+Filesystem I/O
+1 MiB → 1,055 entity bytes with gzip.
+Storage saturation is not established.
+Fix encoding and content; test small
+files, metadata, and cold/warm caches.
+
+
+5
+Memory pressure
+Slow ramp: 1,464 GiB still available in
+the outer VM. Guest-local pressure is
+untested.
+Grow guest working sets; record
+reclaim, memory pressure and OOM
+events.
+
+
+7
+Compatibility
+240/240 application stages validated;
+120 pause/resume rounds preserved
+state.
+Preflight RL packages, debuggers and
+required kernel/device capabilities.
+
+Next workload: short commands, small-file activity, resets, and controlled working-set growth.
+
+SLIDE 6
+
+CPU SANDBOX INFRASTRUCTURE / TESTED CONFIGURATION
+One E2B backend, many Firecracker microVMs
+Single-node E2B Embed on K3s inside a QEMU/KVM VM; gateway routes control and sandbox traffic.
+
+Sources: Phase 0 inventory and study configuration · Snapshot: 20 Sep 2026
+6 / 6
+
+
+OUTER VM · Ubuntu 24.04 / K3s
+
+Client / SDK
+10.145.64.67:8088
+
+e2b-gateway
+Nginx
+
+e2b-0 · one Pod
+
+API
+
+Orchestrator
+
+Client proxy
+create /
+restore
+command / file
+
+
+
+Firecracker microVMs
+guest Linux + envd
+e2b-0: 8 running service containers. Each sandbox is a Firecracker process.
+
+PHYSICAL HOST
+2× AMD EPYC 9965 · 384 cores
+SMT off; QEMU on CPUs 192–383
+
+OUTER VM
+192 vCPU · ~1,487 GiB visible RAM
+1 TiB qcow2 disk on /data2
+
+TYPICAL SANDBOX
+2 vCPU · 4 GiB RAM
+4 KiB backing; HugeTLB pool = 0
+
+CONFIGURED LIMITS
+512 running sandboxes (count quota)
+3 concurrent starts / restores

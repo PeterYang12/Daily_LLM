@@ -1,0 +1,16 @@
+{
+  "status": "complete",
+  "live_server_starting_limit": 1024,
+  "resident_quota": 512,
+  "client_profile": {
+    "create": 1024,
+    "startup": 1024,
+    "exec": 16
+  },
+  "client_status": "validated for new launcher; stopped R2 not restarted",
+  "sdk_smoke_passed": true,
+  "smoke_instances": 8,
+  "smoke_remaining": [],
+  "live_orchestrator_sha256": "590d0173ff9df2654c67978ac82fc503264ff97890e5b5cdf0e102a0953a238a",
+  "client_validation_passed": true
+}

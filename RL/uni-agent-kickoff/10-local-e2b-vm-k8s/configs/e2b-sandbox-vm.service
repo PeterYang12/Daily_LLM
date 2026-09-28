@@ -1,0 +1,36 @@
+[Unit]
+Description=E2B sandbox server VM (192 vCPU, 1511 GiB, Kubernetes inside)
+Wants=network-online.target
+After=network-online.target
+RequiresMountsFor=/data2/yuhanya/e2b-local-20260916
+
+[Service]
+Type=simple
+User=15341
+Group=15341
+SupplementaryGroups=994
+WorkingDirectory=/data2/yuhanya/e2b-local-20260916
+ExecStart=/usr/bin/python3 /data2/yuhanya/e2b-local-20260916/code/run_vm_native.py
+ExecStop=/usr/bin/python3 /data2/yuhanya/e2b-local-20260916/code/stop_vm_native.py
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=130
+KillMode=control-group
+CPUAffinity=192-383
+CPUQuota=19200%
+MemoryMax=1536G
+MemorySwapMax=0
+TasksMax=1024
+LimitNOFILE=1048576
+LimitMEMLOCK=infinity
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+DevicePolicy=closed
+DeviceAllow=/dev/kvm rw
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,108 @@
+{
+  "boot_id": "73f6eda4-c0d3-47ed-8740-d5bf77fb9af6",
+  "node_boot_id": "73f6eda4-c0d3-47ed-8740-d5bf77fb9af6",
+  "memory": {
+    "MemTotal": "1559062736 kB",
+    "MemAvailable": "1539243468 kB",
+    "HugePages_Total": "0",
+    "HugePages_Free": "0",
+    "HugePages_Rsvd": "0",
+    "HugePages_Surp": "0",
+    "Hugetlb": "0 kB"
+  },
+  "hugetlb_pools": {
+    "hugepages-2048kB": {
+      "nr_hugepages": "0",
+      "nr_overcommit_hugepages": "0",
+      "surplus_hugepages": "0"
+    },
+    "hugepages-1048576kB": {
+      "nr_hugepages": "0",
+      "nr_overcommit_hugepages": "0",
+      "surplus_hugepages": "0"
+    }
+  },
+  "hugepage_persistence": {
+    "/etc/sysctl.d/90-e2b-capacity.conf": [
+      "vm.nr_hugepages=0"
+    ],
+    "/etc/sysctl.d/90-e2b.conf": [
+      "vm.nr_hugepages=0"
+    ]
+  },
+  "node_capacity": {
+    "cpu": "192",
+    "ephemeral-storage": "1039020000Ki",
+    "hugepages-1Gi": "0",
+    "hugepages-2Mi": "0",
+    "memory": "1559062736Ki",
+    "pods": "110"
+  },
+  "node_allocatable": {
+    "cpu": "192",
+    "ephemeral-storage": "1010758655208",
+    "hugepages-1Gi": "0",
+    "hugepages-2Mi": "0",
+    "memory": "1559062736Ki",
+    "pods": "110"
+  },
+  "nbd_devices": 1024,
+  "nbd_persistence": "options nbd nbds_max=1024 max_part=16",
+  "neighbor_thresholds": {
+    "ipv4": {
+      "gc_thresh1": 4096,
+      "gc_thresh2": 8192,
+      "gc_thresh3": 16384
+    },
+    "ipv6": {
+      "gc_thresh1": 4096,
+      "gc_thresh2": 8192,
+      "gc_thresh3": 16384
+    }
+  },
+  "neighbor_persistence": "# Firecracker network namespaces share the node's neighbour-table budget.\n# Keep bounded headroom for 512 active sandboxes and the reusable network pool.\nnet.ipv4.neigh.default.gc_thresh1=4096\nnet.ipv4.neigh.default.gc_thresh2=8192\nnet.ipv4.neigh.default.gc_thresh3=16384\nnet.ipv6.neigh.default.gc_thresh1=4096\nnet.ipv6.neigh.default.gc_thresh2=8192\nnet.ipv6.neigh.default.gc_thresh3=16384\n",
+  "orchestrator_resources": {
+    "requests": {
+      "cpu": "4",
+      "memory": "8Gi"
+    }
+  },
+  "runtime_environment": {
+    "host-setup": {
+      "E2B_SANDBOX_HUGE_PAGES": "false",
+      "HUGEPAGES": "0",
+      "NBDS_MAX": "1024"
+    },
+    "orchestrator": {
+      "E2B_SANDBOX_HUGE_PAGES": "false",
+      "E2B_MAX_SANDBOXES_PER_NODE": "512",
+      "NBD_POOL_SIZE": "32"
+    },
+    "api": {
+      "E2B_SANDBOX_HUGE_PAGES": "false"
+    }
+  },
+  "runtime_annotations": {
+    "local.e2b/api-sha256": "053ccf0e58f6c958417d30d26dcd1965a325ff23fa45e2c34f98df4565dd4c54",
+    "local.e2b/orchestrator-sha256": "bff879e1e132546115a5b9b6f67e53af31655f05acc42abe215b4a591ebaaf02",
+    "local.e2b/runtime-version": "local-4k-512-20260920"
+  },
+  "postgres_huge_pages": "off",
+  "team_quota": {
+    "concurrent_sandboxes": 512,
+    "max_ram_mb": 8192,
+    "max_vcpu": 8
+  },
+  "ready": true,
+  "qemu_nofile": {
+    "pid": 184366,
+    "soft": 1048576,
+    "hard": 1048576
+  },
+  "checked_utc": "2026-09-20T05:59:59.144273+00:00",
+  "endpoint": "http://10.145.64.67:8088",
+  "health_http": 200,
+  "authenticated_list_http": 200,
+  "running_list_first_page_count": 0,
+  "ordinary_page_configuration_verified": true
+}

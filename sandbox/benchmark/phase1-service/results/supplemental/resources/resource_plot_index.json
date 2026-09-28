@@ -1,0 +1,26 @@
+[
+  {
+    "capture_id": "0ac2493e8d870211",
+    "layer": "guest",
+    "png": "plots/resources-guest-0ac2493e8d870211.png",
+    "svg": "plots/resources-guest-0ac2493e8d870211.svg"
+  },
+  {
+    "capture_id": "0ac2493e8d870211",
+    "layer": "host",
+    "png": "plots/resources-host-0ac2493e8d870211.png",
+    "svg": "plots/resources-host-0ac2493e8d870211.svg"
+  },
+  {
+    "capture_id": "25cc41c12f6c0050",
+    "layer": "guest",
+    "png": "plots/resources-guest-25cc41c12f6c0050.png",
+    "svg": "plots/resources-guest-25cc41c12f6c0050.svg"
+  },
+  {
+    "capture_id": "25cc41c12f6c0050",
+    "layer": "host",
+    "png": "plots/resources-host-25cc41c12f6c0050.png",
+    "svg": "plots/resources-host-25cc41c12f6c0050.svg"
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "updated_utc": "2026-09-16T11:33:18.170709+00:00",
+  "status": "ready",
+  "scope": "sandbox service only; no vLLM or RL required",
+  "endpoint": "http://10.145.64.67:8088",
+  "vm_vcpus": 192,
+  "vm_memory_gib": 1511,
+  "vm_linux_memtotal_gib": 1486.8381004333496,
+  "hugepage_pool_gib": 256,
+  "sdk_checks_passed": 9,
+  "concurrent_sandboxes_passed": 8,
+  "native_uni_agent_tool_checks_passed": 9,
+  "swe_control_baseline": 0.0,
+  "swe_control_oracle": 1.0,
+  "private_client_configuration": "/home/yuhanya/.config/e2b-local-20260916/client.env",
+  "report_dir": "/home/yuhanya/Daily_LLM/RL/uni-agent-kickoff/10-local-e2b-vm-k8s",
+  "vm_disk_gib": 1024,
+  "disk_expanded_utc": "2026-09-16T11:53:10.329717+00:00",
+  "vm_rootfs_size_bytes": 1063956480000,
+  "vm_rootfs_available_bytes": 1042819407872,
+  "host_data2_available_gib_at_resize_completion": 1198.35,
+  "performance_recording": {
+    "mode": "passive",
+    "vm_interval_seconds": 5,
+    "event_interval_seconds": 60,
+    "summary_interval_minutes": 15,
+    "path": "/data2/yuhanya/e2b-local-20260916/monitoring",
+    "external_alert_delivery": false,
+    "enabled": false,
+    "stopped_utc": "2026-09-16T23:52:45.145918+00:00",
+    "data_preserved": true
+  }
+}

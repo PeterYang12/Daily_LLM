@@ -1,0 +1,860 @@
+{
+  "schema_version": 1,
+  "cells": [
+    {
+      "id": "exec_true-c1-r1-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "exec_true",
+        "concurrency": 1,
+        "residents": 1,
+        "duration": 20,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "exec_true-c8-r1-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "exec_true",
+        "concurrency": 8,
+        "residents": 8,
+        "duration": 20,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "exec_true-c32-r1-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "exec_true",
+        "concurrency": 32,
+        "residents": 32,
+        "duration": 20,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "file_read_1k-c1-r1-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_read_1k",
+        "concurrency": 1,
+        "residents": 1,
+        "duration": 20,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "file_read_1k-c8-r1-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_read_1k",
+        "concurrency": 8,
+        "residents": 8,
+        "duration": 20,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "file_read_1k-c32-r1-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_read_1k",
+        "concurrency": 32,
+        "residents": 32,
+        "duration": 20,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "file_write_1k-c1-r1-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_write_1k",
+        "concurrency": 1,
+        "residents": 1,
+        "duration": 20,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "file_write_1k-c8-r1-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_write_1k",
+        "concurrency": 8,
+        "residents": 8,
+        "duration": 20,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "file_write_1k-c32-r1-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_write_1k",
+        "concurrency": 32,
+        "residents": 32,
+        "duration": 20,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "file_read_1m-c1-r1-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_read_1m",
+        "concurrency": 1,
+        "residents": 1,
+        "duration": 20,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "file_read_1m-c8-r1-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_read_1m",
+        "concurrency": 8,
+        "residents": 8,
+        "duration": 20,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "file_read_1m-c32-r1-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_read_1m",
+        "concurrency": 32,
+        "residents": 32,
+        "duration": 20,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "exec_true-c1-r2-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "exec_true",
+        "concurrency": 1,
+        "residents": 1,
+        "duration": 20,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "exec_true-c8-r2-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "exec_true",
+        "concurrency": 8,
+        "residents": 8,
+        "duration": 20,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "exec_true-c32-r2-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "exec_true",
+        "concurrency": 32,
+        "residents": 32,
+        "duration": 20,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "file_read_1k-c1-r2-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_read_1k",
+        "concurrency": 1,
+        "residents": 1,
+        "duration": 20,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "file_read_1k-c8-r2-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_read_1k",
+        "concurrency": 8,
+        "residents": 8,
+        "duration": 20,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "file_read_1k-c32-r2-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_read_1k",
+        "concurrency": 32,
+        "residents": 32,
+        "duration": 20,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "file_write_1k-c1-r2-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_write_1k",
+        "concurrency": 1,
+        "residents": 1,
+        "duration": 20,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "file_write_1k-c8-r2-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_write_1k",
+        "concurrency": 8,
+        "residents": 8,
+        "duration": 20,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "file_write_1k-c32-r2-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_write_1k",
+        "concurrency": 32,
+        "residents": 32,
+        "duration": 20,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "file_read_1m-c1-r2-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_read_1m",
+        "concurrency": 1,
+        "residents": 1,
+        "duration": 20,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "file_read_1m-c8-r2-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_read_1m",
+        "concurrency": 8,
+        "residents": 8,
+        "duration": 20,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "file_read_1m-c32-r2-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_read_1m",
+        "concurrency": 32,
+        "residents": 32,
+        "duration": 20,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "exec_true-c1-r3-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "exec_true",
+        "concurrency": 1,
+        "residents": 1,
+        "duration": 20,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "exec_true-c8-r3-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "exec_true",
+        "concurrency": 8,
+        "residents": 8,
+        "duration": 20,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "exec_true-c32-r3-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "exec_true",
+        "concurrency": 32,
+        "residents": 32,
+        "duration": 20,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "file_read_1k-c1-r3-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_read_1k",
+        "concurrency": 1,
+        "residents": 1,
+        "duration": 20,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "file_read_1k-c8-r3-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_read_1k",
+        "concurrency": 8,
+        "residents": 8,
+        "duration": 20,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "file_read_1k-c32-r3-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_read_1k",
+        "concurrency": 32,
+        "residents": 32,
+        "duration": 20,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "file_write_1k-c1-r3-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_write_1k",
+        "concurrency": 1,
+        "residents": 1,
+        "duration": 20,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "file_write_1k-c8-r3-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_write_1k",
+        "concurrency": 8,
+        "residents": 8,
+        "duration": 20,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "file_write_1k-c32-r3-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_write_1k",
+        "concurrency": 32,
+        "residents": 32,
+        "duration": 20,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "file_read_1m-c1-r3-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_read_1m",
+        "concurrency": 1,
+        "residents": 1,
+        "duration": 20,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "file_read_1m-c8-r3-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_read_1m",
+        "concurrency": 8,
+        "residents": 8,
+        "duration": 20,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "file_read_1m-c32-r3-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "file_read_1m",
+        "concurrency": 32,
+        "residents": 32,
+        "duration": 20,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "exec_true-c64-r1-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "exec_true",
+        "concurrency": 64,
+        "residents": 64,
+        "duration": 30,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "create-churn-c1-r1",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 1,
+        "count": 100,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "create-churn-c2-r1",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 2,
+        "count": 100,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "create-churn-c3-r1",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 3,
+        "count": 100,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "create-churn-c8-r1",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 8,
+        "count": 100,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "create-open-rate2-r1",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 16,
+        "count": 100,
+        "repeat": 1,
+        "mode": "open_loop",
+        "rate": 2
+      }
+    },
+    {
+      "id": "create-open-rate8-r1",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 16,
+        "count": 100,
+        "repeat": 1,
+        "mode": "open_loop",
+        "rate": 8
+      }
+    },
+    {
+      "id": "create-open-rate20-r1",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 16,
+        "count": 100,
+        "repeat": 1,
+        "mode": "open_loop",
+        "rate": 20
+      }
+    },
+    {
+      "id": "exec-resident64-c8-r1",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "exec_true",
+        "concurrency": 8,
+        "residents": 64,
+        "duration": 30,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "exec-resident256-c8-r1",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "exec_true",
+        "concurrency": 8,
+        "residents": 256,
+        "duration": 30,
+        "repeat": 1
+      }
+    },
+    {
+      "id": "exec_true-c64-r2-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "exec_true",
+        "concurrency": 64,
+        "residents": 64,
+        "duration": 30,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "create-churn-c1-r2",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 1,
+        "count": 100,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "create-churn-c2-r2",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 2,
+        "count": 100,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "create-churn-c3-r2",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 3,
+        "count": 100,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "create-churn-c8-r2",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 8,
+        "count": 100,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "create-open-rate2-r2",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 16,
+        "count": 100,
+        "repeat": 2,
+        "mode": "open_loop",
+        "rate": 2
+      }
+    },
+    {
+      "id": "create-open-rate8-r2",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 16,
+        "count": 100,
+        "repeat": 2,
+        "mode": "open_loop",
+        "rate": 8
+      }
+    },
+    {
+      "id": "create-open-rate20-r2",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 16,
+        "count": 100,
+        "repeat": 2,
+        "mode": "open_loop",
+        "rate": 20
+      }
+    },
+    {
+      "id": "exec-resident64-c8-r2",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "exec_true",
+        "concurrency": 8,
+        "residents": 64,
+        "duration": 30,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "exec-resident256-c8-r2",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "exec_true",
+        "concurrency": 8,
+        "residents": 256,
+        "duration": 30,
+        "repeat": 2
+      }
+    },
+    {
+      "id": "exec_true-c64-r3-service",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "exec_true",
+        "concurrency": 64,
+        "residents": 64,
+        "duration": 30,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "create-churn-c1-r3",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 1,
+        "count": 100,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "create-churn-c2-r3",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 2,
+        "count": 100,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "create-churn-c3-r3",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 3,
+        "count": 100,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "create-churn-c8-r3",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 8,
+        "count": 100,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "create-open-rate2-r3",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 16,
+        "count": 100,
+        "repeat": 3,
+        "mode": "open_loop",
+        "rate": 2
+      }
+    },
+    {
+      "id": "create-open-rate8-r3",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 16,
+        "count": 100,
+        "repeat": 3,
+        "mode": "open_loop",
+        "rate": 8
+      }
+    },
+    {
+      "id": "create-open-rate20-r3",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "create",
+        "concurrency": 16,
+        "count": 100,
+        "repeat": 3,
+        "mode": "open_loop",
+        "rate": 20
+      }
+    },
+    {
+      "id": "exec-resident64-c8-r3",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "exec_true",
+        "concurrency": 8,
+        "residents": 64,
+        "duration": 30,
+        "repeat": 3
+      }
+    },
+    {
+      "id": "exec-resident256-c8-r3",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "exec_true",
+        "concurrency": 8,
+        "residents": 256,
+        "duration": 30,
+        "repeat": 3
+      }
+    }
+  ]
+}

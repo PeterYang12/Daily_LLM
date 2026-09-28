@@ -1,0 +1,3836 @@
+{
+  "run_id": "fcbbf7871ac344ab9e12df264b317630",
+  "status": "passed",
+  "started_at": "2026-09-20T05:18:19.246164+00:00",
+  "template_count": 91,
+  "concurrency": 2,
+  "results": [
+    {
+      "template_id": "6zl7jvjxoy6d1cb4t0ph",
+      "target": "6zl7jvjxoy6d1cb4t0ph",
+      "tag": "default",
+      "expected_build_id": "e5d1b71c-9e5c-46b9-88e6-d110c8569a66",
+      "cpu_count": 2,
+      "memory_mb": 512,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:19.246925+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "e5d1b71c-9e5c-46b9-88e6-d110c8569a66",
+      "sandbox_id": "i0bst8bwsrm6fpkbam93a",
+      "resources": {
+        "cpu_count": 2,
+        "memory_mb": 512
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 17690,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 2,
+        "machine_memory_mb": 512,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "e5d1b71c-9e5c-46b9-88e6-d110c8569a66",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:21.099720+00:00",
+      "elapsed_seconds": 1.853
+    },
+    {
+      "template_id": "0dkxxgieffekyvdumbdk",
+      "target": "0dkxxgieffekyvdumbdk",
+      "tag": "default",
+      "expected_build_id": "bc7149b8-c3d0-4283-8a03-953aac860e56",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:19.269694+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "bc7149b8-c3d0-4283-8a03-953aac860e56",
+      "sandbox_id": "ivzt3c2xv1fps2cogoj5q",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 17695,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "bc7149b8-c3d0-4283-8a03-953aac860e56",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:21.102912+00:00",
+      "elapsed_seconds": 1.833
+    },
+    {
+      "template_id": "0te8iemft8pz6u28i9ge",
+      "target": "0te8iemft8pz6u28i9ge",
+      "tag": "default",
+      "expected_build_id": "2a2b8f65-f9a2-413d-841b-3f7d51b3f657",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:21.101107+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "2a2b8f65-f9a2-413d-841b-3f7d51b3f657",
+      "sandbox_id": "igkrd23rw7fipco27bdq9",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 17886,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "2a2b8f65-f9a2-413d-841b-3f7d51b3f657",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:23.012820+00:00",
+      "elapsed_seconds": 1.912
+    },
+    {
+      "template_id": "1a0zghrhd5z0o2v35n16",
+      "target": "1a0zghrhd5z0o2v35n16",
+      "tag": "default",
+      "expected_build_id": "98a45129-7922-4a27-8505-a25a609c2607",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:21.103791+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "98a45129-7922-4a27-8505-a25a609c2607",
+      "sandbox_id": "ijpu3r1hu4fi7e1yn6b14",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 17885,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "98a45129-7922-4a27-8505-a25a609c2607",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:23.017628+00:00",
+      "elapsed_seconds": 1.914
+    },
+    {
+      "template_id": "1btbpdeaphhntcixll6l",
+      "target": "1btbpdeaphhntcixll6l",
+      "tag": "default",
+      "expected_build_id": "3ded6be8-c262-4982-aa61-70faee9f8697",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:23.014345+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "3ded6be8-c262-4982-aa61-70faee9f8697",
+      "sandbox_id": "i0idj5wp65px9vqdkihe4",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 18033,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "3ded6be8-c262-4982-aa61-70faee9f8697",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:24.954515+00:00",
+      "elapsed_seconds": 1.94
+    },
+    {
+      "template_id": "1tba4utj7612zdudl9th",
+      "target": "1tba4utj7612zdudl9th",
+      "tag": "default",
+      "expected_build_id": "f2e6613c-bd26-4da2-8b47-369e55afa9cf",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:23.018742+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "f2e6613c-bd26-4da2-8b47-369e55afa9cf",
+      "sandbox_id": "ig5k0bqzx4q8htyl4h3c0",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 18038,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "f2e6613c-bd26-4da2-8b47-369e55afa9cf",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:24.909920+00:00",
+      "elapsed_seconds": 1.891
+    },
+    {
+      "template_id": "20mvpd09xphshihqtjzi",
+      "target": "20mvpd09xphshihqtjzi",
+      "tag": "default",
+      "expected_build_id": "1b2180cd-160b-4800-9432-36537c30f9b4",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:24.911836+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "1b2180cd-160b-4800-9432-36537c30f9b4",
+      "sandbox_id": "igpbjrhh2wdo70e55hagw",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 18196,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "1b2180cd-160b-4800-9432-36537c30f9b4",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:26.684023+00:00",
+      "elapsed_seconds": 1.772
+    },
+    {
+      "template_id": "2dbrxekribn8n343usbl",
+      "target": "2dbrxekribn8n343usbl",
+      "tag": "default",
+      "expected_build_id": "3b2839ab-8c12-473b-9a31-5045759d0d02",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:24.955951+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "3b2839ab-8c12-473b-9a31-5045759d0d02",
+      "sandbox_id": "iax5ybq02zg2j78uzi526",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 18217,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "3b2839ab-8c12-473b-9a31-5045759d0d02",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:26.630362+00:00",
+      "elapsed_seconds": 1.674
+    },
+    {
+      "template_id": "2ucx290k8od6y17jtwsf",
+      "target": "2ucx290k8od6y17jtwsf",
+      "tag": "default",
+      "expected_build_id": "8685d12d-4481-4f99-a23e-5a7b0b1b888a",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:26.632000+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "8685d12d-4481-4f99-a23e-5a7b0b1b888a",
+      "sandbox_id": "ise0etfexl2ogihzq1054",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 18363,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "8685d12d-4481-4f99-a23e-5a7b0b1b888a",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:28.380408+00:00",
+      "elapsed_seconds": 1.748
+    },
+    {
+      "template_id": "3lbecrytbrw783chqobu",
+      "target": "3lbecrytbrw783chqobu",
+      "tag": "default",
+      "expected_build_id": "2e1613ed-6eb9-4307-8545-41ddeaba1fe9",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:26.685676+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "2e1613ed-6eb9-4307-8545-41ddeaba1fe9",
+      "sandbox_id": "i2rujrs3sogh58a8ll0qd",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 18385,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "2e1613ed-6eb9-4307-8545-41ddeaba1fe9",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:28.481080+00:00",
+      "elapsed_seconds": 1.795
+    },
+    {
+      "template_id": "3ujexhqub5sm54s1g0ce",
+      "target": "3ujexhqub5sm54s1g0ce",
+      "tag": "default",
+      "expected_build_id": "c9e74da9-6c5c-4800-b99b-d2fa60d746d2",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:28.382333+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "c9e74da9-6c5c-4800-b99b-d2fa60d746d2",
+      "sandbox_id": "iu3ximw720lm1q5fylq4m",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 18514,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "c9e74da9-6c5c-4800-b99b-d2fa60d746d2",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:30.325593+00:00",
+      "elapsed_seconds": 1.943
+    },
+    {
+      "template_id": "3y0f515hdqch9ihefym2",
+      "target": "3y0f515hdqch9ihefym2",
+      "tag": "default",
+      "expected_build_id": "cc994fc6-924f-4b11-b6d6-3fd17c9efe06",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:28.482969+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "cc994fc6-924f-4b11-b6d6-3fd17c9efe06",
+      "sandbox_id": "isw1wdr6nt9pozlpqiir0",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 18536,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "cc994fc6-924f-4b11-b6d6-3fd17c9efe06",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:30.352785+00:00",
+      "elapsed_seconds": 1.87
+    },
+    {
+      "template_id": "3zof8zh729nsmikvxxaf",
+      "target": "3zof8zh729nsmikvxxaf",
+      "tag": "default",
+      "expected_build_id": "34468890-fab8-46cc-a035-34bced1cb455",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:30.328954+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "34468890-fab8-46cc-a035-34bced1cb455",
+      "sandbox_id": "i5orv6k3i4n83sa0z8g7j",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 18669,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "34468890-fab8-46cc-a035-34bced1cb455",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:33.444297+00:00",
+      "elapsed_seconds": 3.115
+    },
+    {
+      "template_id": "4qpwp0yihc3zfmloqs0h",
+      "target": "4qpwp0yihc3zfmloqs0h",
+      "tag": "default",
+      "expected_build_id": "a5ea5f73-17c8-46b8-be3b-5613536f2473",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:30.361115+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "a5ea5f73-17c8-46b8-be3b-5613536f2473",
+      "sandbox_id": "i5zusw8o3qb7i5u785ta1",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 18677,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "a5ea5f73-17c8-46b8-be3b-5613536f2473",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:33.438594+00:00",
+      "elapsed_seconds": 3.078
+    },
+    {
+      "template_id": "55r8zs45rk78yvndew47",
+      "target": "55r8zs45rk78yvndew47",
+      "tag": "default",
+      "expected_build_id": "cd210acd-c590-4f3f-b998-e96324f31f1a",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:33.441373+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "cd210acd-c590-4f3f-b998-e96324f31f1a",
+      "sandbox_id": "ii5uu8mcb2oady6a20hzo",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 18829,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "cd210acd-c590-4f3f-b998-e96324f31f1a",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:35.246530+00:00",
+      "elapsed_seconds": 1.805
+    },
+    {
+      "template_id": "56vopf19ej8rtbbw5zr2",
+      "target": "56vopf19ej8rtbbw5zr2",
+      "tag": "default",
+      "expected_build_id": "b7c3ac48-c57f-4bca-88bc-cd70576dde96",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:33.446230+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "b7c3ac48-c57f-4bca-88bc-cd70576dde96",
+      "sandbox_id": "i796ql1nvqq8ctbyht7mu",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 18833,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "b7c3ac48-c57f-4bca-88bc-cd70576dde96",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:35.169137+00:00",
+      "elapsed_seconds": 1.723
+    },
+    {
+      "template_id": "5ztnblgrq6g5ej6zkl59",
+      "target": "5ztnblgrq6g5ej6zkl59",
+      "tag": "default",
+      "expected_build_id": "428e9acd-1b95-488f-b34e-505b505e8845",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:35.171641+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "428e9acd-1b95-488f-b34e-505b505e8845",
+      "sandbox_id": "i9ji5b04682dcaxo9has1",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 18977,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "428e9acd-1b95-488f-b34e-505b505e8845",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:36.881228+00:00",
+      "elapsed_seconds": 1.71
+    },
+    {
+      "template_id": "63949hd5svwoprro2zt7",
+      "target": "63949hd5svwoprro2zt7",
+      "tag": "default",
+      "expected_build_id": "d72a3b9f-4284-429d-9a23-efbec8ba3a55",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:35.248837+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "d72a3b9f-4284-429d-9a23-efbec8ba3a55",
+      "sandbox_id": "i4fkakgcslcddmsd4x7ae",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 18999,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "d72a3b9f-4284-429d-9a23-efbec8ba3a55",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:36.966083+00:00",
+      "elapsed_seconds": 1.717
+    },
+    {
+      "template_id": "6fddvb5zgkuuaw8u4gso",
+      "target": "6fddvb5zgkuuaw8u4gso",
+      "tag": "default",
+      "expected_build_id": "7822ed39-5fd8-4875-9775-7d2c1a5e68d9",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:36.883969+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "7822ed39-5fd8-4875-9775-7d2c1a5e68d9",
+      "sandbox_id": "iow83m70x8zt96jf8tudt",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 19146,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "7822ed39-5fd8-4875-9775-7d2c1a5e68d9",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:38.729651+00:00",
+      "elapsed_seconds": 1.846
+    },
+    {
+      "template_id": "6g5ge4qlc9og21tzdwfz",
+      "target": "6g5ge4qlc9og21tzdwfz",
+      "tag": "default",
+      "expected_build_id": "62f541a0-49ff-4c55-9869-5602ccde93e5",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:36.968556+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "62f541a0-49ff-4c55-9869-5602ccde93e5",
+      "sandbox_id": "ie4iz4vzd5rnk7grie447",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 19168,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "62f541a0-49ff-4c55-9869-5602ccde93e5",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:38.646409+00:00",
+      "elapsed_seconds": 1.678
+    },
+    {
+      "template_id": "6kvj0lpbpm5lujwh82oz",
+      "target": "6kvj0lpbpm5lujwh82oz",
+      "tag": "default",
+      "expected_build_id": "0e01325d-3bab-4d85-a3c4-13981279e428",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:38.649241+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "0e01325d-3bab-4d85-a3c4-13981279e428",
+      "sandbox_id": "i8vn04wr2nx2os4ezhrv4",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 19290,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "0e01325d-3bab-4d85-a3c4-13981279e428",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:40.345603+00:00",
+      "elapsed_seconds": 1.696
+    },
+    {
+      "template_id": "6qs0h1bxnkqls5a2rqei",
+      "target": "6qs0h1bxnkqls5a2rqei",
+      "tag": "default",
+      "expected_build_id": "85ce9a69-1d05-40ae-afb0-f9bf4ac4c3e3",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:38.732717+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "85ce9a69-1d05-40ae-afb0-f9bf4ac4c3e3",
+      "sandbox_id": "i9x9qlxaautw0hq0p1uru",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 19312,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "85ce9a69-1d05-40ae-afb0-f9bf4ac4c3e3",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:40.406626+00:00",
+      "elapsed_seconds": 1.674
+    },
+    {
+      "template_id": "6ubvkdgwk7eolguy3elj",
+      "target": "6ubvkdgwk7eolguy3elj",
+      "tag": "default",
+      "expected_build_id": "ad2bbeae-d2f8-4f31-bd96-3fa76b277d68",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:40.348511+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "ad2bbeae-d2f8-4f31-bd96-3fa76b277d68",
+      "sandbox_id": "i51l4ftjgyd7wb7bq9k5y",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 19428,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "ad2bbeae-d2f8-4f31-bd96-3fa76b277d68",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:42.196995+00:00",
+      "elapsed_seconds": 1.849
+    },
+    {
+      "template_id": "6uj8cyvc0sqmgsscqh1e",
+      "target": "6uj8cyvc0sqmgsscqh1e",
+      "tag": "default",
+      "expected_build_id": "f56a3971-8479-4d2b-a0f6-a1e795bea7b1",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:40.409522+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "f56a3971-8479-4d2b-a0f6-a1e795bea7b1",
+      "sandbox_id": "iq7elhbps7aumkmni52va",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 19449,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "f56a3971-8479-4d2b-a0f6-a1e795bea7b1",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:42.220565+00:00",
+      "elapsed_seconds": 1.811
+    },
+    {
+      "template_id": "8chqjtgokex6dk8melml",
+      "target": "8chqjtgokex6dk8melml",
+      "tag": "default",
+      "expected_build_id": "3d37c6bc-ae04-4f82-b011-0990a66f64c8",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:42.200266+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "3d37c6bc-ae04-4f82-b011-0990a66f64c8",
+      "sandbox_id": "iqva07f8qi5waei90kcnh",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 19588,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "3d37c6bc-ae04-4f82-b011-0990a66f64c8",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:44.200395+00:00",
+      "elapsed_seconds": 2.0
+    },
+    {
+      "template_id": "9767rhbbxciz53m57uy5",
+      "target": "9767rhbbxciz53m57uy5",
+      "tag": "default",
+      "expected_build_id": "dd64234e-66d4-4386-8ff2-5ae58310acd9",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:42.223411+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "dd64234e-66d4-4386-8ff2-5ae58310acd9",
+      "sandbox_id": "i02noia4l654iv6w5jjq7",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 19598,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "dd64234e-66d4-4386-8ff2-5ae58310acd9",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:44.166845+00:00",
+      "elapsed_seconds": 1.943
+    },
+    {
+      "template_id": "9w2t6itt2gpmyoaq6k63",
+      "target": "9w2t6itt2gpmyoaq6k63",
+      "tag": "default",
+      "expected_build_id": "da0745ea-c198-42fc-9853-08d0fd876643",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:44.169977+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "da0745ea-c198-42fc-9853-08d0fd876643",
+      "sandbox_id": "i96w0liuo10f81k0nk71h",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 19731,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "da0745ea-c198-42fc-9853-08d0fd876643",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:45.940410+00:00",
+      "elapsed_seconds": 1.77
+    },
+    {
+      "template_id": "9zmq1vofkcknr2h15nk2",
+      "target": "9zmq1vofkcknr2h15nk2",
+      "tag": "default",
+      "expected_build_id": "83d7a3b3-7e7e-4dd7-9e96-1459df90f34e",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:44.203520+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "83d7a3b3-7e7e-4dd7-9e96-1459df90f34e",
+      "sandbox_id": "ire0oczt63ja1qb7akp6n",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 19747,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "83d7a3b3-7e7e-4dd7-9e96-1459df90f34e",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:46.034083+00:00",
+      "elapsed_seconds": 1.831
+    },
+    {
+      "template_id": "a70qtta5zo55cj332mgp",
+      "target": "a70qtta5zo55cj332mgp",
+      "tag": "default",
+      "expected_build_id": "dd6b3190-1744-4b30-9712-070a0514754a",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:45.943809+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "dd6b3190-1744-4b30-9712-070a0514754a",
+      "sandbox_id": "i60j4826ttyutwww70f7t",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 19895,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "dd6b3190-1744-4b30-9712-070a0514754a",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:47.893119+00:00",
+      "elapsed_seconds": 1.949
+    },
+    {
+      "template_id": "bhprm8vnr9w92cx1dabs",
+      "target": "bhprm8vnr9w92cx1dabs",
+      "tag": "default",
+      "expected_build_id": "608d1974-f153-48b0-ac5b-1aef2b284bb6",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:46.037832+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "608d1974-f153-48b0-ac5b-1aef2b284bb6",
+      "sandbox_id": "iyk9kadzxhjkb67bhxnul",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 19917,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "608d1974-f153-48b0-ac5b-1aef2b284bb6",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:47.923279+00:00",
+      "elapsed_seconds": 1.885
+    },
+    {
+      "template_id": "bji5eb61m6s6jbidx6d7",
+      "target": "bji5eb61m6s6jbidx6d7",
+      "tag": "default",
+      "expected_build_id": "25ae633a-1a12-4e02-b441-aa24d1c44439",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:47.896707+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "25ae633a-1a12-4e02-b441-aa24d1c44439",
+      "sandbox_id": "iuqarmpa30a2qcenkzgzv",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 20035,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "25ae633a-1a12-4e02-b441-aa24d1c44439",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:49.679600+00:00",
+      "elapsed_seconds": 1.783
+    },
+    {
+      "template_id": "bwevb298h0j8c3awpurc",
+      "target": "bwevb298h0j8c3awpurc",
+      "tag": "default",
+      "expected_build_id": "cc1f7f62-8328-426c-92ac-3c2fca1897fd",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:47.926674+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "cc1f7f62-8328-426c-92ac-3c2fca1897fd",
+      "sandbox_id": "is1jdmu7xc3wqip5z3a22",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 20049,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "cc1f7f62-8328-426c-92ac-3c2fca1897fd",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:49.737675+00:00",
+      "elapsed_seconds": 1.811
+    },
+    {
+      "template_id": "c1i5ojr19jzzhtqyrxg7",
+      "target": "c1i5ojr19jzzhtqyrxg7",
+      "tag": "default",
+      "expected_build_id": "af3e7bb2-3e6e-4f07-8ca9-42b22c69bc0c",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:49.683690+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "af3e7bb2-3e6e-4f07-8ca9-42b22c69bc0c",
+      "sandbox_id": "iu9cooe1s0qw24vchjy5q",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 20176,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "af3e7bb2-3e6e-4f07-8ca9-42b22c69bc0c",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:51.539523+00:00",
+      "elapsed_seconds": 1.856
+    },
+    {
+      "template_id": "cq1t4u515roj9iqmje6g",
+      "target": "cq1t4u515roj9iqmje6g",
+      "tag": "default",
+      "expected_build_id": "6bb00d27-e916-4405-a408-5aca2c8d0fab",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:49.741338+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "6bb00d27-e916-4405-a408-5aca2c8d0fab",
+      "sandbox_id": "iptfzj0gd52s3g4yc046n",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 20197,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "6bb00d27-e916-4405-a408-5aca2c8d0fab",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:51.596138+00:00",
+      "elapsed_seconds": 1.855
+    },
+    {
+      "template_id": "cwuwalarektfn7hxoz1w",
+      "target": "cwuwalarektfn7hxoz1w",
+      "tag": "default",
+      "expected_build_id": "7b55c551-27cb-4f42-b9be-e8834486533f",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:51.543892+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "7b55c551-27cb-4f42-b9be-e8834486533f",
+      "sandbox_id": "i584r43ui70p3ppwuc3zt",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 20340,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "7b55c551-27cb-4f42-b9be-e8834486533f",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:53.408579+00:00",
+      "elapsed_seconds": 1.865
+    },
+    {
+      "template_id": "d6lyz95t45mczwmbut0n",
+      "target": "d6lyz95t45mczwmbut0n",
+      "tag": "default",
+      "expected_build_id": "dc86db9c-9cdd-48b0-bb3e-c67ef1b1ae4b",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:51.599909+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "dc86db9c-9cdd-48b0-bb3e-c67ef1b1ae4b",
+      "sandbox_id": "i5rb8cv59cdm28dskqdip",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 20363,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "dc86db9c-9cdd-48b0-bb3e-c67ef1b1ae4b",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:53.348076+00:00",
+      "elapsed_seconds": 1.748
+    },
+    {
+      "template_id": "dodfzx8jrndk8xqdnyuz",
+      "target": "dodfzx8jrndk8xqdnyuz",
+      "tag": "default",
+      "expected_build_id": "8c5db227-c140-42c4-b377-e8dad1277d5e",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:53.353377+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "8c5db227-c140-42c4-b377-e8dad1277d5e",
+      "sandbox_id": "i13qlgoqs2ay0dm3bc8pi",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 20489,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "8c5db227-c140-42c4-b377-e8dad1277d5e",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:55.268780+00:00",
+      "elapsed_seconds": 1.915
+    },
+    {
+      "template_id": "du47c396p3x4dmjylksl",
+      "target": "du47c396p3x4dmjylksl",
+      "tag": "default",
+      "expected_build_id": "68251a03-b3e1-4ec9-8f94-407378cf8ae5",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:53.412531+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "68251a03-b3e1-4ec9-8f94-407378cf8ae5",
+      "sandbox_id": "itkurgei306s686fejld8",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 20511,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "68251a03-b3e1-4ec9-8f94-407378cf8ae5",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:55.327215+00:00",
+      "elapsed_seconds": 1.915
+    },
+    {
+      "template_id": "duxwhd7wtcwtm556vbgo",
+      "target": "duxwhd7wtcwtm556vbgo",
+      "tag": "default",
+      "expected_build_id": "c34bca01-8814-47c3-81f4-9ca7391d26a1",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:55.273791+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "c34bca01-8814-47c3-81f4-9ca7391d26a1",
+      "sandbox_id": "igp95n2hqyiyl0iptvonu",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 20628,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "c34bca01-8814-47c3-81f4-9ca7391d26a1",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:57.113852+00:00",
+      "elapsed_seconds": 1.84
+    },
+    {
+      "template_id": "ehn1tq015b5hh0zv8sc5",
+      "target": "ehn1tq015b5hh0zv8sc5",
+      "tag": "default",
+      "expected_build_id": "48632f8d-ca0f-421f-9275-74cce7985963",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:55.331323+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "48632f8d-ca0f-421f-9275-74cce7985963",
+      "sandbox_id": "ielpws62jk96umd1ezjxe",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 20645,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "48632f8d-ca0f-421f-9275-74cce7985963",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:57.104012+00:00",
+      "elapsed_seconds": 1.773
+    },
+    {
+      "template_id": "evblsi2k906k54s4d6n0",
+      "target": "evblsi2k906k54s4d6n0",
+      "tag": "default",
+      "expected_build_id": "1e4a2d6f-2253-40a1-a6c2-bdcf9cdea159",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:57.108707+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "1e4a2d6f-2253-40a1-a6c2-bdcf9cdea159",
+      "sandbox_id": "iy57abtn3qqw1a7g3wcsm",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 20787,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "1e4a2d6f-2253-40a1-a6c2-bdcf9cdea159",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:59.583101+00:00",
+      "elapsed_seconds": 2.474
+    },
+    {
+      "template_id": "fiofiu6g57mq0idur4ec",
+      "target": "fiofiu6g57mq0idur4ec",
+      "tag": "default",
+      "expected_build_id": "5319874b-4785-4812-9068-3707ed251ab6",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:57.118111+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "5319874b-4785-4812-9068-3707ed251ab6",
+      "sandbox_id": "ikso7rt7iupx0aib35eq1",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 20788,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "5319874b-4785-4812-9068-3707ed251ab6",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:18:59.601199+00:00",
+      "elapsed_seconds": 2.483
+    },
+    {
+      "template_id": "fvd91n408qcltvus87e8",
+      "target": "fvd91n408qcltvus87e8",
+      "tag": "default",
+      "expected_build_id": "c68f7f2d-2470-47ba-902f-052dbd579523",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:59.595864+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "c68f7f2d-2470-47ba-902f-052dbd579523",
+      "sandbox_id": "i74d8588uome6w7hw9t3c",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 20929,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "c68f7f2d-2470-47ba-902f-052dbd579523",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:02.771687+00:00",
+      "elapsed_seconds": 3.176
+    },
+    {
+      "template_id": "g3x86t399qk374dtonrf",
+      "target": "g3x86t399qk374dtonrf",
+      "tag": "default",
+      "expected_build_id": "b30e8dac-f767-4e85-acd1-98a6893ff38a",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:18:59.612553+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "b30e8dac-f767-4e85-acd1-98a6893ff38a",
+      "sandbox_id": "iydnhp2q7o5n4kd197ec5",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 20931,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "b30e8dac-f767-4e85-acd1-98a6893ff38a",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:02.695431+00:00",
+      "elapsed_seconds": 3.083
+    },
+    {
+      "template_id": "han880x3j4c3ggz6grgz",
+      "target": "han880x3j4c3ggz6grgz",
+      "tag": "default",
+      "expected_build_id": "1a6a559a-307d-442f-807f-1b4a0f2395b7",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:02.700925+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "1a6a559a-307d-442f-807f-1b4a0f2395b7",
+      "sandbox_id": "ilcxjcoas7rrb4w4h80xi",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 21089,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "1a6a559a-307d-442f-807f-1b4a0f2395b7",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:04.526206+00:00",
+      "elapsed_seconds": 1.825
+    },
+    {
+      "template_id": "hulgvyp9az7o1w8dj2a3",
+      "target": "hulgvyp9az7o1w8dj2a3",
+      "tag": "default",
+      "expected_build_id": "164e557a-79e9-4eaa-8ded-87c068f691e1",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:02.776970+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "164e557a-79e9-4eaa-8ded-87c068f691e1",
+      "sandbox_id": "iwck3z9myo400kc5j3lb6",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 21108,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "164e557a-79e9-4eaa-8ded-87c068f691e1",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:04.550155+00:00",
+      "elapsed_seconds": 1.773
+    },
+    {
+      "template_id": "hw8ebhnt59f8bplzdsfs",
+      "target": "hw8ebhnt59f8bplzdsfs",
+      "tag": "default",
+      "expected_build_id": "a34b0bc0-306a-430c-a5fa-dc81aafeaaa5",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:04.531617+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "a34b0bc0-306a-430c-a5fa-dc81aafeaaa5",
+      "sandbox_id": "i9t2mn4iuz1plkdkbmxx4",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 21228,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "a34b0bc0-306a-430c-a5fa-dc81aafeaaa5",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:06.454529+00:00",
+      "elapsed_seconds": 1.923
+    },
+    {
+      "template_id": "iq2ulha6lckdgu08ai5h",
+      "target": "iq2ulha6lckdgu08ai5h",
+      "tag": "default",
+      "expected_build_id": "b38726c4-6036-4633-844d-cdb1f0f7df01",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:04.554944+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "b38726c4-6036-4633-844d-cdb1f0f7df01",
+      "sandbox_id": "ih393h9nyhllks5js7fp8",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 21239,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "b38726c4-6036-4633-844d-cdb1f0f7df01",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:06.481803+00:00",
+      "elapsed_seconds": 1.927
+    },
+    {
+      "template_id": "iuiu48dn8kqookl4c1yi",
+      "target": "iuiu48dn8kqookl4c1yi",
+      "tag": "default",
+      "expected_build_id": "5a808ed5-175a-4ecb-aeb9-67947dbf0dad",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:06.461021+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "5a808ed5-175a-4ecb-aeb9-67947dbf0dad",
+      "sandbox_id": "idmlfrf8tr267lljtn8wp",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 21388,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "5a808ed5-175a-4ecb-aeb9-67947dbf0dad",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:08.928845+00:00",
+      "elapsed_seconds": 2.468
+    },
+    {
+      "template_id": "j1di9ponojw21ob851ci",
+      "target": "j1di9ponojw21ob851ci",
+      "tag": "default",
+      "expected_build_id": "56ccb9e3-ceaf-4a46-b602-c3aa0de8f27c",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:06.486745+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "56ccb9e3-ceaf-4a46-b602-c3aa0de8f27c",
+      "sandbox_id": "i1mg30w0qsw9lhdh8f6b3",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 21398,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "56ccb9e3-ceaf-4a46-b602-c3aa0de8f27c",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:09.656592+00:00",
+      "elapsed_seconds": 3.17
+    },
+    {
+      "template_id": "jc7nk57n5vce7cixm29p",
+      "target": "jc7nk57n5vce7cixm29p",
+      "tag": "default",
+      "expected_build_id": "6ccdbc68-1a99-4995-89e5-af2368c574bd",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:08.942981+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "6ccdbc68-1a99-4995-89e5-af2368c574bd",
+      "sandbox_id": "imkpo351h3fbv8l2otaed",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 21494,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "6ccdbc68-1a99-4995-89e5-af2368c574bd",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:12.185247+00:00",
+      "elapsed_seconds": 3.242
+    },
+    {
+      "template_id": "kw3l1uft4j4zvbrmxfj6",
+      "target": "kw3l1uft4j4zvbrmxfj6",
+      "tag": "default",
+      "expected_build_id": "cde9a5de-455b-412c-9ca7-eae548db51b5",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:09.662734+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "cde9a5de-455b-412c-9ca7-eae548db51b5",
+      "sandbox_id": "i5vgzenrfc5iudpkiqb3z",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 21562,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "cde9a5de-455b-412c-9ca7-eae548db51b5",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:12.407520+00:00",
+      "elapsed_seconds": 2.745
+    },
+    {
+      "template_id": "lag188oxgz27r4y1b4yu",
+      "target": "lag188oxgz27r4y1b4yu",
+      "tag": "default",
+      "expected_build_id": "6eee38d9-325d-46c3-a7d4-891378155568",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:12.191355+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "6eee38d9-325d-46c3-a7d4-891378155568",
+      "sandbox_id": "ij7ycoi3nd4dk8td2box6",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 21705,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "6eee38d9-325d-46c3-a7d4-891378155568",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:13.900251+00:00",
+      "elapsed_seconds": 1.709
+    },
+    {
+      "template_id": "n5bqkdf66o7jkwsbuv4e",
+      "target": "n5bqkdf66o7jkwsbuv4e",
+      "tag": "default",
+      "expected_build_id": "b0ef08f7-13a1-43c2-8ee8-e1117375479c",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:12.413503+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "b0ef08f7-13a1-43c2-8ee8-e1117375479c",
+      "sandbox_id": "ildbluu9m81538zutp5ts",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 21722,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "b0ef08f7-13a1-43c2-8ee8-e1117375479c",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:14.032949+00:00",
+      "elapsed_seconds": 1.619
+    },
+    {
+      "template_id": "nphveax8b8vg4hunedvx",
+      "target": "nphveax8b8vg4hunedvx",
+      "tag": "default",
+      "expected_build_id": "face4677-eb9e-491a-a67d-074b9a9c2cc2",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:13.906738+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "face4677-eb9e-491a-a67d-074b9a9c2cc2",
+      "sandbox_id": "ihf35udlveaibipxfjuq7",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 21840,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "face4677-eb9e-491a-a67d-074b9a9c2cc2",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:15.508919+00:00",
+      "elapsed_seconds": 1.602
+    },
+    {
+      "template_id": "o5bz28oge0ezyjlujem0",
+      "target": "o5bz28oge0ezyjlujem0",
+      "tag": "default",
+      "expected_build_id": "d04d3d20-214a-40cc-919d-b38ec12e27a0",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:14.038558+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "d04d3d20-214a-40cc-919d-b38ec12e27a0",
+      "sandbox_id": "i70hunhstnhal7nb7f6ou",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 21859,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "d04d3d20-214a-40cc-919d-b38ec12e27a0",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:15.683709+00:00",
+      "elapsed_seconds": 1.645
+    },
+    {
+      "template_id": "p63vreg1pq3we3iwcuot",
+      "target": "p63vreg1pq3we3iwcuot",
+      "tag": "default",
+      "expected_build_id": "ec7260c5-108a-4766-862a-49efe198b959",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:15.515107+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "ec7260c5-108a-4766-862a-49efe198b959",
+      "sandbox_id": "ivlkdimb5qb3oetnuzwig",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 21974,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "ec7260c5-108a-4766-862a-49efe198b959",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:17.454620+00:00",
+      "elapsed_seconds": 1.94
+    },
+    {
+      "template_id": "pqkc5c3dc5rao8m0ular",
+      "target": "pqkc5c3dc5rao8m0ular",
+      "tag": "default",
+      "expected_build_id": "f62f4636-db29-4618-80eb-50bf08941286",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:15.689562+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "f62f4636-db29-4618-80eb-50bf08941286",
+      "sandbox_id": "i9sc08vqbu71c9spy3nb1",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 21997,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "f62f4636-db29-4618-80eb-50bf08941286",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:17.395278+00:00",
+      "elapsed_seconds": 1.706
+    },
+    {
+      "template_id": "pxsjncb3dcrv50opd8xk",
+      "target": "pxsjncb3dcrv50opd8xk",
+      "tag": "default",
+      "expected_build_id": "ca3a0116-df9e-428a-9efc-9decd22c537d",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:17.410072+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "ca3a0116-df9e-428a-9efc-9decd22c537d",
+      "sandbox_id": "i3nz1u7to7d43f8emvfbn",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 22196,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "ca3a0116-df9e-428a-9efc-9decd22c537d",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:20.454145+00:00",
+      "elapsed_seconds": 3.044
+    },
+    {
+      "template_id": "q226yf8cktx8ni3t8eqc",
+      "target": "q226yf8cktx8ni3t8eqc",
+      "tag": "default",
+      "expected_build_id": "643cb0c7-29d1-4a52-9dc8-fbf91ff6c0f3",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:17.468016+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "643cb0c7-29d1-4a52-9dc8-fbf91ff6c0f3",
+      "sandbox_id": "iuft0sy0mpqhrni02wj8q",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 22195,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "643cb0c7-29d1-4a52-9dc8-fbf91ff6c0f3",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:21.376345+00:00",
+      "elapsed_seconds": 3.908
+    },
+    {
+      "template_id": "qr60p2qfi938u58asbf3",
+      "target": "qr60p2qfi938u58asbf3",
+      "tag": "default",
+      "expected_build_id": "49cc3b9a-cc1d-4cf7-9d91-34692ec3fe2b",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:20.468615+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "49cc3b9a-cc1d-4cf7-9d91-34692ec3fe2b",
+      "sandbox_id": "ik03q94bwtmdxi3k2wzf1",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 22281,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "49cc3b9a-cc1d-4cf7-9d91-34692ec3fe2b",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:23.622727+00:00",
+      "elapsed_seconds": 3.154
+    },
+    {
+      "template_id": "r14eswa0sj0ip9e8ou7h",
+      "target": "r14eswa0sj0ip9e8ou7h",
+      "tag": "default",
+      "expected_build_id": "905e7520-9fe2-4205-8786-c5eb449f2c89",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:21.392015+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "905e7520-9fe2-4205-8786-c5eb449f2c89",
+      "sandbox_id": "ict42zlwevtjqulfzvdt1",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 22377,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "905e7520-9fe2-4205-8786-c5eb449f2c89",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:23.840747+00:00",
+      "elapsed_seconds": 2.449
+    },
+    {
+      "template_id": "rcboz3qsyfzxncr6eetf",
+      "target": "rcboz3qsyfzxncr6eetf",
+      "tag": "default",
+      "expected_build_id": "f7c4bfc3-e96c-4640-8c77-bceaa32cbc57",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:23.629201+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "f7c4bfc3-e96c-4640-8c77-bceaa32cbc57",
+      "sandbox_id": "iom2d5uk6myghavn0oqi6",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 22504,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "f7c4bfc3-e96c-4640-8c77-bceaa32cbc57",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:25.375867+00:00",
+      "elapsed_seconds": 1.747
+    },
+    {
+      "template_id": "rugrapo8c9x7n739yd5u",
+      "target": "rugrapo8c9x7n739yd5u",
+      "tag": "default",
+      "expected_build_id": "3577a169-7055-409c-8a09-aa1214866167",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:23.847205+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "3577a169-7055-409c-8a09-aa1214866167",
+      "sandbox_id": "isa0s182weevxcbboa4hf",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 22532,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "3577a169-7055-409c-8a09-aa1214866167",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:25.506196+00:00",
+      "elapsed_seconds": 1.659
+    },
+    {
+      "template_id": "sfvpljhvsri2zw59rakm",
+      "target": "sfvpljhvsri2zw59rakm",
+      "tag": "default",
+      "expected_build_id": "7f9590af-7509-4d1c-a275-ec76b98f2e4d",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:25.382719+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "7f9590af-7509-4d1c-a275-ec76b98f2e4d",
+      "sandbox_id": "ilrf35452d4u07jgqalkg",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 22689,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "7f9590af-7509-4d1c-a275-ec76b98f2e4d",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:27.311402+00:00",
+      "elapsed_seconds": 1.929
+    },
+    {
+      "template_id": "sjqjsj4nvnoenxv5b7k7",
+      "target": "sjqjsj4nvnoenxv5b7k7",
+      "tag": "default",
+      "expected_build_id": "6feda505-cf81-4623-bf6e-0a68ca09fe0d",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:25.512644+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "6feda505-cf81-4623-bf6e-0a68ca09fe0d",
+      "sandbox_id": "iywkark45reo6mlb39yi5",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 22710,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "6feda505-cf81-4623-bf6e-0a68ca09fe0d",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:27.284751+00:00",
+      "elapsed_seconds": 1.772
+    },
+    {
+      "template_id": "st8z2uuiykq4a1ocwwdv",
+      "target": "st8z2uuiykq4a1ocwwdv",
+      "tag": "default",
+      "expected_build_id": "e80aa362-405f-4b28-86c9-638a7d20399a",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:27.291635+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "e80aa362-405f-4b28-86c9-638a7d20399a",
+      "sandbox_id": "iha5ur7cf88t5pfse1qlh",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 22850,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "e80aa362-405f-4b28-86c9-638a7d20399a",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:29.828607+00:00",
+      "elapsed_seconds": 2.537
+    },
+    {
+      "template_id": "tu466r82ovwe8ux65tf2",
+      "target": "tu466r82ovwe8ux65tf2",
+      "tag": "default",
+      "expected_build_id": "281cb35d-d341-4a32-92a4-b5a561b5dd42",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:27.317657+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "281cb35d-d341-4a32-92a4-b5a561b5dd42",
+      "sandbox_id": "il10n5guxwh6atg1eaims",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 22861,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "281cb35d-d341-4a32-92a4-b5a561b5dd42",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:29.647458+00:00",
+      "elapsed_seconds": 2.33
+    },
+    {
+      "template_id": "u75f6v2o4gr088i5kgty",
+      "target": "u75f6v2o4gr088i5kgty",
+      "tag": "default",
+      "expected_build_id": "298dce01-d70f-4bdd-abdb-585cd2635b4c",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:29.661904+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "298dce01-d70f-4bdd-abdb-585cd2635b4c",
+      "sandbox_id": "ihhvxiuqo26mfjdiolaqq",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 22992,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "298dce01-d70f-4bdd-abdb-585cd2635b4c",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:32.871389+00:00",
+      "elapsed_seconds": 3.21
+    },
+    {
+      "template_id": "ujptioynetftnid0a52v",
+      "target": "ujptioynetftnid0a52v",
+      "tag": "default",
+      "expected_build_id": "99997d94-dfa6-4471-b7c2-7547c9a2e089",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:29.843358+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "99997d94-dfa6-4471-b7c2-7547c9a2e089",
+      "sandbox_id": "iv4bym9nycjhiq5nw7b51",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 23006,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "99997d94-dfa6-4471-b7c2-7547c9a2e089",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:32.953008+00:00",
+      "elapsed_seconds": 3.11
+    },
+    {
+      "template_id": "uw3cebibv1tjh9d7m7po",
+      "target": "uw3cebibv1tjh9d7m7po",
+      "tag": "default",
+      "expected_build_id": "fd3689be-dc6b-47a2-bbc9-a077efabde70",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:32.880031+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "fd3689be-dc6b-47a2-bbc9-a077efabde70",
+      "sandbox_id": "iq1ok36fcxztavhnm3a3n",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 23152,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "fd3689be-dc6b-47a2-bbc9-a077efabde70",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:34.660193+00:00",
+      "elapsed_seconds": 1.78
+    },
+    {
+      "template_id": "v14t4o9pp5mn25pqgjuz",
+      "target": "v14t4o9pp5mn25pqgjuz",
+      "tag": "default",
+      "expected_build_id": "9d54da4d-37ef-4052-bb42-bad14e5f9690",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:32.959926+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "9d54da4d-37ef-4052-bb42-bad14e5f9690",
+      "sandbox_id": "i8keg1xsxt6z8vu79lmdu",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 23173,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "9d54da4d-37ef-4052-bb42-bad14e5f9690",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:34.762569+00:00",
+      "elapsed_seconds": 1.803
+    },
+    {
+      "template_id": "vdkqqf81psww6y6vjxfv",
+      "target": "vdkqqf81psww6y6vjxfv",
+      "tag": "default",
+      "expected_build_id": "44119435-7776-41c1-b84b-6847d2f1a541",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:34.668267+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "44119435-7776-41c1-b84b-6847d2f1a541",
+      "sandbox_id": "ihghct2fb74obhvb745dd",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 23294,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "44119435-7776-41c1-b84b-6847d2f1a541",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:36.592408+00:00",
+      "elapsed_seconds": 1.924
+    },
+    {
+      "template_id": "veficczftgsnfej704fm",
+      "target": "veficczftgsnfej704fm",
+      "tag": "default",
+      "expected_build_id": "72108938-e174-43a8-be97-12ab0f2e09f9",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:34.769682+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "72108938-e174-43a8-be97-12ab0f2e09f9",
+      "sandbox_id": "icka9ooasvdwp2h94rsfb",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 23314,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "72108938-e174-43a8-be97-12ab0f2e09f9",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:36.615713+00:00",
+      "elapsed_seconds": 1.846
+    },
+    {
+      "template_id": "w32g17urllxezll375sv",
+      "target": "w32g17urllxezll375sv",
+      "tag": "default",
+      "expected_build_id": "5558c893-6a0f-4152-b716-b5af8a1735e7",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:36.600642+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "5558c893-6a0f-4152-b716-b5af8a1735e7",
+      "sandbox_id": "ifqk520aiyxnch720yegy",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 23461,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "5558c893-6a0f-4152-b716-b5af8a1735e7",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:38.730990+00:00",
+      "elapsed_seconds": 2.13
+    },
+    {
+      "template_id": "w92efpn5ujizajjnfk7l",
+      "target": "w92efpn5ujizajjnfk7l",
+      "tag": "default",
+      "expected_build_id": "6707d01f-2ed6-4829-9579-772cec3dcfe5",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:36.618759+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "6707d01f-2ed6-4829-9579-772cec3dcfe5",
+      "sandbox_id": "ip1v54jwqy8vzvhv0hvmo",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 23472,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "6707d01f-2ed6-4829-9579-772cec3dcfe5",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:39.247192+00:00",
+      "elapsed_seconds": 2.628
+    },
+    {
+      "template_id": "w98s1f4mlsfr9bn6nke1",
+      "target": "w98s1f4mlsfr9bn6nke1",
+      "tag": "default",
+      "expected_build_id": "76683f7e-7784-48fe-8ed4-503e63600dac",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:38.746953+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "76683f7e-7784-48fe-8ed4-503e63600dac",
+      "sandbox_id": "ibz0pwm9m7dme77rkq3uh",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 23554,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "76683f7e-7784-48fe-8ed4-503e63600dac",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:42.242125+00:00",
+      "elapsed_seconds": 3.495
+    },
+    {
+      "template_id": "w9pmp96sqvlg79ikogy7",
+      "target": "w9pmp96sqvlg79ikogy7",
+      "tag": "default",
+      "expected_build_id": "36532a5f-adb2-4f5c-91ec-a3fd917ef3a7",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:39.268394+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "36532a5f-adb2-4f5c-91ec-a3fd917ef3a7",
+      "sandbox_id": "i1p2yzrfsbm1wfeaalqq4",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 23623,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "36532a5f-adb2-4f5c-91ec-a3fd917ef3a7",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:42.278345+00:00",
+      "elapsed_seconds": 3.01
+    },
+    {
+      "template_id": "wrhh4c77nm0sxpcysqsj",
+      "target": "wrhh4c77nm0sxpcysqsj",
+      "tag": "default",
+      "expected_build_id": "c3b316fa-980a-44f3-8109-d53afa571807",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:42.251538+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "c3b316fa-980a-44f3-8109-d53afa571807",
+      "sandbox_id": "icwea2mlxqg5ksnogitsi",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 23767,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "c3b316fa-980a-44f3-8109-d53afa571807",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:44.128022+00:00",
+      "elapsed_seconds": 1.877
+    },
+    {
+      "template_id": "wsx5j39mwkzcd9641fd3",
+      "target": "wsx5j39mwkzcd9641fd3",
+      "tag": "default",
+      "expected_build_id": "f11099f2-fec9-4c98-bea5-c9a9772effa6",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:42.286161+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "f11099f2-fec9-4c98-bea5-c9a9772effa6",
+      "sandbox_id": "ie5hys4bosvsn8remj0s0",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 23778,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "f11099f2-fec9-4c98-bea5-c9a9772effa6",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:44.192528+00:00",
+      "elapsed_seconds": 1.906
+    },
+    {
+      "template_id": "x1dk193zmtkfxvsxqxo4",
+      "target": "x1dk193zmtkfxvsxqxo4",
+      "tag": "default",
+      "expected_build_id": "59d16ce4-37ea-41a4-92d2-fcce67a0315d",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:44.136923+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "59d16ce4-37ea-41a4-92d2-fcce67a0315d",
+      "sandbox_id": "itcrnumkkjasgwl6x9qc1",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 23909,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "59d16ce4-37ea-41a4-92d2-fcce67a0315d",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:45.901204+00:00",
+      "elapsed_seconds": 1.764
+    },
+    {
+      "template_id": "xt4a41iscznam7jo20u6",
+      "target": "xt4a41iscznam7jo20u6",
+      "tag": "default",
+      "expected_build_id": "e09612d5-f858-49ff-8047-7319229a2575",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:44.200641+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "e09612d5-f858-49ff-8047-7319229a2575",
+      "sandbox_id": "ikthwz9vu2czkhxyt8hgy",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 23933,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "e09612d5-f858-49ff-8047-7319229a2575",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:45.947752+00:00",
+      "elapsed_seconds": 1.747
+    },
+    {
+      "template_id": "xuce0ruh99a7wf269ehp",
+      "target": "xuce0ruh99a7wf269ehp",
+      "tag": "default",
+      "expected_build_id": "7c582537-3eff-4d02-abc2-f1f843762fa9",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:45.909863+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "7c582537-3eff-4d02-abc2-f1f843762fa9",
+      "sandbox_id": "i79gi4z5cx66o1r03dxuj",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 24068,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "7c582537-3eff-4d02-abc2-f1f843762fa9",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:48.410072+00:00",
+      "elapsed_seconds": 2.5
+    },
+    {
+      "template_id": "y33c3vsp2a2edi4wnnfp",
+      "target": "y33c3vsp2a2edi4wnnfp",
+      "tag": "default",
+      "expected_build_id": "7eeed988-7f51-4461-a5a8-0db4bd2093ac",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:45.951410+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "7eeed988-7f51-4461-a5a8-0db4bd2093ac",
+      "sandbox_id": "iy465s55xjccyl14zu411",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 24084,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "7eeed988-7f51-4461-a5a8-0db4bd2093ac",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:48.239151+00:00",
+      "elapsed_seconds": 2.288
+    },
+    {
+      "template_id": "yjbjl88kb1ncxwrhs78z",
+      "target": "yjbjl88kb1ncxwrhs78z",
+      "tag": "default",
+      "expected_build_id": "dc6d4150-80e2-4ae9-9d22-d7de81ec63a0",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:48.251815+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "dc6d4150-80e2-4ae9-9d22-d7de81ec63a0",
+      "sandbox_id": "ik4lrp8hc4xcyw2jw2ij3",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 24211,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "dc6d4150-80e2-4ae9-9d22-d7de81ec63a0",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:51.241696+00:00",
+      "elapsed_seconds": 2.99
+    },
+    {
+      "template_id": "yr0jyrh2n1kscihtf7bd",
+      "target": "yr0jyrh2n1kscihtf7bd",
+      "tag": "default",
+      "expected_build_id": "084c579a-9a62-4dfe-bf77-c2ec64c4f5bc",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:48.425771+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "084c579a-9a62-4dfe-bf77-c2ec64c4f5bc",
+      "sandbox_id": "ioiqqgaisjp3iakc61g8a",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 24231,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "084c579a-9a62-4dfe-bf77-c2ec64c4f5bc",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:51.191435+00:00",
+      "elapsed_seconds": 2.766
+    },
+    {
+      "template_id": "yvvd3lec6se13dburz75",
+      "target": "yvvd3lec6se13dburz75",
+      "tag": "default",
+      "expected_build_id": "2a39b945-74ef-4796-ac52-6774c76a6394",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:51.200523+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "2a39b945-74ef-4796-ac52-6774c76a6394",
+      "sandbox_id": "i7t3whwtm3w7qeg30k3m5",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 24377,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "2a39b945-74ef-4796-ac52-6774c76a6394",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:53.161419+00:00",
+      "elapsed_seconds": 1.961
+    },
+    {
+      "template_id": "yyachowfk1a889vrbkg2",
+      "target": "yyachowfk1a889vrbkg2",
+      "tag": "default",
+      "expected_build_id": "db2ff941-d203-4874-b7c4-4a441010f6f9",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:51.245389+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "db2ff941-d203-4874-b7c4-4a441010f6f9",
+      "sandbox_id": "i0wxltt1oy7rmndriz21v",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 24392,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "db2ff941-d203-4874-b7c4-4a441010f6f9",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:53.174865+00:00",
+      "elapsed_seconds": 1.929
+    },
+    {
+      "template_id": "z5tqrzuh56yh2hkvkp61",
+      "target": "z5tqrzuh56yh2hkvkp61",
+      "tag": "default",
+      "expected_build_id": "11dc8729-ec77-4fc7-a1e3-6340f0bd53a4",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:53.170939+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "11dc8729-ec77-4fc7-a1e3-6340f0bd53a4",
+      "sandbox_id": "ivhrngoe1x9xk98acy9ip",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 24518,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "11dc8729-ec77-4fc7-a1e3-6340f0bd53a4",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:55.079518+00:00",
+      "elapsed_seconds": 1.909
+    },
+    {
+      "template_id": "zm020f5bno9rc6n9qidq",
+      "target": "zm020f5bno9rc6n9qidq",
+      "tag": "default",
+      "expected_build_id": "2870e961-e2db-48c7-af87-df8effe09425",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:53.178315+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "2870e961-e2db-48c7-af87-df8effe09425",
+      "sandbox_id": "ixjpg8ignkhc9lfqx6zl9",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 24520,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "2870e961-e2db-48c7-af87-df8effe09425",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:55.109328+00:00",
+      "elapsed_seconds": 1.931
+    },
+    {
+      "template_id": "zz7mvkdbqumwwm6mh6tk",
+      "target": "zz7mvkdbqumwwm6mh6tk",
+      "tag": "default",
+      "expected_build_id": "487ab8a5-2fcd-441f-8681-93307a61cc79",
+      "cpu_count": 4,
+      "memory_mb": 8192,
+      "status": "passed",
+      "started_at": "2026-09-20T05:19:55.088957+00:00",
+      "cleanup_ok": true,
+      "tag_build_before": "487ab8a5-2fcd-441f-8681-93307a61cc79",
+      "sandbox_id": "illuileqw9swo45pexbjl",
+      "resources": {
+        "cpu_count": 4,
+        "memory_mb": 8192
+      },
+      "file_roundtrip_ok": true,
+      "pages": {
+        "pid": 24664,
+        "exit_code": 0,
+        "four_kib_verified": true,
+        "huge_pages": "None",
+        "machine_vcpu_count": 4,
+        "machine_memory_mb": 8192,
+        "page_sizes": [
+          4096
+        ],
+        "kernel_page_sizes": [
+          "4 kB"
+        ],
+        "mmu_page_sizes": [
+          "4 kB"
+        ],
+        "hugepage_kib": 0,
+        "problems": []
+      },
+      "tag_build_after": "487ab8a5-2fcd-441f-8681-93307a61cc79",
+      "tag_binding_verified": true,
+      "cleanup_deleted": true,
+      "finished_at": "2026-09-20T05:19:57.072641+00:00",
+      "elapsed_seconds": 1.984
+    }
+  ],
+  "cleanup_failed_sandbox_ids": [],
+  "passed": 91,
+  "failed": 0,
+  "skipped": 0,
+  "finished_at": "2026-09-20T05:19:57.098939+00:00"
+}

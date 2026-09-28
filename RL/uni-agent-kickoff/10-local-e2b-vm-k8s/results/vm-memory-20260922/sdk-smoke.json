@@ -1,0 +1,55 @@
+{
+  "run_id": "vm2253g-start512-smoke-7cddd55833ff",
+  "started_utc": "2026-09-22T15:24:25.206656+00:00",
+  "requested": 4,
+  "template": "base",
+  "scope": "4 concurrent SDK creates after VM resize; no full-memory or 512-instance load claim",
+  "ended_utc": "2026-09-22T15:24:27.034400+00:00",
+  "peak_inflight_sdk_creates": 4,
+  "records": [
+    {
+      "slot": 0,
+      "sandbox_id": "iwwanh15gldjfl3j2727h",
+      "create_seconds": 1.264036134001799,
+      "status": "passed"
+    },
+    {
+      "slot": 1,
+      "sandbox_id": "i9j1825523h4x9e5ydz4x",
+      "create_seconds": 1.2049146860372275,
+      "status": "passed"
+    },
+    {
+      "slot": 2,
+      "sandbox_id": "if75wlznpaxidpvkfmkx9",
+      "create_seconds": 1.2636189348995686,
+      "status": "passed"
+    },
+    {
+      "slot": 3,
+      "sandbox_id": "iv3ercfcey3521z1v8ypr",
+      "create_seconds": 1.284053168958053,
+      "status": "passed"
+    }
+  ],
+  "cleanup": [
+    {
+      "sandbox_id": "iv3ercfcey3521z1v8ypr",
+      "status": "deleted"
+    },
+    {
+      "sandbox_id": "iwwanh15gldjfl3j2727h",
+      "status": "deleted"
+    },
+    {
+      "sandbox_id": "if75wlznpaxidpvkfmkx9",
+      "status": "deleted"
+    },
+    {
+      "sandbox_id": "i9j1825523h4x9e5ydz4x",
+      "status": "deleted"
+    }
+  ],
+  "remaining": [],
+  "passed": true
+}

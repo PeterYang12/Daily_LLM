@@ -1,0 +1,116 @@
+{
+  "generated_utc": "2026-09-20T15:03:09.277394+00:00",
+  "revision": "data_driven_en",
+  "files": [
+    {
+      "name": "Benchmark_Findings_EN.md",
+      "bytes": 5422,
+      "sha256": "e8610ebefeaba7a042aa45d22dff28026ed671924c9981719a2fc7fc56562c08"
+    },
+    {
+      "name": "Benchmark_Findings_EN.pdf",
+      "bytes": 52316,
+      "sha256": "a8973e2e5ae507af3ae6a68adeac4382bf4857d5d423e812136f177d0f98c14a"
+    },
+    {
+      "name": "CPU_Sandbox_Benchmark_Data_EN.pdf",
+      "bytes": 121105,
+      "sha256": "b26897caeba3cab0fa03c01b4fa13001f7ce761938e9adac868c58bbde310c69"
+    },
+    {
+      "name": "CPU_Sandbox_Benchmark_Data_EN.pptx",
+      "bytes": 87189,
+      "sha256": "ba45213b5d7020370edf812507bf2d0782f78e396d347c70273618bf7d4e0bad"
+    },
+    {
+      "name": "README.md",
+      "bytes": 3603,
+      "sha256": "8ca60ca1eb946fcc3a04b4c931839b475d92bbe28e586cb98a6afe28a7d722f3"
+    },
+    {
+      "name": "chart_data.json",
+      "bytes": 23588,
+      "sha256": "661eb19e67394a4509ca3a44c75ba40917f575d7a64f6e9f34f72c965cfe877b"
+    },
+    {
+      "name": "finalize.py",
+      "bytes": 3628,
+      "sha256": "07614df4e51e16bc8f9c0fc85199ef2ccddbb6eba5923de3851a04ec45fa1603"
+    },
+    {
+      "name": "generate_deck.py",
+      "bytes": 31425,
+      "sha256": "b0756a1ad96124e67b16f303e639e645cf40507c3754c0e5679427e5db0d723b"
+    },
+    {
+      "name": "layout-check.json",
+      "bytes": 28872,
+      "sha256": "f4f302b84e9d2b71722786c398561b224a66f36cd69c0e86dfcbe4374499862c"
+    },
+    {
+      "name": "overview.png",
+      "bytes": 758461,
+      "sha256": "e02f1750734454c070f04f70f8ef3149d3a510646afd3c00877c9401d7da63b9"
+    },
+    {
+      "name": "render_report.py",
+      "bytes": 8083,
+      "sha256": "b74856598891507841acfe5b0641abde4b0ea9af71b0abd1fb16360cf23f1a83"
+    },
+    {
+      "name": "report-1.png",
+      "bytes": 158504,
+      "sha256": "74a28c820a19f947e96386a78fce221fb5bc4e154ba2c78a2a2676eee868f288"
+    },
+    {
+      "name": "report-2.png",
+      "bytes": 142414,
+      "sha256": "0f527a7fbcabbbd43c241f562a30314d803f8e3614580405cadcea31f39851f2"
+    },
+    {
+      "name": "slide-1.png",
+      "bytes": 112475,
+      "sha256": "e06e4a88b16a1570c9adc48ab181c938cbb487cb9263c52551f38201dbfc08ad"
+    },
+    {
+      "name": "slide-2.png",
+      "bytes": 98378,
+      "sha256": "1a946e2c1ea551c4fcab79079d0fe6846348b257abea4348e993070e2743c49a"
+    },
+    {
+      "name": "slide-3.png",
+      "bytes": 114070,
+      "sha256": "aea49250b172998eb04f56a262ff5b721d37e15482ab3dc7673aeef15b3188e2"
+    },
+    {
+      "name": "slide-4.png",
+      "bytes": 129869,
+      "sha256": "f690f082fb173f5b8d93ee6e500fa84732c2c737a7c7a298192ae78931177789"
+    },
+    {
+      "name": "slide-5.png",
+      "bytes": 146846,
+      "sha256": "53f549bf9953a0b97227644083cc839eccf17c0678dab7d8d2f3d15d19b33b1d"
+    },
+    {
+      "name": "slide-6.png",
+      "bytes": 133420,
+      "sha256": "92e48309872e12e5cd55675325b88d89552940ddb08ef4c4efb477dd478015c8"
+    },
+    {
+      "name": "slides_text.txt",
+      "bytes": 5037,
+      "sha256": "68a7e607df6d1306fe3762752875ddb7014d611241676b3217736393b4e2bf33"
+    },
+    {
+      "name": "sources.json",
+      "bytes": 3014,
+      "sha256": "44f59ff50b543f0007fbdec0928848c06c6d906e80e030dc1e198d0b5fd0d6c0"
+    },
+    {
+      "name": "validation.json",
+      "bytes": 561,
+      "sha256": "78c1c9078565d945225cd9315bb69bdaf5dae242970cb64308c8b56386a58834"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "status": "descriptive_comparison_complete",
+  "recorded_utc": "2026-09-20T10:51:20.002423+00:00",
+  "offline_contract_tests_passed": 5,
+  "wrapper_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase0-environment/overhead_probe.py",
+  "wrapper_sha256": "80ee1772cbf2954321fdcd4c1445b92287553f10e5dd079d02ff4de8cecaecb3",
+  "runner_sha256_at_review": "0eafff00e0fc46902832061b8c5a50f8d052b71f6d1b1e641091c75f73c95075",
+  "instrumentation": "buffered-events",
+  "baseline_instrumentation": "minimal",
+  "target_scenario": "exec_true",
+  "target_concurrency": 32,
+  "target_residents": 32,
+  "planned_repeats_per_mode": 3,
+  "buffered_record_types": [
+    "operation"
+  ],
+  "flush_boundary": "after measurement/post-validation/cleanup, immediately before final run record",
+  "unchanged": [
+    "per-operation timestamps",
+    "SDK/HTTP calls",
+    "guards",
+    "in-memory rows",
+    "external resource sampling"
+  ],
+  "scope": "recording overhead comparison, not complete no-instrumentation control",
+  "updated_utc": "2026-09-20T13:03:14.782348+00:00",
+  "live_comparison_available": true,
+  "results": "recording-comparison.json",
+  "full_sampling_ab": false
+}

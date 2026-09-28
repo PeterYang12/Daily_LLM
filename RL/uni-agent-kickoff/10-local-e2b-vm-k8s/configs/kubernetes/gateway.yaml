@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: e2b-gateway
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels: { app: e2b-gateway }
+  template:
+    metadata:
+      labels: { app: e2b-gateway }
+    spec:
+      nodeSelector:
+        e2b.dev/single-node: "true"
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      automountServiceAccountToken: false
+      containers:
+        - name: nginx
+          image: nginx:1.28-alpine
+          ports:
+            - { name: http, containerPort: 8088 }
+          resources:
+            requests: { cpu: 500m, memory: 256Mi }
+            limits: { cpu: "8", memory: 2Gi }
+          volumeMounts:
+            - { name: configuration, mountPath: /etc/nginx/nginx.conf, subPath: nginx.conf, readOnly: true }
+          readinessProbe:
+            httpGet: { path: /health, port: 8088 }
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket: { port: 8088 }
+            initialDelaySeconds: 30
+            periodSeconds: 20
+      volumes:
+        - name: configuration
+          configMap:
+            name: e2b-gateway-config

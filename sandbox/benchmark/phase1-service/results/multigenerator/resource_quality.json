@@ -1,0 +1,74 @@
+[
+  {
+    "dataset_id": "multigen-service-r1",
+    "code": "cross_machine_clock_alignment_unresolved",
+    "receipt_minus_guest_utc_median_s": 1.191880464553833,
+    "message": "Do not treat receipt-minus-guest time as pure clock offset or network latency. VM interval/window attribution is approximate; host generator PIDs share the host time domain."
+  },
+  {
+    "dataset_id": "multigen-service-r2",
+    "code": "cross_machine_clock_alignment_unresolved",
+    "receipt_minus_guest_utc_median_s": 1.1989765167236328,
+    "message": "Do not treat receipt-minus-guest time as pure clock offset or network latency. VM interval/window attribution is approximate; host generator PIDs share the host time domain."
+  },
+  {
+    "dataset_id": "multigen-service-r3",
+    "code": "cross_machine_clock_alignment_unresolved",
+    "receipt_minus_guest_utc_median_s": 1.2074189186096191,
+    "message": "Do not treat receipt-minus-guest time as pure clock offset or network latency. VM interval/window attribution is approximate; host generator PIDs share the host time domain."
+  },
+  {
+    "dataset_id": "multigen-sdk-r1",
+    "code": "cross_machine_clock_alignment_unresolved",
+    "receipt_minus_guest_utc_median_s": 1.2128350734710693,
+    "message": "Do not treat receipt-minus-guest time as pure clock offset or network latency. VM interval/window attribution is approximate; host generator PIDs share the host time domain."
+  },
+  {
+    "dataset_id": "multigen-sdk-r2",
+    "code": "cross_machine_clock_alignment_unresolved",
+    "receipt_minus_guest_utc_median_s": 1.1978874206542969,
+    "message": "Do not treat receipt-minus-guest time as pure clock offset or network latency. VM interval/window attribution is approximate; host generator PIDs share the host time domain."
+  },
+  {
+    "dataset_id": "multigen-sdk-r3",
+    "code": "cross_machine_clock_alignment_unresolved",
+    "receipt_minus_guest_utc_median_s": 1.2013294696807861,
+    "message": "Do not treat receipt-minus-guest time as pure clock offset or network latency. VM interval/window attribution is approximate; host generator PIDs share the host time domain."
+  },
+  {
+    "dataset_id": "single-service-r1",
+    "code": "cross_machine_clock_alignment_unresolved",
+    "receipt_minus_guest_utc_median_s": 1.1900651454925537,
+    "message": "Do not treat receipt-minus-guest time as pure clock offset or network latency. VM interval/window attribution is approximate; host generator PIDs share the host time domain."
+  },
+  {
+    "dataset_id": "single-service-r2",
+    "code": "cross_machine_clock_alignment_unresolved",
+    "receipt_minus_guest_utc_median_s": 1.1949549913406372,
+    "message": "Do not treat receipt-minus-guest time as pure clock offset or network latency. VM interval/window attribution is approximate; host generator PIDs share the host time domain."
+  },
+  {
+    "dataset_id": "single-service-r3",
+    "code": "cross_machine_clock_alignment_unresolved",
+    "receipt_minus_guest_utc_median_s": 1.1937766075134277,
+    "message": "Do not treat receipt-minus-guest time as pure clock offset or network latency. VM interval/window attribution is approximate; host generator PIDs share the host time domain."
+  },
+  {
+    "dataset_id": "single-sdk-r1",
+    "code": "cross_machine_clock_alignment_unresolved",
+    "receipt_minus_guest_utc_median_s": 1.1948390007019043,
+    "message": "Do not treat receipt-minus-guest time as pure clock offset or network latency. VM interval/window attribution is approximate; host generator PIDs share the host time domain."
+  },
+  {
+    "dataset_id": "single-sdk-r2",
+    "code": "cross_machine_clock_alignment_unresolved",
+    "receipt_minus_guest_utc_median_s": 1.202823519706726,
+    "message": "Do not treat receipt-minus-guest time as pure clock offset or network latency. VM interval/window attribution is approximate; host generator PIDs share the host time domain."
+  },
+  {
+    "dataset_id": "single-sdk-r3",
+    "code": "cross_machine_clock_alignment_unresolved",
+    "receipt_minus_guest_utc_median_s": 1.1944019794464111,
+    "message": "Do not treat receipt-minus-guest time as pure clock offset or network latency. VM interval/window attribution is approximate; host generator PIDs share the host time domain."
+  }
+]

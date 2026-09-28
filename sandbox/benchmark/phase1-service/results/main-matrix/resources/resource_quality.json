@@ -1,0 +1,23 @@
+[
+  {
+    "code": "run_window_excluded",
+    "run_id": "4d06b8cef8014b10bdeaac71d18e9e0a",
+    "reason": "failed_before_any_measurement_operation",
+    "stop_reason": "SandboxException",
+    "message": "Failed/unstarted measurement excluded from per-run resource aggregates; capture remains available as setup diagnostic evidence"
+  },
+  {
+    "code": "run_window_excluded",
+    "run_id": "21eb50b68d0140709301fe988c5d18a5",
+    "reason": "failed_before_any_measurement_operation",
+    "stop_reason": "SandboxException",
+    "message": "Failed/unstarted measurement excluded from per-run resource aggregates; capture remains available as setup diagnostic evidence"
+  },
+  {
+    "code": "run_window_excluded",
+    "run_id": "077071962a184787bea0869efeaae70c",
+    "reason": "failed_before_any_measurement_operation",
+    "stop_reason": "SandboxException",
+    "message": "Failed/unstarted measurement excluded from per-run resource aggregates; capture remains available as setup diagnostic evidence"
+  }
+]

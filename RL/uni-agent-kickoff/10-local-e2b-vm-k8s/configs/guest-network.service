@@ -1,0 +1,13 @@
+[Unit]
+Description=E2B sandbox DNS forwarding within its dedicated VM
+After=network-online.target
+Wants=network-online.target
+Before=k3s.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /opt/e2b-local/code/guest-network.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

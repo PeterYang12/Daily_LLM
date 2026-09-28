@@ -1,0 +1,303 @@
+{
+  "schema_version": 1,
+  "stage_summary": [
+    {
+      "family": "lifecycle",
+      "adapter": "service",
+      "operation": "pause",
+      "n": 60,
+      "mean_ms": 208.19418558094185,
+      "p50_ms": 139.74599150242284,
+      "p95_ms": 270.1337115344354,
+      "p99_ms": 1585.1841884158725,
+      "min_ms": 114.78834302397445,
+      "max_ms": 2596.476036007516,
+      "failures": 0,
+      "state_checks_true": 60,
+      "repeat_count": 3
+    },
+    {
+      "family": "lifecycle",
+      "adapter": "service",
+      "operation": "resume_connect",
+      "n": 60,
+      "mean_ms": 531.2477316833489,
+      "p50_ms": 532.1149085066281,
+      "p95_ms": 652.7465425548144,
+      "p99_ms": 704.6804920345307,
+      "min_ms": 405.1834660349414,
+      "max_ms": 774.0547240246087,
+      "failures": 0,
+      "state_checks_true": 60,
+      "repeat_count": 3
+    },
+    {
+      "family": "lifecycle",
+      "adapter": "service",
+      "operation": "ready_state_probe",
+      "n": 60,
+      "mean_ms": 1154.8584479867714,
+      "p50_ms": 1147.573876514798,
+      "p95_ms": 1289.3511164642405,
+      "p99_ms": 1335.5103354738094,
+      "min_ms": 1000.1151409815066,
+      "max_ms": 1351.9402589881793,
+      "failures": 0,
+      "state_checks_true": 60,
+      "repeat_count": 3
+    },
+    {
+      "family": "lifecycle",
+      "adapter": "sdk",
+      "operation": "pause",
+      "n": 60,
+      "mean_ms": 174.13683213526383,
+      "p50_ms": 137.0060469780583,
+      "p95_ms": 289.8567549476865,
+      "p99_ms": 781.6755277814797,
+      "min_ms": 114.78363402420655,
+      "max_ms": 1002.907330985181,
+      "failures": 0,
+      "state_checks_true": 60,
+      "repeat_count": 3
+    },
+    {
+      "family": "lifecycle",
+      "adapter": "sdk",
+      "operation": "resume_connect",
+      "n": 60,
+      "mean_ms": 522.2214178997092,
+      "p50_ms": 518.1172640295699,
+      "p95_ms": 676.7092624038924,
+      "p99_ms": 708.713979794993,
+      "min_ms": 397.84199598943815,
+      "max_ms": 722.5493370206095,
+      "failures": 0,
+      "state_checks_true": 60,
+      "repeat_count": 3
+    },
+    {
+      "family": "lifecycle",
+      "adapter": "sdk",
+      "operation": "ready_state_probe",
+      "n": 60,
+      "mean_ms": 1125.3897336418352,
+      "p50_ms": 1125.8529830083717,
+      "p95_ms": 1243.8834814383881,
+      "p99_ms": 1371.1763149825852,
+      "min_ms": 958.1237630336545,
+      "max_ms": 1465.705312031787,
+      "failures": 0,
+      "state_checks_true": 60,
+      "repeat_count": 3
+    }
+  ],
+  "per_run": [
+    {
+      "family": "lifecycle",
+      "adapter": "service",
+      "repeat": 1,
+      "run_id": "0676b0b197514549af24f649dc72dfcc",
+      "started_utc": "2026-09-20T12:11:56.544938+00:00",
+      "iterations": 20,
+      "stage_count": 3,
+      "measurement_window_ms": 38012.23385398043,
+      "stage_sum_ms": 36541.559467907064,
+      "non_stage_window_ms": 1470.6743860733695,
+      "cycle_elapsed_p50_ms": 1818.0649015121162,
+      "successful_operations": 60,
+      "cleanup_ok": true,
+      "runner_sha256": "a3591da5966bc88dfc49a8b57846094913cdd9966fd46b9f63edf2d871804a11"
+    },
+    {
+      "family": "lifecycle",
+      "adapter": "service",
+      "repeat": 2,
+      "run_id": "3121012b0ad348d48a7c04cb289041b8",
+      "started_utc": "2026-09-20T12:15:23.795778+00:00",
+      "iterations": 20,
+      "stage_count": 3,
+      "measurement_window_ms": 37928.236719046254,
+      "stage_sum_ms": 36749.68861794332,
+      "non_stage_window_ms": 1178.5481011029333,
+      "cycle_elapsed_p50_ms": 1837.7935055177659,
+      "successful_operations": 60,
+      "cleanup_ok": true,
+      "runner_sha256": "a3591da5966bc88dfc49a8b57846094913cdd9966fd46b9f63edf2d871804a11"
+    },
+    {
+      "family": "lifecycle",
+      "adapter": "service",
+      "repeat": 3,
+      "run_id": "b12117e2b7404bac8e048e6fa756f05d",
+      "started_utc": "2026-09-20T12:18:52.304839+00:00",
+      "iterations": 20,
+      "stage_count": 3,
+      "measurement_window_ms": 41606.05418001069,
+      "stage_sum_ms": 40366.77382921334,
+      "non_stage_window_ms": 1239.280350797344,
+      "cycle_elapsed_p50_ms": 1896.7875470116269,
+      "successful_operations": 60,
+      "cleanup_ok": true,
+      "runner_sha256": "a3591da5966bc88dfc49a8b57846094913cdd9966fd46b9f63edf2d871804a11"
+    },
+    {
+      "family": "lifecycle",
+      "adapter": "sdk",
+      "repeat": 1,
+      "run_id": "c5a95ccdcdd34866b95880db0d70a17b",
+      "started_utc": "2026-09-20T12:13:17.724761+00:00",
+      "iterations": 20,
+      "stage_count": 3,
+      "measurement_window_ms": 37882.094122003764,
+      "stage_sum_ms": 36705.01226524357,
+      "non_stage_window_ms": 1177.0818567601964,
+      "cycle_elapsed_p50_ms": 1820.231566525763,
+      "successful_operations": 60,
+      "cleanup_ok": true,
+      "runner_sha256": "a3591da5966bc88dfc49a8b57846094913cdd9966fd46b9f63edf2d871804a11"
+    },
+    {
+      "family": "lifecycle",
+      "adapter": "sdk",
+      "repeat": 2,
+      "run_id": "3578ef03a77342f8bb5baf5bcafd2511",
+      "started_utc": "2026-09-20T12:16:45.276318+00:00",
+      "iterations": 20,
+      "stage_count": 3,
+      "measurement_window_ms": 37042.20380203333,
+      "stage_sum_ms": 35901.28947829362,
+      "non_stage_window_ms": 1140.9143237397075,
+      "cycle_elapsed_p50_ms": 1792.9545325168874,
+      "successful_operations": 60,
+      "cleanup_ok": true,
+      "runner_sha256": "a3591da5966bc88dfc49a8b57846094913cdd9966fd46b9f63edf2d871804a11"
+    },
+    {
+      "family": "lifecycle",
+      "adapter": "sdk",
+      "repeat": 3,
+      "run_id": "0aa80249f93c4200a179d3331bf33978",
+      "started_utc": "2026-09-20T12:20:18.794666+00:00",
+      "iterations": 20,
+      "stage_count": 3,
+      "measurement_window_ms": 38170.50826497143,
+      "stage_sum_ms": 36698.57727707131,
+      "non_stage_window_ms": 1471.930987900123,
+      "cycle_elapsed_p50_ms": 1784.8859789955895,
+      "successful_operations": 60,
+      "cleanup_ok": true,
+      "runner_sha256": "a3591da5966bc88dfc49a8b57846094913cdd9966fd46b9f63edf2d871804a11"
+    }
+  ],
+  "paired_run_medians": [
+    {
+      "operation": "pause",
+      "repeat": 1,
+      "service_p50_ms": 147.4532859865576,
+      "sdk_p50_ms": 137.0412514952477,
+      "sdk_minus_service_p50_ms": -10.412034491309896,
+      "sdk_to_service_p50_ratio": 0.9293875723308119
+    },
+    {
+      "operation": "pause",
+      "repeat": 2,
+      "service_p50_ms": 139.30441698175855,
+      "sdk_p50_ms": 137.227206985699,
+      "sdk_minus_service_p50_ms": -2.077209996059537,
+      "sdk_to_service_p50_ratio": 0.9850886996904661
+    },
+    {
+      "operation": "pause",
+      "repeat": 3,
+      "service_p50_ms": 138.5348920011893,
+      "sdk_p50_ms": 137.0060469780583,
+      "sdk_minus_service_p50_ms": -1.528845023130998,
+      "sdk_to_service_p50_ratio": 0.9889641880031359
+    },
+    {
+      "operation": "resume_connect",
+      "repeat": 1,
+      "service_p50_ms": 519.2248784878757,
+      "sdk_p50_ms": 524.7888090088964,
+      "sdk_minus_service_p50_ms": 5.563930521020666,
+      "sdk_to_service_p50_ratio": 1.0107158396131255
+    },
+    {
+      "operation": "resume_connect",
+      "repeat": 2,
+      "service_p50_ms": 535.3129679861013,
+      "sdk_p50_ms": 503.499179991195,
+      "sdk_minus_service_p50_ms": -31.813787994906306,
+      "sdk_to_service_p50_ratio": 0.9405697416324644
+    },
+    {
+      "operation": "resume_connect",
+      "repeat": 3,
+      "service_p50_ms": 537.0047580217943,
+      "sdk_p50_ms": 510.1449594949372,
+      "sdk_minus_service_p50_ms": -26.85979852685705,
+      "sdk_to_service_p50_ratio": 0.9499821963853681
+    },
+    {
+      "operation": "ready_state_probe",
+      "repeat": 1,
+      "service_p50_ms": 1133.0717525270302,
+      "sdk_p50_ms": 1154.7080659947824,
+      "sdk_minus_service_p50_ms": 21.63631346775219,
+      "sdk_to_service_p50_ratio": 1.0190952721392073
+    },
+    {
+      "operation": "ready_state_probe",
+      "repeat": 2,
+      "service_p50_ms": 1139.100286993198,
+      "sdk_p50_ms": 1101.0025489958934,
+      "sdk_minus_service_p50_ms": -38.09773799730465,
+      "sdk_to_service_p50_ratio": 0.9665545356872234
+    },
+    {
+      "operation": "ready_state_probe",
+      "repeat": 3,
+      "service_p50_ms": 1179.355590022169,
+      "sdk_p50_ms": 1128.3465930318926,
+      "sdk_minus_service_p50_ms": -51.0089969902765,
+      "sdk_to_service_p50_ratio": 0.9567484163200366
+    }
+  ],
+  "cycle_elapsed_by_adapter": {
+    "service": {
+      "n": 60,
+      "mean_ms": 1900.5211805177776,
+      "p50_ms": 1840.667790005682,
+      "p95_ms": 2048.2396827748744,
+      "p99_ms": 3258.728424838039,
+      "min_ms": 1649.5614720042795,
+      "max_ms": 4444.747275032569
+    },
+    "sdk": {
+      "n": 60,
+      "mean_ms": 1827.3065921549762,
+      "p50_ms": 1801.2532275170088,
+      "p95_ms": 2081.135695867124,
+      "p99_ms": 2447.8637638455243,
+      "min_ms": 1588.050904974807,
+      "max_ms": 2705.7639289996587
+    }
+  },
+  "correctness": {
+    "operations": 360,
+    "validated_operations": 360,
+    "memory_file_roundtrips": 120,
+    "sandbox_lineages": 6,
+    "cleanup_events": 6,
+    "failures": 0
+  },
+  "notes": [
+    "All selected inputs passed count/order/duration/state/cleanup audits.",
+    "Quantiles use linear interpolation at (n-1)*p. P99 with n=60 is descriptive, not a stable tail estimate.",
+    "No stage-count/window throughput is reported; windows include validation and inter-iteration cleanup gaps.",
+    "Sequential run-pair differences do not isolate SDK overhead or establish causality.",
+    "Each adapter contains 60 sequential roundtrips across only three sandbox lineages.",
+    "ready_state_probe uses the SDK in both adapters and includes Python process startup, loopback HTTP and validation payload retrieval."
+  ]
+}

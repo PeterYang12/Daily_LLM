@@ -1,0 +1,1 @@
+{"status":"parked_not_an_activation_path","reason":"Baseline attempt deadlocked with zero optimizer steps and no checkpoint; checkpoint1 continuation cannot be used.","requires_before_any_future_use":["actual clean checkpoint1 hold","close archived task-config/dataset/template provenance review gaps","root review and explicit confirmation"],"runtime_applied":false}

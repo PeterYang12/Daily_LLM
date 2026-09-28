@@ -1,0 +1,10 @@
+{
+  "started_utc": "2026-09-22T15:19:27.773875+00:00",
+  "old_vm_memory_gib": 1024,
+  "new_vm_memory_gib": 2253,
+  "memory_max_gib": 2304,
+  "starting_limit": 512,
+  "resident_limit": 512,
+  "status": "applied",
+  "ended_utc": "2026-09-22T15:23:28.069327+00:00"
+}

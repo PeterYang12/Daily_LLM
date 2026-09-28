@@ -1,0 +1,22 @@
+[Unit]
+Description=Passive VM CPU, IO, network, cgroup and QEMU performance recording
+After=network-online.target
+
+[Service]
+Type=simple
+User=15341
+Group=15341
+UMask=0077
+ExecStart=/data2/yuhanya/e2b-local-20260916/client-env/bin/python -u -B /data2/yuhanya/e2b-local-20260916/code/collect_vm_performance.py
+Restart=on-failure
+RestartSec=15
+TimeoutStopSec=15
+KillMode=control-group
+MemoryMax=1G
+CPUQuota=100%
+NoNewPrivileges=true
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

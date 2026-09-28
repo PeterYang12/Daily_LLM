@@ -1,0 +1,32 @@
+{
+  "cell": {
+    "id": "official-code-interpreter-r3",
+    "phase": "phase2-sdk",
+    "script": "phase2-sdk/code/official_sdk_baseline.py",
+    "args": {
+      "template": "benchmark-ci-minimal-20260920",
+      "iterations": 20,
+      "repeat": 3
+    }
+  },
+  "command": [
+    "taskset",
+    "-c",
+    "0-15",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/env/bin/python",
+    "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/code/official_sdk_baseline.py",
+    "--template",
+    "benchmark-ci-minimal-20260920",
+    "--iterations",
+    "20",
+    "--repeat",
+    "3",
+    "--output",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase2-sdk/official-code-interpreter-r3.jsonl"
+  ],
+  "runner_sha256": "42f5ad977780b2fcbc9ef181549f1a01b4900f22a9f0361f286a9351fe11f998",
+  "started_utc": "2026-09-20T12:18:05.273656+00:00",
+  "returncode": 0,
+  "sampler_returncode": 0,
+  "finished_utc": "2026-09-20T12:18:51.072389+00:00"
+}

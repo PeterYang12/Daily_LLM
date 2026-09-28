@@ -1,0 +1,75 @@
+{
+  "generated_utc": "2026-09-20T14:20:52.574798+00:00",
+  "report_pages": 1,
+  "ppt_slides": 2,
+  "ppt_preview_pages": 2,
+  "rendered_with": "LibreOffice 24.2.7.2 + Noto Sans SC fallback",
+  "review": "Source figures, denominators and actual rendered layouts checked",
+  "files": [
+    {
+      "path": "E2B_Benchmark_Briefing.pdf",
+      "bytes": 158848,
+      "sha256": "511e3a1078a0aeb9e96626f572b93bac885419818e71b3a34b8015077dea1498"
+    },
+    {
+      "path": "E2B_Benchmark_Briefing.pptx",
+      "bytes": 47794,
+      "sha256": "7d61faf8a89447f15e59b8957afaa7895a2a86406c08b9dd639bf4986938890c"
+    },
+    {
+      "path": "E2B_Benchmark_Executive_Report.md",
+      "bytes": 2368,
+      "sha256": "db9a48f35cbfbb4c9912884426f90ef0888db2991b986e79c49dd78a59b70d2d"
+    },
+    {
+      "path": "E2B_Benchmark_Executive_Report.pdf",
+      "bytes": 81715,
+      "sha256": "6b02593e09535912dd86e57e4cf19cb6a801a37957dd8e93a8bad8f36e741056"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1717,
+      "sha256": "fe753493168c0964f6e119993b6853ad31a2435d2535be759965c8f01e3e021e"
+    },
+    {
+      "path": "generate_briefing.py",
+      "bytes": 20395,
+      "sha256": "f445b79a55edea984d6625a0f56db9c6a20c2e1c209da22bc1057521626aa371"
+    },
+    {
+      "path": "layout-check.json",
+      "bytes": 160,
+      "sha256": "136882efb512fd7e82683b0837e507bef67b56ac6de1790c85ae0263e1856334"
+    },
+    {
+      "path": "report-page-1.png",
+      "bytes": 184782,
+      "sha256": "5ab26db25483b052fd653c5eed0424c68a8ca85917b7a0bcd7f70f59a5ce9188"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 70,
+      "sha256": "ffdc1554dbeac4b94c45f9024871a6e5f348c9175540f93995df77cc6a18fe38"
+    },
+    {
+      "path": "slide-1.png",
+      "bytes": 126772,
+      "sha256": "ee260ecb400a5d9bf9e0a8fface47400cedfa61fadabd3550f11fe1f52876eda"
+    },
+    {
+      "path": "slide-2.png",
+      "bytes": 133707,
+      "sha256": "c78610e86e9b3cb4b6bf859798d819ab8143143ff5faaada36b14aece77bef58"
+    },
+    {
+      "path": "sources.json",
+      "bytes": 1017,
+      "sha256": "804cfe73670e54d6397e10ffd539ae14c7587436cf2451555ee150ba5388218b"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 216,
+      "sha256": "2be2ae5837bcde870841e11a7dacca12213ac12e02c8d5a824b89a741eb22d38"
+    }
+  ]
+}

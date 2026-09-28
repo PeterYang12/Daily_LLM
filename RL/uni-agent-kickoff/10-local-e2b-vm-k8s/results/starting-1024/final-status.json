@@ -1,0 +1,17 @@
+{
+  "verified_utc": "2026-09-21T15:37:31.428252+00:00",
+  "live_firecracker_pids": [],
+  "sandbox_cgroup_count": 0,
+  "pods": [
+    {
+      "name": "e2b-0",
+      "phase": "Running",
+      "ready": "True"
+    },
+    {
+      "name": "e2b-gateway-dff6b58df-hvdhg",
+      "phase": "Running",
+      "ready": "True"
+    }
+  ]
+}

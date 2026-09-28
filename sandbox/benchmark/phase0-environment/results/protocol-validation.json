@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "reviewed_utc": "2026-09-20T10:51:20.002423+00:00",
+  "measurements": [
+    {
+      "source_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase0/protocol-command-smoke.jsonl",
+      "source_sha256": "b99970b7b39c42a104285f74e4e30624fe60ef820ab132aa9ec8d5609570435e",
+      "source_bytes": 6486,
+      "run_started_utc": "2026-09-20T10:36:49.543740+00:00",
+      "scenario": "exec_output_4k",
+      "measurement_operations": 3,
+      "warmup_operations": 1,
+      "status_counts": {
+        "success": 3
+      },
+      "timing_fields_consistent": true,
+      "post_validation_ok": null,
+      "cleanup_ok": true,
+      "stop_reason": "completed",
+      "scope": "functional protocol and timing-schema verification; not a performance baseline"
+    },
+    {
+      "source_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase0/protocol-create-smoke.jsonl",
+      "source_sha256": "1ea52122ba150989305e34f5f8a385fb3ac4c59f2a11855c34295eab6c73178f",
+      "source_bytes": 9069,
+      "run_started_utc": "2026-09-20T10:40:05.423087+00:00",
+      "scenario": "create_delete_churn",
+      "measurement_operations": 3,
+      "warmup_operations": 1,
+      "status_counts": {
+        "success": 3
+      },
+      "timing_fields_consistent": true,
+      "post_validation_ok": null,
+      "cleanup_ok": true,
+      "stop_reason": "completed",
+      "scope": "functional protocol and timing-schema verification; not a performance baseline"
+    },
+    {
+      "source_path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase0/protocol-files-smoke.jsonl",
+      "source_sha256": "4959de78db00109cc6e15f9437d3dd47a7c049128a55b67bde3a36044d0dec59",
+      "source_bytes": 11337,
+      "run_started_utc": "2026-09-20T10:38:42.933246+00:00",
+      "scenario": "file_write_1m",
+      "measurement_operations": 8,
+      "warmup_operations": 1,
+      "status_counts": {
+        "success": 8
+      },
+      "timing_fields_consistent": true,
+      "post_validation_ok": true,
+      "cleanup_ok": true,
+      "stop_reason": "completed",
+      "scope": "functional protocol and timing-schema verification; not a performance baseline"
+    }
+  ],
+  "offline_frame_tests_passed": 4,
+  "runner_sha256_at_review": "0eafff00e0fc46902832061b8c5a50f8d052b71f6d1b1e641091c75f73c95075",
+  "runner_path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/code/runner.py",
+  "source_limit": "Early smoke records do not embed the runner source hash; this is the reviewed current frozen runner hash, not an asserted historical hash.",
+  "total_measurement_operations": 14,
+  "performance_conclusions": false
+}

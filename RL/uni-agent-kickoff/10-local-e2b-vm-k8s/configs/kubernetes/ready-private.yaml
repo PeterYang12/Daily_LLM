@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: e2b
+spec:
+  template:
+    spec:
+      containers:
+        - name: ready
+          command:
+            - /bin/sh
+            - -c
+            - |
+              umask 077
+              test -s /run/e2b/team-api-key || exit 2
+              last=""
+              while :; do
+                key="$(cat /run/e2b/team-api-key 2>/dev/null)"
+                if [ -n "$key" ] && [ "$key" != "$last" ]; then
+                  printf 'export E2B_API_KEY=%s\nexport E2B_API_URL=http://10.145.64.67:8088\nexport E2B_SANDBOX_URL=http://10.145.64.67:8088\n' "$key" > /run/e2b/sdk.env
+                  echo 'E2B ready; private SDK configuration written to /run/e2b/sdk.env'
+                  last="$key"
+                fi
+                sleep 5
+              done

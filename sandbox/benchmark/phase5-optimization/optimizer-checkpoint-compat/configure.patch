@@ -1,0 +1,25 @@
+--- code/configure.py.before
++++ code/configure.py.after
+@@ -75,6 +75,10 @@
+     cfg['actor_rollout_ref']['model']['path'] = model
+     cfg['actor_rollout_ref']['actor']['ppo_mini_batch_size'] = batch
+     cfg['actor_rollout_ref']['actor']['checkpoint']['load_contents'] = ['model', 'optimizer', 'extra']
++    cfg['actor_rollout_ref']['actor']['optim']['use_checkpoint_opt_param_scheduler'] = True
++    cfg.setdefault('hydra', {}).setdefault('run', {})['dir'] = str(
++        runtime_root / 'results/hydra' / os.environ.get('UA_SUPERVISOR_ATTEMPT_ID', 'manual'))
++    cfg['hydra'].setdefault('job', {})['chdir'] = False
+     cfg['actor_rollout_ref']['rollout']['n'] = n
+     framework = cfg['actor_rollout_ref']['rollout']['custom']['agent_framework']
+     framework['agent_runners']['task']['max_concurrent_sessions'] = batch * n
+@@ -118,7 +122,10 @@
+                  'startup_timeout_seconds': startup_timeout,
+                  'admission_protocol': 'uuid-ticket-cancel-release-retire-v2',
+                  'timing_variant': 'ticket-admission-v2-startup1800',
+-                 'initial_weights': 'original base model; failed previous run had zero updates',
++                 'initial_weights': ('native checkpoint model/optimizer/scheduler' if resuming else
++                                     'original base model; failed previous run had zero updates'),
++                 'restore_lr_scheduler_from_checkpoint': True,
++                 'hydra_runtime_output_dir': cfg['hydra']['run']['dir'],
+                  'previous_failed_run_id': 'ua-e2b-pathfinding-20260920',
+                  'timing_comparison_is_not_rl_speedup_evidence': True,
+                  'prompt_batch': batch, 'rollouts_per_prompt': n, 'concurrent_sessions': batch * n,

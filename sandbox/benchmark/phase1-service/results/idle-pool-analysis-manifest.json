@@ -1,0 +1,99 @@
+{
+  "generated_utc": "2026-09-20T13:10:30.615484+00:00",
+  "analysis_cpu_affinity": [
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "sources": [
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/idle-pool-slow-ramp.json",
+      "bytes": 381447,
+      "sha256": "047dcae78e810e6a4314891444b84e93d372eb2e5d5b31db9a273501d280c478"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/idle-pool-slow-ramp.observations.jsonl",
+      "bytes": 293951,
+      "sha256": "1d9fc55093d2155e7bd3ae1744f48056b76c639e882a11434874f3e4567f88ca"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/idle-pool-slow-ramp.resources.jsonl",
+      "bytes": 737193,
+      "sha256": "785fe4efc8bddb75e96aa62e56a13210777dd4a25da0c1e9255b71978f7422c4"
+    },
+    {
+      "path": "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/idle-pool-slow-ramp.manifest.json",
+      "bytes": 643,
+      "sha256": "d6fcf9d74b256d47b9a010107b510676ddcf76a7c9e5155a6dbc9cf88592ae06"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/idle-pool-case4-log-20260920.json",
+      "bytes": 3586,
+      "sha256": "3ff87d161cb0ecca6655c7081c8069a2c203ce3702cd8b67e65b59c6f1495b86"
+    }
+  ],
+  "generator": {
+    "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/code/analyze_idle_pool.py",
+    "sha256": "1c95faa4d28b60d047845c7b07a5792a1c86a1c7c18bef6e015af34d04919eec"
+  },
+  "outputs": [
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/IDLE-POOL-RESULTS.md",
+      "bytes": 6710,
+      "sha256": "ef9f75c306426ed1106b51eec12bce85b0d43a7f756d8fabe141e9b070ca6d24"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/idle-pool-summary.json",
+      "bytes": 16557,
+      "sha256": "151f7e947ae3736e420ab7e1d6c0c627ba45d60a17adaa87f771b43458c16ff0"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/idle-pool-creation.csv",
+      "bytes": 10894,
+      "sha256": "164e2affbacc5c218cb265370cd1b1b1402cdd2ae7aeaa2e10696912bec68b60"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/idle-pool-timeline.csv",
+      "bytes": 31863,
+      "sha256": "29fe5f07bdb93bc03c874640db2ee6968034cf1b404a5660653b16d80b308e4f"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/idle-pool-guest-observations.csv",
+      "bytes": 2822,
+      "sha256": "922b88ed8b000d13fbfe5ceb1bb00f0830e31410418dc79b9cf2e908fc625ea1"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/figures/idle-pool-incident.png",
+      "bytes": 144161,
+      "sha256": "4090fe2c5713ba154daecd064deb8a9dcb01c452e001bd3e08f8e8540b29ffd1"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/figures/idle-pool-incident.svg",
+      "bytes": 43099,
+      "sha256": "a0eae8e0e1303818f854105de611e979fb7b2388f0bac49aef0f3afe81f544f0"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/figures/idle-pool-ramp-cpu.png",
+      "bytes": 237372,
+      "sha256": "d1e5d53d104ca92fa84d49394988a751bfd4941862c7c74f6cdfe7fc94d4811e"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/figures/idle-pool-ramp-cpu.svg",
+      "bytes": 52780,
+      "sha256": "2465d25136c3945bc0bc60454e8391c0cacbbebb5360f5b3b7fff2f86dc3b761"
+    }
+  ]
+}

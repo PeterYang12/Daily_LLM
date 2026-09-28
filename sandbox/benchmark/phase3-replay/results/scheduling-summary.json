@@ -1,0 +1,58 @@
+{
+  "scope": "Offline fixed-duration queue sensitivity; not E2B capacity or RL speedup",
+  "seed": 20260920,
+  "replicates": 1000,
+  "source": "/home/yuhanya/Daily_LLM/sandbox/uni-agent-swe-bench/data/episodes.csv",
+  "source_sha256": "5b5a7d99e87a8b52001775b9cd1e688e30bb2842a6933249aaa4241837fd5f22",
+  "source_groups": 32,
+  "source_episodes": 256,
+  "duration_proxy": "episode_s - create_wait_and_api_s: removes combined historical create queue + API interval",
+  "arrival_assumption": "All 256 jobs available at time zero; FIFO, work-conserving identical logical slots",
+  "resampling": "32 task groups sampled with replacement; preserves the eight samples within each group",
+  "uncertainty": "5th/95th empirical bootstrap percentiles conditional on these 32 groups and fixed service proxies, not a confidence interval for real throughput",
+  "limitations": [
+    "No model-serving, GPU, CPU, network or sandbox resource feedback; durations are assumed invariant under concurrency.",
+    "Historical durations already reflect workload/model contention at their original setting; that contention is not rescaled.",
+    "SDK create service time is omitted with its inseparable historical queue time; readiness/setup and other remaining phases stay in the fixed duration proxy.",
+    "No learner updates, weight synchronization, checkpointing, policy change or batch dependencies are simulated.",
+    "The two historical 128-rollout cohorts are combined into one hypothetical 256-job arrival; no measured 256-concurrency point is claimed."
+  ],
+  "results": [
+    {
+      "logical_slots": 32,
+      "jobs": 256,
+      "bootstrap_replicates": 1000,
+      "makespan_p05_s": 4601.465098771965,
+      "makespan_median_s": 5070.222961245803,
+      "makespan_p95_s": 5661.026534538273,
+      "simulated_queue_wait_median_s": 1941.1531442874375
+    },
+    {
+      "logical_slots": 64,
+      "jobs": 256,
+      "bootstrap_replicates": 1000,
+      "makespan_p05_s": 2613.871679711505,
+      "makespan_median_s": 2967.164877936477,
+      "makespan_p95_s": 3452.8722371034555,
+      "simulated_queue_wait_median_s": 820.2432179073612
+    },
+    {
+      "logical_slots": 128,
+      "jobs": 256,
+      "bootstrap_replicates": 1000,
+      "makespan_p05_s": 1641.5755190507043,
+      "makespan_median_s": 1995.146488947561,
+      "makespan_p95_s": 2373.830062179477,
+      "simulated_queue_wait_median_s": 267.8600093795958
+    },
+    {
+      "logical_slots": 256,
+      "jobs": 256,
+      "bootstrap_replicates": 1000,
+      "makespan_p05_s": 1273.892226909753,
+      "makespan_median_s": 1628.7621214943938,
+      "makespan_p95_s": 1628.7621214943938,
+      "simulated_queue_wait_median_s": 0.0
+    }
+  ]
+}

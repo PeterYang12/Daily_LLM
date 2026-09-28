@@ -1,0 +1,170 @@
+[
+  {
+    "severity": "warning",
+    "code": "non_operation_records_skipped",
+    "run_id": null,
+    "message": "{\"cleanup\": 3, \"generator_drop\": 36, \"identity_fixture\": 3, \"lifecycle_cleanup\": 570, \"metadata\": 15, \"setup\": 63, \"template_check\": 12, \"validation\": 60}"
+  },
+  {
+    "severity": "warning",
+    "code": "operation_id_reused_across_windows",
+    "run_id": "b6e7cb270de0485996345f159d2559ac",
+    "message": "1 operation IDs reused across explicit windows; parser identity is (run_id, window, operation_id), raw IDs preserved"
+  },
+  {
+    "severity": "warning",
+    "code": "operation_id_reused_across_windows",
+    "run_id": "b320a63d6a914e7eaa2762fe917820a0",
+    "message": "1 operation IDs reused across explicit windows; parser identity is (run_id, window, operation_id), raw IDs preserved"
+  },
+  {
+    "severity": "warning",
+    "code": "operation_id_reused_across_windows",
+    "run_id": "130c6a483cd2469caead04760d1fa6c5",
+    "message": "1 operation IDs reused across explicit windows; parser identity is (run_id, window, operation_id), raw IDs preserved"
+  },
+  {
+    "severity": "warning",
+    "code": "operation_id_reused_across_windows",
+    "run_id": "5cafc001abf34c11bf58d2f6983285a6",
+    "message": "1 operation IDs reused across explicit windows; parser identity is (run_id, window, operation_id), raw IDs preserved"
+  },
+  {
+    "severity": "warning",
+    "code": "operation_id_reused_across_windows",
+    "run_id": "15d0d1ac60964d38bbad519ddec70725",
+    "message": "1 operation IDs reused across explicit windows; parser identity is (run_id, window, operation_id), raw IDs preserved"
+  },
+  {
+    "severity": "warning",
+    "code": "operation_id_reused_across_windows",
+    "run_id": "7c27741c10a4497dbece87c6d89fec41",
+    "message": "1 operation IDs reused across explicit windows; parser identity is (run_id, window, operation_id), raw IDs preserved"
+  },
+  {
+    "severity": "warning",
+    "code": "resident_count_not_applicable",
+    "run_id": "001a514cd2c7486ca9872a1cadeae6c8",
+    "message": "create_delete_churn has no pre-created resident pool; the raw resident_count is an unused CLI default, preserved separately. Concurrency counts cycle workers."
+  },
+  {
+    "severity": "warning",
+    "code": "limited_p99_samples",
+    "run_id": "001a514cd2c7486ca9872a1cadeae6c8",
+    "message": "create: 100 success samples; p99 is descriptive and weakly supported"
+  },
+  {
+    "severity": "warning",
+    "code": "limited_p99_samples",
+    "run_id": "0676b0b197514549af24f649dc72dfcc",
+    "message": "pause: 20 success samples; p99 is descriptive and weakly supported"
+  },
+  {
+    "severity": "warning",
+    "code": "limited_p99_samples",
+    "run_id": "0676b0b197514549af24f649dc72dfcc",
+    "message": "ready_state_probe: 20 success samples; p99 is descriptive and weakly supported"
+  },
+  {
+    "severity": "warning",
+    "code": "limited_p99_samples",
+    "run_id": "0676b0b197514549af24f649dc72dfcc",
+    "message": "resume_connect: 20 success samples; p99 is descriptive and weakly supported"
+  },
+  {
+    "severity": "warning",
+    "code": "resident_count_not_applicable",
+    "run_id": "13370e0c5e5843cf9efc80c605a460db",
+    "message": "create_delete_churn has no pre-created resident pool; the raw resident_count is an unused CLI default, preserved separately. Concurrency counts cycle workers."
+  },
+  {
+    "severity": "warning",
+    "code": "limited_p99_samples",
+    "run_id": "13370e0c5e5843cf9efc80c605a460db",
+    "message": "create: 100 success samples; p99 is descriptive and weakly supported"
+  },
+  {
+    "severity": "warning",
+    "code": "limited_p99_samples",
+    "run_id": "3121012b0ad348d48a7c04cb289041b8",
+    "message": "pause: 20 success samples; p99 is descriptive and weakly supported"
+  },
+  {
+    "severity": "warning",
+    "code": "limited_p99_samples",
+    "run_id": "3121012b0ad348d48a7c04cb289041b8",
+    "message": "ready_state_probe: 20 success samples; p99 is descriptive and weakly supported"
+  },
+  {
+    "severity": "warning",
+    "code": "limited_p99_samples",
+    "run_id": "3121012b0ad348d48a7c04cb289041b8",
+    "message": "resume_connect: 20 success samples; p99 is descriptive and weakly supported"
+  },
+  {
+    "severity": "warning",
+    "code": "resident_count_not_applicable",
+    "run_id": "672f0ef5fabe4ae39ec5954250448b4f",
+    "message": "create_delete_churn has no pre-created resident pool; the raw resident_count is an unused CLI default, preserved separately. Concurrency counts cycle workers."
+  },
+  {
+    "severity": "warning",
+    "code": "limited_p99_samples",
+    "run_id": "672f0ef5fabe4ae39ec5954250448b4f",
+    "message": "create: 100 success samples; p99 is descriptive and weakly supported"
+  },
+  {
+    "severity": "warning",
+    "code": "limited_p99_samples",
+    "run_id": "b12117e2b7404bac8e048e6fa756f05d",
+    "message": "pause: 20 success samples; p99 is descriptive and weakly supported"
+  },
+  {
+    "severity": "warning",
+    "code": "limited_p99_samples",
+    "run_id": "b12117e2b7404bac8e048e6fa756f05d",
+    "message": "ready_state_probe: 20 success samples; p99 is descriptive and weakly supported"
+  },
+  {
+    "severity": "warning",
+    "code": "limited_p99_samples",
+    "run_id": "b12117e2b7404bac8e048e6fa756f05d",
+    "message": "resume_connect: 20 success samples; p99 is descriptive and weakly supported"
+  },
+  {
+    "severity": "warning",
+    "code": "resident_count_not_applicable",
+    "run_id": "cab12865341646e5beffef7b4e217ad4",
+    "message": "create_delete_churn has no pre-created resident pool; the raw resident_count is an unused CLI default, preserved separately. Concurrency counts cycle workers."
+  },
+  {
+    "severity": "warning",
+    "code": "limited_p99_samples",
+    "run_id": "cab12865341646e5beffef7b4e217ad4",
+    "message": "create: 88 success samples; p99 is descriptive and weakly supported"
+  },
+  {
+    "severity": "warning",
+    "code": "resident_count_not_applicable",
+    "run_id": "cc6306c374944e709c425c4dc16d3678",
+    "message": "create_delete_churn has no pre-created resident pool; the raw resident_count is an unused CLI default, preserved separately. Concurrency counts cycle workers."
+  },
+  {
+    "severity": "warning",
+    "code": "limited_p99_samples",
+    "run_id": "cc6306c374944e709c425c4dc16d3678",
+    "message": "create: 88 success samples; p99 is descriptive and weakly supported"
+  },
+  {
+    "severity": "warning",
+    "code": "resident_count_not_applicable",
+    "run_id": "de8c23ecabb84225ba6daa21eb643979",
+    "message": "create_delete_churn has no pre-created resident pool; the raw resident_count is an unused CLI default, preserved separately. Concurrency counts cycle workers."
+  },
+  {
+    "severity": "warning",
+    "code": "limited_p99_samples",
+    "run_id": "de8c23ecabb84225ba6daa21eb643979",
+    "message": "create: 88 success samples; p99 is descriptive and weakly supported"
+  }
+]

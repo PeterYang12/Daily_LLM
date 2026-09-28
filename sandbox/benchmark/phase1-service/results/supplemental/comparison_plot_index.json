@@ -1,0 +1,16 @@
+[
+  {
+    "phase": "phase1-service",
+    "name": "client-cap16-vs64",
+    "png": "plots/client-cap16-vs64.png",
+    "svg": "plots/client-cap16-vs64.svg",
+    "caption": "Points: median of 3 run statistics; bands: observed run min–max. Server startup admission remains unchanged.\nRates use complete finite-batch windows, including drain. Not-dispatched denominator: scheduled arrivals. Latency is create only."
+  },
+  {
+    "phase": "phase1-service",
+    "name": "payload-encoding-c8",
+    "png": "plots/payload-encoding-c8.png",
+    "svg": "plots/payload-encoding-c8.svg",
+    "caption": "Payload entropy and content encoding both change. These observations do not isolate a compression effect.\nRates count logical successful payloads, not network bandwidth. Bars: median of 3 runs; whiskers: run min–max."
+  }
+]

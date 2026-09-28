@@ -1,0 +1,22 @@
+{
+  "status": "ready",
+  "started_utc": "2026-09-20T10:29:10.665441+00:00",
+  "alias": "benchmark-ci-minimal-20260920",
+  "base_template": "base",
+  "cpu_count": 2,
+  "memory_mb": 4096,
+  "expected_page_mode": "ordinary-4KiB",
+  "server_commit": "f56a1edf750e20a96f847df57e0063eeeb5e13c3",
+  "ijavascript_commit": "79cb7d56dcfe0df9ff55eff0ca4dc920a6dcc361",
+  "client_versions": {
+    "e2b": "2.49.1",
+    "e2b-code-interpreter": "2.10.0"
+  },
+  "source_manifest_sha256": "b30c65b00e546105401757fcd200b77ec359e546d3ca2147de5eb2b76285af3d",
+  "source_file_count": 41,
+  "adaptation": "Existing local base rootfs; Python and JS only; pinned upstream server unchanged; venv/systemd paths adjusted; full hosted scientific/R/Java/bash package set omitted.",
+  "template_id": "96k1k8rxir5it2bs2b7r",
+  "build_id": "2e0140f3-113d-4e03-bb2b-b817a904f413",
+  "finished_utc": "2026-09-20T10:32:56.045967+00:00",
+  "wall_seconds": 225.38
+}

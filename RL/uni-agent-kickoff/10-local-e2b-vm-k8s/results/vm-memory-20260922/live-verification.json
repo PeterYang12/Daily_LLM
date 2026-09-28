@@ -1,0 +1,27 @@
+{
+  "checked_utc": "2026-09-22T15:24:26.604163+00:00",
+  "qemu_pid": 3139543,
+  "vm_configured_memory_gib": 2253,
+  "service_memory_max_gib": 2304,
+  "active_disk": "/home/yuhanya/e2b-overflow/root-active-20260921.qcow2",
+  "guest": {
+    "checked_utc": "2026-09-22T15:24:26.730496+00:00",
+    "boot_id": "749038dd-5e0d-4a4a-bbed-31d7b3a3c2d1",
+    "memory_bytes": {
+      "MemTotal": 2380344889344,
+      "MemAvailable": 2367118610432
+    },
+    "orchestrators": [
+      {
+        "pid": 14380,
+        "env": {
+          "E2B_MAX_STARTING_INSTANCES_PER_NODE": "512",
+          "E2B_MAX_SANDBOXES_PER_NODE": "512",
+          "E2B_SANDBOX_HUGE_PAGES": "false",
+          "ENVD_TIMEOUT": "30s"
+        },
+        "sha256": "590d0173ff9df2654c67978ac82fc503264ff97890e5b5cdf0e102a0953a238a"
+      }
+    ]
+  }
+}

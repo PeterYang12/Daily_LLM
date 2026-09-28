@@ -1,0 +1,20 @@
+{
+  "create_and_setup": {
+    "cohorts": 3,
+    "planned": 96,
+    "successes": 96,
+    "cohort_complete_s_median": 71.16324206796708,
+    "cohort_complete_s_min": 68.86558710498502,
+    "cohort_complete_s_max": 71.22447219397873,
+    "remaining_instances": 0
+  },
+  "create_only": {
+    "cohorts": 3,
+    "planned": 96,
+    "successes": 96,
+    "cohort_complete_s_median": 44.42112155200448,
+    "cohort_complete_s_min": 43.59564939100528,
+    "cohort_complete_s_max": 52.245565265999176,
+    "remaining_instances": 0
+  }
+}

@@ -1,0 +1,181 @@
+[
+  {
+    "kind": "arrival-rate",
+    "configuration": {
+      "phase": "phase1-service",
+      "scenario": "create_delete_churn",
+      "operation": "create",
+      "template": "base-4k-4g",
+      "memory_mib": 4096,
+      "resident_count": null,
+      "concurrency": 16,
+      "mode": "open_loop",
+      "instrumentation": "minimal",
+      "measurement_kind": "finite_batch",
+      "comparison_key": "create-v1",
+      "payload_bytes": 1024,
+      "page_mode": "4KiB",
+      "throughput_scope": "create-delete churn"
+    },
+    "observed_points": 3,
+    "png": "plots/arrival-rate-phase1-service-create-delete-churn-create-4b69e13ece.png",
+    "svg": "plots/arrival-rate-phase1-service-create-delete-churn-create-4b69e13ece.svg",
+    "caption": "Points: median of per-run statistics; shading: run min–max, not a confidence interval. Runs/point: 3–3; minimum successes/run: 40.\nP99 needs more evidence below 1,000 successes/run. Failure rate includes recorded errors, timeouts, rejections, cancellations and invalid results.\nFailure rate denominator: dispatched operations. Undispatched rate denominator: scheduled arrivals.\nThroughput scope: create-delete churn; latency is the named operation's duration."
+  },
+  {
+    "kind": "concurrency",
+    "configuration": {
+      "phase": "phase1-service",
+      "scenario": "create_delete_churn",
+      "operation": "create",
+      "template": "base-4k-4g",
+      "memory_mib": 4096,
+      "resident_count": null,
+      "mode": "closed_loop",
+      "instrumentation": "minimal",
+      "measurement_kind": "finite_batch",
+      "comparison_key": "create-v1",
+      "arrival_rate_ops_s": null,
+      "payload_bytes": 1024,
+      "page_mode": "4KiB",
+      "throughput_scope": "create-delete churn"
+    },
+    "observed_points": 4,
+    "png": "plots/concurrency-phase1-service-create-delete-churn-create-466ef2617a.png",
+    "svg": "plots/concurrency-phase1-service-create-delete-churn-create-466ef2617a.svg",
+    "caption": "Points: median of per-run statistics; shading: run min–max, not a confidence interval. Runs/point: 3–3; minimum successes/run: 100.\nP99 needs more evidence below 1,000 successes/run. Failure rate includes recorded errors, timeouts, rejections, cancellations and invalid results.\nThroughput scope: create-delete churn; latency is the named operation's duration."
+  },
+  {
+    "kind": "concurrency",
+    "configuration": {
+      "phase": "phase1-service",
+      "scenario": "exec_true",
+      "operation": "exec_true",
+      "template": "base-4k-4g",
+      "memory_mib": 4096,
+      "resident_count": 64,
+      "mode": "closed_loop",
+      "instrumentation": "minimal",
+      "measurement_kind": "steady_state",
+      "comparison_key": "exec_true-v1",
+      "arrival_rate_ops_s": null,
+      "payload_bytes": 1024,
+      "page_mode": "4KiB",
+      "throughput_scope": "standalone operation"
+    },
+    "observed_points": 2,
+    "png": "plots/concurrency-phase1-service-exec-true-exec-true-4e9991b45b.png",
+    "svg": "plots/concurrency-phase1-service-exec-true-exec-true-4e9991b45b.svg",
+    "caption": "Points: median of per-run statistics; shading: run min–max, not a confidence interval. Runs/point: 3–3; minimum successes/run: 9255.\nP99 needs more evidence below 1,000 successes/run. Failure rate includes recorded errors, timeouts, rejections, cancellations and invalid results."
+  },
+  {
+    "kind": "residents",
+    "configuration": {
+      "phase": "phase1-service",
+      "scenario": "exec_true",
+      "operation": "exec_true",
+      "template": "base-4k-4g",
+      "memory_mib": 4096,
+      "mode": "closed_loop",
+      "instrumentation": "minimal",
+      "measurement_kind": "steady_state",
+      "comparison_key": "exec_true-v1",
+      "arrival_rate_ops_s": null,
+      "payload_bytes": 1024,
+      "page_mode": "4KiB",
+      "throughput_scope": "standalone operation"
+    },
+    "observed_points": 3,
+    "png": "plots/residents-phase1-service-exec-true-exec-true-935adb3663.png",
+    "svg": "plots/residents-phase1-service-exec-true-exec-true-935adb3663.svg",
+    "caption": "Configured memory does not establish actual resident memory. Points: median across runs; shading: run min–max."
+  },
+  {
+    "kind": "coupled-population-concurrency",
+    "configuration": {
+      "phase": "phase1-service",
+      "scenario": "exec_true",
+      "operation": "exec_true",
+      "template": "base-4k-4g",
+      "memory_mib": 4096,
+      "mode": "closed_loop",
+      "instrumentation": "minimal",
+      "measurement_kind": "steady_state",
+      "comparison_key": "exec_true-v1",
+      "arrival_rate_ops_s": null,
+      "payload_bytes": 1024,
+      "page_mode": "4KiB",
+      "throughput_scope": "standalone operation"
+    },
+    "observed_points": 4,
+    "png": "plots/coupled-population-concurrency-phase1-service-exec-true-exec-true-935adb3663.png",
+    "svg": "plots/coupled-population-concurrency-phase1-service-exec-true-exec-true-935adb3663.svg",
+    "caption": "Both C and N change; effects cannot be attributed to C alone. Runs/point: 3; minimum successes/run: 2201.\nPoints: median of per-run metrics; shading: observed run min–max, not a confidence interval.\nHTTPX and pyqwest include different client costs. Short characterization runs do not establish sustainable capacity."
+  },
+  {
+    "kind": "coupled-population-concurrency",
+    "configuration": {
+      "phase": "phase1-service",
+      "scenario": "file_read_1k",
+      "operation": "file_read_1k",
+      "template": "base-4k-4g",
+      "memory_mib": 4096,
+      "mode": "closed_loop",
+      "instrumentation": "minimal",
+      "measurement_kind": "steady_state",
+      "comparison_key": "file_read_1k-v1",
+      "arrival_rate_ops_s": null,
+      "payload_bytes": 1024,
+      "page_mode": "4KiB",
+      "throughput_scope": "standalone operation"
+    },
+    "observed_points": 3,
+    "png": "plots/coupled-population-concurrency-phase1-service-file-read-1k-file-read-1k-6abcb3c08c.png",
+    "svg": "plots/coupled-population-concurrency-phase1-service-file-read-1k-file-read-1k-6abcb3c08c.svg",
+    "caption": "Both C and N change; effects cannot be attributed to C alone. Runs/point: 3; minimum successes/run: 5607.\nPoints: median of per-run metrics; shading: observed run min–max, not a confidence interval.\nHTTPX and pyqwest include different client costs. Short characterization runs do not establish sustainable capacity."
+  },
+  {
+    "kind": "coupled-population-concurrency",
+    "configuration": {
+      "phase": "phase1-service",
+      "scenario": "file_read_1m",
+      "operation": "file_read_1m",
+      "template": "base-4k-4g",
+      "memory_mib": 4096,
+      "mode": "closed_loop",
+      "instrumentation": "minimal",
+      "measurement_kind": "steady_state",
+      "comparison_key": "file_read_1m-v1",
+      "arrival_rate_ops_s": null,
+      "payload_bytes": 1048576,
+      "page_mode": "4KiB",
+      "throughput_scope": "standalone operation"
+    },
+    "observed_points": 3,
+    "png": "plots/coupled-population-concurrency-phase1-service-file-read-1m-file-read-1m-cf853ef1bd.png",
+    "svg": "plots/coupled-population-concurrency-phase1-service-file-read-1m-file-read-1m-cf853ef1bd.svg",
+    "caption": "Both C and N change; effects cannot be attributed to C alone. Runs/point: 3; minimum successes/run: 1397.\nPoints: median of per-run metrics; shading: observed run min–max, not a confidence interval.\nHTTPX and pyqwest include different client costs. Short characterization runs do not establish sustainable capacity."
+  },
+  {
+    "kind": "coupled-population-concurrency",
+    "configuration": {
+      "phase": "phase1-service",
+      "scenario": "file_write_1k",
+      "operation": "file_write_1k",
+      "template": "base-4k-4g",
+      "memory_mib": 4096,
+      "mode": "closed_loop",
+      "instrumentation": "minimal",
+      "measurement_kind": "steady_state",
+      "comparison_key": "file_write_1k-v1",
+      "arrival_rate_ops_s": null,
+      "payload_bytes": 1024,
+      "page_mode": "4KiB",
+      "throughput_scope": "standalone operation"
+    },
+    "observed_points": 3,
+    "png": "plots/coupled-population-concurrency-phase1-service-file-write-1k-file-write-1k-03aef820f0.png",
+    "svg": "plots/coupled-population-concurrency-phase1-service-file-write-1k-file-write-1k-03aef820f0.svg",
+    "caption": "Both C and N change; effects cannot be attributed to C alone. Runs/point: 3; minimum successes/run: 6901.\nPoints: median of per-run metrics; shading: observed run min–max, not a confidence interval.\nHTTPX and pyqwest include different client costs. Short characterization runs do not establish sustainable capacity."
+  }
+]

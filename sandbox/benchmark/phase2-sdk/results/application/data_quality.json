@@ -1,0 +1,110 @@
+[
+  {
+    "run_id": "session-20260920-ci-975c5bdd133b",
+    "family": "official",
+    "adapter": "sdk",
+    "repeat": 1,
+    "valid": true,
+    "issues": [],
+    "operations": 80,
+    "state_checks_true": 80,
+    "cleanup_ok": true,
+    "source": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/official-code-interpreter-r1.jsonl"
+  },
+  {
+    "run_id": "session-20260920-ci-a2dd7bfce0c1",
+    "family": "official",
+    "adapter": "sdk",
+    "repeat": 2,
+    "valid": true,
+    "issues": [],
+    "operations": 80,
+    "state_checks_true": 80,
+    "cleanup_ok": true,
+    "source": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/official-code-interpreter-r2.jsonl"
+  },
+  {
+    "run_id": "session-20260920-ci-7d179e6588d3",
+    "family": "official",
+    "adapter": "sdk",
+    "repeat": 3,
+    "valid": true,
+    "issues": [],
+    "operations": 80,
+    "state_checks_true": 80,
+    "cleanup_ok": true,
+    "source": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/official-code-interpreter-r3.jsonl"
+  },
+  {
+    "run_id": "0676b0b197514549af24f649dc72dfcc",
+    "family": "lifecycle",
+    "adapter": "service",
+    "repeat": 1,
+    "valid": true,
+    "issues": [],
+    "operations": 60,
+    "state_checks_true": 60,
+    "cleanup_ok": true,
+    "source": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/lifecycle-service-r1.jsonl"
+  },
+  {
+    "run_id": "3121012b0ad348d48a7c04cb289041b8",
+    "family": "lifecycle",
+    "adapter": "service",
+    "repeat": 2,
+    "valid": true,
+    "issues": [],
+    "operations": 60,
+    "state_checks_true": 60,
+    "cleanup_ok": true,
+    "source": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/lifecycle-service-r2.jsonl"
+  },
+  {
+    "run_id": "b12117e2b7404bac8e048e6fa756f05d",
+    "family": "lifecycle",
+    "adapter": "service",
+    "repeat": 3,
+    "valid": true,
+    "issues": [],
+    "operations": 60,
+    "state_checks_true": 60,
+    "cleanup_ok": true,
+    "source": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/lifecycle-service-r3.jsonl"
+  },
+  {
+    "run_id": "c5a95ccdcdd34866b95880db0d70a17b",
+    "family": "lifecycle",
+    "adapter": "sdk",
+    "repeat": 1,
+    "valid": true,
+    "issues": [],
+    "operations": 60,
+    "state_checks_true": 60,
+    "cleanup_ok": true,
+    "source": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/lifecycle-sdk-r1.jsonl"
+  },
+  {
+    "run_id": "3578ef03a77342f8bb5baf5bcafd2511",
+    "family": "lifecycle",
+    "adapter": "sdk",
+    "repeat": 2,
+    "valid": true,
+    "issues": [],
+    "operations": 60,
+    "state_checks_true": 60,
+    "cleanup_ok": true,
+    "source": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/lifecycle-sdk-r2.jsonl"
+  },
+  {
+    "run_id": "0aa80249f93c4200a179d3331bf33978",
+    "family": "lifecycle",
+    "adapter": "sdk",
+    "repeat": 3,
+    "valid": true,
+    "issues": [],
+    "operations": 60,
+    "state_checks_true": 60,
+    "cleanup_ok": true,
+    "source": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/application/frozen/lifecycle-sdk-r3.jsonl"
+  }
+]

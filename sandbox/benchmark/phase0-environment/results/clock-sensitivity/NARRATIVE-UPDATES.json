@@ -1,0 +1,65 @@
+{
+  "updated_utc": "2026-09-20T13:20:57.000857+00:00",
+  "scope": "posthoc clock caveats and MAIN title removal only; no primary or VM numeric artifacts rewritten",
+  "narrative_files": [
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/MAIN-RESULTS.md",
+      "before_sha256": "9e952f42385263b5bdbf17addfc212d96361790bdc1f2e55152aabb255f2a19c",
+      "after_sha256": "fb970b5fef7bce6131cacad86fe57429bc49e65ff1e8506ad6aabf26fd64e0b0"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/SUPPLEMENTAL-RESULTS.md",
+      "before_sha256": "ee7f88ada1b4f3c8cf4811dbd3e1eee38d2ee6fed1fe26c916850cb67894999e",
+      "after_sha256": "404835cf62421070af011927c339ad49bea31e37df23d09285a5d68894cf5610"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/main-matrix/resources/RESOURCES.md",
+      "before_sha256": "483e420c02caf6c64ec0db6d31d4b4445f1b7ba14cd95ad843df237d3b60ab81",
+      "after_sha256": "85947e66598310e57f6c45d0b63c0b11fba78abc552af4fd4da30d60e4b0c112"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/results/supplemental/resources/RESOURCES.md",
+      "before_sha256": "2c7397f52e2610b62cadd560c39d291217ab3942a77d4797c01a1d287cd39659",
+      "after_sha256": "89928190550786c33cbaf884af11ea88430fc0b8401cb02f399d76f8175997e3"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/MAIN-RESULTS.md",
+      "before_sha256": "4b5ce1fa56a1ec5a331ab52152dcb3db7d141059d4f3a2f11d436025edf0acd1",
+      "after_sha256": "0165b0c71475b4677a74d2c24fa1d6dcad2fc20c41a9a437b76ba918f010ed4e"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/SUPPLEMENTAL-RESULTS.md",
+      "before_sha256": "5e3237743ba811cf2778bd0b8aa98fe7effd5cdcea878fbc62c35c3449d178b6",
+      "after_sha256": "afc6dcf1e114fc50f451baae45b55c16771039e0076a309c1d479918c5de4356"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/main-matrix/resources/RESOURCES.md",
+      "before_sha256": "ca9999ad2ab8b80ff98f5d079d5c1479f3551683dd21e3644182aabc83183f1e",
+      "after_sha256": "b6331ddc4626cb71b997503fd5d8ee1c17daee40a5672ccb853a76b0e4f95420"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase2-sdk/results/supplemental/resources/RESOURCES.md",
+      "before_sha256": "268bd791218ca3abeb4e150ef10fa9a8565d96d6e63140cf35fc367a8e762c97",
+      "after_sha256": "c6d621bfbcf9ae9c0ab141d1b0d52e12eaa4418be923fad2923f4ab5b5b6601b"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase0-environment/REPORT.md",
+      "before_sha256": "6e2b6a5a3d1bbb59c44b19f7c1a2bdbdae1cf3c21e55c9ad917fff2803509d09",
+      "after_sha256": "e4da414e47cb63338804af55a04a2704c92413d5930d69c52ff620a9449a311a"
+    }
+  ],
+  "main_non_markdown_artifacts_unchanged": true,
+  "phase0_prior_manifest_sha256": "106ee99d597a3a3bd644401aea3553746806a27f1a372d4b3ed6881877d247a1",
+  "phase0_refreshed_artifacts": [
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase0-environment/analyze_controls.py",
+      "prior_sha256": "c0830d5b3f28f1b95bb36415005e3d5f4a4844df98e2d029ba94b75f2075a54c",
+      "current_sha256": "3808171c419ccb8fe61425e27d763eb64da18cf62ec6703a550b6b62637cabd5"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase0-environment/REPORT.md",
+      "prior_sha256": "6e2b6a5a3d1bbb59c44b19f7c1a2bdbdae1cf3c21e55c9ad917fff2803509d09",
+      "current_sha256": "e4da414e47cb63338804af55a04a2704c92413d5930d69c52ff620a9449a311a"
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "status": "measurement_controls_available",
+  "completed_utc": "2026-09-20T10:30:37.267919+00:00",
+  "scope": "phase0 environment/resource verification, protocol functional smoke, and offline-validated optional recording control",
+  "api": {
+    "endpoint": "http://10.145.64.67:8088",
+    "health_http": 200,
+    "checked_utc": "2026-09-20T10:29:26.489526+00:00",
+    "pagination_complete": true,
+    "list_http": 200,
+    "pages": 1,
+    "listed_unique_count": 0,
+    "states": {},
+    "scope": "credential team; point-in-time paginated view; concurrent changes are possible"
+  },
+  "vm": {
+    "logical_cpus": 192,
+    "memory_total_gib": 1486.8380889892578,
+    "hugetlb_bytes": 0,
+    "nbd_devices": 1024,
+    "all_nodes_ready": true,
+    "all_pods_ready": true,
+    "neighbor_thresholds": {
+      "ipv4": {
+        "gc_thresh1": 4096,
+        "gc_thresh2": 8192,
+        "gc_thresh3": 16384
+      },
+      "ipv6": {
+        "gc_thresh1": 4096,
+        "gc_thresh2": 8192,
+        "gc_thresh3": 16384
+      }
+    },
+    "postgres_huge_pages": "off"
+  },
+  "host": {
+    "logical_cpus": 384,
+    "qemu_service": {
+      "MainPID": "184366",
+      "LimitNOFILE": "1048576",
+      "CPUAffinity": "192-383",
+      "ActiveState": "active",
+      "SubState": "running"
+    },
+    "qemu_selected_arguments": {
+      "-m": "1511G",
+      "-smp": "192,sockets=1,cores=192,threads=1"
+    },
+    "data2_available_gib": 2061.0686264038086
+  },
+  "runtime_binary_sha256": {
+    "api": {
+      "sha256": "053ccf0e58f6c958417d30d26dcd1965a325ff23fa45e2c34f98df4565dd4c54",
+      "bytes": 163249125
+    },
+    "orchestrator": {
+      "sha256": "bff879e1e132546115a5b9b6f67e53af31655f05acc42abe215b4a591ebaaf02",
+      "bytes": 136002096
+    },
+    "migrator": {
+      "sha256": "01e1094744594f155c9c0db9e54b215b70a2b6fdd87b254918b313daae6fa8ab",
+      "bytes": 14696998
+    }
+  },
+  "sampler_validation": {
+    "unit_tests_passed": 6,
+    "smoke_samples": 2,
+    "smoke_status": "complete",
+    "sample_first_utc": "2026-09-20T10:25:43.602304+00:00",
+    "sample_last_utc": "2026-09-20T10:25:44.602221+00:00",
+    "guest_collection_ms": {
+      "min": 60.09913700108882,
+      "max": 60.859736000566045
+    },
+    "host_collection_ms": {
+      "min": 1.6812399844639003,
+      "max": 2.283260051626712
+    },
+    "firecracker_counts": [
+      0,
+      0
+    ],
+    "cgroup_counts": [
+      0,
+      0
+    ],
+    "nbd_attached_counts": [
+      0,
+      0
+    ],
+    "process_scan_permission_errors": [
+      0,
+      0
+    ],
+    "arp_overflow_delta": 0,
+    "credential_leak_check_passed": true
+  },
+  "limitations": [
+    "Snapshot only; another run must recheck foreign workloads.",
+    "Two one-second smoke samples validate lifecycle and schema, not capacity or zero measurement perturbation.",
+    "Guest and host monotonic clocks have separate origins; align UTC, use local deltas.",
+    "Short-lived cgroups are omitted from continuous cgroup CPU deltas and explicitly counted as new/exited.",
+    "Host resource totals include other users and processes; load-generator event-loop lag requires instrumentation in that process."
+  ],
+  "raw_directory": "/data2/yuhanya/e2b-benchmark/session-20260920/phase0",
+  "updated_utc": "2026-09-20T13:03:14.782348+00:00",
+  "protocol_validation": {
+    "status": "passed",
+    "total_measurement_operations": 14,
+    "command": 3,
+    "file_write": 8,
+    "create_delete_churn": 3,
+    "all_owned_cleanup_confirmed": true,
+    "offline_frame_tests_passed": 4,
+    "performance_baseline": false
+  },
+  "recording_overhead_probe": {
+    "status": "descriptive_comparison_complete",
+    "runs": 12,
+    "buffered_runs": 6,
+    "service_observed_median_change_percent": 0.8912441286282213,
+    "sdk_observed_median_change_percent": -6.816442414516722,
+    "unsuccessful_requests_retained": 1,
+    "full_no_instrumentation_or_sampling_ab": false
+  },
+  "file_transport_control": {
+    "observations": 14,
+    "status": "passed",
+    "cleanup_ok": true,
+    "sdk_byte_counter_is_not_wire_proof": true
+  },
+  "lifecycle_control": {
+    "initial_failed_preflight_retained": true,
+    "fixed_roundtrips": 1,
+    "fixed_operations": 3,
+    "cleanup_ok": true
+  }
+}

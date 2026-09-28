@@ -1,0 +1,12 @@
+cancelled_callers,case,completed_callers,create_active,create_available,create_capacity,create_consistent,create_queued,create_records,exec_active,exec_available,exec_capacity,exec_consistent,exec_queued,exec_records,logical_waiters,passed
+,legacy_cancelled_waiter_loses_permit,,,,,,,,,,,,,,,True
+,create_queued_cancellation,,,,,,,,,,,,,,,True
+,exec_queued_cancellation,,,,,,,,,,,,,,,True
+,grant_during_cancel_and_repeated_local_cancel,,,,,,,,,,,,,,,True
+,cancel_during_release_ack,,,,,,,,,,,,,,,True
+,early_cancel_and_duplicate_unknown_release,,,,,,,,,,,,,,,True
+,sdk_failure_nonzero_inflight_cancel_and_create_failure,,0,1,1,True,0,0,0,1,1,True,0,0,,True
+,failed_acquire_keeps_protective_tombstone,,,,,,,,,,,,,,,True
+190,create_mixed256_waiter_cancellation_storm,66,0,3,3,True,0,0,0,16,16,True,0,0,256,True
+163,exec_mixed256_waiter_cancellation_storm,93,0,3,3,True,0,0,0,16,16,True,0,0,256,True
+,observation_owner_freshness_lease_age_and_stop,,0,3,3,True,0,0,0,16,16,True,0,0,,True

@@ -1,0 +1,2 @@
+run_id,phase,scenario,operation,operation_id,window,worker_id,status,error_class,rpc_code,http_status,duration_ms,start_offset_s,end_offset_s,state_check,error_message
+130c6a483cd2469caead04760d1fa6c5,phase1-service,exec_true,exec_true,130c6a483cd2469caead04760d1fa6c5:1388,measurement,20,invalid,InvalidResult,,,5.218680016696453,18.807285518967547,18.812504198984243,False,Connect error: unavailable

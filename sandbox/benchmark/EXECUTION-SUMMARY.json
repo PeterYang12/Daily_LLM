@@ -1,0 +1,21 @@
+{
+  "created_utc": "2026-09-20T13:16:18.673215+00:00",
+  "root": "/data2/yuhanya/e2b-benchmark/session-20260920",
+  "bytes": 2346299137,
+  "measurement_labeled_operations_by_phase": {
+    "phase2-sdk": 1548705,
+    "phase1-service": 741861
+  },
+  "measurement_labeled_status_counts": {
+    "success": 2290506,
+    "invalid": 2,
+    "error": 58
+  },
+  "run_count": 173,
+  "run_statuses": {
+    "completed": 170,
+    "SandboxException": 3
+  },
+  "cleanup_unconfirmed_runs": [],
+  "scope": "Raw snapshots/logs under phase0,phase1-service,phase2-sdk. Operation counts include full labeled cohorts and multi workers once; exclude warmup and phase0 validation. Not all rows are inside completion throughput windows."
+}

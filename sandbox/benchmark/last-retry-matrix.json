@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "cells": [
+    {
+      "id": "exec-resident256-c8-r3-retry2",
+      "phase": "phase1-service",
+      "args": {
+        "phase": "phase1-service",
+        "adapter": "service",
+        "scenario": "exec_true",
+        "concurrency": 8,
+        "residents": 256,
+        "duration": 30,
+        "repeat": 3
+      }
+    }
+  ]
+}

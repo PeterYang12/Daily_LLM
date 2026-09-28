@@ -1,0 +1,500 @@
+{
+  "timestamp_utc": "2026-09-21T15:38:40.215484+00:00",
+  "scope": "CPU-only admission validation; no RL, model, GPU or old R2 launcher executed",
+  "config": {
+    "schema_version": 1,
+    "create_permits": 1024,
+    "startup_concurrency": 1024,
+    "exec_permits": 16
+  },
+  "checks": [
+    {
+      "name": "requested_config_1024_1024_16",
+      "passed": true,
+      "detail": {
+        "UA_CREATE_PERMITS": "1024",
+        "SANDBOX_STARTUP_CONCURRENCY": "1024",
+        "UA_EXEC_PERMITS": "16"
+      }
+    },
+    {
+      "name": "deployment_and_document_copies_identical",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "default_check_calls_real_docker_inspect_only",
+      "passed": true,
+      "detail": {
+        "calls": [
+          [
+            "docker",
+            "inspect",
+            "--format",
+            "{\"id\":{{json .Id}},\"running\":{{json .State.Running}},\"mounts\":{{json .Mounts}}}",
+            "e2b-admission-cpu-validation-84e366f7"
+          ]
+        ],
+        "result": {
+          "mode": "check",
+          "experiment_root": "/tmp/e2b-client-admission-validation-mlqxkkp0",
+          "container_id": "36a14bff4ccb6a23f61e09cf0f5165c338a2c58872d5f568e341289d76d1bdba",
+          "run_id": "fresh-admission-validation",
+          "driver_admission_environment": {
+            "UA_CREATE_PERMITS": "1024",
+            "SANDBOX_STARTUP_CONCURRENCY": "1024",
+            "UA_EXEC_PERMITS": "16"
+          },
+          "ray_worker_environment_overrides": {
+            "UA_CREATE_PERMITS": "1024",
+            "SANDBOX_STARTUP_CONCURRENCY": "1024",
+            "UA_EXEC_PERMITS": "16"
+          },
+          "command_argv": [
+            "docker",
+            "exec",
+            "-w",
+            "/experiment",
+            "-e",
+            "PYTHONDONTWRITEBYTECODE=1",
+            "-e",
+            "SANDBOX_STARTUP_CONCURRENCY=1024",
+            "-e",
+            "UA_CREATE_PERMITS=1024",
+            "-e",
+            "UA_EXEC_PERMITS=16",
+            "-e",
+            "UA_EXPERIMENT_ROOT=/experiment",
+            "-e",
+            "UA_RUN_ID=fresh-admission-validation",
+            "36a14bff4ccb6a23f61e09cf0f5165c338a2c58872d5f568e341289d76d1bdba",
+            "bash",
+            "/experiment/code/launch.sh",
+            "++ray_kwargs.ray_init.runtime_env.env_vars.SANDBOX_STARTUP_CONCURRENCY=\"1024\"",
+            "++ray_kwargs.ray_init.runtime_env.env_vars.UA_CREATE_PERMITS=\"1024\"",
+            "++ray_kwargs.ray_init.runtime_env.env_vars.UA_EXEC_PERMITS=\"16\""
+          ],
+          "command": "docker exec -w /experiment -e PYTHONDONTWRITEBYTECODE=1 -e SANDBOX_STARTUP_CONCURRENCY=1024 -e UA_CREATE_PERMITS=1024 -e UA_EXEC_PERMITS=16 -e UA_EXPERIMENT_ROOT=/experiment -e UA_RUN_ID=fresh-admission-validation 36a14bff4ccb6a23f61e09cf0f5165c338a2c58872d5f568e341289d76d1bdba bash /experiment/code/launch.sh '++ray_kwargs.ray_init.runtime_env.env_vars.SANDBOX_STARTUP_CONCURRENCY=\"1024\"' '++ray_kwargs.ray_init.runtime_env.env_vars.UA_CREATE_PERMITS=\"1024\"' '++ray_kwargs.ray_init.runtime_env.env_vars.UA_EXEC_PERMITS=\"16\"'"
+        }
+      }
+    },
+    {
+      "name": "actual_cpu_container_isolation",
+      "passed": true,
+      "detail": {
+        "network": "none",
+        "nanocpus": 2000000000,
+        "memory": 4294967296,
+        "shm_size": 268435456,
+        "devices": [],
+        "device_requests": null,
+        "mounts": [
+          {
+            "Destination": "/experiment",
+            "Mode": "",
+            "Propagation": "rprivate",
+            "RW": true,
+            "Source": "/tmp/e2b-client-admission-validation-mlqxkkp0",
+            "Type": "bind"
+          }
+        ]
+      }
+    },
+    {
+      "name": "fresh_experiment_accepted",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "old_r2_root_rejected",
+      "passed": true,
+      "detail": "The frozen R2 experiment root cannot be used"
+    },
+    {
+      "name": "old_r2_subdirectory_rejected",
+      "passed": true,
+      "detail": "The frozen R2 experiment root cannot be used"
+    },
+    {
+      "name": "symlink_to_old_r2_root_rejected",
+      "passed": true,
+      "detail": "The frozen R2 experiment root cannot be used"
+    },
+    {
+      "name": "old_r2_run_id_rejected",
+      "passed": true,
+      "detail": "The frozen R2 run identity cannot be used"
+    },
+    {
+      "name": "actual_docker_mount_source_mismatch_rejected",
+      "passed": true,
+      "detail": "Docker /experiment mount differs from the specified new root"
+    },
+    {
+      "name": "external_entrypoint_symlink_rejected:launch.sh",
+      "passed": true,
+      "detail": "Entry point cannot be a symbolic link: code/launch.sh"
+    },
+    {
+      "name": "external_entrypoint_symlink_rejected:configure.py",
+      "passed": true,
+      "detail": "Entry point cannot be a symbolic link: code/configure.py"
+    },
+    {
+      "name": "external_entrypoint_symlink_rejected:runtime_launch.py",
+      "passed": true,
+      "detail": "Entry point cannot be a symbolic link: code/runtime_launch.py"
+    },
+    {
+      "name": "host_absolute_entrypoint_symlink_rejected",
+      "passed": true,
+      "detail": "Entry point cannot be a symbolic link: code/launch.sh"
+    },
+    {
+      "name": "code_directory_symlink_rejected",
+      "passed": true,
+      "detail": "The new experiment code directory cannot be a symbolic link"
+    },
+    {
+      "name": "top_output_symlink_rejected:configs",
+      "passed": true,
+      "detail": "Output directory cannot be a symbolic link: configs"
+    },
+    {
+      "name": "nested_output_symlink_rejected:configs",
+      "passed": true,
+      "detail": "Output path cannot be a symbolic link: configs/child"
+    },
+    {
+      "name": "top_output_symlink_rejected:results",
+      "passed": true,
+      "detail": "Output directory cannot be a symbolic link: results"
+    },
+    {
+      "name": "nested_output_symlink_rejected:results",
+      "passed": true,
+      "detail": "Output path cannot be a symbolic link: results/child"
+    },
+    {
+      "name": "top_output_symlink_rejected:checkpoints",
+      "passed": true,
+      "detail": "Output directory cannot be a symbolic link: checkpoints"
+    },
+    {
+      "name": "nested_output_symlink_rejected:checkpoints",
+      "passed": true,
+      "detail": "Output path cannot be a symbolic link: checkpoints/child"
+    },
+    {
+      "name": "top_output_symlink_rejected:logs",
+      "passed": true,
+      "detail": "Output directory cannot be a symbolic link: logs"
+    },
+    {
+      "name": "nested_output_symlink_rejected:logs",
+      "passed": true,
+      "detail": "Output path cannot be a symbolic link: logs/child"
+    },
+    {
+      "name": "top_output_symlink_rejected:ray",
+      "passed": true,
+      "detail": "Output directory cannot be a symbolic link: ray"
+    },
+    {
+      "name": "nested_output_symlink_rejected:ray",
+      "passed": true,
+      "detail": "Output path cannot be a symbolic link: ray/child"
+    },
+    {
+      "name": "old_r2_leaf_symlink_rejected:results/launch.lock",
+      "passed": true,
+      "detail": "Output path cannot be a symbolic link: results/launch.lock"
+    },
+    {
+      "name": "old_r2_leaf_symlink_rejected:configs/train.yaml",
+      "passed": true,
+      "detail": "Output path cannot be a symbolic link: configs/train.yaml"
+    },
+    {
+      "name": "hard_linked_output_rejected",
+      "passed": true,
+      "detail": "Output file cannot have hard links: configs/train.yaml"
+    },
+    {
+      "name": "non_directory_output_rejected",
+      "passed": true,
+      "detail": "Output path must be a directory: logs"
+    },
+    {
+      "name": "inspect_metadata_rejected:read_only",
+      "passed": true,
+      "detail": "/experiment must be a writable bind mount"
+    },
+    {
+      "name": "inspect_metadata_rejected:not_bind",
+      "passed": true,
+      "detail": "/experiment must be a writable bind mount"
+    },
+    {
+      "name": "inspect_metadata_rejected:missing",
+      "passed": true,
+      "detail": "Exactly one /experiment mount is required"
+    },
+    {
+      "name": "inspect_metadata_rejected:duplicate",
+      "passed": true,
+      "detail": "Exactly one /experiment mount is required"
+    },
+    {
+      "name": "inspect_metadata_rejected:nested",
+      "passed": true,
+      "detail": "Nested /experiment mounts are not supported"
+    },
+    {
+      "name": "inspect_metadata_rejected:stopped",
+      "passed": true,
+      "detail": "Target container must already be running"
+    },
+    {
+      "name": "config_rejected:create_permits=True",
+      "passed": true,
+      "detail": "create_permits must be an integer between 1 and 65536"
+    },
+    {
+      "name": "config_rejected:create_permits=0",
+      "passed": true,
+      "detail": "create_permits must be an integer between 1 and 65536"
+    },
+    {
+      "name": "config_rejected:create_permits=-1",
+      "passed": true,
+      "detail": "create_permits must be an integer between 1 and 65536"
+    },
+    {
+      "name": "config_rejected:create_permits=1.5",
+      "passed": true,
+      "detail": "create_permits must be an integer between 1 and 65536"
+    },
+    {
+      "name": "config_rejected:create_permits='1024'",
+      "passed": true,
+      "detail": "create_permits must be an integer between 1 and 65536"
+    },
+    {
+      "name": "config_rejected:create_permits=65537",
+      "passed": true,
+      "detail": "create_permits must be an integer between 1 and 65536"
+    },
+    {
+      "name": "config_rejected:missing:create_permits",
+      "passed": true,
+      "detail": "Admission config must contain exactly the schema and three settings"
+    },
+    {
+      "name": "config_rejected:startup_concurrency=True",
+      "passed": true,
+      "detail": "startup_concurrency must be an integer between 1 and 65536"
+    },
+    {
+      "name": "config_rejected:startup_concurrency=0",
+      "passed": true,
+      "detail": "startup_concurrency must be an integer between 1 and 65536"
+    },
+    {
+      "name": "config_rejected:startup_concurrency=-1",
+      "passed": true,
+      "detail": "startup_concurrency must be an integer between 1 and 65536"
+    },
+    {
+      "name": "config_rejected:startup_concurrency=1.5",
+      "passed": true,
+      "detail": "startup_concurrency must be an integer between 1 and 65536"
+    },
+    {
+      "name": "config_rejected:startup_concurrency='1024'",
+      "passed": true,
+      "detail": "startup_concurrency must be an integer between 1 and 65536"
+    },
+    {
+      "name": "config_rejected:startup_concurrency=65537",
+      "passed": true,
+      "detail": "startup_concurrency must be an integer between 1 and 65536"
+    },
+    {
+      "name": "config_rejected:missing:startup_concurrency",
+      "passed": true,
+      "detail": "Admission config must contain exactly the schema and three settings"
+    },
+    {
+      "name": "config_rejected:exec_permits=True",
+      "passed": true,
+      "detail": "exec_permits must be an integer between 1 and 65536"
+    },
+    {
+      "name": "config_rejected:exec_permits=0",
+      "passed": true,
+      "detail": "exec_permits must be an integer between 1 and 65536"
+    },
+    {
+      "name": "config_rejected:exec_permits=-1",
+      "passed": true,
+      "detail": "exec_permits must be an integer between 1 and 65536"
+    },
+    {
+      "name": "config_rejected:exec_permits=1.5",
+      "passed": true,
+      "detail": "exec_permits must be an integer between 1 and 65536"
+    },
+    {
+      "name": "config_rejected:exec_permits='1024'",
+      "passed": true,
+      "detail": "exec_permits must be an integer between 1 and 65536"
+    },
+    {
+      "name": "config_rejected:exec_permits=65537",
+      "passed": true,
+      "detail": "exec_permits must be an integer between 1 and 65536"
+    },
+    {
+      "name": "config_rejected:missing:exec_permits",
+      "passed": true,
+      "detail": "Admission config must contain exactly the schema and three settings"
+    },
+    {
+      "name": "config_rejected:boolean_schema",
+      "passed": true,
+      "detail": "Unsupported admission config schema_version"
+    },
+    {
+      "name": "config_rejected:unexpected_field",
+      "passed": true,
+      "detail": "Admission config must contain exactly the schema and three settings"
+    },
+    {
+      "name": "config_rejected:not_object",
+      "passed": true,
+      "detail": "Admission config must contain exactly the schema and three settings"
+    },
+    {
+      "name": "real_docker_hydra_and_ray_worker_environment",
+      "passed": true,
+      "detail": {
+        "driver_hydra": {
+          "argv": [
+            "++ray_kwargs.ray_init.runtime_env.env_vars.SANDBOX_STARTUP_CONCURRENCY=\"1024\"",
+            "++ray_kwargs.ray_init.runtime_env.env_vars.UA_CREATE_PERMITS=\"1024\"",
+            "++ray_kwargs.ray_init.runtime_env.env_vars.UA_EXEC_PERMITS=\"16\""
+          ],
+          "driver": {
+            "UA_CREATE_PERMITS": "1024",
+            "SANDBOX_STARTUP_CONCURRENCY": "1024",
+            "UA_EXEC_PERMITS": "16"
+          },
+          "hydra_env_vars": {
+            "SANDBOX_STARTUP_CONCURRENCY": "1024",
+            "UA_CREATE_PERMITS": "1024",
+            "UA_EXEC_PERMITS": "16"
+          },
+          "hydra_value_types": {
+            "SANDBOX_STARTUP_CONCURRENCY": "str",
+            "UA_CREATE_PERMITS": "str",
+            "UA_EXEC_PERMITS": "str"
+          },
+          "hydra_version": "1.3.2",
+          "ray_version": "2.56.1",
+          "gpu_device_nodes": []
+        },
+        "ray_worker": {
+          "worker": {
+            "UA_CREATE_PERMITS": "1024",
+            "SANDBOX_STARTUP_CONCURRENCY": "1024",
+            "UA_EXEC_PERMITS": "16"
+          },
+          "cluster_resources": {
+            "CPU": 2.0,
+            "node:127.0.0.1": 1.0,
+            "object_store_memory": 104857600.0,
+            "memory": 536870912.0,
+            "node:__internal_head__": 1.0
+          }
+        }
+      }
+    }
+  ],
+  "probe": {
+    "status": "completed",
+    "returncode": 0,
+    "stdout": "DRIVER_HYDRA_RESULT={\"argv\": [\"++ray_kwargs.ray_init.runtime_env.env_vars.SANDBOX_STARTUP_CONCURRENCY=\\\"1024\\\"\", \"++ray_kwargs.ray_init.runtime_env.env_vars.UA_CREATE_PERMITS=\\\"1024\\\"\", \"++ray_kwargs.ray_init.runtime_env.env_vars.UA_EXEC_PERMITS=\\\"16\\\"\"], \"driver\": {\"UA_CREATE_PERMITS\": \"1024\", \"SANDBOX_STARTUP_CONCURRENCY\": \"1024\", \"UA_EXEC_PERMITS\": \"16\"}, \"hydra_env_vars\": {\"SANDBOX_STARTUP_CONCURRENCY\": \"1024\", \"UA_CREATE_PERMITS\": \"1024\", \"UA_EXEC_PERMITS\": \"16\"}, \"hydra_value_types\": {\"SANDBOX_STARTUP_CONCURRENCY\": \"str\", \"UA_CREATE_PERMITS\": \"str\", \"UA_EXEC_PERMITS\": \"str\"}, \"hydra_version\": \"1.3.2\", \"ray_version\": \"2.56.1\", \"gpu_device_nodes\": []}\nRAY_WORKER_RESULT={\"worker\": {\"UA_CREATE_PERMITS\": \"1024\", \"SANDBOX_STARTUP_CONCURRENCY\": \"1024\", \"UA_EXEC_PERMITS\": \"16\"}, \"cluster_resources\": {\"CPU\": 2.0, \"node:127.0.0.1\": 1.0, \"object_store_memory\": 104857600.0, \"memory\": 536870912.0, \"node:__internal_head__\": 1.0}}\n",
+    "stderr": "[2026-09-21 15:35:34,807 W 7 7] network_util.cc:330: Failed to determine local IP via external connectivity to: 8.8.8.8:53, [2001:4860:4860::8888]:53, falling back to hostname resolution\n[2026-09-21 15:35:34,808 W 7 7] network_util.cc:353: Hostname resolution failed: resolve: Host not found (non-authoritative), try again later [asio.netdb:2 at external/boost/boost/asio/detail/resolver_service.hpp:84 in function 'resolve']\n[2026-09-21 15:35:34,808 W 7 7] network_util.cc:357: Unable to detect local IP address. Defaulting to 127.0.0.1\n2026-09-21 15:35:36,912\tINFO worker.py:2024 -- Started a local Ray instance.\n",
+    "elapsed_seconds": 5.609640785958618,
+    "command_argv": [
+      "docker",
+      "exec",
+      "-w",
+      "/experiment",
+      "-e",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "-e",
+      "SANDBOX_STARTUP_CONCURRENCY=1024",
+      "-e",
+      "UA_CREATE_PERMITS=1024",
+      "-e",
+      "UA_EXEC_PERMITS=16",
+      "-e",
+      "UA_EXPERIMENT_ROOT=/experiment",
+      "-e",
+      "UA_RUN_ID=e2b-admission-cpu-validation-only",
+      "36a14bff4ccb6a23f61e09cf0f5165c338a2c58872d5f568e341289d76d1bdba",
+      "bash",
+      "/experiment/code/launch.sh",
+      "++ray_kwargs.ray_init.runtime_env.env_vars.SANDBOX_STARTUP_CONCURRENCY=\"1024\"",
+      "++ray_kwargs.ray_init.runtime_env.env_vars.UA_CREATE_PERMITS=\"1024\"",
+      "++ray_kwargs.ray_init.runtime_env.env_vars.UA_EXEC_PERMITS=\"16\""
+    ]
+  },
+  "test_container": {
+    "fixture": "/tmp/e2b-client-admission-validation-mlqxkkp0",
+    "container_name": "e2b-admission-cpu-validation-84e366f7",
+    "container_id": "36a14bff4ccb6a23f61e09cf0f5165c338a2c58872d5f568e341289d76d1bdba",
+    "docker_run_argv": [
+      "docker",
+      "run",
+      "-d",
+      "--name",
+      "e2b-admission-cpu-validation-84e366f7",
+      "--network",
+      "none",
+      "--cpus",
+      "2",
+      "--memory",
+      "4g",
+      "--shm-size",
+      "256m",
+      "-e",
+      "RAY_USAGE_STATS_ENABLED=0",
+      "--mount",
+      "type=bind,src=/tmp/e2b-client-admission-validation-mlqxkkp0,dst=/experiment",
+      "--entrypoint",
+      "sleep",
+      "verlai/verl:rocm7.14_torch2.12_release_0724",
+      "600"
+    ]
+  },
+  "fixes": [
+    "Reject symbolic links in code directory and the three entrypoints.",
+    "Reject symbolic links and hard-linked regular files in existing output trees to prevent writes into an older run."
+  ],
+  "limits": [
+    "Used a synthetic launch.sh forwarding argv to a Hydra/Ray probe. The real RL launcher was read only and was not executed.",
+    "Runtime validation used no external network and no GPU; it does not validate training or E2B load capacity."
+  ],
+  "entry_sha256": "0cd30ede614e1ba1b20619b2802b8d68db3f042ff20fab39d68d2a6acd7fa0aa",
+  "config_sha256": "14858aa0b0ea92502c72c81644250e992e6b82cb31dc6ae8bcb3b1142ffbec20",
+  "status": "passed",
+  "container_cleanup": {
+    "returncode": 0,
+    "stdout": "36a14bff4ccb6a23f61e09cf0f5165c338a2c58872d5f568e341289d76d1bdba",
+    "stderr": "",
+    "absent_after_removal": true
+  }
+}

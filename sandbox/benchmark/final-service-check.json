@@ -1,0 +1,28 @@
+{
+  "checked_utc": "2026-09-20T12:57:11.536172+00:00",
+  "endpoint": "http://10.145.64.67:8088",
+  "total_listed": 0,
+  "benchmark_owned": 0,
+  "other_count": 0,
+  "final_inventory_utc": "2026-09-20T13:07:03.107912+00:00",
+  "health_http": 200,
+  "pagination_complete": true,
+  "final_listed_count": 0,
+  "vm_boot_id_unchanged": true,
+  "runtime_binaries_unchanged": true,
+  "hugepages": {
+    "hugepages-2048kB": {
+      "nr_hugepages": 0,
+      "free_hugepages": 0,
+      "resv_hugepages": 0
+    },
+    "hugepages-1048576kB": {
+      "nr_hugepages": 0,
+      "free_hugepages": 0,
+      "resv_hugepages": 0
+    }
+  },
+  "nbd_devices": 1024,
+  "long_term_monitors": "inactive; not enabled by benchmark",
+  "firecracker_processes_at_final_check": 0
+}

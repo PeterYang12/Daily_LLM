@@ -1,0 +1,65 @@
+{
+  "units": "minutes",
+  "steps": [
+    {
+      "step": 1,
+      "rollout_minutes": 50.32369059714935,
+      "actor_update_minutes": 7.342608925683695,
+      "checkpoint_minutes": 8.605857781217006,
+      "log_prob_and_other_minutes": 1.9472780857497127,
+      "total_minutes": 68.21943538979977,
+      "old_log_prob_minutes": 1.8155141559497376,
+      "other_minutes": 0.1317639297999752
+    },
+    {
+      "step": 2,
+      "rollout_minutes": 95.15672539138274,
+      "actor_update_minutes": 7.648328035133697,
+      "checkpoint_minutes": 8.540905634917241,
+      "log_prob_and_other_minutes": 2.0412913009990006,
+      "total_minutes": 113.38725036243268,
+      "old_log_prob_minutes": 1.9060636477166555,
+      "other_minutes": 0.13522765328234526
+    },
+    {
+      "step": 3,
+      "rollout_minutes": 36.83942837753372,
+      "actor_update_minutes": 5.901296341750034,
+      "checkpoint_minutes": 8.503578439816676,
+      "log_prob_and_other_minutes": 1.549078111332104,
+      "total_minutes": 52.79338127043253,
+      "old_log_prob_minutes": 1.4233908114828713,
+      "other_minutes": 0.12568729984923266
+    },
+    {
+      "step": 4,
+      "rollout_minutes": 71.46697001140079,
+      "actor_update_minutes": 7.072641566433594,
+      "checkpoint_minutes": 8.537038342150238,
+      "log_prob_and_other_minutes": 1.800055596214952,
+      "total_minutes": 88.87670551619958,
+      "old_log_prob_minutes": 1.639323385117071,
+      "other_minutes": 0.16073221109788088
+    },
+    {
+      "step": 5,
+      "rollout_minutes": 42.29402050525047,
+      "actor_update_minutes": 6.389341043333601,
+      "checkpoint_minutes": 8.502091462733611,
+      "log_prob_and_other_minutes": 1.5951818307493038,
+      "total_minutes": 58.78063484206699,
+      "old_log_prob_minutes": 1.4481792626834553,
+      "other_minutes": 0.14700256806584852
+    },
+    {
+      "step": 6,
+      "rollout_minutes": 44.052237178116535,
+      "actor_update_minutes": 6.3298096210501775,
+      "checkpoint_minutes": 8.536512399366863,
+      "log_prob_and_other_minutes": 1.582604811649071,
+      "total_minutes": 60.50116401018264,
+      "old_log_prob_minutes": 1.4314072435168783,
+      "other_minutes": 0.15119756813219282
+    }
+  ]
+}

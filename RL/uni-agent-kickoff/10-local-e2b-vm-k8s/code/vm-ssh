@@ -1,0 +1,6 @@
+#!/bin/bash
+set -euo pipefail
+exec ssh -i /home/yuhanya/.config/e2b-local-20260916/vm_ed25519 \
+  -o UserKnownHostsFile=/home/yuhanya/.config/e2b-local-20260916/known_hosts \
+  -o StrictHostKeyChecking=accept-new -o BatchMode=yes -o ConnectTimeout=10 \
+  -p 12222 e2badmin@127.0.0.1 "$@"

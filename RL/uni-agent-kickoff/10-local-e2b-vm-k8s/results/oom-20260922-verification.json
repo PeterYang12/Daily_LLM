@@ -1,0 +1,61 @@
+{
+  "checked_utc": "2026-09-22T15:01:13.852812+00:00",
+  "source": "host kernel journal",
+  "events": [
+    {
+      "utc": "2026-09-22T14:07:09.480644+00:00",
+      "message": "active_anon:397465592 inactive_anon:370986056 isolated_anon:0\n active_file:771 inactive_file:919 isolated_file:0\n unevictable:9076 dirty:0 writeback:0\n slab_reclaimable:1083892 slab_unreclaimable:1199529\n mapped:2865 shmem:377547509 pagetables:813119\n sec_pagetables:110563 bounce:0\n kernel_misc_reclaimable:0\n free:1217616 free_pcp:61 free_cma:0"
+    },
+    {
+      "utc": "2026-09-22T14:07:09.612289+00:00",
+      "message": "active_anon:392566665 inactive_anon:375886230 isolated_anon:0\n active_file:1066 inactive_file:296 isolated_file:0\n unevictable:9076 dirty:17 writeback:0\n slab_reclaimable:1083766 slab_unreclaimable:1199109\n mapped:2792 shmem:377547509 pagetables:813004\n sec_pagetables:110576 bounce:0\n kernel_misc_reclaimable:0\n free:1217497 free_pcp:202 free_cma:0"
+    },
+    {
+      "utc": "2026-09-22T14:07:51.181585+00:00",
+      "message": "active_anon:725895627 inactive_anon:42558010 isolated_anon:0\n active_file:886 inactive_file:1630 isolated_file:0\n unevictable:9076 dirty:20 writeback:0\n slab_reclaimable:1082865 slab_unreclaimable:1199031\n mapped:2417 shmem:377547495 pagetables:811999\n sec_pagetables:110659 bounce:0\n kernel_misc_reclaimable:0\n free:1218419 free_pcp:256 free_cma:0"
+    },
+    {
+      "utc": "2026-09-22T14:07:51.226754+00:00",
+      "message": "active_anon:41372878 inactive_anon:727079984 isolated_anon:0\n active_file:98 inactive_file:1498 isolated_file:0\n unevictable:9076 dirty:32 writeback:0\n slab_reclaimable:1082808 slab_unreclaimable:1199028\n mapped:2226 shmem:377547495 pagetables:811943\n sec_pagetables:110662 bounce:0\n kernel_misc_reclaimable:0\n free:1220104 free_pcp:61 free_cma:0"
+    },
+    {
+      "utc": "2026-09-22T14:07:51.235893+00:00",
+      "message": "active_anon:75525989 inactive_anon:692927873 isolated_anon:0\n active_file:762 inactive_file:636 isolated_file:0\n unevictable:9076 dirty:4 writeback:0\n slab_reclaimable:1082688 slab_unreclaimable:1199349\n mapped:2541 shmem:377547495 pagetables:811972\n sec_pagetables:110666 bounce:0\n kernel_misc_reclaimable:0\n free:1218598 free_pcp:0 free_cma:0"
+    },
+    {
+      "utc": "2026-09-22T14:07:51.241443+00:00",
+      "message": "active_anon:67800942 inactive_anon:700653000 isolated_anon:0\n active_file:1121 inactive_file:699 isolated_file:0\n unevictable:9076 dirty:4 writeback:0\n slab_reclaimable:1082688 slab_unreclaimable:1199349\n mapped:2678 shmem:377547495 pagetables:811948\n sec_pagetables:110666 bounce:0\n kernel_misc_reclaimable:0\n free:1218479 free_pcp:125 free_cma:0"
+    },
+    {
+      "utc": "2026-09-22T14:07:51.244686+00:00",
+      "message": "active_anon:711848634 inactive_anon:56608346 isolated_anon:0\n active_file:908 inactive_file:764 isolated_file:0\n unevictable:9076 dirty:4 writeback:0\n slab_reclaimable:1082550 slab_unreclaimable:1196153\n mapped:2419 shmem:377547495 pagetables:811928\n sec_pagetables:110669 bounce:0\n kernel_misc_reclaimable:0\n free:1218768 free_pcp:126 free_cma:0"
+    },
+    {
+      "utc": "2026-09-22T14:07:51.247119+00:00",
+      "message": "active_anon:17695610 inactive_anon:750761407 isolated_anon:0\n active_file:2051 inactive_file:0 isolated_file:0\n unevictable:9076 dirty:4 writeback:0\n slab_reclaimable:1082522 slab_unreclaimable:1196273\n mapped:2334 shmem:377547495 pagetables:811917\n sec_pagetables:110668 bounce:0\n kernel_misc_reclaimable:0\n free:1218855 free_pcp:86 free_cma:0"
+    },
+    {
+      "utc": "2026-09-22T14:07:51.249340+00:00",
+      "message": "active_anon:389409362 inactive_anon:379047648 isolated_anon:0\n active_file:952 inactive_file:437 isolated_file:0\n unevictable:9076 dirty:0 writeback:0\n slab_reclaimable:1082514 slab_unreclaimable:1196273\n mapped:2515 shmem:377547495 pagetables:811907\n sec_pagetables:110668 bounce:0\n kernel_misc_reclaimable:0\n free:1218855 free_pcp:436 free_cma:0"
+    },
+    {
+      "utc": "2026-09-22T14:07:51.251474+00:00",
+      "message": "active_anon:390995034 inactive_anon:377462182 isolated_anon:0\n active_file:104 inactive_file:460 isolated_file:0\n unevictable:9076 dirty:6 writeback:0\n slab_reclaimable:1082482 slab_unreclaimable:1196496\n mapped:2430 shmem:377547495 pagetables:811884\n sec_pagetables:110666 bounce:0\n kernel_misc_reclaimable:0\n free:1211408 free_pcp:7616 free_cma:0"
+    },
+    {
+      "utc": "2026-09-22T14:07:51.253575+00:00",
+      "message": "oom-kill:constraint=CONSTRAINT_NONE,nodemask=(null),cpuset=containerd.service,mems_allowed=0-1,global_oom,task_memcg=/system.slice/e2b-sandbox-vm.service,task=qemu-system-x86,pid=184366,uid=15341"
+    },
+    {
+      "utc": "2026-09-22T14:07:51.253592+00:00",
+      "message": "Out of memory: Killed process 184366 (qemu-system-x86) total-vm:1651183844kB, anon-rss:1559241112kB, file-rss:12288kB, shmem-rss:0kB, UID:15341 pgtables:3152484kB oom_score_adj:0"
+    }
+  ],
+  "qemu_anon_rss_kib": 1559241112,
+  "qemu_anon_rss_tib": 1.4521564468741417,
+  "host_global_shmem_pages": 377547495,
+  "host_global_shmem_tib": 1.406474020332098,
+  "unit_note": "Kernel kB fields are KiB; Mem-Info counters without units are 4096-byte pages.",
+  "client_timing_status": "Not independently verified; original remote-run records needed.",
+  "scope_note": "Host OOM is a later incident and does not establish the cause of earlier rollout delays."
+}

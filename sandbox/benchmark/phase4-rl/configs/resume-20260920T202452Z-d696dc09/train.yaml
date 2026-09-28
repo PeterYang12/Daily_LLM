@@ -1,0 +1,231 @@
+defaults:
+- ppo_megatron_trainer
+- _self_
+data:
+  train_files: /experiment/data/qualified/train.parquet
+  val_files: /experiment/data/qualified/val.parquet
+  train_batch_size: 32
+  gen_batch_size: 1
+  shuffle: true
+  seed: 20260920
+  dataloader_num_workers: 0
+  prompt_key: prompt
+  max_prompt_length: 8192
+  max_response_length: 131072
+  filter_overlong_prompts: true
+  truncation: error
+  return_raw_chat: true
+  val_batch_size: 16
+  validation_shuffle: false
+algorithm:
+  adv_estimator: grpo
+  use_kl_in_reward: false
+  rollout_correction:
+    bypass_mode: false
+    rollout_is: token
+    rollout_is_threshold: 2.0
+    rollout_is_batch_normalize: false
+    rollout_rs: null
+actor_rollout_ref:
+  nccl_timeout: 9600
+  model:
+    path: /models/Qwen3-Coder-30B-A3B-Instruct
+    lora_rank: 0
+    use_remove_padding: true
+    enable_gradient_checkpointing: true
+    use_fused_kernels: false
+  actor:
+    ppo_mini_batch_size: 32
+    ppo_micro_batch_size_per_gpu: 1
+    ppo_epochs: 1
+    use_dynamic_bsz: true
+    ppo_max_token_len_per_gpu: 34816
+    use_kl_loss: false
+    entropy_coeff: 0.0
+    loss_agg_mode: token-mean
+    clip_ratio_low: 0.0004
+    clip_ratio_high: 0.0004
+    clip_ratio_c: 10.0
+    policy_loss:
+      loss_mode: gspo
+    optim:
+      lr: 1.0e-06
+      lr_warmup_steps: 0
+      lr_warmup_steps_ratio: 0.0
+      lr_decay_steps: 10000
+      lr_decay_style: constant
+      weight_decay: 0.1
+      clip_grad: 1.0
+      use_checkpoint_opt_param_scheduler: true
+    checkpoint:
+      save_contents:
+      - model
+      - optimizer
+      - extra
+      async_save: false
+      load_contents:
+      - model
+      - optimizer
+      - extra
+    megatron:
+      use_mbridge: true
+      vanilla_mbridge: true
+      use_dist_checkpointing: false
+      param_offload: true
+      optimizer_offload: true
+      tensor_model_parallel_size: 1
+      pipeline_model_parallel_size: 1
+      context_parallel_size: 4
+      expert_model_parallel_size: 8
+      expert_tensor_parallel_size: 1
+      sequence_parallel: false
+      router_replay:
+        mode: R3
+      override_transformer_config:
+        recompute_method: uniform
+        recompute_granularity: full
+        recompute_num_layers: 1
+        attention_backend: flash
+        moe_grouped_gemm: true
+        moe_token_dispatcher_type: alltoall
+        moe_router_dtype: fp32
+        moe_permute_fusion: false
+        gradient_accumulation_fusion: true
+  rollout:
+    name: vllm
+    mode: async
+    n: 8
+    calculate_log_probs: true
+    logprobs_mode: processed_logprobs
+    tensor_model_parallel_size: 2
+    gpu_memory_utilization: 0.7
+    max_model_len: 139264
+    max_num_batched_tokens: 16384
+    max_num_seqs: 64
+    enforce_eager: true
+    free_cache_engine: true
+    enable_chunked_prefill: true
+    enable_rollout_routing_replay: true
+    engine_kwargs:
+      vllm:
+        disable_custom_all_reduce: true
+    temperature: 1.0
+    top_p: 1.0
+    top_k: -1
+    log_prob_use_dynamic_bsz: true
+    log_prob_max_token_len_per_gpu: 34816
+    val_kwargs:
+      temperature: 1.0
+      top_p: 0.95
+      do_sample: true
+      n: 1
+    multi_turn:
+      enable: true
+      max_parallel_calls: 1
+      format: qwen3_coder
+    agent:
+      num_workers: 8
+      agent_loop_manager_class: uni_agent.framework.entry.AgentFrameworkRolloutAdapter
+    custom:
+      agent_framework:
+        gateway_count: 4
+        log_dir: /experiment/results/trajectories
+        mask_unfinished_episode: true
+        agent_runners:
+          task:
+            runner_fqn: run_runner.run_task
+            dispatch_mode: ray_task
+            max_concurrent_sessions: 256
+            trajectory_selection: all
+            runner_kwargs:
+              task_config_path: /experiment/configs/task_config.yaml
+              model_name: Qwen3-Coder-30B-A3B-Instruct
+reward:
+  reward_manager:
+    name: dapo
+  custom_reward_function:
+    path: pkg://uni_agent.framework.task_runner
+    name: score_from_runner_result
+transfer_queue:
+  enable: true
+trainer:
+  use_v1: true
+  v1:
+    trainer_mode: colocate_async
+    colocate_async:
+      num_warmup_batches: 0
+  nnodes: 1
+  n_gpus_per_node: 8
+  total_training_steps: 100
+  total_epochs: 101
+  save_freq: 1
+  max_actor_ckpt_to_keep: 2
+  max_critic_ckpt_to_keep: 2
+  resume_mode: auto
+  test_freq: 25
+  val_before_train: false
+  project_name: e2b-rl-pathfinding
+  experiment_name: ua-e2b-pathfinding-20260920-r2
+  logger:
+  - console
+  - file
+  - wandb
+  default_local_dir: /experiment/checkpoints
+  rollout_data_dir: /experiment/results/consumed-rollouts
+  log_val_generations: 0
+  validation_data_dir: /experiment/results/validation
+  checkpoint_callback_class: verify_checkpoint.CheckpointRecord
+ray_kwargs:
+  ray_init:
+    num_cpus: 160
+    namespace: ua-e2b-pathfinding-20260920-r2
+    include_dashboard: false
+    object_store_memory: 34359738368
+    runtime_env:
+      env_vars:
+        PYTHONPATH: /experiment/code:/experiment/src/uni-agent:/experiment/src/uni-agent/verl
+        PYTHONNOUSERSITE: '1'
+        TOKENIZERS_PARALLELISM: 'false'
+        OMP_NUM_THREADS: '1'
+        PYTORCH_ALLOC_CONF: expandable_segments:False
+        TORCH_NCCL_AVOID_RECORD_STREAMS: '1'
+        CUDA_DEVICE_MAX_CONNECTIONS: '1'
+        VLLM_ROCM_USE_AITER: '1'
+        VLLM_ROCM_USE_AITER_MOE: '0'
+        USE_ROCM_AITER_ROPE_BACKEND: '0'
+        TRANSFER_QUEUE_ENABLE: '1'
+        UA_PHASE: train
+        UA_OBSERVE: '1'
+        HYDRA_FULL_ERROR: '1'
+        UA_MAX_SUBMITTED_PROMPTS: '3520'
+        VERL_FILE_LOGGER_PATH: /experiment/results/train-metrics.jsonl
+        UA_EXPERIMENT_ROOT: /experiment
+        UA_RUN_ID: ua-e2b-pathfinding-20260920-r2
+        UA_PROFILE: '1'
+        SANDBOX_STARTUP_TIMEOUT: '1800'
+        UA_TIMING_VARIANT: ticket-admission-v2-startup1800
+        UA_SUPERVISOR_ATTEMPT_ID: 20260920T202452Z-d696dc09-attempt-01
+        UA_RUNNER_CPUS: '0.5'
+        UA_PROFILE_SEPARATE_CREATE_GATE: '0'
+        UA_MAX_VALIDATION_EPISODES: '80'
+        UA_PLANNED_TRAIN_PROMPTS: '3200'
+        UA_PROMPT_REFILL_ALLOWANCE: '320'
+        UA_PAUSE_AFTER_STEP: '0'
+        UA_APPEND_METRICS: '1'
+        UA_DURABLE_METRICS: '1'
+        WANDB_PROJECT: e2b-rl-pathfinding
+        WANDB_RUN_ID: ua-e2b-pathfinding-20260920-r2
+        WANDB_RESUME: allow
+        WANDB_DIR: /experiment/results/wandb
+        WANDB_MODE: online
+        RAY_TMPDIR: /experiment/ray
+        RAY_ADDRESS: local
+      worker_process_setup_hook: runtime_common.worker_setup
+    num_gpus: 8
+    address: local
+    _temp_dir: /experiment/ray
+hydra:
+  run:
+    dir: /experiment/results/hydra/20260920T202452Z-d696dc09-attempt-01
+  job:
+    chdir: false

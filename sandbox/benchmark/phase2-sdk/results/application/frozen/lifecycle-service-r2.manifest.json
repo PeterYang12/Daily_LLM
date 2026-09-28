@@ -1,0 +1,35 @@
+{
+  "cell": {
+    "id": "lifecycle-service-r2",
+    "phase": "phase1-service",
+    "script": "phase1-service/code/lifecycle_roundtrip.py",
+    "args": {
+      "adapter": "service",
+      "phase": "phase1-service",
+      "iterations": 20,
+      "repeat": 2
+    }
+  },
+  "command": [
+    "taskset",
+    "-c",
+    "0-15",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/env/bin/python",
+    "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/code/lifecycle_roundtrip.py",
+    "--adapter",
+    "service",
+    "--phase",
+    "phase1-service",
+    "--iterations",
+    "20",
+    "--repeat",
+    "2",
+    "--output",
+    "/data2/yuhanya/e2b-benchmark/session-20260920/phase1-service/lifecycle-service-r2.jsonl"
+  ],
+  "runner_sha256": "a3591da5966bc88dfc49a8b57846094913cdd9966fd46b9f63edf2d871804a11",
+  "started_utc": "2026-09-20T12:15:23.562379+00:00",
+  "returncode": 0,
+  "sampler_returncode": 0,
+  "finished_utc": "2026-09-20T12:16:06.455607+00:00"
+}

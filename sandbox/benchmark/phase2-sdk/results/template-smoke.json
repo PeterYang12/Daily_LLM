@@ -1,0 +1,172 @@
+{
+  "status": "passed",
+  "template": "benchmark-ci-minimal-20260920",
+  "purpose": "benchmark-phase2-setup",
+  "run_id": "session-20260920",
+  "started_utc": "2026-09-20T10:34:19.698671+00:00",
+  "sandbox_id": "ivmzdnfco5k247n1phwlm",
+  "create_seconds": 0.28518891299609095,
+  "executions": [
+    {
+      "number": 1,
+      "seconds": 1.0504087869776413,
+      "execution_count": 1,
+      "stdout": [
+        "Hello, world!\n"
+      ]
+    },
+    {
+      "number": 2,
+      "seconds": 0.07299823494395241,
+      "execution_count": 2,
+      "stdout": [
+        "Hello, world!\n"
+      ]
+    }
+  ],
+  "python_dependencies": "annotated-doc==0.0.5\nannotated-types==0.8.0\nanyio==4.15.1\nargon2-cffi==25.1.0\nargon2-cffi-bindings==26.1.0\narrow==1.4.0\nasttokens==3.0.2\nattrs==26.1.0\nbeautifulsoup4==4.15.0\nbleach==6.4.0\ncertifi==2026.7.22\ncffi==2.1.1\ncharset-normalizer==3.5.1\nclick==8.5.0\ncomm==0.2.3\ndebugpy==1.8.22\ndecorator==5.3.1\ndefusedxml==0.7.1\ndnspython==2.8.0\nemail-validator==2.3.0\nexecuting==2.2.1\nfastapi==0.111.0\nfastapi-cli==0.0.32\nfastjsonschema==2.22.2\nfqdn==1.5.1\nh11==0.16.0\nhttpcore==1.0.9\nhttptools==0.8.0\nhttpx==0.28.1\nidna==3.20\nipykernel==6.31.0\nipython==9.15.0\nipython_pygments_lexers==1.1.1\nisoduration==20.11.0\njedi==0.20.0\nJinja2==3.1.6\njsonpointer==3.1.1\njsonschema==4.26.0\njsonschema-specifications==2025.9.1\njupyter-events==0.12.1\njupyter_client==8.10.0\njupyter_core==5.9.1\njupyter_server==2.20.0\njupyter_server_terminals==0.5.4\njupyterlab_pygments==0.3.0\nlark==1.3.1\nmarkdown-it-py==4.2.0\nMarkupSafe==3.0.3\nmatplotlib-inline==0.2.2\nmdurl==0.1.2\nmistune==3.3.4\nnbclient==0.11.0\nnbconvert==7.17.1\nnbformat==5.11.1\nnest-asyncio==1.6.0\norjson==3.11.9\noverrides==7.7.0\npackaging==26.3\npandocfilters==1.5.1\nparso==0.8.7\npexpect==4.9.0\npillow==12.3.0\nplatformdirs==4.11.11\nprometheus_client==0.26.0\nprompt_toolkit==3.0.53\npsutil==7.2.2\nptyprocess==0.7.0\npure_eval==0.2.4\npycparser==3.0\npydantic==2.9.1\npydantic_core==2.23.3\nPygments==2.21.0\npython-dateutil==2.9.0.post0\npython-dotenv==1.2.3\npython-json-logger==4.2.0\npython-multipart==0.0.32\nPyYAML==6.0.3\npyzmq==27.2.0\nreferencing==0.37.0\nrequests==2.33.0\nrfc3339-validator==0.1.4\nrfc3986-validator==0.1.1\nrfc3987-syntax==1.1.0\nrich==15.0.0\nrich-toolkit==0.20.5\nrpds-py==2026.6.3\nSend2Trash==2.1.0\nshellingham==1.5.4\nsix==1.17.0\nsoupsieve==2.9.2\nstack-data==0.6.3\nstarlette==0.37.2\nterminado==0.18.1\ntinycss2==1.5.1\ntornado==6.5.10\ntraitlets==5.16.1\ntyper==0.27.2\ntyping_extensions==4.16.0\ntzdata==2026.4\nujson==6.0.0\nuri-template==1.3.0\nurllib3==2.8.0\nuvicorn==0.30.1\nuvloop==0.22.1\nwatchfiles==1.2.0\nwcwidth==0.8.4\nwebcolors==25.10.0\nwebencodings==0.6.1\nwebsocket-client==1.9.2\nwebsockets==12.0\n",
+  "node_dependencies": {
+    "name": "lib",
+    "dependencies": {
+      "corepack": {
+        "version": "0.20.0",
+        "overridden": false
+      },
+      "ijavascript": {
+        "version": "5.2.1",
+        "overridden": false
+      },
+      "npm": {
+        "version": "10.1.0",
+        "overridden": false
+      },
+      "yarn": {
+        "version": "1.22.19",
+        "overridden": false
+      }
+    }
+  },
+  "kernels": {
+    "kernelspecs": {
+      "python3": {
+        "resource_dir": "/opt/benchmark-ci/share/jupyter/kernels/python3",
+        "spec": {
+          "argv": [
+            "/opt/benchmark-ci/bin/python",
+            "-Xfrozen_modules=off",
+            "-m",
+            "ipykernel_launcher",
+            "-f",
+            "{connection_file}"
+          ],
+          "env": {},
+          "display_name": "Python 3 (ipykernel)",
+          "language": "python",
+          "interrupt_mode": "signal",
+          "metadata": {
+            "debugger": true
+          },
+          "kernel_protocol_version": ""
+        }
+      },
+      "python": {
+        "resource_dir": "/opt/benchmark-ci/share/jupyter/kernels/python",
+        "spec": {
+          "argv": [
+            "/opt/benchmark-ci/bin/python",
+            "-Xfrozen_modules=off",
+            "-m",
+            "ipykernel_launcher",
+            "-f",
+            "{connection_file}"
+          ],
+          "env": {},
+          "display_name": "python",
+          "language": "python",
+          "interrupt_mode": "signal",
+          "metadata": {
+            "debugger": true
+          },
+          "kernel_protocol_version": ""
+        }
+      },
+      "javascript": {
+        "resource_dir": "/usr/local/share/jupyter/kernels/javascript",
+        "spec": {
+          "argv": [
+            "ijskernel",
+            "--hide-undefined",
+            "{connection_file}",
+            "--protocol=5.1"
+          ],
+          "env": {},
+          "display_name": "JavaScript (Node.js)",
+          "language": "javascript",
+          "interrupt_mode": "signal",
+          "metadata": {},
+          "kernel_protocol_version": ""
+        }
+      }
+    }
+  },
+  "sandbox_python": "Python 3.11.6",
+  "sandbox_node": "v20.9.0",
+  "page_verification": {
+    "pid": 210504,
+    "machine_config": {
+      "vcpu_count": 2,
+      "mem_size_mib": 4096,
+      "smt": true,
+      "track_dirty_pages": false,
+      "huge_pages": "None"
+    },
+    "guest_mappings": [
+      {
+        "base_host_virt_addr": 138687362879488,
+        "size": 3221225472,
+        "offset": 0,
+        "page_size": 4096,
+        "page_size_kib": 4096
+      },
+      {
+        "base_host_virt_addr": 138686289137664,
+        "size": 1073741824,
+        "offset": 3221225472,
+        "page_size": 4096,
+        "page_size_kib": 4096
+      }
+    ],
+    "guest_smaps": [
+      {
+        "KernelPageSize": "4 kB",
+        "MMUPageSize": "4 kB",
+        "Rss": "5148 kB",
+        "AnonHugePages": "0 kB",
+        "ShmemPmdMapped": "0 kB",
+        "FilePmdMapped": "0 kB",
+        "Private_Hugetlb": "0 kB",
+        "Shared_Hugetlb": "0 kB",
+        "VmFlags": "rd wr sh mr mw me ms um uw nr sd",
+        "mapping": "7e22aaffd000-7e236affd000 rw-s 00000000 00:01 81954                      /memfd:guest_mem (deleted)"
+      },
+      {
+        "KernelPageSize": "4 kB",
+        "MMUPageSize": "4 kB",
+        "Rss": "83784 kB",
+        "AnonHugePages": "0 kB",
+        "ShmemPmdMapped": "0 kB",
+        "FilePmdMapped": "0 kB",
+        "Private_Hugetlb": "0 kB",
+        "Shared_Hugetlb": "0 kB",
+        "VmFlags": "rd wr sh mr mw me ms um uw nr sd",
+        "mapping": "7e226affd000-7e22aaffd000 rw-s c0000000 00:01 81954                      /memfd:guest_mem (deleted)"
+      }
+    ],
+    "four_kib_verified": true,
+    "problems": []
+  },
+  "cleanup_ok": true,
+  "owned_remaining": 0,
+  "finished_utc": "2026-09-20T10:34:23.334946+00:00",
+  "wall_seconds": 3.6361265130108222
+}

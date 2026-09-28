@@ -1,0 +1,33 @@
+{
+  "checked_utc": "2026-09-20T13:03:32.640730+00:00",
+  "scope": "post-experiment SSH bracketing; no clock adjustment; not proof of historical offset",
+  "samples": [
+    {
+      "host_send_ns": 1789909410880193239,
+      "guest_observed_ns": 1789909410323384746,
+      "host_receive_ns": 1789909411437618286,
+      "rtt_ms": 557.425047,
+      "guest_minus_host_midpoint_ms": -835.521024,
+      "offset_lower_ms": -1114.23354,
+      "offset_upper_ms": -556.808493
+    },
+    {
+      "host_send_ns": 1789909411637687894,
+      "guest_observed_ns": 1789909410826278956,
+      "host_receive_ns": 1789909411940485306,
+      "rtt_ms": 302.797412,
+      "guest_minus_host_midpoint_ms": -962.807808,
+      "offset_lower_ms": -1114.20635,
+      "offset_upper_ms": -811.408938
+    },
+    {
+      "host_send_ns": 1789909412140554194,
+      "guest_observed_ns": 1789909411326381627,
+      "host_receive_ns": 1789909412440625826,
+      "rtt_ms": 300.071632,
+      "guest_minus_host_midpoint_ms": -964.208384,
+      "offset_lower_ms": -1114.244199,
+      "offset_upper_ms": -814.172567
+    }
+  ]
+}

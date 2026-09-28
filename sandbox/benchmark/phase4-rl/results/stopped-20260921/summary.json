@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-09-21T02:49:22.621340+00:00",
+  "run_id": "ua-e2b-pathfinding-20260920-r2",
+  "source": {
+    "path": "/data2/yuhanya/e2b-rl-pathfinding-20260920-r2/results/train-metrics.jsonl",
+    "sha256": "7c0125769c4192d52d85f8fb1bf00d8ca32fa03cb7e42807085095737b630cb1",
+    "bytes": 26418
+  },
+  "native_steps": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "count": 6,
+  "units": "minutes",
+  "average_minutes": {
+    "rollout_minutes": 56.68884534347227,
+    "actor_update_minutes": 6.7806709222308,
+    "checkpoint_minutes": 8.537664010033607,
+    "log_prob_and_other_minutes": 1.7525816227823574,
+    "total_minutes": 73.75976189851903,
+    "old_log_prob_minutes": 1.610646417744445,
+    "other_minutes": 0.14193520503791254
+  },
+  "total_minutes": {
+    "rollout_minutes": 340.1330720608336,
+    "actor_update_minutes": 40.6840255333848,
+    "checkpoint_minutes": 51.22598406020164,
+    "log_prob_and_other_minutes": 10.515489736694144,
+    "total_minutes": 442.5585713911142,
+    "old_log_prob_minutes": 9.66387850646667,
+    "other_minutes": 0.8516112302274753
+  },
+  "wall_time_shares": {
+    "rollout_minutes": 0.7685605794317306,
+    "actor_update_minutes": 0.0919291324660166,
+    "checkpoint_minutes": 0.1157496145632898,
+    "log_prob_and_other_minutes": 0.023760673538963068
+  },
+  "step_total_range_minutes": {
+    "min": 52.79338127043253,
+    "max": 113.38725036243268
+  },
+  "step_1_to_2_rollout": {
+    "step_1_minutes": 50.32369059714935,
+    "step_2_minutes": 95.15672539138274,
+    "ratio": 1.8908932207124929
+  },
+  "definitions": {
+    "rollout_minutes": "Native timing_s/gen: batch rollout collection, including agent/model/tool waits and sampling-end work; not pure GPU generation time.",
+    "actor_update_minutes": "Native timing_s/update_actor.",
+    "checkpoint_minutes": "Native timing_s/save_checkpoint.",
+    "log_prob_and_other_minutes": "timing_s/step minus gen, update_actor and save_checkpoint; includes old_log_prob plus remaining timed and residual work.",
+    "old_log_prob_minutes": "Native timing_s/old_log_prob; included in log_prob_and_other_minutes.",
+    "other_minutes": "log_prob_and_other_minutes minus old_log_prob_minutes.",
+    "total_minutes": "Native timing_s/step. Does not include all startup, checkpoint-reload, or post-step reporting/validation wall time."
+  },
+  "validation": {
+    "six_contiguous_steps": true,
+    "nonnegative_residuals": true,
+    "stack_sums_match_total": true,
+    "smallest_other_minutes": 0.12568729984923266
+  },
+  "scope_notes": [
+    "Observed timing attribution, not a causal speedup estimate.",
+    "32 prompts x 8 requested rollouts per step; not a guarantee of 256 usable trajectories in every step.",
+    "No raw trajectories, prompts, tool output, environment values or credentials included."
+  ],
+  "artifacts": [
+    "six-step-timing.csv",
+    "six-step-timing.json",
+    "step-timing.png",
+    "step-timing.svg"
+  ]
+}

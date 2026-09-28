@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: e2b
+resources:
+  - ../../vendor/e2b/embed/kubernetes
+  - gateway.yaml
+patches:
+  - path: capacity.yaml
+  - path: runtime-local.yaml
+  - path: ready-private.yaml
+configMapGenerator:
+  - name: e2b-gateway-config
+    files:
+      - nginx.conf

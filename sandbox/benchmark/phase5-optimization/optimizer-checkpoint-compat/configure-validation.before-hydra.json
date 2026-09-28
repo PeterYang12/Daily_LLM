@@ -1,0 +1,49 @@
+{
+  "checked_utc": "2026-09-20T19:32:43.843754+00:00",
+  "status": "passed",
+  "cases": [
+    {
+      "resume": false,
+      "config_changes": [
+        {
+          "path": ".actor_rollout_ref.actor.optim.use_checkpoint_opt_param_scheduler",
+          "before": null,
+          "after": true
+        }
+      ],
+      "before_missing_key_uses_native_default": false,
+      "plan_changes": [
+        {
+          "path": ".restore_lr_scheduler_from_checkpoint",
+          "before": null,
+          "after": true
+        }
+      ],
+      "task_config_unchanged": true
+    },
+    {
+      "resume": true,
+      "config_changes": [
+        {
+          "path": ".actor_rollout_ref.actor.optim.use_checkpoint_opt_param_scheduler",
+          "before": null,
+          "after": true
+        }
+      ],
+      "before_missing_key_uses_native_default": false,
+      "plan_changes": [
+        {
+          "path": ".initial_weights",
+          "before": "original base model; failed previous run had zero updates",
+          "after": "native checkpoint model/optimizer/scheduler"
+        },
+        {
+          "path": ".restore_lr_scheduler_from_checkpoint",
+          "before": null,
+          "after": true
+        }
+      ],
+      "task_config_unchanged": true
+    }
+  ]
+}

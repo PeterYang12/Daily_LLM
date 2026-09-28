@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: e2b
+spec:
+  template:
+    metadata:
+      annotations:
+        local.e2b/runtime-version: local-4k-512-start1024-20260921
+        local.e2b/api-sha256: 053ccf0e58f6c958417d30d26dcd1965a325ff23fa45e2c34f98df4565dd4c54
+        local.e2b/orchestrator-sha256: 590d0173ff9df2654c67978ac82fc503264ff97890e5b5cdf0e102a0953a238a
+    spec:
+      $setElementOrder/initContainers:
+        - { name: preflight }
+        - { name: host-setup }
+        - { name: fetch-artifacts }
+        - { name: postgres }
+        - { name: redis }
+        - { name: clickhouse }
+        - { name: vector }
+        - { name: db-migrator }
+        - { name: clickhouse-migrator }
+        - { name: seed }
+        - { name: orchestrator }
+        - { name: api }
+        - { name: client-proxy }
+        - { name: base-template }
+      volumes:
+        - name: custom-runtime
+          hostPath:
+            path: /opt/e2b-local/custom-runtime
+            type: Directory
+      initContainers:
+        - name: preflight
+        - name: host-setup
+          env:
+            - { name: E2B_SANDBOX_HUGE_PAGES, value: "false" }
+          volumeMounts:
+            - { name: custom-runtime, mountPath: /opt/e2b-custom, readOnly: true }
+          command:
+            - /bin/sh
+            - -c
+            - exec nsenter -t 1 -m -u -i -n -p -- /bin/bash -s < /opt/e2b-custom/host-setup.sh
+        - name: fetch-artifacts
+        - name: postgres
+          args: ["-c", "listen_addresses=127.0.0.1", "-c", "huge_pages=off"]
+        - name: redis
+        - name: clickhouse
+        - name: vector
+        - name: db-migrator
+          volumeMounts:
+            - { name: custom-runtime, mountPath: /opt/e2b-custom, readOnly: true }
+          workingDir: /opt/e2b-custom
+          command: [/opt/e2b-custom/migrator]
+        - name: clickhouse-migrator
+        - name: seed
+        - name: orchestrator
+          env:
+            - { name: E2B_SANDBOX_HUGE_PAGES, value: "false" }
+            - { name: E2B_MAX_SANDBOXES_PER_NODE, value: "512" }
+            - { name: E2B_MAX_STARTING_INSTANCES_PER_NODE, value: "512" }
+            - { name: ENVD_TIMEOUT, value: "30s" }
+            - name: OL_COMMAND
+              value: nsenter -t 1 -m -u -i -n -C -w/ -- /usr/bin/env PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin /opt/e2b-local/custom-runtime/orchestrator
+        - name: api
+          env:
+            - { name: E2B_SANDBOX_HUGE_PAGES, value: "false" }
+          volumeMounts:
+            - { name: custom-runtime, mountPath: /opt/e2b-custom, readOnly: true }
+          command: [/opt/e2b-custom/api]
+        - name: client-proxy
+        - name: base-template

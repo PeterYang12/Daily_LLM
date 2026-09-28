@@ -1,0 +1,8 @@
+{
+  "started_utc": "2026-09-21T15:31:37.478615+00:00",
+  "old_sha256": "bff879e1e132546115a5b9b6f67e53af31655f05acc42abe215b4a591ebaaf02",
+  "new_sha256": "590d0173ff9df2654c67978ac82fc503264ff97890e5b5cdf0e102a0953a238a",
+  "starting_per_node": 1024,
+  "status": "deployed",
+  "ended_utc": "2026-09-21T15:34:51.302355+00:00"
+}

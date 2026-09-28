@@ -1,0 +1,38 @@
+[
+  {
+    "path": "code/official_sdk_baseline.py",
+    "sha256": "42f5ad977780b2fcbc9ef181549f1a01b4900f22a9f0361f286a9351fe11f998"
+  },
+  {
+    "path": "code/prepare_template.py",
+    "sha256": "f33d11525af79e740a3205885ed0949d935b5b8b683d28af42a800e60a6dbcaa"
+  },
+  {
+    "path": "code/smoke_template.py",
+    "sha256": "7b8bc413885cc2dec1de1eea3f2b3d131e4755beabfb50bd46e8e2e28bd51cb9"
+  },
+  {
+    "path": "code/test_official_sdk_baseline.py",
+    "sha256": "0570b75cf2c93934526bc8c80c05b7d13e78d3dc83f478af2bc3aaa49d2985c0"
+  },
+  {
+    "path": "configs/client-requirements.lock",
+    "sha256": "99f804a61625a1ef9684c027f8de4cc3048062e958090225ac62f3210b6a1591"
+  },
+  {
+    "path": "configs/code-interpreter.service",
+    "sha256": "a72c38cdceda9549baf43135e0ad402f7d93151dbe022fa755d00d13513512ec"
+  },
+  {
+    "path": "configs/jupyter.service",
+    "sha256": "8867ce3f2f2050372440a937fc20cc16f0dd8001cbf118410af8a9952f85e9c4"
+  },
+  {
+    "path": "configs/minimal-requirements.txt",
+    "sha256": "93a1a94866f6c821a16f1892e65bc24841ca61bb3a5cfc96a9506c7b98b5e119"
+  },
+  {
+    "path": "configs/upstream-sources.json",
+    "sha256": "b30c65b00e546105401757fcd200b77ec359e546d3ca2147de5eb2b76285af3d"
+  }
+]

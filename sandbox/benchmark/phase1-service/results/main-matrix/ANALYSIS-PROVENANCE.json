@@ -1,0 +1,49 @@
+{
+  "generated_utc": "2026-09-20T12:24:50.919877+00:00",
+  "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+  "input_manifest_sha256": "a368cb683b809560ddc4b1be9a8dacbfabc6fc0801bed63ac4adccb4d3593527",
+  "all_input_hashes_match_frozen_manifest": true,
+  "analysis_cpu_affinity": "16-31",
+  "scope": "main matrix only; supplementary experiments excluded",
+  "code": [
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/analysis/first_call_cohorts.py",
+      "sha256": "635bbf23fb8afe1f4d8a2cce9a87ce1b28e83f64ff487a9568651722a406ab36"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/analysis/resources.py",
+      "sha256": "a766f46d0ab15082c4465499a4c20f5e4cb73963921ff53b1e0a93b280906e26"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/analysis/summarize.py",
+      "sha256": "4427d2ab8f0b46253b5ff328766115eddeefceba19451d7f4dca36b296443ff6"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/analysis/test_first_call_cohorts.py",
+      "sha256": "424620a1aa9a6a9135cc0cd8495ff1fa1bb9f63544bed727afc97129e526e827"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/analysis/test_resources.py",
+      "sha256": "26bd7c11504309c76665e1f56cd39ed75b41cb8417c55d46f179da56e9897282"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/analysis/test_summarize.py",
+      "sha256": "61d6f7a254394394b0b8f0596fa1689bfeaa6b3f244a15480fa145d1ac2d287d"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/analysis/write_main_reports.py",
+      "sha256": "162e21a524f9e80fd755982f50c1ec38dc5efca8ce39125bd9845494125e920e"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/code/executed/runner-20260920-v1.py",
+      "sha256": "0eafff00e0fc46902832061b8c5a50f8d052b71f6d1b1e641091c75f73c95075"
+    },
+    {
+      "path": "/home/yuhanya/Daily_LLM/sandbox/benchmark/phase1-service/code/runner.py",
+      "sha256": "48bbeab5401c2a9146ea31f455b65877ba01486703f7c6817d66667e941172fc"
+    }
+  ],
+  "runner_note": "v1 preserved; continuation runner adds setup reconciliation and error detail; source identities retained",
+  "aggregate_definition": "median of per-run statistics; run min/max; failure counts retained",
+  "resource_definition": "own-layer interval weighting; whole intervals only; failed setup measurement windows excluded"
+}

@@ -1,0 +1,21 @@
+{
+  "success": false,
+  "target": 256,
+  "attempted_creates": 178,
+  "not_attempted": 78,
+  "observed_simultaneous_running": 177,
+  "commands_passed": 177,
+  "remaining_ids": [],
+  "listed_state_counts": {
+    "running": 177
+  },
+  "listed_spec_counts": {
+    "4vCPU/8192MiB": 177
+  },
+  "elapsed_s": 271.20162653923035,
+  "sdk_version": "2.50.0",
+  "error_classes": {
+    "prepare:SandboxException": 1
+  },
+  "readiness_transient_errors": 0
+}

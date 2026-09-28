@@ -1,0 +1,25 @@
+[
+  {
+    "kind": "concurrency",
+    "configuration": {
+      "phase": "phase2-sdk",
+      "scenario": "create_delete_churn",
+      "operation": "create",
+      "template": "base-4k-4g",
+      "memory_mib": 4096,
+      "resident_count": null,
+      "mode": "closed_loop",
+      "instrumentation": "minimal",
+      "measurement_kind": "finite_batch",
+      "comparison_key": "create-v1",
+      "arrival_rate_ops_s": null,
+      "payload_bytes": 1024,
+      "page_mode": "4KiB",
+      "throughput_scope": "create-delete churn"
+    },
+    "observed_points": 4,
+    "png": "plots/concurrency-phase2-sdk-create-delete-churn-create-8818f949d1.png",
+    "svg": "plots/concurrency-phase2-sdk-create-delete-churn-create-8818f949d1.svg",
+    "caption": "Points: median of per-run statistics; shading: run min–max, not a confidence interval. Runs/point: 3–3; minimum successes/run: 100.\nP99 needs more evidence below 1,000 successes/run. Failure rate includes recorded errors, timeouts, rejections, cancellations and invalid results.\nThroughput scope: create-delete churn; latency is the named operation's duration."
+  }
+]

@@ -1,0 +1,11 @@
+[Unit]
+Description=Update the last-hour E2B performance summary every fifteen minutes
+
+[Timer]
+OnBootSec=5min
+OnUnitInactiveSec=15min
+AccuracySec=10s
+Unit=e2b-performance-summary.service
+
+[Install]
+WantedBy=timers.target

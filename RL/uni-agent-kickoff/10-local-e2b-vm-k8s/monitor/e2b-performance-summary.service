@@ -1,0 +1,13 @@
+[Unit]
+Description=Summarize E2B passive performance recordings
+
+[Service]
+Type=oneshot
+User=15341
+Group=15341
+UMask=0077
+ExecStart=/data2/yuhanya/e2b-local-20260916/client-env/bin/python -B /data2/yuhanya/e2b-local-20260916/code/summarize_performance.py --hours 1
+TimeoutStartSec=300
+MemoryMax=1G
+CPUQuota=100%
+NoNewPrivileges=true
