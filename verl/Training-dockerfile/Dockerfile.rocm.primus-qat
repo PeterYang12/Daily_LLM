@@ -102,12 +102,15 @@ RUN pip install --no-cache-dir --no-deps --no-build-isolation \
 # 3. verl from the build context (this branch), then the versions verl's pyproject.toml locks for the
 #    pieces that matter to QAT and to Qwen3.5. TileLang is re-pinned after vLLM because vLLM's ROCm
 #    requirements ask for an older release than verl's QAT kernels are written against.
+#    accelerate is pinned too: the base image's 1.9.0 fails under transformers 5.16.1 when verl loads a model
+#    with init_empty_weights ("Parameter.__new__() got an unexpected keyword argument '_is_hf_initialized'").
 # ---------------------------------------------------------------------------------------------------------
 COPY . /workspace/verl
 RUN cd /workspace/verl \
     && pip install --no-cache-dir -c ${PIP_CONSTRAINT_FILE} -e . \
     && pip install --no-cache-dir -c ${PIP_CONSTRAINT_FILE} \
         "transformers==5.16.1" \
+        "accelerate==1.14.0" \
         "tokenizers==0.23.2" \
         "tilelang==0.1.15" \
         "megatron-energon==7.4.1" \
