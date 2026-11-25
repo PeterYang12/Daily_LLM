@@ -122,6 +122,12 @@ RUN cd /workspace/verl \
     && pip install --no-cache-dir --no-deps "TransferQueue==0.1.11"
 
 # ---------------------------------------------------------------------------------------------------------
+# 3b. MoRI-IO, the KV transfer library behind vLLM's MoRIIOConnector (prefill-decode disaggregation on ROCm).
+#     Deps-free so the base image's ROCm / PyTorch stack is not touched.
+# ---------------------------------------------------------------------------------------------------------
+RUN pip install --no-cache-dir --no-deps "amd_mori==1.2.5"
+
+# ---------------------------------------------------------------------------------------------------------
 # 4. Runtime defaults for gfx950.
 #   NVTE_USE_GROUPED_GEMM_TRITON is left at TE's default (0, one hipBLASLt GEMM per expert). The base image's TE
 #                                   (023639b51) gives the Triton grouped GEMM a k_heavy_bwd tile needing 272 KB of
