@@ -8,20 +8,26 @@
 #       runs against a constraints file that pins the base image's torch / TE / triton / aiter / apex.
 # Adds: vLLM built from source against the base image's torch, Megatron-Core and Megatron-Bridge at the
 #       versions verl's pyproject.toml locks, NVIDIA ModelOpt (QAT fake quantizers), TileLang (verl's
-#       QAT / weight-export kernels), and verl itself from the build context (this branch).
+#       QAT / weight-export kernels), MoRI-IO, and verl cloned from upstream (VERL_REPO at VERL_REF).
 #
-# Build from the repository root (BuildKit is required):
-#   DOCKER_BUILDKIT=1 docker build -f docker/rocm/Dockerfile.rocm.primus-qat -t verl-qat:primus-v26.9 .
+# Build (BuildKit is required). Nothing is read from the build context, so any directory works:
+#   DOCKER_BUILDKIT=1 docker build -f Dockerfile.rocm.primus-qat -t verl-qat:primus-v26.9 .
+# VERL_REF defaults to the main branch. Docker caches the clone, so a rebuild keeps the commit it already has;
+# pass --build-arg VERL_REF=<commit> to move to a newer one.
 #
 # Run (pick GPUs with --device=/dev/dri/renderD<N>, not HIP_VISIBLE_DEVICES: Ray sets that per worker):
 #   docker run -it --device=/dev/kfd --device=/dev/dri --group-add video --ipc=host --network=host \
 #       --shm-size=64g --security-opt seccomp=unconfined -v /path/to/models:/models verl-qat:primus-v26.9
+# verl is installed editable from /workspace/verl. To run a local checkout instead of the cloned one, mount it
+# over that path: -v /path/to/verl:/workspace/verl
 #
 # Useful build args:
 #   BASE_IMAGE  rocm/primus tag                         (default rocm/primus:v26.9)
 #   GPU_ARCH    vLLM kernel targets; "gfx942;gfx950" for MI300 + MI350, single arch halves the build
 #   MAX_JOBS    parallel compile jobs for the vLLM build
-#   VLLM_TAG    vLLM git ref                            (default v0.32.0, the version verl locks)
+#   VLLM_TAG    vLLM git ref                            (default v0.34.1rc0; verl's pyproject.toml locks 0.32.0)
+#   VERL_REPO   verl git repository                     (default https://github.com/verl-project/verl.git)
+#   VERL_REF    verl branch, tag or commit              (default main)
 
 ARG BASE_IMAGE=rocm/primus:v26.9
 FROM ${BASE_IMAGE}
@@ -56,16 +62,20 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # ---------------------------------------------------------------------------------------------------------
-# 1. vLLM from source. v0.32 ships a Rust frontend, so a Rust toolchain (the channel pinned by the tag's
+# 1. vLLM from source. Since v0.32 it ships a Rust frontend, so a Rust toolchain (the channel pinned by the tag's
 #    rust-toolchain.toml) is needed at build time. tools/use_existing_torch.py drops vLLM's own torch pins
 #    so the build links against the base image's torch.
+#    v0.34.1rc0 rather than v0.34.0: v0.34.0 lacks vllm-project/vllm#61872 ([Bugfix][ROCm] Restore MoE weight
+#    padding), which verl's docker/rocm/Dockerfile.rocm applies as a patch. v0.34.1rc0 has it, so vLLM is used
+#    unpatched. It is a pre-release cut from main (about 1200 commits after v0.34.0); move to the next release
+#    once it is out.
 # ---------------------------------------------------------------------------------------------------------
 ENV CARGO_HOME=/root/.cargo \
     RUSTUP_HOME=/root/.rustup \
     PATH=/root/.cargo/bin:${PATH}
 
 ARG VLLM_REPO=https://github.com/vllm-project/vllm.git
-ARG VLLM_TAG=v0.32.0
+ARG VLLM_TAG=v0.34.1rc0
 RUN git clone --depth 1 --branch ${VLLM_TAG} ${VLLM_REPO} /workspace/vllm \
     && cd /workspace/vllm \
     && TOOLCHAIN="$(grep '^channel' rust-toolchain.toml | sed 's/.*= *"\(.*\)"/\1/')" \
@@ -99,19 +109,32 @@ RUN pip install --no-cache-dir --no-deps --no-build-isolation \
     && pip install --no-cache-dir -c ${PIP_CONSTRAINT_FILE} "pulp<4.0" torchprofile
 
 # ---------------------------------------------------------------------------------------------------------
-# 3. verl from the build context (this branch), then the versions verl's pyproject.toml locks for the
-#    pieces that matter to QAT and to Qwen3.5. TileLang is re-pinned after vLLM because vLLM's ROCm
-#    requirements ask for an older release than verl's QAT kernels are written against.
-#    accelerate is pinned too: the base image's 1.9.0 fails under transformers 5.16.1 when verl loads a model
-#    with init_empty_weights ("Parameter.__new__() got an unexpected keyword argument '_is_hf_initialized'").
+# 3. verl from upstream (VERL_REPO at VERL_REF), installed editable so that a local checkout mounted over
+#    /workspace/verl at run time replaces it. Then the versions that matter to QAT and to Qwen3.5, re-pinned
+#    after vLLM and verl:
+#      transformers / tokenizers  vLLM 0.34.x needs huggingface_hub >= 2.0 and tokenizers >= 0.23.3. transformers
+#                                 accepts huggingface_hub 2.x only from 5.18.0 on, while verl's setup.py asks for
+#                                 transformers < 5.17 (it locks 5.16.1). vLLM's requirement wins here, so pip
+#                                 reports verl's transformers requirement as unmet; 5.18.0 is the closest
+#                                 release to verl's lock that vLLM 0.34.x accepts.
+#      tilelang                   vLLM's ROCm requirements ask for an older release than verl's QAT kernels are
+#                                 written against.
+#      accelerate                 the base image's 1.9.0 fails when verl loads a model with init_empty_weights
+#                                 ("Parameter.__new__() got an unexpected keyword argument '_is_hf_initialized'").
 # ---------------------------------------------------------------------------------------------------------
-COPY . /workspace/verl
-RUN cd /workspace/verl \
+ARG VERL_REPO=https://github.com/verl-project/verl.git
+ARG VERL_REF=main
+ARG TRANSFORMERS_VERSION=5.18.0
+RUN git clone ${VERL_REPO} /workspace/verl \
+    && cd /workspace/verl \
+    && git checkout ${VERL_REF} \
+    && echo "verl $(git rev-parse HEAD)" \
     && pip install --no-cache-dir -c ${PIP_CONSTRAINT_FILE} -e . \
     && pip install --no-cache-dir -c ${PIP_CONSTRAINT_FILE} \
-        "transformers==5.16.1" \
+        "transformers==${TRANSFORMERS_VERSION}" \
+        "huggingface_hub>=2.0.0" \
         "accelerate==1.14.0" \
-        "tokenizers==0.23.2" \
+        "tokenizers==0.23.3" \
         "tilelang==0.1.15" \
         "megatron-energon==7.4.1" \
         "flash-linear-attention==0.5.2" \
@@ -119,7 +142,7 @@ RUN cd /workspace/verl \
     && pip install --no-cache-dir --no-deps "tensordict==0.10.0" \
     # main_ppo imports transfer_queue; setup.py does not list it. Deps-free as in pyproject.toml (pyzmq and
     # msgspec, all it imports, are already installed).
-    && pip install --no-cache-dir --no-deps "TransferQueue==0.1.11"
+    && pip install --no-cache-dir --no-deps "TransferQueue==0.1.12"
 
 # ---------------------------------------------------------------------------------------------------------
 # 3b. MoRI-IO, the KV transfer library behind vLLM's MoRIIOConnector (prefill-decode disaggregation on ROCm).
@@ -128,12 +151,21 @@ RUN cd /workspace/verl \
 RUN pip install --no-cache-dir --no-deps "amd_mori==1.2.5"
 
 # ---------------------------------------------------------------------------------------------------------
+# 3c. torchcodec (video / audio decoding for multimodal inputs). vLLM 0.34 probes for it at start-up and logs
+#     a warning with a traceback in every process when it is missing. The PyPI wheel links against CUDA
+#     (libnvrtc) and does not load here; the CPU build from the PyTorch index does, with the base image's
+#     FFmpeg 6. Deps-free so torch is not touched.
+# ---------------------------------------------------------------------------------------------------------
+RUN pip install --no-cache-dir --no-deps "torchcodec==0.17.0" --index-url https://download.pytorch.org/whl/cpu \
+    && python3 -c "from torchcodec.decoders import VideoDecoder, AudioDecoder"
+
+# ---------------------------------------------------------------------------------------------------------
 # 4. Runtime defaults for gfx950.
 #   NVTE_USE_GROUPED_GEMM_TRITON is left at TE's default (0, one hipBLASLt GEMM per expert). The base image's TE
 #                                   (023639b51) gives the Triton grouped GEMM a k_heavy_bwd tile needing 272 KB of
 #                                   LDS (gfx950 has 160 KB), so the MoE backward of narrow experts (Qwen3.5: K/N=4)
 #                                   fails with OutOfResources (the table from ROCm/TransformerEngine 7f2ca63b7b
-#                                   (#783), which fits, is docker/rocm/patches/te-gfx950-GMM.json; not applied here).
+#                                   (#783), which fits, is patches/te-gfx950-GMM.json; not applied here).
 #   HSA_ENABLE_IPC_MODE_LEGACY=1    CUDA-IPC style weight hand-off between the trainer and colocated vLLM
 # The base image exports NVTE_FLASH_ATTN=0 / NVTE_FUSED_ATTN=1; Megatron asserts these agree with
 # attention_backend, so run Megatron with
@@ -171,7 +203,7 @@ RUN SDK="$(python3 -c 'import site; print(site.getsitepackages()[0])')" \
     && test "$(readlink -f "${DEVEL_LIB}/libamdhip64.so.7")" = "$(readlink -f "${CORE_LIB}/libamdhip64.so.7")" \
     && ROCPROFILER_REGISTER_LIBRARY="${CORE_LIB}/librocprofiler-sdk.so.1" python3 -c "import vllm"
 
-# Local modifications to the libraries installed above are kept as files in docker/rocm/patches/ and are NOT
+# Local modifications to the libraries installed above are kept as files in patches/ (next to this file) and are NOT
 # applied in this image, so the image is the stock stack and every change is visible as a separate file:
 #   vllm-rocm-mxfp8-block32-scales-switch.patch  vLLM: VLLM_ROCM_MXFP8_BLOCK32_SCALES switch (MXFP8 refit)
 #   vllm-rocm-aiter-mxfp8-moe-silu.patch         vLLM: AITER MXFP8 MoE accepts SiLU experts
@@ -180,6 +212,8 @@ RUN SDK="$(python3 -c 'import site; print(site.getsitepackages()[0])')" \
 
 RUN mkdir -p /workspace/.manifest \
     && pip list > /workspace/.manifest/verl-qat-pip-list.txt \
+    && git -C /workspace/verl rev-parse HEAD > /workspace/.manifest/verl-commit.txt \
+    && git -C /workspace/vllm rev-parse HEAD > /workspace/.manifest/vllm-commit.txt \
     && cp ${PIP_CONSTRAINT_FILE} /workspace/.manifest/ \
     && rm -rf /root/.cache /root/.cargo/registry
 
