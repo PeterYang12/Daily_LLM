@@ -89,7 +89,7 @@ No reinstall is needed: verl is installed editable, so Python reads the mounted 
 
 ## Tested (2026-11-25, node with 8 × MI355X)
 
-GRPO on GSM8K, 3 training steps, vLLM rollout with aiter off, FSDP2 training.
+GRPO on GSM8K, 3 training steps, FSDP2 training, vLLM rollout (aiter off unless noted).
 
 | Model | verl | Rollout | Result |
 |---|---|---|---|
@@ -98,5 +98,10 @@ GRPO on GSM8K, 3 training steps, vLLM rollout with aiter off, FSDP2 training.
 | Qwen2.5-0.5B | mounted checkout with MoRI-IO PD | PD READ 1P1D | completes |
 | Qwen3-30B-A3B-Instruct-2507 | image (`main`) | plain, 8 GPUs, TP2 | validation accuracy 0.907 on the GSM8K test set (1319 questions) |
 | Qwen3-30B-A3B-Instruct-2507 | mounted checkout with MoRI-IO PD | PD READ 1P3D, TP2 | validation accuracy 0.913 |
+| Qwen3-30B-A3B-Instruct-2507 | image (`main`) | plain, 8 GPUs, TP2, aiter on (`VLLM_ROCM_USE_AITER=1`) | validation accuracy 0.911 |
 
-Not tested: Megatron and QAT training, vLLM with aiter on.
+Not tested: Megatron and QAT training.
+
+One aiter-on run hung before the first training step: a dataloader worker deadlocked in OpenMP after fork. The
+image now sets `KMP_INIT_AT_FORK=TRUE` (as verl's `docker/rocm/Dockerfile.rocm` does); the rerun in the table
+above was made with it. The hang is intermittent, so one clean run does not prove it is gone.

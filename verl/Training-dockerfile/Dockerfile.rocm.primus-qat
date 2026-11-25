@@ -176,6 +176,12 @@ ENV HSA_ENABLE_IPC_MODE_LEGACY=1 \
     NCCL_DEBUG=WARN \
     ROCPROFILER_LOG_LEVEL=fatal
 
+# scikit-learn and joblib (imported via transformers) default KMP_INIT_AT_FORK to FALSE. torch here uses the ROCm
+# SDK's LLVM OpenMP, which then skips its at-fork reset, and a fork-started dataloader worker can deadlock in
+# torch.set_num_threads(1) (stack: __kmp_lock_suspend_mx in libomp.so); the trainer then waits for its first
+# training batch forever. Same setting as docker/rocm/Dockerfile.rocm in verl.
+ENV KMP_INIT_AT_FORK=TRUE
+
 # Ray counts AMD GPUs through the amdsmi Python module; the base ships it inside the ROCm SDK wheel but
 # not on sys.path, so without this link Ray reports 0 GPUs (same fix as docker/rocm/Dockerfile.rocm).
 RUN SP="$(python3 -c 'import site; print(site.getsitepackages()[0])')" \
