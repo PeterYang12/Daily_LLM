@@ -1,0 +1,3 @@
+# real credentials never go into git
+/env
+__pycache__/
