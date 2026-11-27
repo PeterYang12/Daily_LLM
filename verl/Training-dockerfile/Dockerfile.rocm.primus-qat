@@ -8,7 +8,8 @@
 #       runs against a constraints file that pins the base image's torch / TE / triton / aiter / apex.
 # Adds: vLLM built from source against the base image's torch, Megatron-Core and Megatron-Bridge at the
 #       versions verl's pyproject.toml locks, NVIDIA ModelOpt (QAT fake quantizers), TileLang (verl's
-#       QAT / weight-export kernels), MoRI-IO, and verl cloned from upstream (VERL_REPO at VERL_REF).
+#       QAT / weight-export kernels), MoRI-IO, CuPy (verl's NCCL weight sync), the client libraries Uni-Agent
+#       needs for agentic RL (E2B, SWE-bench, Modal), and verl cloned from upstream (VERL_REPO at VERL_REF).
 #
 # Build (BuildKit is required). Nothing is read from the build context, so any directory works:
 #   DOCKER_BUILDKIT=1 docker build -f Dockerfile.rocm.primus-qat -t verl-qat:primus-v26.9 .
@@ -160,6 +161,25 @@ RUN pip install --no-cache-dir --no-deps "torchcodec==0.17.0" --index-url https:
     && python3 -c "from torchcodec.decoders import VideoDecoder, AudioDecoder"
 
 # ---------------------------------------------------------------------------------------------------------
+# 3d. CuPy with NCCL (RCCL) bindings. verl's "nccl" checkpoint engine, which sends the trainer's weights to
+#     standalone rollout servers (separate_async), allocates its buffers with cupy and broadcasts them through
+#     ray.util.collective. Without cupy the engine fails at the first weight sync with
+#     "'NoneType' object has no attribute 'zeros'". The prebuilt ROCm 7 wheel works with this image's SDK.
+#     Deps-free so the base image's ROCm / PyTorch stack is not touched.
+# ---------------------------------------------------------------------------------------------------------
+ARG CUPY_VERSION=14.2.0
+RUN pip install --no-cache-dir --no-deps "cupy-rocm-7-0==${CUPY_VERSION}" \
+    && python3 -c "from cupy.cuda import nccl; import ray.util.collective"
+
+# ---------------------------------------------------------------------------------------------------------
+# 3e. Client libraries for agentic RL with Uni-Agent (remote sandboxes and SWE-bench scoring). Uni-Agent itself
+#     is not installed here: mount a checkout and run `pip install --no-deps -e .` in it, so the checkout can
+#     change without rebuilding the image. Its other dependencies are already present.
+# ---------------------------------------------------------------------------------------------------------
+RUN pip install --no-cache-dir -c ${PIP_CONSTRAINT_FILE} "e2b==2.56.0" "swebench==4.1.0" "modal==1.6.2" \
+    && python3 -c "import e2b, swebench, modal"
+
+# ---------------------------------------------------------------------------------------------------------
 # 4. Runtime defaults for gfx950.
 #   NVTE_USE_GROUPED_GEMM_TRITON is left at TE's default (0, one hipBLASLt GEMM per expert). The base image's TE
 #                                   (023639b51) gives the Triton grouped GEMM a k_heavy_bwd tile needing 272 KB of
@@ -170,10 +190,16 @@ RUN pip install --no-cache-dir --no-deps "torchcodec==0.17.0" --index-url https:
 # The base image exports NVTE_FLASH_ATTN=0 / NVTE_FUSED_ATTN=1; Megatron asserts these agree with
 # attention_backend, so run Megatron with
 #   actor_rollout_ref.actor.megatron.override_transformer_config.attention_backend=fused
-# (and the same for ref) instead of verl's default "flash".
+# (and the same for ref) instead of verl's default "flash". Forcing flash with NVTE_FLASH_ATTN=1 / NVTE_FUSED_ATTN=0
+# does not work: the first forward fails with "No dot product attention backend is available".
+#   NCCL_NET=IB                     RCCL 2.32 picks its IB-CAST network plugin by default. Across nodes with ionic
+#                                   (AMD Pensando) NICs that fails with IBV_WC_LOC_ACCESS_ERR / IBV_WC_REM_ACCESS_ERR;
+#                                   plain IB works (46 GB/s all_reduce over 2 nodes x 8 GPUs). Only inter-node traffic
+#                                   uses it. Override with -e NCCL_NET=... on fabrics where IB-CAST is wanted.
 # ---------------------------------------------------------------------------------------------------------
 ENV HSA_ENABLE_IPC_MODE_LEGACY=1 \
     NCCL_DEBUG=WARN \
+    NCCL_NET=IB \
     ROCPROFILER_LOG_LEVEL=fatal
 
 # scikit-learn and joblib (imported via transformers) default KMP_INIT_AT_FORK to FALSE. torch here uses the ROCm
